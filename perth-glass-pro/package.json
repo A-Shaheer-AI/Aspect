@@ -1,0 +1,36 @@
+{
+    "name": "perth-glass-pro",
+    "version": "1.0.0",
+    "private": true,
+    "scripts": {
+        "dev": "next dev --turbopack",
+        "build": "next build",
+        "start": "next start",
+        "lint": "next lint"
+    },
+    "dependencies": {
+        "@calcom/embed-react": "^1.5.3",
+        "@next/third-parties": "^16.1.5",
+        "date-fns": "^4.1.0",
+        "decap-cms-app": "^3.10.0",
+        "framer-motion": "^11.18.2",
+        "gray-matter": "^4.0.3",
+        "lucide-react": "^0.400.0",
+        "netlify-cms-media-library-cloudinary": "^1.3.10",
+        "next": "^15.0.0",
+        "react": "^19.0.0",
+        "react-dom": "^19.0.0",
+        "remark": "^15.0.1",
+        "remark-html": "^16.0.1",
+        "resend": "^6.9.1"
+    },
+    "devDependencies": {
+        "@tailwindcss/postcss": "^4.0.0",
+        "@types/node": "^20.0.0",
+        "@types/react": "^19.0.0",
+        "@types/react-dom": "^19.0.0",
+        "postcss": "^8.0.0",
+        "tailwindcss": "^4.0.0",
+        "typescript": "^5.0.0"
+    }
+}

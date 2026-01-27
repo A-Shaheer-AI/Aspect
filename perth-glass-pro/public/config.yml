@@ -1,0 +1,23 @@
+backend:
+  name: github
+  repo: your-username/your-repo-name # Replace with your GitHub repo path (e.g. 'johndoe/my-blog')
+  branch: main
+  base_url: https://decap-oauth.vercel.app
+
+media_library:
+  name: cloudinary
+  config:
+    cloud_name: dr8tjrszy # Replace with process.env.NEXT_PUBLIC_CLOUDINARY_CLOUD_NAME
+    api_key: 553353239329863 # Replace with process.env.NEXT_PUBLIC_CLOUDINARY_API_KEY
+
+collections:
+  - name: "posts"
+    label: "Blog Posts"
+    folder: "content/blog"
+    create: true
+    fields:
+      - { label: "Title", name: "title", widget: "string" }
+      - { label: "Publish Date", name: "date", widget: "datetime" }
+      - { label: "Thumbnail Image", name: "thumbnail", widget: "image" }
+      - { label: "Excerpt", name: "excerpt", widget: "text", hint: "Used for SEO meta description" }
+      - { label: "Body", name: "body", widget: "markdown" }

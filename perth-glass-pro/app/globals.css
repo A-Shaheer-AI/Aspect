@@ -1,0 +1,307 @@
+/* PERFORMANCE: Removed Google Fonts @import - using next/font instead */
+
+@import "tailwindcss";
+
+/* CSS Variables */
+:root {
+  --font-montserrat: "Montserrat", ui-sans-serif, system-ui, sans-serif;
+  --font-inter: "Inter", ui-sans-serif, system-ui, sans-serif;
+
+  /* Brand Colors */
+  --brand-navy: #000080;
+  --brand-slate: #6d8196;
+  --brand-water: #add8e6;
+  --brand-snow: #fffafa;
+  --action-gold: #ffd700;
+}
+
+/* Theme Variables for Tailwind 4 */
+@theme inline {
+  --color-brand-navy: var(--brand-navy);
+  --color-brand-slate: var(--brand-slate);
+  --color-brand-water: var(--brand-water);
+  --color-brand-snow: var(--brand-snow);
+  --color-action-gold: var(--action-gold);
+
+  --font-heading: var(--font-montserrat);
+  --font-body: var(--font-inter);
+}
+
+/* Base Styles */
+html {
+  scroll-behavior: smooth;
+  -webkit-text-size-adjust: 100%;
+}
+
+body {
+  font-family: var(--font-inter);
+  background-color: var(--brand-snow);
+  color: var(--brand-navy);
+  min-height: 100vh;
+  line-height: 1.5;
+}
+
+/* ACCESSIBILITY: Skip to content link */
+.skip-link {
+  position: absolute;
+  top: -40px;
+  left: 0;
+  padding: 8px 16px;
+  background: var(--brand-navy);
+  color: white;
+  z-index: 100;
+  transition: top 0.3s;
+}
+
+.skip-link:focus {
+  top: 0;
+}
+
+/* ACCESSIBILITY: Focus visible styles */
+*:focus-visible {
+  outline: 3px solid var(--action-gold);
+  outline-offset: 2px;
+}
+
+button:focus-visible,
+a:focus-visible {
+  outline: 3px solid var(--action-gold);
+  outline-offset: 2px;
+}
+
+/* Headings Typography */
+h1,
+h2,
+h3,
+h4,
+h5,
+h6 {
+  font-family: var(--font-montserrat);
+  font-weight: 700;
+  line-height: 1.2;
+}
+
+/* Custom Gradients with fallbacks */
+.bg-hero-gradient {
+  background-color: #000080;
+  /* Fallback */
+  background: linear-gradient(135deg, #000080 0%, #1a1a40 100%);
+}
+
+.bg-hero-overlay {
+  background-color: rgba(0, 0, 0, 0.7);
+  /* Fallback */
+  background: linear-gradient(to bottom,
+      rgba(0, 0, 0, 0.6) 0%,
+      rgba(26, 26, 64, 0.8) 100%);
+}
+
+/* Glassmorphism Navbar with fallback */
+.navbar-glass {
+  background: rgba(255, 255, 255, 0.95);
+  -webkit-backdrop-filter: blur(12px);
+  backdrop-filter: blur(12px);
+}
+
+@supports not (backdrop-filter: blur(12px)) {
+  .navbar-glass {
+    background: rgba(255, 255, 255, 0.98);
+  }
+}
+
+/* Shimmer Button Animation - Eye-catching */
+.shimmer-btn {
+  position: relative;
+  overflow: hidden;
+  background-color: var(--action-gold);
+  background: linear-gradient(90deg,
+      var(--action-gold) 0%,
+      #fff7b2 50%,
+      var(--action-gold) 100%);
+  background-size: 200% auto;
+  -webkit-animation: shimmer 2s ease-in-out infinite, pulse-glow 2s ease-in-out infinite;
+  animation: shimmer 2s ease-in-out infinite, pulse-glow 2s ease-in-out infinite;
+  box-shadow: 0 0 20px rgba(255, 215, 0, 0.4), 0 4px 15px rgba(0, 0, 0, 0.1);
+  transition: transform 0.2s ease, box-shadow 0.2s ease;
+}
+
+.shimmer-btn:hover {
+  transform: scale(1.05);
+  box-shadow: 0 0 30px rgba(255, 215, 0, 0.6), 0 6px 20px rgba(0, 0, 0, 0.15);
+}
+
+/* Shimmer sweep effect */
+.shimmer-btn::before {
+  content: '';
+  position: absolute;
+  top: 0;
+  left: -100%;
+  width: 100%;
+  height: 100%;
+  background: linear-gradient(90deg,
+      transparent 0%,
+      rgba(255, 255, 255, 0.4) 50%,
+      transparent 100%);
+  -webkit-animation: shimmer-sweep 2s ease-in-out infinite;
+  animation: shimmer-sweep 2s ease-in-out infinite;
+}
+
+@-webkit-keyframes shimmer {
+
+  0%,
+  100% {
+    background-position: -200% center;
+  }
+
+  50% {
+    background-position: 200% center;
+  }
+}
+
+@keyframes shimmer {
+
+  0%,
+  100% {
+    background-position: -200% center;
+  }
+
+  50% {
+    background-position: 200% center;
+  }
+}
+
+@-webkit-keyframes shimmer-sweep {
+  0% {
+    left: -100%;
+  }
+
+  50%,
+  100% {
+    left: 100%;
+  }
+}
+
+@keyframes shimmer-sweep {
+  0% {
+    left: -100%;
+  }
+
+  50%,
+  100% {
+    left: 100%;
+  }
+}
+
+@-webkit-keyframes pulse-glow {
+
+  0%,
+  100% {
+    box-shadow: 0 0 20px rgba(255, 215, 0, 0.4), 0 4px 15px rgba(0, 0, 0, 0.1);
+  }
+
+  50% {
+    box-shadow: 0 0 35px rgba(255, 215, 0, 0.7), 0 4px 15px rgba(0, 0, 0, 0.1);
+  }
+}
+
+@keyframes pulse-glow {
+
+  0%,
+  100% {
+    box-shadow: 0 0 20px rgba(255, 215, 0, 0.4), 0 4px 15px rgba(0, 0, 0, 0.1);
+  }
+
+  50% {
+    box-shadow: 0 0 35px rgba(255, 215, 0, 0.7), 0 4px 15px rgba(0, 0, 0, 0.1);
+  }
+}
+
+/* Glass Card with fallback */
+.glass-card {
+  background: rgba(255, 255, 255, 0.1);
+  -webkit-backdrop-filter: blur(12px);
+  backdrop-filter: blur(12px);
+  border: 1px solid rgba(109, 129, 150, 0.2);
+  border-radius: 16px;
+}
+
+@supports not (backdrop-filter: blur(12px)) {
+  .glass-card {
+    background: rgba(255, 255, 255, 0.9);
+  }
+}
+
+/* SVG Background Patterns */
+.bg-pattern-cleaning {
+  background-color: var(--brand-navy);
+  background-image: url("data:image/svg+xml,%3Csvg width='60' height='60' viewBox='0 0 60 60' xmlns='http://www.w3.org/2000/svg'%3E%3Cg fill='none' fill-rule='evenodd'%3E%3Cg stroke='%23ffffff' stroke-width='1' opacity='0.05'%3E%3Cpath d='M36 34v-4h-2v4h-4v2h4v4h2v-4h4v-2h-4zm0-30V0h-2v4h-4v2h4v4h2V6h4V4h-4zM6 34v-4H4v4H0v2h4v4h2v-4h4v-2H6zM6 4V0H4v4H0v2h4v4h2V6h4V4H6z'/%3E%3C/g%3E%3C/g%3E%3C/svg%3E");
+}
+
+.bg-pattern-bubbles {
+  background-image: url("data:image/svg+xml,%3Csvg width='100' height='100' viewBox='0 0 100 100' xmlns='http://www.w3.org/2000/svg'%3E%3Ccircle cx='25' cy='25' r='10' fill='none' stroke='%23ffffff' stroke-width='2' opacity='0.08'/%3E%3Ccircle cx='75' cy='75' r='8' fill='none' stroke='%23ffffff' stroke-width='2' opacity='0.08'/%3E%3Ccircle cx='70' cy='20' r='5' fill='none' stroke='%23ffffff' stroke-width='2' opacity='0.08'/%3E%3Ccircle cx='20' cy='80' r='6' fill='none' stroke='%23ffffff' stroke-width='2' opacity='0.08'/%3E%3C/svg%3E");
+  background-size: 120px 120px;
+}
+
+.bg-pattern-squeegee {
+  background-image: url("data:image/svg+xml,%3Csvg width='40' height='40' viewBox='0 0 40 40' xmlns='http://www.w3.org/2000/svg'%3E%3Cpath d='M0 40L40 0H20L0 20M40 40V20L20 40' stroke='%239C92AC' stroke-width='1' fill='none' opacity='0.05'/%3E%3C/svg%3E");
+}
+
+/* Selection Color */
+::selection {
+  background-color: var(--brand-water);
+  color: var(--brand-navy);
+}
+
+::-moz-selection {
+  background-color: var(--brand-water);
+  color: var(--brand-navy);
+}
+
+/* Scrollbar */
+::-webkit-scrollbar {
+  width: 8px;
+}
+
+::-webkit-scrollbar-track {
+  background: var(--brand-snow);
+}
+
+::-webkit-scrollbar-thumb {
+  background: var(--brand-slate);
+  border-radius: 4px;
+}
+
+::-webkit-scrollbar-thumb:hover {
+  background: var(--brand-navy);
+}
+
+/* Hide scrollbar for carousels */
+.scrollbar-hide::-webkit-scrollbar {
+  display: none;
+}
+
+.scrollbar-hide {
+  -ms-overflow-style: none;
+  scrollbar-width: none;
+}
+
+/* ACCESSIBILITY: Reduced motion for users who prefer it */
+@media (prefers-reduced-motion: reduce) {
+
+  *,
+  *::before,
+  *::after {
+    animation-duration: 0.01ms !important;
+    animation-iteration-count: 1 !important;
+    transition-duration: 0.01ms !important;
+  }
+
+  html {
+    scroll-behavior: auto;
+  }
+}
+
+/* PERFORMANCE: Will-change hints for animated elements */
+.shimmer-btn {
+  will-change: background-position;
+}
