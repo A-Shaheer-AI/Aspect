@@ -12,11 +12,12 @@ export const CAL_BRAND_COLOR = "#D4AF37";
 // Business Information
 export const BUSINESS = {
     name: "Aspect Window Cleaning",
-    phone: "04XX XXX XXX",
+    phone: process.env.NEXT_PUBLIC_CONTACT_PHONE || "04XX XXX XXX",
     phoneRaw: "+61400000000",
-    email: "hello@aspect.com.au",
+    email: process.env.NEXT_PUBLIC_CONTACT_EMAIL || "hello@aspect.com.au",
     location: "Perth, Western Australia",
     insurance: "$20M Public Liability",
+    google: process.env.NEXT_PUBLIC_GMB_URL || "https://g.page/your-business",
 } as const;
 
 // Social Links (add when ready)

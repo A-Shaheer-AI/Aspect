@@ -5,6 +5,7 @@ import Link from "next/link";
 import { ArrowRight, Home, Building2, Phone, Star, Shield, Clock, CheckCircle, Calendar } from "lucide-react";
 import QuoteModal from "./QuoteModal";
 import SmartVideo from "./ui/SmartVideo";
+import { BUSINESS } from "@/lib/config";
 
 export default function Hero() {
     const [isModalOpen, setIsModalOpen] = useState(false);
@@ -69,12 +70,12 @@ export default function Hero() {
                         <div className="flex flex-col gap-3 sm:hidden px-2 mb-6">
                             {/* Call Button - Primary on mobile */}
                             <a
-                                href="tel:+61400000000"
+                                href={`tel:${BUSINESS.phoneRaw}`}
                                 id="hero-call-button"
                                 className="flex items-center justify-center gap-3 bg-green-500 text-white font-bold text-lg px-6 py-4 rounded-full shadow-lg hover:bg-green-600 transition-colors"
                             >
                                 <Phone className="w-5 h-5" aria-hidden="true" />
-                                Call Now: 04XX XXX XXX
+                                Call Now: {BUSINESS.phone}
                             </a>
 
                             {/* Residential Quote - Updated CTA text */}
@@ -123,12 +124,12 @@ export default function Hero() {
 
                         {/* Desktop Phone CTA */}
                         <a
-                            href="tel:+61400000000"
+                            href={`tel:${BUSINESS.phoneRaw}`}
                             className="hidden sm:inline-flex items-center gap-2 text-white/80 hover:text-white transition-colors text-base"
                         >
                             <Phone className="w-4 h-4 text-green-400" aria-hidden="true" />
                             <span>
-                                Or call now: <strong>04XX XXX XXX</strong>
+                                Or call now: <strong>{BUSINESS.phone}</strong>
                             </span>
                         </a>
 

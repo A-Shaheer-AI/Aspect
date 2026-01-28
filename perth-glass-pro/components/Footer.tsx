@@ -1,5 +1,6 @@
 import Link from "next/link";
 import { Phone, Mail, MapPin } from "lucide-react";
+import { BUSINESS } from "@/lib/config";
 
 export default function Footer() {
     const currentYear = new Date().getFullYear();
@@ -27,19 +28,19 @@ export default function Footer() {
                     {/* Brand + Contact */}
                     <div className="col-span-2">
                         <h3 className="font-heading font-bold text-xl mb-2 text-action-gold">
-                            Aspect
+                            {BUSINESS.name}
                         </h3>
                         <p className="text-gray-400 text-xs mb-3">
                             Perth&apos;s window cleaning specialists
                         </p>
                         <div className="flex flex-col gap-2 text-sm">
-                            <a href="tel:+61400000000" className="flex items-center gap-2 text-gray-300 hover:text-action-gold">
+                            <a href={`tel:${BUSINESS.phoneRaw}`} className="flex items-center gap-2 text-gray-300 hover:text-action-gold">
                                 <Phone className="w-4 h-4 text-action-gold" aria-hidden="true" />
-                                04XX XXX XXX
+                                {BUSINESS.phone}
                             </a>
-                            <a href="mailto:hello@aspect.com.au" className="flex items-center gap-2 text-gray-300 hover:text-action-gold">
+                            <a href={`mailto:${BUSINESS.email}`} className="flex items-center gap-2 text-gray-300 hover:text-action-gold">
                                 <Mail className="w-4 h-4 text-action-gold" aria-hidden="true" />
-                                hello@aspect.com.au
+                                {BUSINESS.email}
                             </a>
                         </div>
                     </div>
@@ -83,7 +84,7 @@ export default function Footer() {
                     {/* Brand */}
                     <div>
                         <h3 className="font-heading font-bold text-2xl mb-4 text-action-gold">
-                            Aspect
+                            {BUSINESS.name}
                         </h3>
                         <p className="text-gray-300 text-sm leading-relaxed mb-6">
                             Perth&apos;s precision window cleaning specialists. Professional,
@@ -92,7 +93,7 @@ export default function Footer() {
                         </p>
                         <div className="flex items-center gap-2 text-gray-300">
                             <MapPin className="w-4 h-4 text-action-gold" aria-hidden="true" />
-                            <span className="text-sm">Perth, Western Australia</span>
+                            <span className="text-sm">{BUSINESS.location}</span>
                         </div>
                     </div>
 
@@ -144,20 +145,20 @@ export default function Footer() {
                         <ul className="space-y-4">
                             <li>
                                 <a
-                                    href="tel:+61400000000"
+                                    href={`tel:${BUSINESS.phoneRaw}`}
                                     className="flex items-center gap-3 text-gray-300 hover:text-action-gold transition-colors"
                                 >
                                     <Phone className="w-5 h-5 text-action-gold" aria-hidden="true" />
-                                    <span>04XX XXX XXX</span>
+                                    <span>{BUSINESS.phone}</span>
                                 </a>
                             </li>
                             <li>
                                 <a
-                                    href="mailto:hello@aspect.com.au"
+                                    href={`mailto:${BUSINESS.email}`}
                                     className="flex items-center gap-3 text-gray-300 hover:text-action-gold transition-colors"
                                 >
                                     <Mail className="w-5 h-5 text-action-gold" aria-hidden="true" />
-                                    <span>hello@aspect.com.au</span>
+                                    <span>{BUSINESS.email}</span>
                                 </a>
                             </li>
                         </ul>

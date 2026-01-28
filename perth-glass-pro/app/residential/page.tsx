@@ -4,6 +4,7 @@ import { useState } from "react";
 import Link from "next/link";
 import { ArrowRight, Home, Phone, CheckCircle, Shield, Clock, Star, Sparkles } from "lucide-react";
 import QuoteModal from "@/components/QuoteModal";
+import { BUSINESS } from "@/lib/config";
 
 export default function ResidentialPage() {
     const [isModalOpen, setIsModalOpen] = useState(false);
@@ -62,7 +63,7 @@ export default function ResidentialPage() {
                                 <ArrowRight className="w-5 h-5" />
                             </button>
                             <a
-                                href="tel:+61400000000"
+                                href={`tel:${BUSINESS.phoneRaw}`}
                                 className="flex items-center gap-3 bg-white/10 border-2 border-white/30 text-white font-bold text-lg px-8 py-4 rounded-full hover:bg-white/20 transition-colors"
                             >
                                 <Phone className="w-5 h-5" />

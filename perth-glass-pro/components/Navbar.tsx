@@ -5,6 +5,7 @@ import Link from "next/link";
 import { Menu, X, Phone } from "lucide-react";
 import { motion, AnimatePresence } from "framer-motion";
 import QuoteModal from "./QuoteModal";
+import { BUSINESS } from "@/lib/config";
 
 export default function Navbar() {
     const [isScrolled, setIsScrolled] = useState(false);
@@ -65,11 +66,11 @@ export default function Navbar() {
                         <div className="hidden md:flex items-center gap-4">
                             {/* Phone Icon - Vibrant Green */}
                             <a
-                                href="tel:+61400000000"
+                                href={`tel:${BUSINESS.phoneRaw}`}
                                 className="flex items-center gap-2 font-medium transition-colors hover:opacity-80"
                             >
                                 <Phone className="w-5 h-5 text-green-500" />
-                                <span className={isScrolled ? "text-brand-navy" : "text-white"}>04XX XXX XXX</span>
+                                <span className={isScrolled ? "text-brand-navy" : "text-white"}>{BUSINESS.phone}</span>
                             </a>
                             <button
                                 onClick={() => setIsModalOpen(true)}
@@ -113,11 +114,11 @@ export default function Navbar() {
                                 ))}
                                 {/* Mobile Call Button */}
                                 <a
-                                    href="tel:+61400000000"
+                                    href={`tel:${BUSINESS.phoneRaw}`}
                                     className="flex items-center gap-2 text-brand-navy font-medium py-2"
                                 >
                                     <Phone className="w-5 h-5 text-green-500" />
-                                    Call: 04XX XXX XXX
+                                    Call: {BUSINESS.phone}
                                 </a>
                                 <button
                                     onClick={() => {

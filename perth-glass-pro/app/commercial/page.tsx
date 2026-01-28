@@ -1,6 +1,7 @@
 import { Metadata } from "next";
 import Link from "next/link";
 import { ArrowRight, Building2, Shield, Phone, CheckCircle2 } from "lucide-react";
+import { BUSINESS } from "@/lib/config";
 
 export const metadata: Metadata = {
     title: "Commercial & Strata Window Cleaning",
@@ -45,7 +46,7 @@ export default function CommercialPage() {
                     </p>
                     <div className="flex flex-col sm:flex-row items-center justify-center gap-4">
                         <a
-                            href="tel:+61400000000"
+                            href={`tel:${BUSINESS.phoneRaw}`}
                             className="flex items-center gap-3 bg-action-gold text-brand-navy font-bold text-lg px-8 py-4 rounded-full hover:bg-action-gold/90 transition-colors"
                         >
                             <Phone className="w-5 h-5" />
@@ -123,11 +124,11 @@ export default function CommercialPage() {
                         Contact us for a free site inspection and no-obligation quote.
                     </p>
                     <a
-                        href="tel:+61400000000"
+                        href={`tel:${BUSINESS.phoneRaw}`}
                         className="inline-flex items-center gap-2 bg-action-gold text-brand-navy font-bold px-8 py-4 rounded-full text-lg hover:bg-action-gold/90 transition-colors"
                     >
                         <Phone className="w-5 h-5" />
-                        04XX XXX XXX
+                        {BUSINESS.phone}
                     </a>
                 </div>
             </section>

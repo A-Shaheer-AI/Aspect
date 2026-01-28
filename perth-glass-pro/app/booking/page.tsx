@@ -2,7 +2,7 @@
 
 import { useEffect } from "react";
 import Cal, { getCalApi } from "@calcom/embed-react";
-import { CAL_LINK } from "@/lib/config";
+import { CAL_LINK, BUSINESS } from "@/lib/config";
 import Link from "next/link";
 import { ArrowLeft, Phone, Clock, Shield, CheckCircle } from "lucide-react";
 
@@ -72,11 +72,11 @@ export default function BookingPage() {
                 <div className="text-center mt-8">
                     <p className="text-white/60 mb-4">Prefer to speak with someone?</p>
                     <a
-                        href="tel:+61400000000"
+                        href={`tel:${BUSINESS.phoneRaw}`}
                         className="inline-flex items-center gap-2 bg-green-500 text-white font-bold px-6 py-3 rounded-full hover:bg-green-600 transition-colors"
                     >
                         <Phone className="w-5 h-5" />
-                        Call: 04XX XXX XXX
+                        Call: {BUSINESS.phone}
                     </a>
                 </div>
             </div>

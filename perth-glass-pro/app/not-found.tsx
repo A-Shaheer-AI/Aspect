@@ -1,5 +1,6 @@
 import Link from "next/link";
 import { Home, Phone, Droplets } from "lucide-react";
+import { BUSINESS } from "@/lib/config";
 
 export default function NotFound() {
     return (
@@ -33,7 +34,7 @@ export default function NotFound() {
                         Back to Home
                     </Link>
                     <a
-                        href="tel:+61400000000"
+                        href={`tel:${BUSINESS.phoneRaw}`}
                         className="flex items-center gap-2 bg-green-500 text-white font-bold px-6 py-3 rounded-full hover:bg-green-600 transition-colors"
                     >
                         <Phone className="w-5 h-5" />

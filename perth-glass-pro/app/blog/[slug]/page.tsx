@@ -7,13 +7,10 @@ import { format } from 'date-fns';
 import { remark } from 'remark';
 import html from 'remark-html';
 import { getPostBySlug, getAllPosts } from '@/lib/blog';
-import { SITE_URL } from '@/lib/constants'; // Assuming constants file exists or hardcode
-
-// Fallback constant since we don't have a constants file yet
-const BASE_URL = "https://aspectwindowcleaning.com.au";
+import { SITE_URL } from '@/lib/constants';
 
 export async function generateStaticParams() {
-    constposts = getAllPosts();
+    const posts = getAllPosts();
     return posts.map((post) => ({
         slug: post.slug,
     }));
@@ -71,7 +68,7 @@ export default async function BlogPostPage({ params }: { params: Promise<{ slug:
         author: {
             '@type': 'Organization',
             name: 'Aspect Window Cleaning',
-            url: BASE_URL,
+            url: SITE_URL,
         },
         description: post.excerpt,
     };

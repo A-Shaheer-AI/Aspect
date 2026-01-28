@@ -4,6 +4,7 @@ import { useEffect, useState } from "react";
 import Link from "next/link";
 import { Phone, Home, Building2 } from "lucide-react";
 import QuoteModal from "@/components/QuoteModal";
+import { BUSINESS } from "@/lib/config";
 
 export default function StickyInterface() {
     const [showMobileCTA, setShowMobileCTA] = useState(false);
@@ -78,7 +79,7 @@ export default function StickyInterface() {
             {/* Mobile: Floating green call button */}
             {isMobile && showMobileCTA && (
                 <a
-                    href="tel:+61400000000"
+                    href={`tel:${BUSINESS.phoneRaw}`}
                     className="fixed bottom-20 right-4 z-50 w-14 h-14 bg-green-500 text-white rounded-full shadow-lg flex items-center justify-center hover:bg-green-600 active:scale-95 transition-all md:hidden"
                     aria-label="Call now"
                     style={{ animation: "scaleIn 0.3s ease-out" }}
