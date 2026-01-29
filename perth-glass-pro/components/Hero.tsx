@@ -4,22 +4,28 @@ import { useState } from "react";
 import Link from "next/link";
 import { ArrowRight, Home, Building2, Phone, Star, Shield, Clock, CheckCircle, Calendar } from "lucide-react";
 import QuoteModal from "./QuoteModal";
-import SmartVideo from "./ui/SmartVideo";
 import { BUSINESS } from "@/lib/config";
 
 export default function Hero() {
     const [isModalOpen, setIsModalOpen] = useState(false);
 
+    const HERO_VIDEO_URL = 'https://res.cloudinary.com/dr8tjrszy/video/upload/perth-window-cleaning-hero_rnws53.mp4';
+    const HERO_POSTER_URL = 'https://res.cloudinary.com/dr8tjrszy/image/upload/v1/samples/landscapes/architecture-signs';
+
     return (
         <>
             <section className="relative min-h-screen flex flex-col justify-center overflow-hidden">
                 {/* Background Video with Smart Loading */}
-                <SmartVideo
-                    posterSrc="/assets/images/hero-poster.jpg"
-                    videoSrc="/assets/videos/hero-bg.webm"
-                    className="absolute inset-0 w-full h-full"
-                    priority={true}
-                />
+                <video
+                    autoPlay
+                    loop
+                    muted
+                    playsInline
+                    poster={HERO_POSTER_URL}
+                    className="absolute inset-0 w-full h-full object-cover"
+                >
+                    <source src={HERO_VIDEO_URL} type="video/mp4" />
+                </video>
 
                 {/* Overlay - darkened for better text readability */}
                 <div className="absolute inset-0 bg-hero-overlay z-0" aria-hidden="true" />
@@ -34,7 +40,7 @@ export default function Hero() {
                         >
                             <Calendar className="w-4 h-4 text-green-400" aria-hidden="true" />
                             <span className="text-white/90 text-xs sm:text-sm font-medium">
-                                Trained & Professional
+                                Same week booking available
                             </span>
                             <ArrowRight className="w-3 h-3 text-white/60 group-hover:translate-x-1 transition-transform" />
                         </Link>
@@ -85,7 +91,7 @@ export default function Hero() {
                                 aria-label="Get a residential quote"
                             >
                                 <Home className="w-5 h-5" aria-hidden="true" />
-                                I&apos;m looking for...
+                                Residential Quote
                                 <ArrowRight className="w-5 h-5" aria-hidden="true" />
                             </button>
 
@@ -95,7 +101,7 @@ export default function Hero() {
                                 className="flex items-center justify-center gap-3 bg-white/10 backdrop-blur-sm border-2 border-white/30 text-white font-bold text-base px-6 py-3.5 rounded-full hover:bg-white/20 transition-colors"
                             >
                                 <Building2 className="w-5 h-5" aria-hidden="true" />
-                                Commercial / Strata
+                                Commercial Quote
                                 <ArrowRight className="w-5 h-5" aria-hidden="true" />
                             </Link>
                         </div>
@@ -108,7 +114,7 @@ export default function Hero() {
                                 aria-label="Get a residential quote"
                             >
                                 <Home className="w-5 h-5" aria-hidden="true" />
-                                I&apos;m looking for...
+                                Residential Quote
                                 <ArrowRight className="w-5 h-5 group-hover:translate-x-1 transition-transform" aria-hidden="true" />
                             </button>
 
@@ -117,7 +123,7 @@ export default function Hero() {
                                 className="group flex items-center justify-center gap-3 bg-white/10 backdrop-blur-sm border-2 border-white/30 text-white font-bold text-lg px-8 py-4 rounded-full hover:bg-white/20 transition-colors focus:outline-none focus:ring-4 focus:ring-white/30"
                             >
                                 <Building2 className="w-5 h-5" aria-hidden="true" />
-                                Commercial / Strata
+                                Commercial Quote
                                 <ArrowRight className="w-5 h-5 group-hover:translate-x-1 transition-transform" aria-hidden="true" />
                             </Link>
                         </div>
@@ -141,7 +147,7 @@ export default function Hero() {
                             </div>
                             <div className="flex items-center gap-2 text-white/70 text-xs sm:text-sm">
                                 <Clock className="w-4 h-4 sm:w-5 sm:h-5 text-action-gold" aria-hidden="true" />
-                                <span>Same-Week</span>
+                                <span>Trained and Professional</span>
                             </div>
                             <div className="flex items-center gap-2 text-white/70 text-xs sm:text-sm">
                                 <CheckCircle className="w-4 h-4 sm:w-5 sm:h-5 text-action-gold" aria-hidden="true" />

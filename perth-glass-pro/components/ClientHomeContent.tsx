@@ -29,8 +29,7 @@ export default function ClientHomeContent() {
             {/* Results & Reviews */}
             <ResultsAndReviews />
 
-            {/* Areas Served - Suburbs Grid (Moved to bottom) */}
-            <AreasServed serviceType="window" />
+
 
             {/* Contact Section */}
             <ContactSection />

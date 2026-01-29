@@ -11,7 +11,7 @@ export default function ServicesGrid() {
             title: "Residential Homes",
             subtext: "Inside & out. Flyscreens & tracks included.",
             link: "/residential",
-            image: "/assets/images/residential-thumb.png", // Verify extension
+            image: "https://res.cloudinary.com/dr8tjrszy/image/upload/v1/samples/landscapes/beach-boat",
             className: "md:col-span-2 md:row-span-1", // Large Block
         },
         {
@@ -19,7 +19,7 @@ export default function ServicesGrid() {
             title: "Commercial & Strata",
             subtext: "Offices, Retail & High-Reach EWP.",
             link: "/commercial",
-            image: "/assets/images/commercial-thumb.png",
+            image: "https://res.cloudinary.com/dr8tjrszy/image/upload/v1/samples/city",
             className: "md:col-span-1 md:row-span-2", // Tall Block
         },
         {
@@ -27,7 +27,7 @@ export default function ServicesGrid() {
             title: "Pressure Cleaning",
             subtext: "Driveways, pavers, and soft washing.",
             link: "/services/pressure-cleaning",
-            image: "/assets/images/pressure-cleaning-thumb.png",
+            image: "https://res.cloudinary.com/dr8tjrszy/image/upload/v1/samples/nature",
             className: "md:col-span-1 md:row-span-1",
         },
         {
@@ -35,7 +35,7 @@ export default function ServicesGrid() {
             title: "Solar Maintenance",
             subtext: "Increase efficiency with pure water.",
             link: "/services/solar-panel-washing",
-            image: "/assets/images/exterior-thumb.png", // Using the solar panel image
+            image: "https://res.cloudinary.com/dr8tjrszy/image/upload/v1/samples/landscapes/nature-mountains",
             className: "md:col-span-1 md:row-span-1",
         },
     ];
@@ -115,6 +115,15 @@ export default function ServicesGrid() {
                             </div>
                         </Link>
                     ))}
+                </div>
+                <div className="mt-12 text-center">
+                    <Link
+                        href="/services"
+                        className="inline-flex items-center gap-2 bg-brand-navy text-white font-bold px-8 py-3 rounded-full hover:bg-brand-navy/90 transition-colors"
+                    >
+                        View all Services
+                        <ArrowUpRight className="w-5 h-5" />
+                    </Link>
                 </div>
             </div>
         </section>

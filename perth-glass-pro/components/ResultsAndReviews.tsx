@@ -52,12 +52,27 @@ export default function ResultsAndReviews() {
                         viewport={{ once: true }}
                         className="relative aspect-[4/3] rounded-2xl overflow-hidden shadow-xl bg-slate-200"
                     >
-                        {/* Placeholder for comparison slider */}
-                        <div className="absolute inset-0 flex items-center justify-center text-brand-slate">
-                            <div className="text-center">
-                                <p className="text-lg font-medium">Before / After Comparison</p>
-                                <p className="text-sm opacity-60 mt-2">Add images to public/assets/images/comparison/</p>
-                            </div>
+                        {/* After Image (Background) */}
+                        <div
+                            className="absolute inset-0 bg-cover bg-center"
+                            style={{ backgroundImage: `url('https://res.cloudinary.com/dr8tjrszy/image/upload/v1/samples/people/bicycle')` }}
+                        />
+
+                        {/* Before Image (Foreground, clipped) */}
+                        <div
+                            className="absolute inset-0 bg-cover bg-center border-r-2 border-white"
+                            style={{
+                                backgroundImage: `url('https://res.cloudinary.com/dr8tjrszy/image/upload/v1/samples/people/smiling-man')`,
+                                width: `${sliderPosition}%`
+                            }}
+                        />
+
+                        {/* Label Badge */}
+                        <div className="absolute top-4 left-4 bg-black/50 text-white text-xs px-2 py-1 rounded backdrop-blur-sm">
+                            Before
+                        </div>
+                        <div className="absolute top-4 right-4 bg-black/50 text-white text-xs px-2 py-1 rounded backdrop-blur-sm">
+                            After
                         </div>
 
                         {/* Slider Control */}
