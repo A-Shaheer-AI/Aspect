@@ -7,7 +7,7 @@ import { format } from 'date-fns';
 import { remark } from 'remark';
 import html from 'remark-html';
 import { getPostBySlug, getAllPosts } from '@/lib/blog';
-import { SITE_URL } from '@/lib/constants';
+import { SITE_URL } from '../../../lib/constants';
 
 export async function generateStaticParams() {
     const posts = getAllPosts();
