@@ -11,7 +11,7 @@ const CMSPage = () => {
         CMS.registerMediaLibrary(cloudinary);
         CMS.init({
             configPath: '/config.yml'
-        });
+        } as any);
     }, []);
 
     return (
