@@ -29,8 +29,6 @@ export default function ClientHomeContent() {
             {/* Results & Reviews */}
             <ResultsAndReviews />
 
-
-
             {/* Contact Section */}
             <ContactSection />
         </>

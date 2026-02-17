@@ -63,7 +63,7 @@ export default function ResultsAndReviews() {
                             className="absolute inset-0 bg-cover bg-center border-r-2 border-white"
                             style={{
                                 backgroundImage: `url('https://res.cloudinary.com/dr8tjrszy/image/upload/v1/samples/people/smiling-man')`,
-                                width: `${sliderPosition}%`
+                                clipPath: `inset(0 0 0 ${sliderPosition}%)`, // This will clip the "Before" image based on slider
                             }}
                         />
 
@@ -95,6 +95,7 @@ export default function ResultsAndReviews() {
                             </div>
                         </div>
                     </motion.div>
+
 
                     {/* Reviews Column */}
                     <div className="space-y-6">

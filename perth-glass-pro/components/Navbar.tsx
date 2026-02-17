@@ -74,7 +74,7 @@ export default function Navbar() {
                             </a>
                             <button
                                 onClick={() => setIsModalOpen(true)}
-                                className="shimmer-btn text-brand-navy font-bold px-6 py-2.5 rounded-full hover:shadow-lg transition-shadow"
+                                className="shimmer-btn text-brand-navy font-bold px-6 py-2.5 rounded-full hover:shadow-lg transition-shadow cursor-pointer"
                             >
                                 Get Fast Quote
                             </button>

@@ -12,7 +12,7 @@ export const CAL_BRAND_COLOR = "#D4AF37";
 // Business Information
 export const BUSINESS = {
     name: "Aspect Window Cleaning",
-    phone: process.env.NEXT_PUBLIC_CONTACT_PHONE || "0426 996 192",
+    phone: process.env.NEXT_PUBLIC_CONTACT_PHONE || "61426996192",
     phoneRaw: "+61426996192",
     email: process.env.NEXT_PUBLIC_CONTACT_EMAIL || "hello@aspect.com.au",
     location: "183 Stirling Hwy, Nedlands WA 6009, Australia",
