@@ -6,6 +6,7 @@ import { Menu, X, Phone } from "lucide-react";
 import { motion, AnimatePresence } from "framer-motion";
 import QuoteModal from "./QuoteModal";
 import { BUSINESS } from "@/lib/config";
+import { usePathname } from "next/navigation";
 
 export default function Navbar() {
     const [isScrolled, setIsScrolled] = useState(false);
@@ -22,7 +23,7 @@ export default function Navbar() {
 
     // Updated links with full anchor paths for inner page compatibility
     const navLinks = [
-        { name: "Services", href: "/services/window-cleaning" },
+        { name: "Services", href: "/services" },
         { name: "Commercial", href: "/commercial" },
         { name: "Areas", href: "/#areas" },
         { name: "Reviews", href: "/#reviews" },
@@ -30,6 +31,8 @@ export default function Navbar() {
         { name: "Blog", href: "/blog" },
         { name: "Contact", href: "/#contact" },
     ];
+
+    const router = usePathname();
 
     return (
         <>

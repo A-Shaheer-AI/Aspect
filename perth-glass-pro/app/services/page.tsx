@@ -84,19 +84,30 @@ const UNIQUE_SERVICES = Array.from(new Set(ALL_SERVICES_LIST)).sort();
 
 export default function ServicesPage() {
     return (
-        <main className="bg-brand-snow min-h-screen pt-24 sm:pt-32">
+        <main className="bg-brand-snow min-h-screen ">
+            {/* Hero */}
+            <section className="bg-brand-navy text-white py-24">
+                <div className="max-w-5xl mx-auto px-4 text-center">
+                    <h1 className="text-4xl md:text-5xl lg:text-6xl font-heading font-bold text-white mb-6">
+                        Our Cleaning <span className="text-action-gold">Services</span>
+                    </h1>
+                    <p className="text-xl text-brand-slate max-w-2xl mx-auto">
+                        We offer a comprehensive range of cleaning solutions for residential and commercial properties across Perth.
+                    </p>
+                </div>
+            </section>
             {/* Header */}
-            <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 mb-16 text-center">
+            {/* <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 mb-16 text-center">
                 <h1 className="text-4xl md:text-5xl lg:text-6xl font-heading font-bold text-brand-navy mb-6">
                     Our Cleaning <span className="text-action-gold">Services</span>
                 </h1>
                 <p className="text-xl text-brand-slate max-w-2xl mx-auto">
                     We offer a comprehensive range of cleaning solutions for residential and commercial properties across Perth.
                 </p>
-            </div>
+            </div> */}
 
             {/* Main Services (Detailed) */}
-            <section className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 mb-24">
+            <section className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 mb-24 mt-10">
                 <div className="grid md:grid-cols-2 gap-8">
                     {MAIN_SERVICES.map((service) => (
                         <div key={service.id} className="bg-white rounded-2xl p-8 shadow-lg border border-slate-100 hover:border-action-gold/30 transition-colors group">
