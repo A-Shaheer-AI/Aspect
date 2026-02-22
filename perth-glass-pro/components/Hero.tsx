@@ -58,7 +58,7 @@ export default function Hero() {
                             <span className="hidden sm:inline">
                                 <br />
                             </span>
-                            <strong className="text-white"> 100% satisfaction guaranteed.</strong>
+                            <strong className="text-white">100% satisfaction guaranteed.</strong>
                         </p>
 
                         {/* Google Rating - Desktop only */}
@@ -68,8 +68,10 @@ export default function Hero() {
                                     <Star key={i} className="w-5 h-5 text-action-gold fill-action-gold" aria-hidden="true" />
                                 ))}
                             </div>
-                            <span className="text-white font-bold">4.9</span>
-                            <span className="text-white/70 text-sm sm:text-base">from 200+ Google Reviews</span>
+                            <Link className="cursor-pointer hover:underline leading-5 " href={"https://www.google.com/search?sca_esv=43c0733073c9c04f&sxsrf=ANbL-n6Zt5bfXPzrBxUdKKCTEky0Zmenhg:1771362523236&si=AL3DRZEsmMGCryMMFSHJ3StBhOdZ2-6yYkXd_doETEE1OR-qOQdrxTQOlcvI8v9O6HZrFPBYZr2sc3F3YeQhsMzSAgYL-xTmSRWjv27wKgm7X8H_dhnj0x-TbkH9h77lXVa8ELrKZNtLTl9YV-kI2wtp49mSAH7CKQ%3D%3D&q=CCC+Window+Cleaning+PTY+LTD+Reviews&sa=X&ved=2ahUKEwiI79zPt-GSAxWkgP0HHdfqGHsQ0bkNegQIOxAF&biw=1920&bih=961&dpr=1"}>
+                                <span className="text-white font-bold">4.9</span>
+                                <span className="text-white/70 text-sm sm:text-base">from 200+ Google Reviews</span>
+                            </Link>
                         </div>
 
                         {/* MOBILE: All 3 CTAs stacked - Call first */}
@@ -87,7 +89,7 @@ export default function Hero() {
                             {/* Residential Quote - Updated CTA text */}
                             <button
                                 onClick={() => setIsModalOpen(true)}
-                                className="flex items-center justify-center gap-3 bg-action-gold text-brand-navy font-bold text-base px-6 py-3.5 rounded-full shadow-lg hover:bg-action-gold/90 transition-colors"
+                                className="flex items-center justify-center gap-3 bg-action-gold text-brand-navy font-bold text-base px-6 py-3.5 rounded-full shadow-lg hover:bg-action-gold/90 transition-colors cursor-pointer"
                                 aria-label="Get a residential quote"
                             >
                                 <Home className="w-5 h-5" aria-hidden="true" />
@@ -112,6 +114,7 @@ export default function Hero() {
                                 onClick={() => setIsModalOpen(true)}
                                 className="group flex items-center justify-center gap-3 bg-action-gold text-brand-navy font-bold text-lg px-8 py-4 rounded-full shadow-lg hover:shadow-xl hover:bg-action-gold/90 transition-all focus:outline-none focus:ring-4 focus:ring-action-gold/50"
                                 aria-label="Get a residential quote"
+                                style={{ cursor: "pointer" }}
                             >
                                 <Home className="w-5 h-5" aria-hidden="true" />
                                 Residential Quote

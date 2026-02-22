@@ -84,7 +84,9 @@ export default async function SuburbPage({ params }: { params: Promise<{ suburb:
                                     </h3>
                                     <p className="text-brand-slate mb-4 leading-relaxed">{service.description}</p>
                                     <div className="flex flex-wrap items-center gap-3">
-                                        <Link href={`/quote?service=${service.id}&suburb=${suburbSlug}`} className="inline-flex items-center gap-2 bg-action-gold text-brand-navy font-bold px-5 py-2.5 rounded-full hover:bg-action-gold/90 transition-colors text-sm">
+                                        <Link
+                                            href={`/quote?service=${service.id}&suburb=${suburbSlug}`}
+                                            className="inline-flex items-center gap-2 bg-action-gold text-brand-navy font-bold px-5 py-2.5 rounded-full hover:bg-action-gold/90 transition-colors text-sm">
                                             Get Quote <ArrowRight className="w-4 h-4" />
                                         </Link>
                                         <Link href={service.servicePage} className="text-sm text-brand-navy font-medium hover:text-action-gold underline underline-offset-2 transition-colors">

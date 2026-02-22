@@ -67,8 +67,6 @@ export default function ServiceFinder() {
         setIsModalOpen(true);
     };
 
-    const { North, South } = getSuburbsByRegion();
-
     return (
         <section id="areas" className="bg-brand-water/20 py-20 border-t border-slate-200 bg-pattern-bubbles">
             <QuoteModal
@@ -96,7 +94,7 @@ export default function ServiceFinder() {
                                     value={serviceInput}
                                     onChange={handleServiceChange}
                                     onFocus={() => setShowServiceSuggestions(true)}
-                                    className="w-full bg-transparent border-b-4 border-brand-slate/20 focus:border-action-gold outline-none text-action-gold font-bold text-center pb-2 placeholder-brand-slate/30 transition-colors"
+                                    className="w-full bg-transparent border-b-2 border-brand-slate/20 focus:border-action-gold rounded-lg outline-none text-action-gold font-bold text-center pb-2 placeholder-brand-slate/30 transition-colors focus:ring-2 focus:ring-action-gold"
                                     placeholder="Window Cleaning..."
                                 />
                                 {showServiceSuggestions && filteredServices.length > 0 && (
@@ -125,7 +123,7 @@ export default function ServiceFinder() {
                                     value={suburbInput}
                                     onChange={handleSuburbChange}
                                     onFocus={() => setShowSuggestions(true)}
-                                    className="w-full bg-transparent border-b-4 border-brand-slate/20 focus:border-action-gold outline-none text-action-gold font-bold text-center pb-2 placeholder-brand-slate/30 transition-colors"
+                                    className="w-full bg-transparent border-b-2 border-brand-slate/20 focus:border-action-gold rounded-lg outline-none text-action-gold font-bold text-center pb-2 placeholder-brand-slate/30 transition-colors focus:ring-2 focus:ring-action-gold"
                                     placeholder="Your suburb..."
                                 />
                                 {showSuggestions && filteredSuburbs.length > 0 && (
@@ -151,7 +149,7 @@ export default function ServiceFinder() {
                     <div className="mt-10">
                         <button
                             onClick={handleGetQuote}
-                            className="bg-brand-navy hover:bg-brand-navy/90 text-white text-xl font-bold py-4 px-10 rounded-full inline-flex items-center gap-3 transition-all hover:shadow-lg"
+                            className="bg-brand-navy hover:bg-brand-navy/90 text-white text-xl font-bold py-4 px-10 rounded-full inline-flex items-center gap-3 transition-all hover:shadow-lg cursor-pointer"
                         >
                             Get Quote
                             <ArrowRight className="w-5 h-5" />
@@ -159,63 +157,6 @@ export default function ServiceFinder() {
                     </div>
                 </div>
 
-                {/* SEO Suburb List */}
-                <div className="mt-16 bg-pattern-squeegee rounded-3xl p-8 border border-slate-100/50">
-                    <h3 className="text-center text-2xl font-heading font-bold text-brand-navy mb-10">
-                        Proudly Serving All Perth Metro Areas
-                    </h3>
-
-                    <div className="hidden md:grid grid-cols-2 gap-12 max-w-5xl mx-auto">
-                        {/* North */}
-                        <div className="bg-white p-6 rounded-2xl shadow-sm border border-slate-200">
-                            <h4 className="text-lg font-bold text-brand-navy mb-4 flex items-center gap-2 border-b border-slate-100 pb-3">
-                                <span className="w-2 h-2 rounded-full bg-action-gold" />
-                                North of River
-                            </h4>
-                            <div className="grid grid-cols-2 gap-x-4 gap-y-1">
-                                {North.slice(0, 20).map(s => (
-                                    <Link
-                                        key={s.name}
-                                        href={`/locations/${s.name.toLowerCase().replace(/ /g, '-')}`}
-                                        className="text-brand-slate hover:text-brand-navy text-sm transition-colors"
-                                    >
-                                        {s.name}
-                                    </Link>
-                                ))}
-                            </div>
-                        </div>
-
-                        {/* South */}
-                        <div className="bg-white p-6 rounded-2xl shadow-sm border border-slate-200">
-                            <h4 className="text-lg font-bold text-brand-navy mb-4 flex items-center gap-2 border-b border-slate-100 pb-3">
-                                <span className="w-2 h-2 rounded-full bg-brand-navy" />
-                                South of River
-                            </h4>
-                            <div className="grid grid-cols-2 gap-x-4 gap-y-1">
-                                {South.slice(0, 20).map(s => (
-                                    <Link
-                                        key={s.name}
-                                        href={`/locations/${s.name.toLowerCase().replace(/ /g, '-')}`}
-                                        className="text-brand-slate hover:text-brand-navy text-sm transition-colors"
-                                    >
-                                        {s.name}
-                                    </Link>
-                                ))}
-                            </div>
-                        </div>
-                    </div>
-
-                    {/* Mobile View */}
-                    <div className="md:hidden text-center">
-                        <Link
-                            href="/locations"
-                            className="inline-flex items-center gap-2 text-brand-navy font-medium bg-white px-6 py-3 rounded-full border border-slate-200 shadow-sm"
-                        >
-                            <Search className="w-4 h-4" />
-                            Browse All 100+ Suburbs
-                        </Link>
-                    </div>
-                </div>
             </div>
         </section>
     );
