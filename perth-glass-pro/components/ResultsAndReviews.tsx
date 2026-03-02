@@ -40,7 +40,7 @@ export default function ResultsAndReviews() {
                         See the Difference
                     </h2>
                     <p className="text-brand-slate text-lg max-w-2xl mx-auto">
-                        Real results from real Perth homes. Drag the slider to compare.
+                        Real window cleaning results from Perth homes. Drag the slider to compare before & after.
                     </p>
                 </div>
 
@@ -55,14 +55,14 @@ export default function ResultsAndReviews() {
                         {/* After Image (Background) */}
                         <div
                             className="absolute inset-0 bg-cover bg-center"
-                            style={{ backgroundImage: `url('https://res.cloudinary.com/dr8tjrszy/image/upload/v1/samples/people/bicycle')` }}
+                            style={{ backgroundImage: `url('https://res.cloudinary.com/dr8tjrszy/image/upload/v1771960136/shope-gates-cleaning_euctx1.jpg')` }}
                         />
 
                         {/* Before Image (Foreground, clipped) */}
                         <div
                             className="absolute inset-0 bg-cover bg-center border-r-2 border-white"
                             style={{
-                                backgroundImage: `url('https://res.cloudinary.com/dr8tjrszy/image/upload/v1/samples/people/smiling-man')`,
+                                backgroundImage: `url('https://res.cloudinary.com/dr8tjrszy/image/upload/v1771960147/WhatsApp_Image_2026-02-22_at_8.48.08_PM_1_x4ymo2.jpg')`,
                                 clipPath: `inset(0 0 0 ${sliderPosition}%)`, // This will clip the "Before" image based on slider
                             }}
                         />

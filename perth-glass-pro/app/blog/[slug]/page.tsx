@@ -4,26 +4,21 @@ import Link from 'next/link';
 import { notFound } from 'next/navigation';
 import { Calendar, ArrowLeft, ArrowRight } from 'lucide-react';
 import { format } from 'date-fns';
-import { remark } from 'remark';
-import html from 'remark-html';
-import { getPostBySlug, getAllPosts } from '@/lib/blog';
 import { SITE_URL } from '../../../lib/constants';
+import { blogs } from '@/content/blogs';
 
 export async function generateStaticParams() {
-    const posts = getAllPosts();
-    return posts.map((post) => ({
-        slug: post.slug,
+    return blogs.map((item) => ({
+        slug: item.slug
     }));
 }
 
 export async function generateMetadata({ params }: { params: Promise<{ slug: string }> }): Promise<Metadata> {
     const { slug } = await params;
-    const post = getPostBySlug(slug);
+    const post = blogs.find(blog => blog.slug === slug);
 
     if (!post) {
-        return {
-            title: 'Post Not Found',
-        };
+        return { title: 'Post Not Found' };
     }
 
     return {
@@ -35,30 +30,19 @@ export async function generateMetadata({ params }: { params: Promise<{ slug: str
             type: 'article',
             publishedTime: post.date,
             authors: ['Aspect Window Cleaning'],
-            images: [
-                {
-                    url: post.thumbnail || '',
-                },
-            ],
+            images: [{ url: post.thumbnail || '' }],
         },
     };
 }
 
 export default async function BlogPostPage({ params }: { params: Promise<{ slug: string }> }) {
     const { slug } = await params;
-    const post = getPostBySlug(slug);
+    const post = blogs.find(blog => blog.slug === slug);
 
     if (!post) {
         notFound();
     }
 
-    // Convert markdown to HTML
-    const processedContent = await remark()
-        .use(html)
-        .process(post.content);
-    const contentHtml = processedContent.toString();
-
-    // JSON-LD Schema
     const jsonLd = {
         '@context': 'https://schema.org',
         '@type': 'BlogPosting',
@@ -114,11 +98,70 @@ export default async function BlogPostPage({ params }: { params: Promise<{ slug:
             </div>
 
             {/* Content Body */}
-            <div className="max-w-3xl mx-auto px-4 py-16">
-                <div
-                    className="prose prose-lg prose-slate hover:prose-a:text-action-gold prose-headings:font-heading prose-headings:font-bold prose-headings:text-brand-navy"
-                    dangerouslySetInnerHTML={{ __html: contentHtml }}
-                />
+            <div className="max-w-3xl mx-auto px-4 py-16 space-y-10">
+
+                {/* Intro */}
+                {post.intro && (
+                    <p className="text-lg text-slate-700 leading-relaxed">
+                        {post.intro}
+                    </p>
+                )}
+
+                {/* Sections */}
+                {post.sections?.map((section, i) => (
+                    <div key={i} className="space-y-4">
+                        <h2 className="text-2xl font-heading font-bold text-brand-navy">
+                            {section.heading}
+                        </h2>
+
+                        {section.body && (
+                            <p className="text-slate-700 leading-relaxed">{section.body}</p>
+                        )}
+
+                        {/* Subsections (e.g. Benefits) */}
+                        {section.subsections && (
+                            <div className="space-y-4 mt-2">
+                                {section.subsections.map((sub, j) => (
+                                    <div key={j} className="pl-4 border-l-4 border-action-gold">
+                                        <h3 className="text-lg font-semibold text-brand-navy mb-1">
+                                            {sub.heading}
+                                        </h3>
+                                        <p className="text-slate-700 leading-relaxed">{sub.body}</p>
+                                    </div>
+                                ))}
+                            </div>
+                        )}
+
+                        {/* Bullet list */}
+                        {section.bullets && (
+                            <ul className="space-y-2 mt-2">
+                                {section.bullets.map((bullet, k) => (
+                                    <li key={k} className="flex gap-2 text-slate-700">
+                                        <span className="mt-1.5 w-2 h-2 rounded-full bg-action-gold flex-shrink-0" />
+                                        <span>
+                                            {bullet.label && (
+                                                <span className="font-semibold text-brand-navy">{bullet.label}{bullet.body ? ': ' : ''}</span>
+                                            )}
+                                            {bullet.body}
+                                        </span>
+                                    </li>
+                                ))}
+                            </ul>
+                        )}
+
+                        {/* Note */}
+                        {section.note && (
+                            <p className="text-sm text-slate-500 italic mt-2">{section.note}</p>
+                        )}
+                    </div>
+                ))}
+
+                {/* Conclusion */}
+                {post.conclusion && (
+                    <div className="bg-slate-50 border border-slate-200 rounded-xl p-6">
+                        <p className="text-slate-700 leading-relaxed">{post.conclusion}</p>
+                    </div>
+                )}
             </div>
 
             {/* Sticky Conversion CTA */}

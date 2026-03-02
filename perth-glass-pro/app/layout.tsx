@@ -6,6 +6,7 @@ import Navbar from "@/components/Navbar";
 import Footer from "@/components/Footer";
 import StickyInterface from "@/components/ui/StickyInterface";
 import Clarity from "@/components/Clarity";
+import ConditionalLayout from "@/components/ConditionalLayout";
 
 const montserrat = Montserrat({
     subsets: ["latin"],
@@ -27,6 +28,9 @@ export const metadata: Metadata = {
     title: {
         template: "%s | Aspect Window Cleaning Perth",
         default: "Perth's Premier Window Cleaning | Residential & Commercial Specialists",
+    },
+    icons: {
+        icon: "https://res.cloudinary.com/dr8tjrszy/image/upload/v1772130850/white-logo_pzpxjk.png"
     },
     description:
         "Professional window cleaning in Perth. Specialists in residential homes and commercial high-reach (EWP) cleaning. Streak-free results. Fully insured. Same-week service.",
@@ -57,11 +61,52 @@ export default function RootLayout({
 }: Readonly<{
     children: React.ReactNode;
 }>) {
+
     return (
         <html lang="en" className={`${montserrat.variable} ${inter.variable}`}>
             <head>
-                {/* Preconnect to improve font loading */}
                 <link rel="preconnect" href="https://fonts.gstatic.com" crossOrigin="anonymous" />
+                <script
+                    type="application/ld+json"
+                    dangerouslySetInnerHTML={{
+                        __html: JSON.stringify({
+                            "@context": "https://schema.org",
+                            "@type": "LocalBusiness",
+                            "name": "Aspect Window Cleaning",
+                            "image": "https://lh3.googleusercontent.com/a-/ALV-UjV-5gZ4BFgzd1apIBhuq0RjisT7eo8hy34MVv6Vq93sttJScNo=s265-w265-h265",
+                            "@id": "https://aspectwindowcleaning.com.au/",
+                            "url": "https://aspectwindowcleaning.com.au/",
+                            "telephone": "+61426996192",
+                            "priceRange": "$$",
+                            "address": {
+                                "@type": "PostalAddress",
+                                "streetAddress": "183 Stirling Hwy, Nedlands",
+                                "addressLocality": "Perth",
+                                "addressRegion": "WA",
+                                "postalCode": "6009",
+                                "addressCountry": "AU"
+                            },
+                            "geo": {
+                                "@type": "GeoCoordinates",
+                                "latitude": -31.9806823,
+                                "longitude": 115.7929967
+                            },
+                            "openingHoursSpecification": {
+                                "@type": "OpeningHoursSpecification",
+                                "dayOfWeek": ["Monday", "Tuesday", "Wednesday", "Thursday", "Friday", "Saturday", "Sunday"],
+                                "opens": "00:00",
+                                "closes": "23:59"
+                            },
+                            "sameAs": [
+                                "https://maps.app.goo.gl/fkrQnHZybt7ZYSah7",
+                                "https://www.facebook.com/profile.php?id=61576666721111",
+                                "https://www.instagram.com/aspectwindowcleaningperth/",
+                                "https://www.tiktok.com/@aspect.window.cle",
+                                "https://aspectwindowcleaning.com.au/"
+                            ]
+                        })
+                    }}
+                />
             </head>
             <body className="bg-brand-snow text-brand-navy font-body antialiased">
                 {/* ACCESSIBILITY: Skip to content link */}
@@ -69,10 +114,12 @@ export default function RootLayout({
                     Skip to main content
                 </a>
 
-                <Navbar />
-                <main id="main-content">{children}</main>
-                <Footer />
-                <StickyInterface />
+                {/* <Navbar />
+                <main id="main-content">
+                    {children}
+                </main>
+                <Footer /> */}
+                <ConditionalLayout children={children} />
 
                 {/* Analytics - loaded after interactive */}
                 {process.env.NEXT_PUBLIC_GA_ID && (

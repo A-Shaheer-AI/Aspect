@@ -15,7 +15,7 @@ export const BUSINESS = {
     phone: process.env.NEXT_PUBLIC_CONTACT_PHONE || "0426 996 192",
     phoneRaw: "+61426996192",
     email: process.env.NEXT_PUBLIC_CONTACT_EMAIL || "hello@aspect.com.au",
-    location: "183 Stirling Hwy, Nedlands WA 6009, Australia",
+    location: "183 Stirling Hwy, Nedlands WA 6009",
     insurance: "$20M Public Liability",
     google: process.env.NEXT_PUBLIC_GMB_URL || "https://g.page/your-business",
 } as const;

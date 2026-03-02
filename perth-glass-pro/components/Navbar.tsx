@@ -7,6 +7,7 @@ import { motion, AnimatePresence } from "framer-motion";
 import QuoteModal from "./QuoteModal";
 import { BUSINESS } from "@/lib/config";
 import { usePathname } from "next/navigation";
+import Image from "next/image";
 
 export default function Navbar() {
     const [isScrolled, setIsScrolled] = useState(false);
@@ -37,19 +38,29 @@ export default function Navbar() {
     return (
         <>
             <nav
-                className={`fixed top-0 left-0 right-0 z-50 transition-all duration-300 ${isScrolled ? "navbar-glass shadow-lg py-3" : "bg-transparent py-5"
-                    }`}
-            >
+                className={`fixed top-0 left-0 right-0 z-50 transition-all duration-300 
+                    ${isScrolled ? "navbar-glass shadow-lg py-1" : "bg-transparent py-5"
+                    }`}>
                 <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
                     <div className="flex items-center justify-between">
                         {/* Logo */}
-                        <Link href="/" className="flex items-center gap-2">
-                            <span className={`text-2xl font-heading font-bold transition-colors ${isScrolled ? "text-brand-navy" : "text-white"}`}>
+                        <Link href="/">
+                            {/* <span className={`text-2xl font-heading font-bold transition-colors ${isScrolled ? "text-brand-navy" : "text-white"}`}>
                                 Aspect
                             </span>
                             <span className={`text-sm font-medium transition-colors ${isScrolled ? "text-brand-slate" : "text-brand-water"}`}>
                                 Window Cleaning
-                            </span>
+                            </span> */}
+                            <Image
+                                src={`${isScrolled ?
+                                    "https://res.cloudinary.com/dr8tjrszy/image/upload/v1772045271/aspect-logo-removebg-preview_fvfhlo.png" :
+                                    "https://res.cloudinary.com/dr8tjrszy/image/upload/v1772130850/white-logo_pzpxjk.png"}`
+                                }
+                                width={100}
+                                height={100}
+                                alt="aspect-widnow-cleaning-logo"
+                                className="object-cover"
+                            />
                         </Link>
 
                         {/* Desktop Navigation */}
