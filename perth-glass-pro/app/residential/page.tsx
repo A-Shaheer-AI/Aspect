@@ -57,7 +57,7 @@ export default function ResidentialPage() {
                         <div className="flex flex-col sm:flex-row items-center justify-center gap-4">
                             <button
                                 onClick={() => setIsModalOpen(true)}
-                                className="flex items-center gap-3 bg-action-gold text-brand-navy font-bold text-lg px-8 py-4 rounded-full hover:bg-action-gold/90 transition-colors"
+                                className="flex items-center gap-3 bg-action-gold text-brand-navy font-bold text-lg px-8 py-4 rounded-full hover:bg-action-gold/90 transition-colors cursor-pointer"
                             >
                                 Get Instant Quote
                                 <ArrowRight className="w-5 h-5" />

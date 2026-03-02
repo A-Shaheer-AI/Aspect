@@ -15,7 +15,9 @@ export default function PureWaterSection() {
                         The Science of a Spot-Free Shine
                     </h2>
                     <p className="text-brand-slate text-lg max-w-2xl mx-auto">
-                        Why we don&apos;t use the garden hose — and why your windows will thank us.
+                        Professional pure water cleaning provides superior window cleaning results
+                        because it uses advanced technology which creates better outcomes that
+                        remain visible for extended periods.
                     </p>
                 </div>
 
@@ -24,43 +26,80 @@ export default function PureWaterSection() {
                     {/* Left Column - Content */}
                     <div className="space-y-6">
                         <h3 className="text-2xl font-bold text-brand-navy">
-                            What Happens When Tap Water Dries?
+                            Why Do Windows Get Spots After Cleaning?
                         </h3>
                         <p className="text-brand-slate leading-relaxed">
-                            Perth tap water contains <strong className="text-brand-navy">300+ ppm (parts per million)</strong> of dissolved minerals like calcium, magnesium, and silica. When this water evaporates on your glass, these minerals are left behind — creating those frustrating <span className="text-brand-navy font-medium">white spots, streaks, and hazy film</span> that make freshly-cleaned windows look dirty within days.
+                            Perth tap water contains elevated dissolved mineral content which exceeds <strong className="text-brand-navy">
+                                300 parts per million </strong>because it includes calcium, magnesium, and silica. When
+                            water evaporates from glass surfaces, it leaves behind mineral residues that
+                            create water spots and streaks which cause windows to develop a dirty
+                            appearance. Glass surfaces become damaged through mineral accumulation
+                            because it decreases their transparency and shortens their operational
+                            lifespan.
                         </p>
+                        <h3>
+                            Our Pure Water Window Cleaning System
+                        </h3>
                         <p className="text-brand-slate leading-relaxed">
-                            Our <strong className="text-brand-navy">Pure Water Technology</strong> uses a multi-stage filtration system that removes <span className="text-action-gold font-bold">100% of mineral deposits</span>. The result? Water with <strong>0 ppm TDS (Total Dissolved Solids)</strong> that evaporates completely clean — leaving nothing but a <span className="text-brand-navy font-medium">crystal-clear, spot-free finish</span>.
+                            The advanced multi-stage <strong className="text-brand-navy">water filtration system </strong>of our company removes 99.9
+                            percent of all minerals and impurities from water to create pure water with 0
+                            parts per million purity level.
+                            The absence of dissolved solids in pure water results in a natural drying process
+                            which produces no residue that leaves behind an unblemished and <span className="text-brand-navy font-medium">transparent
+                                appearance for your windows</span>.
                         </p>
-
+                        <h3>
+                            Benefits of Pure Water Cleaning
+                        </h3>
                         {/* Benefits Grid */}
                         <div className="grid sm:grid-cols-2 gap-4 pt-4">
                             <div className="flex items-start gap-3 p-4 bg-white rounded-xl shadow-sm border border-slate-100">
                                 <Sparkles className="w-6 h-6 text-action-gold flex-shrink-0 mt-0.5" />
                                 <div>
-                                    <h4 className="font-bold text-brand-navy text-sm">Spot-Free Finish</h4>
-                                    <p className="text-brand-slate text-xs">No streaks, no water marks</p>
+                                    <h4 className="font-bold text-brand-navy text-sm">
+                                        Streak Free Results
+                                    </h4>
+                                    <p className="text-brand-slate text-xs">
+                                        The process creates a window surface which remains free from water marks
+                                        and haze and any remaining residue.
+                                    </p>
                                 </div>
                             </div>
                             <div className="flex items-start gap-3 p-4 bg-white rounded-xl shadow-sm border border-slate-100">
                                 <Clock className="w-6 h-6 text-action-gold flex-shrink-0 mt-0.5" />
                                 <div>
-                                    <h4 className="font-bold text-brand-navy text-sm">Glass Stays Cleaner Longer</h4>
-                                    <p className="text-brand-slate text-xs">Extends time between cleans</p>
+                                    <h4 className="font-bold text-brand-navy text-sm">
+                                        Longer Lasting Clean
+                                    </h4>
+                                    <p className="text-brand-slate text-xs">
+                                        The traditional methods of window cleaning result in windows which remain
+                                        clean for two additional weeks when compared to their standard duration of
+                                        cleanliness.
+                                    </p>
                                 </div>
                             </div>
                             <div className="flex items-start gap-3 p-4 bg-white rounded-xl shadow-sm border border-slate-100">
                                 <Leaf className="w-6 h-6 text-green-500 flex-shrink-0 mt-0.5" />
                                 <div>
-                                    <h4 className="font-bold text-brand-navy text-sm">100% Eco-Friendly</h4>
-                                    <p className="text-brand-slate text-xs">No chemicals, just pure H₂O</p>
+                                    <h4 className="font-bold text-brand-navy text-sm">
+                                        Eco-Friendly Cleaning
+                                    </h4>
+                                    <p className="text-brand-slate text-xs">
+                                        The process requires no dangerous chemicals because it utilizes only purified
+                                        water which meets environmental safety standards.
+                                    </p>
                                 </div>
                             </div>
                             <div className="flex items-start gap-3 p-4 bg-white rounded-xl shadow-sm border border-slate-100">
                                 <Baby className="w-6 h-6 text-blue-400 flex-shrink-0 mt-0.5" />
                                 <div>
-                                    <h4 className="font-bold text-brand-navy text-sm">Safe for Pets & Kids</h4>
-                                    <p className="text-brand-slate text-xs">Zero toxic residue</p>
+                                    <h4 className="font-bold text-brand-navy text-sm">
+                                        Safe for Families & Pets
+                                    </h4>
+                                    <p className="text-brand-slate text-xs">
+                                        The use of chemical-free cleaning methods creates a healthier space for
+                                        families and pets.
+                                    </p>
                                 </div>
                             </div>
                         </div>
@@ -68,7 +107,10 @@ export default function PureWaterSection() {
                         {/* Glass Longevity Note */}
                         <div className="bg-brand-navy/5 border-l-4 border-action-gold p-4 rounded-r-xl">
                             <p className="text-brand-navy text-sm">
-                                <strong>Protect Your Investment:</strong> Mineral buildup from tap water can etch into glass over time, causing permanent damage. Pure water cleaning helps maintain <span className="font-medium">glass longevity</span> and keeps your windows looking new for years.
+                                <strong>Protect Your Glass Investment:</strong>The untreated water process lets mineral deposits build up which creates
+                                permanent stains that reduce glass transparency. The use of professional pure
+                                water cleaning protects your windows by maintaining their clarity and
+                                extending glass lifespan which prevents expensive future replacements.
                             </p>
                         </div>
                     </div>
@@ -94,13 +136,16 @@ export default function PureWaterSection() {
                                     <p className="text-brand-slate text-xs mt-1">Leaves mineral deposits</p>
                                     <div className="mt-3 space-y-1">
                                         <div className="text-xs text-red-500 flex items-center justify-center gap-1">
-                                            <span>✕</span> Streaks & spots
+                                            <span>✕</span> The process of tap water cleaning produces mineral deposits which accumulate on surfaces.
                                         </div>
                                         <div className="text-xs text-red-500 flex items-center justify-center gap-1">
-                                            <span>✕</span> Calcium buildup
+                                            <span>✕</span> The cleaning solution creates streaks and leaves behind spotting on surfaces.
                                         </div>
                                         <div className="text-xs text-red-500 flex items-center justify-center gap-1">
-                                            <span>✕</span> Hazy finish
+                                            <span>✕</span> The surface experiences buildup of calcium minerals which develops progressively throughout the years.
+                                        </div>
+                                        <div className="text-xs text-red-500 flex items-center justify-center gap-1">
+                                            <span>✕</span> The surface appears either dim because of the dim light or because of the presence of hazy particles.
                                         </div>
                                     </div>
                                 </div>
@@ -117,13 +162,16 @@ export default function PureWaterSection() {
                                     <p className="text-brand-slate text-xs mt-1">Evaporates 100% clean</p>
                                     <div className="mt-3 space-y-1">
                                         <div className="text-xs text-green-600 flex items-center justify-center gap-1">
-                                            <span>✓</span> Spot-free finish
+                                            <span>✓</span> 0 ppm purified water.
                                         </div>
                                         <div className="text-xs text-green-600 flex items-center justify-center gap-1">
-                                            <span>✓</span> No residue
+                                            <span>✓</span> Spot free drying
                                         </div>
                                         <div className="text-xs text-green-600 flex items-center justify-center gap-1">
-                                            <span>✓</span> Crystal clear
+                                            <span>✓</span> The surface remains clean because it contains neither residue nor chemical substances.
+                                        </div>
+                                        <div className="text-xs text-green-600 flex items-center justify-center gap-1">
+                                            <span>✓</span> The material achieves a transparent appearance which enables complete vision through it.
                                         </div>
                                     </div>
                                 </div>

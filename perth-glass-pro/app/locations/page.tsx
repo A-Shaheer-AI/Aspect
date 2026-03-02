@@ -19,17 +19,20 @@ export default function LocationsPage() {
     }, [filter, North, South]);
 
     return (
-        <div className="min-h-screen bg-brand-snow pt-24 pb-16">
-            <div className="max-w-7xl mx-auto px-4">
-                {/* Header */}
-                <div className="text-center mb-12">
-                    <h1 className="text-4xl md:text-5xl font-heading font-bold text-brand-navy mb-4">
+        <main className="min-h-screen bg-brand-snow">
+            {/* Hero */}
+            <section className="bg-brand-navy text-white py-24">
+                <div className="max-w-5xl mx-auto px-4 text-center">
+                    <h1 className="text-4xl md:text-5xl lg:text-6xl font-heading font-bold text-white mb-6">
                         Service Areas
                     </h1>
-                    <p className="text-brand-slate text-lg max-w-2xl mx-auto">
+                    <p className="text-xl text-brand-slate max-w-2xl mx-auto">
                         We proudly serve all Perth metro suburbs. Click your suburb to view available services.
                     </p>
                 </div>
+            </section>
+
+            <div className="max-w-7xl mx-auto px-4 my-8">
 
                 {/* Filter */}
                 <div className="max-w-md mx-auto mb-12">
@@ -101,6 +104,7 @@ export default function LocationsPage() {
                     </p>
                 )}
             </div>
-        </div>
+
+        </main>
     );
 }

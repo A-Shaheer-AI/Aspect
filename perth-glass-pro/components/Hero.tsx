@@ -9,8 +9,9 @@ import { BUSINESS } from "@/lib/config";
 export default function Hero() {
     const [isModalOpen, setIsModalOpen] = useState(false);
 
+    // const HERO_VIDEO_URL = 'https://res.cloudinary.com/dr8tjrszy/video/upload/perth-window-cleaning-hero_rnws53.mp4';
     const HERO_VIDEO_URL = 'https://res.cloudinary.com/dr8tjrszy/video/upload/perth-window-cleaning-hero_rnws53.mp4';
-    const HERO_POSTER_URL = 'https://res.cloudinary.com/dr8tjrszy/image/upload/v1/samples/landscapes/architecture-signs';
+    const HERO_POSTER_URL = 'https://res.cloudinary.com/dr8tjrszy/video/upload/v1772387266/VID-20260228-WA0016_xsz3cm.mp4   ';
 
     return (
         <>
@@ -47,9 +48,11 @@ export default function Hero() {
 
                         {/* Headline */}
                         <h1 className="text-3xl sm:text-4xl md:text-5xl lg:text-6xl xl:text-7xl font-heading font-bold text-white leading-tight mb-3 sm:mb-6">
-                            Perth&apos;s Window
+                            Your Local Window
                             <br />
-                            <span className="text-action-gold">Cleaning Experts</span>
+                            <span className="text-action-gold">
+                                Cleaning Service in Perth
+                            </span>
                         </h1>
 
                         {/* Subheadline */}

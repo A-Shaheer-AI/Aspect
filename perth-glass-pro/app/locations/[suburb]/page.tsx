@@ -16,7 +16,7 @@ export async function generateMetadata({ params }: { params: Promise<{ suburb: s
     const suburbName = suburbSlug.replace(/-/g, ' ').replace(/\b\w/g, l => l.toUpperCase());
 
     return {
-        title: `Property Cleaning Services in ${suburbName} | Aspect`,
+        title: `Window Cleaning ${suburbName} | Window Cleaning Perth | Aspect Window Cleaning`,
         description: `Professional window cleaning, solar panel washing, gutter cleaning and pressure washing in ${suburbName}, Perth. Same-week service. Free quotes. Call now.`,
         openGraph: {
             title: `Property Cleaning in ${suburbName} | Aspect Window Cleaning`,
@@ -50,7 +50,7 @@ export default async function SuburbPage({ params }: { params: Promise<{ suburb:
                         <span className="text-sm font-medium">Same-Week Availability</span>
                     </div>
                     <h1 className="text-3xl sm:text-4xl md:text-5xl font-heading font-bold mb-4">
-                        Property Cleaning in {suburbName}
+                        Window Cleaning in {suburbName}
                     </h1>
                     <p className="text-lg md:text-xl text-brand-water/80 max-w-2xl mx-auto mb-8">
                         Professional cleaning services for homes and businesses in {suburbName}. Fully insured. 5-star rated.

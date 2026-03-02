@@ -9,33 +9,33 @@ export default function ServicesGrid() {
         {
             id: "residential",
             title: "Residential Homes",
-            subtext: "Inside & out. Flyscreens & tracks included.",
+            subtext: "Inside & out residential window cleaning. Flyscreens & tracks included.",
             link: "/residential",
-            image: "https://res.cloudinary.com/dr8tjrszy/image/upload/v1/samples/landscapes/beach-boat",
+            image: "https://res.cloudinary.com/dr8tjrszy/image/upload/v1771960130/house-windows-cleaning_byke0n.jpg",
             className: "md:col-span-2 md:row-span-1", // Large Block
         },
         {
             id: "commercial",
             title: "Commercial & Strata",
-            subtext: "Offices, Retail & High-Reach EWP.",
+            subtext: "Offices, retail & high-reach EWP commercial window cleaning.",
             link: "/commercial",
-            image: "https://res.cloudinary.com/dr8tjrszy/image/upload/v1/samples/city",
+            image: "https://res.cloudinary.com/dr8tjrszy/image/upload/v1771960138/sign-cleaning-2_ozlp2x.jpg",
             className: "md:col-span-1 md:row-span-2", // Tall Block
         },
         {
             id: "pressure",
             title: "Pressure Cleaning",
-            subtext: "Driveways, pavers, and soft washing.",
+            subtext: "Driveways, pavers & exterior pressure cleaning. Soft washing available.",
             link: "/services/pressure-cleaning",
-            image: "https://res.cloudinary.com/dr8tjrszy/image/upload/v1/samples/nature",
+            image: "https://res.cloudinary.com/dr8tjrszy/image/upload/v1771960122/indoor-cleaning_ioqiqq.jpg",
             className: "md:col-span-1 md:row-span-1",
         },
         {
             id: "solar",
             title: "Solar Maintenance",
-            subtext: "Increase efficiency with pure water.",
+            subtext: "Increase solar efficiency with pure water solar panel cleaning.",
             link: "/services/solar-panel-washing",
-            image: "https://res.cloudinary.com/dr8tjrszy/image/upload/v1/samples/landscapes/nature-mountains",
+            image: "https://res.cloudinary.com/dr8tjrszy/image/upload/v1771960138/sollar-plats-cleaning_gyngjf.jpg",
             className: "md:col-span-1 md:row-span-1",
         },
     ];

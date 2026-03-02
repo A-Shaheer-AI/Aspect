@@ -10,12 +10,12 @@ export const metadata: Metadata = {
 
 export default function CommercialPage() {
     const features = [
-        "Certified EWP (Cherry Picker) operators",
-        "Water-Fed Pole System (up to 4 storeys)",
-        "Lift & Scissor Lift Access Available",
-        "Flexible scheduling (after hours available)",
-        "Comprehensive safety documentation",
-        "Strata and property manager friendly",
+        "Certified Cherry Picker (EWP) operators for cleaning windows in high-rise buildings",
+        "Water-Fed Pole System for safe commercial window cleaning (up to 4 stories)",
+        "Access to lifts and scissor lifts is available for buildings with multiple levels.",
+        "Adjustable schedule that includes commercial cleaning after hours",
+        "Thorough safety records and adherence",
+        "Friendly service from the strata and property manager",
     ];
 
     const industries = [
@@ -37,12 +37,16 @@ export default function CommercialPage() {
                         <span className="text-sm font-medium">Commercial Services</span>
                     </div>
                     <h1 className="text-4xl md:text-5xl lg:text-6xl font-heading font-bold mb-6">
-                        Commercial & Strata
+                        Window Cleaning for
                         <br />
-                        <span className="text-action-gold">Window Cleaning</span>
+                        <span className="text-action-gold">
+                            Businesses and Strata
+                        </span>
                     </h1>
                     <p className="text-xl text-brand-water/80 max-w-2xl mx-auto mb-10">
-                        Specialist high-reach cleaning for Perth&apos;s offices, retail centres, and multi-story buildings. Certified. Insured. Reliable.
+                        Perth window cleaning services for businesses and apartments. specialized high-reach
+                        cleaning for multi-story buildings, retail establishments, and offices. Completely safety
+                        compliant, insured, and certified.
                     </p>
                     <div className="flex flex-col sm:flex-row items-center justify-center gap-4">
                         <a
@@ -50,13 +54,13 @@ export default function CommercialPage() {
                             className="flex items-center gap-3 bg-action-gold text-brand-navy font-bold text-lg px-8 py-4 rounded-full hover:bg-action-gold/90 transition-colors"
                         >
                             <Phone className="w-5 h-5" />
-                            Call for Quote
+                            Request a Quote
                         </a>
                         <Link
                             href="/services/commercial-cleaning"
                             className="flex items-center gap-3 bg-white/10 border-2 border-white/30 text-white font-bold text-lg px-8 py-4 rounded-full hover:bg-white/20 transition-colors"
                         >
-                            Learn More
+                            Find Out More
                             <ArrowRight className="w-5 h-5" />
                         </Link>
                     </div>
@@ -67,7 +71,7 @@ export default function CommercialPage() {
             <section className="py-16 bg-white">
                 <div className="max-w-5xl mx-auto px-4">
                     <h2 className="text-3xl font-heading font-bold text-brand-navy text-center mb-12">
-                        Why Choose Aspect for Commercial?
+                        Why Pick Aspect for Cleaning Commercial Windows?
                     </h2>
                     <div className="grid md:grid-cols-2 lg:grid-cols-3 gap-6">
                         {features.map((feature) => (

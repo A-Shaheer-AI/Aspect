@@ -12,31 +12,31 @@ const MAIN_SERVICES = [
     {
         id: "residential",
         title: "Residential Window Cleaning",
-        description: "Complete interior and exterior window cleaning for homes of all sizes. Includes flyscreen cleaning, track vacuuming, and frame wiping. We treat your home with care and respect.",
+        description: "Complete interior and exterior window cleaning for Perth homes of all sizes. Includes flyscreen cleaning, track vacuuming, and frame detailing.We treat your home with care and respect.",
         icon: Home,
-        features: ["Interior & Exterior", "Flyscreens & Tracks", "Frame Cleaning", "Double Story"],
+        features: ["Interior & Exterior", "Flyscreens & Tracks", "Frame Cleaning", "Double Story Homes"],
         link: "/residential",
     },
     {
         id: "commercial",
         title: "Commercial Window Cleaning",
-        description: "Professional cleaning for offices, shopfronts, and strata properties. We use water-fed poles for high reach and comply with all safety regulations including EWP work.",
+        description: "Professional commercial window cleaning for offices, retail shops, and strata properties across Perth. We use water-fed poles for high-reach access and comply with all safety regulations, including EWP services.",
         icon: Building2,
-        features: ["Offices & Retail", "Strata Complexes", "High Reach (EWP)", "Safety Compliant"],
-        link: "/commercial",
+        features: ["Offices & Retail", "Strata Complexes", "High Reach (EWP)", "Fully Safety Compliant"],
+        link: "/services/window-cleaning",
     },
     {
         id: "solar",
         title: "Solar Panel Cleaning",
-        description: "Maximize your solar energy production by removing dust, bird droppings, and grime. We use pure water technology to leave panels spot-free and efficient.",
+        description: "Maximise solar panel efficiency with professional solar panel cleaning in Perth. We remove dust, bird droppings, and mineral buildup using pure water technology for a spotless, chemical-free finish.",
         icon: Sun,
-        features: ["Pure Water System", "Efficiency Boost", "Safe Access", "Chemical Free"],
+        features: ["Pure Water System", "Efficiency Boost", "Safe Roof Access", "Chemical-Free Cleaning"],
         link: "/services/solar-panel-washing",
     },
     {
         id: "pressure",
         title: "Pressure Cleaning",
-        description: "High-pressure cleaning for driveways, pavers, patios, and building facades. Remove stubborn stains, moss, and dirt to revitalize your property's appearance.",
+        description: "High-pressure driveway and exterior pressure cleaning services in Perth. We remove stubborn stains, moss, algae, and surface dirt to restore driveways, pavers, patios, and   building facades.",
         icon: Droplets,
         features: ["Driveways & Paving", "Building Washdowns", "Soft Washing", "Stain Removal"],
         link: "/services/pressure-cleaning",
@@ -92,19 +92,10 @@ export default function ServicesPage() {
                         Our Cleaning <span className="text-action-gold">Services</span>
                     </h1>
                     <p className="text-xl text-brand-slate max-w-2xl mx-auto">
-                        We offer a comprehensive range of cleaning solutions for residential and commercial properties across Perth.
+                        Professional residential and commercial cleaning services across Perth metro.
                     </p>
                 </div>
             </section>
-            {/* Header */}
-            {/* <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 mb-16 text-center">
-                <h1 className="text-4xl md:text-5xl lg:text-6xl font-heading font-bold text-brand-navy mb-6">
-                    Our Cleaning <span className="text-action-gold">Services</span>
-                </h1>
-                <p className="text-xl text-brand-slate max-w-2xl mx-auto">
-                    We offer a comprehensive range of cleaning solutions for residential and commercial properties across Perth.
-                </p>
-            </div> */}
 
             {/* Main Services (Detailed) */}
             <section className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 mb-24 mt-10">

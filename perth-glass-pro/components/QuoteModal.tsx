@@ -113,7 +113,7 @@ export default function QuoteModal({
                 <button
                     onClick={handleClose}
                     aria-label="Close modal"
-                    className="absolute top-4 right-4 p-2 text-brand-slate hover:text-brand-navy transition-colors"
+                    className="cursor-pointer absolute top-4 right-4 p-2 text-brand-slate hover:text-brand-navy transition-colors"
                 >
                     <X className="w-5 h-5" aria-hidden="true" />
                 </button>

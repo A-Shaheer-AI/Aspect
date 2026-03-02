@@ -4,6 +4,7 @@ import Link from "next/link";
 import { Calendar, ArrowRight } from "lucide-react";
 import { getAllPosts } from "@/lib/blog";
 import { format } from "date-fns";
+import { blogs } from "@/content/blogs";
 
 export const metadata: Metadata = {
     title: "Cleaning Tips & News | Aspect Window Cleaning",
@@ -11,12 +12,13 @@ export const metadata: Metadata = {
 };
 
 export default function BlogListingPage() {
-    const posts = getAllPosts();
+    // const posts = getAllPosts();
+    const posts = blogs;
 
     return (
         <div className="min-h-screen bg-brand-snow bg-pattern-bubbles">
             {/* Hero */}
-            <section className="bg-brand-navy text-white py-20">
+            <section className="bg-brand-navy text-white py-24">
                 <div className="max-w-5xl mx-auto px-4 text-center">
                     <h1 className="text-4xl md:text-5xl font-heading font-bold mb-4">
                         Cleaning Tips & News
@@ -27,13 +29,13 @@ export default function BlogListingPage() {
                 </div>
             </section>
 
-            {/* Blog Grid */}
+            {/* Blogs Grid */}
             <section className="py-20 px-4">
                 <div className="max-w-7xl mx-auto grid md:grid-cols-2 lg:grid-cols-3 gap-8">
                     {posts.length > 0 ? (
                         posts.map((post) => (
                             <Link
-                                key={post.slug}
+                                key={post.title}
                                 href={`/blog/${post.slug}`}
                                 className="group bg-white rounded-2xl overflow-hidden shadow-sm hover:shadow-xl transition-all duration-300 border border-slate-100 flex flex-col h-full"
                             >
