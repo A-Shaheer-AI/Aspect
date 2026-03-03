@@ -114,12 +114,12 @@ export default async function BlogPostPage({ params }: { params: Promise<{ slug:
                             {section.heading}
                         </h2>
 
-                        {section.body && (
+                        {"body" in section && section.body && (
                             <p className="text-slate-700 leading-relaxed">{section.body}</p>
                         )}
 
                         {/* Subsections (e.g. Benefits) */}
-                        {section.subsections && (
+                        {"subsections" in section && section.subsections && (
                             <div className="space-y-4 mt-2">
                                 {section.subsections.map((sub, j) => (
                                     <div key={j} className="pl-4 border-l-4 border-action-gold">
@@ -133,14 +133,16 @@ export default async function BlogPostPage({ params }: { params: Promise<{ slug:
                         )}
 
                         {/* Bullet list */}
-                        {section.bullets && (
+                        {'bullets' in section && section.bullets && (
                             <ul className="space-y-2 mt-2">
                                 {section.bullets.map((bullet, k) => (
                                     <li key={k} className="flex gap-2 text-slate-700">
                                         <span className="mt-1.5 w-2 h-2 rounded-full bg-action-gold flex-shrink-0" />
                                         <span>
                                             {bullet.label && (
-                                                <span className="font-semibold text-brand-navy">{bullet.label}{bullet.body ? ': ' : ''}</span>
+                                                <span className="font-semibold text-brand-navy">
+                                                    {bullet.label}{bullet.body ? ': ' : ''}
+                                                </span>
                                             )}
                                             {bullet.body}
                                         </span>
@@ -150,7 +152,7 @@ export default async function BlogPostPage({ params }: { params: Promise<{ slug:
                         )}
 
                         {/* Note */}
-                        {section.note && (
+                        {"note" in section && section.note && (
                             <p className="text-sm text-slate-500 italic mt-2">{section.note}</p>
                         )}
                     </div>

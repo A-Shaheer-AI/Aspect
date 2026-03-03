@@ -1,4 +1,21 @@
-export const blogs = [
+type Section =
+  | { heading: string; body: string }
+  | { heading: string; subsections: { heading: string; body: string }[] }
+  | { heading: string; bullets: { label: string; body?: string }[]; note?: string }
+
+type BlogPost = {
+  id: number;
+  title: string;
+  slug: string;
+  date: string;
+  thumbnail: string;
+  excerpt: string;
+  intro: string;
+  sections: Section[];
+  conclusion: string;
+}
+
+export const blogs: BlogPost[] = [
   {
     id: 1,
     title: "Why Pure Water Window Cleaning is Better",
