@@ -305,3 +305,44 @@ h6 {
 .shimmer-btn {
   will-change: background-position;
 }
+
+/* For landing page CSS */
+
+@keyframes fadeUp {
+  from {
+    opacity: 0;
+    transform: translateY(16px);
+  }
+
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+.fade-up {
+  animation: fadeUp 0.5s ease both;
+}
+
+.fade-up-1 {
+  animation-delay: 0.1s;
+}
+
+.fade-up-2 {
+  animation-delay: 0.22s;
+}
+
+.fade-up-3 {
+  animation-delay: 0.34s;
+}
+
+.fade-up-4 {
+  animation-delay: 0.46s;
+}
+
+.badge-row {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 8px;
+  justify-content: center;
+}

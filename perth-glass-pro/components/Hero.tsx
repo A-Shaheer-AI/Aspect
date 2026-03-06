@@ -71,9 +71,12 @@ export default function Hero() {
                                     <Star key={i} className="w-5 h-5 text-action-gold fill-action-gold" aria-hidden="true" />
                                 ))}
                             </div>
-                            <Link className="cursor-pointer hover:underline leading-5 " href={"https://www.google.com/search?sca_esv=43c0733073c9c04f&sxsrf=ANbL-n6Zt5bfXPzrBxUdKKCTEky0Zmenhg:1771362523236&si=AL3DRZEsmMGCryMMFSHJ3StBhOdZ2-6yYkXd_doETEE1OR-qOQdrxTQOlcvI8v9O6HZrFPBYZr2sc3F3YeQhsMzSAgYL-xTmSRWjv27wKgm7X8H_dhnj0x-TbkH9h77lXVa8ELrKZNtLTl9YV-kI2wtp49mSAH7CKQ%3D%3D&q=CCC+Window+Cleaning+PTY+LTD+Reviews&sa=X&ved=2ahUKEwiI79zPt-GSAxWkgP0HHdfqGHsQ0bkNegQIOxAF&biw=1920&bih=961&dpr=1"}>
-                                <span className="text-white font-bold">4.9</span>
-                                <span className="text-white/70 text-sm sm:text-base">from 200+ Google Reviews</span>
+                            <Link
+                                className="cursor-pointer hover:underline leading-5"
+                                target="_blank"
+                                href={"https://www.google.com/maps/place/Aspect+Window+Cleaning/@-31.9806823,115.7929967,17z/data=!3m1!4b1!4m6!3m5!1s0xafbbd7c3dd591183:0xe683c8a7e7212664!8m2!3d-31.9806823!4d115.7929967!16s%2Fg%2F11x1zxrlv3?entry=ttu&g_ep=EgoyMDI2MDMwMi4wIKXMDSoASAFQAw%3D%3D"}>
+                                <span className="text-white font-bold">5.0</span>
+                                <span className="text-white/70 text-sm sm:text-base"> Google Reviews</span>
                             </Link>
                         </div>
 

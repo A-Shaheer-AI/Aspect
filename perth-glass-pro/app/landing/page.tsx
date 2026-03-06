@@ -16,45 +16,75 @@ export default function LandingPage() {
         }
     };
 
-    return (
-        <div
-            className="min-h-screen bg-white font-sans"
-            style={{ fontFamily: "'DM Sans', sans-serif" }}>
-            {/* Google Fonts */}
-            <style>{`
-        @import url('https://fonts.googleapis.com/css2?family=DM+Sans:wght@400;500;600;700;800&family=Syne:wght@700;800&display=swap');
-        .font-display { font-family: 'Syne', sans-serif; }
-        .font-body { font-family: 'DM Sans', sans-serif; }
-        @keyframes fadeUp {
-          from { opacity: 0; transform: translateY(16px); }
-          to { opacity: 1; transform: translateY(0); }
-        }
-        .fade-up { animation: fadeUp 0.5s ease both; }
-        .fade-up-1 { animation-delay: 0.1s; }
-        .fade-up-2 { animation-delay: 0.22s; }
-        .fade-up-3 { animation-delay: 0.34s; }
-        .fade-up-4 { animation-delay: 0.46s; }
-        .badge-row { display: flex; flex-wrap: wrap; gap: 8px; justify-content: center; }
-      `}</style>
+    const googleReviews = [
+        {
+            name: "June Bird",
+            suburb: "Perth",
+            text: "Guys done a beautiful job. My windows are sparkling. 2 very nice gentleman. Highly recommend.",
+        },
+        {
+            name: "Hussai",
+            suburb: "Perth",
+            text: "Great work! I recently called them for cleaning the windows at my home. The team arrived on time, were friendly and professional, and took care to protect the surrounding areas while they worked. Many of the windows came out spotless and clear.",
+        },
+        {
+            name: "Taylor Bow",
+            suburb: "North Perth",
+            text: "Aspect window cleaning did a great job cleaning the inside and outside of the windows at my North Perth property. Good service, communication and professional service.",
+        },
+        {
+            name: "Shabnam",
+            suburb: "Perth",
+            text: "I recently hired them for window cleaning, and I couldn't be happier with the results. The team was punctual, professional, and paid great attention to detail. Our windows are spotless.",
+        },
+    ];
 
+    const aspectChoose =
+        [
+            {
+                icon: <Shield className="w-6 h-6" />,
+                title: "Fully Vetted & Safe",
+                body: "Police Cleared, $20M Public Liability, and White Card Certified.",
+                color: "#1d4ed8",
+            },
+            {
+                icon: <Droplets className="w-6 h-6" />,
+                title: "Pure Water Technology",
+                body: "Commercial RO/DI filtration. Zero chemicals — glass stays cleaner, for longer.",
+                color: "#0ea5e9",
+            },
+            {
+                icon: <Zap className="w-6 h-6" />,
+                title: "Urgent & Flexible",
+                body: "Next-day emergency cleans for rental inspections, or set-and-forget subscriptions.",
+                color: "#f0a500",
+            },
+            {
+                icon: <Building2 className="w-6 h-6" />,
+                title: "Homes to Showrooms",
+                body: "From quick residential maintenance to heavy commercial glass restoration.",
+                color: "#0f2545",
+            },
+        ];
+
+    return (
+        <>
             {/* ─── SECTION 1: HERO ─── */}
             <section
-                className="relative min-h-screen flex flex-col items-center justify-center px-5 pt-10 pb-10 text-white"
-                style={{ background: "linear-gradient(160deg, #0a1628 0%, #0f2545 60%, #133060 100%)" }}
+                className="relative min-h-screen flex flex-col items-center justify-center px-5 pb-10 text-white bg-cover bg-center
+  bg-[linear-gradient(160deg,rgba(10,22,40,0.5)_0%,rgba(15,37,69,0.8)_60%,rgba(19,48,96,0.8)_100%),url('https://res.cloudinary.com/dr8tjrszy/image/upload/v1771960136/solar-pannel-cleaning_oxfoxx.jpg')]
+  md:bg-[linear-gradient(160deg,rgba(10,22,40,0.5)_0%,rgba(15,37,69,0.8)_60%,rgba(19,48,96,0.8)_100%),url('https://res.cloudinary.com/dr8tjrszy/image/upload/v1771960136/outside-windows-cleaning_lzp8fq.jpg')]"
             >
                 {/* Offer ribbon */}
                 <div
-                    className="fade-up fade-up-1 mb-5 rounded-full px-4 py-1.5 text-xs font-semibold tracking-wide uppercase"
+                    className="fade-up fade-up-1 mb-5 rounded-full px-4 py-1.5 text-[10px] md:text-xs font-semibold tracking-wide uppercase"
                     style={{ background: "#f0a500", color: "#0a1628" }}
                 >
-                    🌸 Spring Offer — 15% Off First Clean When You Book This Week
+                    Spring Offer — 15% Off First Clean When You Book This Week
                 </div>
 
                 {/* Headline */}
-                <h1
-                    className="fade-up fade-up-2 font-display text-center text-4xl leading-tight mb-2"
-                    style={{ fontFamily: "'Syne', sans-serif", fontWeight: 800 }}
-                >
+                <h1 className="text-3xl sm:text-4xl md:text-5xl lg:text-6xl xl:text-7xl font-heading font-bold text-white leading-tight mb-3 sm:mb-6 text-center md:text-left">
                     Perth's Trusted Local<br />Window Cleaners
                 </h1>
 
@@ -83,7 +113,7 @@ export default function LandingPage() {
                 {/* CTA — Call */}
                 <Link
                     href={`tel:${BUSINESS.phoneRaw}`}
-                    className="fade-up fade-up-4 w-full max-w-sm flex items-center justify-center gap-3 rounded-xl py-4 text-lg font-bold mb-4 shadow-lg"
+                    className="fade-up fade-up-4 w-full max-w-sm flex items-center justify-center gap-3 rounded-xl py-4 text-sm md:text-lg font-bold mb-4 shadow-lg"
                     style={{ background: "#22c55e", color: "#fff", boxShadow: "0 4px 24px rgba(34,197,94,0.35)" }}
                 >
                     <Phone className="w-5 h-5" fill="white" />
@@ -133,71 +163,86 @@ export default function LandingPage() {
             </section>
 
             {/* ─── SECTION 2: TRUSTED BY BANNER ─── */}
-            <section
-                className="px-5 py-4 text-center"
-                style={{ background: "#f4f4f5" }}
-            >
-                <p className="text-xs text-gray-500 font-medium uppercase tracking-widest mb-3">
-                    Fully Compliant with Local Government &amp; Commercial Standards. Trusted By:
+            <section className="px-6 py-10 bg-zinc-100 text-center">
+                <p className="text-xs text-gray-500 font-semibold uppercase tracking-[0.25em] mb-8">
+                    Fully Compliant with Local Government & Commercial Standards. Trusted By
                 </p>
-                <div className="flex items-center justify-center gap-8 flex-wrap">
-                    {/* Toyota placeholder */}
-                    <div className="flex flex-col items-center gap-1">
-                        <div
-                            className="w-14 h-10 rounded-lg flex items-center justify-center text-xs font-bold text-white"
-                            style={{ background: "#cc0000" }}
-                        >
-                            TOYOTA
-                        </div>
+
+                <div className="flex flex-wrap items-center justify-center gap-10">
+
+                    {/* Logo 1 */}
+                    <div className="relative h-18 w-32 grayscale hover:grayscale-0 transition duration-300">
+                        <Image
+                            src="https://res.cloudinary.com/dr8tjrszy/image/upload/v1772795795/toyota-logo_bcplvi.png"
+                            alt="Toyota"
+                            fill
+                            className="object-contain"
+                        />
                     </div>
-                    {/* Furniture showroom placeholder */}
-                    <div className="flex flex-col items-center gap-1">
-                        <div
-                            className="w-14 h-10 rounded-lg flex items-center justify-center text-xs font-bold text-white"
-                            style={{ background: "#4b5563" }}
-                        >
-                            SHOWROOM
-                        </div>
+
+                    {/* Logo 2 */}
+                    <div className="relative h-18 w-32 grayscale hover:grayscale-0 transition duration-300">
+                        <Image
+                            src="https://res.cloudinary.com/dr8tjrszy/image/upload/v1772794807/WhatsApp_Image_2026-03-06_at_3.50.01_PM_yn1dly.jpg"
+                            alt="rechard"
+                            fill
+                            className="object-contain"
+                        />
                     </div>
-                    {/* Council placeholder */}
-                    <div className="flex flex-col items-center gap-1">
-                        <div
-                            className="w-14 h-10 rounded-lg flex items-center justify-center text-xs font-bold text-white"
-                            style={{ background: "#1d4ed8" }}
-                        >
-                            COUNCIL
-                        </div>
+
+                    {/* Logo 3 */}
+                    <div className="relative h-18 w-32 grayscale hover:grayscale-0 transition duration-300">
+                        <Image
+                            src="https://res.cloudinary.com/dr8tjrszy/image/upload/v1772795793/council-logo_wdy6ja.png"
+                            alt="Council"
+                            fill
+                            className="object-contain"
+                        />
                     </div>
+
+                    {/* Logo 4 */}
+                    <div className="relative h-18 w-32 grayscale hover:grayscale-0 transition duration-300">
+                        <Image
+                            src="https://res.cloudinary.com/dr8tjrszy/image/upload/v1772795794/bespoke-logo_lulwwt.png"
+                            alt="bespoke"
+                            fill
+                            className="object-contain"
+                        />
+                    </div>
+
                 </div>
             </section>
 
             {/* ─── SECTION 3: PROOF GALLERY ─── */}
             <section className="max-w-5xl mx-auto px-5 py-8">
                 <h2
-                    className="font-display text-center text-2xl font-bold mb-5"
-                    style={{ fontFamily: "'Syne', sans-serif", color: "#0f2545" }}
+                    className="text-center text-2xl font-bold mb-5"
                 >
                     See the Difference
                 </h2>
 
                 <div className="flex flex-col gap-4">
                     {/* Worker image */}
-                    <div className="relative rounded-2xl overflow-hidden" style={{ height: 340 }}>
-                        <Image
-                            src="https://res.cloudinary.com/dr8tjrszy/image/upload/v1771960136/outside-windows-cleaning_lzp8fq.jpg"
-                            alt="Aspect Window Cleaning technician using RO/DI pole system"
-                            fill
-                            className="object-cover"
-                        />
+                    <div className="relative rounded-2xl overflow-hidden" style={{ height: 440 }}>
+                        <video
+                            className="w-full h-full object-cover cursor-pointer"
+                            controls
+                            preload="metadata"
+                        >
+                            <source
+                                src="https://res.cloudinary.com/dr8tjrszy/video/upload/v1772387266/VID-20260228-WA0016_xsz3cm.mp4"
+                                type="video/mp4"
+                            />
+                        </video>
                     </div>
 
                     {/* Before & After */}
                     <div className="relative rounded-2xl overflow-hidden" style={{ height: 520 }}>
-                        <div className="flex h-full">
+                        <div className="flex flex-col md:flex-row h-full">
                             {/* Before */}
                             <div className="relative flex-1 overflow-hidden">
                                 <Image
-                                    src="https://res.cloudinary.com/dr8tjrszy/image/upload/v1771960147/WhatsApp_Image_2026-02-22_at_8.48.08_PM_1_x4ymo2.jpg"
+                                    src="https://res.cloudinary.com/dr8tjrszy/image/upload/v1772792155/aspect-before-window-cleaning_zfr8ae.jpg"
                                     alt="Window before cleaning"
                                     fill
                                     className="object-cover"
@@ -216,7 +261,7 @@ export default function LandingPage() {
                             {/* After */}
                             <div className="relative flex-1 overflow-hidden">
                                 <Image
-                                    src="https://res.cloudinary.com/dr8tjrszy/image/upload/v1771960136/shope-gates-cleaning_euctx1.jpg"
+                                    src="https://res.cloudinary.com/dr8tjrszy/image/upload/v1772792157/after-window-cleaning_fs1hhz.jpg"
                                     alt="Window after cleaning — crystal clear"
                                     fill
                                     className="object-cover"
@@ -238,38 +283,12 @@ export default function LandingPage() {
             <section className="max-w-5xl mx-auto px-5 py-8"
                 style={{ background: "#f8fafc" }}>
                 <h2
-                    className="font-display text-center text-2xl font-bold mb-6"
-                    style={{ fontFamily: "'Syne', sans-serif", color: "#0f2545" }}
+                    className="text-center text-2xl font-bold mb-6"
                 >
                     Why Choose Aspect?
                 </h2>
-                <div className="grid grid-cols-2 gap-3">
-                    {[
-                        {
-                            icon: <Shield className="w-6 h-6" />,
-                            title: "Fully Vetted & Safe",
-                            body: "Police Cleared, $20M Public Liability, and White Card Certified.",
-                            color: "#1d4ed8",
-                        },
-                        {
-                            icon: <Droplets className="w-6 h-6" />,
-                            title: "Pure Water Technology",
-                            body: "Commercial RO/DI filtration. Zero chemicals — glass stays cleaner, for longer.",
-                            color: "#0ea5e9",
-                        },
-                        {
-                            icon: <Zap className="w-6 h-6" />,
-                            title: "Urgent & Flexible",
-                            body: "Next-day emergency cleans for rental inspections, or set-and-forget subscriptions.",
-                            color: "#f0a500",
-                        },
-                        {
-                            icon: <Building2 className="w-6 h-6" />,
-                            title: "Homes to Showrooms",
-                            body: "From quick residential maintenance to heavy commercial glass restoration.",
-                            color: "#0f2545",
-                        },
-                    ].map((card) => (
+                <div className="grid grid-cols-1 md:grid-cols-2 gap-3">
+                    {aspectChoose.map((card) => (
                         <div
                             key={card.title}
                             className="rounded-2xl p-4 flex flex-col gap-2"
@@ -290,22 +309,6 @@ export default function LandingPage() {
                 </div>
             </section>
 
-            {/* ─── SECTION 5: GUARANTEE ─── */}
-            <section className="max-w-5xl mx-auto px-5 py-8">
-                <div
-                    className="rounded-2xl p-6 text-center"
-                    style={{ background: "linear-gradient(135deg, #0f2545, #133060)", color: "white" }}
-                >
-                    <div className="text-4xl mb-3">🌦️</div>
-                    <h2 className="font-display text-xl font-bold mb-2" style={{ fontFamily: "'Syne', sans-serif" }}>
-                        The 7-Day Rain &amp; Shine Guarantee
-                    </h2>
-                    <p className="text-sm text-blue-100 leading-relaxed">
-                        Worried about the weather? Don't be. If it rains within 7 days of your clean and spots your glass, we will come back and touch up the affected windows completely free.
-                    </p>
-                </div>
-            </section>
-
             {/* ─── SECTION 6: REVIEWS ─── */}
             <section className="max-w-5xl mx-auto px-5 py-8" style={{ background: "#f8fafc" }}>
                 <div className="flex flex-col items-center mb-5">
@@ -314,28 +317,18 @@ export default function LandingPage() {
                             <Star key={i} className="w-6 h-6 fill-yellow-400 text-yellow-400" />
                         ))}
                     </div>
-                    <p className="text-sm text-gray-500 font-medium">5.0 · Google Reviews</p>
+                    <Link
+                        className="cursor-pointer hover:underline leading-5"
+                        target="_blank"
+                        href={"https://www.google.com/maps/place/Aspect+Window+Cleaning/@-31.9806823,115.7929967,17z/data=!3m1!4b1!4m6!3m5!1s0xafbbd7c3dd591183:0xe683c8a7e7212664!8m2!3d-31.9806823!4d115.7929967!16s%2Fg%2F11x1zxrlv3?entry=ttu&g_ep=EgoyMDI2MDMwMi4wIKXMDSoASAFQAw%3D%3D"}>
+                        <span className="text-sm text-gray-500 font-medium">5.0 </span>
+                        <span className="text-sm text-gray-500 font-medium">Google Reviews</span>
+                    </Link>
                 </div>
                 <div className="flex flex-col gap-3">
-                    {[
-                        {
-                            name: "Sarah M.",
-                            suburb: "Subiaco",
-                            text: "Ahmed was on time, professional, and the windows have never looked so clear. Will definitely book again!",
-                        },
-                        {
-                            name: "James T.",
-                            suburb: "Cottesloe",
-                            text: "Extremely professional from start to finish. They cleaned the frames too — something the last guy never did.",
-                        },
-                        {
-                            name: "Linda K.",
-                            suburb: "Applecross",
-                            text: "Used them for our rental inspection. Same-day booking, immaculate result. Highly recommend.",
-                        },
-                    ].map((r) => (
+                    {googleReviews.map((r, i) => (
                         <div
-                            key={r.name}
+                            key={i}
                             className="rounded-2xl p-4"
                             style={{ background: "#fff", border: "1px solid #e2e8f0" }}
                         >
@@ -344,7 +337,11 @@ export default function LandingPage() {
                                     <Star key={i} className="w-4 h-4 fill-yellow-400 text-yellow-400" />
                                 ))}
                             </div>
-                            <p className="text-sm text-gray-700 leading-snug mb-2">"{r.text}"</p>
+
+                            <p className="text-sm text-gray-700 leading-snug mb-2">
+                                "{r.text}"
+                            </p>
+
                             <p className="text-xs font-semibold text-gray-500">
                                 {r.name} · {r.suburb}
                             </p>
@@ -362,8 +359,7 @@ export default function LandingPage() {
                     Still here? Let's get you booked.
                 </p>
                 <h2
-                    className="font-display text-2xl font-bold mb-4"
-                    style={{ fontFamily: "'Syne', sans-serif" }}
+                    className="text-base sm:text-xl md:text-2xl text-brand-water/90 max-w-2xl mx-auto mb-4 sm:mb-8 leading-relaxed px-2"
                 >
                     Ready for Crystal-Clear Windows?
                 </h2>
@@ -375,26 +371,8 @@ export default function LandingPage() {
                     <Phone className="w-5 h-5" fill="white" />
                     Call Now — {BUSINESS.phone}
                 </Link>
-                <p className="text-xs text-blue-300 mt-4">
-                    ABN: {BUSINESS.phone} · Serving all Perth metro areas<br />
-                    © {new Date().getFullYear()} Aspect Window Cleaning
-                </p>
             </section>
 
-            {/* ─── STICKY BOTTOM CTA ─── */}
-            <div
-                className="fixed bottom-0 left-0 right-0 z-50 px-4 pb-4 pt-2 w-full md:max-w-2xs mx-auto"
-            >
-                <Link
-                    href={`tel:${BUSINESS.phoneRaw}`}
-                    className="flex items-center justify-center gap-3 w-full rounded-xl py-4 text-base font-bold shadow-2xl"
-                    style={{ background: "#22c55e", color: "#fff", boxShadow: "0 4px 30px rgba(34,197,94,0.5)" }}
-                >
-                    <Phone className="w-5 h-5" fill="white" />
-                    Call Now for a Free Quote
-                </Link>
-            </div>
-
-        </div>
+        </>
     );
 }
