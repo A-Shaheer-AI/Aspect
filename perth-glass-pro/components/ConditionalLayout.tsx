@@ -13,7 +13,7 @@ export default function ConditionalLayout({ children }: { children: React.ReactN
         <>
             {!isLanding && <Navbar />}
             <main id="main-content">{children}</main>
-            {!isLanding && <Footer />}
+            <Footer />
             {!isLanding && <StickyInterface />}
         </>
     );
