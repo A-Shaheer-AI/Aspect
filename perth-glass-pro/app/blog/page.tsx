@@ -18,7 +18,7 @@ export default function BlogListingPage() {
     return (
         <div className="min-h-screen bg-brand-snow bg-pattern-bubbles">
             {/* Hero */}
-            <section className="bg-brand-navy text-white py-24">
+            <section className="bg-brand-navy text-white pt-32 pb-24">
                 <div className="max-w-5xl mx-auto px-4 text-center">
                     <h1 className="text-4xl md:text-5xl font-heading font-bold mb-4">
                         Cleaning Tips & News

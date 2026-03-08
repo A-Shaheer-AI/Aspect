@@ -30,7 +30,7 @@ export default function CommercialPage() {
     return (
         <div className="min-h-screen bg-brand-snow">
             {/* Hero */}
-            <section className="bg-brand-navy text-white py-24">
+            <section className="bg-brand-navy text-white pt-32 pb-24">
                 <div className="max-w-5xl mx-auto px-4 text-center">
                     <div className="inline-flex items-center gap-2 bg-white/10 border border-white/20 rounded-full px-4 py-2 mb-6">
                         <Building2 className="w-5 h-5 text-action-gold" />

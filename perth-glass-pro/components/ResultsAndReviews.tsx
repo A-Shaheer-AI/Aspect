@@ -10,25 +10,25 @@ export default function ResultsAndReviews() {
 
     const reviews = [
         {
-            name: "Sarah M.",
-            suburb: "Cottesloe",
+            name: "June Bird",
+            suburb: "Perth",
             rating: 5,
-            text: "Absolutely fantastic service! The team was professional, on time, and my windows have never looked better.",
-            avatar: "SM",
+            text: "Guys done a beautiful job. My windows are sparkling. Two very nice gentlemen. Highly recommend.",
+            avatar: "JB",
         },
         {
-            name: "James T.",
-            suburb: "Subiaco",
+            name: "Krystal Copley",
+            suburb: "Perth",
             rating: 5,
-            text: "Used Aspect for our office building. Their EWP team was efficient and safety-conscious. Highly recommend!",
-            avatar: "JT",
+            text: "Lovely people. Quick reply and came to visit to give a free quote. Good communication. Saved me time. Money well spent.",
+            avatar: "KC",
         },
         {
-            name: "Michelle K.",
-            suburb: "Fremantle",
+            name: "Lynne",
+            suburb: "North Perth",
             rating: 5,
-            text: "Best window cleaners in Perth! They even cleaned the tracks and frames without extra charge.",
-            avatar: "MK",
+            text: "Good communication, competitive price and fast, efficient and friendly service. Beautifully clean windows and screens. Thank you!",
+            avatar: "LY",
         },
     ];
 
@@ -55,14 +55,14 @@ export default function ResultsAndReviews() {
                         {/* After Image (Background) */}
                         <div
                             className="absolute inset-0 bg-cover bg-center"
-                            style={{ backgroundImage: `url('https://res.cloudinary.com/dr8tjrszy/image/upload/v1771960136/shope-gates-cleaning_euctx1.jpg')` }}
+                            style={{ backgroundImage: `url('https://res.cloudinary.com/dr8tjrszy/image/upload/v1772800983/after-cleaning-street_lhtqux.jpg')` }}
                         />
 
                         {/* Before Image (Foreground, clipped) */}
                         <div
                             className="absolute inset-0 bg-cover bg-center border-r-2 border-white"
                             style={{
-                                backgroundImage: `url('https://res.cloudinary.com/dr8tjrszy/image/upload/v1771960147/WhatsApp_Image_2026-02-22_at_8.48.08_PM_1_x4ymo2.jpg')`,
+                                backgroundImage: `url('https://res.cloudinary.com/dr8tjrszy/image/upload/v1772967205/street-before-cleaning_iupbdq.jpg')`,
                                 clipPath: `inset(0 0 0 ${sliderPosition}%)`, // This will clip the "Before" image based on slider
                             }}
                         />
@@ -139,7 +139,7 @@ export default function ResultsAndReviews() {
 
                         {/* CTA */}
                         <Link
-                            href="https://g.page/r/..."
+                            href="https://www.google.com/maps/place/Aspect+Window+Cleaning/@-31.9806823,115.7929967,17z/data=!3m1!4b1!4m6!3m5!1s0xafbbd7c3dd591183:0xe683c8a7e7212664!8m2!3d-31.9806823!4d115.7929967!16s%2Fg%2F11x1zxrlv3?entry=ttu&g_ep=EgoyMDI2MDMwMi4wIKXMDSoASAFQAw%3D%3D"
                             target="_blank"
                             className="inline-flex items-center gap-2 text-brand-navy font-medium hover:text-action-gold transition-colors"
                         >

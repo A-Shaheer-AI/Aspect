@@ -65,7 +65,7 @@ export default function ContactSection() {
                         >
                             <Clock className="w-8 h-8 text-action-gold mx-auto mb-2" aria-hidden="true" />
                             <h3 className="font-bold text-brand-navy text-sm">Hours</h3>
-                            <p className="text-brand-slate text-xs mt-1">Mon-Sat 7am-5pm</p>
+                            <p className="text-brand-slate text-xs mt-1">24/7 Availability</p>
                         </a>
                     </div>
 
@@ -100,7 +100,7 @@ export default function ContactSection() {
                         >
                             <MapPin className="w-10 h-10 text-action-gold mx-auto mb-4 group-hover:scale-110 transition-transform" aria-hidden="true" />
                             <h3 className="font-bold text-brand-navy mb-1">Location</h3>
-                            <p className="text-brand-slate">Perth Metro, WA</p>
+                            <p className="text-brand-slate">{BUSINESS.location}</p>
                         </a>
 
                         {/* Hours */}
@@ -112,19 +112,19 @@ export default function ContactSection() {
                         >
                             <Clock className="w-10 h-10 text-action-gold mx-auto mb-4 group-hover:scale-110 transition-transform" aria-hidden="true" />
                             <h3 className="font-bold text-brand-navy mb-1">Hours</h3>
-                            <p className="text-brand-slate">Mon-Sat: 7am-5pm</p>
+                            <p className="text-brand-slate text-xs mt-1">24/7 Availability</p>
                         </a>
                     </div>
 
                     {/* CTA - Desktop only */}
                     <div className="hidden sm:block text-center mt-12">
-                        <a
+                        <Link
                             href={`tel:${BUSINESS.phoneRaw}`}
                             className="inline-flex items-center gap-3 bg-brand-navy text-white font-bold text-lg px-8 py-4 rounded-full hover:bg-brand-navy/90 transition-colors"
                         >
                             <Phone className="w-5 h-5" aria-hidden="true" />
                             Call Now for Free Quote
-                        </a>
+                        </Link>
                     </div>
                 </div>
             </section>
@@ -183,6 +183,18 @@ export default function ContactSection() {
                     >
                         <Search className="w-4 h-4" />
                         Browse All 100+ Suburbs
+                    </Link>
+                </div>
+
+                <Link href="/">
+
+                </Link>
+                <div className="hidden sm:block text-center mt-12">
+                    <Link
+                        href="/locations"
+                        className="inline-flex items-center bg-brand-navy text-white font-bold text-lg px-8 py-4 rounded-full hover:bg-brand-navy/90 transition-colors"
+                    >
+                        View all 100+ suburbs
                     </Link>
                 </div>
             </div>

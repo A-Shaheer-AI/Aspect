@@ -2,12 +2,13 @@
 
 import { Shield, Award, Clock, Users, Star, CheckCircle } from "lucide-react";
 import { motion } from "framer-motion";
+import Link from "next/link";
 
 export default function TrustGrid() {
     const stats = [
-        { value: "15+", label: "Years Experience", icon: Award },
-        { value: "5000+", label: "Happy Customers", icon: Users },
-        { value: "4.9", label: "Google Rating", icon: Star },
+        { value: "1+", label: "Years Experience", icon: Award },
+        { value: "100+", label: "Happy Customers", icon: Users },
+        { value: "5.0", label: "Google Rating", icon: Star },
         { value: "100%", label: "Satisfaction Rate", icon: CheckCircle },
     ];
 
@@ -80,8 +81,13 @@ export default function TrustGrid() {
                             <Star key={i} className="w-6 h-6 text-action-gold fill-action-gold" />
                         ))}
                     </div>
-                    <p className="text-xl font-bold mb-1">4.9 out of 5 stars</p>
-                    <p className="text-brand-water/80 text-sm">Based on 200+ Google Reviews</p>
+                    <p className="text-xl font-bold mb-1">5.0 stars</p>
+                    <Link
+                        className="cursor-pointer hover:underline leading-5"
+                        target="_blank"
+                        href={"https://www.google.com/maps/place/Aspect+Window+Cleaning/@-31.9806823,115.7929967,17z/data=!3m1!4b1!4m6!3m5!1s0xafbbd7c3dd591183:0xe683c8a7e7212664!8m2!3d-31.9806823!4d115.7929967!16s%2Fg%2F11x1zxrlv3?entry=ttu&g_ep=EgoyMDI2MDMwMi4wIKXMDSoASAFQAw%3D%3D"}>
+                        <span className="text-brand-water/80 text-sm">Google Reviews</span>
+                    </Link>
                 </motion.div>
             </div>
         </section>
