@@ -84,7 +84,7 @@ export default function LandingPage() {
                 </div>
 
                 {/* Headline */}
-                <h1 className="text-3xl sm:text-4xl md:text-5xl lg:text-6xl xl:text-7xl font-heading font-bold text-white leading-tight mb-3 sm:mb-6 text-center md:text-left">
+                <h1 className="text-3xl sm:text-3xl md:text-5xl lg:text-6xl xl:text-7xl font-heading font-bold text-white leading-tight mb-3 sm:mb-6 text-center">
                     Perth's Trusted Local<br />Window Cleaners
                 </h1>
 
@@ -131,7 +131,9 @@ export default function LandingPage() {
                     {submitted ? (
                         <div className="flex flex-col items-center gap-2 py-3">
                             <CheckCircle2 className="w-8 h-8 text-green-400" />
-                            <p className="text-white font-semibold text-center">Got it! We'll text you shortly.</p>
+                            <p className="text-white font-semibold text-center">
+                                Got it! We'll text you shortly.
+                            </p>
                         </div>
                     ) : (
                         <div className="flex flex-col gap-2">
@@ -152,7 +154,7 @@ export default function LandingPage() {
                             ))}
                             <button
                                 onClick={handleSubmit}
-                                className="w-full rounded-lg py-3 text-sm font-bold mt-1"
+                                className="cursor-pointer w-full rounded-lg py-3 text-sm font-bold mt-1"
                                 style={{ background: "#f0a500", color: "#0a1628" }}
                             >
                                 Get a Fast Text Quote →
@@ -163,7 +165,7 @@ export default function LandingPage() {
             </section>
 
             {/* ─── SECTION 2: TRUSTED BY BANNER ─── */}
-            <section className="px-6 py-10 bg-zinc-100 text-center">
+            <section className="px-6 py-6 bg-zinc-100 text-center">
                 <p className="text-xs text-gray-500 font-semibold uppercase tracking-[0.25em] mb-8">
                     Fully Compliant with Local Government & Commercial Standards. Trusted By
                 </p>
@@ -174,7 +176,7 @@ export default function LandingPage() {
                     <div className="relative h-18 w-32 grayscale hover:grayscale-0 transition duration-300">
                         <Image
                             src="https://res.cloudinary.com/dr8tjrszy/image/upload/v1772795795/toyota-logo_bcplvi.png"
-                            alt="Toyota"
+                            alt="Toyota company logo – trusted commercial cleaning client"
                             fill
                             className="object-contain"
                         />
@@ -183,8 +185,8 @@ export default function LandingPage() {
                     {/* Logo 2 */}
                     <div className="relative h-18 w-32 grayscale hover:grayscale-0 transition duration-300">
                         <Image
-                            src="https://res.cloudinary.com/dr8tjrszy/image/upload/v1772794807/WhatsApp_Image_2026-03-06_at_3.50.01_PM_yn1dly.jpg"
-                            alt="rechard"
+                            src="https://res.cloudinary.com/dr8tjrszy/image/upload/v1772795795/richad-logo_u2l4jl.png"
+                            alt="Richard Group logo – commercial window and building cleaning client"
                             fill
                             className="object-contain"
                         />
@@ -193,18 +195,8 @@ export default function LandingPage() {
                     {/* Logo 3 */}
                     <div className="relative h-18 w-32 grayscale hover:grayscale-0 transition duration-300">
                         <Image
-                            src="https://res.cloudinary.com/dr8tjrszy/image/upload/v1772795793/council-logo_wdy6ja.png"
-                            alt="Council"
-                            fill
-                            className="object-contain"
-                        />
-                    </div>
-
-                    {/* Logo 4 */}
-                    <div className="relative h-18 w-32 grayscale hover:grayscale-0 transition duration-300">
-                        <Image
                             src="https://res.cloudinary.com/dr8tjrszy/image/upload/v1772795794/bespoke-logo_lulwwt.png"
-                            alt="bespoke"
+                            alt="Bespoke company logo – professional commercial cleaning partner"
                             fill
                             className="object-contain"
                         />
@@ -230,49 +222,47 @@ export default function LandingPage() {
                             preload="metadata"
                         >
                             <source
-                                src="https://res.cloudinary.com/dr8tjrszy/video/upload/v1772387266/VID-20260228-WA0016_xsz3cm.mp4"
+                                src="https://res.cloudinary.com/dr8tjrszy/video/upload/v1772968701/VID-20260228-WA0016_xsz3cm_401388.mp4"
                                 type="video/mp4"
                             />
                         </video>
                     </div>
 
                     {/* Before & After */}
-                    <div className="relative rounded-2xl overflow-hidden" style={{ height: 520 }}>
-                        <div className="flex flex-col md:flex-row h-full">
+                    <div className="w-full h-[420px] overflow-x-auto md:overflow-hidden rounded-2xl scroll-smooth scrollbar-hide">
+                        <div className="flex h-full w-[200%] md:w-full">
+
                             {/* Before */}
-                            <div className="relative flex-1 overflow-hidden">
+                            <div className="relative w-full md:flex-1 h-full overflow-hidden">
                                 <Image
                                     src="https://res.cloudinary.com/dr8tjrszy/image/upload/v1772792155/aspect-before-window-cleaning_zfr8ae.jpg"
                                     alt="Window before cleaning"
                                     fill
                                     className="object-cover"
                                 />
-                                <div
-                                    className="absolute bottom-0 left-0 right-0 py-1.5 text-center text-white text-sm font-bold"
-                                    style={{ background: "rgba(0,0,0,0.45)" }}
-                                >
+
+                                <div className="absolute bottom-0 left-0 right-0 py-1.5 text-center text-white text-sm font-bold bg-black/45">
                                     BEFORE
                                 </div>
                             </div>
 
-                            {/* Divider */}
-                            <div className="w-0.5 bg-white z-10" />
+                            {/* Divider (only desktop) */}
+                            <div className="hidden md:block w-0.5 bg-white z-10" />
 
                             {/* After */}
-                            <div className="relative flex-1 overflow-hidden">
+                            <div className="relative w-full md:flex-1 h-full overflow-hidden">
                                 <Image
                                     src="https://res.cloudinary.com/dr8tjrszy/image/upload/v1772792157/after-window-cleaning_fs1hhz.jpg"
                                     alt="Window after cleaning — crystal clear"
                                     fill
                                     className="object-cover"
                                 />
-                                <div
-                                    className="absolute bottom-0 left-0 right-0 py-1.5 text-center text-white text-sm font-bold"
-                                    style={{ background: "rgba(0,0,0,0.35)" }}
-                                >
+
+                                <div className="absolute bottom-0 left-0 right-0 py-1.5 text-center text-white text-sm font-bold bg-black/35">
                                     AFTER ✨
                                 </div>
                             </div>
+
                         </div>
                     </div>
                 </div>
@@ -321,8 +311,7 @@ export default function LandingPage() {
                         className="cursor-pointer hover:underline leading-5"
                         target="_blank"
                         href={"https://www.google.com/maps/place/Aspect+Window+Cleaning/@-31.9806823,115.7929967,17z/data=!3m1!4b1!4m6!3m5!1s0xafbbd7c3dd591183:0xe683c8a7e7212664!8m2!3d-31.9806823!4d115.7929967!16s%2Fg%2F11x1zxrlv3?entry=ttu&g_ep=EgoyMDI2MDMwMi4wIKXMDSoASAFQAw%3D%3D"}>
-                        <span className="text-sm text-gray-500 font-medium">5.0 </span>
-                        <span className="text-sm text-gray-500 font-medium">Google Reviews</span>
+                        <span className="text-sm text-gray-500 font-medium">5.0 Google Reviews</span>
                     </Link>
                 </div>
                 <div className="flex flex-col gap-3">

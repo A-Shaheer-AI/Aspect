@@ -86,7 +86,7 @@ export default function ServicesPage() {
     return (
         <main className="bg-brand-snow min-h-screen ">
             {/* Hero */}
-            <section className="bg-brand-navy text-white py-24">
+            <section className="bg-brand-navy text-white pt-32 pb-24">
                 <div className="max-w-5xl mx-auto px-4 text-center">
                     <h1 className="text-4xl md:text-5xl lg:text-6xl font-heading font-bold text-white mb-6">
                         Our Cleaning <span className="text-action-gold">Services</span>

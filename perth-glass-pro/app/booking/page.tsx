@@ -21,7 +21,7 @@ export default function BookingPage() {
     return (
         <main className="min-h-screen bg-gradient-to-b from-brand-navy to-brand-navy/95">
             {/* Header */}
-            <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 pt-24 pb-8">
+            <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 pt-26 pb-24">
                 <Link
                     href="/"
                     className="inline-flex items-center gap-2 text-white/70 hover:text-white transition-colors mb-6"

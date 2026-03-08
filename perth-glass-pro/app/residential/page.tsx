@@ -39,7 +39,7 @@ export default function ResidentialPage() {
         <>
             <main className="min-h-screen bg-white">
                 {/* Hero */}
-                <section className="bg-brand-navy text-white py-24">
+                <section className="bg-brand-navy text-white pt-32 pb-24">
                     <div className="max-w-5xl mx-auto px-4 text-center">
                         <div className="inline-flex items-center gap-2 bg-white/10 border border-white/20 rounded-full px-4 py-2 mb-6">
                             <Home className="w-5 h-5 text-action-gold" />
