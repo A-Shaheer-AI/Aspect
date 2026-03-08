@@ -1,6 +1,6 @@
 import type { Metadata } from "next";
 import { Montserrat, Inter } from "next/font/google";
-import { GoogleAnalytics } from "@next/third-parties/google";
+import { GoogleTagManager } from "@next/third-parties/google";
 import { SpeedInsights } from "@vercel/speed-insights/next";
 import "./globals.css";
 import Navbar from "@/components/Navbar";
@@ -122,10 +122,9 @@ export default function RootLayout({
                 <Footer /> */}
                 <ConditionalLayout children={children} />
 
-                {/* Analytics - loaded after interactive */}
-                {process.env.NEXT_PUBLIC_GA_ID && (
-                    <GoogleAnalytics gaId={process.env.NEXT_PUBLIC_GA_ID} />
-                )}
+                {/* Tag Manager - loaded after interactive */}
+                
+                <GoogleTagManager gtmId="GTM-KFLNCF23" />
                 <Clarity />
                 <SpeedInsights />
             </body>
