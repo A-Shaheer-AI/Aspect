@@ -3,6 +3,8 @@ import { notFound } from "next/navigation";
 import Link from "next/link";
 import { ArrowRight, CheckCircle2, Shield, Sparkles, Clock } from "lucide-react";
 import AreasServed from "@/components/AreasServed";
+import { motion } from "framer-motion";
+import BeforeAfter from "@/components/BeforeAfterSection";
 
 const SERVICES_DATA: Record<string, {
     title: string;
@@ -176,6 +178,10 @@ export default async function ServicePage({ params }: { params: Promise<{ servic
                 </div>
             </section>
 
+            {data.title === "Pressure Washing" && (
+               <BeforeAfter/>
+            )}
+
             {/* Process */}
             <section className="py-16 bg-brand-snow">
                 <div className="max-w-5xl mx-auto px-4">
@@ -224,8 +230,12 @@ export default async function ServicePage({ params }: { params: Promise<{ servic
             {/* Final CTA */}
             <section className="bg-brand-navy text-white py-16">
                 <div className="max-w-3xl mx-auto px-4 text-center">
-                    <h2 className="text-3xl font-heading font-bold mb-4">Ready to Get Started?</h2>
-                    <p className="text-brand-water/80 mb-8">Contact us for a free quote on {data.title.toLowerCase()}.</p>
+                    <h2 className="text-3xl font-heading font-bold mb-4">
+                        Ready to Get Started?
+                    </h2>
+                    <p className="text-brand-water/80 mb-8">
+                    Contact us for a free quote on {data.title.toLowerCase()}.
+                    </p>
                     <Link href="/quote" className="inline-flex items-center gap-2 bg-action-gold text-brand-navy font-bold px-8 py-4 rounded-full text-lg hover:bg-action-gold/90">
                         Get Your Free Quote <ArrowRight className="w-5 h-5" />
                     </Link>

@@ -147,6 +147,7 @@ export default function Footer() {
                     {/* Contact */}
                     <div>
                         <h4 className="font-bold text-lg mb-4">Contact Us</h4>
+                        <h2 className="mb-5">Aspect window cleaning</h2>
                         <ul className="space-y-4">
                             <li>
                                 <a href={`tel:${BUSINESS.phoneRaw}`} className="flex items-center gap-3 text-gray-300 hover:text-action-gold transition-colors">

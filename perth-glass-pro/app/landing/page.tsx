@@ -1,14 +1,18 @@
 "use client";
 
 import { useState } from "react";
-import { Phone, Shield, Droplets, Zap, Building2, Star, CheckCircle2, BusIcon } from "lucide-react";
+import { Phone, Shield, Droplets, Zap, Building2, CheckCircle2, Star, MapPin, ArrowRight, Quote } from "lucide-react";
 import { BUSINESS } from "@/lib/config";
 import Link from "next/link";
 import Image from "next/image";
+import { motion } from "framer-motion";
+import MediaCarousel from "@/components/MediaCarousel ";
 
 export default function LandingPage() {
     const [formData, setFormData] = useState({ name: "", phone: "", suburb: "" });
     const [submitted, setSubmitted] = useState(false);
+    const [sliderPosition, setSliderPosition] = useState(50);
+    const [sliderPosition2, setSliderPosition2] = useState(50)
 
     const handleSubmit = () => {
         if (formData.name && formData.phone && formData.suburb) {
@@ -72,7 +76,7 @@ export default function LandingPage() {
             {/* ─── SECTION 1: HERO ─── */}
             <section
                 className="relative min-h-screen flex flex-col items-center justify-center px-5 pb-10 text-white bg-cover bg-center
-  bg-[linear-gradient(160deg,rgba(10,22,40,0.5)_0%,rgba(15,37,69,0.8)_60%,rgba(19,48,96,0.8)_100%),url('https://res.cloudinary.com/dr8tjrszy/image/upload/v1771960136/solar-pannel-cleaning_oxfoxx.jpg')]
+  bg-[linear-gradient(160deg,rgba(10,22,40,0.5)_0%,rgba(15,37,69,0.8)_60%,rgba(19,48,96,0.8)_100%),url('https://res.cloudinary.com/dr8tjrszy/image/upload/v1771960134/commercial-window-cleaning_gzkvaj.jpg')]
   md:bg-[linear-gradient(160deg,rgba(10,22,40,0.5)_0%,rgba(15,37,69,0.8)_60%,rgba(19,48,96,0.8)_100%),url('https://res.cloudinary.com/dr8tjrszy/image/upload/v1771960136/outside-windows-cleaning_lzp8fq.jpg')]"
             >
                 {/* Offer ribbon */}
@@ -205,6 +209,8 @@ export default function LandingPage() {
                 </div>
             </section>
 
+            <MediaCarousel/>
+
             {/* ─── SECTION 3: PROOF GALLERY ─── */}
             <section className="max-w-5xl mx-auto px-5 py-8">
                 <h2
@@ -228,43 +234,109 @@ export default function LandingPage() {
                         </video>
                     </div>
 
-                    {/* Before & After */}
-                    <div className="w-full h-[420px] overflow-x-auto md:overflow-hidden rounded-2xl scroll-smooth scrollbar-hide">
-                        <div className="flex h-full w-[200%] md:w-full">
+                    <div className="grid lg:grid-cols-2 gap-12 items-start">
+                        {/* Before/After Slider */}
+                        <motion.div
+                            initial={{ opacity: 0, x: -20 }}
+                            whileInView={{ opacity: 1, x: 0 }}
+                            viewport={{ once: true }}
+                            className="relative aspect-[4/3] rounded-2xl overflow-hidden shadow-xl bg-slate-200"
+                        >
+                            {/* After Image (Background) */}
+                            <div
+                                className="absolute inset-0 bg-cover bg-center"
+                                style={{ backgroundImage: `url('https://res.cloudinary.com/dr8tjrszy/image/upload/v1771960142/WhatsApp_Image_2026-02-22_at_8.48.02_PM_hzrubr.jpg')` }}
+                            />
 
-                            {/* Before */}
-                            <div className="relative w-full md:flex-1 h-full overflow-hidden">
-                                <Image
-                                    src="https://res.cloudinary.com/dr8tjrszy/image/upload/v1772792155/aspect-before-window-cleaning_zfr8ae.jpg"
-                                    alt="Window before cleaning"
-                                    fill
-                                    className="object-cover"
-                                />
+                            {/* Before Image (Foreground, clipped) */}
+                            <div
+                                className="absolute inset-0 bg-cover bg-center border-r-2 border-white"
+                                style={{
+                                    backgroundImage: `url('https://res.cloudinary.com/dr8tjrszy/image/upload/v1771960144/WhatsApp_Image_2026-02-22_at_8.48.03_PM_vtb2tn.jpg')`,
+                                    clipPath: `inset(0 0 0 ${sliderPosition}%)`, // This will clip the "Before" image based on slider
+                                }}
+                            />
 
-                                <div className="absolute bottom-0 left-0 right-0 py-1.5 text-center text-white text-sm font-bold bg-black/45">
-                                    BEFORE
-                                </div>
+                            {/* Label Badge */}
+                            <div className="absolute top-4 left-4 bg-black/50 text-white text-xs px-2 py-1 rounded backdrop-blur-sm">
+                                Before
+                            </div>
+                            <div className="absolute top-4 right-4 bg-black/50 text-white text-xs px-2 py-1 rounded backdrop-blur-sm">
+                                After
                             </div>
 
-                            {/* Divider (only desktop) */}
-                            <div className="hidden md:block w-0.5 bg-white z-10" />
-
-                            {/* After */}
-                            <div className="relative w-full md:flex-1 h-full overflow-hidden">
-                                <Image
-                                    src="https://res.cloudinary.com/dr8tjrszy/image/upload/v1772792157/after-window-cleaning_fs1hhz.jpg"
-                                    alt="Window after cleaning — crystal clear"
-                                    fill
-                                    className="object-cover"
+                            {/* Slider Control */}
+                            <div className="absolute inset-0 flex items-center">
+                                <input
+                                    type="range"
+                                    min="0"
+                                    max="100"
+                                    value={sliderPosition}
+                                    onChange={(e) => setSliderPosition(Number(e.target.value))}
+                                    className="w-full h-full opacity-0 cursor-ew-resize z-10"
                                 />
-
-                                <div className="absolute bottom-0 left-0 right-0 py-1.5 text-center text-white text-sm font-bold bg-black/35">
-                                    AFTER ✨
+                                <div
+                                    className="absolute top-0 bottom-0 w-1 bg-white shadow-lg pointer-events-none"
+                                    style={{ left: `${sliderPosition}%` }}
+                                >
+                                    <div className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-10 h-10 bg-white rounded-full shadow-lg flex items-center justify-center">
+                                        <span className="text-brand-navy text-xs font-bold">⟷</span>
+                                    </div>
                                 </div>
                             </div>
+                        </motion.div>
 
-                        </div>
+                        <motion.div
+                            initial={{ opacity: 0, x: -20 }}
+                            whileInView={{ opacity: 1, x: 0 }}
+                            viewport={{ once: true }}
+                            className="relative aspect-[4/3] rounded-2xl overflow-hidden shadow-xl bg-slate-200"
+                        >
+                            {/* After Image (Background) */}
+                            <div
+                                className="absolute inset-0 bg-cover bg-center"
+                                style={{ backgroundImage: `url('https://res.cloudinary.com/dr8tjrszy/image/upload/v1772792157/after-window-cleaning_fs1hhz.jpg')` }}
+                            />
+
+                            {/* Before Image (Foreground, clipped) */}
+                            <div
+                                className="absolute inset-0 bg-cover bg-center border-r-2 border-white"
+                                style={{
+                                    backgroundImage: `url('https://res.cloudinary.com/dr8tjrszy/image/upload/v1772792155/aspect-before-window-cleaning_zfr8ae.jpg')`,
+                                    clipPath: `inset(0 0 0 ${sliderPosition2}%)`,
+                                }}
+                            />
+
+                            {/* Label Badge */}
+                            <div className="absolute top-4 left-4 bg-black/50 text-white text-xs px-2 py-1 rounded backdrop-blur-sm">
+                                Before
+                            </div>
+                            <div className="absolute top-4 right-4 bg-black/50 text-white text-xs px-2 py-1 rounded backdrop-blur-sm">
+                                After
+                            </div>
+
+                            {/* Slider Control */}
+                            <div className="absolute inset-0 flex items-center">
+                                <input
+                                    type="range"
+                                    min="0"
+                                    max="100"
+                                    value={sliderPosition2}
+                                    onChange={(e) => setSliderPosition2(Number(e.target.value))}
+                                    className="w-full h-full opacity-0 cursor-ew-resize z-10"
+                                />
+                                <div
+                                    className="absolute top-0 bottom-0 w-1 bg-white shadow-lg pointer-events-none"
+                                    style={{ left: `${sliderPosition2}%` }}
+                                >
+                                    <div className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-10 h-10 bg-white rounded-full shadow-lg flex items-center justify-center">
+                                        <span className="text-brand-navy text-xs font-bold">⟷</span>
+                                    </div>
+                                </div>
+                            </div>
+                        </motion.div>
                     </div>
+
                 </div>
 
             </section>
