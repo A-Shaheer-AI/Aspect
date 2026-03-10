@@ -39,7 +39,7 @@ const MAIN_SERVICES = [
         description: "High-pressure driveway and exterior pressure cleaning services in Perth. We remove stubborn stains, moss, algae, and surface dirt to restore driveways, pavers, patios, and   building facades.",
         icon: Droplets,
         features: ["Driveways & Paving", "Building Washdowns", "Soft Washing", "Stain Removal"],
-        link: "/services/pressure-cleaning",
+        link: "/services/pressure-washing",
     },
 ];
 
