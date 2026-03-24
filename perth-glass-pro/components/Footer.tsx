@@ -32,7 +32,8 @@ export default function Footer() {
                             {BUSINESS.name}
                         </h3>
                         <p className="text-gray-400 text-xs mb-3">
-                            Perth&apos;s window cleaning specialists
+                            Perth&apos;s professional precision window cleaning specialists. Safe, reliable residential &
+                            commercial window cleaning services across the metro area.
                         </p>
                         <div className="flex flex-col gap-2 text-sm">
                             <a href={`tel:${BUSINESS.phoneRaw}`} className="flex items-center gap-2 text-gray-300 hover:text-action-gold">

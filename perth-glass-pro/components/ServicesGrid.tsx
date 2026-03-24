@@ -5,6 +5,7 @@ import Link from "next/link";
 import { ArrowUpRight } from "lucide-react";
 
 export default function ServicesGrid() {
+
     const services = [
         {
             id: "residential",
@@ -26,7 +27,7 @@ export default function ServicesGrid() {
             id: "pressure",
             title: "Pressure Cleaning",
             subtext: "Driveways, pavers & exterior pressure cleaning. Soft washing available.",
-            link: "/services/pressure-cleaning",
+            link: "/services/pressure-washing",
             image: "https://res.cloudinary.com/dr8tjrszy/image/upload/v1771960122/indoor-cleaning_ioqiqq.jpg",
             className: "md:col-span-1 md:row-span-1",
         },
