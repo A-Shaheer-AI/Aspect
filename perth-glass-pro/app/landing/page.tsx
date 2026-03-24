@@ -5,16 +5,29 @@ import { Phone, Shield, Droplets, Zap, Building2, CheckCircle2, Star, MapPin, Ar
 import { BUSINESS } from "@/lib/config";
 import Link from "next/link";
 import Image from "next/image";
-import { motion } from "framer-motion";
 import MediaCarousel from "@/components/MediaCarousel ";
+import { sendLeadEmail } from "../actions/send-email";
+import BeforeAfterSlider from "@/components/BeforeAfterSlider";
 
 export default function LandingPage() {
+    const [formModalOpen, setFormModalOpen] = useState(false);
     const [formData, setFormData] = useState({ name: "", phone: "", suburb: "" });
     const [submitted, setSubmitted] = useState(false);
-    const [sliderPosition, setSliderPosition] = useState(50);
-    const [sliderPosition2, setSliderPosition2] = useState(50)
 
-    const handleSubmit = () => {
+    const handleSubmit = async () => {
+        try {
+            const result = await sendLeadEmail({
+                name: formData.name,
+                phone: formData.phone,
+                suburb: formData.suburb
+            })
+            if (result.success) {
+                setSubmitted(true)
+            }
+        } catch (error) {
+            console.log(error);
+        }
+
         if (formData.name && formData.phone && formData.suburb) {
             setSubmitted(true);
         }
@@ -73,16 +86,73 @@ export default function LandingPage() {
 
     return (
         <>
+
+            {formModalOpen && (
+                <>
+                    <div className="fixed inset-0 z-50 bg-black/50 backdrop-blur-sm flex items-center justify-center px-4 min-h-screen">
+
+                        {/* Form */}
+                        <div
+                            className="fade-up w-full max-w-sm rounded-2xl p-4 bg-black/50"
+                            style={{ border: "1px solid rgba(255,255,255,0.14)" }}
+                        >
+                            <p className="text-center text-sm text-blue-100 mb-3 font-medium">
+                                Spring Offer 15% Off Applied
+                            </p>
+                            <button
+                                onClick={() => setFormModalOpen(false)}
+                                className="absolute top-3 right-3 text-white text-lg font-bold cursor-pointer"
+                            >
+                                ✕
+                            </button>
+                            {submitted ? (
+                                <div className="flex flex-col items-center gap-2 py-3">
+                                    <CheckCircle2 className="w-8 h-8 text-green-400" />
+                                    <p className="text-white font-semibold text-center">
+                                        Got it! We'll text you shortly.
+                                    </p>
+                                </div>
+                            ) : (
+                                <div className="flex flex-col gap-2">
+                                    {[
+                                        { key: "name", placeholder: "Your Name" },
+                                        { key: "phone", placeholder: "Phone Number" },
+                                        { key: "suburb", placeholder: "Suburb" },
+                                    ].map((f) => (
+                                        <input
+                                            key={f.key}
+                                            type="text"
+                                            placeholder={f.placeholder}
+                                            value={formData[f.key as keyof typeof formData]}
+                                            onChange={(e) => setFormData({ ...formData, [f.key]: e.target.value })}
+                                            className="w-full rounded-lg px-4 py-3 text-sm text-gray-900 outline-none"
+                                            style={{ background: "rgba(255,255,255,0.92)" }}
+                                        />
+                                    ))}
+                                    <button
+                                        onClick={handleSubmit}
+                                        className="cursor-pointer w-full rounded-lg py-3 text-sm font-bold mt-1"
+                                        style={{ background: "#f0a500", color: "#0a1628" }}
+                                    >
+                                        Get a Fast Text Quote →
+                                    </button>
+                                </div>
+                            )}
+                        </div>
+                    </div>
+                </>
+            )}
+
             {/* ─── SECTION 1: HERO ─── */}
             <section
                 className="relative min-h-screen flex flex-col items-center justify-center px-5 pb-10 text-white bg-cover bg-center
-  bg-[linear-gradient(160deg,rgba(10,22,40,0.5)_0%,rgba(15,37,69,0.8)_60%,rgba(19,48,96,0.8)_100%),url('https://res.cloudinary.com/dr8tjrszy/image/upload/v1771960134/commercial-window-cleaning_gzkvaj.jpg')]
+  bg-[linear-gradient(160deg,rgba(10,22,40,0.5)_0%,rgba(15,37,69,0.8)_60%,rgba(19,48,96,0.8)_100%),url('https://res.cloudinary.com/dr8tjrszy/image/upload/v1771960133/professional-windows-cleaning_mm5mvy.jpg')]
   md:bg-[linear-gradient(160deg,rgba(10,22,40,0.5)_0%,rgba(15,37,69,0.8)_60%,rgba(19,48,96,0.8)_100%),url('https://res.cloudinary.com/dr8tjrszy/image/upload/v1771960136/outside-windows-cleaning_lzp8fq.jpg')]"
             >
                 {/* Offer ribbon */}
                 <div
-                    className="fade-up fade-up-1 mb-5 rounded-full px-4 py-1.5 text-[10px] md:text-xs font-semibold tracking-wide uppercase"
-                    style={{ background: "#f0a500", color: "#0a1628" }}
+                    onClick={() => setFormModalOpen(true)}
+                    className="fade-up fade-up-1 mb-5 rounded-full px-4 py-1.5 text-xs md:text-sm font-semibold tracking-wide uppercase bg-[#f0a500] text-[#0a1628] cursor-pointer"
                 >
                     Spring Offer — 15% Off First Clean When You Book This Week
                 </div>
@@ -209,7 +279,7 @@ export default function LandingPage() {
                 </div>
             </section>
 
-            <MediaCarousel/>
+            <MediaCarousel />
 
             {/* ─── SECTION 3: PROOF GALLERY ─── */}
             <section className="max-w-5xl mx-auto px-5 py-8">
@@ -236,105 +306,18 @@ export default function LandingPage() {
 
                     <div className="grid lg:grid-cols-2 gap-12 items-start">
                         {/* Before/After Slider */}
-                        <motion.div
-                            initial={{ opacity: 0, x: -20 }}
-                            whileInView={{ opacity: 1, x: 0 }}
-                            viewport={{ once: true }}
-                            className="relative aspect-[4/3] rounded-2xl overflow-hidden shadow-xl bg-slate-200"
-                        >
-                            {/* After Image (Background) */}
-                            <div
-                                className="absolute inset-0 bg-cover bg-center"
-                                style={{ backgroundImage: `url('https://res.cloudinary.com/dr8tjrszy/image/upload/v1771960142/WhatsApp_Image_2026-02-22_at_8.48.02_PM_hzrubr.jpg')` }}
-                            />
+                        <BeforeAfterSlider
+                            afterImage="https://res.cloudinary.com/dr8tjrszy/image/upload/v1774345158/IMG_9593_1_2_b98bl5.png"
+                            beforeImage="https://res.cloudinary.com/dr8tjrszy/image/upload/v1771960144/WhatsApp_Image_2026-02-22_at_8.48.03_PM_vtb2tn.jpg"
+                            initial={50}
+                        />
 
-                            {/* Before Image (Foreground, clipped) */}
-                            <div
-                                className="absolute inset-0 bg-cover bg-center border-r-2 border-white"
-                                style={{
-                                    backgroundImage: `url('https://res.cloudinary.com/dr8tjrszy/image/upload/v1771960144/WhatsApp_Image_2026-02-22_at_8.48.03_PM_vtb2tn.jpg')`,
-                                    clipPath: `inset(0 0 0 ${sliderPosition}%)`, // This will clip the "Before" image based on slider
-                                }}
-                            />
+                        <BeforeAfterSlider
+                            afterImage="https://res.cloudinary.com/dr8tjrszy/image/upload/v1772792155/aspect-before-window-cleaning_zfr8ae.jpg"
+                            beforeImage="https://res.cloudinary.com/dr8tjrszy/image/upload/v1772792157/after-window-cleaning_fs1hhz.jpg"
+                            initial={50}
+                        />
 
-                            {/* Label Badge */}
-                            <div className="absolute top-4 left-4 bg-black/50 text-white text-xs px-2 py-1 rounded backdrop-blur-sm">
-                                Before
-                            </div>
-                            <div className="absolute top-4 right-4 bg-black/50 text-white text-xs px-2 py-1 rounded backdrop-blur-sm">
-                                After
-                            </div>
-
-                            {/* Slider Control */}
-                            <div className="absolute inset-0 flex items-center">
-                                <input
-                                    type="range"
-                                    min="0"
-                                    max="100"
-                                    value={sliderPosition}
-                                    onChange={(e) => setSliderPosition(Number(e.target.value))}
-                                    className="w-full h-full opacity-0 cursor-ew-resize z-10"
-                                />
-                                <div
-                                    className="absolute top-0 bottom-0 w-1 bg-white shadow-lg pointer-events-none"
-                                    style={{ left: `${sliderPosition}%` }}
-                                >
-                                    <div className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-10 h-10 bg-white rounded-full shadow-lg flex items-center justify-center">
-                                        <span className="text-brand-navy text-xs font-bold">⟷</span>
-                                    </div>
-                                </div>
-                            </div>
-                        </motion.div>
-
-                        <motion.div
-                            initial={{ opacity: 0, x: -20 }}
-                            whileInView={{ opacity: 1, x: 0 }}
-                            viewport={{ once: true }}
-                            className="relative aspect-[4/3] rounded-2xl overflow-hidden shadow-xl bg-slate-200"
-                        >
-                            {/* After Image (Background) */}
-                            <div
-                                className="absolute inset-0 bg-cover bg-center"
-                                style={{ backgroundImage: `url('https://res.cloudinary.com/dr8tjrszy/image/upload/v1772792157/after-window-cleaning_fs1hhz.jpg')` }}
-                            />
-
-                            {/* Before Image (Foreground, clipped) */}
-                            <div
-                                className="absolute inset-0 bg-cover bg-center border-r-2 border-white"
-                                style={{
-                                    backgroundImage: `url('https://res.cloudinary.com/dr8tjrszy/image/upload/v1772792155/aspect-before-window-cleaning_zfr8ae.jpg')`,
-                                    clipPath: `inset(0 0 0 ${sliderPosition2}%)`,
-                                }}
-                            />
-
-                            {/* Label Badge */}
-                            <div className="absolute top-4 left-4 bg-black/50 text-white text-xs px-2 py-1 rounded backdrop-blur-sm">
-                                Before
-                            </div>
-                            <div className="absolute top-4 right-4 bg-black/50 text-white text-xs px-2 py-1 rounded backdrop-blur-sm">
-                                After
-                            </div>
-
-                            {/* Slider Control */}
-                            <div className="absolute inset-0 flex items-center">
-                                <input
-                                    type="range"
-                                    min="0"
-                                    max="100"
-                                    value={sliderPosition2}
-                                    onChange={(e) => setSliderPosition2(Number(e.target.value))}
-                                    className="w-full h-full opacity-0 cursor-ew-resize z-10"
-                                />
-                                <div
-                                    className="absolute top-0 bottom-0 w-1 bg-white shadow-lg pointer-events-none"
-                                    style={{ left: `${sliderPosition2}%` }}
-                                >
-                                    <div className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-10 h-10 bg-white rounded-full shadow-lg flex items-center justify-center">
-                                        <span className="text-brand-navy text-xs font-bold">⟷</span>
-                                    </div>
-                                </div>
-                            </div>
-                        </motion.div>
                     </div>
 
                 </div>
@@ -434,6 +417,17 @@ export default function LandingPage() {
                 </Link>
             </section>
 
+            {/* stricky CTA */}
+            <div className="fixed bottom-4 left-0 w-full flex justify-center z-50 px-4">
+                <Link
+                    href={`tel:${BUSINESS.phoneRaw}`}
+                    className="w-full max-w-sm flex items-center justify-center gap-3 rounded-xl py-4 text-sm md:text-lg font-bold shadow-lg"
+                    style={{ background: "#22c55e", color: "#fff", boxShadow: "0 4px 24px rgba(34,197,94,0.35)" }}
+                >
+                    <Phone className="w-5 h-5" fill="white" />
+                    Call {BUSINESS.phoneRaw} for Instant Quote
+                </Link>
+            </div>
         </>
     );
 }

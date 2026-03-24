@@ -4,6 +4,7 @@ import { useState } from "react";
 import Link from "next/link";
 import { motion } from "framer-motion";
 import { Star, MapPin, ArrowRight, Quote } from "lucide-react";
+import BeforeAfterSlider from "./BeforeAfterSlider";
 
 export default function ResultsAndReviews() {
     const [sliderPosition, setSliderPosition] = useState(50);
@@ -45,57 +46,12 @@ export default function ResultsAndReviews() {
                 </div>
 
                 <div className="grid lg:grid-cols-2 gap-12 items-start">
-                    {/* Before/After Slider */}
-                    <motion.div
-                        initial={{ opacity: 0, x: -20 }}
-                        whileInView={{ opacity: 1, x: 0 }}
-                        viewport={{ once: true }}
-                        className="relative aspect-[4/3] rounded-2xl overflow-hidden shadow-xl bg-slate-200"
-                    >
-                        {/* After Image (Background) */}
-                        <div
-                            className="absolute inset-0 bg-cover bg-center"
-                            style={{ backgroundImage: `url('https://res.cloudinary.com/dr8tjrszy/image/upload/v1772800983/after-cleaning-street_lhtqux.jpg')` }}
-                        />
 
-                        {/* Before Image (Foreground, clipped) */}
-                        <div
-                            className="absolute inset-0 bg-cover bg-center border-r-2 border-white"
-                            style={{
-                                backgroundImage: `url('https://res.cloudinary.com/dr8tjrszy/image/upload/v1772967205/street-before-cleaning_iupbdq.jpg')`,
-                                clipPath: `inset(0 0 0 ${sliderPosition}%)`, // This will clip the "Before" image based on slider
-                            }}
-                        />
-
-                        {/* Label Badge */}
-                        <div className="absolute top-4 left-4 bg-black/50 text-white text-xs px-2 py-1 rounded backdrop-blur-sm">
-                            Before
-                        </div>
-                        <div className="absolute top-4 right-4 bg-black/50 text-white text-xs px-2 py-1 rounded backdrop-blur-sm">
-                            After
-                        </div>
-
-                        {/* Slider Control */}
-                        <div className="absolute inset-0 flex items-center">
-                            <input
-                                type="range"
-                                min="0"
-                                max="100"
-                                value={sliderPosition}
-                                onChange={(e) => setSliderPosition(Number(e.target.value))}
-                                className="w-full h-full opacity-0 cursor-ew-resize z-10"
-                            />
-                            <div
-                                className="absolute top-0 bottom-0 w-1 bg-white shadow-lg pointer-events-none"
-                                style={{ left: `${sliderPosition}%` }}
-                            >
-                                <div className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-10 h-10 bg-white rounded-full shadow-lg flex items-center justify-center">
-                                    <span className="text-brand-navy text-xs font-bold">⟷</span>
-                                </div>
-                            </div>
-                        </div>
-                    </motion.div>
-
+                    <BeforeAfterSlider
+                        afterImage="https://res.cloudinary.com/dr8tjrszy/image/upload/v1774345158/IMG_9593_1_2_b98bl5.png"
+                        beforeImage="https://res.cloudinary.com/dr8tjrszy/image/upload/v1771960144/WhatsApp_Image_2026-02-22_at_8.48.03_PM_vtb2tn.jpg"
+                        initial={50}
+                    />
 
                     {/* Reviews Column */}
                     <div className="space-y-6">
@@ -143,7 +99,7 @@ export default function ResultsAndReviews() {
                             target="_blank"
                             className="inline-flex items-center gap-2 text-brand-navy font-medium hover:text-action-gold transition-colors"
                         >
-                            Read all 200+ reviews on Google
+                            Read all 20+ reviews on Google
                             <ArrowRight className="w-4 h-4" />
                         </Link>
                     </div>

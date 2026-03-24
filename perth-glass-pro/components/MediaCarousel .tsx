@@ -22,7 +22,7 @@ export default function MediaCarousel() {
     },
     {
       type: "image",
-      src: "https://res.cloudinary.com/dr8tjrszy/image/upload/v1771960144/WhatsApp_Image_2026-02-22_at_8.48.03_PM_vtb2tn.jpg",
+      src: "https://res.cloudinary.com/dr8tjrszy/image/upload/v1772792157/after-window-cleaning_fs1hhz.jpg",
     },
     {
       type: "image",
@@ -40,6 +40,10 @@ export default function MediaCarousel() {
       type: "image",
       src: "https://res.cloudinary.com/dr8tjrszy/image/upload/v1771960136/outside-windows-cleaning_lzp8fq.jpg",
     },
+    {
+      type:"image",
+      src:"https://res.cloudinary.com/dr8tjrszy/image/upload/v1771960135/outside-villa-window-cleaning_yijb3b.jpg"
+    }
   ];
 
   return (

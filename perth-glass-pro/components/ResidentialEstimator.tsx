@@ -153,6 +153,18 @@ export default function ResidentialEstimator() {
         setShowSuggestions(false);
     };
 
+    const handleSubmitOnSecondStep = async () => {
+        try {
+            const result = await sendLeadEmail({
+                name: formData.name,
+                phone: formData.phone,
+                suburb: formData.suburb,
+            });
+        } catch (error) {
+            console.error("Submission error:", error);
+        }
+    }
+
     const handleSubmitRequest = async () => {
         setIsSubmitting(true);
         setSubmissionError(null);
@@ -266,7 +278,7 @@ export default function ResidentialEstimator() {
                             <button
                                 onClick={nextStep}
                                 disabled={!formData.date && !formData.isFlexible}
-                                className="w-full bg-action-gold text-brand-navy font-bold h-14 text-lg rounded-xl shadow-lg hover:brightness-105 active:scale-95 disabled:opacity-50 disabled:cursor-not-allowed transition-all flex items-center justify-center gap-2 mt-2"
+                                className="w-full bg-action-gold text-brand-navy font-bold h-14 text-lg rounded-xl shadow-lg hover:brightness-105 active:scale-95 disabled:opacity-50 disabled:cursor-not-allowed transition-all flex items-center justify-center gap-2 mt-2 cursor-pointer"
                             >
                                 Next Step <ArrowRight className="w-5 h-5" />
                             </button>
@@ -325,9 +337,12 @@ export default function ResidentialEstimator() {
                             </div>
 
                             <button
-                                onClick={nextStep}
+                                onClick={() => {
+                                    nextStep();
+                                    handleSubmitOnSecondStep();
+                                }}
                                 disabled={!formData.name || !formData.phone || !formData.suburb}
-                                className="w-full bg-action-gold text-brand-navy font-bold h-14 text-lg rounded-xl shadow-lg hover:brightness-105 active:scale-95 disabled:opacity-50 disabled:cursor-not-allowed transition-all flex items-center justify-center gap-2 mt-2"
+                                className="w-full bg-action-gold text-brand-navy font-bold h-14 text-lg rounded-xl shadow-lg hover:brightness-105 active:scale-95 disabled:opacity-50 disabled:cursor-not-allowed transition-all flex items-center justify-center gap-2 mt-2 cursor-pointer"
                             >
                                 Next Step <ArrowRight className="w-5 h-5" />
                             </button>
