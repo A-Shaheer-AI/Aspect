@@ -3,7 +3,7 @@
 // ===========================================
 
 // Cal.com Booking Links
-export const CAL_LINK = "aspect-window-cleaning/residential-quote";
+export const CAL_LINK = "aspect-window-cleaning/booking";
 export const CAL_COMMERCIAL_LINK = "aspect-window-cleaning/commercial-quote";
 
 // Cal.com Styling

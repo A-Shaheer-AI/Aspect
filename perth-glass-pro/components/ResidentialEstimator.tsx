@@ -122,12 +122,13 @@ export default function ResidentialEstimator() {
     }, [formData.date, formData.isFlexible]);
 
     // --- Cal.com Integration ---
+
     useEffect(() => {
         (async function () {
-            const cal = await getCalApi({});
-            cal("ui", { styles: { branding: { brandColor: "#D4AF37" } }, hideEventTypeDetails: false, layout: "month_view" });
+            const cal = await getCalApi({ "namespace": "booking" });
+            cal("ui", { "hideEventTypeDetails": false, "layout": "month_view" });
         })();
-    }, []);
+    }, [])
 
     // --- Handlers ---
     const nextStep = () => setStep((p) => p + 1);
@@ -568,12 +569,26 @@ export default function ResidentialEstimator() {
                                     </div>
                                 ) : (
                                     <div className="flex flex-col">
-                                        <h4 className="font-bold text-brand-navy mb-3">Select Your Slot:</h4>
+                                        <h4 className="font-bold text-brand-navy mb-3">
+                                            Select Your Slot:
+                                        </h4>
                                         <div className="rounded-xl overflow-hidden border border-slate-200 min-h-[300px]">
-                                            <Cal calLink={CAL_LINK} style={{ width: "100%", height: "350px", overflow: "auto" }} config={{ layout: "month_view" }} />
+                                            {/* <Cal
+                                                calLink={CAL_LINK}
+                                                style={{ width: "100%", height: "350px", overflow: "auto" }} config={{ layout: "month_view" }}
+                                            /> */}
+                                            <iframe
+                                                src="https://www.cal.eu/aspect-window-cleaning/booking"
+                                                width="100%"
+                                                height="600"
+                                                style={{ border: "none" }}
+                                                allow="camera; microphone"
+                                            ></iframe>
                                         </div>
                                         <div className="text-center mt-4">
-                                            <button className="text-sm text-brand-slate underline hover:text-action-gold transition-colors">Date unavailable? Request a squeeze-in.</button>
+                                            <button className="text-sm text-brand-slate underline hover:text-action-gold transition-colors">
+                                                Date unavailable? Request a squeeze-in.
+                                            </button>
                                         </div>
                                     </div>
                                 )}
