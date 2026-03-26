@@ -28,7 +28,7 @@ export default function ServicesGrid() {
             title: "Pressure Cleaning",
             subtext: "Driveways, pavers & exterior pressure cleaning. Soft washing available.",
             link: "/services/pressure-washing",
-            image: "https://res.cloudinary.com/dr8tjrszy/image/upload/v1771960122/indoor-cleaning_ioqiqq.jpg",
+            image: "https://res.cloudinary.com/dr8tjrszy/image/upload/v1774450638/pressure-cleaning-giff_ulc4tk.gif",
             className: "md:col-span-1 md:row-span-1",
         },
         {
@@ -63,12 +63,20 @@ export default function ServicesGrid() {
                         >
                             {/* Background Image */}
                             <div className="absolute inset-0 w-full h-full">
-                                <Image
-                                    src={service.image}
-                                    alt={service.title}
-                                    fill
-                                    className="object-cover transition-transform duration-700 group-hover:scale-110"
-                                />
+                                {service.id === "pressure" ? (
+                                    <img
+                                        src={service.image}
+                                        alt={service.title}
+                                        className="absolute inset-0 w-full h-full object-cover"
+                                    />
+                                ) : (
+                                    <Image
+                                        src={service.image}
+                                        alt={service.title}
+                                        fill
+                                        className="object-cover"
+                                    />
+                                )}
                             </div>
                             <div className="absolute inset-0 bg-black/40" />
                             <div className="absolute inset-0 p-6 flex flex-col justify-end">
@@ -93,6 +101,7 @@ export default function ServicesGrid() {
                                     src={service.image}
                                     alt={service.title}
                                     fill
+                                    unoptimized
                                     className="object-cover transition-transform duration-700 group-hover:scale-110"
                                 />
                             </div>

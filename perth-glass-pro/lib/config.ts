@@ -3,8 +3,8 @@
 // ===========================================
 
 // Cal.com Booking Links
-export const CAL_LINK = "aspect-window-cleaning/windowcleaning";
-export const CAL_COMMERCIAL_LINK = "aspect-window-cleaning/windowcleaning";
+export const CAL_LINK = "aspect-window-cleaning/booking";
+export const CAL_COMMERCIAL_LINK = "aspect-window-cleaning/commercial-quote";
 
 // Cal.com Styling
 export const CAL_BRAND_COLOR = "#D4AF37";
