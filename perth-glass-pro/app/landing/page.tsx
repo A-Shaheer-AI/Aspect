@@ -97,7 +97,7 @@ export default function LandingPage() {
                             style={{ border: "1px solid rgba(255,255,255,0.14)" }}
                         >
                             <p className="text-center text-sm text-blue-100 mb-3 font-medium">
-                                Spring Offer 15% Off Applied
+                                Spring Offer 15% Off Applied! Fill your details to Book Now!
                             </p>
                             <button
                                 onClick={() => setFormModalOpen(false)}
