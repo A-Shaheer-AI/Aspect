@@ -97,7 +97,7 @@ export default function LandingPage() {
                             style={{ border: "1px solid rgba(255,255,255,0.14)" }}
                         >
                             <p className="text-center text-sm text-blue-100 mb-3 font-medium">
-                                Spring Offer 15% Off Applied! Fill your details to Book Now!
+                                Spring Offer 15% Off Applied
                             </p>
                             <button
                                 onClick={() => setFormModalOpen(false)}
@@ -313,8 +313,8 @@ export default function LandingPage() {
                         />
 
                         <BeforeAfterSlider
-                            afterImage="https://res.cloudinary.com/dr8tjrszy/image/upload/v1772792155/aspect-before-window-cleaning_zfr8ae.jpg"
-                            beforeImage="https://res.cloudinary.com/dr8tjrszy/image/upload/v1772792157/after-window-cleaning_fs1hhz.jpg"
+                            afterImage="https://res.cloudinary.com/dr8tjrszy/image/upload/v1772792157/after-window-cleaning_fs1hhz.jpg"
+                            beforeImage="https://res.cloudinary.com/dr8tjrszy/image/upload/v1772792155/aspect-before-window-cleaning_zfr8ae.jpg"
                             initial={50}
                         />
 

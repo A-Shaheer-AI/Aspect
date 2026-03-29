@@ -137,6 +137,8 @@ export default function ResidentialEstimator() {
         setFormData((prev) => ({ ...prev, [field]: value }));
     };
 
+    console.log(formData.isFlexible)
+
     const handleSuburbChange = (e: React.ChangeEvent<HTMLInputElement>) => {
         const val = e.target.value;
         updateField("suburb", val);
@@ -161,9 +163,46 @@ export default function ResidentialEstimator() {
                 phone: formData.phone,
                 suburb: formData.suburb,
             });
+            if (result.success) {
+                console.log("successfully submited!")
+            }
         } catch (error) {
             console.error("Submission error:", error);
         }
+    }
+
+    const handleSubmitForNotFelxible = async () => {
+        try {
+            const result = await sendLeadEmail({
+                name: formData.name,
+                phone: formData.phone,
+                suburb: formData.suburb,
+                storeys: formData.storeys,
+                scope: formData.scope,
+                bedrooms: formData.bedrooms,
+                condition: formData.condition,
+                selectedTier: formData.selectedTier || undefined,
+                priceEstimate: calculateTotal(formData.selectedTier || "standard"),
+                isUrgent,
+                flexibleNotes: formData.flexibleNotes,
+                serviceType: "Residential Window Cleaning",
+            });
+            if (result.success) {
+                console.log("successfully submited form")
+            }
+        } catch (error) {
+            console.log("Submission failed", error);
+        }
+    }
+
+    const handleTierSelect = async (tier: string) => {
+        updateField("selectedTier", tier);
+
+        if (!formData.isFlexible) {
+            await handleSubmitForNotFelxible();
+        }
+
+        nextStep();
     }
 
     const handleSubmitRequest = async () => {
@@ -364,7 +403,7 @@ export default function ResidentialEstimator() {
                                     <button
                                         key={opt}
                                         onClick={() => updateField("storeys", opt)}
-                                        className={`flex-1 py-3 text-sm font-bold rounded-lg transition-all ${formData.storeys === opt ? "bg-white shadow-md text-brand-navy ring-1 ring-black/5" : "text-brand-slate hover:text-brand-navy hover:bg-white/50"
+                                        className={`flex-1 py-3 text-sm font-bold rounded-lg transition-all ${formData.storeys === opt ? "bg-white shadow-md text-brand-navy ring-1 ring-black/5" : "text-brand-slate hover:text-brand-navy hover:bg-white/50 cursor-pointer"
                                             }`}
                                     >
                                         {opt === "single" ? "Single Storey" : "Double Storey"}
@@ -378,7 +417,7 @@ export default function ResidentialEstimator() {
                                     <button
                                         key={opt}
                                         onClick={() => updateField("scope", opt)}
-                                        className={`flex-1 py-3 text-sm font-bold rounded-lg transition-all ${formData.scope === opt ? "bg-white shadow-md text-brand-navy ring-1 ring-black/5" : "text-brand-slate hover:text-brand-navy hover:bg-white/50"
+                                        className={`flex-1 py-3 text-sm font-bold rounded-lg transition-all ${formData.scope === opt ? "bg-white shadow-md text-brand-navy ring-1 ring-black/5" : "text-brand-slate hover:text-brand-navy hover:bg-white/50 cursor-pointer"
                                             }`}
                                     >
                                         {opt === "exterior" ? "Exterior Only" : "Inside & Out"}
@@ -392,14 +431,14 @@ export default function ResidentialEstimator() {
                                 <div className="flex items-center gap-4">
                                     <button
                                         onClick={() => updateField("bedrooms", Math.max(1, formData.bedrooms - 1))}
-                                        className="w-10 h-10 rounded-full bg-white shadow flex items-center justify-center font-bold text-lg hover:bg-slate-100 active:scale-95"
+                                        className="w-10 h-10 rounded-full bg-white shadow flex items-center justify-center font-bold text-lg hover:bg-slate-100 active:scale-95 cursor-pointer"
                                     >
                                         -
                                     </button>
                                     <span className="font-bold text-xl w-6 text-center">{formData.bedrooms}</span>
                                     <button
                                         onClick={() => updateField("bedrooms", formData.bedrooms + 1)}
-                                        className="w-10 h-10 rounded-full bg-white shadow flex items-center justify-center font-bold text-lg hover:bg-slate-100 active:scale-95"
+                                        className="w-10 h-10 rounded-full bg-white shadow flex items-center justify-center font-bold text-lg hover:bg-slate-100 active:scale-95 cursor-pointer"
                                     >
                                         +
                                     </button>
@@ -422,7 +461,7 @@ export default function ResidentialEstimator() {
 
                             <button
                                 onClick={nextStep}
-                                className="w-full bg-action-gold text-brand-navy font-bold h-14 text-lg rounded-xl shadow-lg hover:brightness-105 active:scale-95 transition-all flex items-center justify-center gap-2 mt-2"
+                                className="w-full bg-action-gold text-brand-navy font-bold h-14 text-lg rounded-xl shadow-lg hover:brightness-105 active:scale-95 transition-all flex items-center justify-center gap-2 mt-2 cursor-pointer"
                             >
                                 Get Quote <ArrowRight className="w-5 h-5" />
                             </button>
@@ -432,38 +471,41 @@ export default function ResidentialEstimator() {
                     {/* STEP 4: QUOTE CARDS */}
                     {step === 4 && (
                         <motion.div key="step4" variants={variants} initial="enter" animate="center" exit="exit" className="flex flex-col gap-4">
-                            <h2 className="text-2xl md:text-3xl font-heading font-bold text-brand-navy text-center">Select your service level</h2>
+                            <h2 className="text-2xl md:text-3xl font-heading font-bold text-brand-navy text-center">
+                                Select your service level
+                            </h2>
                             <p className="text-center text-brand-slate text-sm">*Prices are indicative only</p>
 
                             {/* Tier 1: Essential */}
                             <div
-                                onClick={() => {
-                                    updateField("selectedTier", "essential");
-                                    nextStep();
-                                }}
+                                onClick={() => handleTierSelect("essential")}
                                 className="relative p-5 rounded-2xl border-2 border-slate-200 cursor-pointer transition-all hover:scale-[1.02] active:scale-[0.98]"
                             >
                                 <div className="flex justify-between items-start mb-2">
                                     <h3 className="font-bold text-brand-navy text-lg">Essential Refresh</h3>
                                     <div className="text-right">
-                                        <span className="block font-bold text-2xl">${calculateTotal("essential")}</span>
-                                        <span className="text-xs text-brand-slate uppercase font-bold">+ GST</span>
+                                        <span className="block font-bold text-2xl">
+                                            ${calculateTotal("essential")}
+                                        </span>
+                                        <span className="text-xs text-brand-slate uppercase font-bold">
+                                            + GST
+                                        </span>
                                     </div>
                                 </div>
-                                <p className="text-sm text-brand-slate/80">Glass & Sills Only. Basic external wash.</p>
+                                <p className="text-sm text-brand-slate/80">
+                                    Glass & Sills Only. Basic external wash.
+                                </p>
                                 {isUrgent && (
                                     <div className="mt-2 text-xs text-orange-600 font-medium flex items-center gap-1 bg-orange-50 w-fit px-2 py-1 rounded">
-                                        <AlertCircle className="w-3 h-3" /> Includes Priority Fee
+                                        <AlertCircle className="w-3 h-3" />
+                                        Includes Priority Fee
                                     </div>
                                 )}
                             </div>
 
                             {/* Tier 2: Window Care - Running Light Border */}
                             <div
-                                onClick={() => {
-                                    updateField("selectedTier", "standard");
-                                    nextStep();
-                                }}
+                                onClick={() => handleTierSelect("standard")}
                                 className="relative p-5 rounded-2xl cursor-pointer transition-all hover:scale-[1.02] active:scale-[0.98] running-light-border"
                             >
                                 <span className="absolute -top-3 left-1/2 -translate-x-1/2 bg-action-gold text-brand-navy text-xs font-bold px-4 py-1.5 rounded-full shadow-sm z-10">
@@ -473,7 +515,9 @@ export default function ResidentialEstimator() {
                                     <h3 className="font-bold text-brand-navy text-lg">Window Care</h3>
                                     <div className="text-right">
                                         <span className="block font-bold text-2xl">${calculateTotal("standard")}</span>
-                                        <span className="text-xs text-brand-slate uppercase font-bold">+ GST</span>
+                                        <span className="text-xs text-brand-slate uppercase font-bold">
+                                            + GST
+                                        </span>
                                     </div>
                                 </div>
                                 <p className="text-sm text-brand-slate/80">Glass, Frames, Flyscreens & Sills. Most Popular.</p>
@@ -486,10 +530,7 @@ export default function ResidentialEstimator() {
 
                             {/* Tier 3: Window Revival - Glitter Effect */}
                             <div
-                                onClick={() => {
-                                    updateField("selectedTier", "premium");
-                                    nextStep();
-                                }}
+                                onClick={() => handleTierSelect("premium")}
                                 className="relative p-5 rounded-2xl border-2 border-brand-navy bg-brand-navy/5 cursor-pointer transition-all hover:scale-[1.02] active:scale-[0.98] overflow-hidden"
                             >
                                 {/* Sparkle Icon */}
@@ -524,7 +565,9 @@ export default function ResidentialEstimator() {
                                         <CheckCircle className="w-5 h-5 text-green-500" />
                                         {formData.selectedTier === "essential" ? "Essential Refresh" : formData.selectedTier === "standard" ? "Window Care" : "Window Revival"}
                                     </h3>
-                                    <span className="text-xs text-brand-slate bg-slate-200 px-2 py-1 rounded">Indicative Quote</span>
+                                    <span className="text-xs text-brand-slate bg-slate-200 px-2 py-1 rounded">
+                                        Indicative Quote
+                                    </span>
                                 </div>
                                 <p className="text-2xl font-bold text-brand-navy">
                                     ${calculateTotal(formData.selectedTier || "standard")}
@@ -545,7 +588,9 @@ export default function ResidentialEstimator() {
                             <div className="flex-grow">
                                 {formData.isFlexible ? (
                                     <div className="flex flex-col gap-4">
-                                        <p className="text-brand-slate">Since you're flexible, please let us know your preferred days or times, and we'll slot you in where it fits best.</p>
+                                        <p className="text-brand-slate">
+                                            Since you're flexible, please let us know your preferred days or times, and we'll slot you in where it fits best.
+                                        </p>
                                         <textarea
                                             placeholder="E.g. Mondays or Fridays work best for me..."
                                             value={formData.flexibleNotes}
@@ -555,7 +600,7 @@ export default function ResidentialEstimator() {
                                         <button
                                             onClick={handleSubmitRequest}
                                             disabled={isSubmitting}
-                                            className="w-full bg-brand-navy text-white font-bold h-14 rounded-xl shadow-lg hover:bg-brand-navy/90 text-lg uppercase tracking-wide disabled:opacity-50 disabled:cursor-not-allowed flex items-center justify-center gap-2"
+                                            className="w-full bg-brand-navy text-white font-bold h-14 rounded-xl shadow-lg hover:bg-brand-navy/90 text-lg uppercase tracking-wide disabled:opacity-50 disabled:cursor-not-allowed flex items-center justify-center gap-2 cursor-pointer"
                                         >
                                             {isSubmitting ? (
                                                 <>
@@ -604,7 +649,9 @@ export default function ResidentialEstimator() {
                             </div>
                             <div className="text-center">
                                 <h2 className="text-2xl font-heading font-bold text-brand-navy mb-2">Request Sent!</h2>
-                                <p className="text-brand-slate">We'll get back to you within 2 hours with a confirmed quote.</p>
+                                <p className="text-brand-slate">
+                                    We'll get back to you within 2 hours with a confirmed quote.
+                                </p>
                             </div>
                             <div className="bg-brand-navy/5 p-4 rounded-xl border border-brand-navy/10 w-full max-w-sm">
                                 <p className="text-center text-brand-navy font-bold text-xl">
