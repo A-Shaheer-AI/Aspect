@@ -1,4 +1,9 @@
+# *
 User-agent: *
 Allow: /
-Disallow: /admin/
-Sitemap: https://www.aspectwindowcleaning.com.au/sitemap.xml
+
+# Host
+Host: https://aspectwindowcleaning.com.au
+
+# Sitemaps
+Sitemap: https://aspectwindowcleaning.com.au/sitemap.xml
