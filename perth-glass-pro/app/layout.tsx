@@ -74,7 +74,7 @@ export default function RootLayout({
                             "@context": "https://schema.org",
                             "@type": "LocalBusiness",
                             "name": "Aspect Window Cleaning",
-                            "image": "https://lh3.googleusercontent.com/a-/ALV-UjV-5gZ4BFgzd1apIBhuq0RjisT7eo8hy34MVv6Vq93sttJScNo=s265-w265-h265",
+                            "image": "https://res.cloudinary.com/dr8tjrszy/image/upload/v1772130850/white-logo_pzpxjk.png",
                             "@id": "https://aspectwindowcleaning.com.au/",
                             "url": "https://aspectwindowcleaning.com.au/",
                             "telephone": "+61426996192",
@@ -104,7 +104,8 @@ export default function RootLayout({
                                 "https://www.instagram.com/aspectwindowcleaningperth/",
                                 "https://www.tiktok.com/@aspect.window.cle",
                                 "https://aspectwindowcleaning.com.au/"
-                            ]
+                            ],
+                            "description": "Professional window cleaning in Perth. Residential and commercial high-reach specialists. Fully insured. 5-star rated."
                         })
                     }}
                 />
