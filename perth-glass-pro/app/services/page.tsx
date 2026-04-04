@@ -1,6 +1,6 @@
 import { Metadata } from "next";
 import Link from "next/link";
-import { ArrowRight, CheckCircle, Home, Building2, Sun, Droplets } from "lucide-react";
+import { ArrowRight, CheckCircle, Home, Building2, Sun, Droplets,CloudRain } from "lucide-react";
 import ContactSection from "@/components/ContactSection";
 
 export const metadata: Metadata = {
@@ -15,7 +15,7 @@ const MAIN_SERVICES = [
         description: "Complete interior and exterior window cleaning for Perth homes of all sizes. Includes flyscreen cleaning, track vacuuming, and frame detailing.We treat your home with care and respect.",
         icon: Home,
         features: ["Interior & Exterior", "Flyscreens & Tracks", "Frame Cleaning", "Double Story Homes"],
-        link: "/residential",
+        link: "/services/residential-window-cleaning",
     },
     {
         id: "commercial",
@@ -23,7 +23,7 @@ const MAIN_SERVICES = [
         description: "Professional commercial window cleaning for offices, retail shops, and strata properties across Perth. We use water-fed poles for high-reach access and comply with all safety regulations, including EWP services.",
         icon: Building2,
         features: ["Offices & Retail", "Strata Complexes", "High Reach (EWP)", "Fully Safety Compliant"],
-        link: "/services/window-cleaning",
+        link: "/services/commercial-window-cleaning",
     },
     {
         id: "solar",
@@ -40,6 +40,14 @@ const MAIN_SERVICES = [
         icon: Droplets,
         features: ["Driveways & Paving", "Building Washdowns", "Soft Washing", "Stain Removal"],
         link: "/services/pressure-washing",
+    },
+    {
+        id: "gutter",
+        title: "Gutter Cleaning",
+        description: "Professional gutter cleaning and maintenance to prevent water damage and protect your property. We remove leaves, debris, and blockages while checking for damage and ensuring proper water flow.",
+        icon: CloudRain, // or Shield, Filter, or any icon you prefer
+        features: ["Debris Removal", "Downpipe Clearing", "Damage Inspection", "Roof Valley Cleaning"],
+        link: "/services/gutter-cleaning",
     },
 ];
 
