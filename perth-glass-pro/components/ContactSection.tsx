@@ -23,7 +23,7 @@ export default function ContactSection() {
                     </div>
 
                     {/* MOBILE: 2x2 Grid */}
-                    <div className="grid grid-cols-2 gap-3 sm:hidden">
+                    <div className="grid grid-cols-1 gap-3 sm:hidden">
                         {/* Phone */}
                         <a
                             href={`tel:${BUSINESS.phoneRaw}`}
@@ -130,7 +130,8 @@ export default function ContactSection() {
             </section>
 
             {/* SEO Suburb List */}
-            <div className="mt-16 bg-pattern-squeegee rounded-3xl p-8 border border-slate-100/50">
+            {/* bg-pattern-squeegee */}
+            <div className="mt-16 rounded-3xl p-8 border border-slate-100/50">
                 <h3 className="text-center text-2xl font-heading font-bold text-brand-navy mb-10">
                     Proudly Serving All Perth Metro Areas
                 </h3>
@@ -186,9 +187,6 @@ export default function ContactSection() {
                     </Link>
                 </div>
 
-                <Link href="/">
-
-                </Link>
                 <div className="hidden sm:block text-center mt-12">
                     <Link
                         href="/locations"
