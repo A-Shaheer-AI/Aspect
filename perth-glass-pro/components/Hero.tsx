@@ -72,7 +72,7 @@ export default function Hero() {
                                 ))}
                             </div>
                             <Link
-                                className="cursor-pointer hover:underline leading-5"
+                                className="cursor-pointer leading-5"
                                 target="_blank"
                                 href={"https://www.google.com/maps/place/Aspect+Window+Cleaning/@-31.9806823,115.7929967,17z/data=!3m1!4b1!4m6!3m5!1s0xafbbd7c3dd591183:0xe683c8a7e7212664!8m2!3d-31.9806823!4d115.7929967!16s%2Fg%2F11x1zxrlv3?entry=ttu&g_ep=EgoyMDI2MDMwMi4wIKXMDSoASAFQAw%3D%3D"}>
                                 <span className="text-white font-bold">5.0</span>
