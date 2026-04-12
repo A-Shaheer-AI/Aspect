@@ -1,14 +1,13 @@
 "use client";
 
 import { useState } from "react";
-import { Phone, CheckCircle2, Star, Shield, Droplets, Zap, Building2, X } from "lucide-react";
+import { Phone, CheckCircle2, Star, Shield, Zap, Sun, ClipboardCheck, X } from "lucide-react";
 import { BUSINESS } from "@/lib/config";
 import Link from "next/link";
 import Image from "next/image";
 import BeforeAfterSlider from "@/components/BeforeAfterSlider";
 import { sendLeadEmail } from "../actions/send-email";
 import { trackFormCompleted } from "@/hooks/useGtm";
-
 
 /* ─────────────────────────────────────────
    LEAD FORM — shared by hero + modal
@@ -36,7 +35,7 @@ function LeadForm({
             <div className="flex flex-col items-center gap-3 py-6">
                 <CheckCircle2 className="w-10 h-10 text-green-400" />
                 <p className="font-bold text-center" style={{ color: dark ? "#fff" : "#07077E" }}>
-                    We'll text you shortly!
+                    We&apos;ll text you shortly!
                 </p>
                 <p className="text-sm text-center" style={{ color: dark ? "rgba(255,255,255,0.6)" : "#888" }}>
                     Usually within 60 minutes.
@@ -84,7 +83,7 @@ function LeadForm({
 /* ─────────────────────────────────────────
    PAGE
 ───────────────────────────────────────── */
-export default function WindowCleaningAdsPage() {
+export default function SolarPanelCleaningAdsPage() {
     const [modalOpen, setModalOpen] = useState(false);
     const [formData, setFormData] = useState({ name: "", phone: "", suburb: "" });
     const [submitted, setSubmitted] = useState(false);
@@ -107,10 +106,10 @@ export default function WindowCleaningAdsPage() {
     };
 
     const processSteps = [
-        { num: "01", title: "Call or Quote", body: "Call us or fill the form. We'll text a price within the hour." },
-        { num: "02", title: "We Confirm", body: "Pick a time that works. Same-week slots usually available." },
-        { num: "03", title: "We Clean", body: "Our team arrives on time and gets every pane streak-free." },
-        { num: "04", title: "You Enjoy", body: "Crystal-clear windows, guaranteed. Book again anytime." },
+        { num: "01", title: "Free Quote", body: "Share your panel count and address — we'll send a fast, transparent quote." },
+        { num: "02", title: "Book a Time", body: "Same-week availability across Perth. Pick a time that suits you." },
+        { num: "03", title: "We Clean", body: "Purified water and soft-brush equipment — every panel cleaned safely." },
+        { num: "04", title: "You Inspect", body: "We walk you through the results. Satisfied? Job done." },
     ];
 
     const googleReviews = [
@@ -164,19 +163,19 @@ export default function WindowCleaningAdsPage() {
                 </div>
             )}
 
-            {/* ─── SECTION 1: HERO ─── */}
+            {/* ─── SECTION 1: HERO — with background image ─── */}
             <section
-                className="relative min-h-screen flex flex-col items-center justify-center md:px-5 pb-10 text-white bg-cover bg-center
-  bg-[linear-gradient(160deg,rgba(10,22,40,0.5)_0%,rgba(15,37,69,0.8)_60%,rgba(19,48,96,0.8)_100%),url('https://res.cloudinary.com/dr8tjrszy/image/upload/v1771960133/professional-windows-cleaning_mm5mvy.jpg')]
-  md:bg-[linear-gradient(160deg,rgba(10,22,40,0.5)_0%,rgba(15,37,69,0.8)_60%,rgba(19,48,96,0.8)_100%),url('https://res.cloudinary.com/dr8tjrszy/image/upload/v1771960136/outside-windows-cleaning_lzp8fq.jpg')]"
+                className="relative min-h-screen flex flex-col overflow-hidden bg-cover bg-center
+                    bg-[linear-gradient(160deg,rgba(7,7,126,0.75)_0%,rgba(5,5,80,0.85)_60%,rgba(3,3,50,0.92)_100%),url('https://res.cloudinary.com/dr8tjrszy/image/upload/v1771960139/solar-plates-cleaning_lasnea.jpg')]
+                    md:bg-[linear-gradient(160deg,rgba(7,7,126,0.7)_0%,rgba(5,5,80,0.82)_60%,rgba(3,3,50,0.9)_100%),url('https://res.cloudinary.com/dr8tjrszy/image/upload/v1771960144/WhatsApp_Image_2026-02-22_at_8.48.18_PM_vt57zl.jpg')]"
             >
-                {/* Decorative circles */}
+                {/* Subtle decorative circles — sit on top of image */}
                 <div
                     className="pointer-events-none absolute"
                     style={{
                         top: "-200px", right: "-200px",
                         width: 700, height: 700,
-                        border: "1px solid rgba(255,229,77,0.07)",
+                        border: "1px solid rgba(255,229,77,0.08)",
                         borderRadius: "50%",
                     }}
                 />
@@ -222,19 +221,20 @@ export default function WindowCleaningAdsPage() {
                         style={{ borderColor: "rgba(255,229,77,0.35)", color: YELLOW }}
                     >
                         <span className="w-1.5 h-1.5 rounded-full" style={{ background: "#22c55e" }} />
-                        Same-week booking available
+                        Recover up to 30% lost output
                     </div>
 
                     {/* Headline */}
-                    <h1 className="mb-4 leading-none font-black text-white" style={{ fontSize: "clamp(44px,9vw,84px)", letterSpacing: "1px" }}>
-                        Perth&apos;s #1
+                    <h1 className="mb-4 leading-none font-black text-white" style={{ fontSize: "clamp(40px,8vw,80px)", letterSpacing: "0.5px" }}>
+                        Perth&apos;s Solar Panel
                         <br />
-                        <span style={{ color: YELLOW }}>Window Cleaners</span>
+                        <span style={{ color: YELLOW }}>Cleaning Specialists</span>
                     </h1>
 
                     {/* Sub */}
-                    <p className="mb-8 max-w-sm text-base font-light leading-relaxed" style={{ color: "rgba(255,255,255,0.65)" }}>
-                        Next-Day Availability. Commercial-Grade Pure Water Cleaning for Homes & Businesses.                    </p>
+                    <p className="mb-8 max-w-sm text-base font-light leading-relaxed" style={{ color: "rgba(255,255,255,0.7)" }}>
+                        Dirty panels silently cost you money. We restore full output using manufacturer-approved purified water technology — safely, streak-free.
+                    </p>
 
                     {/* CTAs */}
                     <div className="mb-8 flex w-full max-w-sm flex-col gap-3">
@@ -260,13 +260,13 @@ export default function WindowCleaningAdsPage() {
                         {[
                             { icon: "🛡️", text: "$20M Insured" },
                             { icon: "👮", text: "Police Cleared" },
-                            { icon: "💧", text: "Pure Water Tech" },
+                            { icon: "💧", text: "Purified Water Tech" },
                             { icon: "⭐", text: "5.0 Google Reviews" },
                         ].map((b) => (
                             <span
                                 key={b.text}
                                 className="flex items-center gap-1.5 rounded-full px-3 py-1.5 text-xs font-medium"
-                                style={{ background: "rgba(255,255,255,0.07)", border: "1px solid rgba(255,255,255,0.12)", color: "rgba(255,255,255,0.8)" }}
+                                style={{ background: "rgba(255,255,255,0.1)", border: "1px solid rgba(255,255,255,0.18)", color: "rgba(255,255,255,0.85)" }}
                             >
                                 {b.icon} {b.text}
                             </span>
@@ -279,7 +279,7 @@ export default function WindowCleaningAdsPage() {
             <section style={{ background: YELLOW }}>
                 <div className="mx-auto grid max-w-4xl grid-cols-4">
                     {[
-                        { num: "100+", label: "Happy Clients" },
+                        { num: "30%", label: "Output Recovered" },
                         { num: "5.0★", label: "Google Rating" },
                         { num: "$20M", label: "Insured" },
                         { num: "24hr", label: "Response Time" },
@@ -316,9 +316,9 @@ export default function WindowCleaningAdsPage() {
                         </div>
                         <h2
                             className="mb-3 leading-none text-white font-black"
-                            style={{ fontSize: "clamp(36px,5vw,52px)" }}
+                            style={{ fontSize: "clamp(32px,5vw,52px)" }}
                         >
-                            Ready for Spotless Windows?
+                            How Much Are Dirty Panels Costing You?
                         </h2>
                         <p className="mb-8 text-base font-light leading-relaxed" style={{ color: "rgba(255,255,255,0.55)" }}>
                             Fill in your details and we&apos;ll text you a price within 60 minutes. No obligation, no pushy sales.
@@ -327,7 +327,7 @@ export default function WindowCleaningAdsPage() {
                             {[
                                 "Fast reply — usually within the hour",
                                 "Same-week and next-day slots available",
-                                "100% satisfaction guaranteed",
+                                "Manufacturer-approved cleaning method",
                                 "No lock-in contracts",
                             ].map((point, index) => (
                                 <div key={index} className="flex items-center gap-3 text-sm" style={{ color: "rgba(255,255,255,0.7)" }}>
@@ -375,8 +375,38 @@ export default function WindowCleaningAdsPage() {
                 </div>
             </section>
 
-            {/* ─── SECTION 5: BENTO WHY US ─── */}
-            <section className="px-5 py-16" style={{ background: "#f4f6ff" }}>
+            {/* ─── SECTION 5: DID YOU KNOW callout ─── */}
+            <section className="px-5 py-12" style={{ background: "#f4f6ff" }}>
+                <div
+                    className="mx-auto max-w-4xl rounded-2xl p-8 md:p-10 text-center relative overflow-hidden"
+                    style={{ background: NAVY }}
+                >
+                    {/* decorative circle */}
+                    <div className="pointer-events-none absolute" style={{ top: "-80px", right: "-80px", width: 300, height: 300, border: "1px solid rgba(255,229,77,0.08)", borderRadius: "50%" }} />
+                    <div
+                        className="mb-4 inline-block rounded-full px-3 py-1 text-xs font-bold uppercase tracking-widest"
+                        style={{ background: "rgba(255,229,77,0.12)", color: YELLOW }}
+                    >
+                        Did you know?
+                    </div>
+                    <h3 className="text-white font-black mb-4" style={{ fontSize: "clamp(22px,4vw,36px)", lineHeight: 1.1 }}>
+                        Dirty Panels Could Be Costing You<br />
+                        <span style={{ color: YELLOW }}>Money Right Now</span>
+                    </h3>
+                    <p className="mx-auto max-w-xl text-base font-light leading-relaxed mb-6" style={{ color: "rgba(255,255,255,0.6)" }}>
+                        Studies show a thin layer of dust and grime can reduce solar panel output by 15–30%. In Perth&apos;s dusty climate — with frequent easterly winds, bushfire smoke, and high bird activity — panels lose significant efficiency within just a few months.
+                    </p>
+                    <div
+                        className="inline-flex items-center gap-2 rounded-full px-4 py-2 text-sm font-semibold"
+                        style={{ background: "rgba(255,229,77,0.12)", color: YELLOW, border: "1px solid rgba(255,229,77,0.25)" }}
+                    >
+                        ✨ Regular cleaning is the #1 way to protect your energy returns
+                    </div>
+                </div>
+            </section>
+
+            {/* ─── SECTION 6: BENTO WHY US ─── */}
+            <section className="px-5 pb-16" style={{ background: "#f4f6ff" }}>
                 <div className="mx-auto mb-10 max-w-4xl text-center">
                     <div
                         className="mb-3 inline-block rounded-full px-3 py-1 text-xs font-bold uppercase tracking-widest"
@@ -388,10 +418,10 @@ export default function WindowCleaningAdsPage() {
                         className="mb-3 leading-none"
                         style={{ fontSize: "clamp(24px,5vw,52px)", color: NAVY }}
                     >
-                        Not All Window Cleaners Are the Same
+                        Why Perth Homeowners Trust Us for Solar Cleaning
                     </h2>
                     <p className="mx-auto max-w-lg text-base font-light leading-relaxed" style={{ color: "#888" }}>
-                        We&apos;ve cleaned thousands of Perth homes and businesses. Here&apos;s what makes us different.
+                        Safe, effective, and manufacturer-approved — so your panels are restored without any risk of damage or voided warranty.
                     </p>
                 </div>
 
@@ -399,15 +429,12 @@ export default function WindowCleaningAdsPage() {
                 <div className="mx-auto grid max-w-4xl grid-cols-12 gap-3">
                     {/* Big navy card */}
                     <div className="col-span-12 md:col-span-5 rounded-2xl p-6" style={{ background: NAVY }}>
-                        <div
-                            className="mb-2 leading-none font-black"
-                            style={{ fontSize: 56, color: YELLOW }}
-                        >
-                            100%
+                        <div className="mb-2 leading-none font-black" style={{ fontSize: 56, color: YELLOW }}>
+                            30%
                         </div>
-                        <p className="font-bold text-base text-white mb-2">Satisfaction Guaranteed</p>
+                        <p className="font-bold text-base text-white mb-2">Output Recovered</p>
                         <p className="text-sm font-light leading-relaxed" style={{ color: "rgba(255,255,255,0.55)" }}>
-                            If anything falls short, we return and fix it at no extra cost. No questions asked.
+                            Professional cleaning restores full sunlight absorption — recovering up to 30% of lost output and maximising daily electricity generation.
                         </p>
                     </div>
 
@@ -417,33 +444,33 @@ export default function WindowCleaningAdsPage() {
                             className="mb-4 flex h-10 w-10 items-center justify-center rounded-xl"
                             style={{ background: "rgba(7,7,126,0.07)" }}
                         >
-                            <Droplets className="w-5 h-5" style={{ color: NAVY }} />
+                            <Sun className="w-5 h-5" style={{ color: NAVY }} />
                         </div>
-                        <p className="font-bold text-base mb-2" style={{ color: NAVY }}>Pure Water Technology</p>
+                        <p className="font-bold text-base mb-2" style={{ color: NAVY }}>Manufacturer-Approved Method</p>
                         <p className="text-sm font-light leading-relaxed" style={{ color: "#888" }}>
-                            Our commercial RO/DI filtration system uses zero chemicals — glass stays cleaner for longer, even after rain. No streaks, no residue.
+                            We use soft-brush, purified water systems — the method recommended by all major solar panel manufacturers. No harsh chemicals, no abrasive tools, zero risk of voiding your warranty.
                         </p>
                     </div>
 
                     {/* 3 small cards */}
                     {[
-                        { icon: <Shield className="w-5 h-5" style={{ color: NAVY }} />, title: "Fully Insured", body: "$20M public liability so you're always protected on every job." },
-                        { icon: <Zap className="w-5 h-5" style={{ color: NAVY }} />, title: "Urgent & Flexible", body: "Next-day emergency cleans available for rental inspections." },
-                        { icon: <Building2 className="w-5 h-5" style={{ color: NAVY }} />, title: "Police Cleared", body: "Background-checked team you can trust inside your home.", yellow: true },
-                    ].map((card, i) => (
+                        { icon: <Shield className="w-5 h-5" style={{ color: NAVY }} />, title: "Trained & Insured", body: "$20M public liability and police clearance on every job. Safe roof access guaranteed." },
+                        { icon: <Zap className="w-5 h-5" style={{ color: NAVY }} />, title: "Transparent Pricing", body: "The price we quote is the price you pay. No hidden fees, no surprises." },
+                        { icon: <ClipboardCheck className="w-5 h-5" style={{ color: NAVY }} />, title: "Post-Clean Report", body: "We inspect every panel while cleaning and flag any damage or concerns.", yellow: true },
+                    ].map((card) => (
                         <div
                             key={card.title}
                             className="col-span-12 md:col-span-4 rounded-2xl p-5"
-                            style={{ background: card.yellow ? YELLOW : "white" }}
+                            style={{ background: (card as { yellow?: boolean }).yellow ? YELLOW : "white" }}
                         >
                             <div
                                 className="mb-3 flex h-9 w-9 items-center justify-center rounded-xl"
-                                style={{ background: card.yellow ? "rgba(7,7,126,0.1)" : "rgba(7,7,126,0.06)" }}
+                                style={{ background: (card as { yellow?: boolean }).yellow ? "rgba(7,7,126,0.1)" : "rgba(7,7,126,0.06)" }}
                             >
                                 {card.icon}
                             </div>
                             <p className="font-bold text-sm mb-1.5" style={{ color: NAVY }}>{card.title}</p>
-                            <p className="text-xs font-light leading-relaxed" style={{ color: card.yellow ? "rgba(7,7,126,0.6)" : "#888" }}>
+                            <p className="text-xs font-light leading-relaxed" style={{ color: (card as { yellow?: boolean }).yellow ? "rgba(7,7,126,0.6)" : "#888" }}>
                                 {card.body}
                             </p>
                         </div>
@@ -451,7 +478,7 @@ export default function WindowCleaningAdsPage() {
                 </div>
             </section>
 
-            {/* ─── SECTION 6: BEFORE / AFTER ─── */}
+            {/* ─── SECTION 7: BEFORE / AFTER ─── */}
             <section className="px-5 py-16 bg-white">
                 <div className="mx-auto mb-8 max-w-4xl text-center">
                     <div
@@ -468,34 +495,18 @@ export default function WindowCleaningAdsPage() {
                     </h2>
                 </div>
                 <div className="mx-auto max-w-4xl">
-                    {/* Video */}
-                    <div className="mb-4 overflow-hidden rounded-2xl" style={{ height: 380 }}>
-                        <video className="h-full w-full object-cover" controls preload="metadata">
-                            <source
-                                src="https://res.cloudinary.com/dr8tjrszy/video/upload/v1772968701/VID-20260228-WA0016_xsz3cm_401388.mp4"
-                                type="video/mp4"
-                            />
-                        </video>
-                    </div>
-                    {/* Sliders */}
-                    <div className="grid grid-cols-1 gap-4 lg:grid-cols-2">
+                    <div className="grid grid-cols-1 gap-4">
                         <BeforeAfterSlider
-                            afterImage="https://res.cloudinary.com/dr8tjrszy/image/upload/v1774345158/IMG_9593_1_2_b98bl5.png"
-                            beforeImage="https://res.cloudinary.com/dr8tjrszy/image/upload/v1771960144/WhatsApp_Image_2026-02-22_at_8.48.03_PM_vtb2tn.jpg"
                             initial={50}
-                        />
-                        <BeforeAfterSlider
-                            afterImage="https://res.cloudinary.com/dr8tjrszy/image/upload/v1772792157/after-window-cleaning_fs1hhz.jpg"
-                            beforeImage="https://res.cloudinary.com/dr8tjrszy/image/upload/v1772792155/aspect-before-window-cleaning_zfr8ae.jpg"
-                            initial={50}
+                            beforeImage="https://res.cloudinary.com/dr8tjrszy/image/upload/v1771960139/solar-pannel-clean_cigwab.jpg"
+                            afterImage="https://res.cloudinary.com/dr8tjrszy/image/upload/v1771960138/sollar-plats-cleaning_gyngjf.jpg"
                         />
                     </div>
                 </div>
-            </section >
+            </section>
 
-            {/* ─── SECTION 7: HOW IT WORKS ─── */}
-            < section className="px-5 py-16" style={{ background: "#f4f6ff" }
-            }>
+            {/* ─── SECTION 8: HOW IT WORKS ─── */}
+            <section className="px-5 py-16" style={{ background: "#f4f6ff" }}>
                 <div className="mx-auto mb-10 max-w-4xl text-center">
                     <div
                         className="mb-3 inline-block rounded-full px-3 py-1 text-xs font-bold uppercase tracking-widest"
@@ -510,11 +521,10 @@ export default function WindowCleaningAdsPage() {
                         Booked & Done in 4 Steps
                     </h2>
                     <p className="mx-auto max-w-md text-base font-light" style={{ color: "#888" }}>
-                        Simple, fast, and completely hassle-free from first contact to sparkling windows.
+                        Simple, safe, and completely hassle-free from first contact to fully restored panels.
                     </p>
                 </div>
                 <div className="mx-auto max-w-4xl">
-                    {/* connector line — desktop only */}
                     <div className="relative">
                         <div
                             className="absolute hidden md:block"
@@ -549,10 +559,10 @@ export default function WindowCleaningAdsPage() {
                         </div>
                     </div>
                 </div>
-            </section >
+            </section>
 
-            {/* ─── SECTION 8: REVIEWS ─── */}
-            < section className="px-5 py-16 bg-white" >
+            {/* ─── SECTION 9: REVIEWS ─── */}
+            <section className="px-5 py-16 bg-white">
                 <div className="mx-auto mb-10 max-w-4xl text-center">
                     <div className="mb-3 flex justify-center gap-1">
                         {[...Array(5)].map((_, i) => (
@@ -581,7 +591,6 @@ export default function WindowCleaningAdsPage() {
                             className="relative overflow-hidden rounded-2xl p-5"
                             style={{ background: "#f4f6ff", border: "1px solid rgba(7,7,126,0.07)" }}
                         >
-                            {/* big quote mark */}
                             <span
                                 className="pointer-events-none absolute right-4 top-2 select-none font-black leading-none"
                                 style={{ fontSize: 80, color: "rgba(7,7,126,0.05)" }}
@@ -593,11 +602,11 @@ export default function WindowCleaningAdsPage() {
                                     <Star key={j} className="w-4 h-4 fill-yellow-400 text-yellow-400" />
                                 ))}
                             </div>
-                            <p className="mb-4 text-sm leading-relaxed" style={{ color: "#444" }}>"{r.text}"</p>
+                            <p className="mb-4 text-sm leading-relaxed" style={{ color: "#444" }}>&ldquo;{r.text}&rdquo;</p>
                             <div className="flex items-center gap-3">
                                 <div
                                     className="flex h-9 w-9 flex-shrink-0 items-center justify-center rounded-full font-black text-sm"
-                                    style={{ background: NAVY, color: YELLOW, }}
+                                    style={{ background: NAVY, color: YELLOW }}
                                 >
                                     {r.name.split(" ").map((n) => n[0]).join("")}
                                 </div>
@@ -609,30 +618,29 @@ export default function WindowCleaningAdsPage() {
                         </div>
                     ))}
                 </div>
-            </section >
+            </section>
 
-            {/* ─── SECTION 9: FOOTER CTA ─── */}
-            < section
+            {/* ─── SECTION 10: FOOTER CTA ─── */}
+            <section
                 className="relative overflow-hidden px-5 py-16 text-center"
                 style={{ background: NAVY }}
             >
-                {/* decorative circle */}
-                < div
+                <div
                     className="pointer-events-none absolute"
                     style={{ top: "-150px", left: "50%", transform: "translateX(-50%)", width: 600, height: 600, border: "1px solid rgba(255,229,77,0.05)", borderRadius: "50%" }}
                 />
-                < div className="relative z-10" >
+                <div className="relative z-10">
                     <div
                         className="mb-4 inline-block rounded-full px-3 py-1 text-xs font-bold uppercase tracking-widest"
                         style={{ background: "rgba(255,229,77,0.1)", color: YELLOW }}
                     >
-                        Still thinking about it?
+                        Ready to boost your solar output?
                     </div>
                     <h2
                         className="mb-3 leading-none text-white"
                         style={{ fontSize: "clamp(40px,6vw,60px)" }}
                     >
-                        Book Your Clean Today
+                        Book Your Solar Clean Today
                     </h2>
                     <p className="mb-8 text-base font-light" style={{ color: "rgba(255,255,255,0.5)" }}>
                         Same-week slots available. Free, no-obligation quote in 60 minutes.
@@ -654,11 +662,11 @@ export default function WindowCleaningAdsPage() {
                             Get a Text Quote →
                         </button>
                     </div>
-                </div >
-            </section >
+                </div>
+            </section>
 
             {/* ─── STICKY BAR ─── */}
-            < div
+            <div
                 className="fixed bottom-0 left-0 right-0 z-50 flex items-center justify-center px-5 py-3"
                 style={{ background: NAVY, borderTop: `2px solid ${YELLOW}`, boxShadow: "0 -4px 24px rgba(7,7,126,0.3)" }}
             >
@@ -674,9 +682,16 @@ export default function WindowCleaningAdsPage() {
                     <Phone className="w-4 h-4" />
                     Call Now — {BUSINESS.phone}
                 </Link>
-            </div >
+            </div>
             {/* spacer so content isn't hidden behind sticky bar */}
-            < div className="h-16" style={{ background: NAVY }} />
+            <div className="h-16" style={{ background: NAVY }} />
+
+            <style>{`
+                @keyframes pulse {
+                    0%,100% { box-shadow: 0 0 0 0 rgba(34,197,94,0.6); }
+                    50%      { box-shadow: 0 0 0 6px rgba(34,197,94,0); }
+                }
+            `}</style>
         </>
     );
 }

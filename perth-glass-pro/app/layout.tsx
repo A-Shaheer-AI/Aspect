@@ -124,8 +124,8 @@ export default function RootLayout({
                 <ConditionalLayout children={children} />
 
                 {/* Tag Manager - loaded after interactive */}
-                
-                <GoogleTagManager gtmId="GTM-KFLNCF23" />
+
+                <GoogleTagManager gtmId="GTM-W5SJJ2G3" />
                 <Clarity />
                 <SpeedInsights />
             </body>

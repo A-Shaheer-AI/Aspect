@@ -4,6 +4,7 @@ import { Phone, Mail, MapPin, Clock, Search } from "lucide-react";
 import { BUSINESS } from "@/lib/config";
 import Link from "next/link";
 import { getSuburbsByRegion } from "@/lib/suburbs";
+import GoogleMap from "./GoogleMap";
 
 export default function ContactSection() {
 
@@ -74,7 +75,7 @@ export default function ContactSection() {
                         {/* Phone */}
                         <a
                             href={`tel:${BUSINESS.phoneRaw}`}
-                            className="group bg-slate-50 p-6 rounded-2xl hover:bg-action-gold/10 transition-colors text-center"
+                            className="group bg-slate-50 py-8 px-8 rounded-2xl hover:bg-action-gold/10 transition-colors text-center"
                         >
                             <Phone className="w-10 h-10 text-action-gold mx-auto mb-4 group-hover:scale-110 transition-transform" aria-hidden="true" />
                             <h3 className="font-bold text-brand-navy mb-1">Call Us</h3>
@@ -84,7 +85,7 @@ export default function ContactSection() {
                         {/* Email */}
                         <a
                             href={`mailto:${BUSINESS.email}`}
-                            className="group bg-slate-50 p-6 rounded-2xl hover:bg-action-gold/10 transition-colors text-center"
+                            className="group bg-slate-50 py-8 px-0 rounded-2xl hover:bg-action-gold/10 transition-colors text-center"
                         >
                             <Mail className="w-10 h-10 text-action-gold mx-auto mb-4 group-hover:scale-110 transition-transform" aria-hidden="true" />
                             <h3 className="font-bold text-brand-navy mb-1">Email Us</h3>
@@ -96,7 +97,7 @@ export default function ContactSection() {
                             href={BUSINESS.google}
                             target="_blank"
                             rel="noopener noreferrer"
-                            className="group bg-slate-50 p-6 rounded-2xl hover:bg-action-gold/10 transition-colors text-center"
+                            className="group bg-slate-50 py-8 px-8 rounded-2xl hover:bg-action-gold/10 transition-colors text-center"
                         >
                             <MapPin className="w-10 h-10 text-action-gold mx-auto mb-4 group-hover:scale-110 transition-transform" aria-hidden="true" />
                             <h3 className="font-bold text-brand-navy mb-1">Location</h3>
@@ -108,7 +109,7 @@ export default function ContactSection() {
                             href={BUSINESS.google}
                             target="_blank"
                             rel="noopener noreferrer"
-                            className="group bg-slate-50 p-6 rounded-2xl hover:bg-action-gold/10 transition-colors text-center"
+                            className="group bg-slate-50 py-8 px-8 rounded-2xl hover:bg-action-gold/10 transition-colors text-center"
                         >
                             <Clock className="w-10 h-10 text-action-gold mx-auto mb-4 group-hover:scale-110 transition-transform" aria-hidden="true" />
                             <h3 className="font-bold text-brand-navy mb-1">Hours</h3>
@@ -129,9 +130,12 @@ export default function ContactSection() {
                 </div>
             </section>
 
+            {/* Google Map */}
+            <GoogleMap />
+
             {/* SEO Suburb List */}
             {/* bg-pattern-squeegee */}
-            <div className="mt-16 rounded-3xl p-8 border border-slate-100/50">
+            <div className=" bg-brand-water/20 p-8 border border-slate-100/50">
                 <h3 className="text-center text-2xl font-heading font-bold text-brand-navy mb-10">
                     Proudly Serving All Perth Metro Areas
                 </h3>

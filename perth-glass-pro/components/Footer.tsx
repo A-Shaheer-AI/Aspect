@@ -145,7 +145,6 @@ export default function Footer() {
                     </div>
 
                     {/* Contact */}
-                    {/* Contact */}
                     <div>
                         <h4 className="font-bold text-lg mb-4">Contact Us</h4>
                         <h2 className="mb-5">Aspect window cleaning</h2>

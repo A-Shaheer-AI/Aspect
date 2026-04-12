@@ -454,10 +454,10 @@ const SolarPanelCleaningPage = () => {
 
                     <div className="max-w-4xl mx-auto w-full">
                         <BeforeAfterSlider
-                        initial={50}
-                        beforeImage="https://res.cloudinary.com/dr8tjrszy/image/upload/v1771960139/solar-pannel-clean_cigwab.jpg"
-                        afterImage="https://res.cloudinary.com/dr8tjrszy/image/upload/v1771960138/sollar-plats-cleaning_gyngjf.jpg"
-                    />
+                            initial={50}
+                            beforeImage="https://res.cloudinary.com/dr8tjrszy/image/upload/v1771960139/solar-pannel-clean_cigwab.jpg"
+                            afterImage="https://res.cloudinary.com/dr8tjrszy/image/upload/v1771960138/sollar-plats-cleaning_gyngjf.jpg"
+                        />
                     </div>
 
                     {/* Images
