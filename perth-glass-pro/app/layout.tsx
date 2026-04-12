@@ -125,7 +125,7 @@ export default function RootLayout({
 
                 {/* Tag Manager - loaded after interactive */}
 
-                <GoogleTagManager gtmId="G-CBZSELJ4YJ" />
+                <GoogleTagManager gtmId="GTM-KFLNCF23" />
                 <Clarity />
                 <SpeedInsights />
             </body>
