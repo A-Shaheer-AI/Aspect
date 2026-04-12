@@ -3,6 +3,7 @@
 import { useState, useEffect } from "react";
 import { X, ArrowRight, Loader2, CheckCircle, Home, Building2, MapPin, Sparkles } from "lucide-react";
 import { sendLeadEmail } from "@/app/actions/send-email";
+import { trackFormStart, trackFormStep2, trackFormCompleted } from "@/hooks/useGtm";
 
 interface QuoteModalProps {
     isOpen: boolean;
@@ -41,8 +42,14 @@ export default function QuoteModal({
                 service: initialService || prev.service,
                 suburb: initialSuburb || prev.suburb,
             }));
+            trackFormStart();
         }
     }, [isOpen, initialService, initialSuburb]);
+
+    const handleNextStep = () => {
+        trackFormStep2(formData.service, formData.suburb);
+        setStep(2);
+    }
 
     // Dynamic greeting based on quote type
     const getGreeting = () => {
@@ -69,8 +76,8 @@ export default function QuoteModal({
                 serviceType: formData.service || quoteType,
                 message: formData.message,
             });
-
             if (result.success) {
+                trackFormCompleted();
                 setIsSuccess(true);
             } else {
                 setErrorMessage(result.error || "Failed to send. Please try again.");
@@ -200,7 +207,7 @@ export default function QuoteModal({
                                     />
                                 </div>
                                 <button
-                                    onClick={() => setStep(2)}
+                                    onClick={handleNextStep}
                                     disabled={!formData.name || !formData.suburb}
                                     className="w-full bg-action-gold text-brand-navy font-bold py-3 rounded-full flex items-center justify-center gap-2 hover:bg-action-gold/90 disabled:opacity-50 disabled:cursor-not-allowed transition-all"
                                 >

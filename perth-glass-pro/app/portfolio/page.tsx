@@ -5,6 +5,7 @@ import Image from "next/image";
 import { ArrowRight, Star, Camera, Filter } from "lucide-react";
 import { useState } from "react";
 
+
 type Category = "All" | "Residential" | "Commercial" | "Solar" | "Pressure" | "Gutter";
 
 interface GalleryItem {
@@ -37,7 +38,7 @@ const galleryItems: GalleryItem[] = [
     { id: 12, image: "https://res.cloudinary.com/dr8tjrszy/image/upload/v1771960141/WhatsApp_Image_2026-02-22_at_8.47.56_PM_ceiqiy.jpg", category: "Pressure", title: "Deck Cleaning", location: "South Perth" },
 
     // Gutter
-    // { id: 13, image: "/https://res.cloudinary.com/dr8tjrszy/image/upload/v1775689518/images_lfpd4s.jpg", category: "Gutter", title: "Gutter Clear", location: "Wembley" },
+    { id: 13, image: "https://res.cloudinary.com/dr8tjrszy/image/upload/v1775990687/gutter-cleaning_nd8wyn.jpg", category: "Gutter", title: "Gutter Clear", location: "Wembley" },
     // { id: 14, image: "/https://res.cloudinary.com/dr8tjrszy/image/upload/v1775689518/gutter_cleaning_vszeu8.jpg", category: "Gutter", title: "Downpipe Clean", location: "Leederville" },
     { id: 15, image: "https://res.cloudinary.com/dr8tjrszy/image/upload/v1775331528/gutter-cleaning_ym4thx.jpg", category: "Gutter", title: "Roof Gutters", location: "Floreat" },
 ];

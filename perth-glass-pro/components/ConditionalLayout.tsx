@@ -7,14 +7,17 @@ import StickyInterface from "@/components/ui/StickyInterface";
 
 export default function ConditionalLayout({ children }: { children: React.ReactNode }) {
     const pathname = usePathname();
-    const isLanding = pathname.startsWith("/landing");
+    const addsPages = ["/landing", "/solar-cleaning", "/gutter-cleaning", "/pressure-cleaning"];
+    const isAdsPage = addsPages.some((route) =>
+        pathname.startsWith(route)
+    );
 
     return (
         <>
-            {!isLanding && <Navbar />}
+            {!isAdsPage && <Navbar />}
             <main id="main-content">{children}</main>
             <Footer />
-            {!isLanding && <StickyInterface />}
+            {!isAdsPage && <StickyInterface />}
         </>
     );
 }

@@ -1,7 +1,7 @@
 "use client";
 
 import { useState } from "react";
-import { Phone, CheckCircle2, Star, Shield, Droplets, Zap, Building2, X } from "lucide-react";
+import { Phone, CheckCircle2, Star, Shield, Zap, Droplets, Leaf, X } from "lucide-react";
 import { BUSINESS } from "@/lib/config";
 import Link from "next/link";
 import Image from "next/image";
@@ -36,7 +36,7 @@ function LeadForm({
             <div className="flex flex-col items-center gap-3 py-6">
                 <CheckCircle2 className="w-10 h-10 text-green-400" />
                 <p className="font-bold text-center" style={{ color: dark ? "#fff" : "#07077E" }}>
-                    We'll text you shortly!
+                    We&apos;ll text you shortly!
                 </p>
                 <p className="text-sm text-center" style={{ color: dark ? "rgba(255,255,255,0.6)" : "#888" }}>
                     Usually within 60 minutes.
@@ -84,7 +84,7 @@ function LeadForm({
 /* ─────────────────────────────────────────
    PAGE
 ───────────────────────────────────────── */
-export default function WindowCleaningAdsPage() {
+export default function PressureWashingAdsPage() {
     const [modalOpen, setModalOpen] = useState(false);
     const [formData, setFormData] = useState({ name: "", phone: "", suburb: "" });
     const [submitted, setSubmitted] = useState(false);
@@ -97,27 +97,36 @@ export default function WindowCleaningAdsPage() {
                 suburb: formData.suburb,
             });
             if (result.success) {
-                trackFormCompleted();
                 setSubmitted(true);
-            }
+                trackFormCompleted();
+            };
         } catch (e) {
             console.error(e);
         }
         if (formData.name && formData.phone && formData.suburb) setSubmitted(true);
     };
 
+    const surfaces = [
+        { icon: "🏠", label: "Driveways & Pathways" },
+        { icon: "🪵", label: "Patios & Decks" },
+        { icon: "🧱", label: "Walls & Fences" },
+        { icon: "🏘️", label: "House Exteriors" },
+        { icon: "🅿️", label: "Car Parks" },
+        { icon: "🏊", label: "Pool Surrounds" },
+    ];
+
     const processSteps = [
-        { num: "01", title: "Call or Quote", body: "Call us or fill the form. We'll text a price within the hour." },
-        { num: "02", title: "We Confirm", body: "Pick a time that works. Same-week slots usually available." },
-        { num: "03", title: "We Clean", body: "Our team arrives on time and gets every pane streak-free." },
-        { num: "04", title: "You Enjoy", body: "Crystal-clear windows, guaranteed. Book again anytime." },
+        { num: "01", title: "Assessment", body: "We assess the surface type and soiling level, then select the right pressure and solutions." },
+        { num: "02", title: "Pre-Treatment", body: "Eco-friendly degreaser applied to break down oil, grease, and biological growth." },
+        { num: "03", title: "Pressure Wash", body: "Methodical high-pressure clean across every area — removing all dirt and buildup." },
+        { num: "04", title: "Final Rinse", body: "Thorough rinse removes all detergent and debris. Surfaces left clean and residue-free." },
     ];
 
     const googleReviews = [
         { name: "June Bird", suburb: "Perth", text: "Guys done a beautiful job. My windows are sparkling. 2 very nice gentleman. Highly recommend." },
         { name: "Hussai", suburb: "Perth", text: "Team arrived on time, were friendly and professional. Many windows came out spotless and clear." },
-        { name: "Taylor Bow", suburb: "North Perth", text: "Did a great job cleaning inside and outside of windows at my North Perth property. Very professional." },
-        { name: "Shabnam", suburb: "Perth", text: "Punctual, professional, and paid great attention to detail. Our windows are spotless. Couldn't be happier." },
+        { name: "Taylor Bow", suburb: "North Perth", text: "Did a great job cleaning inside and outside at my North Perth property. Very professional." },
+        { name: "Shabnam", suburb: "Perth", text: "Punctual, professional, and paid great attention to detail. Our property looks spotless. Couldn't be happier." },
     ];
 
     const NAVY = "#07077E";
@@ -166,38 +175,13 @@ export default function WindowCleaningAdsPage() {
 
             {/* ─── SECTION 1: HERO ─── */}
             <section
-                className="relative min-h-screen flex flex-col items-center justify-center md:px-5 pb-10 text-white bg-cover bg-center
-  bg-[linear-gradient(160deg,rgba(10,22,40,0.5)_0%,rgba(15,37,69,0.8)_60%,rgba(19,48,96,0.8)_100%),url('https://res.cloudinary.com/dr8tjrszy/image/upload/v1771960133/professional-windows-cleaning_mm5mvy.jpg')]
-  md:bg-[linear-gradient(160deg,rgba(10,22,40,0.5)_0%,rgba(15,37,69,0.8)_60%,rgba(19,48,96,0.8)_100%),url('https://res.cloudinary.com/dr8tjrszy/image/upload/v1771960136/outside-windows-cleaning_lzp8fq.jpg')]"
+                className="relative min-h-screen flex flex-col overflow-hidden"
+                style={{ background: NAVY }}
             >
                 {/* Decorative circles */}
-                <div
-                    className="pointer-events-none absolute"
-                    style={{
-                        top: "-200px", right: "-200px",
-                        width: 700, height: 700,
-                        border: "1px solid rgba(255,229,77,0.07)",
-                        borderRadius: "50%",
-                    }}
-                />
-                <div
-                    className="pointer-events-none absolute"
-                    style={{
-                        top: "-100px", right: "-100px",
-                        width: 500, height: 500,
-                        border: "1px solid rgba(255,229,77,0.05)",
-                        borderRadius: "50%",
-                    }}
-                />
-                <div
-                    className="pointer-events-none absolute"
-                    style={{
-                        bottom: "-80px", left: "-80px",
-                        width: 400, height: 400,
-                        border: "1px solid rgba(255,229,77,0.04)",
-                        borderRadius: "50%",
-                    }}
-                />
+                <div className="pointer-events-none absolute" style={{ top: "-200px", right: "-200px", width: 700, height: 700, border: "1px solid rgba(255,229,77,0.08)", borderRadius: "50%" }} />
+                <div className="pointer-events-none absolute" style={{ top: "-100px", right: "-100px", width: 500, height: 500, border: "1px solid rgba(255,229,77,0.05)", borderRadius: "50%" }} />
+                <div className="pointer-events-none absolute" style={{ bottom: "-80px", left: "-80px", width: 400, height: 400, border: "1px solid rgba(255,229,77,0.04)", borderRadius: "50%" }} />
 
                 {/* NAV */}
                 <nav className="relative z-10 flex items-center justify-end px-6 pt-5 pb-2">
@@ -216,7 +200,6 @@ export default function WindowCleaningAdsPage() {
 
                 {/* HERO BODY */}
                 <div className="relative z-10 flex flex-1 flex-col items-center justify-center px-5 pb-10 pt-6 text-center text-white">
-                    {/* Tag */}
                     <div
                         className="mb-6 inline-flex items-center gap-2 rounded-full border px-4 py-2 text-xs font-semibold uppercase tracking-widest"
                         style={{ borderColor: "rgba(255,229,77,0.35)", color: YELLOW }}
@@ -225,18 +208,16 @@ export default function WindowCleaningAdsPage() {
                         Same-week booking available
                     </div>
 
-                    {/* Headline */}
-                    <h1 className="mb-4 leading-none font-black text-white" style={{ fontSize: "clamp(44px,9vw,84px)", letterSpacing: "1px" }}>
-                        Perth&apos;s #1
+                    <h1 className="mb-4 leading-none font-black text-white" style={{ fontSize: "clamp(40px,8vw,80px)", letterSpacing: "0.5px" }}>
+                        Perth&apos;s Pressure
                         <br />
-                        <span style={{ color: YELLOW }}>Window Cleaners</span>
+                        <span style={{ color: YELLOW }}>Washing Specialists</span>
                     </h1>
 
-                    {/* Sub */}
-                    <p className="mb-8 max-w-sm text-base font-light leading-relaxed" style={{ color: "rgba(255,255,255,0.65)" }}>
-                        Next-Day Availability. Commercial-Grade Pure Water Cleaning for Homes & Businesses.                    </p>
+                    <p className="mb-8 max-w-sm text-base font-light leading-relaxed" style={{ color: "rgba(255,255,255,0.7)" }}>
+                        Driveways, patios, walls, and exteriors restored to near-new condition. Commercial-grade equipment, eco-friendly solutions, zero surface damage.
+                    </p>
 
-                    {/* CTAs */}
                     <div className="mb-8 flex w-full max-w-sm flex-col gap-3">
                         <Link
                             href={`tel:${BUSINESS.phoneRaw}`}
@@ -255,18 +236,17 @@ export default function WindowCleaningAdsPage() {
                         </button>
                     </div>
 
-                    {/* Trust badges */}
                     <div className="flex flex-wrap justify-center gap-2">
                         {[
                             { icon: "🛡️", text: "$20M Insured" },
                             { icon: "👮", text: "Police Cleared" },
-                            { icon: "💧", text: "Pure Water Tech" },
+                            { icon: "🌿", text: "Eco-Friendly" },
                             { icon: "⭐", text: "5.0 Google Reviews" },
                         ].map((b) => (
                             <span
                                 key={b.text}
                                 className="flex items-center gap-1.5 rounded-full px-3 py-1.5 text-xs font-medium"
-                                style={{ background: "rgba(255,255,255,0.07)", border: "1px solid rgba(255,255,255,0.12)", color: "rgba(255,255,255,0.8)" }}
+                                style={{ background: "rgba(255,255,255,0.1)", border: "1px solid rgba(255,255,255,0.18)", color: "rgba(255,255,255,0.85)" }}
                             >
                                 {b.icon} {b.text}
                             </span>
@@ -289,10 +269,7 @@ export default function WindowCleaningAdsPage() {
                             className="flex flex-col items-center justify-center py-5 text-center"
                             style={{ borderRight: i < 3 ? `1px solid rgba(7,7,126,0.15)` : "none" }}
                         >
-                            <span
-                                className="leading-none font-black"
-                                style={{ fontSize: "clamp(18px,4vw,34px)", color: NAVY }}
-                            >
+                            <span className="leading-none font-black" style={{ fontSize: "clamp(18px,4vw,34px)", color: NAVY }}>
                                 {s.num}
                             </span>
                             <span className="mt-1 text-xs font-semibold uppercase tracking-wider" style={{ color: "rgba(7,7,126,0.55)" }}>
@@ -303,10 +280,9 @@ export default function WindowCleaningAdsPage() {
                 </div>
             </section>
 
-            {/* ─── SECTION 3: LEAD FORM (split layout) ─── */}
+            {/* ─── SECTION 3: LEAD FORM ─── */}
             <section className="px-5 py-16" style={{ background: NAVY }}>
                 <div className="mx-auto grid max-w-4xl grid-cols-1 gap-12 md:grid-cols-2 md:items-center">
-                    {/* Left copy */}
                     <div>
                         <div
                             className="mb-4 inline-block rounded-full px-3 py-1 text-xs font-bold uppercase tracking-widest"
@@ -314,11 +290,8 @@ export default function WindowCleaningAdsPage() {
                         >
                             Get your free quote
                         </div>
-                        <h2
-                            className="mb-3 leading-none text-white font-black"
-                            style={{ fontSize: "clamp(36px,5vw,52px)" }}
-                        >
-                            Ready for Spotless Windows?
+                        <h2 className="mb-3 leading-none text-white font-black" style={{ fontSize: "clamp(32px,5vw,52px)" }}>
+                            Ready to Restore Your Property?
                         </h2>
                         <p className="mb-8 text-base font-light leading-relaxed" style={{ color: "rgba(255,255,255,0.55)" }}>
                             Fill in your details and we&apos;ll text you a price within 60 minutes. No obligation, no pushy sales.
@@ -327,7 +300,7 @@ export default function WindowCleaningAdsPage() {
                             {[
                                 "Fast reply — usually within the hour",
                                 "Same-week and next-day slots available",
-                                "100% satisfaction guaranteed",
+                                "Eco-friendly, pet-safe solutions",
                                 "No lock-in contracts",
                             ].map((point, index) => (
                                 <div key={index} className="flex items-center gap-3 text-sm" style={{ color: "rgba(255,255,255,0.7)" }}>
@@ -342,8 +315,6 @@ export default function WindowCleaningAdsPage() {
                             ))}
                         </div>
                     </div>
-
-                    {/* Right form card */}
                     <div className="rounded-2xl p-6 shadow-2xl" style={{ background: "white" }}>
                         <h3 className="mb-1 font-bold text-base" style={{ color: NAVY }}>Get a Fast Text Quote</h3>
                         <p className="mb-5 text-sm" style={{ color: "#888" }}>We&apos;ll reply within 60 minutes</p>
@@ -375,8 +346,38 @@ export default function WindowCleaningAdsPage() {
                 </div>
             </section>
 
-            {/* ─── SECTION 5: BENTO WHY US ─── */}
-            <section className="px-5 py-16" style={{ background: "#f4f6ff" }}>
+            {/* ─── SECTION 5: SURFACES WE CLEAN ─── */}
+            <section className="px-5 py-12" style={{ background: "#f4f6ff" }}>
+                <div className="mx-auto mb-8 max-w-4xl text-center">
+                    <div
+                        className="mb-3 inline-block rounded-full px-3 py-1 text-xs font-bold uppercase tracking-widest"
+                        style={{ background: "rgba(7,7,126,0.07)", color: NAVY }}
+                    >
+                        What we clean
+                    </div>
+                    <h2 className="mb-3 leading-none" style={{ fontSize: "clamp(24px,5vw,48px)", color: NAVY }}>
+                        Surfaces We Pressure Wash
+                    </h2>
+                    <p className="mx-auto max-w-md text-base font-light" style={{ color: "#888" }}>
+                        From driveways to pool surrounds — we restore all outdoor surfaces safely and effectively.
+                    </p>
+                </div>
+                <div className="mx-auto grid max-w-4xl grid-cols-2 gap-3 md:grid-cols-3">
+                    {surfaces.map((s) => (
+                        <div
+                            key={s.label}
+                            className="flex items-center gap-3 rounded-2xl px-4 py-4"
+                            style={{ background: "white", border: "1px solid rgba(7,7,126,0.07)" }}
+                        >
+                            <span className="text-xl">{s.icon}</span>
+                            <span className="text-sm font-semibold" style={{ color: NAVY }}>{s.label}</span>
+                        </div>
+                    ))}
+                </div>
+            </section>
+
+            {/* ─── SECTION 6: BENTO WHY US ─── */}
+            <section className="px-5 pb-16" style={{ background: "#f4f6ff" }}>
                 <div className="mx-auto mb-10 max-w-4xl text-center">
                     <div
                         className="mb-3 inline-block rounded-full px-3 py-1 text-xs font-bold uppercase tracking-widest"
@@ -384,66 +385,56 @@ export default function WindowCleaningAdsPage() {
                     >
                         Why Aspect
                     </div>
-                    <h2
-                        className="mb-3 leading-none"
-                        style={{ fontSize: "clamp(24px,5vw,52px)", color: NAVY }}
-                    >
-                        Not All Window Cleaners Are the Same
+                    <h2 className="mb-3 leading-none" style={{ fontSize: "clamp(24px,5vw,52px)", color: NAVY }}>
+                        Why Perth Homeowners Choose Us
                     </h2>
                     <p className="mx-auto max-w-lg text-base font-light leading-relaxed" style={{ color: "#888" }}>
-                        We&apos;ve cleaned thousands of Perth homes and businesses. Here&apos;s what makes us different.
+                        Commercial-grade equipment, eco-friendly products, and zero surface damage — every single job.
                     </p>
                 </div>
 
-                {/* Bento grid */}
                 <div className="mx-auto grid max-w-4xl grid-cols-12 gap-3">
                     {/* Big navy card */}
                     <div className="col-span-12 md:col-span-5 rounded-2xl p-6" style={{ background: NAVY }}>
-                        <div
-                            className="mb-2 leading-none font-black"
-                            style={{ fontSize: 56, color: YELLOW }}
-                        >
+                        <div className="mb-2 leading-none font-black" style={{ fontSize: 56, color: YELLOW }}>
                             100%
                         </div>
                         <p className="font-bold text-base text-white mb-2">Satisfaction Guaranteed</p>
                         <p className="text-sm font-light leading-relaxed" style={{ color: "rgba(255,255,255,0.55)" }}>
-                            If anything falls short, we return and fix it at no extra cost. No questions asked.
+                            If anything falls short, we return and fix it at no extra cost. Not finished until you&apos;re completely happy.
                         </p>
                     </div>
 
                     {/* Wide white card */}
                     <div className="col-span-12 md:col-span-7 rounded-2xl p-6 bg-white">
-                        <div
-                            className="mb-4 flex h-10 w-10 items-center justify-center rounded-xl"
-                            style={{ background: "rgba(7,7,126,0.07)" }}
-                        >
-                            <Droplets className="w-5 h-5" style={{ color: NAVY }} />
+                        <div className="mb-4 flex h-10 w-10 items-center justify-center rounded-xl" style={{ background: "rgba(7,7,126,0.07)" }}>
+                            <Zap className="w-5 h-5" style={{ color: NAVY }} />
                         </div>
-                        <p className="font-bold text-base mb-2" style={{ color: NAVY }}>Pure Water Technology</p>
+                        <p className="font-bold text-base mb-2" style={{ color: NAVY }}>Professional Equipment & Adjusted Pressure</p>
                         <p className="text-sm font-light leading-relaxed" style={{ color: "#888" }}>
-                            Our commercial RO/DI filtration system uses zero chemicals — glass stays cleaner for longer, even after rain. No streaks, no residue.
+                            Commercial-grade pressure washers with adjustable settings — matching the right pressure and nozzle to each surface type for a thorough clean without any risk of damage to pavers, render, or timber.
                         </p>
                     </div>
 
                     {/* 3 small cards */}
                     {[
-                        { icon: <Shield className="w-5 h-5" style={{ color: NAVY }} />, title: "Fully Insured", body: "$20M public liability so you're always protected on every job." },
-                        { icon: <Zap className="w-5 h-5" style={{ color: NAVY }} />, title: "Urgent & Flexible", body: "Next-day emergency cleans available for rental inspections." },
-                        { icon: <Building2 className="w-5 h-5" style={{ color: NAVY }} />, title: "Police Cleared", body: "Background-checked team you can trust inside your home.", yellow: true },
-                    ].map((card, i) => (
+                        { icon: <Shield className="w-5 h-5" style={{ color: NAVY }} />, title: "Fully Insured", body: "$20M public liability on every job. We work safely and responsibly on your property." },
+                        { icon: <Leaf className="w-5 h-5" style={{ color: NAVY }} />, title: "Eco-Friendly Products", body: "Biodegradable detergents safe for your garden, lawn, and pets. No harmful residue left behind." },
+                        { icon: <Droplets className="w-5 h-5" style={{ color: NAVY }} />, title: "Police Cleared", body: "Background-checked team you can trust on your property every time.", yellow: true },
+                    ].map((card) => (
                         <div
                             key={card.title}
                             className="col-span-12 md:col-span-4 rounded-2xl p-5"
-                            style={{ background: card.yellow ? YELLOW : "white" }}
+                            style={{ background: (card as { yellow?: boolean }).yellow ? YELLOW : "white" }}
                         >
                             <div
                                 className="mb-3 flex h-9 w-9 items-center justify-center rounded-xl"
-                                style={{ background: card.yellow ? "rgba(7,7,126,0.1)" : "rgba(7,7,126,0.06)" }}
+                                style={{ background: (card as { yellow?: boolean }).yellow ? "rgba(7,7,126,0.1)" : "rgba(7,7,126,0.06)" }}
                             >
                                 {card.icon}
                             </div>
                             <p className="font-bold text-sm mb-1.5" style={{ color: NAVY }}>{card.title}</p>
-                            <p className="text-xs font-light leading-relaxed" style={{ color: card.yellow ? "rgba(7,7,126,0.6)" : "#888" }}>
+                            <p className="text-xs font-light leading-relaxed" style={{ color: (card as { yellow?: boolean }).yellow ? "rgba(7,7,126,0.6)" : "#888" }}>
                                 {card.body}
                             </p>
                         </div>
@@ -451,7 +442,7 @@ export default function WindowCleaningAdsPage() {
                 </div>
             </section>
 
-            {/* ─── SECTION 6: BEFORE / AFTER ─── */}
+            {/* ─── SECTION 7: BEFORE / AFTER ─── */}
             <section className="px-5 py-16 bg-white">
                 <div className="mx-auto mb-8 max-w-4xl text-center">
                     <div
@@ -460,42 +451,23 @@ export default function WindowCleaningAdsPage() {
                     >
                         Our results
                     </div>
-                    <h2
-                        className="leading-none"
-                        style={{ fontSize: "clamp(36px,5vw,52px)", color: NAVY }}
-                    >
+                    <h2 className="leading-none" style={{ fontSize: "clamp(36px,5vw,52px)", color: NAVY }}>
                         See the Difference
                     </h2>
                 </div>
                 <div className="mx-auto max-w-4xl">
-                    {/* Video */}
-                    <div className="mb-4 overflow-hidden rounded-2xl" style={{ height: 380 }}>
-                        <video className="h-full w-full object-cover" controls preload="metadata">
-                            <source
-                                src="https://res.cloudinary.com/dr8tjrszy/video/upload/v1772968701/VID-20260228-WA0016_xsz3cm_401388.mp4"
-                                type="video/mp4"
-                            />
-                        </video>
-                    </div>
-                    {/* Sliders */}
-                    <div className="grid grid-cols-1 gap-4 lg:grid-cols-2">
+                    <div className="grid grid-cols-1 gap-4">
                         <BeforeAfterSlider
-                            afterImage="https://res.cloudinary.com/dr8tjrszy/image/upload/v1774345158/IMG_9593_1_2_b98bl5.png"
-                            beforeImage="https://res.cloudinary.com/dr8tjrszy/image/upload/v1771960144/WhatsApp_Image_2026-02-22_at_8.48.03_PM_vtb2tn.jpg"
-                            initial={50}
-                        />
-                        <BeforeAfterSlider
-                            afterImage="https://res.cloudinary.com/dr8tjrszy/image/upload/v1772792157/after-window-cleaning_fs1hhz.jpg"
-                            beforeImage="https://res.cloudinary.com/dr8tjrszy/image/upload/v1772792155/aspect-before-window-cleaning_zfr8ae.jpg"
+                            afterImage="https://res.cloudinary.com/dr8tjrszy/image/upload/v1772800983/after-cleaning-street_lhtqux.jpg"
+                            beforeImage="https://res.cloudinary.com/dr8tjrszy/image/upload/v1772967205/street-before-cleaning_iupbdq.jpg"
                             initial={50}
                         />
                     </div>
                 </div>
-            </section >
+            </section>
 
-            {/* ─── SECTION 7: HOW IT WORKS ─── */}
-            < section className="px-5 py-16" style={{ background: "#f4f6ff" }
-            }>
+            {/* ─── SECTION 8: HOW IT WORKS ─── */}
+            <section className="px-5 py-16" style={{ background: "#f4f6ff" }}>
                 <div className="mx-auto mb-10 max-w-4xl text-center">
                     <div
                         className="mb-3 inline-block rounded-full px-3 py-1 text-xs font-bold uppercase tracking-widest"
@@ -503,18 +475,14 @@ export default function WindowCleaningAdsPage() {
                     >
                         How it works
                     </div>
-                    <h2
-                        className="mb-3 leading-none"
-                        style={{ fontSize: "clamp(36px,5vw,52px)", color: NAVY }}
-                    >
+                    <h2 className="mb-3 leading-none" style={{ fontSize: "clamp(36px,5vw,52px)", color: NAVY }}>
                         Booked & Done in 4 Steps
                     </h2>
                     <p className="mx-auto max-w-md text-base font-light" style={{ color: "#888" }}>
-                        Simple, fast, and completely hassle-free from first contact to sparkling windows.
+                        Simple, fast, and completely hassle-free from first contact to freshly restored surfaces.
                     </p>
                 </div>
                 <div className="mx-auto max-w-4xl">
-                    {/* connector line — desktop only */}
                     <div className="relative">
                         <div
                             className="absolute hidden md:block"
@@ -531,14 +499,7 @@ export default function WindowCleaningAdsPage() {
                                 <div key={step.num} className="flex flex-col items-center text-center">
                                     <div
                                         className="mb-4 flex h-14 w-14 items-center justify-center rounded-full font-black"
-                                        style={{
-                                            background: NAVY,
-                                            color: YELLOW,
-                                            fontSize: 22,
-                                            boxShadow: `0 4px 20px rgba(7,7,126,0.25)`,
-                                            position: "relative",
-                                            zIndex: 1,
-                                        }}
+                                        style={{ background: NAVY, color: YELLOW, fontSize: 22, boxShadow: `0 4px 20px rgba(7,7,126,0.25)`, position: "relative", zIndex: 1 }}
                                     >
                                         {step.num}
                                     </div>
@@ -549,20 +510,17 @@ export default function WindowCleaningAdsPage() {
                         </div>
                     </div>
                 </div>
-            </section >
+            </section>
 
-            {/* ─── SECTION 8: REVIEWS ─── */}
-            < section className="px-5 py-16 bg-white" >
+            {/* ─── SECTION 9: REVIEWS ─── */}
+            <section className="px-5 py-16 bg-white">
                 <div className="mx-auto mb-10 max-w-4xl text-center">
                     <div className="mb-3 flex justify-center gap-1">
                         {[...Array(5)].map((_, i) => (
                             <Star key={i} className="w-6 h-6 fill-yellow-400 text-yellow-400" />
                         ))}
                     </div>
-                    <h2
-                        className="mb-2 leading-none"
-                        style={{ fontSize: "clamp(24px,5vw,52px)", color: NAVY }}
-                    >
+                    <h2 className="mb-2 leading-none" style={{ fontSize: "clamp(24px,5vw,52px)", color: NAVY }}>
                         Perth Homeowners Love Us
                     </h2>
                     <Link
@@ -581,7 +539,6 @@ export default function WindowCleaningAdsPage() {
                             className="relative overflow-hidden rounded-2xl p-5"
                             style={{ background: "#f4f6ff", border: "1px solid rgba(7,7,126,0.07)" }}
                         >
-                            {/* big quote mark */}
                             <span
                                 className="pointer-events-none absolute right-4 top-2 select-none font-black leading-none"
                                 style={{ fontSize: 80, color: "rgba(7,7,126,0.05)" }}
@@ -593,11 +550,11 @@ export default function WindowCleaningAdsPage() {
                                     <Star key={j} className="w-4 h-4 fill-yellow-400 text-yellow-400" />
                                 ))}
                             </div>
-                            <p className="mb-4 text-sm leading-relaxed" style={{ color: "#444" }}>"{r.text}"</p>
+                            <p className="mb-4 text-sm leading-relaxed" style={{ color: "#444" }}>&ldquo;{r.text}&rdquo;</p>
                             <div className="flex items-center gap-3">
                                 <div
                                     className="flex h-9 w-9 flex-shrink-0 items-center justify-center rounded-full font-black text-sm"
-                                    style={{ background: NAVY, color: YELLOW, }}
+                                    style={{ background: NAVY, color: YELLOW }}
                                 >
                                     {r.name.split(" ").map((n) => n[0]).join("")}
                                 </div>
@@ -609,30 +566,23 @@ export default function WindowCleaningAdsPage() {
                         </div>
                     ))}
                 </div>
-            </section >
+            </section>
 
-            {/* ─── SECTION 9: FOOTER CTA ─── */}
-            < section
-                className="relative overflow-hidden px-5 py-16 text-center"
-                style={{ background: NAVY }}
-            >
-                {/* decorative circle */}
-                < div
+            {/* ─── SECTION 10: FOOTER CTA ─── */}
+            <section className="relative overflow-hidden px-5 py-16 text-center" style={{ background: NAVY }}>
+                <div
                     className="pointer-events-none absolute"
                     style={{ top: "-150px", left: "50%", transform: "translateX(-50%)", width: 600, height: 600, border: "1px solid rgba(255,229,77,0.05)", borderRadius: "50%" }}
                 />
-                < div className="relative z-10" >
+                <div className="relative z-10">
                     <div
                         className="mb-4 inline-block rounded-full px-3 py-1 text-xs font-bold uppercase tracking-widest"
                         style={{ background: "rgba(255,229,77,0.1)", color: YELLOW }}
                     >
-                        Still thinking about it?
+                        Ready to restore your property?
                     </div>
-                    <h2
-                        className="mb-3 leading-none text-white"
-                        style={{ fontSize: "clamp(40px,6vw,60px)" }}
-                    >
-                        Book Your Clean Today
+                    <h2 className="mb-3 leading-none text-white" style={{ fontSize: "clamp(40px,6vw,60px)" }}>
+                        Book Your Pressure Wash Today
                     </h2>
                     <p className="mb-8 text-base font-light" style={{ color: "rgba(255,255,255,0.5)" }}>
                         Same-week slots available. Free, no-obligation quote in 60 minutes.
@@ -654,12 +604,12 @@ export default function WindowCleaningAdsPage() {
                             Get a Text Quote →
                         </button>
                     </div>
-                </div >
-            </section >
+                </div>
+            </section>
 
             {/* ─── STICKY BAR ─── */}
-            < div
-                className="fixed bottom-0 left-0 right-0 z-50 flex items-center justify-center px-5 py-3"
+            <div
+                className="fixed bottom-0 left-0 right-0 z-50 flex items-center justify-between px-5 py-3"
                 style={{ background: NAVY, borderTop: `2px solid ${YELLOW}`, boxShadow: "0 -4px 24px rgba(7,7,126,0.3)" }}
             >
                 <div className="hidden sm:block">
@@ -674,9 +624,16 @@ export default function WindowCleaningAdsPage() {
                     <Phone className="w-4 h-4" />
                     Call Now — {BUSINESS.phone}
                 </Link>
-            </div >
-            {/* spacer so content isn't hidden behind sticky bar */}
-            < div className="h-16" style={{ background: NAVY }} />
+            </div>
+            {/* spacer */}
+            <div className="h-16" style={{ background: NAVY }} />
+
+            <style>{`
+                @keyframes pulse {
+                    0%,100% { box-shadow: 0 0 0 0 rgba(34,197,94,0.6); }
+                    50%      { box-shadow: 0 0 0 6px rgba(34,197,94,0); }
+                }
+            `}</style>
         </>
     );
 }
