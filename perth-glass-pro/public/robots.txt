@@ -6,4 +6,4 @@ Allow: /
 Host: https://aspectwindowcleaning.com.au
 
 # Sitemaps
-Sitemap: https://aspectwindowcleaning.com.au/sitemap.xml
+Sitemap: https://aspectwindowcleaning.com.au/sitemap-0.xml
