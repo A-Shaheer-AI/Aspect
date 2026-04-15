@@ -6,7 +6,6 @@ import "./globals.css";
 import Navbar from "@/components/Navbar";
 import Footer from "@/components/Footer";
 import StickyInterface from "@/components/ui/StickyInterface";
-import Clarity from "@/components/Clarity";
 import ConditionalLayout from "@/components/ConditionalLayout";
 
 const montserrat = Montserrat({
@@ -126,7 +125,6 @@ export default function RootLayout({
                 {/* Tag Manager - loaded after interactive */}
 
                 <GoogleTagManager gtmId="GTM-KFLNCF23" />
-                <Clarity />
                 <SpeedInsights />
             </body>
         </html>
