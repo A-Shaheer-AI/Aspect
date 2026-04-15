@@ -171,46 +171,91 @@ export const blogs: BlogPost[] = [
     conclusion: "It is essential to hire professionals to clean your solar panels to keep them working at their best. In Australia, professional solar panel cleaning services are available to safely and effectively clean your solar panels for residential and commercial properties."
   },
   {
-  id: 5,
-  title: "Pressure Cleaning in Australia – Professional Exterior Cleaning Services",
-  slug: "pressure-cleaning-in-australia-professional-exterior-cleaning-services",
-  date: "2024-03-15T10:00:00Z",
-  thumbnail: "https://res.cloudinary.com/dr8tjrszy/image/upload/v1772800983/after-cleaning-street_lhtqux.jpg",
-  excerpt: "Professional pressure cleaning services across Australia. Clean driveways, patios, walls, and more. Keep your property spotless and well-maintained.",
-  intro: "Pressure cleaning is an efficient way to eliminate dirt, grime, moss, and stains from exterior surfaces, thus enhancing the look and cleanliness of your property. With time, driveways, patios, decks, and walls tend to collect debris, algae, and other environmental contaminants that are hard to clean using conventional cleaning techniques. Professional pressure cleaning services in Australia offer a safe, efficient, and reliable solution for restoring your exterior surfaces to their former glory.",
-  sections: [
-    {
-      heading: "Why Choose Professional Pressure Cleaners?",
-      bullets: [
-        { label: "Improved Property Looks", body: "Pressure cleaning gets rid of dirt and grime, making your property look much better instantly." },
-        { label: "Prevents Damage", body: "Moss, mold, and grime buildup on surfaces can lead to damage. Regular pressure cleaning prevents this." },
-        { label: "Safety and Time", body: "High-pressure cleaning is dangerous for people who do not know how to handle the equipment. Professionals have the necessary equipment and safety gear." },
-        { label: "Environmentally Friendly", body: "Many professional pressure cleaning services use eco-friendly detergents and purified water to clean surfaces without harming plants and pets." }
-      ]
-    },
-    {
-      heading: "Services Offered",
-      body: "Professional pressure cleaning services include:",
-      bullets: [
-        { label: "Driveways, patios, and walkways" },
-        { label: "Decks and outdoor flooring" },
-        { label: "Building walls and fences" },
-        { label: "Commercial property exteriors" },
-        { label: "Mold, algae, and tough stain removal" }
-      ]
-    },
-    {
-      heading: "How Frequently Should Pressure Cleaning Be Performed?",
-      body: "The answer to how frequently pressure cleaning should be performed varies depending on the location of your property:",
-      bullets: [
-        { label: "Residential properties in urban areas", body: "Once or twice a year" },
-        { label: "Properties near the beach", body: "Every 6 months" },
-        { label: "High-traffic commercial properties", body: "More frequent pressure cleaning is recommended" },
-        { label: "Properties in areas with moss or algae growth", body: "Every 3 to 4 months" }
-      ],
-      note: "Regular pressure cleaning will ensure that your property's exterior surfaces remain aesthetically pleasing, safe, and durable."
-    }
-  ],
-  conclusion: "Pressure cleaning is a necessary process for maintaining a clean, safe, and attractive exterior. In Australia, professional pressure cleaning services provide efficient, safe, and environmentally friendly pressure cleaning solutions for residential and commercial properties."
-}
+    id: 5,
+    title: "Pressure Cleaning in Australia – Professional Exterior Cleaning Services",
+    slug: "pressure-cleaning-in-australia-professional-exterior-cleaning-services",
+    date: "2024-03-15T10:00:00Z",
+    thumbnail: "https://res.cloudinary.com/dr8tjrszy/image/upload/v1772800983/after-cleaning-street_lhtqux.jpg",
+    excerpt: "Professional pressure cleaning services across Australia. Clean driveways, patios, walls, and more. Keep your property spotless and well-maintained.",
+    intro: "Pressure cleaning is an efficient way to eliminate dirt, grime, moss, and stains from exterior surfaces, thus enhancing the look and cleanliness of your property. With time, driveways, patios, decks, and walls tend to collect debris, algae, and other environmental contaminants that are hard to clean using conventional cleaning techniques. Professional pressure cleaning services in Australia offer a safe, efficient, and reliable solution for restoring your exterior surfaces to their former glory.",
+    sections: [
+      {
+        heading: "Why Choose Professional Pressure Cleaners?",
+        bullets: [
+          { label: "Improved Property Looks", body: "Pressure cleaning gets rid of dirt and grime, making your property look much better instantly." },
+          { label: "Prevents Damage", body: "Moss, mold, and grime buildup on surfaces can lead to damage. Regular pressure cleaning prevents this." },
+          { label: "Safety and Time", body: "High-pressure cleaning is dangerous for people who do not know how to handle the equipment. Professionals have the necessary equipment and safety gear." },
+          { label: "Environmentally Friendly", body: "Many professional pressure cleaning services use eco-friendly detergents and purified water to clean surfaces without harming plants and pets." }
+        ]
+      },
+      {
+        heading: "Services Offered",
+        body: "Professional pressure cleaning services include:",
+        bullets: [
+          { label: "Driveways, patios, and walkways" },
+          { label: "Decks and outdoor flooring" },
+          { label: "Building walls and fences" },
+          { label: "Commercial property exteriors" },
+          { label: "Mold, algae, and tough stain removal" }
+        ]
+      },
+      {
+        heading: "How Frequently Should Pressure Cleaning Be Performed?",
+        body: "The answer to how frequently pressure cleaning should be performed varies depending on the location of your property:",
+        bullets: [
+          { label: "Residential properties in urban areas", body: "Once or twice a year" },
+          { label: "Properties near the beach", body: "Every 6 months" },
+          { label: "High-traffic commercial properties", body: "More frequent pressure cleaning is recommended" },
+          { label: "Properties in areas with moss or algae growth", body: "Every 3 to 4 months" }
+        ],
+        note: "Regular pressure cleaning will ensure that your property's exterior surfaces remain aesthetically pleasing, safe, and durable."
+      }
+    ],
+    conclusion: "Pressure cleaning is a necessary process for maintaining a clean, safe, and attractive exterior. In Australia, professional pressure cleaning services provide efficient, safe, and environmentally friendly pressure cleaning solutions for residential and commercial properties."
+  },
+  {
+    "id": 6,
+    "title": "Why Regular Gutter Cleaning is Essential for Perth Homes",
+    "slug": "why-regular-gutter-cleaning-is-essential-perth-homes",
+    "date": "2024-04-14T11:51:00Z",
+    "thumbnail": "https://res.cloudinary.com/dr8tjrszy/image/upload/v1775990687/gutter-cleaning_nd8wyn.jpg",
+    "excerpt": "Discover how blocked gutters can cause serious water damage, pest infestations, and costly repairs — and why Perth homeowners should schedule professional cleaning at least twice a year.",
+    "intro": "Blocked gutters are one of the most overlooked — and most damaging — maintenance issues for Perth homeowners. When leaves, dirt, and debris build up, water has nowhere to go. It overflows, seeps under roofing, and slowly damages your walls, foundations, and fascia boards. At Aspect Window Cleaning, we've seen firsthand how regular gutter cleaning can save homeowners thousands in preventable repairs. Here's why it should be at the top of your maintenance list.",
+    "sections": [
+      {
+        "heading": "What Happens When Gutters Get Blocked?",
+        "body": "Perth's Mediterranean climate means hot, dry summers and wet winters — the perfect combination for rapid debris accumulation. Eucalyptus leaves, pine needles, and dust build up quickly, creating a dam that prevents proper water drainage. A single blocked downpipe can cause water to back up and overflow during the first heavy rain."
+      },
+      {
+        "heading": "The Hidden Costs of Neglected Gutters",
+        "subsections": [
+          {
+            "heading": "Water Damage to Walls & Foundations",
+            "body": "Overflowing gutters direct water against your exterior walls and foundations, causing dampness, mould, and structural cracking over time. In Perth's sandy soils, water pooling near foundations can also lead to subsidence — a serious structural issue that costs tens of thousands to repair."
+          },
+          {
+            "heading": "Pest Infestations",
+            "body": "Clogged, damp gutters are a favourite nesting spot for mosquitoes, birds, rodents, and wasps. The warm, sheltered environment with decaying organic matter creates an ideal breeding ground. Regular cleaning eliminates this habitat before infestations take hold."
+          },
+          {
+            "heading": "Roof & Fascia Damage",
+            "body": "Debris buildup traps moisture against your fascia boards and roof edges, accelerating rot and rust. In our experience, replacing rotted fascia boards costs 10x more than twice-yearly gutter cleaning. Clean gutters extend the lifespan of your entire roofing system significantly."
+          },
+          {
+            "heading": "Structural Failure",
+            "body": "A gutter full of saturated debris can weigh tens of kilograms — causing it to sag, pull away from the fascia, or collapse entirely. We've seen gutters tear completely off homes during storms because the brackets couldn't support the accumulated weight."
+          }
+        ]
+      },
+      {
+        "heading": "How Often Should Perth Homes Clean Their Gutters?",
+        "body": "We recommend professional gutter cleaning at least twice a year — once in late autumn after the leaves have fallen, and once in late spring to clear winter debris. However, homes surrounded by tall trees, especially eucalyptus or pine, may need quarterly cleaning. Properties in coastal areas like Cottesloe or Fremantle also accumulate salt and sand buildup that requires more frequent attention."
+      },
+      {
+        "heading": "What Professional Gutter Cleaning Includes",
+        "body": "A thorough service goes beyond just scooping out leaves. At Aspect Window Cleaning, our comprehensive gutter cleaning covers full removal of all leaves, twigs, dirt, and organic buildup from gutters and valleys; flushing and clearing all downpipes to ensure unobstructed water flow; inspection for cracks, rust, sagging, and loose brackets; safe bagging and removal of all debris from your property; clearing roof valleys where blockages cause the most serious damage; and a post-clean water test to confirm full system flow."
+      }
+    ],
+    "conclusion": "Gutter cleaning is not just routine maintenance — it's active protection for your home. With Perth's unpredictable winter storms and dry summers that bake debris onto your roof, regular professional cleaning is the most cost-effective way to protect your property's value and avoid emergency repairs. Don't wait for water stains on your ceiling or a sagging gutter to take action."
+  }
 ];

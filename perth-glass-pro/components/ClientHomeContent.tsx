@@ -4,7 +4,7 @@ import dynamic from "next/dynamic";
 
 // Lazy load all below-fold components for better initial load
 const ServicesGrid = dynamic(() => import("./ServicesGrid"), { ssr: false });
-const PureWaterSection = dynamic(() => import("./PureWaterSection"), { ssr: false });
+// const PureWaterSection = dynamic(() => import("./PureWaterSection"), { ssr: false });
 const ServiceFinder = dynamic(() => import("./ServiceFinder"), { ssr: false });
 const TrustGrid = dynamic(() => import("./TrustGrid"), { ssr: false });
 const ResultsAndReviews = dynamic(() => import("./ResultsAndReviews"), { ssr: false });
@@ -18,7 +18,7 @@ export default function ClientHomeContent() {
             <ServicesGrid />
 
             {/* Pure Water Technology - SEO Educational Section */}
-            <PureWaterSection />
+            {/* <PureWaterSection /> */}
 
             {/* Natural Language Service Finder */}
             <ServiceFinder />
