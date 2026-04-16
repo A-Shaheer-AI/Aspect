@@ -25,8 +25,10 @@ function LeadForm({
     setFormData,
     onSubmit,
     dark = false,
+    showPromo = true
 }: {
     submitted: boolean;
+    showPromo?: boolean;
     formData: { name: string; phone: string; suburb: string, promo?: string };
     setFormData: (d: { name: string; phone: string; suburb: string; promo?: string }) => void;
     onSubmit: () => void;
@@ -53,23 +55,24 @@ function LeadForm({
     }
     return (
         <div className="flex flex-col gap-2.5">
-            {fields.map((f) => (
-                <input
-                    key={f.key}
-                    type={f.type}
-                    placeholder={f.placeholder}
-                    value={formData[f.key as keyof typeof formData]}
-                    onChange={(e) => setFormData({ ...formData, [f.key]: e.target.value })}
-                    className="w-full rounded-xl px-4 py-3 text-sm outline-none transition-all"
-                    style={{
-                        background: dark ? "rgba(255,255,255,0.92)" : "#f4f6ff",
-                        border: "1.5px solid",
-                        borderColor: dark ? "transparent" : "#e0e6f5",
-                        color: "#1a1a2e",
-                        fontFamily: "inherit",
-                    }}
-                />
-            ))}
+            {fields.filter((f) => !(showPromo && f.key === "promo"))
+                .map((f) => (
+                    <input
+                        key={f.key}
+                        type={f.type}
+                        placeholder={f.placeholder}
+                        value={formData[f.key as keyof typeof formData]}
+                        onChange={(e) => setFormData({ ...formData, [f.key]: e.target.value })}
+                        className="w-full rounded-xl px-4 py-3 text-sm outline-none transition-all"
+                        style={{
+                            background: dark ? "rgba(255,255,255,0.92)" : "#f4f6ff",
+                            border: "1.5px solid",
+                            borderColor: dark ? "transparent" : "#e0e6f5",
+                            color: "#1a1a2e",
+                            fontFamily: "inherit",
+                        }}
+                    />
+                ))}
             <button
                 onClick={onSubmit}
                 className="w-full rounded-xl py-3.5 text-sm font-bold mt-1 transition-all hover:-translate-y-0.5 cursor-pointer"
@@ -189,6 +192,7 @@ function QuoteModal({
                         setFormData={setFormData}
                         onSubmit={onSubmit}
                         dark
+                        showPromo={showPromo}
                     />
 
                 </div>
@@ -241,7 +245,7 @@ export default function WindowCleaningAdsPage() {
                 name: formData.name,
                 phone: formData.phone,
                 suburb: formData.suburb,
-                message: formData.promo, 
+                message: formData.promo,
             });
             if (result.success) {
                 trackFormCompleted();
@@ -289,7 +293,7 @@ export default function WindowCleaningAdsPage() {
   bg-[linear-gradient(160deg,rgba(10,22,40,0.5)_0%,rgba(15,37,69,0.8)_60%,rgba(19,48,96,0.8)_100%),url('https://res.cloudinary.com/dr8tjrszy/image/upload/v1771960133/professional-windows-cleaning_mm5mvy.jpg')]
   md:bg-[linear-gradient(160deg,rgba(10,22,40,0.5)_0%,rgba(15,37,69,0.8)_60%,rgba(19,48,96,0.8)_100%),url('https://res.cloudinary.com/dr8tjrszy/image/upload/v1771960136/outside-windows-cleaning_lzp8fq.jpg')]"
             >
-               
+
                 {/* HERO BODY */}
                 <div className="relative z-10 flex flex-1 flex-col items-center justify-center px-5 pb-10 pt-6 text-center text-white">
                     <div
