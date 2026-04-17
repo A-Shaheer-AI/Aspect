@@ -131,7 +131,7 @@ export default function PressureWashingAdsPage() {
 
     const NAVY = "#07077E";
     const YELLOW = "#FFE54D";
-
+    const HERO_VIDEO_URL = "https://res.cloudinary.com/dr8tjrszy/video/upload/v1776147185/window-cleaning-services-in-perth_ejfjoh.mp4";
     return (
         <>
             {/* ─── MODAL ─── */}
@@ -174,10 +174,23 @@ export default function PressureWashingAdsPage() {
             )}
 
             {/* ─── SECTION 1: HERO ─── */}
-            <section
-                className="relative min-h-screen flex flex-col overflow-hidden"
-                style={{ background: NAVY }}
-            >
+            <section className="relative min-h-screen flex flex-col justify-center overflow-hidden bg-[linear-gradient(160deg,rgba(7,7,126,0.75)_0%,rgba(5,5,80,0.85)_60%,rgba(3,3,50,0.92)_100%)]">
+
+                {/* Background Video */}
+                <video
+                    autoPlay
+                    loop
+                    muted
+                    playsInline
+                    poster={HERO_VIDEO_URL}
+                    className="absolute inset-0 w-full h-full object-cover"
+                >
+                    <source src={HERO_VIDEO_URL} type="video/mp4" />
+                </video>
+                
+                <div className="absolute inset-0 bg-hero-overlay z-0" aria-hidden="true" />
+
+
                 {/* Decorative circles */}
                 <div className="pointer-events-none absolute" style={{ top: "-200px", right: "-200px", width: 700, height: 700, border: "1px solid rgba(255,229,77,0.08)", borderRadius: "50%" }} />
                 <div className="pointer-events-none absolute" style={{ top: "-100px", right: "-100px", width: 500, height: 500, border: "1px solid rgba(255,229,77,0.05)", borderRadius: "50%" }} />

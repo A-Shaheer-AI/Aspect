@@ -1,7 +1,7 @@
 "use client";
 
-import { useState } from "react";
-import { Phone, CheckCircle2, Star, Shield, Droplets, Zap, Building2, X } from "lucide-react";
+import { useState, useEffect, useRef } from "react";
+import { Phone, CheckCircle2, Star, Shield, Droplets, Zap, Building2, X, Tag } from "lucide-react";
 import { BUSINESS } from "@/lib/config";
 import Link from "next/link";
 import Image from "next/image";
@@ -9,6 +9,12 @@ import BeforeAfterSlider from "@/components/BeforeAfterSlider";
 import { sendLeadEmail } from "../actions/send-email";
 import { trackFormCompleted } from "@/hooks/useGtm";
 
+type FormDataType = {
+    name: string;
+    phone: string;
+    suburb: string;
+    promo?: string;
+};
 
 /* ─────────────────────────────────────────
    LEAD FORM — shared by hero + modal
@@ -19,10 +25,12 @@ function LeadForm({
     setFormData,
     onSubmit,
     dark = false,
+    showPromo = true
 }: {
     submitted: boolean;
-    formData: { name: string; phone: string; suburb: string };
-    setFormData: (d: { name: string; phone: string; suburb: string }) => void;
+    showPromo?: boolean;
+    formData: { name: string; phone: string; suburb: string, promo?: string };
+    setFormData: (d: { name: string; phone: string; suburb: string; promo?: string }) => void;
     onSubmit: () => void;
     dark?: boolean;
 }) {
@@ -30,6 +38,7 @@ function LeadForm({
         { key: "name", placeholder: "Your Name", type: "text" },
         { key: "phone", placeholder: "Phone Number", type: "tel" },
         { key: "suburb", placeholder: "Your Suburb", type: "text" },
+        { key: "promo", placeholder: "Promo Code", type: "text" },
     ];
     if (submitted) {
         return (
@@ -46,23 +55,24 @@ function LeadForm({
     }
     return (
         <div className="flex flex-col gap-2.5">
-            {fields.map((f) => (
-                <input
-                    key={f.key}
-                    type={f.type}
-                    placeholder={f.placeholder}
-                    value={formData[f.key as keyof typeof formData]}
-                    onChange={(e) => setFormData({ ...formData, [f.key]: e.target.value })}
-                    className="w-full rounded-xl px-4 py-3 text-sm outline-none transition-all"
-                    style={{
-                        background: dark ? "rgba(255,255,255,0.92)" : "#f4f6ff",
-                        border: "1.5px solid",
-                        borderColor: dark ? "transparent" : "#e0e6f5",
-                        color: "#1a1a2e",
-                        fontFamily: "inherit",
-                    }}
-                />
-            ))}
+            {fields.filter((f) => !(showPromo && f.key === "promo"))
+                .map((f) => (
+                    <input
+                        key={f.key}
+                        type={f.type}
+                        placeholder={f.placeholder}
+                        value={formData[f.key as keyof typeof formData]}
+                        onChange={(e) => setFormData({ ...formData, [f.key]: e.target.value })}
+                        className="w-full rounded-xl px-4 py-3 text-sm outline-none transition-all"
+                        style={{
+                            background: dark ? "rgba(255,255,255,0.92)" : "#f4f6ff",
+                            border: "1.5px solid",
+                            borderColor: dark ? "transparent" : "#e0e6f5",
+                            color: "#1a1a2e",
+                            fontFamily: "inherit",
+                        }}
+                    />
+                ))}
             <button
                 onClick={onSubmit}
                 className="w-full rounded-xl py-3.5 text-sm font-bold mt-1 transition-all hover:-translate-y-0.5 cursor-pointer"
@@ -82,12 +92,152 @@ function LeadForm({
 }
 
 /* ─────────────────────────────────────────
+   MODAL — reusable, accepts optional promo
+───────────────────────────────────────── */
+function QuoteModal({
+    open,
+    onClose,
+    submitted,
+    formData,
+    setFormData,
+    onSubmit,
+    showPromo = false,
+}: {
+    open: boolean;
+    onClose: () => void;
+    submitted: boolean;
+    formData: { name: string; phone: string; suburb: string; promo?: string };
+    setFormData: (d: { name: string; phone: string; suburb: string; promo?: string; }) => void;
+    onSubmit: () => void;
+    showPromo?: boolean;
+}) {
+    if (!open) return null;
+
+    const NAVY = "#07077E";
+    const YELLOW = "#FFE54D";
+
+    return (
+        <div
+            className="fixed inset-0 z-50 flex items-center justify-center px-4"
+            style={{ background: "rgba(7,7,126,0.65)", backdropFilter: "blur(8px)" }}
+            onClick={(e) => { if (e.target === e.currentTarget) onClose(); }}
+        >
+            <div
+                className="relative w-full max-w-sm rounded-2xl shadow-2xl overflow-hidden"
+                style={{
+                    background: NAVY,
+                    border: "1px solid rgba(255,229,77,0.2)",
+                    animation: "modalPop 0.3s cubic-bezier(0.34,1.56,0.64,1) both",
+                }}
+            >
+                {/* Promo banner — only shown on scroll popup */}
+                {showPromo && (
+                    <div
+                        className="relative flex items-center justify-center gap-2 px-4 py-3 text-sm font-semibold"
+                        style={{
+                            background: "linear-gradient(90deg, #FFE54D 0%, #FFD93B 100%)",
+                            color: NAVY,
+                        }}
+                    >
+                        {/* subtle glow */}
+                        <div className="absolute inset-0 opacity-20 blur-md bg-white pointer-events-none" />
+
+                        <Tag className="w-4 h-4 shrink-0" />
+
+                        <span>
+                            New users get{" "}
+                            <span className="font-extrabold underline underline-offset-2">
+                                10% OFF
+                            </span>
+                        </span>
+
+                        <span className="opacity-60">•</span>
+
+                        <span className="text-xs font-medium">Use code</span>
+
+                        <span
+                            className="rounded-md px-2 py-0.5 text-xs font-black tracking-wider"
+                            style={{
+                                background: "rgba(7,7,126,0.15)",
+                                letterSpacing: "0.12em",
+                            }}
+                        >
+                            PERTH
+                        </span>
+                    </div>
+                )}
+
+                <div className="p-6">
+                    <button
+                        onClick={onClose}
+                        className="absolute top-3 right-4 cursor-pointer"
+                        style={{ color: showPromo ? "rgba(255,255,255,0.5)" : "rgba(255,255,255,0.5)", top: showPromo ? "3.2rem" : "1rem" }}
+                    >
+                        <X className="w-5 h-5" />
+                    </button>
+
+                    <div
+                        className="inline-block text-xs font-bold uppercase tracking-widest rounded-full px-3 py-1 mb-4"
+                        style={{ background: "rgba(255,229,77,0.12)", color: YELLOW }}
+                    >
+                        Free Quote — No Obligation
+                    </div>
+                    <h3 className="text-white font-bold text-lg mb-1">Get a Fast Text Quote</h3>
+                    <p className="text-sm mb-5" style={{ color: "rgba(255,255,255,0.5)" }}>
+                        We reply within 60 minutes.
+                    </p>
+                    <LeadForm
+                        submitted={submitted}
+                        formData={formData}
+                        setFormData={setFormData}
+                        onSubmit={onSubmit}
+                        dark
+                        showPromo={showPromo}
+                    />
+
+                </div>
+            </div>
+
+            <style>{`
+                @keyframes modalPop {
+                    from { opacity: 0; transform: scale(0.88) translateY(16px); }
+                    to   { opacity: 1; transform: scale(1)    translateY(0);    }
+                }
+            `}</style>
+        </div>
+    );
+}
+
+/* ─────────────────────────────────────────
    PAGE
 ───────────────────────────────────────── */
 export default function WindowCleaningAdsPage() {
     const [modalOpen, setModalOpen] = useState(false);
-    const [formData, setFormData] = useState({ name: "", phone: "", suburb: "" });
+    const [showPromo, setShowPromo] = useState(false);
+    const [scrollPopupShown, setScrollPopupShown] = useState(false);
+    const [formData, setFormData] = useState<FormDataType>({ name: "", phone: "", suburb: "", promo: "", });
     const [submitted, setSubmitted] = useState(false);
+
+    /* ── Scroll-triggered popup at 50% page height ── */
+    useEffect(() => {
+        const handleScroll = () => {
+            if (scrollPopupShown) return;
+            const scrolled = window.scrollY + window.innerHeight;
+            const total = document.documentElement.scrollHeight;
+            if (scrolled / total >= 0.5) {
+                setShowPromo(true);
+                setModalOpen(true);
+                setScrollPopupShown(true);
+            }
+        };
+        window.addEventListener("scroll", handleScroll, { passive: true });
+        return () => window.removeEventListener("scroll", handleScroll);
+    }, [scrollPopupShown]);
+
+    const openRegularModal = () => {
+        setShowPromo(false);
+        setModalOpen(true);
+    };
 
     const handleSubmit = async () => {
         try {
@@ -95,6 +245,7 @@ export default function WindowCleaningAdsPage() {
                 name: formData.name,
                 phone: formData.phone,
                 suburb: formData.suburb,
+                message: formData.promo,
             });
             if (result.success) {
                 trackFormCompleted();
@@ -107,10 +258,10 @@ export default function WindowCleaningAdsPage() {
     };
 
     const processSteps = [
-        { num: "01", title: "Call or Quote", body: "Call us or fill the form. We'll text a price within the hour." },
-        { num: "02", title: "We Confirm", body: "Pick a time that works. Same-week slots usually available." },
-        { num: "03", title: "We Clean", body: "Our team arrives on time and gets every pane streak-free." },
-        { num: "04", title: "You Enjoy", body: "Crystal-clear windows, guaranteed. Book again anytime." },
+        { num: "01", title: "Call or Quote", body: "Call us or fill the form. We'll text a price within the hour.", clickable: true },
+        { num: "02", title: "We Confirm", body: "Pick a time that works. Same-week slots usually available.", clickable: false },
+        { num: "03", title: "We Clean", body: "Our team arrives on time and gets every pane streak-free.", clickable: false },
+        { num: "04", title: "You Enjoy", body: "Crystal-clear windows, guaranteed. Book again anytime.", clickable: false },
     ];
 
     const googleReviews = [
@@ -125,44 +276,16 @@ export default function WindowCleaningAdsPage() {
 
     return (
         <>
-            {/* ─── MODAL ─── */}
-            {modalOpen && (
-                <div
-                    className="fixed inset-0 z-50 flex items-center justify-center px-4"
-                    style={{ background: "rgba(7,7,126,0.6)", backdropFilter: "blur(6px)" }}
-                    onClick={(e) => { if (e.target === e.currentTarget) setModalOpen(false); }}
-                >
-                    <div
-                        className="relative w-full max-w-sm rounded-2xl p-6 shadow-2xl"
-                        style={{ background: NAVY, border: "1px solid rgba(255,229,77,0.2)" }}
-                    >
-                        <button
-                            onClick={() => setModalOpen(false)}
-                            className="absolute top-4 right-4 cursor-pointer"
-                            style={{ color: "rgba(255,255,255,0.5)" }}
-                        >
-                            <X className="w-5 h-5" />
-                        </button>
-                        <div
-                            className="inline-block text-xs font-bold uppercase tracking-widest rounded-full px-3 py-1 mb-4"
-                            style={{ background: "rgba(255,229,77,0.12)", color: YELLOW }}
-                        >
-                            Free Quote — No Obligation
-                        </div>
-                        <h3 className="text-white font-bold text-lg mb-1">Get a Fast Text Quote</h3>
-                        <p className="text-sm mb-5" style={{ color: "rgba(255,255,255,0.5)" }}>
-                            We reply within 60 minutes.
-                        </p>
-                        <LeadForm
-                            submitted={submitted}
-                            formData={formData}
-                            setFormData={setFormData}
-                            onSubmit={handleSubmit}
-                            dark
-                        />
-                    </div>
-                </div>
-            )}
+            {/* ─── UNIFIED MODAL ─── */}
+            <QuoteModal
+                open={modalOpen}
+                onClose={() => setModalOpen(false)}
+                submitted={submitted}
+                formData={formData}
+                setFormData={setFormData}
+                onSubmit={handleSubmit}
+                showPromo={showPromo}
+            />
 
             {/* ─── SECTION 1: HERO ─── */}
             <section
@@ -170,53 +293,9 @@ export default function WindowCleaningAdsPage() {
   bg-[linear-gradient(160deg,rgba(10,22,40,0.5)_0%,rgba(15,37,69,0.8)_60%,rgba(19,48,96,0.8)_100%),url('https://res.cloudinary.com/dr8tjrszy/image/upload/v1771960133/professional-windows-cleaning_mm5mvy.jpg')]
   md:bg-[linear-gradient(160deg,rgba(10,22,40,0.5)_0%,rgba(15,37,69,0.8)_60%,rgba(19,48,96,0.8)_100%),url('https://res.cloudinary.com/dr8tjrszy/image/upload/v1771960136/outside-windows-cleaning_lzp8fq.jpg')]"
             >
-                {/* Decorative circles */}
-                <div
-                    className="pointer-events-none absolute"
-                    style={{
-                        top: "-200px", right: "-200px",
-                        width: 700, height: 700,
-                        border: "1px solid rgba(255,229,77,0.07)",
-                        borderRadius: "50%",
-                    }}
-                />
-                <div
-                    className="pointer-events-none absolute"
-                    style={{
-                        top: "-100px", right: "-100px",
-                        width: 500, height: 500,
-                        border: "1px solid rgba(255,229,77,0.05)",
-                        borderRadius: "50%",
-                    }}
-                />
-                <div
-                    className="pointer-events-none absolute"
-                    style={{
-                        bottom: "-80px", left: "-80px",
-                        width: 400, height: 400,
-                        border: "1px solid rgba(255,229,77,0.04)",
-                        borderRadius: "50%",
-                    }}
-                />
-
-                {/* NAV */}
-                <nav className="relative z-10 flex items-center justify-end px-6 pt-5 pb-2">
-                    <Link
-                        href={`tel:${BUSINESS.phoneRaw}`}
-                        className="flex items-center gap-2 rounded-full px-4 py-2.5 text-sm font-bold transition-all hover:-translate-y-0.5"
-                        style={{ background: YELLOW, color: NAVY, boxShadow: "0 4px 20px rgba(255,229,77,0.4)" }}
-                    >
-                        <span
-                            className="w-2 h-2 rounded-full"
-                            style={{ background: "#22c55e", boxShadow: "0 0 0 3px rgba(34,197,94,0.3)", animation: "pulse 1.5s infinite" }}
-                        />
-                        {BUSINESS.phone}
-                    </Link>
-                </nav>
 
                 {/* HERO BODY */}
                 <div className="relative z-10 flex flex-1 flex-col items-center justify-center px-5 pb-10 pt-6 text-center text-white">
-                    {/* Tag */}
                     <div
                         className="mb-6 inline-flex items-center gap-2 rounded-full border px-4 py-2 text-xs font-semibold uppercase tracking-widest"
                         style={{ borderColor: "rgba(255,229,77,0.35)", color: YELLOW }}
@@ -225,18 +304,16 @@ export default function WindowCleaningAdsPage() {
                         Same-week booking available
                     </div>
 
-                    {/* Headline */}
                     <h1 className="mb-4 leading-none font-black text-white" style={{ fontSize: "clamp(44px,9vw,84px)", letterSpacing: "1px" }}>
                         Perth&apos;s #1
                         <br />
                         <span style={{ color: YELLOW }}>Window Cleaners</span>
                     </h1>
 
-                    {/* Sub */}
                     <p className="mb-8 max-w-sm text-base font-light leading-relaxed" style={{ color: "rgba(255,255,255,0.65)" }}>
-                        Next-Day Availability. Commercial-Grade Pure Water Cleaning for Homes & Businesses.                    </p>
+                        Next-Day Availability. Commercial-Grade Pure Water Cleaning for Homes & Businesses.
+                    </p>
 
-                    {/* CTAs */}
                     <div className="mb-8 flex w-full max-w-sm flex-col gap-3">
                         <Link
                             href={`tel:${BUSINESS.phoneRaw}`}
@@ -247,7 +324,7 @@ export default function WindowCleaningAdsPage() {
                             Call for Instant Quote
                         </Link>
                         <button
-                            onClick={() => setModalOpen(true)}
+                            onClick={openRegularModal}
                             className="flex items-center justify-center gap-2 rounded-2xl border py-4 font-medium text-base transition-all hover:bg-white/10 cursor-pointer"
                             style={{ borderColor: "rgba(255,255,255,0.25)", color: "white" }}
                         >
@@ -255,7 +332,6 @@ export default function WindowCleaningAdsPage() {
                         </button>
                     </div>
 
-                    {/* Trust badges */}
                     <div className="flex flex-wrap justify-center gap-2">
                         {[
                             { icon: "🛡️", text: "$20M Insured" },
@@ -289,10 +365,7 @@ export default function WindowCleaningAdsPage() {
                             className="flex flex-col items-center justify-center py-5 text-center"
                             style={{ borderRight: i < 3 ? `1px solid rgba(7,7,126,0.15)` : "none" }}
                         >
-                            <span
-                                className="leading-none font-black"
-                                style={{ fontSize: "clamp(18px,4vw,34px)", color: NAVY }}
-                            >
+                            <span className="leading-none font-black" style={{ fontSize: "clamp(18px,4vw,34px)", color: NAVY }}>
                                 {s.num}
                             </span>
                             <span className="mt-1 text-xs font-semibold uppercase tracking-wider" style={{ color: "rgba(7,7,126,0.55)" }}>
@@ -303,21 +376,14 @@ export default function WindowCleaningAdsPage() {
                 </div>
             </section>
 
-            {/* ─── SECTION 3: LEAD FORM (split layout) ─── */}
+            {/* ─── SECTION 3: LEAD FORM ─── */}
             <section className="px-5 py-16" style={{ background: NAVY }}>
                 <div className="mx-auto grid max-w-4xl grid-cols-1 gap-12 md:grid-cols-2 md:items-center">
-                    {/* Left copy */}
                     <div>
-                        <div
-                            className="mb-4 inline-block rounded-full px-3 py-1 text-xs font-bold uppercase tracking-widest"
-                            style={{ background: "rgba(255,229,77,0.1)", color: YELLOW }}
-                        >
+                        <div className="mb-4 inline-block rounded-full px-3 py-1 text-xs font-bold uppercase tracking-widest" style={{ background: "rgba(255,229,77,0.1)", color: YELLOW }}>
                             Get your free quote
                         </div>
-                        <h2
-                            className="mb-3 leading-none text-white font-black"
-                            style={{ fontSize: "clamp(36px,5vw,52px)" }}
-                        >
+                        <h2 className="mb-3 leading-none text-white font-black" style={{ fontSize: "clamp(36px,5vw,52px)" }}>
                             Ready for Spotless Windows?
                         </h2>
                         <p className="mb-8 text-base font-light leading-relaxed" style={{ color: "rgba(255,255,255,0.55)" }}>
@@ -331,10 +397,7 @@ export default function WindowCleaningAdsPage() {
                                 "No lock-in contracts",
                             ].map((point, index) => (
                                 <div key={index} className="flex items-center gap-3 text-sm" style={{ color: "rgba(255,255,255,0.7)" }}>
-                                    <div
-                                        className="flex h-5 w-5 flex-shrink-0 items-center justify-center rounded-full text-xs"
-                                        style={{ background: "rgba(255,229,77,0.15)", border: "1px solid rgba(255,229,77,0.35)", color: YELLOW }}
-                                    >
+                                    <div className="flex h-5 w-5 flex-shrink-0 items-center justify-center rounded-full text-xs" style={{ background: "rgba(255,229,77,0.15)", border: "1px solid rgba(255,229,77,0.35)", color: YELLOW }}>
                                         ✓
                                     </div>
                                     {point}
@@ -342,17 +405,10 @@ export default function WindowCleaningAdsPage() {
                             ))}
                         </div>
                     </div>
-
-                    {/* Right form card */}
                     <div className="rounded-2xl p-6 shadow-2xl" style={{ background: "white" }}>
                         <h3 className="mb-1 font-bold text-base" style={{ color: NAVY }}>Get a Fast Text Quote</h3>
                         <p className="mb-5 text-sm" style={{ color: "#888" }}>We&apos;ll reply within 60 minutes</p>
-                        <LeadForm
-                            submitted={submitted}
-                            formData={formData}
-                            setFormData={setFormData}
-                            onSubmit={handleSubmit}
-                        />
+                        <LeadForm submitted={submitted} formData={formData} setFormData={setFormData} onSubmit={handleSubmit} />
                     </div>
                 </div>
             </section>
@@ -378,16 +434,10 @@ export default function WindowCleaningAdsPage() {
             {/* ─── SECTION 5: BENTO WHY US ─── */}
             <section className="px-5 py-16" style={{ background: "#f4f6ff" }}>
                 <div className="mx-auto mb-10 max-w-4xl text-center">
-                    <div
-                        className="mb-3 inline-block rounded-full px-3 py-1 text-xs font-bold uppercase tracking-widest"
-                        style={{ background: "rgba(7,7,126,0.07)", color: NAVY }}
-                    >
+                    <div className="mb-3 inline-block rounded-full px-3 py-1 text-xs font-bold uppercase tracking-widest" style={{ background: "rgba(7,7,126,0.07)", color: NAVY }}>
                         Why Aspect
                     </div>
-                    <h2
-                        className="mb-3 leading-none"
-                        style={{ fontSize: "clamp(24px,5vw,52px)", color: NAVY }}
-                    >
+                    <h2 className="mb-3 leading-none" style={{ fontSize: "clamp(24px,5vw,52px)", color: NAVY }}>
                         Not All Window Cleaners Are the Same
                     </h2>
                     <p className="mx-auto max-w-lg text-base font-light leading-relaxed" style={{ color: "#888" }}>
@@ -395,28 +445,16 @@ export default function WindowCleaningAdsPage() {
                     </p>
                 </div>
 
-                {/* Bento grid */}
                 <div className="mx-auto grid max-w-4xl grid-cols-12 gap-3">
-                    {/* Big navy card */}
                     <div className="col-span-12 md:col-span-5 rounded-2xl p-6" style={{ background: NAVY }}>
-                        <div
-                            className="mb-2 leading-none font-black"
-                            style={{ fontSize: 56, color: YELLOW }}
-                        >
-                            100%
-                        </div>
+                        <div className="mb-2 leading-none font-black" style={{ fontSize: 56, color: YELLOW }}>100%</div>
                         <p className="font-bold text-base text-white mb-2">Satisfaction Guaranteed</p>
                         <p className="text-sm font-light leading-relaxed" style={{ color: "rgba(255,255,255,0.55)" }}>
                             If anything falls short, we return and fix it at no extra cost. No questions asked.
                         </p>
                     </div>
-
-                    {/* Wide white card */}
                     <div className="col-span-12 md:col-span-7 rounded-2xl p-6 bg-white">
-                        <div
-                            className="mb-4 flex h-10 w-10 items-center justify-center rounded-xl"
-                            style={{ background: "rgba(7,7,126,0.07)" }}
-                        >
+                        <div className="mb-4 flex h-10 w-10 items-center justify-center rounded-xl" style={{ background: "rgba(7,7,126,0.07)" }}>
                             <Droplets className="w-5 h-5" style={{ color: NAVY }} />
                         </div>
                         <p className="font-bold text-base mb-2" style={{ color: NAVY }}>Pure Water Technology</p>
@@ -424,28 +462,17 @@ export default function WindowCleaningAdsPage() {
                             Our commercial RO/DI filtration system uses zero chemicals — glass stays cleaner for longer, even after rain. No streaks, no residue.
                         </p>
                     </div>
-
-                    {/* 3 small cards */}
                     {[
                         { icon: <Shield className="w-5 h-5" style={{ color: NAVY }} />, title: "Fully Insured", body: "$20M public liability so you're always protected on every job." },
                         { icon: <Zap className="w-5 h-5" style={{ color: NAVY }} />, title: "Urgent & Flexible", body: "Next-day emergency cleans available for rental inspections." },
                         { icon: <Building2 className="w-5 h-5" style={{ color: NAVY }} />, title: "Police Cleared", body: "Background-checked team you can trust inside your home.", yellow: true },
-                    ].map((card, i) => (
-                        <div
-                            key={card.title}
-                            className="col-span-12 md:col-span-4 rounded-2xl p-5"
-                            style={{ background: card.yellow ? YELLOW : "white" }}
-                        >
-                            <div
-                                className="mb-3 flex h-9 w-9 items-center justify-center rounded-xl"
-                                style={{ background: card.yellow ? "rgba(7,7,126,0.1)" : "rgba(7,7,126,0.06)" }}
-                            >
+                    ].map((card) => (
+                        <div key={card.title} className="col-span-12 md:col-span-4 rounded-2xl p-5" style={{ background: card.yellow ? YELLOW : "white" }}>
+                            <div className="mb-3 flex h-9 w-9 items-center justify-center rounded-xl" style={{ background: card.yellow ? "rgba(7,7,126,0.1)" : "rgba(7,7,126,0.06)" }}>
                                 {card.icon}
                             </div>
                             <p className="font-bold text-sm mb-1.5" style={{ color: NAVY }}>{card.title}</p>
-                            <p className="text-xs font-light leading-relaxed" style={{ color: card.yellow ? "rgba(7,7,126,0.6)" : "#888" }}>
-                                {card.body}
-                            </p>
+                            <p className="text-xs font-light leading-relaxed" style={{ color: card.yellow ? "rgba(7,7,126,0.6)" : "#888" }}>{card.body}</p>
                         </div>
                     ))}
                 </div>
@@ -454,30 +481,19 @@ export default function WindowCleaningAdsPage() {
             {/* ─── SECTION 6: BEFORE / AFTER ─── */}
             <section className="px-5 py-16 bg-white">
                 <div className="mx-auto mb-8 max-w-4xl text-center">
-                    <div
-                        className="mb-3 inline-block rounded-full px-3 py-1 text-xs font-bold uppercase tracking-widest"
-                        style={{ background: "rgba(7,7,126,0.07)", color: NAVY }}
-                    >
+                    <div className="mb-3 inline-block rounded-full px-3 py-1 text-xs font-bold uppercase tracking-widest" style={{ background: "rgba(7,7,126,0.07)", color: NAVY }}>
                         Our results
                     </div>
-                    <h2
-                        className="leading-none"
-                        style={{ fontSize: "clamp(36px,5vw,52px)", color: NAVY }}
-                    >
+                    <h2 className="leading-none" style={{ fontSize: "clamp(36px,5vw,52px)", color: NAVY }}>
                         See the Difference
                     </h2>
                 </div>
                 <div className="mx-auto max-w-4xl">
-                    {/* Video */}
                     <div className="mb-4 overflow-hidden rounded-2xl" style={{ height: 380 }}>
                         <video className="h-full w-full object-cover" controls preload="metadata">
-                            <source
-                                src="https://res.cloudinary.com/dr8tjrszy/video/upload/v1772968701/VID-20260228-WA0016_xsz3cm_401388.mp4"
-                                type="video/mp4"
-                            />
+                            <source src="https://res.cloudinary.com/dr8tjrszy/video/upload/v1772968701/VID-20260228-WA0016_xsz3cm_401388.mp4" type="video/mp4" />
                         </video>
                     </div>
-                    {/* Sliders */}
                     <div className="grid grid-cols-1 gap-4 lg:grid-cols-2">
                         <BeforeAfterSlider
                             afterImage="https://res.cloudinary.com/dr8tjrszy/image/upload/v1774345158/IMG_9593_1_2_b98bl5.png"
@@ -491,22 +507,15 @@ export default function WindowCleaningAdsPage() {
                         />
                     </div>
                 </div>
-            </section >
+            </section>
 
             {/* ─── SECTION 7: HOW IT WORKS ─── */}
-            < section className="px-5 py-16" style={{ background: "#f4f6ff" }
-            }>
+            <section className="px-5 py-16" style={{ background: "#f4f6ff" }}>
                 <div className="mx-auto mb-10 max-w-4xl text-center">
-                    <div
-                        className="mb-3 inline-block rounded-full px-3 py-1 text-xs font-bold uppercase tracking-widest"
-                        style={{ background: "rgba(7,7,126,0.07)", color: NAVY }}
-                    >
+                    <div className="mb-3 inline-block rounded-full px-3 py-1 text-xs font-bold uppercase tracking-widest" style={{ background: "rgba(7,7,126,0.07)", color: NAVY }}>
                         How it works
                     </div>
-                    <h2
-                        className="mb-3 leading-none"
-                        style={{ fontSize: "clamp(36px,5vw,52px)", color: NAVY }}
-                    >
+                    <h2 className="mb-3 leading-none" style={{ fontSize: "clamp(36px,5vw,52px)", color: NAVY }}>
                         Booked & Done in 4 Steps
                     </h2>
                     <p className="mx-auto max-w-md text-base font-light" style={{ color: "#888" }}>
@@ -514,7 +523,6 @@ export default function WindowCleaningAdsPage() {
                     </p>
                 </div>
                 <div className="mx-auto max-w-4xl">
-                    {/* connector line — desktop only */}
                     <div className="relative">
                         <div
                             className="absolute hidden md:block"
@@ -528,41 +536,53 @@ export default function WindowCleaningAdsPage() {
                         />
                         <div className="relative grid grid-cols-2 gap-6 md:grid-cols-4">
                             {processSteps.map((step) => (
-                                <div key={step.num} className="flex flex-col items-center text-center">
+                                <div
+                                    key={step.num}
+                                    className={`flex flex-col items-center text-center ${step.clickable ? "group" : ""}`}
+                                    onClick={step.clickable ? openRegularModal : undefined}
+                                    style={step.clickable ? { cursor: "pointer" } : undefined}
+                                >
                                     <div
-                                        className="mb-4 flex h-14 w-14 items-center justify-center rounded-full font-black"
+                                        className="mb-4 flex h-14 w-14 items-center justify-center rounded-full font-black transition-all"
                                         style={{
-                                            background: NAVY,
-                                            color: YELLOW,
+                                            background: step.clickable ? YELLOW : NAVY,
+                                            color: step.clickable ? NAVY : YELLOW,
                                             fontSize: 22,
-                                            boxShadow: `0 4px 20px rgba(7,7,126,0.25)`,
+                                            boxShadow: step.clickable
+                                                ? `0 4px 20px rgba(255,229,77,0.5)`
+                                                : `0 4px 20px rgba(7,7,126,0.25)`,
                                             position: "relative",
                                             zIndex: 1,
                                         }}
                                     >
                                         {step.num}
                                     </div>
-                                    <p className="mb-2 font-bold text-sm" style={{ color: NAVY }}>{step.title}</p>
+                                    <p
+                                        className="mb-2 font-bold text-sm transition-all"
+                                        style={{
+                                            color: NAVY,
+                                            textDecoration: step.clickable ? "underline" : "none",
+                                            textDecorationColor: "rgba(7,7,126,0.3)",
+                                            textUnderlineOffset: "3px",
+                                        }}
+                                    >
+                                        {step.title}
+                                    </p>
                                     <p className="text-xs font-light leading-relaxed" style={{ color: "#888" }}>{step.body}</p>
                                 </div>
                             ))}
                         </div>
                     </div>
                 </div>
-            </section >
+            </section>
 
             {/* ─── SECTION 8: REVIEWS ─── */}
-            < section className="px-5 py-16 bg-white" >
+            <section className="px-5 py-16 bg-white">
                 <div className="mx-auto mb-10 max-w-4xl text-center">
                     <div className="mb-3 flex justify-center gap-1">
-                        {[...Array(5)].map((_, i) => (
-                            <Star key={i} className="w-6 h-6 fill-yellow-400 text-yellow-400" />
-                        ))}
+                        {[...Array(5)].map((_, i) => <Star key={i} className="w-6 h-6 fill-yellow-400 text-yellow-400" />)}
                     </div>
-                    <h2
-                        className="mb-2 leading-none"
-                        style={{ fontSize: "clamp(24px,5vw,52px)", color: NAVY }}
-                    >
+                    <h2 className="mb-2 leading-none" style={{ fontSize: "clamp(24px,5vw,52px)", color: NAVY }}>
                         Perth Homeowners Love Us
                     </h2>
                     <Link
@@ -576,29 +596,14 @@ export default function WindowCleaningAdsPage() {
                 </div>
                 <div className="mx-auto grid max-w-4xl grid-cols-1 gap-4 md:grid-cols-2">
                     {googleReviews.map((r, i) => (
-                        <div
-                            key={i}
-                            className="relative overflow-hidden rounded-2xl p-5"
-                            style={{ background: "#f4f6ff", border: "1px solid rgba(7,7,126,0.07)" }}
-                        >
-                            {/* big quote mark */}
-                            <span
-                                className="pointer-events-none absolute right-4 top-2 select-none font-black leading-none"
-                                style={{ fontSize: 80, color: "rgba(7,7,126,0.05)" }}
-                            >
-                                "
-                            </span>
+                        <div key={i} className="relative overflow-hidden rounded-2xl p-5" style={{ background: "#f4f6ff", border: "1px solid rgba(7,7,126,0.07)" }}>
+                            <span className="pointer-events-none absolute right-4 top-2 select-none font-black leading-none" style={{ fontSize: 80, color: "rgba(7,7,126,0.05)" }}>"</span>
                             <div className="mb-2 flex gap-0.5">
-                                {[...Array(5)].map((_, j) => (
-                                    <Star key={j} className="w-4 h-4 fill-yellow-400 text-yellow-400" />
-                                ))}
+                                {[...Array(5)].map((_, j) => <Star key={j} className="w-4 h-4 fill-yellow-400 text-yellow-400" />)}
                             </div>
                             <p className="mb-4 text-sm leading-relaxed" style={{ color: "#444" }}>"{r.text}"</p>
                             <div className="flex items-center gap-3">
-                                <div
-                                    className="flex h-9 w-9 flex-shrink-0 items-center justify-center rounded-full font-black text-sm"
-                                    style={{ background: NAVY, color: YELLOW, }}
-                                >
+                                <div className="flex h-9 w-9 flex-shrink-0 items-center justify-center rounded-full font-black text-sm" style={{ background: NAVY, color: YELLOW }}>
                                     {r.name.split(" ").map((n) => n[0]).join("")}
                                 </div>
                                 <div>
@@ -609,29 +614,16 @@ export default function WindowCleaningAdsPage() {
                         </div>
                     ))}
                 </div>
-            </section >
+            </section>
 
             {/* ─── SECTION 9: FOOTER CTA ─── */}
-            < section
-                className="relative overflow-hidden px-5 py-16 text-center"
-                style={{ background: NAVY }}
-            >
-                {/* decorative circle */}
-                < div
-                    className="pointer-events-none absolute"
-                    style={{ top: "-150px", left: "50%", transform: "translateX(-50%)", width: 600, height: 600, border: "1px solid rgba(255,229,77,0.05)", borderRadius: "50%" }}
-                />
-                < div className="relative z-10" >
-                    <div
-                        className="mb-4 inline-block rounded-full px-3 py-1 text-xs font-bold uppercase tracking-widest"
-                        style={{ background: "rgba(255,229,77,0.1)", color: YELLOW }}
-                    >
+            <section className="relative overflow-hidden px-5 py-16 text-center" style={{ background: NAVY }}>
+                <div className="pointer-events-none absolute" style={{ top: "-150px", left: "50%", transform: "translateX(-50%)", width: 600, height: 600, border: "1px solid rgba(255,229,77,0.05)", borderRadius: "50%" }} />
+                <div className="relative z-10">
+                    <div className="mb-4 inline-block rounded-full px-3 py-1 text-xs font-bold uppercase tracking-widest" style={{ background: "rgba(255,229,77,0.1)", color: YELLOW }}>
                         Still thinking about it?
                     </div>
-                    <h2
-                        className="mb-3 leading-none text-white"
-                        style={{ fontSize: "clamp(40px,6vw,60px)" }}
-                    >
+                    <h2 className="mb-3 leading-none text-white" style={{ fontSize: "clamp(40px,6vw,60px)" }}>
                         Book Your Clean Today
                     </h2>
                     <p className="mb-8 text-base font-light" style={{ color: "rgba(255,255,255,0.5)" }}>
@@ -647,18 +639,18 @@ export default function WindowCleaningAdsPage() {
                             Call {BUSINESS.phone}
                         </Link>
                         <button
-                            onClick={() => setModalOpen(true)}
+                            onClick={openRegularModal}
                             className="flex items-center gap-2 rounded-2xl border px-7 py-4 font-medium text-base transition-all hover:bg-white/10 cursor-pointer"
                             style={{ borderColor: "rgba(255,255,255,0.25)", color: "white" }}
                         >
                             Get a Text Quote →
                         </button>
                     </div>
-                </div >
-            </section >
+                </div>
+            </section>
 
             {/* ─── STICKY BAR ─── */}
-            < div
+            <div
                 className="fixed bottom-0 left-0 right-0 z-50 flex items-center justify-center px-5 py-3"
                 style={{ background: NAVY, borderTop: `2px solid ${YELLOW}`, boxShadow: "0 -4px 24px rgba(7,7,126,0.3)" }}
             >
@@ -674,9 +666,9 @@ export default function WindowCleaningAdsPage() {
                     <Phone className="w-4 h-4" />
                     Call Now — {BUSINESS.phone}
                 </Link>
-            </div >
-            {/* spacer so content isn't hidden behind sticky bar */}
-            < div className="h-16" style={{ background: NAVY }} />
+            </div>
+            {/* spacer */}
+            <div className="h-16" style={{ background: NAVY }} />
         </>
     );
 }
