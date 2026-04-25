@@ -8,7 +8,7 @@ import { ALL_SUBURBS, getSuburbsByRegion } from "@/lib/suburbs";
 export default function LocationsPage() {
     const [filter, setFilter] = useState("");
     const { North, South } = getSuburbsByRegion();
-
+    
     const filteredSuburbs = useMemo(() => {
         const all = [...North, ...South];
         if (!filter) return { North, South };
