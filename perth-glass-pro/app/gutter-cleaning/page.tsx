@@ -1,13 +1,20 @@
 "use client";
 
-import { useState } from "react";
-import { Phone, CheckCircle2, Star, Shield, Droplets, Zap, Home, X, Leaf, Droplet, AlertTriangle, Bug, Hammer } from "lucide-react";
+import { useEffect, useState } from "react";
+import { Phone, CheckCircle2, Star, Shield, Droplets, Zap, Home, X, Leaf, Droplet, AlertTriangle, Bug, Hammer, Tag } from "lucide-react";
 import { BUSINESS } from "@/lib/config";
 import Link from "next/link";
 import Image from "next/image";
 import { sendLeadEmail } from "../actions/send-email";
 import { trackFormCompleted } from "@/hooks/useGtm";
 
+
+type FormDataType = {
+    name: string;
+    phone: string;
+    suburb: string;
+    promo?: string;
+};
 
 /* ─────────────────────────────────────────
    LEAD FORM — shared by hero + modal
@@ -18,10 +25,12 @@ function LeadForm({
     setFormData,
     onSubmit,
     dark = false,
+    showPromo = true
 }: {
     submitted: boolean;
-    formData: { name: string; phone: string; suburb: string };
-    setFormData: (d: { name: string; phone: string; suburb: string }) => void;
+    showPromo?: boolean;
+    formData: { name: string; phone: string; suburb: string, promo?: string };
+    setFormData: (d: { name: string; phone: string; suburb: string; promo?: string }) => void;
     onSubmit: () => void;
     dark?: boolean;
 }) {
@@ -29,6 +38,7 @@ function LeadForm({
         { key: "name", placeholder: "Your Name", type: "text" },
         { key: "phone", placeholder: "Phone Number", type: "tel" },
         { key: "suburb", placeholder: "Your Suburb", type: "text" },
+        { key: "promo", placeholder: "Promo Code", type: "text" },
     ];
     if (submitted) {
         return (
@@ -45,23 +55,24 @@ function LeadForm({
     }
     return (
         <div className="flex flex-col gap-2.5">
-            {fields.map((f) => (
-                <input
-                    key={f.key}
-                    type={f.type}
-                    placeholder={f.placeholder}
-                    value={formData[f.key as keyof typeof formData]}
-                    onChange={(e) => setFormData({ ...formData, [f.key]: e.target.value })}
-                    className="w-full rounded-xl px-4 py-3 text-sm outline-none transition-all"
-                    style={{
-                        background: dark ? "rgba(255,255,255,0.92)" : "#f4f6ff",
-                        border: "1.5px solid",
-                        borderColor: dark ? "transparent" : "#e0e6f5",
-                        color: "#1a1a2e",
-                        fontFamily: "inherit",
-                    }}
-                />
-            ))}
+            {fields.filter((f) => !(f.key === "promo" && !showPromo))
+                .map((f) => (
+                    <input
+                        key={f.key}
+                        type={f.type}
+                        placeholder={f.placeholder}
+                        value={formData[f.key as keyof typeof formData]}
+                        onChange={(e) => setFormData({ ...formData, [f.key]: e.target.value })}
+                        className="w-full rounded-xl px-4 py-3 text-sm outline-none transition-all"
+                        style={{
+                            background: dark ? "rgba(255,255,255,0.92)" : "#f4f6ff",
+                            border: "1.5px solid",
+                            borderColor: dark ? "transparent" : "#e0e6f5",
+                            color: "#1a1a2e",
+                            fontFamily: "inherit",
+                        }}
+                    />
+                ))}
             <button
                 onClick={onSubmit}
                 className="w-full rounded-xl py-3.5 text-sm font-bold mt-1 transition-all hover:-translate-y-0.5 cursor-pointer"
@@ -71,7 +82,7 @@ function LeadForm({
                     boxShadow: "0 4px 20px rgba(255,229,77,0.4)",
                 }}
             >
-                Get Gutter Cleaning Quote →
+                Send Me a Quote →
             </button>
             <p className="text-center text-xs mt-1" style={{ color: dark ? "rgba(255,255,255,0.45)" : "#aaa" }}>
                 🔒 We never share your details
@@ -81,12 +92,153 @@ function LeadForm({
 }
 
 /* ─────────────────────────────────────────
+   MODAL — reusable, accepts optional promo
+───────────────────────────────────────── */
+function QuoteModal({
+    open,
+    onClose,
+    submitted,
+    formData,
+    setFormData,
+    onSubmit,
+    showPromo = false,
+}: {
+    open: boolean;
+    onClose: () => void;
+    submitted: boolean;
+    formData: { name: string; phone: string; suburb: string; promo?: string };
+    setFormData: (d: { name: string; phone: string; suburb: string; promo?: string; }) => void;
+    onSubmit: () => void;
+    showPromo?: boolean;
+}) {
+    if (!open) return null;
+
+    const NAVY = "#07077E";
+    const YELLOW = "#FFE54D";
+
+    return (
+        <div
+            className="fixed inset-0 z-50 flex items-center justify-center px-4"
+            style={{ background: "rgba(7,7,126,0.65)", backdropFilter: "blur(8px)" }}
+            onClick={(e) => { if (e.target === e.currentTarget) onClose(); }}
+        >
+            <div
+                className="relative w-full max-w-sm rounded-2xl shadow-2xl overflow-hidden"
+                style={{
+                    background: NAVY,
+                    border: "1px solid rgba(255,229,77,0.2)",
+                    animation: "modalPop 0.3s cubic-bezier(0.34,1.56,0.64,1) both",
+                }}
+            >
+                {/* Promo banner — only shown on scroll popup */}
+                {showPromo && (
+                    <div
+                        className="relative flex items-center justify-center gap-2 px-4 py-3 text-sm font-semibold"
+                        style={{
+                            background: "linear-gradient(90deg, #FFE54D 0%, #FFD93B 100%)",
+                            color: NAVY,
+                        }}
+                    >
+                        {/* subtle glow */}
+                        <div className="absolute inset-0 opacity-20 blur-md bg-white pointer-events-none" />
+
+                        <Tag className="w-4 h-4 shrink-0" />
+
+                        <span>
+                            New users get{" "}
+                            <span className="font-extrabold underline underline-offset-2">
+                                10% OFF
+                            </span>
+                        </span>
+
+                        <span className="opacity-60">•</span>
+
+                        <span className="text-xs font-medium">Use code</span>
+
+                        <span
+                            className="rounded-md px-2 py-0.5 text-xs font-black tracking-wider"
+                            style={{
+                                background: "rgba(7,7,126,0.15)",
+                                letterSpacing: "0.12em",
+                            }}
+                        >
+                            PERTH
+                        </span>
+                    </div>
+                )}
+
+                <div className="p-6">
+                    <button
+                        onClick={onClose}
+                        className="absolute top-3 right-4 cursor-pointer"
+                        style={{ color: showPromo ? "rgba(255,255,255,0.5)" : "rgba(255,255,255,0.5)", top: showPromo ? "3.2rem" : "1rem" }}
+                    >
+                        <X className="w-5 h-5" />
+                    </button>
+
+                    <div
+                        className="inline-block text-xs font-bold uppercase tracking-widest rounded-full px-3 py-1 mb-4"
+                        style={{ background: "rgba(255,229,77,0.12)", color: YELLOW }}
+                    >
+                        Free Quote — No Obligation
+                    </div>
+                    <h3 className="text-white font-bold text-lg mb-1">Get a Fast Text Quote</h3>
+                    <p className="text-sm mb-5" style={{ color: "rgba(255,255,255,0.5)" }}>
+                        We reply within 60 minutes.
+                    </p>
+                    <LeadForm
+                        submitted={submitted}
+                        formData={formData}
+                        setFormData={setFormData}
+                        onSubmit={onSubmit}
+                        dark
+                        showPromo={showPromo}
+                    />
+
+                </div>
+            </div>
+
+            <style>{`
+                @keyframes modalPop {
+                    from { opacity: 0; transform: scale(0.88) translateY(16px); }
+                    to   { opacity: 1; transform: scale(1)    translateY(0);    }
+                }
+            `}</style>
+        </div>
+    );
+}
+
+/* ─────────────────────────────────────────
    PAGE
 ───────────────────────────────────────── */
 export default function GutterCleaningAdsPage() {
     const [modalOpen, setModalOpen] = useState(false);
-    const [formData, setFormData] = useState({ name: "", phone: "", suburb: "" });
+    const [showPromo, setShowPromo] = useState(false);
+    const [scrollPopupShown, setScrollPopupShown] = useState(false);
+    const [formData, setFormData] = useState<FormDataType>({ name: "", phone: "", suburb: "", promo: "", });
     const [submitted, setSubmitted] = useState(false);
+
+
+    /* ── Scroll-triggered popup at 50% page height ── */
+    useEffect(() => {
+        const handleScroll = () => {
+            if (scrollPopupShown) return;
+            const scrolled = window.scrollY + window.innerHeight;
+            const total = document.documentElement.scrollHeight;
+            if (scrolled / total >= 0.5) {
+                setShowPromo(true);
+                setModalOpen(true);
+                setScrollPopupShown(true);
+            }
+        };
+        window.addEventListener("scroll", handleScroll, { passive: true });
+        return () => window.removeEventListener("scroll", handleScroll);
+    }, [scrollPopupShown]);
+
+    const openRegularModal = () => {
+        setShowPromo(false);
+        setModalOpen(true);
+    };
 
     const handleSubmit = async () => {
         try {
@@ -106,10 +258,30 @@ export default function GutterCleaningAdsPage() {
     };
 
     const processSteps = [
-        { num: "01", title: "Get Quote", body: "Contact us with your property details and we'll provide a fast, transparent quote." },
-        { num: "02", title: "Book Time", body: "Choose a day that suits — same-week availability across Perth metro." },
-        { num: "03", title: "We Clean", body: "Our technician arrives on time, cleans thoroughly, and tests water flow end-to-end." },
-        { num: "04", title: "Inspect & Approve", body: "We walk you through the results. Fully satisfied? Done. Not happy? We fix it." },
+        {
+            num: "01",
+            title: "Get Quote",
+            body: "Contact us with your property details and we'll provide a fast, transparent quote.",
+            clickable: true
+        },
+        {
+            num: "02",
+            title: "Book Time",
+            body: "Choose a day that suits — same-week availability across Perth metro.",
+            clickable: false
+        },
+        {
+            num: "03",
+            title: "We Clean",
+            body: "Our technician arrives on time, cleans thoroughly, and tests water flow end-to-end.",
+            clickable: false
+        },
+        {
+            num: "04",
+            title: "Inspect & Approve",
+            body: "We walk you through the results. Fully satisfied? Done. Not happy? We fix it.",
+            clickable: false
+        },
     ];
 
     const googleReviews = [
@@ -139,43 +311,15 @@ export default function GutterCleaningAdsPage() {
     return (
         <>
             {/* ─── MODAL ─── */}
-            {modalOpen && (
-                <div
-                    className="fixed inset-0 z-50 flex items-center justify-center px-4"
-                    style={{ background: "rgba(7,7,126,0.6)", backdropFilter: "blur(6px)" }}
-                    onClick={(e) => { if (e.target === e.currentTarget) setModalOpen(false); }}
-                >
-                    <div
-                        className="relative w-full max-w-sm rounded-2xl p-6 shadow-2xl"
-                        style={{ background: NAVY, border: "1px solid rgba(255,229,77,0.2)" }}
-                    >
-                        <button
-                            onClick={() => setModalOpen(false)}
-                            className="absolute top-4 right-4 cursor-pointer"
-                            style={{ color: "rgba(255,255,255,0.5)" }}
-                        >
-                            <X className="w-5 h-5" />
-                        </button>
-                        <div
-                            className="inline-block text-xs font-bold uppercase tracking-widest rounded-full px-3 py-1 mb-4"
-                            style={{ background: "rgba(255,229,77,0.12)", color: YELLOW }}
-                        >
-                            Free Quote — No Obligation
-                        </div>
-                        <h3 className="text-white font-bold text-lg mb-1">Get Gutter Cleaning Quote</h3>
-                        <p className="text-sm mb-5" style={{ color: "rgba(255,255,255,0.5)" }}>
-                            We reply within 60 minutes.
-                        </p>
-                        <LeadForm
-                            submitted={submitted}
-                            formData={formData}
-                            setFormData={setFormData}
-                            onSubmit={handleSubmit}
-                            dark
-                        />
-                    </div>
-                </div>
-            )}
+            <QuoteModal
+                open={modalOpen}
+                onClose={() => setModalOpen(false)}
+                submitted={submitted}
+                formData={formData}
+                setFormData={setFormData}
+                onSubmit={handleSubmit}
+                showPromo={showPromo}
+            />
 
             {/* ─── SECTION 1: HERO ─── */}
             <section className="relative min-h-screen flex flex-col overflow-hidden bg-cover bg-center
@@ -376,10 +520,20 @@ export default function GutterCleaningAdsPage() {
                 </div>
                 <div className="mx-auto max-w-4xl">
                     <div className="relative">
-                        <div className="absolute hidden md:block" style={{ top: 28, left: "calc(12.5% + 16px)", right: "calc(12.5% + 16px)", height: 1, background: `linear-gradient(90deg, ${NAVY} 0%, ${YELLOW} 100%)` }} />
+                        <div className="absolute hidden md:block" style={{
+                            top: 28,
+                            left: "calc(12.5% + 16px)",
+                            right: "calc(12.5% + 16px)",
+                            height: 1, background: `linear-gradient(90deg, ${NAVY} 0%, ${YELLOW} 100%)`
+                        }} />
                         <div className="relative grid grid-cols-2 gap-6 md:grid-cols-4">
                             {processSteps.map((step) => (
-                                <div key={step.num} className="flex flex-col items-center text-center">
+                                <div
+                                    key={step.num}
+                                    className={`flex flex-col items-center text-center ${step.clickable ? "group" : ""}`}
+                                    onClick={step.clickable ? openRegularModal : undefined}
+                                    style={step.clickable ? { cursor: "pointer" } : undefined}
+                                >
                                     <div className="mb-4 flex h-14 w-14 items-center justify-center rounded-full font-black" style={{ background: NAVY, color: YELLOW, fontSize: 22, boxShadow: `0 4px 20px rgba(7,7,126,0.25)`, position: "relative", zIndex: 1 }}>{step.num}</div>
                                     <p className="mb-2 font-bold text-sm" style={{ color: NAVY }}>{step.title}</p>
                                     <p className="text-xs font-light leading-relaxed" style={{ color: "#888" }}>{step.body}</p>

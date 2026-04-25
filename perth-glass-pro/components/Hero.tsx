@@ -10,6 +10,7 @@ import QuoteModal from "./QuoteModal";
 type ScrollItem = {
   src: string;
   className: string;
+  type: string;
 };
 
 export default function HeroWithScroll() {
@@ -18,80 +19,111 @@ export default function HeroWithScroll() {
   const items: ScrollItem[] = [
     {
       src: "https://res.cloudinary.com/dr8tjrszy/image/upload/v1771960138/sign-cleaning-2_ozlp2x.jpg",
-      className: "col-span-1 row-span-1 h-[180px] "
+      type: "image",
+      className: "col-span-1 row-span-1 h-[180px]"
     },
     {
       src: "https://res.cloudinary.com/dr8tjrszy/image/upload/v1771960130/house-windows-cleaning_byke0n.jpg",
+      type: "image",
       className: "col-span-1 row-span-2 h-[280px]"
     },
     {
       src: "https://res.cloudinary.com/dr8tjrszy/image/upload/v1774450638/pressure-cleaning-giff_ulc4tk.gif",
+      type: "image",
       className: "col-span-1 row-span-2 h-[260px]"
     },
     {
       src: "https://res.cloudinary.com/dr8tjrszy/image/upload/v1771960138/sollar-plats-cleaning_gyngjf.jpg",
+      type: "image",
       className: "col-span-1 row-span-1 h-[200px]"
     },
     {
       src: "https://res.cloudinary.com/dr8tjrszy/image/upload/v1775990687/gutter-cleaning_nd8wyn.jpg",
+      type: "image",
       className: "col-span-1 row-span-1 h-[250px]"
     },
     {
       src: "https://res.cloudinary.com/dr8tjrszy/image/upload/v1771960144/WhatsApp_Image_2026-02-22_at_8.48.09_PM_1_hnnwtr.jpg",
+      type: "image",
       className: "col-span-1 row-span-1 h-[200px]"
     },
     {
       src: "https://res.cloudinary.com/dr8tjrszy/image/upload/v1771960142/WhatsApp_Image_2026-02-22_at_8.48.02_PM_hzrubr.jpg",
+      type: "image",
       className: "col-span-1 row-span-1 h-[200px]"
-    }
-  ];
-
-  const mobileItems: ScrollItem[] = [
-    {
-      src: "https://res.cloudinary.com/dr8tjrszy/image/upload/v1771960138/sign-cleaning-2_ozlp2x.jpg",
-      className: "h-[140px]"
     },
     {
-      src: "https://res.cloudinary.com/dr8tjrszy/image/upload/v1771960130/house-windows-cleaning_byke0n.jpg",
-      className: "h-[180px]"
+      src: "https://res.cloudinary.com/dr8tjrszy/image/upload/v1776944966/WhatsApp_Image_2026-04-22_at_8.41.53_PM_qgm1ae.jpg",
+      type: "image",
+      className: "col-span-1 row-span-1 h-[200px]"
     },
     {
-      src: "https://res.cloudinary.com/dr8tjrszy/image/upload/v1774450638/pressure-cleaning-giff_ulc4tk.gif",
-      className: "h-[160px]"
+      src: "https://res.cloudinary.com/dr8tjrszy/image/upload/v1776944965/WhatsApp_Image_2026-04-22_at_8.42.45_PM_1_ly1fp8.jpg",
+      type: "image",
+      className: "col-span-1 row-span-1 h-[200px]"
     },
     {
-      src: "https://res.cloudinary.com/dr8tjrszy/image/upload/v1771960138/sollar-plats-cleaning_gyngjf.jpg",
-      className: "h-[140px]"
+      src: "https://res.cloudinary.com/dr8tjrszy/image/upload/v1776944964/WhatsApp_Image_2026-04-22_at_8.41.53_PM_1_cjdbjc.jpg",
+      type: "image",
+      className: "col-span-1 row-span-1 h-[200px]"
     },
     {
-      src: "https://res.cloudinary.com/dr8tjrszy/image/upload/v1775990687/gutter-cleaning_nd8wyn.jpg",
-      className: "h-[150px]"
+      src: "https://res.cloudinary.com/dr8tjrszy/image/upload/v1776944964/WhatsApp_Image_2026-04-22_at_8.42.46_PM_ldt9rn.jpg",
+      type: "image",
+      className: "col-span-1 row-span-1 h-[200px]"
     },
     {
-      src: "https://res.cloudinary.com/dr8tjrszy/image/upload/v1771960144/WhatsApp_Image_2026-02-22_at_8.48.09_PM_1_hnnwtr.jpg",
-      className: "h-[170px]"
+      src: "https://res.cloudinary.com/dr8tjrszy/image/upload/v1776944963/WhatsApp_Image_2026-04-22_at_8.43.06_PM_abtqe0.jpg",
+      type: "image",
+      className: "col-span-1 row-span-1 h-[200px]"
     },
     {
-      src: "https://res.cloudinary.com/dr8tjrszy/image/upload/v1771960142/WhatsApp_Image_2026-02-22_at_8.48.02_PM_hzrubr.jpg",
-      className: "h-[140px]"
-    }
+      src: "https://res.cloudinary.com/dr8tjrszy/image/upload/v1776944964/WhatsApp_Image_2026-04-22_at_8.42.45_PM_ebzigv.jpg",
+      type: "image",
+      className: "col-span-1 row-span-1 h-[200px]"
+    },
+    {
+      src: "https://res.cloudinary.com/dr8tjrszy/video/upload/v1777100058/WhatsApp_Video_2026-04-22_at_8.42.43_PM_ej6lpg.mp4",
+      type: "video",
+      className: "col-span-1 row-span-1 h-[200px]"
+    },
+    {
+      src: "https://res.cloudinary.com/dr8tjrszy/video/upload/v1777100063/WhatsApp_Video_2026-04-22_at_8.43.19_PM_nzcn9x.mp4",
+      type: "video",
+      className: "col-span-1 row-span-1 h-[200px]"
+    },
+    {
+      src: "https://res.cloudinary.com/dr8tjrszy/video/upload/v1777101674/WhatsApp_Video_2026-04-22_at_8.42.41_PM_1_vztwq2.mp4",
+      type: "video",
+      className: "col-span-1 row-span-1 h-[200px]"
+    },
+    {
+      src: "https://res.cloudinary.com/dr8tjrszy/video/upload/v1777100063/WhatsApp_Video_2026-04-22_at_8.43.33_PM_fra9x4.mp4",
+      type: "video",
+      className: "col-span-1 row-span-1 h-[200px]"
+    },
+    {
+      src: "https://res.cloudinary.com/dr8tjrszy/video/upload/v1777100063/WhatsApp_Video_2026-04-22_at_8.43.19_PM_nzcn9x.mp4",
+      type: "video",
+      className: "col-span-1 row-span-1 h-[200px]"
+    },
   ];
 
   return (
     <>
-      <section className="bg-[#000080] min-h-[95vh] h-full text-white flex pt-30 md:py-0 overflow-hidden">
+      <section className="bg-[#000080] min-h-[100vh] h-full text-white flex pt-30 md:py-0 overflow-hidden">
 
         <div className="max-w-7xl mx-auto grid md:grid-cols-2 gap-12 items-center px-5">
 
           {/* LEFT CONTENT */}
           <div>
             <p className="text-action-gold text-center md:text-left font-semibold mb-4">
-              Same week booking available
+              No Guesswork — We Visit & Quote For Free
             </p>
 
-            <h1 className="text-2xl md:text-6xl text-center md:text-left font-bold leading-tight mb-6">
-              Your Local Window <br />
-              <span className="text-action-gold">Cleaning Service in Perth</span>
+            <h1 className="text-2xl md:text-5xl text-center md:text-left font-bold leading-tight mb-6">
+              Residential & Commercial Window &  <br />
+              <span className="text-action-gold">Solar Panel Cleaning Across All Perth Suburbs</span>
             </h1>
 
             {/* Animation On Mobile */}
@@ -106,38 +138,58 @@ export default function HeroWithScroll() {
 
                 {/* Column 1 */}
                 <div className="flex flex-col gap-3">
-                  {[...mobileItems, ...mobileItems].filter((_, i) => i % 2 === 0).map((item, i) => (
+                  {[...items, ...items].filter((_, i) => i % 2 === 0).map((item, i) => (
                     <div
                       key={`mobile-col1-${i}`}
                       className={`rounded-xl overflow-hidden shadow-lg shadow-[#FFE75B]/10 ${item.className}`}
                     >
-                      <Image
-                        src={item.src}
-                        alt="Service image"
-                        width={200}
-                        height={150}
-                        className="w-full h-full object-cover"
-                        unoptimized
-                      />
+                      {item.type === "video" ? (
+                        <video
+                          autoPlay
+                          muted
+                          loop
+                          src={item.src}
+                          className="w-full h-full object-cover"
+                        />
+                      ) : (
+                        <Image
+                          src={item.src}
+                          alt="Service image"
+                          width={200}
+                          height={150}
+                          className="w-full h-full object-cover"
+                          unoptimized
+                        />
+                      )}
                     </div>
                   ))}
                 </div>
 
                 {/* Column 2 - offset */}
                 <div className="flex flex-col gap-3 pt-6">
-                  {[...mobileItems, ...mobileItems].filter((_, i) => i % 2 === 1).map((item, i) => (
+                  {[...items, ...items].filter((_, i) => i % 2 === 1).map((item, i) => (
                     <div
                       key={`mobile-col2-${i}`}
                       className={`rounded-xl overflow-hidden shadow-lg shadow-[#FFE75B]/10 ${item.className}`}
                     >
-                      <Image
-                        src={item.src}
-                        alt="Service image"
-                        width={200}
-                        height={150}
-                        className="w-full h-full object-cover"
-                        unoptimized
-                      />
+                      {item.type === "video" ? (
+                        <video
+                          autoPlay
+                          muted
+                          loop
+                          src={item.src}
+                          className="w-full h-full object-cover"
+                        />
+                      ) : (
+                        <Image
+                          src={item.src}
+                          alt="Service image"
+                          width={200}
+                          height={150}
+                          className="w-full h-full object-cover"
+                          unoptimized
+                        />
+                      )}
                     </div>
                   ))}
                 </div>
@@ -214,40 +266,64 @@ export default function HeroWithScroll() {
 
               {/* Column 1 */}
               <div className="flex flex-col gap-4">
-                {[...items, ...items].filter((_, i) => i % 2 === 0).map((item, i) => (
-                  <div
-                    key={`col1-${i}`}
-                    className={`rounded-2xl overflow-hidden border-4 border-[#FFE75B] shadow-lg ${item.className}`}
-                  >
-                    <Image
-                      src={item.src}
-                      alt="Service image"
-                      width={400}
-                      height={250}
-                      className="w-full h-full object-cover"
-                      unoptimized
-                    />
-                  </div>
-                ))}
+                {[...items, ...items]
+                  .filter((_, i) => i % 2 === 0)
+                  .map((item, i) => (
+                    <div
+                      key={`col1-${i}`}
+                      className={`rounded-2xl overflow-hidden border-4 border-[#FFE75B] shadow-lg ${item.className}`}
+                    >
+                      {item.type === "video" ? (
+                        <video
+                          src={item.src}
+                          autoPlay
+                          muted
+                          loop
+                          className="w-full h-full object-cover"
+                        />
+                      ) : (
+                        <Image
+                          src={item.src}
+                          alt="Service image"
+                          width={400}
+                          height={250}
+                          className="w-full h-full object-cover"
+                          unoptimized
+                        />
+                      )}
+                    </div>
+                  ))}
               </div>
 
               {/* Column 2 - offset/staggered */}
               <div className="flex flex-col gap-4 pt-12">
-                {[...items, ...items].filter((_, i) => i % 2 === 1).map((item, i) => (
-                  <div
-                    key={`col2-${i}`}
-                    className={`rounded-2xl overflow-hidden border-4 border-[#FFE75B] shadow-lg ${item.className}`}
-                  >
-                    <Image
-                      src={item.src}
-                      alt="Service image"
-                      width={400}
-                      height={250}
-                      className="w-full h-full object-cover"
-                      unoptimized
-                    />
-                  </div>
-                ))}
+                {[...items, ...items]
+                  .filter((_, i) => i % 2 === 1)
+                  .map((item, i) => (
+                    <div
+                      key={`col1-${i}`}
+                      className={`rounded-2xl overflow-hidden border-4 border-[#FFE75B] shadow-lg ${item.className}`}
+                    >
+                      {item.type === "video" ? (
+                        <video
+                          src={item.src}
+                          autoPlay
+                          muted
+                          loop
+                          className="w-full h-full object-cover"
+                        />
+                      ) : (
+                        <Image
+                          src={item.src}
+                          alt="Service image"
+                          width={400}
+                          height={250}
+                          className="w-full h-full object-cover"
+                          unoptimized
+                        />
+                      )}
+                    </div>
+                  ))}
               </div>
 
             </div>

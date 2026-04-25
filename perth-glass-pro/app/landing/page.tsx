@@ -55,7 +55,7 @@ function LeadForm({
     }
     return (
         <div className="flex flex-col gap-2.5">
-            {fields.filter((f) => !(showPromo && f.key === "promo"))
+            {fields.filter((f) => !(f.key === "promo" && !showPromo))
                 .map((f) => (
                     <input
                         key={f.key}
@@ -276,7 +276,7 @@ export default function WindowCleaningAdsPage() {
 
     return (
         <>
-            {/* ─── UNIFIED MODAL ─── */}
+            {/* ─── MODAL ─── */}
             <QuoteModal
                 open={modalOpen}
                 onClose={() => setModalOpen(false)}
