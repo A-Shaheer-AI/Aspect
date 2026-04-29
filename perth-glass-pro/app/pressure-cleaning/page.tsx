@@ -8,6 +8,7 @@ import Image from "next/image";
 import BeforeAfterSlider from "@/components/BeforeAfterSlider";
 import { sendLeadEmail } from "../actions/send-email";
 import { trackFormCompleted } from "@/hooks/useGtm";
+import GoogleReviews from "@/components/GoogleReviews";
 
 
 type FormDataType = {
@@ -247,6 +248,7 @@ export default function PressureWashingAdsPage() {
                 name: formData.name,
                 phone: formData.phone,
                 suburb: formData.suburb,
+                sourceUrl: window.location.href
             });
             if (result.success) {
                 setSubmitted(true);
@@ -294,11 +296,52 @@ export default function PressureWashingAdsPage() {
         },
     ];
 
-    const googleReviews = [
-        { name: "June Bird", suburb: "Perth", text: "Guys done a beautiful job. My windows are sparkling. 2 very nice gentleman. Highly recommend." },
-        { name: "Hussai", suburb: "Perth", text: "Team arrived on time, were friendly and professional. Many windows came out spotless and clear." },
-        { name: "Taylor Bow", suburb: "North Perth", text: "Did a great job cleaning inside and outside at my North Perth property. Very professional." },
-        { name: "Shabnam", suburb: "Perth", text: "Punctual, professional, and paid great attention to detail. Our property looks spotless. Couldn't be happier." },
+    const pressureCleaningReviews = [
+        {
+            id: 1,
+            name: "Vicki Slate",
+            reviews: "3 reviews",
+            rating: 5,
+            date: "3 weeks ago",
+            content:
+                "These guys did a fantastic job cleaning windows, jams, runners, pressure washing eaves, decks and sidewalks, removing mould from brickwork that hadn’t been done in probably 10 years. Very professional and thorough service.",
+        },
+        {
+            id: 2,
+            name: "Laura McCarthy",
+            reviews: "14 reviews",
+            rating: 5,
+            date: "6 days ago",
+            content:
+                "The team did a very thorough and professional job on our 3 storey house with difficult access areas. They also handled exterior cleaning and pressure washing where needed. Very happy with the results.",
+        },
+        {
+            id: 3,
+            name: "J Buchanan",
+            reviews: "5 reviews",
+            rating: 5,
+            date: "3 days ago",
+            content:
+                "Aspect cleaned gutters very professionally and swiftly. Job was well done and all agreed work including exterior cleaning was completed exactly as promised. Highly recommended.",
+        },
+        {
+            id: 4,
+            name: "Ronny Brown",
+            reviews: "16 reviews",
+            rating: 5,
+            date: "5 days ago",
+            content:
+                "The guys were great, turned up very fast and did an excellent job including exterior cleaning work. Would recommend them to everybody.",
+        },
+        {
+            id: 5,
+            name: "Martin Abreu",
+            reviews: "3 reviews",
+            rating: 5,
+            date: "4 days ago",
+            content:
+                "Did an excellent job cleaning gutters and exterior surfaces. Very professional and efficient service.",
+        },
     ];
 
     const NAVY = "#07077E";
@@ -660,8 +703,17 @@ export default function PressureWashingAdsPage() {
                                     style={step.clickable ? { cursor: "pointer" } : undefined}
                                 >
                                     <div
-                                        className="mb-4 flex h-14 w-14 items-center justify-center rounded-full font-black"
-                                        style={{ background: NAVY, color: YELLOW, fontSize: 22, boxShadow: `0 4px 20px rgba(7,7,126,0.25)`, position: "relative", zIndex: 1 }}
+                                        className="mb-4 flex h-14 w-14 items-center justify-center rounded-full font-black transition-all"
+                                        style={{
+                                            background: step.clickable ? YELLOW : NAVY,
+                                            color: step.clickable ? NAVY : YELLOW,
+                                            fontSize: 22,
+                                            boxShadow: step.clickable
+                                                ? `0 4px 20px rgba(255,229,77,0.5)`
+                                                : `0 4px 20px rgba(7,7,126,0.25)`,
+                                            position: "relative",
+                                            zIndex: 1,
+                                        }}
                                     >
                                         {step.num}
                                     </div>
@@ -675,7 +727,7 @@ export default function PressureWashingAdsPage() {
             </section>
 
             {/* ─── SECTION 9: REVIEWS ─── */}
-            <section className="px-5 py-16 bg-white">
+            <section className="max-w-7xl mx-auto px-5 py-16 bg-white">
                 <div className="mx-auto mb-10 max-w-4xl text-center">
                     <div className="mb-3 flex justify-center gap-1">
                         {[...Array(5)].map((_, i) => (
@@ -691,43 +743,10 @@ export default function PressureWashingAdsPage() {
                         className="text-sm font-medium hover:underline"
                         style={{ color: "#888" }}
                     >
-                        5.0 across 100+ Google Reviews
+                        5.0 across 30+ Google Reviews
                     </Link>
                 </div>
-                <div className="mx-auto grid max-w-4xl grid-cols-1 gap-4 md:grid-cols-2">
-                    {googleReviews.map((r, i) => (
-                        <div
-                            key={i}
-                            className="relative overflow-hidden rounded-2xl p-5"
-                            style={{ background: "#f4f6ff", border: "1px solid rgba(7,7,126,0.07)" }}
-                        >
-                            <span
-                                className="pointer-events-none absolute right-4 top-2 select-none font-black leading-none"
-                                style={{ fontSize: 80, color: "rgba(7,7,126,0.05)" }}
-                            >
-                                "
-                            </span>
-                            <div className="mb-2 flex gap-0.5">
-                                {[...Array(5)].map((_, j) => (
-                                    <Star key={j} className="w-4 h-4 fill-yellow-400 text-yellow-400" />
-                                ))}
-                            </div>
-                            <p className="mb-4 text-sm leading-relaxed" style={{ color: "#444" }}>&ldquo;{r.text}&rdquo;</p>
-                            <div className="flex items-center gap-3">
-                                <div
-                                    className="flex h-9 w-9 flex-shrink-0 items-center justify-center rounded-full font-black text-sm"
-                                    style={{ background: NAVY, color: YELLOW }}
-                                >
-                                    {r.name.split(" ").map((n) => n[0]).join("")}
-                                </div>
-                                <div>
-                                    <p className="font-bold text-sm" style={{ color: NAVY }}>{r.name}</p>
-                                    <p className="text-xs" style={{ color: "#aaa" }}>{r.suburb}</p>
-                                </div>
-                            </div>
-                        </div>
-                    ))}
-                </div>
+                <GoogleReviews reviews={pressureCleaningReviews} />
             </section>
 
             {/* ─── SECTION 10: FOOTER CTA ─── */}

@@ -23,6 +23,7 @@ const ContactPage = () => {
         name: formData.name,
         phone: formData.phone,
         suburb: formData.suburb,
+        sourceUrl: window.location.href
       })
       setStatus(result.success ? 'success' : 'error')
     } catch {

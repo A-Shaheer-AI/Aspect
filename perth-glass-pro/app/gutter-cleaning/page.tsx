@@ -7,6 +7,7 @@ import Link from "next/link";
 import Image from "next/image";
 import { sendLeadEmail } from "../actions/send-email";
 import { trackFormCompleted } from "@/hooks/useGtm";
+import GoogleReviews from "@/components/GoogleReviews";
 
 
 type FormDataType = {
@@ -246,6 +247,7 @@ export default function GutterCleaningAdsPage() {
                 name: formData.name,
                 phone: formData.phone,
                 suburb: formData.suburb,
+                sourceUrl: window.location.href
             });
             if (result.success) {
                 trackFormCompleted();
@@ -284,11 +286,31 @@ export default function GutterCleaningAdsPage() {
         },
     ];
 
-    const googleReviews = [
-        { name: "June Bird", suburb: "Perth", text: "Guys done a beautiful job. My gutters were overflowing, now water flows perfectly. Highly recommend." },
-        { name: "Hussai", suburb: "Perth", text: "Team arrived on time, cleared all the leaves and even flushed the downpipes. Professional service." },
-        { name: "Taylor Bow", suburb: "North Perth", text: "Did a great job cleaning gutters at my property. They even spotted a loose bracket and fixed it." },
-        { name: "Shabnam", suburb: "Perth", text: "Punctual, professional, and thorough. Gutters are spotless and water test showed perfect flow." },
+    const gutterReviews = [
+        {
+            id: 1,
+            name: "J Buchanan",
+            rating: 5,
+            date: "3 days ago",
+            reviews: "5 reviews · 22 photos",
+            content: "Aspect cleaned out gutters very professionally and swiftly engaged the task. Job was well done and all parts agreed to were completed exactly as denoted. Highly recommended."
+        },
+        {
+            id: 2,
+            name: "Martin Abreu",
+            rating: 5,
+            date: "4 days ago",
+            reviews: "3 reviews",
+            content: "Did an excellent job cleaning gutters and solar panels."
+        },
+        {
+            id: 3,
+            name: "J s",
+            rating: 5,
+            date: "1 month ago",
+            reviews: "6 reviews",
+            content: "Recently hired these guys for gutter cleaning of my home, great communication, arrived on time, did a great job and cleaned up. Will use again."
+        },
     ];
 
     const features = [
@@ -296,6 +318,16 @@ export default function GutterCleaningAdsPage() {
         { icon: <Droplet className="w-5 h-5" style={{ color: "#07077E" }} />, title: "Downpipe Clearing", body: "We flush and clear all downpipes to ensure unobstructed water flow from roof to drain." },
         { icon: <Shield className="w-5 h-5" style={{ color: "#07077E" }} />, title: "Gutter Inspection", body: "We check for cracks, rust, sagging, and loose brackets — and flag anything that needs attention." },
         { icon: <Home className="w-5 h-5" style={{ color: "#07077E" }} />, title: "Safe Debris Disposal", body: "All collected debris is bagged and removed from your property — no mess left behind." },
+        {
+            icon: <Droplet className="w-5 h-5" style={{ color: "#07077E" }} />,
+            title: "Water Flow Test",
+            body: "We perform a final water test to confirm gutters and downpipes are flowing correctly."
+        },
+        {
+            icon: <Home className="w-5 h-5" style={{ color: "#07077E" }} />,
+            title: "Roof Valley Clearing",
+            body: "We clear roof valleys where blockages commonly occur and cause serious water damage."
+        },
     ];
 
     const benefits = [
@@ -485,11 +517,20 @@ export default function GutterCleaningAdsPage() {
                     <div className="col-span-12 md:col-span-6 rounded-2xl p-6 bg-white">
                         <div className="mb-4 flex h-10 w-10 items-center justify-center rounded-xl" style={{ background: "rgba(7,7,126,0.06)" }}><Shield className="w-5 h-5" style={{ color: NAVY }} /></div>
                         <p className="font-bold text-base mb-2" style={{ color: NAVY }}>Fully Insured — $20M Cover</p>
-                        <p className="text-sm font-light leading-relaxed" style={{ color: "#888" }}>Complete public liability insurance gives you total peace of mind. We work safely on every property.</p>
+                        <p className="text-sm font-light leading-relaxed" style={{ color: "#888" }}>
+                            Complete public liability insurance gives you total peace of mind. We work safely on every property.
+                        </p>
                     </div>
-                    <div className="col-span-12 md:col-span-6 rounded-2xl p-6" style={{ background: NAVY }}>
-                        <div className="mb-4 flex h-10 w-10 items-center justify-center rounded-xl" style={{ background: "rgba(255,229,77,0.15)" }}><Zap className="w-5 h-5" style={{ color: YELLOW }} /></div>
-                        <p className="font-bold text-base mb-2 text-white">100% Satisfaction Guaranteed</p>
+                    <div
+                        className="col-span-12 md:col-span-6 rounded-2xl p-6"
+                        style={{ background: NAVY }}>
+                        <div
+                            className="mb-4 flex h-10 w-10 items-center justify-center rounded-xl" style={{ background: "rgba(255,229,77,0.15)" }}>
+                            <Zap className="w-5 h-5" style={{ color: YELLOW }} />
+                        </div>
+                        <p className="font-bold text-base mb-2 text-white">
+                            100% Satisfaction Guaranteed
+                        </p>
                         <p className="text-sm font-light leading-relaxed" style={{ color: "rgba(255,255,255,0.55)" }}>We're not finished until you're completely happy. If anything doesn't meet expectations, we return and fix it.</p>
                     </div>
                     <div className="col-span-12 md:col-span-6 rounded-2xl p-6" style={{ background: YELLOW }}>
@@ -534,7 +575,21 @@ export default function GutterCleaningAdsPage() {
                                     onClick={step.clickable ? openRegularModal : undefined}
                                     style={step.clickable ? { cursor: "pointer" } : undefined}
                                 >
-                                    <div className="mb-4 flex h-14 w-14 items-center justify-center rounded-full font-black" style={{ background: NAVY, color: YELLOW, fontSize: 22, boxShadow: `0 4px 20px rgba(7,7,126,0.25)`, position: "relative", zIndex: 1 }}>{step.num}</div>
+                                    <div
+                                        className="mb-4 flex h-14 w-14 items-center justify-center rounded-full font-black"
+                                        style={{
+                                            background: step.clickable ? YELLOW : NAVY,
+                                            color: step.clickable ? NAVY : YELLOW,
+                                            fontSize: 22,
+                                            boxShadow: step.clickable
+                                                ? `0 4px 20px rgba(255,229,77,0.5)`
+                                                : `0 4px 20px rgba(7,7,126,0.25)`,
+                                            position: "relative",
+                                            zIndex: 1,
+                                        }}
+                                    >
+                                        {step.num}
+                                    </div>
                                     <p className="mb-2 font-bold text-sm" style={{ color: NAVY }}>{step.title}</p>
                                     <p className="text-xs font-light leading-relaxed" style={{ color: "#888" }}>{step.body}</p>
                                 </div>
@@ -545,7 +600,7 @@ export default function GutterCleaningAdsPage() {
             </section>
 
             {/* ─── SECTION 8: REVIEWS ─── */}
-            <section className="px-5 py-16 bg-white">
+            <section className="max-w-7xl mx-auto px-5 py-16 bg-white">
                 <div className="mx-auto mb-10 max-w-4xl text-center">
                     <div className="mb-3 flex justify-center gap-1">
                         {[...Array(5)].map((_, i) => <Star key={i} className="w-6 h-6 fill-yellow-400 text-yellow-400" />)}
@@ -553,26 +608,13 @@ export default function GutterCleaningAdsPage() {
                     <h2 className="mb-2 leading-none" style={{ fontSize: "clamp(24px,5vw,52px)", color: NAVY }}>
                         Perth Homeowners Love Us
                     </h2>
-                    <Link href="https://www.google.com/maps/place/Aspect+Window+Cleaning/@-31.9806823,115.7929967,17z" target="_blank" className="text-sm font-medium hover:underline" style={{ color: "#888" }}>5.0 across 100+ Google Reviews</Link>
+                    <Link href="https://www.google.com/maps/place/Aspect+Window+Cleaning/@-31.9806823,115.7929967,17z" target="_blank" className="text-sm font-medium hover:underline" style={{ color: "#888" }}>
+                        5.0 across 30+ Google Reviews
+                    </Link>
                 </div>
-                <div className="mx-auto grid max-w-4xl grid-cols-1 gap-4 md:grid-cols-2">
-                    {googleReviews.map((r, i) => (
-                        <div key={i} className="relative overflow-hidden rounded-2xl p-5" style={{ background: "#f4f6ff", border: "1px solid rgba(7,7,126,0.07)" }}>
-                            <span className="pointer-events-none absolute right-4 top-2 select-none font-black leading-none" style={{ fontSize: 80, color: "rgba(7,7,126,0.05)" }}>"</span>
-                            <div className="mb-2 flex gap-0.5">
-                                {[...Array(5)].map((_, j) => <Star key={j} className="w-4 h-4 fill-yellow-400 text-yellow-400" />)}
-                            </div>
-                            <p className="mb-4 text-sm leading-relaxed" style={{ color: "#444" }}>"{r.text}"</p>
-                            <div className="flex items-center gap-3">
-                                <div className="flex h-9 w-9 flex-shrink-0 items-center justify-center rounded-full font-black text-sm" style={{ background: NAVY, color: YELLOW }}>{r.name.split(" ").map((n) => n[0]).join("")}</div>
-                                <div>
-                                    <p className="font-bold text-sm" style={{ color: NAVY }}>{r.name}</p>
-                                    <p className="text-xs" style={{ color: "#aaa" }}>{r.suburb}</p>
-                                </div>
-                            </div>
-                        </div>
-                    ))}
-                </div>
+
+                <GoogleReviews reviews={gutterReviews} />
+
             </section>
 
             {/* ─── SECTION 9: FOOTER CTA ─── */}

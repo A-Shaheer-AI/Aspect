@@ -38,7 +38,7 @@ export default function HeroWithScroll() {
       className: "col-span-1 row-span-1 h-[200px]"
     },
     {
-      src: "https://res.cloudinary.com/dr8tjrszy/image/upload/v1775990687/gutter-cleaning_nd8wyn.jpg",
+      src: "https://res.cloudinary.com/dr8tjrszy/image/upload/v1777441115/WhatsApp_Image_2026-04-27_at_12.43.52_PM_1_opiclg.jpg",
       type: "image",
       className: "col-span-1 row-span-1 h-[250px]"
     },

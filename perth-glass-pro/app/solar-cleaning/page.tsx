@@ -8,6 +8,7 @@ import Image from "next/image";
 import BeforeAfterSlider from "@/components/BeforeAfterSlider";
 import { sendLeadEmail } from "../actions/send-email";
 import { trackFormCompleted } from "@/hooks/useGtm";
+import GoogleReviews from "@/components/GoogleReviews";
 
 
 type FormDataType = {
@@ -246,6 +247,7 @@ export default function SolarPanelCleaningAdsPage() {
                 name: formData.name,
                 phone: formData.phone,
                 suburb: formData.suburb,
+                sourceUrl: window.location.href
             });
             if (result.success) {
                 trackFormCompleted();
@@ -264,11 +266,58 @@ export default function SolarPanelCleaningAdsPage() {
         { num: "04", title: "You Inspect", body: "We walk you through the results. Satisfied? Job done.", clickable: false },
     ];
 
-    const googleReviews = [
-        { name: "June Bird", suburb: "Perth", text: "Guys done a beautiful job. My windows are sparkling. 2 very nice gentleman. Highly recommend." },
-        { name: "Hussai", suburb: "Perth", text: "Team arrived on time, were friendly and professional. Many windows came out spotless and clear." },
-        { name: "Taylor Bow", suburb: "North Perth", text: "Did a great job cleaning inside and outside of windows at my North Perth property. Very professional." },
-        { name: "Shabnam", suburb: "Perth", text: "Punctual, professional, and paid great attention to detail. Our windows are spotless. Couldn't be happier." },
+    const solarCleaningReviews = [
+        {
+            id: 1,
+            name: "Greg Mills",
+            reviews: "1 review",
+            rating: 5,
+            date: "a year ago",
+            content: "Excellent. Solar panels cleaned. no fuss no mess all good.",
+        },
+        {
+            id: 2,
+            name: "Katie Hunter",
+            reviews: "3 reviews",
+            rating: 5,
+            date: "a year ago",
+            content: "Flynn cleaned the top story of our house including sky lights and solar panels. He did a fantastic job. The equipment he uses is amazing. Would highly recommend.",
+        },
+        {
+            id: 3,
+            name: "Mick Quinlan",
+            reviews: "10 reviews",
+            rating: 5,
+            date: "a month ago",
+            content:
+                "Aspect Window Cleaning provided a high quality clean to our house windows, 24 solar panels & roof gutters on a 2 storey property! Fazal is courteous & professional & provided a great clean.",
+        },
+        {
+            id: 4,
+            name: "Martin Abreu",
+            reviews: "3 reviews",
+            rating: 5,
+            date: "4 days ago",
+            content: "Did an excellent job cleaning gutters and solar panels.",
+        },
+        {
+            id: 5,
+            name: "J s",
+            reviews: "6 reviews",
+            rating: 5,
+            date: "a month ago",
+            content:
+                "Recently hired these guys for gutter cleaning of my home, great communication, arrived on time, did a great job and cleaned up. Will use again.",
+        },
+        {
+            id: 6,
+            name: "Vicki Slate",
+            reviews: "3 reviews",
+            rating: 5,
+            date: "3 weeks ago",
+            content:
+                "These guys did a fantastic job cleaning windows, gutters, pressure washing and exterior cleaning. Very thorough and professional service.",
+        },
     ];
 
     const NAVY = "#07077E";
@@ -663,7 +712,7 @@ export default function SolarPanelCleaningAdsPage() {
             </section>
 
             {/* ─── SECTION 9: REVIEWS ─── */}
-            <section className="px-5 py-16 bg-white">
+            <section className="max-w-7xl mx-auto px-5 py-16 bg-white">
                 <div className="mx-auto mb-10 max-w-4xl text-center">
                     <div className="mb-3 flex justify-center gap-1">
                         {[...Array(5)].map((_, i) => (
@@ -682,43 +731,10 @@ export default function SolarPanelCleaningAdsPage() {
                         className="text-sm font-medium hover:underline"
                         style={{ color: "#888" }}
                     >
-                        5.0 across 100+ Google Reviews
+                        5.0 across 30+ Google Reviews
                     </Link>
                 </div>
-                <div className="mx-auto grid max-w-4xl grid-cols-1 gap-4 md:grid-cols-2">
-                    {googleReviews.map((r, i) => (
-                        <div
-                            key={i}
-                            className="relative overflow-hidden rounded-2xl p-5"
-                            style={{ background: "#f4f6ff", border: "1px solid rgba(7,7,126,0.07)" }}
-                        >
-                            <span
-                                className="pointer-events-none absolute right-4 top-2 select-none font-black leading-none"
-                                style={{ fontSize: 80, color: "rgba(7,7,126,0.05)" }}
-                            >
-                                "
-                            </span>
-                            <div className="mb-2 flex gap-0.5">
-                                {[...Array(5)].map((_, j) => (
-                                    <Star key={j} className="w-4 h-4 fill-yellow-400 text-yellow-400" />
-                                ))}
-                            </div>
-                            <p className="mb-4 text-sm leading-relaxed" style={{ color: "#444" }}>&ldquo;{r.text}&rdquo;</p>
-                            <div className="flex items-center gap-3">
-                                <div
-                                    className="flex h-9 w-9 flex-shrink-0 items-center justify-center rounded-full font-black text-sm"
-                                    style={{ background: NAVY, color: YELLOW }}
-                                >
-                                    {r.name.split(" ").map((n) => n[0]).join("")}
-                                </div>
-                                <div>
-                                    <p className="font-bold text-sm" style={{ color: NAVY }}>{r.name}</p>
-                                    <p className="text-xs" style={{ color: "#aaa" }}>{r.suburb}</p>
-                                </div>
-                            </div>
-                        </div>
-                    ))}
-                </div>
+                <GoogleReviews reviews={solarCleaningReviews} />
             </section>
 
             {/* ─── SECTION 10: FOOTER CTA ─── */}

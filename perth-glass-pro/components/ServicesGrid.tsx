@@ -66,7 +66,7 @@ export default function ServicesGrid() {
     ];
 
     return (
-        <section className="py-24 bg-gradient-to-b from-slate-50 to-white relative overflow-hidden">
+        <section className="py-20 bg-gradient-to-b from-slate-50 to-white relative overflow-hidden">
 
             <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 relative z-10">
 
@@ -78,15 +78,11 @@ export default function ServicesGrid() {
                     transition={{ duration: 0.6 }}
                     className="text-center mb-16"
                 >
-                    <span className="inline-flex items-center gap-2 px-4 py-2 rounded-full bg-blue-50 text-[#000080] text-sm font-semibold mb-6 border border-blue-100">
-                        <Sparkles className="w-4 h-4" />
-                        What We Offer
-                    </span>
                     <h2 className="text-4xl sm:text-5xl lg:text-6xl font-bold text-slate-900 mb-6 tracking-tight">
                         Our <span className="text-[#000080]">Services</span>
                     </h2>
                     <p className="text-slate-600 text-lg max-w-2xl mx-auto leading-relaxed">
-                        Professional cleaning solutions tailored to your needs. Select a service to discover how we can transform your property.
+                        Professional cleaning solutions tailored to your needs. Click on the services for more information.
                     </p>
                 </motion.div>
 

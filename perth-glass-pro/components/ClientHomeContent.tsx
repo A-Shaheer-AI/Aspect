@@ -17,14 +17,14 @@ export default function ClientHomeContent() {
             {/* Services Bento Grid */}
             <ServicesGrid />
 
+            {/* Trust Badges & Stats */}
+            <TrustGrid />
+
             {/* Pure Water Technology - SEO Educational Section */}
             {/* <PureWaterSection /> */}
 
             {/* Natural Language Service Finder */}
             <ServiceFinder />
-
-            {/* Trust Badges & Stats */}
-            <TrustGrid />
 
             {/* Results & Reviews */}
             <ResultsAndReviews />

@@ -8,6 +8,7 @@ import Image from "next/image";
 import BeforeAfterSlider from "@/components/BeforeAfterSlider";
 import { sendLeadEmail } from "../actions/send-email";
 import { trackFormCompleted } from "@/hooks/useGtm";
+import GoogleReviews from "@/components/GoogleReviews";
 
 type FormDataType = {
     name: string;
@@ -246,6 +247,7 @@ export default function WindowCleaningAdsPage() {
                 phone: formData.phone,
                 suburb: formData.suburb,
                 message: formData.promo,
+                sourceUrl: window.location.href
             });
             if (result.success) {
                 trackFormCompleted();
@@ -264,11 +266,79 @@ export default function WindowCleaningAdsPage() {
         { num: "04", title: "You Enjoy", body: "Crystal-clear windows, guaranteed. Book again anytime.", clickable: false },
     ];
 
-    const googleReviews = [
-        { name: "June Bird", suburb: "Perth", text: "Guys done a beautiful job. My windows are sparkling. 2 very nice gentleman. Highly recommend." },
-        { name: "Hussai", suburb: "Perth", text: "Team arrived on time, were friendly and professional. Many windows came out spotless and clear." },
-        { name: "Taylor Bow", suburb: "North Perth", text: "Did a great job cleaning inside and outside of windows at my North Perth property. Very professional." },
-        { name: "Shabnam", suburb: "Perth", text: "Punctual, professional, and paid great attention to detail. Our windows are spotless. Couldn't be happier." },
+    const windowCleaningReviews = [
+        {
+            id: 1,
+            name: "Hussai",
+            reviews: "2 reviews",
+            rating: 5,
+            date: "3 months ago",
+            content:
+                "Great work! I called them for cleaning the windows at my home. The team arrived on time, were friendly and professional, and took great care. The windows came out spotless and clear.",
+        },
+        {
+            id: 2,
+            name: "June Bird",
+            reviews: "3 reviews",
+            rating: 5,
+            date: "2 months ago",
+            content:
+                "Guys did a beautiful job. My windows are sparkling. Two very nice gentlemen. Highly recommend.",
+        },
+        {
+            id: 3,
+            name: "Taylor Bow",
+            reviews: "5 reviews",
+            rating: 5,
+            date: "2 months ago",
+            content:
+                "Aspect Window Cleaning did a great job cleaning the inside and outside of the windows at my North Perth property. Good service, communication, and professionalism.",
+        },
+        {
+            id: 4,
+            name: "Shabnam",
+            reviews: "1 review",
+            rating: 5,
+            date: "8 months ago",
+            content:
+                "The team was punctual, professional, and paid great attention to detail. Our windows are spotless inside and out, including screens and tracks.",
+        },
+        {
+            id: 5,
+            name: "Ross Glossop",
+            reviews: "2 reviews",
+            rating: 5,
+            date: "3 months ago",
+            content:
+                "The Aspect team did an amazing job cleaning our many windows. Enthusiastic and thorough work. Great job thank you.",
+        },
+        {
+            id: 6,
+            name: "Sabine Parker",
+            reviews: "12 reviews",
+            rating: 5,
+            date: "5 months ago",
+            content:
+                "Prompt and professional service. Did an amazing job on our double glazed windows and sliding doors. Highly recommend.",
+        },
+        {
+            id: 7,
+            name: "Krystal Copley",
+            reviews: "5 reviews",
+            rating: 5,
+            date: "2 months ago",
+            content:
+                "Lovely people. Quick reply, came for a free quote. Good communication and very professional service.",
+        },
+        {
+            id: 8,
+            name: "lynne",
+            reviews: "2 reviews",
+            rating: 5,
+            date: "2 months ago",
+            content:
+                "Good communication, competitive price, fast and efficient service. Beautifully clean windows and screens. Thank you!",
+        },
     ];
 
     const NAVY = "#07077E";
@@ -577,7 +647,7 @@ export default function WindowCleaningAdsPage() {
             </section>
 
             {/* ─── SECTION 8: REVIEWS ─── */}
-            <section className="px-5 py-16 bg-white">
+            <section className="max-w-7xl mx-auto px-5 py-16 bg-white">
                 <div className="mx-auto mb-10 max-w-4xl text-center">
                     <div className="mb-3 flex justify-center gap-1">
                         {[...Array(5)].map((_, i) => <Star key={i} className="w-6 h-6 fill-yellow-400 text-yellow-400" />)}
@@ -591,29 +661,10 @@ export default function WindowCleaningAdsPage() {
                         className="text-sm font-medium hover:underline"
                         style={{ color: "#888" }}
                     >
-                        5.0 across 100+ Google Reviews
+                        5.0 across 30+ Google Reviews
                     </Link>
                 </div>
-                <div className="mx-auto grid max-w-4xl grid-cols-1 gap-4 md:grid-cols-2">
-                    {googleReviews.map((r, i) => (
-                        <div key={i} className="relative overflow-hidden rounded-2xl p-5" style={{ background: "#f4f6ff", border: "1px solid rgba(7,7,126,0.07)" }}>
-                            <span className="pointer-events-none absolute right-4 top-2 select-none font-black leading-none" style={{ fontSize: 80, color: "rgba(7,7,126,0.05)" }}>"</span>
-                            <div className="mb-2 flex gap-0.5">
-                                {[...Array(5)].map((_, j) => <Star key={j} className="w-4 h-4 fill-yellow-400 text-yellow-400" />)}
-                            </div>
-                            <p className="mb-4 text-sm leading-relaxed" style={{ color: "#444" }}>"{r.text}"</p>
-                            <div className="flex items-center gap-3">
-                                <div className="flex h-9 w-9 flex-shrink-0 items-center justify-center rounded-full font-black text-sm" style={{ background: NAVY, color: YELLOW }}>
-                                    {r.name.split(" ").map((n) => n[0]).join("")}
-                                </div>
-                                <div>
-                                    <p className="font-bold text-sm" style={{ color: NAVY }}>{r.name}</p>
-                                    <p className="text-xs" style={{ color: "#aaa" }}>{r.suburb}</p>
-                                </div>
-                            </div>
-                        </div>
-                    ))}
-                </div>
+                <GoogleReviews reviews={windowCleaningReviews} />
             </section>
 
             {/* ─── SECTION 9: FOOTER CTA ─── */}

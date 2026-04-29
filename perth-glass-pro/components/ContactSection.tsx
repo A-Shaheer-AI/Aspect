@@ -130,9 +130,6 @@ export default function ContactSection() {
                 </div>
             </section>
 
-            {/* Google Map */}
-            <GoogleMap />
-
             {/* SEO Suburb List */}
             {/* bg-pattern-squeegee */}
             <div className=" bg-brand-water/20 p-8 border border-slate-100/50">
