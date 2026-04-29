@@ -20,6 +20,8 @@ interface LeadEmailData {
     isUrgent?: boolean;
     flexibleNotes?: string;
     quoteType?: string;
+
+    sourceUrl?: string; // 👈 ADD THIS
 }
 
 export async function sendLeadEmail(data: LeadEmailData) {
@@ -52,7 +54,8 @@ export async function sendLeadEmail(data: LeadEmailData) {
                     <table style="width: 100%; border-collapse: collapse;">
                         <tr>
                             <td style="padding: 8px 0; border-bottom: 1px solid #e2e8f0;"><strong>Name:</strong></td>
-                            <td style="padding: 8px 0; border-bottom: 1px solid #e2e8f0;">${data.name}</td>
+                            <td style="padding: 8px 0; border-bottom: 1px solid #e2e8f0;">
+                            ${data.name}</td>
                         </tr>
                         <tr>
                             <td style="padding: 8px 0; border-bottom: 1px solid #e2e8f0;"><strong>Phone:</strong></td>
@@ -68,6 +71,18 @@ export async function sendLeadEmail(data: LeadEmailData) {
                             <td style="padding: 8px 0; border-bottom: 1px solid #e2e8f0;"><strong>Suburb:</strong></td>
                             <td style="padding: 8px 0; border-bottom: 1px solid #e2e8f0;">${data.suburb}</td>
                         </tr>
+                        ${data.sourceUrl ? `
+                        <tr>
+                            <td style="padding: 8px 0; border-bottom: 1px solid #e2e8f0;">
+                                <strong>Source Page:</strong>
+                            </td>
+                            <td style="padding: 8px 0; border-bottom: 1px solid #e2e8f0;">
+                                <a href="${data.sourceUrl}" target="_blank" style="color: #D4AF37;">
+                                  ${data.sourceUrl}
+                                </a>
+                            </td>
+                        </tr>
+                        ` : ""}
                     </table>
 
                     ${data.selectedTier || data.storeys ? `
