@@ -8,6 +8,7 @@ import Image from "next/image";
 import { sendLeadEmail } from "../actions/send-email";
 import { trackFormCompleted } from "@/hooks/useGtm";
 import GoogleReviews from "@/components/GoogleReviews";
+import BeforeAfterSlider from "@/components/BeforeAfterSlider";
 
 
 type FormDataType = {
@@ -597,6 +598,14 @@ export default function GutterCleaningAdsPage() {
                         </div>
                     </div>
                 </div>
+            </section>
+
+            <section className="max-w-7xl mx-auto px-5 py-16 bg-white">
+                <BeforeAfterSlider
+                    beforeImage="https://res.cloudinary.com/dr8tjrszy/image/upload/v1777441113/WhatsApp_Image_2026-04-27_at_12.43.46_PM_cvkw1l.jpg"
+                    afterImage="https://res.cloudinary.com/dr8tjrszy/image/upload/v1777441114/WhatsApp_Image_2026-04-27_at_12.43.48_PM_yxfcd8.jpg"
+                    initial={50}
+                />
             </section>
 
             {/* ─── SECTION 8: REVIEWS ─── */}
