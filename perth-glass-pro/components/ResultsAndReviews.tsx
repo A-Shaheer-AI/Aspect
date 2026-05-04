@@ -92,22 +92,6 @@ export default function ResultsAndReviews() {
                     </div>
                 </div>
 
-                {/* Schema Markup for SEO */}
-                <script
-                    type="application/ld+json"
-                    dangerouslySetInnerHTML={{
-                        __html: JSON.stringify({
-                            "@context": "https://schema.org",
-                            "@type": "LocalBusiness",
-                            "name": "Aspect Window Cleaning",
-                            "aggregateRating": {
-                                "@type": "AggregateRating",
-                                "ratingValue": "4.9",
-                                "reviewCount": "200"
-                            }
-                        })
-                    }}
-                />
             </section>
 
             {/* Faqs */}
