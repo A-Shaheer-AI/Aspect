@@ -112,7 +112,10 @@ export default function ServicesGrid() {
                                             />
                                         ) : (
                                             <Image
-                                                src={service.image}
+                                                src={service.image.replace(
+                                                    "/upload/",
+                                                    "/upload/f_auto,q_auto/"
+                                                )}
                                                 alt={service.title}
                                                 fill
                                                 className="object-cover"
@@ -177,7 +180,10 @@ export default function ServicesGrid() {
                                             />
                                         ) : (
                                             <Image
-                                                src={service.image}
+                                                src={service.image.replace(
+                                                    "/upload/",
+                                                    "/upload/f_auto,q_auto/"
+                                                )}
                                                 alt={service.title}
                                                 fill
                                                 unoptimized

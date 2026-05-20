@@ -102,9 +102,13 @@ export default function PortfolioPage() {
                                 className="relative aspect-square overflow-hidden rounded-2xl bg-slate-100 shadow-md hover:shadow-2xl transition-shadow duration-300"
                             >
                                 <Image
-                                    src={item.image}
+                                    src={item.image.replace(
+                                        "/upload/",
+                                        "/upload/f_auto,q_auto/"
+                                    )}
                                     alt={item.title}
                                     fill
+                                    sizes="(max-width: 768px) 100vw, (max-width: 1200px) 50vw, 25vw"
                                     className="object-cover"
                                 />
                             </div>

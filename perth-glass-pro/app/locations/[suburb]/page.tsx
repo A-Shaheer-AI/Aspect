@@ -92,18 +92,6 @@ export default async function SuburbPage({ params }: { params: Promise<{ suburb:
                 suburbName={suburb.name}
             />
 
-            {/* Services Available */}
-            <ServicesAvailable
-                suburbName={suburb.name}
-                suburbSlug={suburbSlug}
-            />
-            
-            <section className="py-10 max-w-4xl mx-auto px-4 text-center">
-                <p className="text-gray-700">
-                    {suburb.service_description}
-                </p>
-            </section>
-            
             {/* CTA */}
             <section className="bg-brand-navy text-white py-16">
                 <div className="max-w-3xl mx-auto px-4 text-center">

@@ -267,11 +267,12 @@ const ResidentialWindowCleaning = () => {
             <section className="py-5">
                 <div className="max-w-5xl mx-auto px-4">
                     <Image
-                        src="https://res.cloudinary.com/dr8tjrszy/image/upload/v1771960139/WhatsApp_Image_2026-02-22_at_8.47.53_PM_1_utloaq.jpg"
+                        src="https://res.cloudinary.com/dr8tjrszy/image/upload/f_auto,q_auto/v1771960139/WhatsApp_Image_2026-02-22_at_8.47.53_PM_1_utloaq.jpg"
                         alt="Residential window cleaning in Perth"
                         width={1000}
                         height={300}
                         className="rounded-xl"
+                        sizes="(max-width: 1024px) 100vw, 1024px"
                     />
                 </div>
             </section>
@@ -293,7 +294,7 @@ const ResidentialWindowCleaning = () => {
                     <div className="group">
                         <div className="relative overflow-hidden rounded-2xl mb-6 aspect-[4/3]">
                             <Image
-                                src="https://res.cloudinary.com/dr8tjrszy/image/upload/v1771960141/WhatsApp_Image_2026-02-22_at_8.47.56_PM_1_ekwlh4.jpg"
+                                src="https://res.cloudinary.com/dr8tjrszy/image/upload/f_auto,q_auto/v1771960141/WhatsApp_Image_2026-02-22_at_8.47.56_PM_1_ekwlh4.jpg"
                                 alt="Technician cleaning residential home windows"
                                 fill
                                 className="object-cover group-hover:scale-105 transition-transform duration-500"

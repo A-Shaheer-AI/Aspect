@@ -78,6 +78,11 @@ export default function RootLayout({
                             "url": "https://aspectwindowcleaning.com.au/",
                             "telephone": "+61426996192",
                             "priceRange": "$$",
+                            "aggregateRating": {
+                                "@type": "AggregateRating",
+                                "ratingValue": "4.9",
+                                "reviewCount": "30"
+                            },
                             "address": {
                                 "@type": "PostalAddress",
                                 "streetAddress": "183 Stirling Hwy, Nedlands",
@@ -86,6 +91,11 @@ export default function RootLayout({
                                 "postalCode": "6009",
                                 "addressCountry": "AU"
                             },
+                            "areaServed": [
+                                { "@type": "Place", "name": "Cottesloe" },
+                                { "@type": "Place", "name": "Fremantle" },
+                                { "@type": "Place", "name": "Shenton Park" }
+                            ],
                             "geo": {
                                 "@type": "GeoCoordinates",
                                 "latitude": -31.9806823,
@@ -98,11 +108,9 @@ export default function RootLayout({
                                 "closes": "23:59"
                             },
                             "sameAs": [
-                                "https://maps.app.goo.gl/fkrQnHZybt7ZYSah7",
                                 "https://www.facebook.com/profile.php?id=61576666721111",
                                 "https://www.instagram.com/aspectwindowcleaningperth/",
-                                "https://www.tiktok.com/@aspect.window.cle",
-                                "https://aspectwindowcleaning.com.au/"
+                                "https://www.tiktok.com/@aspect.window.cle"
                             ],
                             "description": "Professional window cleaning in Perth. Residential and commercial high-reach specialists. Fully insured. 5-star rated."
                         })

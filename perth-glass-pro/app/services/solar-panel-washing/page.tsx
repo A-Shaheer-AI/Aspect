@@ -295,10 +295,11 @@ const SolarPanelCleaningPage = () => {
             <section className="py-5">
                 <div className="max-w-5xl mx-auto px-4">
                     <Image
-                        src="https://res.cloudinary.com/dr8tjrszy/image/upload/v1771960144/WhatsApp_Image_2026-02-22_at_8.48.18_PM_vt57zl.jpg"
+                        src="https://res.cloudinary.com/dr8tjrszy/image/upload/f_auto,q_auto/v1771960144/WhatsApp_Image_2026-02-22_at_8.48.18_PM_vt57zl.jpg"
                         alt="Technician cleaning solar panels in Perth"
                         width={1200}
                         height={300}
+                        sizes="(max-width: 1024px) 100vw, 1024px"
                         className="rounded-xl"
                     />
                 </div>

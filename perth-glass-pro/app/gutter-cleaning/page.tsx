@@ -356,7 +356,7 @@ export default function GutterCleaningAdsPage() {
 
             {/* ─── SECTION 1: HERO ─── */}
             <section className="relative min-h-screen flex flex-col overflow-hidden bg-cover bg-center
-                 bg-[linear-gradient(160deg,rgba(7,7,126,0.7)_0%,rgba(5,5,80,0.82)_60%,rgba(3,3,50,0.9)_100%),url('https://res.cloudinary.com/dr8tjrszy/image/upload/v1775990687/gutter-cleaning_nd8wyn.jpg')]"
+                 bg-[linear-gradient(160deg,rgba(7,7,126,0.3)_0%,rgba(5,5,80,0.5)_60%,rgba(3,3,50,0.9)_100%),url('https://res.cloudinary.com/dr8tjrszy/image/upload/v1777441115/WhatsApp_Image_2026-04-27_at_12.43.50_PM_1_je8jsa.jpg')]"
             >
                 {/* Decorative circles */}
                 <div className="pointer-events-none absolute" style={{ top: "-200px", right: "-200px", width: 700, height: 700, border: "1px solid rgba(255,229,77,0.07)", borderRadius: "50%" }} />
@@ -474,6 +474,14 @@ export default function GutterCleaningAdsPage() {
                         </div>
                     ))}
                 </div>
+            </section>
+
+            <section className="max-w-7xl mx-auto px-5 py-16 bg-white">
+                <BeforeAfterSlider
+                    beforeImage="https://res.cloudinary.com/dr8tjrszy/image/upload/v1777441113/WhatsApp_Image_2026-04-27_at_12.43.46_PM_cvkw1l.jpg"
+                    afterImage="https://res.cloudinary.com/dr8tjrszy/image/upload/v1777441114/WhatsApp_Image_2026-04-27_at_12.43.48_PM_yxfcd8.jpg"
+                    initial={50}
+                />
             </section>
 
             {/* ─── SECTION 5: WHY IT MATTERS ─── */}
@@ -598,14 +606,6 @@ export default function GutterCleaningAdsPage() {
                         </div>
                     </div>
                 </div>
-            </section>
-
-            <section className="max-w-7xl mx-auto px-5 py-16 bg-white">
-                <BeforeAfterSlider
-                    beforeImage="https://res.cloudinary.com/dr8tjrszy/image/upload/v1777441113/WhatsApp_Image_2026-04-27_at_12.43.46_PM_cvkw1l.jpg"
-                    afterImage="https://res.cloudinary.com/dr8tjrszy/image/upload/v1777441114/WhatsApp_Image_2026-04-27_at_12.43.48_PM_yxfcd8.jpg"
-                    initial={50}
-                />
             </section>
 
             {/* ─── SECTION 8: REVIEWS ─── */}

@@ -7,7 +7,6 @@ import SmartVideo from "@/components/ui/SmartVideo";
 export default function QuotePage() {
     return (
         <main className="min-h-screen relative flex items-center justify-center p-4">
-            {/* Background - Using SmartVideo for premium feel, or fallback to image */}
             {/* Background - Using SmartVideo for premium feel */}
             <div className="absolute inset-0 w-full h-full z-0 overflow-hidden">
                 <SmartVideo

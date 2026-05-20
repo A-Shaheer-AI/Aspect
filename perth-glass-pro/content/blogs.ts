@@ -257,5 +257,50 @@ export const blogs: BlogPost[] = [
       }
     ],
     "conclusion": "Gutter cleaning is not just routine maintenance — it's active protection for your home. With Perth's unpredictable winter storms and dry summers that bake debris onto your roof, regular professional cleaning is the most cost-effective way to protect your property's value and avoid emergency repairs. Don't wait for water stains on your ceiling or a sagging gutter to take action."
+  },
+  {
+    "id": 7,
+    "title": "How Pressure Cleaning Improves Property Value in Perth Homes",
+    "slug": "how-pressure-cleaning-improves-property-value-perth-homes",
+    "date": "2026-05-18T00:00:00Z",
+    "thumbnail": "https://res.cloudinary.com/dr8tjrszy/image/upload/v1776944964/WhatsApp_Image_2026-04-22_at_8.43.10_PM_ijfzbu.jpg",
+    "excerpt": "Discover how professional pressure cleaning can instantly boost your property's curb appeal, prevent long-term damage, and increase resale value across Perth homes.",
+    "intro": "First impressions matter in real estate, and the exterior of your home is the first thing buyers and visitors see. Over time, driveways, walls, patios, and pathways collect dirt, mould, algae, and stains that make a property look older and poorly maintained. Professional pressure cleaning restores these surfaces to near-new condition, significantly improving curb appeal and overall property value. In Perth’s harsh sun and coastal conditions, this type of maintenance has a direct impact on how your home is perceived and valued.",
+    "sections": [
+      {
+        "heading": "Why Exterior Appearance Impacts Property Value",
+        "body": "Buyers often judge a property within seconds of arriving. Dirty driveways, stained walls, and mouldy surfaces immediately lower perceived value, even if the interior is well maintained. A clean exterior signals proper upkeep, which increases buyer confidence and can directly influence offers."
+      },
+      {
+        "heading": "What Pressure Cleaning Actually Removes",
+        "body": "Professional pressure cleaning removes built-up dirt, algae, moss, mould, oil stains, tyre marks, bird droppings, and weather-related grime. These contaminants not only look bad but can also degrade surfaces like concrete, brick, and pavers over time if left untreated."
+      },
+      {
+        "heading": "How It Directly Increases Property Value",
+        "subsections": [
+          {
+            "heading": "Improved Curb Appeal",
+            "body": "Clean driveways, walls, and outdoor areas instantly make a home look newer and more attractive. This improves first impressions during inspections and listings, often increasing buyer interest."
+          },
+          {
+            "heading": "Higher Perceived Maintenance Level",
+            "body": "A well-maintained exterior signals that the entire property has been cared for properly. Buyers are more likely to trust that internal systems and structures are also in good condition."
+          },
+          {
+            "heading": "Faster Sales Process",
+            "body": "Homes with clean exteriors tend to spend less time on the market. Better presentation leads to more inquiries, more inspections, and faster offers."
+          }
+        ]
+      },
+      {
+        "heading": "Protecting Surfaces From Long-Term Damage",
+        "body": "Beyond aesthetics, pressure cleaning prevents long-term damage caused by mould, algae, and grime buildup. In Perth’s climate, organic growth can break down concrete and pavers over time, leading to expensive repairs or resurfacing."
+      },
+      {
+        "heading": "Where Pressure Cleaning Has the Biggest Impact",
+        "body": "The most noticeable improvements come from driveways, front facades, patios, pool areas, retaining walls, and pathways. These high-visibility areas influence how the entire property is perceived."
+      }
+    ],
+    "conclusion": "Pressure cleaning is one of the fastest and most cost-effective ways to increase property value without renovations. By restoring exterior surfaces and improving curb appeal, it creates a stronger first impression, helps properties sell faster, and can even increase final sale price in competitive Perth markets."
   }
 ];

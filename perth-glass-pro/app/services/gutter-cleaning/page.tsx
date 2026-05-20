@@ -2,7 +2,7 @@ import { Metadata } from "next";
 import Image from "next/image";
 import Link from "next/link";
 import FAQ from "@/components/FAQ";
-import {  ChevronsRight } from "lucide-react";
+import { ChevronsRight } from "lucide-react";
 import CTA from "@/components/CTA";
 import BeforeAfterSlider from "@/components/BeforeAfterSlider";
 
@@ -264,11 +264,12 @@ const GutterCleaningServices = () => {
             <section className="py-5">
                 <div className="max-w-5xl mx-auto px-4">
                     <Image
-                        src="https://res.cloudinary.com/dr8tjrszy/image/upload/v1775331528/gutter-cleaning_ym4thx.jpg"
+                        src="https://res.cloudinary.com/dr8tjrszy/image/upload/f_auto,q_auto/v1775331528/gutter-cleaning_ym4thx.jpg"
                         alt="gutter cleaning in Perth"
                         width={1000}
                         height={300}
                         className="rounded-xl"
+                        sizes="(max-width: 1024px) 100vw, 1024px"
                     />
                 </div>
             </section>
