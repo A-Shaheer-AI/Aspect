@@ -86,9 +86,10 @@ export default function Footer() {
                     {/* Brand */}
                     <div className="flex flex-col gap-5">
                         <Image
-                            src="https://res.cloudinary.com/dr8tjrszy/image/upload/v1772130850/white-logo_pzpxjk.png"
+                            src="https://res.cloudinary.com/dr8tjrszy/image/upload/f_auto,q_auto/v1772130850/white-logo_pzpxjk.png"
                             width={100}
                             height={100}
+                            sizes="200px"
                             alt="aspect-widnow-cleaning-logo"
                             className="object-cover"
                         />

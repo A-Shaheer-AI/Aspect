@@ -16,7 +16,7 @@ export default function FAQ({ faqs, title }: Faqs) {
     const [openIndex, setOpenIndex] = useState<number | null>(0);
 
     return (
-        <section className="py-16 bg-white">
+        <section id="faqs" className="py-16 bg-white">
             <div className="max-w-4xl mx-auto px-4">
 
                 <h2 className="text-3xl font-heading font-bold text-brand-navy text-center mb-5">

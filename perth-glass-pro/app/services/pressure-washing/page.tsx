@@ -272,11 +272,12 @@ const PressureWashing = () => {
             <section className="py-5">
                 <div className="max-w-5xl mx-auto px-4">
                     <Image
-                        src="https://res.cloudinary.com/dr8tjrszy/image/upload/v1771960122/indoor-cleaning_ioqiqq.jpg"
+                        src="https://res.cloudinary.com/dr8tjrszy/image/upload/f_auto,q_auto/v1771960122/indoor-cleaning_ioqiqq.jpg"
                         alt="Technician cleaning solar panels in Perth"
                         width={1200}
                         height={300}
                         className="rounded-xl"
+                        sizes="(max-width: 1024px) 100vw, 1024px"
                     />
                 </div>
             </section>

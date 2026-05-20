@@ -121,7 +121,7 @@ export default function HeroWithScroll() {
               No Guesswork — We Visit & Quote For Free
             </p>
 
-            <h1 className="text-2xl md:text-5xl text-center md:text-left font-bold leading-tight mb-6">
+            <h1 className="text-2xl md:text-3xl lg:text-5xl text-center md:text-left font-bold leading-tight mb-6">
               Residential & Commercial Window &  <br />
               <span className="text-action-gold">Solar Panel Cleaning Across All Perth Suburbs</span>
             </h1>
@@ -146,17 +146,22 @@ export default function HeroWithScroll() {
                       {item.type === "video" ? (
                         <video
                           autoPlay
-                          muted
+                          muted={true}
+                          playsInline
                           loop
                           src={item.src}
                           className="w-full h-full object-cover"
                         />
                       ) : (
                         <Image
-                          src={item.src}
+                          src={item.src.replace(
+                            "/upload/",
+                            "/upload/f_auto,q_auto/"
+                          )}
                           alt="Service image"
                           width={200}
                           height={150}
+                          sizes="50vw"
                           className="w-full h-full object-cover"
                           unoptimized
                         />
@@ -175,17 +180,22 @@ export default function HeroWithScroll() {
                       {item.type === "video" ? (
                         <video
                           autoPlay
-                          muted
+                          muted={true}
+                          playsInline
                           loop
                           src={item.src}
                           className="w-full h-full object-cover"
                         />
                       ) : (
                         <Image
-                          src={item.src}
+                          src={item.src.replace(
+                            "/upload/",
+                            "/upload/f_auto,q_auto/"
+                          )}
                           alt="Service image"
                           width={200}
                           height={150}
+                          sizes="50vw"
                           className="w-full h-full object-cover"
                           unoptimized
                         />
@@ -196,6 +206,7 @@ export default function HeroWithScroll() {
 
               </div>
             </div>
+
             <p className="text-gray-300 text-center md:text-left text-lg mb-6 mt-8 md:mt-0">
               Streak-free results for homes and businesses. <br />
               100% satisfaction guaranteed.
@@ -207,7 +218,7 @@ export default function HeroWithScroll() {
               </Link>
             </div>
 
-            <div className="flex flex-col md:flex-row items-center justify-start gap-4 mb-8 w-full">
+            <div className="flex flex-col lg:flex-row items-start lg:items-center justify-start gap-4 mb-8 w-full">
               <button
                 onClick={() => setIsModalOpen(true)}
                 className="group flex items-center justify-center gap-3 bg-action-gold text-brand-navy font-bold text-lg px-8 py-4 rounded-full shadow-lg hover:shadow-xl hover:bg-action-gold/90 transition-all focus:outline-none focus:ring-4 focus:ring-action-gold/50 cursor-pointer w-full md:w-auto"
@@ -277,16 +288,21 @@ export default function HeroWithScroll() {
                         <video
                           src={item.src}
                           autoPlay
-                          muted
+                          muted={true}
+                          playsInline
                           loop
                           className="w-full h-full object-cover"
                         />
                       ) : (
                         <Image
-                          src={item.src}
+                          src={item.src.replace(
+                            "/upload/",
+                            "/upload/f_auto,q_auto/"
+                          )}
                           alt="Service image"
                           width={400}
                           height={250}
+                          sizes="(max-width: 768px) 50vw, 33vw"
                           className="w-full h-full object-cover"
                           unoptimized
                         />
@@ -308,16 +324,21 @@ export default function HeroWithScroll() {
                         <video
                           src={item.src}
                           autoPlay
-                          muted
+                          muted={true}
+                          playsInline
                           loop
                           className="w-full h-full object-cover"
                         />
                       ) : (
                         <Image
-                          src={item.src}
+                          src={item.src.replace(
+                            "/upload/",
+                            "/upload/f_auto,q_auto/"
+                          )}
                           alt="Service image"
                           width={400}
                           height={250}
+                          sizes="(max-width: 768px) 50vw, 33vw"
                           className="w-full h-full object-cover"
                           unoptimized
                         />

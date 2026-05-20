@@ -71,6 +71,7 @@ export default async function BlogPostPage({ params }: { params: Promise<{ slug:
                         src={post.thumbnail}
                         alt={post.title}
                         fill
+                        sizes="100vw"
                         className="object-cover opacity-60"
                         priority
                     />

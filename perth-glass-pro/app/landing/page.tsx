@@ -495,7 +495,16 @@ export default function WindowCleaningAdsPage() {
                         { src: "https://res.cloudinary.com/dr8tjrszy/image/upload/v1772795794/bespoke-logo_lulwwt.png", alt: "Bespoke" },
                     ].map((logo) => (
                         <div key={logo.alt} className="relative h-13 w-28 grayscale transition duration-300 hover:grayscale-0">
-                            <Image src={logo.src} alt={logo.alt} fill className="object-contain" />
+                            <Image
+                                src={logo.src.replace(
+                                    "/upload/",
+                                    "/upload/f_auto,q_auto/"
+                                )}
+                                alt={logo.alt}
+                                fill
+                                sizes="112px"
+                                className="object-contain"
+                            />
                         </div>
                     ))}
                 </div>

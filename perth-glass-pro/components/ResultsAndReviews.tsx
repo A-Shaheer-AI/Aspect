@@ -62,7 +62,7 @@ export default function ResultsAndReviews() {
                         </p>
                     </div>
 
-                    <div className="grid md:grid-cols-2 lg:grid-cols-4 gap-12 items-start">
+                    <div className="grid md:grid-cols-2 lg:grid-cols-5 gap-12 items-start">
 
                         <BeforeAfterSlider
                             afterImage="https://res.cloudinary.com/dr8tjrszy/image/upload/v1774345158/IMG_9593_1_2_b98bl5.png"
@@ -85,6 +85,12 @@ export default function ResultsAndReviews() {
                         <BeforeAfterSlider
                             afterImage="https://res.cloudinary.com/dr8tjrszy/image/upload/v1771960140/WhatsApp_Image_2026-02-22_at_8.47.54_PM_neyxo8.jpg"
                             beforeImage="https://res.cloudinary.com/dr8tjrszy/image/upload/v1771960141/WhatsApp_Image_2026-02-22_at_8.47.54_PM_1_pytncp.jpg"
+                            initial={50}
+                        />
+
+                        <BeforeAfterSlider
+                            afterImage="https://res.cloudinary.com/dr8tjrszy/image/upload/v1777441114/WhatsApp_Image_2026-04-27_at_12.43.51_PM_qux9dv.jpg"
+                            beforeImage="https://res.cloudinary.com/dr8tjrszy/image/upload/v1777441115/WhatsApp_Image_2026-04-27_at_12.43.50_PM_q1q5xo.jpg"
                             initial={50}
                         />
 
