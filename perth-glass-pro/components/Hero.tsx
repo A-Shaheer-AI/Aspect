@@ -121,7 +121,7 @@ export default function HeroWithScroll() {
               No Guesswork — We Visit & Quote For Free
             </p>
 
-            <h1 className="text-2xl md:text-3xl lg:text-5xl text-center md:text-left font-bold leading-tight mb-6">
+            <h1 className="text-2xl md:text-3xl xl:text-5xl text-center md:text-left font-bold leading-tight mb-6">
               Residential & Commercial Window &  <br />
               <span className="text-action-gold">Solar Panel Cleaning Across All Perth Suburbs</span>
             </h1>
@@ -221,7 +221,7 @@ export default function HeroWithScroll() {
             <div className="flex flex-col lg:flex-row items-start lg:items-center justify-start gap-4 mb-8 w-full">
               <button
                 onClick={() => setIsModalOpen(true)}
-                className="group flex items-center justify-center gap-3 bg-action-gold text-brand-navy font-bold text-lg px-8 py-4 rounded-full shadow-lg hover:shadow-xl hover:bg-action-gold/90 transition-all focus:outline-none focus:ring-4 focus:ring-action-gold/50 cursor-pointer w-full md:w-auto"
+                className="group flex items-center justify-center gap-3 bg-action-gold text-brand-navy font-bold text-lg px-6 lg:px-8 py-4 rounded-full shadow-lg hover:shadow-xl hover:bg-action-gold/90 transition-all focus:outline-none focus:ring-4 focus:ring-action-gold/50 cursor-pointer w-full md:w-auto"
                 aria-label="Get a residential quote"
               >
                 <Home className="w-5 h-5" aria-hidden="true" />
@@ -230,7 +230,7 @@ export default function HeroWithScroll() {
 
               <Link
                 href="/commercial"
-                className="group flex items-center justify-center gap-3 bg-white/10 backdrop-blur-sm border-2 border-white/30 text-white font-bold text-lg px-8 py-4 rounded-full hover:bg-white/20 transition-colors focus:outline-none focus:ring-4 focus:ring-white/30 w-full md:w-auto"
+                className="group flex items-center justify-center gap-3 bg-white/10 backdrop-blur-sm border-2 border-white/30 text-white font-bold text-lg px-6 lg:px-8 py-4 rounded-full hover:bg-white/20 transition-colors focus:outline-none focus:ring-4 focus:ring-white/30 w-full md:w-auto"
               >
                 <Building2 className="w-5 h-5" aria-hidden="true" />
                 Commercial Quote
