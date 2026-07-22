@@ -1,7 +1,7 @@
 "use client";
 
 import { useState, useEffect, useRef } from "react";
-import { Phone, CheckCircle2, Star, Shield, Droplets, Zap, Building2, X, Tag } from "lucide-react";
+import { Phone, CheckCircle2, Star, Shield, Droplets, Zap, Building2, X, Tag, ChevronLeft, ChevronRight } from "lucide-react";
 import { BUSINESS } from "@/lib/config";
 import Link from "next/link";
 import Image from "next/image";
@@ -209,12 +209,53 @@ function QuoteModal({
     );
 }
 
+const whatsInclude = [
+    {
+        title: "Interior & Exterior Glass",
+        description:
+            "Full clean of both sides of every window pane — removing dirt, water spots, and environmental buildup for a streak-free finish.",
+        img: "/gallery/gallery-1.jpeg"
+    },
+    {
+        title: "Frames, Sills & Tracks",
+        description:
+            "We clean all frames, sills, and sliding tracks to remove grime, mould, and built-up debris that harbour bacteria and damage seals.",
+        img: "/gallery/gallery-2.jpeg"
+    },
+    {
+        title: "Screen & Fly Screen Cleaning",
+        description:
+            "Screens are removed, cleaned, and refitted — removing dust, pollen, and grime that blocks airflow and reduces light.",
+        img: "/gallery/gallery-3.jpeg"
+    },
+    {
+        title: "Pure Water Cleaning Method",
+        description:
+            "We use purified, deionised water that leaves zero mineral residue on glass — meaning windows stay cleaner for longer after each service.",
+        img: "/gallery/gallery-4.jpeg"
+    },
+    {
+        title: "Hard Water Stain Removal",
+        description:
+            "Stubborn mineral deposits and hard water stains are treated with specialist solutions, restoring glass clarity where standard cleaning can't.",
+        img: "/gallery/gallery-5.jpeg"
+    },
+    {
+        title: "Streak-Free Polish",
+        description:
+            "Every pane is finished with a professional streak-free polish — ensuring your glass looks flawless in all lighting conditions.",
+        img: "/gallery/gallery-6.jpeg"
+    },
+];
+
 /* ─────────────────────────────────────────
    PAGE
 ───────────────────────────────────────── */
 export default function WindowCleaningAdsPage() {
     const [modalOpen, setModalOpen] = useState(false);
     const [showPromo, setShowPromo] = useState(false);
+    const [galleryOpen, setGalleryOpen] = useState(false);
+    const [currentImageIndex, setCurrentImageIndex] = useState(0);
     const [scrollPopupShown, setScrollPopupShown] = useState(false);
     const [formData, setFormData] = useState<FormDataType>({ name: "", phone: "", suburb: "", promo: "", });
     const [submitted, setSubmitted] = useState(false);
@@ -360,63 +401,106 @@ export default function WindowCleaningAdsPage() {
             {/* ─── SECTION 1: HERO ─── */}
             <section
                 className="relative min-h-screen flex flex-col items-center justify-center md:px-5 pb-10 text-white bg-cover bg-center
-  bg-[linear-gradient(160deg,rgba(10,22,40,0.5)_0%,rgba(15,37,69,0.8)_60%,rgba(19,48,96,0.8)_100%),url('https://res.cloudinary.com/dr8tjrszy/image/upload/v1771960133/professional-windows-cleaning_mm5mvy.jpg')]
-  md:bg-[linear-gradient(160deg,rgba(10,22,40,0.5)_0%,rgba(15,37,69,0.8)_60%,rgba(19,48,96,0.8)_100%),url('https://res.cloudinary.com/dr8tjrszy/image/upload/v1771960136/outside-windows-cleaning_lzp8fq.jpg')]"
+  bg-[linear-gradient(160deg,rgba(10,22,40,0.5)_0%,rgba(15,37,69,0.8)_60%,rgba(19,48,96,0.8)_100%),url('/landing-hero-bg.jpeg')]
+  md:bg-[linear-gradient(160deg,rgba(10,22,40,0.5)_0%,rgba(15,37,69,0.8)_60%,rgba(19,48,96,0.8)_100%),url('/landing-hero-bg.jpeg')]"
             >
 
                 {/* HERO BODY */}
-                <div className="relative z-10 flex flex-1 flex-col items-center justify-center px-5 pb-10 pt-6 text-center text-white">
-                    <div
-                        className="mb-6 inline-flex items-center gap-2 rounded-full border px-4 py-2 text-xs font-semibold uppercase tracking-widest"
-                        style={{ borderColor: "rgba(255,229,77,0.35)", color: YELLOW }}
-                    >
-                        <span className="w-1.5 h-1.5 rounded-full" style={{ background: "#22c55e" }} />
-                        Same-week booking available
+                <div className="relative z-10 grid grid-cols-1 lg:grid-cols-2 w-full max-w-[1300px] mx-auto items-center gap-12 px-5 pb-10 pt-6">
+
+                    {/* LEFT SIDE: BADGE, IMAGES, CTA */}
+                    <div className="flex flex-col items-start text-left text-white lg:pr-8 w-full max-w-xl mx-auto lg:max-w-none">
+                        <div
+                            className="mb-6 inline-flex items-center gap-2 rounded-full border px-4 py-2 text-xs font-semibold uppercase tracking-widest"
+                            style={{ borderColor: "rgba(255,229,77,0.35)", color: YELLOW }}
+                        >
+                            <span className="w-1.5 h-1.5 rounded-full" style={{ background: "#22c55e" }} />
+                            Same-week booking available
+                        </div>
+
+                        {/* MOBILE HEADING (Hidden on desktop) */}
+                        <div className="lg:hidden text-center text-white mb-8 w-full">
+                            <h1 className="mb-4 leading-none font-black text-white" style={{ fontSize: "clamp(32px,4vw,56px)", letterSpacing: "1px" }}>
+                                Perth&apos;s #1
+                                <br />
+                                <span style={{ color: YELLOW }}>Window Cleaners</span>
+                            </h1>
+                            <p className="w-full text-base font-light leading-relaxed mx-auto max-w-lg" style={{ color: "rgba(255,255,255,0.8)" }}>
+                                Next-Day Availability. Commercial-Grade Pure Water Cleaning for Homes & Businesses.
+                            </p>
+                        </div>
+
+                        {/* IMAGES GALLERY: Scrollable on mobile, 3x2 on desktop */}
+                        <div className="flex overflow-x-auto lg:grid lg:grid-cols-3 gap-3 lg:gap-4 pb-4 lg:pb-0 snap-x mb-8 w-full" style={{ scrollbarWidth: 'none', msOverflowStyle: 'none' }}>
+                            <style>{`
+                                .snap-x::-webkit-scrollbar { display: none; }
+                            `}</style>
+                            {[1, 2, 3, 4, 5, 6].map((num) => (
+                                <div
+                                    key={num}
+                                    onClick={() => { setCurrentImageIndex(num - 1); setGalleryOpen(true); }}
+                                    className="relative w-48 h-36 lg:w-full lg:aspect-[4/3] lg:h-auto flex-shrink-0 snap-center rounded-xl overflow-hidden shadow-lg border border-white/20 hover:scale-105 cursor-pointer transition-all duration-300"
+                                >
+                                    <Image
+                                        src={`/gallery/gallery-${num}.jpeg`}
+                                        alt={`Recent Work ${num}`}
+                                        fill
+                                        className="object-cover"
+                                    />
+                                </div>
+                            ))}
+                        </div>
+
+                        <div className="grid grid-cols-2 gap-2 sm:gap-3 w-full max-w-md">
+                            {[
+                                { icon: "🛡️", text: "$20M Insured" },
+                                { icon: "👮", text: "Police Cleared" },
+                                { icon: "💧", text: "Pure Water Tech" },
+                                { icon: "⭐", text: "5.0 Google Reviews" },
+                            ].map((b) => (
+                                <span
+                                    key={b.text}
+                                    className="flex items-center justify-center gap-1 sm:gap-2 rounded-full px-1 sm:px-5 py-2.5 text-[11px] sm:text-sm md:text-base font-semibold text-center"
+                                    style={{ background: "rgba(255,229,77,0.15)", border: "1px solid rgba(255,229,77,0.4)", color: YELLOW }}
+                                >
+                                    <span className="text-sm sm:text-lg">{b.icon}</span> <span className="whitespace-nowrap">{b.text}</span>
+                                </span>
+                            ))}
+                        </div>
                     </div>
 
-                    <h1 className="mb-4 leading-none font-black text-white" style={{ fontSize: "clamp(44px,9vw,84px)", letterSpacing: "1px" }}>
-                        Perth&apos;s #1
-                        <br />
-                        <span style={{ color: YELLOW }}>Window Cleaners</span>
-                    </h1>
+                    {/* RIGHT SIDE: HEADING, DESC & FORM */}
+                    <div className="flex flex-col gap-6 w-full max-w-xl mx-auto lg:max-w-[480px] lg:ml-auto lg:mr-0">
+                        
+                        <div className="hidden lg:block text-left text-white">
+                            <h1 className="mb-4 leading-none font-black text-white" style={{ fontSize: "clamp(36px,4vw,56px)", letterSpacing: "1px" }}>
+                                Perth&apos;s #1
+                                <br />
+                                <span style={{ color: YELLOW }}>Window Cleaners</span>
+                            </h1>
 
-                    <p className="mb-8 max-w-sm text-base font-light leading-relaxed" style={{ color: "rgba(255,255,255,0.65)" }}>
-                        Next-Day Availability. Commercial-Grade Pure Water Cleaning for Homes & Businesses.
-                    </p>
+                            <p className="w-full text-base font-light leading-relaxed mx-auto lg:mx-0 max-w-lg" style={{ color: "rgba(255,255,255,0.8)" }}>
+                                Next-Day Availability. Commercial-Grade Pure Water Cleaning for Homes & Businesses.
+                            </p>
+                        </div>
 
-                    <div className="mb-8 flex w-full max-w-sm flex-col gap-3">
-                        <Link
-                            href={`tel:${BUSINESS.phoneRaw}`}
-                            className="flex items-center justify-center gap-3 rounded-2xl py-4 font-bold text-base transition-all hover:-translate-y-0.5"
-                            style={{ background: YELLOW, color: NAVY, boxShadow: "0 6px 32px rgba(255,229,77,0.4)" }}
-                        >
-                            <Phone className="w-5 h-5" />
-                            Call for Instant Quote
-                        </Link>
-                        <button
-                            onClick={openRegularModal}
-                            className="flex items-center justify-center gap-2 rounded-2xl border py-4 font-medium text-base transition-all hover:bg-white/10 cursor-pointer"
-                            style={{ borderColor: "rgba(255,255,255,0.25)", color: "white" }}
-                        >
-                            Get a Free Text Quote →
-                        </button>
-                    </div>
+                        {/* LEAD FORM */}
+                        <div className="rounded-3xl p-5 shadow-2xl w-full bg-white border border-gray-100 mx-auto">
+                            <h3 className="mb-2 font-black text-xl leading-tight text-center" style={{ color: NAVY }}>
+                                Ready for Spotless Windows?
+                            </h3>
+                            <p className="mb-5 text-xs text-center" style={{ color: "#888" }}>
+                                We&apos;ll reply with a fast quote within 60 minutes.
+                            </p>
+                            <LeadForm
+                                submitted={submitted}
+                                formData={formData}
+                                setFormData={setFormData}
+                                onSubmit={handleSubmit}
+                                showPromo={false}
+                            />
+                        </div>
 
-                    <div className="flex flex-wrap justify-center gap-2">
-                        {[
-                            { icon: "🛡️", text: "$20M Insured" },
-                            { icon: "👮", text: "Police Cleared" },
-                            { icon: "💧", text: "Pure Water Tech" },
-                            { icon: "⭐", text: "5.0 Google Reviews" },
-                        ].map((b) => (
-                            <span
-                                key={b.text}
-                                className="flex items-center gap-1.5 rounded-full px-3 py-1.5 text-xs font-medium"
-                                style={{ background: "rgba(255,255,255,0.07)", border: "1px solid rgba(255,255,255,0.12)", color: "rgba(255,255,255,0.8)" }}
-                            >
-                                {b.icon} {b.text}
-                            </span>
-                        ))}
                     </div>
                 </div>
             </section>
@@ -446,41 +530,25 @@ export default function WindowCleaningAdsPage() {
                 </div>
             </section>
 
-            {/* ─── SECTION 3: LEAD FORM ─── */}
-            <section className="px-5 py-16" style={{ background: NAVY }}>
-                <div className="mx-auto grid max-w-4xl grid-cols-1 gap-12 md:grid-cols-2 md:items-center">
-                    <div>
-                        <div className="mb-4 inline-block rounded-full px-3 py-1 text-xs font-bold uppercase tracking-widest" style={{ background: "rgba(255,229,77,0.1)", color: YELLOW }}>
-                            Get your free quote
-                        </div>
-                        <h2 className="mb-3 leading-none text-white font-black" style={{ fontSize: "clamp(36px,5vw,52px)" }}>
-                            Ready for Spotless Windows?
-                        </h2>
-                        <p className="mb-8 text-base font-light leading-relaxed" style={{ color: "rgba(255,255,255,0.55)" }}>
-                            Fill in your details and we&apos;ll text you a price within 60 minutes. No obligation, no pushy sales.
-                        </p>
-                        <div className="flex flex-col gap-3">
-                            {[
-                                "Fast reply — usually within the hour",
-                                "Same-week and next-day slots available",
-                                "100% satisfaction guaranteed",
-                                "No lock-in contracts",
-                            ].map((point, index) => (
-                                <div key={index} className="flex items-center gap-3 text-sm" style={{ color: "rgba(255,255,255,0.7)" }}>
-                                    <div className="flex h-5 w-5 flex-shrink-0 items-center justify-center rounded-full text-xs" style={{ background: "rgba(255,229,77,0.15)", border: "1px solid rgba(255,229,77,0.35)", color: YELLOW }}>
-                                        ✓
-                                    </div>
-                                    {point}
-                                </div>
-                            ))}
-                        </div>
+            {/* ─── SECTION 3: REVIEWS ─── */}
+            <section className="max-w-7xl mx-auto px-5 py-16 bg-white">
+                <div className="mx-auto mb-10 max-w-4xl text-center">
+                    <div className="mb-3 flex justify-center gap-1">
+                        {[...Array(5)].map((_, i) => <Star key={i} className="w-6 h-6 fill-yellow-400 text-yellow-400" />)}
                     </div>
-                    <div className="rounded-2xl p-6 shadow-2xl" style={{ background: "white" }}>
-                        <h3 className="mb-1 font-bold text-base" style={{ color: NAVY }}>Get a Fast Text Quote</h3>
-                        <p className="mb-5 text-sm" style={{ color: "#888" }}>We&apos;ll reply within 60 minutes</p>
-                        <LeadForm submitted={submitted} formData={formData} setFormData={setFormData} onSubmit={handleSubmit} />
-                    </div>
+                    <h2 className="mb-2 leading-none" style={{ fontSize: "clamp(24px,5vw,52px)", color: NAVY }}>
+                        Perth Homeowners Love Us
+                    </h2>
+                    <Link
+                        href="https://www.google.com/maps/place/Aspect+Window+Cleaning/@-31.9806823,115.7929967,17z"
+                        target="_blank"
+                        className="text-sm font-medium hover:underline"
+                        style={{ color: "#888" }}
+                    >
+                        5.0 across 30+ Google Reviews
+                    </Link>
                 </div>
+                <GoogleReviews reviews={windowCleaningReviews} />
             </section>
 
             {/* ─── SECTION 4: TRUSTED BY ─── */}
@@ -580,10 +648,45 @@ export default function WindowCleaningAdsPage() {
                             initial={50}
                         />
                         <BeforeAfterSlider
-                            afterImage="https://res.cloudinary.com/dr8tjrszy/image/upload/v1772792157/after-window-cleaning_fs1hhz.jpg"
-                            beforeImage="https://res.cloudinary.com/dr8tjrszy/image/upload/v1772792155/aspect-before-window-cleaning_zfr8ae.jpg"
+                            afterImage="/gallery/after.jpg"
+                            beforeImage="/gallery/before.jpg"
                             initial={50}
                         />
+                    </div>
+                </div>
+            </section>
+
+            {/* ─── SECTION 6.5: WHAT'S INCLUDED ─── */}
+            <section className="py-16 bg-gray-50 px-5">
+                <div className="max-w-5xl mx-auto">
+                    <h3 className="text-sm font-semibold uppercase mb-2 text-center" style={{ color: YELLOW }}>
+                        WHAT'S INCLUDED
+                    </h3>
+                    <h2 className="text-3xl md:text-4xl font-heading font-bold text-center mb-8" style={{ color: NAVY }}>
+                        Everything Covered in Our Window Clean
+                    </h2>
+                    <p className="mb-10 text-center max-w-2xl mx-auto text-base font-light" style={{ color: "#888" }}>
+                        We don't cut corners. Every booking includes a full, thorough clean of all accessible window components — not just the glass.
+                    </p>
+                    <div className="grid md:grid-cols-3 gap-6">
+                        {whatsInclude.map((item, index) => (
+                            <div
+                                key={index}
+                                className="flex flex-col rounded-2xl bg-white border border-gray-100 shadow-sm hover:shadow-lg hover:-translate-y-1 transition-all duration-300 overflow-hidden group"
+                            >
+                                <div className="relative w-full h-48 bg-gray-100 flex-shrink-0 overflow-hidden">
+                                    <Image src={item.img} alt={item.title} fill className="object-cover group-hover:scale-105 transition-transform duration-500" />
+                                </div>
+                                <div className="p-6 flex flex-col gap-3">
+                                    <h4 className="font-semibold text-lg" style={{ color: NAVY }}>
+                                        {item.title}
+                                    </h4>
+                                    <p className="text-sm leading-relaxed font-light" style={{ color: "#888" }}>
+                                        {item.description}
+                                    </p>
+                                </div>
+                            </div>
+                        ))}
                     </div>
                 </div>
             </section>
@@ -655,26 +758,7 @@ export default function WindowCleaningAdsPage() {
                 </div>
             </section>
 
-            {/* ─── SECTION 8: REVIEWS ─── */}
-            <section className="max-w-7xl mx-auto px-5 py-16 bg-white">
-                <div className="mx-auto mb-10 max-w-4xl text-center">
-                    <div className="mb-3 flex justify-center gap-1">
-                        {[...Array(5)].map((_, i) => <Star key={i} className="w-6 h-6 fill-yellow-400 text-yellow-400" />)}
-                    </div>
-                    <h2 className="mb-2 leading-none" style={{ fontSize: "clamp(24px,5vw,52px)", color: NAVY }}>
-                        Perth Homeowners Love Us
-                    </h2>
-                    <Link
-                        href="https://www.google.com/maps/place/Aspect+Window+Cleaning/@-31.9806823,115.7929967,17z"
-                        target="_blank"
-                        className="text-sm font-medium hover:underline"
-                        style={{ color: "#888" }}
-                    >
-                        5.0 across 30+ Google Reviews
-                    </Link>
-                </div>
-                <GoogleReviews reviews={windowCleaningReviews} />
-            </section>
+
 
             {/* ─── SECTION 9: FOOTER CTA ─── */}
             <section className="relative overflow-hidden px-5 py-16 text-center" style={{ background: NAVY }}>
@@ -729,6 +813,25 @@ export default function WindowCleaningAdsPage() {
             </div>
             {/* spacer */}
             <div className="h-16" style={{ background: NAVY }} />
+
+            {/* GALLERY SLIDESHOW POPUP */}
+            {galleryOpen && (
+                <div className="fixed inset-0 z-[100] flex flex-col items-center justify-center bg-black/95 p-4">
+                    <button onClick={() => setGalleryOpen(false)} className="absolute top-4 right-4 text-white p-2">
+                        <X className="w-8 h-8" />
+                    </button>
+                    <div className="relative w-full max-w-4xl aspect-[4/3] lg:aspect-video rounded-xl overflow-hidden">
+                        <Image src={`/gallery/gallery-${currentImageIndex + 1}.jpeg`} alt="Gallery" fill className="object-contain" />
+                    </div>
+                    <button onClick={() => setCurrentImageIndex(prev => prev > 0 ? prev - 1 : 5)} className="absolute left-4 top-1/2 -translate-y-1/2 text-white p-2 bg-black/50 rounded-full hover:bg-black transition-colors">
+                        <ChevronLeft className="w-8 h-8" />
+                    </button>
+                    <button onClick={() => setCurrentImageIndex(prev => prev < 5 ? prev + 1 : 0)} className="absolute right-4 top-1/2 -translate-y-1/2 text-white p-2 bg-black/50 rounded-full hover:bg-black transition-colors">
+                        <ChevronRight className="w-8 h-8" />
+                    </button>
+                    <div className="text-white mt-4 font-semibold">{currentImageIndex + 1} / 6</div>
+                </div>
+            )}
         </>
     );
 }

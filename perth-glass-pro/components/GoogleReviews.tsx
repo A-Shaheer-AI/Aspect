@@ -2,6 +2,16 @@
 
 import { Star } from "lucide-react";
 import { motion } from "framer-motion";
+import Image from "next/image";
+
+const reviewImages = [
+    { src: "/gallery/review-1-new.webp", position: "object-center" },
+    { src: "/gallery/review-2-new.webp", position: "object-center" },
+    { src: "/gallery/review-3-new.webp", position: "object-center" },
+    { src: "/gallery/after.jpg", position: "object-center" },
+    { src: "/gallery/gallery-3.jpeg", position: "object-center" },
+    { src: "/gallery/review-6.jpeg", position: "object-center" },
+];
 
 export interface Review {
     id: number;
@@ -49,11 +59,22 @@ export default function GoogleReviews({ reviews }: Props) {
                         initial={{ opacity: 0, y: 20 }}
                         whileInView={{ opacity: 1, y: 0 }}
                         transition={{ delay: i * 0.1 }}
-                        className="bg-white rounded-2xl p-6 shadow-lg border border-slate-100 hover:shadow-xl transition"
+                        className="bg-white rounded-2xl shadow-lg border border-slate-100 hover:shadow-xl transition overflow-hidden flex flex-col"
                     >
-                        {/* Header */}
-                        <div className="flex items-start gap-3 mb-4">
-                            <div
+                        {/* Image Header */}
+                        <div className="relative w-full h-48 bg-gray-100 flex-shrink-0">
+                            <Image 
+                                src={reviewImages[i % reviewImages.length].src} 
+                                alt="Window cleaning work" 
+                                fill 
+                                className={`object-cover ${reviewImages[i % reviewImages.length].position}`}
+                            />
+                        </div>
+                        
+                        <div className="p-6 flex-1 flex flex-col">
+                            {/* Header */}
+                            <div className="flex items-start gap-3 mb-4">
+                                <div
                                 className={`w-12 h-12 rounded-full ${getAvatarColor(
                                     review.name
                                 )} flex items-center justify-center text-white font-bold`}
@@ -86,7 +107,7 @@ export default function GoogleReviews({ reviews }: Props) {
                         </p>
 
                         {/* Google footer */}
-                        <div className="mt-4 pt-4 border-t border-gray-100 flex items-center gap-2">
+                        <div className="mt-4 pt-4 border-t border-gray-100 flex items-center gap-2 mt-auto">
                                     <svg className="w-4 h-4" viewBox="0 0 24 24">
                                         <path fill="#4285F4" d="M22.56 12.25c0-.78-.07-1.53-.2-2.25H12v4.26h5.92c-.26 1.37-1.04 2.53-2.21 3.31v2.77h3.57c2.08-1.92 3.28-4.74 3.28-8.09z" />
                                         <path fill="#34A853" d="M12 23c2.97 0 5.46-.98 7.28-2.66l-3.57-2.77c-.98.66-2.23 1.06-3.71 1.06-2.86 0-5.29-1.93-6.16-4.53H2.18v2.84C3.99 20.53 7.7 23 12 23z" />
@@ -95,6 +116,7 @@ export default function GoogleReviews({ reviews }: Props) {
                                     </svg>
                                     <span className="text-xs text-gray-400">Posted on Google</span>
                                 </div>
+                        </div>
                     </motion.div>
                 ))}
             </div>
@@ -102,14 +124,25 @@ export default function GoogleReviews({ reviews }: Props) {
             {/* Mobile Scroll (RESTORED STYLE) */}
             <div className="md:hidden overflow-x-auto pb-4 -mx-4 px-4 scrollbar-hide">
                 <div className="flex gap-4" style={{ width: "max-content" }}>
-                    {reviews.map((review) => (
+                    {reviews.map((review, i) => (
                         <div
                             key={review.id}
-                            className="w-[320px] flex-shrink-0 bg-white rounded-2xl p-5 shadow-lg border border-slate-100"
+                            className="w-[320px] flex-shrink-0 bg-white rounded-2xl shadow-lg border border-slate-100 overflow-hidden flex flex-col"
                         >
-                            {/* Header */}
-                            <div className="flex items-start gap-3 mb-3">
-                                <div
+                            {/* Image Header */}
+                            <div className="relative w-full h-40 bg-gray-100 flex-shrink-0">
+                                <Image 
+                                    src={reviewImages[i % reviewImages.length].src} 
+                                    alt="Window cleaning work" 
+                                    fill 
+                                    className={`object-cover ${reviewImages[i % reviewImages.length].position}`}
+                                />
+                            </div>
+                            
+                            <div className="p-5 flex-1 flex flex-col">
+                                {/* Header */}
+                                <div className="flex items-start gap-3 mb-3">
+                                    <div
                                     className={`w-10 h-10 rounded-full ${getAvatarColor(
                                         review.name
                                     )} flex items-center justify-center text-white font-bold`}
@@ -138,8 +171,9 @@ export default function GoogleReviews({ reviews }: Props) {
                                 {review.content}
                             </p>
 
-                            <div className="mt-3 pt-3 border-t text-xs text-gray-400">
+                            <div className="mt-3 pt-3 border-t text-xs text-gray-400 mt-auto">
                                 Google review
+                            </div>
                             </div>
                         </div>
                     ))}
