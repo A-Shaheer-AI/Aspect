@@ -214,38 +214,38 @@ const whatsInclude = [
         title: "Interior & Exterior Glass",
         description:
             "Full clean of both sides of every window pane — removing dirt, water spots, and environmental buildup for a streak-free finish.",
-        img: "/gallery/gallery-1.jpeg"
+        img: "https://res.cloudinary.com/dr8tjrszy/image/upload/aspect_gallery/gallery-1.jpg"
     },
     {
         title: "Frames, Sills & Tracks",
         description:
             "We clean all frames, sills, and sliding tracks to remove grime, mould, and built-up debris that harbour bacteria and damage seals.",
-        img: "/gallery/gallery-2.jpeg"
+        img: "https://res.cloudinary.com/dr8tjrszy/image/upload/aspect_gallery/gallery-2.jpg"
     },
     {
         title: "Screen & Fly Screen Cleaning",
         description:
             "Screens are removed, cleaned, and refitted — removing dust, pollen, and grime that blocks airflow and reduces light.",
-        img: "/gallery/gallery-3.jpeg"
+        img: "https://res.cloudinary.com/dr8tjrszy/image/upload/aspect_gallery/gallery-3.jpg"
     },
     {
         title: "Pure Water Cleaning Method",
         description:
             "We use purified, deionised water that leaves zero mineral residue on glass — meaning windows stay cleaner for longer after each service.",
-        img: "/gallery/gallery-4.jpeg"
+        img: "https://res.cloudinary.com/dr8tjrszy/image/upload/aspect_gallery/gallery-4.jpg"
     },
     {
         title: "Hard Water Stain Removal",
         description:
             "Stubborn mineral deposits and hard water stains are treated with specialist solutions, restoring glass clarity where standard cleaning can't.",
-        img: "/gallery/gallery-5.jpeg"
+        img: "https://res.cloudinary.com/dr8tjrszy/image/upload/aspect_gallery/gallery-5.jpg"
     },
     {
-        title: "Streak-Free Polish",
+        title: "Cobweb & Debris Clearing",
         description:
-            "Every pane is finished with a professional streak-free polish — ensuring your glass looks flawless in all lighting conditions.",
-        img: "/gallery/gallery-6.jpeg"
-    },
+            "We remove cobwebs, spider nests, and environmental debris from corners, eaves, and window surroundings for a truly spotless finish.",
+        img: "https://res.cloudinary.com/dr8tjrszy/image/upload/aspect_gallery/gallery-6.jpg"
+    }
 ];
 
 /* ─────────────────────────────────────────
@@ -442,7 +442,7 @@ export default function WindowCleaningAdsPage() {
                                     className="relative w-48 h-36 lg:w-full lg:aspect-[4/3] lg:h-auto flex-shrink-0 snap-center rounded-xl overflow-hidden shadow-lg border border-white/20 hover:scale-105 cursor-pointer transition-all duration-300"
                                 >
                                     <Image
-                                        src={`/gallery/gallery-${num}.jpeg`}
+                                        src={`https://res.cloudinary.com/dr8tjrszy/image/upload/aspect_gallery/gallery-${num}.jpg`}
                                         alt={`Recent Work ${num}`}
                                         fill
                                         sizes="(max-width: 1024px) 192px, 33vw"
@@ -650,8 +650,8 @@ export default function WindowCleaningAdsPage() {
                             initial={50}
                         />
                         <BeforeAfterSlider
-                            afterImage="/gallery/after.jpg"
-                            beforeImage="/gallery/before.jpg"
+                            afterImage="https://res.cloudinary.com/dr8tjrszy/image/upload/aspect_gallery/after.jpg"
+                            beforeImage="https://res.cloudinary.com/dr8tjrszy/image/upload/aspect_gallery/before.jpg"
                             initial={50}
                         />
                     </div>

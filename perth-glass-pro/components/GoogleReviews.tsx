@@ -5,12 +5,12 @@ import { motion } from "framer-motion";
 import Image from "next/image";
 
 const reviewImages = [
-    { src: "/gallery/review-1-new.webp", position: "object-center" },
-    { src: "/gallery/review-2-new.webp", position: "object-center" },
-    { src: "/gallery/review-3-new.webp", position: "object-center" },
-    { src: "/gallery/after.jpg", position: "object-center" },
-    { src: "/gallery/gallery-3.jpeg", position: "object-center" },
-    { src: "/gallery/review-6.jpeg", position: "object-center" },
+    { src: "https://res.cloudinary.com/dr8tjrszy/image/upload/aspect_gallery/review-1-new.webp", position: "object-center" },
+    { src: "https://res.cloudinary.com/dr8tjrszy/image/upload/aspect_gallery/review-2-new.webp", position: "object-center" },
+    { src: "https://res.cloudinary.com/dr8tjrszy/image/upload/aspect_gallery/review-3-new.webp", position: "object-center" },
+    { src: "https://res.cloudinary.com/dr8tjrszy/image/upload/aspect_gallery/after.jpg", position: "object-center" },
+    { src: "https://res.cloudinary.com/dr8tjrszy/image/upload/aspect_gallery/gallery-3.jpg", position: "object-center" },
+    { src: "https://res.cloudinary.com/dr8tjrszy/image/upload/aspect_gallery/review-6.jpg", position: "object-center" },
 ];
 
 export interface Review {
