@@ -445,6 +445,8 @@ export default function WindowCleaningAdsPage() {
                                         src={`/gallery/gallery-${num}.jpeg`}
                                         alt={`Recent Work ${num}`}
                                         fill
+                                        sizes="(max-width: 1024px) 192px, 33vw"
+                                        priority={num <= 3}
                                         className="object-cover"
                                     />
                                 </div>
@@ -675,7 +677,13 @@ export default function WindowCleaningAdsPage() {
                                 className="flex flex-col rounded-2xl bg-white border border-gray-100 shadow-sm hover:shadow-lg hover:-translate-y-1 transition-all duration-300 overflow-hidden group"
                             >
                                 <div className="relative w-full h-48 bg-gray-100 flex-shrink-0 overflow-hidden">
-                                    <Image src={item.img} alt={item.title} fill className="object-cover group-hover:scale-105 transition-transform duration-500" />
+                                    <Image 
+                                        src={item.img} 
+                                        alt={item.title} 
+                                        fill 
+                                        sizes="(max-width: 768px) 100vw, 33vw"
+                                        className="object-cover group-hover:scale-105 transition-transform duration-500" 
+                                    />
                                 </div>
                                 <div className="p-6 flex flex-col gap-3">
                                     <h4 className="font-semibold text-lg" style={{ color: NAVY }}>

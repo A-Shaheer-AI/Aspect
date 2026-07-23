@@ -67,6 +67,7 @@ export default function GoogleReviews({ reviews }: Props) {
                                 src={reviewImages[i % reviewImages.length].src} 
                                 alt="Window cleaning work" 
                                 fill 
+                                sizes="(max-width: 768px) 100vw, 33vw"
                                 className={`object-cover ${reviewImages[i % reviewImages.length].position}`}
                             />
                         </div>
@@ -135,6 +136,7 @@ export default function GoogleReviews({ reviews }: Props) {
                                     src={reviewImages[i % reviewImages.length].src} 
                                     alt="Window cleaning work" 
                                     fill 
+                                    sizes="(max-width: 768px) 100vw, 33vw"
                                     className={`object-cover ${reviewImages[i % reviewImages.length].position}`}
                                 />
                             </div>
