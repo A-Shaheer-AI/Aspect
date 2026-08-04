@@ -71,8 +71,8 @@ export default function ResultsAndReviews() {
                         />
 
                         <BeforeAfterSlider
-                            afterImage="https://res.cloudinary.com/dr8tjrszy/image/upload/v1776944961/WhatsApp_Image_2026-04-22_at_8.43.25_PM_cylrzg.jpg"
-                            beforeImage="https://res.cloudinary.com/dr8tjrszy/image/upload/v1776944961/WhatsApp_Image_2026-04-22_at_8.43.25_PM_1_pmmoi8.jpg"
+                            afterImage="https://res.cloudinary.com/dr8tjrszy/image/upload/v1785881088/aspect_gallery/3after.webp"
+                            beforeImage="https://res.cloudinary.com/dr8tjrszy/image/upload/v1785881084/aspect_gallery/3before.webp"
                             initial={50}
                         />
 
@@ -83,14 +83,14 @@ export default function ResultsAndReviews() {
                         />
 
                         <BeforeAfterSlider
-                            afterImage="https://res.cloudinary.com/dr8tjrszy/image/upload/v1771960140/WhatsApp_Image_2026-02-22_at_8.47.54_PM_neyxo8.jpg"
-                            beforeImage="https://res.cloudinary.com/dr8tjrszy/image/upload/v1771960141/WhatsApp_Image_2026-02-22_at_8.47.54_PM_1_pytncp.jpg"
+                            afterImage="https://res.cloudinary.com/dr8tjrszy/image/upload/v1785879700/aspect_gallery/after.webp"
+                            beforeImage="https://res.cloudinary.com/dr8tjrszy/image/upload/v1785879695/aspect_gallery/1-before.webp"
                             initial={50}
                         />
 
                         <BeforeAfterSlider
-                            afterImage="https://res.cloudinary.com/dr8tjrszy/image/upload/v1777441114/WhatsApp_Image_2026-04-27_at_12.43.51_PM_qux9dv.jpg"
-                            beforeImage="https://res.cloudinary.com/dr8tjrszy/image/upload/v1777441115/WhatsApp_Image_2026-04-27_at_12.43.50_PM_q1q5xo.jpg"
+                            afterImage="https://res.cloudinary.com/dr8tjrszy/image/upload/v1785880638/aspect_gallery/2-before.webp"
+                            beforeImage="https://res.cloudinary.com/dr8tjrszy/image/upload/v1785880639/aspect_gallery/2-after.webp"
                             initial={50}
                         />
 

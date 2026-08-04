@@ -63,7 +63,7 @@ export default function RootLayout({
 }>) {
 
     return (
-        <html lang="en" className={`${montserrat.variable} ${inter.variable}`}>
+        <html lang="en" className={`${montserrat.variable} ${inter.variable}`} suppressHydrationWarning>
             <head>
                 <link rel="preconnect" href="https://fonts.gstatic.com" crossOrigin="anonymous" />
                 <script

@@ -214,38 +214,38 @@ const whatsInclude = [
         title: "Interior & Exterior Glass",
         description:
             "Full clean of both sides of every window pane — removing dirt, water spots, and environmental buildup for a streak-free finish.",
-        img: "https://res.cloudinary.com/dr8tjrszy/image/upload/aspect_gallery/gallery-1.jpg"
+        img: "/gallery/gallery-1.jpeg"
     },
     {
         title: "Frames, Sills & Tracks",
         description:
             "We clean all frames, sills, and sliding tracks to remove grime, mould, and built-up debris that harbour bacteria and damage seals.",
-        img: "https://res.cloudinary.com/dr8tjrszy/image/upload/aspect_gallery/gallery-2.jpg"
+        img: "/gallery/gallery-2.jpeg"
     },
     {
         title: "Screen & Fly Screen Cleaning",
         description:
             "Screens are removed, cleaned, and refitted — removing dust, pollen, and grime that blocks airflow and reduces light.",
-        img: "https://res.cloudinary.com/dr8tjrszy/image/upload/aspect_gallery/gallery-3.jpg"
+        img: "/gallery/gallery-3.jpeg"
     },
     {
         title: "Pure Water Cleaning Method",
         description:
             "We use purified, deionised water that leaves zero mineral residue on glass — meaning windows stay cleaner for longer after each service.",
-        img: "https://res.cloudinary.com/dr8tjrszy/image/upload/aspect_gallery/gallery-4.jpg"
+        img: "/gallery/gallery-4.jpeg"
     },
     {
         title: "Hard Water Stain Removal",
         description:
             "Stubborn mineral deposits and hard water stains are treated with specialist solutions, restoring glass clarity where standard cleaning can't.",
-        img: "https://res.cloudinary.com/dr8tjrszy/image/upload/aspect_gallery/gallery-5.jpg"
+        img: "/gallery/gallery-5.jpeg"
     },
     {
-        title: "Cobweb & Debris Clearing",
+        title: "Streak-Free Polish",
         description:
-            "We remove cobwebs, spider nests, and environmental debris from corners, eaves, and window surroundings for a truly spotless finish.",
-        img: "https://res.cloudinary.com/dr8tjrszy/image/upload/aspect_gallery/gallery-6.jpg"
-    }
+            "Every pane is finished with a professional streak-free polish — ensuring your glass looks flawless in all lighting conditions.",
+        img: "/gallery/gallery-6.jpeg"
+    },
 ];
 
 /* ─────────────────────────────────────────
@@ -442,7 +442,7 @@ export default function WindowCleaningAdsPage() {
                                     className="relative w-48 h-36 lg:w-full lg:aspect-[4/3] lg:h-auto flex-shrink-0 snap-center rounded-xl overflow-hidden shadow-lg border border-white/20 hover:scale-105 cursor-pointer transition-all duration-300"
                                 >
                                     <Image
-                                        src={`https://res.cloudinary.com/dr8tjrszy/image/upload/aspect_gallery/gallery-${num}.jpg`}
+                                        src={`/gallery/gallery-${num}.jpeg`}
                                         alt={`Recent Work ${num}`}
                                         fill
                                         sizes="(max-width: 1024px) 192px, 33vw"
@@ -473,7 +473,7 @@ export default function WindowCleaningAdsPage() {
 
                     {/* RIGHT SIDE: HEADING, DESC & FORM */}
                     <div className="flex flex-col gap-6 w-full max-w-xl mx-auto lg:max-w-[480px] lg:ml-auto lg:mr-0">
-                        
+
                         <div className="hidden lg:block text-left text-white">
                             <h1 className="mb-4 leading-none font-black text-white" style={{ fontSize: "clamp(36px,4vw,56px)", letterSpacing: "1px" }}>
                                 Perth&apos;s #1
@@ -650,8 +650,8 @@ export default function WindowCleaningAdsPage() {
                             initial={50}
                         />
                         <BeforeAfterSlider
-                            afterImage="https://res.cloudinary.com/dr8tjrszy/image/upload/aspect_gallery/after.jpg"
-                            beforeImage="https://res.cloudinary.com/dr8tjrszy/image/upload/aspect_gallery/before.jpg"
+                            afterImage="https://res.cloudinary.com/dr8tjrszy/image/upload/v1785879700/aspect_gallery/after.webp"
+                            beforeImage="https://res.cloudinary.com/dr8tjrszy/image/upload/v1785879695/aspect_gallery/1-before.webp"
                             initial={50}
                         />
                     </div>
@@ -677,12 +677,12 @@ export default function WindowCleaningAdsPage() {
                                 className="flex flex-col rounded-2xl bg-white border border-gray-100 shadow-sm hover:shadow-lg hover:-translate-y-1 transition-all duration-300 overflow-hidden group"
                             >
                                 <div className="relative w-full h-48 bg-gray-100 flex-shrink-0 overflow-hidden">
-                                    <Image 
-                                        src={item.img} 
-                                        alt={item.title} 
-                                        fill 
+                                    <Image
+                                        src={item.img}
+                                        alt={item.title}
+                                        fill
                                         sizes="(max-width: 768px) 100vw, 33vw"
-                                        className="object-cover group-hover:scale-105 transition-transform duration-500" 
+                                        className="object-cover group-hover:scale-105 transition-transform duration-500"
                                     />
                                 </div>
                                 <div className="p-6 flex flex-col gap-3">
