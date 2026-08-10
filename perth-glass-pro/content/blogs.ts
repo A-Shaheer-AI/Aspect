@@ -301,6 +301,6 @@ export const blogs: BlogPost[] = [
         "body": "The most noticeable improvements come from driveways, front facades, patios, pool areas, retaining walls, and pathways. These high-visibility areas influence how the entire property is perceived."
       }
     ],
-    "conclusion": "Pressure cleaning is one of the fastest and most cost-effective ways to increase property value without renovations. By restoring exterior surfaces and improving curb appeal, it creates a stronger first impression, helps properties sell faster, and can even increase final sale price in competitive Perth markets."
+    "conclusion": "Pressure cleaning is one of the fastest and most cost-effective ways to increase property value without renovations. By restoring exterior surfaces and improving curb appeal, it creates a stronger first impression, helps properties sell faster, and can even increase final sale price significantly in competitive Perth markets."
   }
 ];
