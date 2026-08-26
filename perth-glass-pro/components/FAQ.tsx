@@ -4,7 +4,7 @@ import { useState } from "react";
 
 type FAQItem = {
     question: string;
-    answer: string;
+    answer: string | React.ReactNode;
 };
 
 type Faqs = {

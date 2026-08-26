@@ -1,4 +1,4 @@
-﻿import { Metadata } from "next";
+import { Metadata } from "next";
 import Image from "next/image";
 import Link from "next/link";
 import { CheckCircle2 } from "lucide-react";
@@ -9,7 +9,7 @@ import BeforeAfterSlider from "@/components/BeforeAfterSlider";
 
 type FaqsType = {
     question: string;
-    answer: string;
+    answer: React.ReactNode;
 }
 
 export const metadata: Metadata = {
@@ -36,7 +36,7 @@ const stats = [
     },
     {
         icon: Star,
-        value: "5.0★",
+        value: "5.0?",
         label: "Google rating from Perth homeowners",
     },
 ];
@@ -220,7 +220,7 @@ const SolarPanelCleaningPage = () => {
                         {/* Badge 1 */}
                         <div className="flex items-center gap-3 bg-white border border-slate-200 hover:border-action-gold/40 px-5 py-4 rounded-2xl shadow-sm hover:shadow transition-all">
                             <div className="w-9 h-9 flex items-center justify-center bg-action-gold/10 rounded-xl text-2xl flex-shrink-0">
-                                💰
+                                ??
                             </div>
                             <div className="min-w-0">
                                 <div className="font-semibold text-brand-navy text-sm md:text-base leading-tight">
@@ -233,7 +233,7 @@ const SolarPanelCleaningPage = () => {
                         {/* Badge 2 */}
                         <div className="flex items-center gap-3 bg-white border border-slate-200 hover:border-action-gold/40 px-5 py-4 rounded-2xl shadow-sm hover:shadow transition-all">
                             <div className="w-9 h-9 flex items-center justify-center bg-action-gold/10 rounded-xl text-2xl flex-shrink-0">
-                                🛡️
+                                ???
                             </div>
                             <div className="min-w-0">
                                 <div className="font-semibold text-brand-navy text-sm md:text-base leading-tight">
@@ -246,7 +246,7 @@ const SolarPanelCleaningPage = () => {
                         {/* Badge 3 */}
                         <div className="flex items-center gap-3 bg-white border border-slate-200 hover:border-action-gold/40 px-5 py-4 rounded-2xl shadow-sm hover:shadow transition-all">
                             <div className="w-9 h-9 flex items-center justify-center bg-action-gold/10 rounded-xl text-2xl flex-shrink-0">
-                                ⏱️
+                                ??
                             </div>
                             <div className="min-w-0">
                                 <div className="font-semibold text-brand-navy text-sm md:text-base leading-tight">
@@ -259,7 +259,7 @@ const SolarPanelCleaningPage = () => {
                         {/* Badge 4 */}
                         <div className="flex items-center gap-3 bg-white border border-slate-200 hover:border-action-gold/40 px-5 py-4 rounded-2xl shadow-sm hover:shadow transition-all">
                             <div className="w-9 h-9 flex items-center justify-center bg-action-gold/10 rounded-xl text-2xl flex-shrink-0">
-                                ⭐
+                                ?
                             </div>
                             <div className="min-w-0">
                                 <div className="font-semibold text-brand-navy text-sm md:text-base leading-tight">
@@ -282,12 +282,12 @@ const SolarPanelCleaningPage = () => {
                     Maximise Your Solar Panel Efficiency in Perth
                 </h2>
                 <p className="mb-4">
-                    Solar panels are one of the most valuable investments a Perth homeowner can make - but only when they're
+                    Solar panels are one of the most valuable investments a <Link href="/locations" className="text-action-gold hover:underline">Perth</Link> homeowner can make - but only when they're
                     operating at full capacity. Dust, bird droppings, pollen, and grime accumulate on panel surfaces over time, blocking
                     sunlight and silently reducing your energy output by up to 30%. At Aspect Window Cleaning, we provide
                     professional solar panel cleaning using purified water and soft-brush technology - the same method
-                    recommended by leading panel manufacturers - to safely restore your system's performance and protect your
-                    investment long term.
+                    recommended by leading panel manufacturers - to safely restore your system's performance and protect your 
+                    investment. Combine this with our <Link href="/services/gutter-cleaning" className="text-action-gold hover:underline">gutter cleaning</Link> or <Link href="/services/residential-window-cleaning" className="text-action-gold hover:underline">residential window cleaning</Link> services for a complete exterior refresh.
                 </p>
             </section>
 
@@ -348,14 +348,14 @@ const SolarPanelCleaningPage = () => {
                             {/* Left Icon / Visual */}
                             <div className="flex-shrink-0">
                                 <div className="w-20 h-20 md:w-24 md:h-24 bg-white rounded-2xl shadow flex items-center justify-center border border-amber-200">
-                                    <span className="text-5xl">🧼</span>
+                                    <span className="text-5xl">??</span>
                                 </div>
                             </div>
 
                             {/* Content */}
                             <div className="flex-1">
                                 <div className="inline-flex items-center gap-2 bg-white text-amber-700 text-sm font-medium px-4 py-1.5 rounded-full border border-amber-200 mb-4">
-                                    <span className="text-lg">💡</span>
+                                    <span className="text-lg">??</span>
                                     DID YOU KNOW?
                                 </div>
 
@@ -383,9 +383,9 @@ const SolarPanelCleaningPage = () => {
                         {/* Optional subtle footer highlight */}
                         <div className="mt-10 pt-8 border-t border-amber-100 text-center">
                             <p className="text-sm text-amber-600 font-medium flex items-center justify-center gap-2">
-                                <span>✨</span>
+                                <span>?</span>
                                 Clean panels = Maximum savings
-                                <span>✨</span>
+                                <span>?</span>
                             </p>
                         </div>
 

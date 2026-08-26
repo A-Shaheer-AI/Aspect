@@ -1,4 +1,4 @@
-﻿import { Metadata } from "next";
+import { Metadata } from "next";
 import Image from "next/image";
 import Link from "next/link";
 import FAQ from "@/components/FAQ";
@@ -8,7 +8,7 @@ import BeforeAfterSlider from "@/components/BeforeAfterSlider";
 
 type FaqsType = {
     question: string;
-    answer: string;
+    answer: React.ReactNode;
 }
 
 export const metadata: Metadata = {
@@ -196,7 +196,7 @@ const ResidentialWindowCleaning = () => {
                         {/* Badge 1 */}
                         <div className="flex items-center gap-3 bg-white border border-slate-200 hover:border-action-gold/40 px-5 py-4 rounded-2xl shadow-sm hover:shadow transition-all">
                             <div className="w-9 h-9 flex items-center justify-center bg-action-gold/10 rounded-xl text-2xl flex-shrink-0">
-                                💰
+                                ??
                             </div>
                             <div className="min-w-0">
                                 <div className="font-semibold text-brand-navy text-sm md:text-base leading-tight">
@@ -209,7 +209,7 @@ const ResidentialWindowCleaning = () => {
                         {/* Badge 2 */}
                         <div className="flex items-center gap-3 bg-white border border-slate-200 hover:border-action-gold/40 px-5 py-4 rounded-2xl shadow-sm hover:shadow transition-all">
                             <div className="w-9 h-9 flex items-center justify-center bg-action-gold/10 rounded-xl text-2xl flex-shrink-0">
-                                🛡️
+                                ???
                             </div>
                             <div className="min-w-0">
                                 <div className="font-semibold text-brand-navy text-sm md:text-base leading-tight">
@@ -222,7 +222,7 @@ const ResidentialWindowCleaning = () => {
                         {/* Badge 3 */}
                         <div className="flex items-center gap-3 bg-white border border-slate-200 hover:border-action-gold/40 px-5 py-4 rounded-2xl shadow-sm hover:shadow transition-all">
                             <div className="w-9 h-9 flex items-center justify-center bg-action-gold/10 rounded-xl text-2xl flex-shrink-0">
-                                ⏱️
+                                ??
                             </div>
                             <div className="min-w-0">
                                 <div className="font-semibold text-brand-navy text-sm md:text-base leading-tight">
@@ -235,7 +235,7 @@ const ResidentialWindowCleaning = () => {
                         {/* Badge 4 */}
                         <div className="flex items-center gap-3 bg-white border border-slate-200 hover:border-action-gold/40 px-5 py-4 rounded-2xl shadow-sm hover:shadow transition-all">
                             <div className="w-9 h-9 flex items-center justify-center bg-action-gold/10 rounded-xl text-2xl flex-shrink-0">
-                                ⭐
+                                ?
                             </div>
                             <div className="min-w-0">
                                 <div className="font-semibold text-brand-navy text-sm md:text-base leading-tight">
@@ -258,8 +258,11 @@ const ResidentialWindowCleaning = () => {
                     Perth's Premier Window Cleaning Specialists
                 </h2>
                 <p className="mb-4">
-                    Clean windows do far more than improve appearances - they let natural light flood your home, boost your property's kerb appeal, and protect your glass from long-term damage caused by mineral deposits, pollution, and environmental buildup. At Aspect Window Cleaning, we deliver streak-free, crystal-clear results for residential and
-                    commercial properties across the entire Perth metro area. Our trained, police-cleared technicians use the latest pure water technology and eco-friendly solutions to give you spotless windows - every single time.
+                    Clean windows do far more than improve appearances - they let natural light flood your home, 
+boost your property's kerb appeal, and protect your glass from long-term damage caused by mineral deposits, pollution, 
+and environmental buildup. At Aspect Window Cleaning, we deliver streak-free, crystal-clear results for residential and <Link href="/services/commercial-window-cleaning" className="text-action-gold hover:underline">commercial properties</Link> across the entire <Link href="/locations" className="text-action-gold hover:underline">Perth metro area</Link>. Our trained, police-cleared 
+technicians use the latest pure water technology and eco-friendly solutions to give you spotless windows - every 
+single time. We also offer <Link href="/services/solar-panel-washing" className="text-action-gold hover:underline">solar panel washing</Link> and <Link href="/services/gutter-cleaning" className="text-action-gold hover:underline">gutter cleaning</Link>.
                 </p>
             </section>
 

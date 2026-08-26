@@ -1,4 +1,4 @@
-﻿import { Metadata } from "next";
+import { Metadata } from "next";
 import Image from "next/image";
 import Link from "next/link";
 import FAQ from "@/components/FAQ";
@@ -8,7 +8,7 @@ import BeforeAfterSlider from "@/components/BeforeAfterSlider";
 
 type FaqsType = {
     question: string;
-    answer: string;
+    answer: React.ReactNode;
 }
 
 export const metadata: Metadata = {
@@ -196,7 +196,7 @@ const PressureWashing = () => {
                         {/* Badge 1 */}
                         <div className="flex items-center gap-3 bg-white border border-slate-200 hover:border-action-gold/40 px-5 py-4 rounded-2xl shadow-sm hover:shadow transition-all">
                             <div className="w-9 h-9 flex items-center justify-center bg-action-gold/10 rounded-xl text-2xl flex-shrink-0">
-                                💰
+                                ??
                             </div>
                             <div className="min-w-0">
                                 <div className="font-semibold text-brand-navy text-sm md:text-base leading-tight">
@@ -209,7 +209,7 @@ const PressureWashing = () => {
                         {/* Badge 2 */}
                         <div className="flex items-center gap-3 bg-white border border-slate-200 hover:border-action-gold/40 px-5 py-4 rounded-2xl shadow-sm hover:shadow transition-all">
                             <div className="w-9 h-9 flex items-center justify-center bg-action-gold/10 rounded-xl text-2xl flex-shrink-0">
-                                🛡️
+                                ???
                             </div>
                             <div className="min-w-0">
                                 <div className="font-semibold text-brand-navy text-sm md:text-base leading-tight">
@@ -222,7 +222,7 @@ const PressureWashing = () => {
                         {/* Badge 3 */}
                         <div className="flex items-center gap-3 bg-white border border-slate-200 hover:border-action-gold/40 px-5 py-4 rounded-2xl shadow-sm hover:shadow transition-all">
                             <div className="w-9 h-9 flex items-center justify-center bg-action-gold/10 rounded-xl text-2xl flex-shrink-0">
-                                ⏱️
+                                ??
                             </div>
                             <div className="min-w-0">
                                 <div className="font-semibold text-brand-navy text-sm md:text-base leading-tight">
@@ -235,7 +235,7 @@ const PressureWashing = () => {
                         {/* Badge 4 */}
                         <div className="flex items-center gap-3 bg-white border border-slate-200 hover:border-action-gold/40 px-5 py-4 rounded-2xl shadow-sm hover:shadow transition-all">
                             <div className="w-9 h-9 flex items-center justify-center bg-action-gold/10 rounded-xl text-2xl flex-shrink-0">
-                                ⭐
+                                ?
                             </div>
                             <div className="min-w-0">
                                 <div className="font-semibold text-brand-navy text-sm md:text-base leading-tight">
@@ -262,9 +262,9 @@ const PressureWashing = () => {
                     simply cannot remove. At Aspect Window Cleaning, we use professional-grade pressure washing equipment to
                     strip away even the toughest buildup - restoring driveways, patios, walls, and exterior surfaces to their original
                     condition quickly and efficiently. Our technicians adjust pressure settings and cleaning solutions to suit each
-                    surface type, ensuring a thorough clean every time without causing any damage. Whether it's a residential
-                    driveway or a large commercial car park, we deliver results that make an immediate difference to the look and
-                    safety of your property.
+                    surface type, ensuring a thorough clean every time without causing any damage. Whether it's a <Link href="/services/residential-window-cleaning" className="text-action-gold hover:underline">residential</Link>
+                    driveway or a large <Link href="/services/commercial-window-cleaning" className="text-action-gold hover:underline">commercial</Link> car park, we deliver results that make an immediate difference to the look and
+                    safety of your property. Add <Link href="/services/gutter-cleaning" className="text-action-gold hover:underline">gutter cleaning</Link> to ensure your whole property is protected, and check our <Link href="/locations" className="text-action-gold hover:underline">service areas</Link>.
                 </p>
             </section>
 

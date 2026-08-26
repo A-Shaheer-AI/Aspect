@@ -1,4 +1,4 @@
-﻿import { Metadata } from "next";
+import { Metadata } from "next";
 import Image from "next/image";
 import Link from "next/link";
 import FAQ from "@/components/FAQ";
@@ -8,7 +8,7 @@ import BeforeAfterSlider from "@/components/BeforeAfterSlider";
 
 type FaqsType = {
     question: string;
-    answer: string;
+    answer: React.ReactNode;
 }
 
 export const metadata: Metadata = {
@@ -191,7 +191,7 @@ const GutterCleaningServices = () => {
                         {/* Badge 1 */}
                         <div className="flex items-center gap-3 bg-white border border-slate-200 hover:border-action-gold/40 px-5 py-4 rounded-2xl shadow-sm hover:shadow transition-all">
                             <div className="w-9 h-9 flex items-center justify-center bg-action-gold/10 rounded-xl text-2xl flex-shrink-0">
-                                💰
+                                ??
                             </div>
                             <div className="min-w-0">
                                 <div className="font-semibold text-brand-navy text-sm md:text-base leading-tight">
@@ -204,7 +204,7 @@ const GutterCleaningServices = () => {
                         {/* Badge 2 */}
                         <div className="flex items-center gap-3 bg-white border border-slate-200 hover:border-action-gold/40 px-5 py-4 rounded-2xl shadow-sm hover:shadow transition-all">
                             <div className="w-9 h-9 flex items-center justify-center bg-action-gold/10 rounded-xl text-2xl flex-shrink-0">
-                                🛡️
+                                ???
                             </div>
                             <div className="min-w-0">
                                 <div className="font-semibold text-brand-navy text-sm md:text-base leading-tight">
@@ -217,7 +217,7 @@ const GutterCleaningServices = () => {
                         {/* Badge 3 */}
                         <div className="flex items-center gap-3 bg-white border border-slate-200 hover:border-action-gold/40 px-5 py-4 rounded-2xl shadow-sm hover:shadow transition-all">
                             <div className="w-9 h-9 flex items-center justify-center bg-action-gold/10 rounded-xl text-2xl flex-shrink-0">
-                                ⏱️
+                                ??
                             </div>
                             <div className="min-w-0">
                                 <div className="font-semibold text-brand-navy text-sm md:text-base leading-tight">
@@ -230,7 +230,7 @@ const GutterCleaningServices = () => {
                         {/* Badge 4 */}
                         <div className="flex items-center gap-3 bg-white border border-slate-200 hover:border-action-gold/40 px-5 py-4 rounded-2xl shadow-sm hover:shadow transition-all">
                             <div className="w-9 h-9 flex items-center justify-center bg-action-gold/10 rounded-xl text-2xl flex-shrink-0">
-                                ⭐
+                                ?
                             </div>
                             <div className="min-w-0">
                                 <div className="font-semibold text-brand-navy text-sm md:text-base leading-tight">
@@ -253,10 +253,7 @@ const GutterCleaningServices = () => {
                     Protect Your Home With Expert Gutter Cleaning
                 </h2>
                 <p className="mb-4">
-                    Blocked gutters are one of the most overlooked - and most damaging - maintenance issues for Perth
-                    homeowners. When leaves, dirt, and debris build up, water has nowhere to go. It overflows, seeps under roofing,
-                    and slowly damages your walls, foundations, and fascia boards. At Aspect Window Cleaning, we provide a
-                    thorough, safe, and reliable gutter cleaning service to keep your property fully protected all year round.
+                    Blocked gutters are one of the most overlooked - and most damaging - maintenance issues for <Link href="/locations" className="text-action-gold hover:underline">Perth</Link> homeowners. When leaves, dirt, and debris build up, water has nowhere to go. It overflows, seeps under roofing, and slowly damages your walls, foundations, and fascia boards. At Aspect Window Cleaning, we provide a thorough, safe, and reliable gutter cleaning service to keep your property fully protected all year round. We recommend pairing this with our <Link href="/services/pressure-washing" className="text-action-gold hover:underline">pressure washing</Link> and <Link href="/services/residential-window-cleaning" className="text-action-gold hover:underline">residential window cleaning</Link> for a complete property clean. Read our <Link href="/blog" className="text-action-gold hover:underline">blog</Link> to learn why gutter cleaning is critical before winter.
                 </p>
             </section>
 

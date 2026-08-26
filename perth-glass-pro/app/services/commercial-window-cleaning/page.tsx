@@ -1,4 +1,4 @@
-﻿import { Metadata } from "next";
+import { Metadata } from "next";
 import Image from "next/image";
 import Link from "next/link";
 import FAQ from "@/components/FAQ";
@@ -8,7 +8,7 @@ import BeforeAfterSlider from "@/components/BeforeAfterSlider";
 
 type FaqsType = {
     question: string;
-    answer: string;
+    answer: React.ReactNode;
 }
 
 export const metadata: Metadata = {
@@ -196,7 +196,7 @@ const CommercialWindowCleaning = () => {
                         {/* Badge 1 */}
                         <div className="flex items-center gap-3 bg-white border border-slate-200 hover:border-action-gold/40 px-5 py-4 rounded-2xl shadow-sm hover:shadow transition-all">
                             <div className="w-9 h-9 flex items-center justify-center bg-action-gold/10 rounded-xl text-2xl flex-shrink-0">
-                                💰
+                                ??
                             </div>
                             <div className="min-w-0">
                                 <div className="font-semibold text-brand-navy text-sm md:text-base leading-tight">
@@ -209,7 +209,7 @@ const CommercialWindowCleaning = () => {
                         {/* Badge 2 */}
                         <div className="flex items-center gap-3 bg-white border border-slate-200 hover:border-action-gold/40 px-5 py-4 rounded-2xl shadow-sm hover:shadow transition-all">
                             <div className="w-9 h-9 flex items-center justify-center bg-action-gold/10 rounded-xl text-2xl flex-shrink-0">
-                                🛡️
+                                ???
                             </div>
                             <div className="min-w-0">
                                 <div className="font-semibold text-brand-navy text-sm md:text-base leading-tight">
@@ -222,7 +222,7 @@ const CommercialWindowCleaning = () => {
                         {/* Badge 3 */}
                         <div className="flex items-center gap-3 bg-white border border-slate-200 hover:border-action-gold/40 px-5 py-4 rounded-2xl shadow-sm hover:shadow transition-all">
                             <div className="w-9 h-9 flex items-center justify-center bg-action-gold/10 rounded-xl text-2xl flex-shrink-0">
-                                ⏱️
+                                ??
                             </div>
                             <div className="min-w-0">
                                 <div className="font-semibold text-brand-navy text-sm md:text-base leading-tight">
@@ -235,7 +235,7 @@ const CommercialWindowCleaning = () => {
                         {/* Badge 4 */}
                         <div className="flex items-center gap-3 bg-white border border-slate-200 hover:border-action-gold/40 px-5 py-4 rounded-2xl shadow-sm hover:shadow transition-all">
                             <div className="w-9 h-9 flex items-center justify-center bg-action-gold/10 rounded-xl text-2xl flex-shrink-0">
-                                ⭐
+                                ?
                             </div>
                             <div className="min-w-0">
                                 <div className="font-semibold text-brand-navy text-sm md:text-base leading-tight">
@@ -258,8 +258,7 @@ const CommercialWindowCleaning = () => {
                     Keep Your Business Spotless with Expert Commercial Cleaning
                 </h2>
                 <p className="mb-4">
-                    A clean business environment is not just about appearances - it directly impacts employee productivity, client
-                    confidence, and workplace health. At Aspect Window Cleaning, we deliver reliable, thorough commercial cleaning services tailored to the specific needs of your facility. Whether you operate a busy office, retail space, strata complex, or industrial site, our experienced team works around your schedule to keep your premises spotless, hygienic, and consistently professional. We use industry-grade equipment and eco-friendly products to deliver outstanding results - every single visit.
+                    A clean business environment is not just about appearances - it directly impacts employee productivity, client confidence, and workplace health. At Aspect Window Cleaning, we deliver reliable, thorough commercial cleaning services tailored to the specific needs of your facility. Whether you operate a busy office, retail space, strata complex, or industrial site, our experienced team works around your schedule to keep your premises spotless, hygienic, and consistently professional. We use industry-grade equipment and eco-friendly products to deliver outstanding results - every single visit. We also offer <Link href="/services/residential-window-cleaning" className="text-action-gold hover:underline">residential window cleaning</Link>, <Link href="/services/pressure-washing" className="text-action-gold hover:underline">pressure washing</Link>, and <Link href="/services/solar-panel-washing" className="text-action-gold hover:underline">solar panel washing</Link> across <Link href="/locations" className="text-action-gold hover:underline">Perth</Link>.
                 </p>
             </section>
 

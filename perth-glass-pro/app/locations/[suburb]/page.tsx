@@ -93,6 +93,9 @@ export default async function SuburbPage({ params }: { params: Promise<{ suburb:
 
             <section className="py-8 max-w-4xl mx-auto px-4 text-center text-gray-600">
                 <p>{suburb.local_note}</p>
+                <p className="mt-4 text-sm leading-relaxed">
+                    In addition to our core window cleaning services, we offer <Link href="/services/solar-panel-washing" className="text-action-gold hover:underline font-semibold">solar panel washing</Link>, <Link href="/services/pressure-washing" className="text-action-gold hover:underline font-semibold">pressure washing</Link>, and <Link href="/services/gutter-cleaning" className="text-action-gold hover:underline font-semibold">gutter cleaning</Link> in {suburb.name} and surrounding areas. For business owners, our <Link href="/services/commercial-window-cleaning" className="text-action-gold hover:underline font-semibold">commercial cleaning</Link> team is available for strata, retail, and office properties. Read our <Link href="/blog" className="text-action-gold hover:underline font-semibold">property maintenance guides</Link> to learn more about protecting your Perth home.
+                </p>
             </section>
 
             {/* Services */}

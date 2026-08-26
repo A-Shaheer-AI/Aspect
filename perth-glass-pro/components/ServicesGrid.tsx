@@ -82,7 +82,7 @@ export default function ServicesGrid() {
                         Our <span className="text-[#000080]">Services</span>
                     </h2>
                     <p className="text-slate-600 text-lg max-w-2xl mx-auto leading-relaxed">
-                        Professional cleaning solutions tailored to your needs. Click on the services for more information.
+                        Professional <Link href="/services/commercial-window-cleaning" className="text-action-gold hover:underline font-semibold">commercial</Link> and <Link href="/services/residential-window-cleaning" className="text-action-gold hover:underline font-semibold">residential cleaning solutions</Link> tailored to your needs across <Link href="/locations" className="text-action-gold hover:underline font-semibold">Perth</Link>. Read our <Link href="/blog" className="text-action-gold hover:underline font-semibold">latest guides</Link> or click on the services below for more information.
                     </p>
                 </motion.div>
 
