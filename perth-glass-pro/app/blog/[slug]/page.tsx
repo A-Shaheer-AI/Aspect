@@ -140,7 +140,7 @@ export default async function BlogPostPage({ params }: { params: Promise<{ slug:
                                                     {bullet.label}{bullet.body ? ': ' : ''}
                                                 </span>
                                             )}
-                                            <span dangerouslySetInnerHTML={{ __html: bullet.body as string }} />
+                                            {bullet.body && <span dangerouslySetInnerHTML={{ __html: bullet.body as string }} />}
                                         </span>
                                     </li>
                                 ))}
