@@ -1,4 +1,4 @@
-"use client";
+﻿"use client";
 
 import { useEffect, useState } from "react";
 import { Phone, CheckCircle2, Star, Shield, Zap, Droplets, Leaf, X, Tag } from "lucide-react";
@@ -19,7 +19,7 @@ type FormDataType = {
 };
 
 /* ─────────────────────────────────────────
-   LEAD FORM — shared by hero + modal
+   LEAD FORM - shared by hero + modal
 ───────────────────────────────────────── */
 function LeadForm({
     submitted,
@@ -94,7 +94,7 @@ function LeadForm({
 }
 
 /* ─────────────────────────────────────────
-   MODAL — reusable, accepts optional promo
+   MODAL - reusable, accepts optional promo
 ───────────────────────────────────────── */
 function QuoteModal({
     open,
@@ -132,7 +132,7 @@ function QuoteModal({
                     animation: "modalPop 0.3s cubic-bezier(0.34,1.56,0.64,1) both",
                 }}
             >
-                {/* Promo banner — only shown on scroll popup */}
+                {/* Promo banner - only shown on scroll popup */}
                 {showPromo && (
                     <div
                         className="relative flex items-center justify-center gap-2 px-4 py-3 text-sm font-semibold"
@@ -182,7 +182,7 @@ function QuoteModal({
                         className="inline-block text-xs font-bold uppercase tracking-widest rounded-full px-3 py-1 mb-4"
                         style={{ background: "rgba(255,229,77,0.12)", color: YELLOW }}
                     >
-                        Free Quote — No Obligation
+                        Free Quote - No Obligation
                     </div>
                     <h3 className="text-white font-bold text-lg mb-1">Get a Fast Text Quote</h3>
                     <p className="text-sm mb-5" style={{ color: "rgba(255,255,255,0.5)" }}>
@@ -285,7 +285,7 @@ export default function PressureWashingAdsPage() {
         {
             num: "03",
             title: "Pressure Wash",
-            body: "Methodical high-pressure clean across every area — removing all dirt and buildup.",
+            body: "Methodical high-pressure clean across every area - removing all dirt and buildup.",
             clickable: false
         },
         {
@@ -498,7 +498,7 @@ export default function PressureWashingAdsPage() {
                         </p>
                         <div className="flex flex-col gap-3">
                             {[
-                                "Fast reply — usually within the hour",
+                                "Fast reply - usually within the hour",
                                 "Same-week and next-day slots available",
                                 "Eco-friendly, pet-safe solutions",
                                 "No lock-in contracts",
@@ -568,7 +568,7 @@ export default function PressureWashingAdsPage() {
                         Surfaces We Pressure Wash
                     </h2>
                     <p className="mx-auto max-w-md text-base font-light" style={{ color: "#888" }}>
-                        From driveways to pool surrounds — we restore all outdoor surfaces safely and effectively.
+                        From driveways to pool surrounds - we restore all outdoor surfaces safely and effectively.
                     </p>
                 </div>
                 <div className="mx-auto grid max-w-4xl grid-cols-2 gap-3 md:grid-cols-3">
@@ -598,7 +598,7 @@ export default function PressureWashingAdsPage() {
                         Why Perth Homeowners Choose Us
                     </h2>
                     <p className="mx-auto max-w-lg text-base font-light leading-relaxed" style={{ color: "#888" }}>
-                        Commercial-grade equipment, eco-friendly products, and zero surface damage — every single job.
+                        Commercial-grade equipment, eco-friendly products, and zero surface damage - every single job.
                     </p>
                 </div>
 
@@ -621,7 +621,7 @@ export default function PressureWashingAdsPage() {
                         </div>
                         <p className="font-bold text-base mb-2" style={{ color: NAVY }}>Professional Equipment & Adjusted Pressure</p>
                         <p className="text-sm font-light leading-relaxed" style={{ color: "#888" }}>
-                            Commercial-grade pressure washers with adjustable settings — matching the right pressure and nozzle to each surface type for a thorough clean without any risk of damage to pavers, render, or timber.
+                            Commercial-grade pressure washers with adjustable settings - matching the right pressure and nozzle to each surface type for a thorough clean without any risk of damage to pavers, render, or timber.
                         </p>
                     </div>
 
@@ -812,7 +812,7 @@ export default function PressureWashingAdsPage() {
                     style={{ background: YELLOW, color: NAVY }}
                 >
                     <Phone className="w-4 h-4" />
-                    Call Now — {BUSINESS.phone}
+                    Call Now - {BUSINESS.phone}
                 </Link>
             </div>
             {/* spacer */}

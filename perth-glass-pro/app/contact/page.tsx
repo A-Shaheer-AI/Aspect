@@ -1,13 +1,13 @@
-'use client'
+﻿'use client'
 
 import React, { useState } from 'react'
 import { sendLeadEmail } from '../actions/send-email';
 
-type FormData = { name: string; phone: string; suburb: string }
+type FormData = { name: string; email: string; phone: string; suburb: string }
 type FormStatus = 'idle' | 'loading' | 'success' | 'error'
 
 const ContactPage = () => {
-  const [formData, setFormData] = useState<FormData>({ name: '', phone: '', suburb: '' })
+  const [formData, setFormData] = useState<FormData>({ name: '', email: '', phone: '', suburb: '' })
   const [status, setStatus] = useState<FormStatus>('idle')
 
   const handleChange = (e: React.ChangeEvent<HTMLInputElement>) => {
@@ -16,11 +16,11 @@ const ContactPage = () => {
 
   const handleSubmit = async (e: React.MouseEvent<HTMLButtonElement>) => {
     e.preventDefault()
-    if (!formData.name || !formData.phone || !formData.suburb) return
+    if (!formData.name || !formData.phone || !formData.email || !formData.suburb) return
     setStatus('loading')
     try {
       const result = await sendLeadEmail({
-        name: formData.name,
+        name: formData.name, email: formData.email,
         phone: formData.phone,
         suburb: formData.suburb,
         sourceUrl: window.location.href
@@ -54,7 +54,7 @@ const ContactPage = () => {
           </h2>
           <div className="w-10 h-1 bg-[#ffea68] mt-2 mb-5" />
           <p className="text-gray-500 text-sm leading-relaxed mb-10">
-            AspectWindow delivers spotless results every time. Our trained team uses professional-grade equipment to bring clarity and shine to every pane — residential or commercial.
+            AspectWindow delivers spotless results every time. Our trained team uses professional-grade equipment to bring clarity and shine to every pane - residential or commercial.
           </p>
 
           <div className="flex flex-col gap-5">
@@ -110,6 +110,7 @@ const ContactPage = () => {
             <div className="flex flex-col gap-5">
               {[
                 { id: 'name', label: 'Full Name', type: 'text', placeholder: 'Jane Smith' },
+                { id: 'email', label: 'Email Address', type: 'email', placeholder: 'jane@example.com' },
                 { id: 'phone', label: 'Phone Number', type: 'tel', placeholder: '04XX XXX XXX' },
                 { id: 'suburb', label: 'Suburb', type: 'text', placeholder: 'e.g. Bondi, Parramatta…' },
               ].map(field => (

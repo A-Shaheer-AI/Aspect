@@ -25,6 +25,7 @@ const inter = Inter({
 });
 
 export const metadata: Metadata = {
+    metadataBase: new URL("https://aspectwindowcleaning.com.au"),
     title: {
         template: "%s | Aspect Window Cleaning Perth",
         default: "Perth's Premier Window Cleaning | Residential & Commercial Specialists",
@@ -51,8 +52,21 @@ export const metadata: Metadata = {
             "Professional window cleaning in Perth. Residential and commercial high-reach specialists. Fully insured. 5-star rated.",
         locale: "en_AU",
         type: "website",
-        url: "https://aspectwindowcleaning.com.au",
         siteName: "Aspect Window Cleaning",
+        images: [
+            {
+                url: "https://res.cloudinary.com/dr8tjrszy/image/upload/v1772130850/white-logo_pzpxjk.png",
+                width: 1200,
+                height: 630,
+                alt: "Aspect Window Cleaning Perth",
+            },
+        ],
+    },
+    twitter: {
+        card: "summary_large_image",
+        title: "Aspect Window Cleaning | Perth's Premier Specialists",
+        description: "Professional window cleaning in Perth. Residential and commercial high-reach specialists. Fully insured. 5-star rated.",
+        images: ["https://res.cloudinary.com/dr8tjrszy/image/upload/v1772130850/white-logo_pzpxjk.png"],
     },
 };
 

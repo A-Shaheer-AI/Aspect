@@ -90,7 +90,7 @@ export default function Footer() {
                             width={100}
                             height={100}
                             sizes="200px"
-                            alt="aspect-widnow-cleaning-logo"
+                            alt="aspect-window-cleaning-logo"
                             className="object-cover"
                         />
                         <p className="text-gray-300 text-sm leading-relaxed mb-6">
@@ -148,7 +148,7 @@ export default function Footer() {
                     {/* Contact */}
                     <div>
                         <h4 className="font-bold text-lg mb-4">Contact Us</h4>
-                        <h2 className="mb-5">Aspect window cleaning</h2>
+                        <p className="mb-5 font-bold text-lg">Aspect window cleaning</p>
                         <ul className="space-y-4">
                             <li>
                                 <a href={`tel:${BUSINESS.phoneRaw}`} className="flex items-center gap-3 text-gray-300 hover:text-action-gold transition-colors">

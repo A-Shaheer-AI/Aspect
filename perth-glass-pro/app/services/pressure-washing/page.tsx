@@ -1,4 +1,4 @@
-import { Metadata } from "next";
+﻿import { Metadata } from "next";
 import Image from "next/image";
 import Link from "next/link";
 import FAQ from "@/components/FAQ";
@@ -22,37 +22,37 @@ const whatWeClean = [
         icon: ChevronsRight,
         title: "Driveways & Pathways",
         description:
-            "Remove oil stains, tyre marks, dirt, and grime from concrete, brick, and paved driveways and pathways — restoring a clean, fresh appearance.",
+            "Years of oil drips, tyre marks, and ground-in grime don't stand a chance. We restore concrete, brick, and paved surfaces to near-new condition - the kind of clean that makes your whole property look better.",
     },
     {
         icon: ChevronsRight,
         title: "Patios & Decks",
         description:
-            "Strip away algae, mould, and embedded dirt from timber, composite, and concrete outdoor entertaining areas safely and without damage.",
+            "Algae and mould turn timber and concrete entertaining areas into slip hazards within a single Perth winter. We strip them clean and restore the surface safely - without damaging timber grain or composite materials.",
     },
     {
         icon: ChevronsRight,
         title: "Walls & Fences",
         description:
-            "Clean rendered, brick, and Colorbond walls and fences of dirt buildup, staining, and biological growth — improving kerb appeal instantly.",
+            "Rendered walls, brick, and Colorbond fencing accumulate years of biological growth, dust staining, and cobwebs. A single pressure wash session restores them to a clean, uniform finish that lasts.",
     },
     {
         icon: ChevronsRight,
         title: "House Exterior Surfaces",
         description:
-            "Full exterior wash of rendered and brick home facades, removing cobwebs, dust, dirt streaks, and biological growth from all external walls.",
+            "Perth's summer dust and winter rain leave exterior walls streaked and grimy. A full exterior house wash removes all of it - cobwebs, dust lines, algae patches, and insect nests - in a single visit.",
     },
     {
         icon: ChevronsRight,
         title: "Car Parks & Commercial Areas",
         description:
-            "High-volume pressure cleaning of commercial car parks, loading bays, and hard-stand areas — removing oil, rubber marks, and general grime.",
+            "Oil stains, rubber skid marks, and general grime in commercial hard-stand areas create a poor first impression. Our high-volume pressure washing handles large areas efficiently with commercial-grade equipment.",
     },
     {
         icon: ChevronsRight,
         title: "Pool Surrounds & Entertaining Areas",
         description:
-            "Safely clean pool coping, surrounding tiles, and outdoor entertaining zones — removing algae and slip hazards from wet-area surfaces.",
+            "Algae growth on pool coping and surrounding tiles isn't just ugly - it's a serious slip risk. We remove it completely and safely, restoring grip and appearance to your outdoor entertaining zone.",
     },
 ];
 
@@ -61,25 +61,25 @@ const benefitsOfPressureWashing = [
         number: "01",
         title: "Restore & Protect Your Property's Value",
         description:
-            "Dirty, stained surfaces instantly reduce the visual appeal and perceived value of your property. Professional pressure washing restores surfaces to near-new condition — making an immediate positive impression on visitors, buyers, and neighbours alike.",
+            "Perth buyers judge a property in seconds - and dirty driveways, stained walls, and grimy fences dramatically reduce perceived value before anyone steps inside. A pressure wash session can add thousands to your property's presentation without a single renovation.",
     },
     {
         number: "02",
         title: "Eliminate Slip Hazards & Improve Safety",
         description:
-            "Algae, moss, and wet grime on driveways, pathways, and pool surrounds create serious slip risks. Pressure washing removes these hazards completely, making your outdoor areas safe for your family, staff, and visitors year-round.",
+            "Algae, moss, and wet grime on outdoor surfaces cause serious injuries - particularly around pools, driveways, and steps. Pressure washing removes these hazards completely. For businesses, it's also a public liability consideration - clean surfaces are safe surfaces.",
     },
     {
         number: "03",
         title: "Extend the Lifespan of Your Surfaces",
         description:
-            "Biological growth like algae and lichen slowly breaks down concrete, render, and paving materials if left untreated. Regular pressure washing removes this growth before it causes structural deterioration — significantly extending the life of your outdoor surfaces",
+            "Biological growth on concrete and render isn't just cosmetic. Algae and lichen chemically attack the surface over time, breaking down the binder and causing surface degradation. Left too long, pressure washing alone isn't enough - resurfacing is required. Regular washing prevents that.",
     },
     {
         number: "04",
         title: "Eco-Friendly & Highly Effective",
         description:
-            "Our pressure washing process uses eco-friendly, biodegradable degreasers and detergents that break down oil, grime, and stains without harming your garden, lawn, or the surrounding environment — delivering powerful results responsibly.",
+            "Our pressure washing process uses biodegradable degreasers and pH-balanced detergents that break down stains without harming your lawn, garden beds, or stormwater system. We pre-treat, wash, and rinse thoroughly - powerful results with zero environmental guilt.",
     },
 ];
 
@@ -87,22 +87,22 @@ const whyAspectPoints = [
     {
         title: "Professional Equipment & Adjusted Pressure",
         description:
-            "We use commercial-grade pressure washers with adjustable settings — matching the right pressure and nozzle to each surface type to deliver a thorough clean without any risk of damage to pavers, render, or timber.",
+            "We use commercial-grade pressure washers with adjustable settings - matching the right pressure and nozzle to each surface type to deliver a thorough clean without any risk of damage to pavers, render, or timber.",
     },
     {
-        title: "Fully Insured — $20M Cover",
+        title: "Fully Insured - $20M Cover",
         description:
             "Complete public liability insurance on every job gives you total peace of mind. We work safely and responsibly on your property from start to finish.",
     },
     {
         title: "Eco-Friendly Detergents & Safe Techniques",
         description:
-            "All cleaning solutions we use are biodegradable and safe for your garden, lawn, pets, and the environment. We pre-treat stubborn stains and rinse thoroughly — leaving no chemical residue behind.",
+            "All cleaning solutions we use are biodegradable and safe for your garden, lawn, pets, and the environment. We pre-treat stubborn stains and rinse thoroughly - leaving no chemical residue behind.",
     },
     {
         title: "100% Satisfaction Guaranteed",
         description:
-            "We're not finished until you're completely happy with the result. If anything doesn't meet your expectations, we return and fix it at no extra cost — every time.",
+            "We're not finished until you're completely happy with the result. If anything doesn't meet your expectations, we return and fix it at no extra cost - every time.",
     },
 ];
 
@@ -111,7 +111,7 @@ const processSteps = [
         number: "01",
         title: "Assessment",
         description:
-            "We assess the surface type, level of soiling, and any stubborn stains — then select the right pressure settings and solutions.",
+            "We assess the surface type, level of soiling, and any stubborn stains - then select the right pressure settings and solutions.",
     },
     {
         number: "02",
@@ -123,7 +123,7 @@ const processSteps = [
         number: "03",
         title: "Pressure Wash",
         description:
-            "Methodical, high-pressure cleaning across every area — removing all dirt, staining, and  buildup completely.",
+            "Methodical, high-pressure cleaning across every area - removing all dirt, staining, and  buildup completely.",
     },
     {
         number: "04",
@@ -137,12 +137,12 @@ const pressureWashing: FaqsType[] = [
     {
         question: "What surfaces can be pressure washed?",
         answer:
-            "We pressure wash concrete driveways and pathways, brick and paved areas, rendered and brick walls, Colorbond fences, timber and composite decking, pool surrounds, house exteriors, and commercial hard-stand areas. If you're unsure about a specific surface, just ask — we'll advise the safest and most effective approach.",
+            "We pressure wash concrete driveways and pathways, brick and paved areas, rendered and brick walls, Colorbond fences, timber and composite decking, pool surrounds, house exteriors, and commercial hard-stand areas. If you're unsure about a specific surface, just ask - we'll advise the safest and most effective approach.",
     },
     {
         question: "Will pressure washing damage my surfaces?",
         answer:
-            "Not when done correctly. Our technicians adjust pressure settings and nozzle types to match each surface — using lower pressure for delicate materials like render and timber, and higher pressure for concrete and brick. We never use settings that could cause damage.",
+            "Not when done correctly. Our technicians adjust pressure settings and nozzle types to match each surface - using lower pressure for delicate materials like render and timber, and higher pressure for concrete and brick. We never use settings that could cause damage.",
     },
     {
         question: "Can pressure washing remove oil stains from driveways?",
@@ -260,7 +260,7 @@ const PressureWashing = () => {
                 <p className="mb-4">
                     Over time, Perth's outdoor surfaces accumulate years of dirt, oil stains, algae, and grime that regular cleaning
                     simply cannot remove. At Aspect Window Cleaning, we use professional-grade pressure washing equipment to
-                    strip away even the toughest buildup — restoring driveways, patios, walls, and exterior surfaces to their original
+                    strip away even the toughest buildup - restoring driveways, patios, walls, and exterior surfaces to their original
                     condition quickly and efficiently. Our technicians adjust pressure settings and cleaning solutions to suit each
                     surface type, ensuring a thorough clean every time without causing any damage. Whether it's a residential
                     driveway or a large commercial car park, we deliver results that make an immediate difference to the look and
@@ -291,7 +291,7 @@ const PressureWashing = () => {
                     Surfaces We Pressure Wash
                 </h2>
                 <p className="mb-10 text-brand-slate">
-                    From driveways to pool surrounds — we restore all outdoor surfaces safely and effectively.
+                    From driveways to pool surrounds - we restore all outdoor surfaces safely and effectively.
                 </p>
                 <div className="grid md:grid-cols-3 gap-6">
                     {whatWeClean.map((item, index) => {
@@ -332,7 +332,7 @@ const PressureWashing = () => {
 
                     {/* Intro paragraph */}
                     <p className="text-center text-brand-slate max-w-3xl mx-auto mb-12">
-                        Pressure washing is more than cosmetic — it actively protects your property, improves safety, and extends the life of your outdoor surfaces.
+                        Pressure washing is more than cosmetic - it actively protects your property, improves safety, and extends the life of your outdoor surfaces.
                     </p>
 
                     {/* Benefits List */}
@@ -408,7 +408,7 @@ const PressureWashing = () => {
 
                     {/* Intro */}
                     <p className="text-center text-brand-slate max-w-3xl mx-auto mb-12">
-                        Simple, fast, and hassle-free — from your first call to freshly restored surfaces.
+                        Simple, fast, and hassle-free - from your first call to freshly restored surfaces.
                     </p>
 
                     {/* Steps */}

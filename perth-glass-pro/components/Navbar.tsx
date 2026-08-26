@@ -57,8 +57,9 @@ export default function Navbar() {
                                 }
                                 width={100}
                                 height={100}
+                                priority
                                 sizes="(max-width: 768px) 80px, 100px"
-                                alt="aspect-widnow-cleaning-logo"
+                                alt="aspect-window-cleaning-logo"
                                 className="object-cover"
                             />
                         </Link>

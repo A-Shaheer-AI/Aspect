@@ -1,4 +1,4 @@
-import { Metadata } from "next";
+﻿import { Metadata } from "next";
 import Image from "next/image";
 import Link from "next/link";
 import FAQ from "@/components/FAQ";
@@ -22,37 +22,37 @@ const whatsInclude = [
         icon: ChevronsRight,
         title: "Leaf & Debris Removal",
         description:
-            "Full removal of all leaves, twigs, dirt, and organic buildup from gutters and valleys.",
+            "Full removal of eucalyptus leaves, pine needles, seed pods, dirt, and organic buildup from every metre of guttering and roof valley - nothing left to block your system.",
     },
     {
         icon: ChevronsRight,
         title: "Downpipe Clearing",
         description:
-            "We flush and clear all downpipes to ensure unobstructed water flow from roof to drain.",
+            "We flush every downpipe from roof to drain to confirm unobstructed flow. Blocked downpipes cause overflow at the worst possible time - during Perth's winter storms.",
     },
     {
         icon: ChevronsRight,
         title: "Gutter Inspection",
         description:
-            "We check for cracks, rust, sagging, and loose brackets — and flag anything that needs attention.",
+            "As we work, we check for cracks, rust spots, sagging sections, loose brackets, and pitch problems that prevent proper drainage - and flag anything that needs attention before it becomes expensive.",
     },
     {
         icon: ChevronsRight,
         title: "Safe Debris Disposal",
         description:
-            "All collected debris is bagged and removed from your property — no mess left behind.",
+            "All collected debris is bagged and removed from your property. We don't leave a pile of wet leaves on your lawn or driveway - the job isn't done until everything is clean.",
     },
     {
         icon: ChevronsRight,
         title: "Roof Valley Cleaning",
         description:
-            "We clear debris from roof valleys where blockages can cause the most serious water damage.",
+            "Roof valleys are where water concentrates during rain - and where blockages cause the most serious damage. We clear every valley thoroughly, not just the visible gutters.",
     },
     {
         icon: ChevronsRight,
         title: "Post-Clean Flush Test",
         description:
-            "After cleaning, we run a water test through the entire system to confirm full flow.",
+            "After cleaning, we run water through the entire system to verify full, unrestricted flow from roof to drain. It's the only way to be certain the job is actually done.",
     },
 ];
 
@@ -61,25 +61,25 @@ const benefitsOfGutterCleaning = [
         number: "01",
         title: "Prevent Water Damage to Walls & Foundations",
         description:
-            "Overflowing gutters direct water against your exterior walls and foundations, causing dampness, mould, and structural cracking over time. Clean gutters route water safely away from your property.",
+            "Perth's winters bring intense, concentrated rainfall after months of dry conditions. Blocked gutters during the first heavy storm of the season overflow rapidly - directing water against walls and foundations, causing dampness, mould, and structural cracking that costs thousands to repair. Clean gutters route every drop safely away.",
     },
     {
         number: "02",
         title: "Avoid Pest Infestations",
         description:
-            "Clogged, damp gutters are a favourite nesting spot for mosquitoes, birds, rodents, and wasps. Regular cleaning eliminates this habitat before infestations take hold.",
+            "Damp, debris-filled gutters are prime real estate for mosquitoes, paper wasps, and roof rats - particularly during Perth's warm shoulder seasons. The decaying organic matter and standing water create an ideal breeding environment. Regular cleaning eliminates the habitat entirely.",
     },
     {
         number: "03",
         title: "Protect Your Roof & Fascia",
         description:
-            "Debris buildup traps moisture against your fascia boards and roof edges, accelerating rot and rust. Clean gutters extend the lifespan of your entire roofing system significantly.",
+            "Debris traps moisture against your fascia boards and roof edges for weeks after rain, accelerating rot and rust in ways you can't see from the ground. We've seen fascia boards replaced at $1,500+ that would have been perfectly fine with twice-yearly gutter maintenance.",
     },
     {
         number: "04",
         title: "Prevent Sagging & Structural Failure",
         description:
-            "A gutter full of saturated debris can weigh tens of kilograms — causing it to sag, pull away from the fascia, or collapse entirely. Routine cleaning keeps the system lightweight and secure.",
+            "A single section of gutter packed with saturated eucalyptus leaves can carry 15-20kg - many times more than it was designed to hold. That weight causes brackets to fail, gutters to pull away from fascia, and full sections to collapse. Clean gutters weigh next to nothing.",
     },
 ];
 
@@ -87,22 +87,22 @@ const whyAspectPoints = [
     {
         title: "Experienced & Trained Technicians",
         description:
-            "Our team is trained in safe roof access, correct techniques, and spotting early signs of damage — so you get more than just a clean gutter.",
+            "Our team is trained in safe roof access and knows what to look for beyond just visible debris. We flag early signs of damage - rust spots, cracked joins, loose brackets - while we're up there, so you can address issues before they become expensive.",
     },
     {
-        title: "Fully Insured — $20M Cover",
+        title: "Fully Insured - $20M Cover",
         description:
-            "Complete public liability insurance gives you total peace of mind. We work safely and responsibly on every property, no matter the height or complexity. ",
+            "Working at height carries risk. Our $20M public liability insurance means that risk sits with us, not with you. Every job is performed safely, carefully, and with full professional accountability.",
     },
     {
         title: "Transparent Pricing, No Hidden Fees",
         description:
-            "You'll receive a clear, upfront quote before we start. The price you're given is the price you pay — no surprises on the invoice.",
+            "Your quote covers the full job - clearing, flushing, inspecting, and debris disposal. The price you're given is the price on the invoice. No add-ons, no surprises, no charges for debris removal.",
     },
     {
         title: "100% Satisfaction Guaranteed",
         description:
-            "We're not finished until you're completely happy. If anything doesn't meet your expectations, we return and make it right — at no extra cost.",
+            "We walk you through the completed job and confirm the flush test results. If anything doesn't meet your expectations, we return and make it right - at no cost, no argument, no delay.",
     },
 ];
 
@@ -117,7 +117,7 @@ const processSteps = [
         number: "02",
         title: "Book a Time",
         description:
-            "Choose a day that suits — same-week availability across the Perth metro area.",
+            "Choose a day that suits - same-week availability across the Perth metro area.",
     },
     {
         number: "03",
@@ -142,7 +142,7 @@ const gutterCleaningFaqs: FaqsType[] = [
     {
         question: "How often should I have my gutters cleaned in Perth?",
         answer:
-            "For most Perth homes, we recommend cleaning at least twice a year — once in autumn after leaves have fallen, and once in spring. Homes near large trees or in coastal areas may need cleaning three to four times per year.",
+            "For most Perth homes, we recommend cleaning at least twice a year - once in autumn after leaves have fallen, and once in spring. Homes near large trees or in coastal areas may need cleaning three to four times per year.",
     },
     {
         question: "What are the signs that my gutters need cleaning?",
@@ -253,7 +253,7 @@ const GutterCleaningServices = () => {
                     Protect Your Home With Expert Gutter Cleaning
                 </h2>
                 <p className="mb-4">
-                    Blocked gutters are one of the most overlooked — and most damaging — maintenance issues for Perth
+                    Blocked gutters are one of the most overlooked - and most damaging - maintenance issues for Perth
                     homeowners. When leaves, dirt, and debris build up, water has nowhere to go. It overflows, seeps under roofing,
                     and slowly damages your walls, foundations, and fascia boards. At Aspect Window Cleaning, we provide a
                     thorough, safe, and reliable gutter cleaning service to keep your property fully protected all year round.
@@ -284,7 +284,7 @@ const GutterCleaningServices = () => {
                     What's Included in Our Gutter Cleaning Service
                 </h2>
                 <p className="mb-10 text-brand-slate">
-                    We don't just scoop out the obvious debris — our service is comprehensive, covering every component of your
+                    We don't just scoop out the obvious debris - our service is comprehensive, covering every component of your
                     gutter system from inlet to outlet.
                 </p>
                 <div className="grid md:grid-cols-3 gap-6">
@@ -326,7 +326,7 @@ const GutterCleaningServices = () => {
 
                     {/* Intro paragraph */}
                     <p className="text-center text-brand-slate max-w-3xl mx-auto mb-12">
-                        Gutter cleaning is not just routine maintenance — it's active protection for your home. Here's what neglected
+                        Gutter cleaning is not just routine maintenance - it's active protection for your home. Here's what neglected
                         gutters can lead to, and how regular cleaning prevents it.
                     </p>
 

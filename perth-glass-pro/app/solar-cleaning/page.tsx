@@ -1,4 +1,4 @@
-"use client";
+﻿"use client";
 
 import { useEffect, useState } from "react";
 import { Phone, CheckCircle2, Star, Shield, Zap, Sun, ClipboardCheck, X, Tag } from "lucide-react";
@@ -19,7 +19,7 @@ type FormDataType = {
 };
 
 /* ─────────────────────────────────────────
-   LEAD FORM — shared by hero + modal
+   LEAD FORM - shared by hero + modal
 ───────────────────────────────────────── */
 function LeadForm({
     submitted,
@@ -94,7 +94,7 @@ function LeadForm({
 }
 
 /* ─────────────────────────────────────────
-   MODAL — reusable, accepts optional promo
+   MODAL - reusable, accepts optional promo
 ───────────────────────────────────────── */
 function QuoteModal({
     open,
@@ -132,7 +132,7 @@ function QuoteModal({
                     animation: "modalPop 0.3s cubic-bezier(0.34,1.56,0.64,1) both",
                 }}
             >
-                {/* Promo banner — only shown on scroll popup */}
+                {/* Promo banner - only shown on scroll popup */}
                 {showPromo && (
                     <div
                         className="relative flex items-center justify-center gap-2 px-4 py-3 text-sm font-semibold"
@@ -182,7 +182,7 @@ function QuoteModal({
                         className="inline-block text-xs font-bold uppercase tracking-widest rounded-full px-3 py-1 mb-4"
                         style={{ background: "rgba(255,229,77,0.12)", color: YELLOW }}
                     >
-                        Free Quote — No Obligation
+                        Free Quote - No Obligation
                     </div>
                     <h3 className="text-white font-bold text-lg mb-1">Get a Fast Text Quote</h3>
                     <p className="text-sm mb-5" style={{ color: "rgba(255,255,255,0.5)" }}>
@@ -260,9 +260,9 @@ export default function SolarPanelCleaningAdsPage() {
     };
 
     const processSteps = [
-        { num: "01", title: "Free Quote", body: "Share your panel count and address — we'll send a fast, transparent quote.", clickable: true },
+        { num: "01", title: "Free Quote", body: "Share your panel count and address - we'll send a fast, transparent quote.", clickable: true },
         { num: "02", title: "Book a Time", body: "Same-week availability across Perth. Pick a time that suits you.", clickable: false },
-        { num: "03", title: "We Clean", body: "Purified water and soft-brush equipment — every panel cleaned safely.", clickable: false },
+        { num: "03", title: "We Clean", body: "Purified water and soft-brush equipment - every panel cleaned safely.", clickable: false },
         { num: "04", title: "You Inspect", body: "We walk you through the results. Satisfied? Job done.", clickable: false },
     ];
 
@@ -336,7 +336,7 @@ export default function SolarPanelCleaningAdsPage() {
                 showPromo={showPromo}
             />
 
-            {/* ─── SECTION 1: HERO — with background image ─── */}
+            {/* ─── SECTION 1: HERO - with background image ─── */}
             <section
                 className="relative min-h-screen flex flex-col overflow-hidden bg-cover bg-center
                     bg-[linear-gradient(160deg,rgba(7,7,126,0.75)_0%,rgba(5,5,80,0.85)_60%,rgba(3,3,50,0.92)_100%),url('https://res.cloudinary.com/dr8tjrszy/image/upload/v1771960139/solar-plates-cleaning_lasnea.jpg')]
@@ -378,7 +378,7 @@ export default function SolarPanelCleaningAdsPage() {
 
                     {/* Sub */}
                     <p className="mb-8 max-w-sm text-base font-light leading-relaxed" style={{ color: "rgba(255,255,255,0.7)" }}>
-                        Dirty panels silently cost you money. We restore full output using manufacturer-approved purified water technology — safely, streak-free.
+                        Dirty panels silently cost you money. We restore full output using manufacturer-approved purified water technology - safely, streak-free.
                     </p>
 
                     {/* CTAs */}
@@ -470,7 +470,7 @@ export default function SolarPanelCleaningAdsPage() {
                         </p>
                         <div className="flex flex-col gap-3">
                             {[
-                                "Fast reply — usually within the hour",
+                                "Fast reply - usually within the hour",
                                 "Same-week and next-day slots available",
                                 "Manufacturer-approved cleaning method",
                                 "No lock-in contracts",
@@ -546,7 +546,7 @@ export default function SolarPanelCleaningAdsPage() {
                         <span style={{ color: YELLOW }}>Money Right Now</span>
                     </h3>
                     <p className="mx-auto max-w-xl text-base font-light leading-relaxed mb-6" style={{ color: "rgba(255,255,255,0.6)" }}>
-                        Studies show a thin layer of dust and grime can reduce solar panel output by 15–30%. In Perth&apos;s dusty climate — with frequent easterly winds, bushfire smoke, and high bird activity — panels lose significant efficiency within just a few months.
+                        Studies show a thin layer of dust and grime can reduce solar panel output by 15–30%. In Perth&apos;s dusty climate - with frequent easterly winds, bushfire smoke, and high bird activity - panels lose significant efficiency within just a few months.
                     </p>
                     <div
                         className="inline-flex items-center gap-2 rounded-full px-4 py-2 text-sm font-semibold"
@@ -573,7 +573,7 @@ export default function SolarPanelCleaningAdsPage() {
                         Why Perth Homeowners Trust Us for Solar Cleaning
                     </h2>
                     <p className="mx-auto max-w-lg text-base font-light leading-relaxed" style={{ color: "#888" }}>
-                        Safe, effective, and manufacturer-approved — so your panels are restored without any risk of damage or voided warranty.
+                        Safe, effective, and manufacturer-approved - so your panels are restored without any risk of damage or voided warranty.
                     </p>
                 </div>
 
@@ -586,7 +586,7 @@ export default function SolarPanelCleaningAdsPage() {
                         </div>
                         <p className="font-bold text-base text-white mb-2">Output Recovered</p>
                         <p className="text-sm font-light leading-relaxed" style={{ color: "rgba(255,255,255,0.55)" }}>
-                            Professional cleaning restores full sunlight absorption — recovering up to 30% of lost output and maximising daily electricity generation.
+                            Professional cleaning restores full sunlight absorption - recovering up to 30% of lost output and maximising daily electricity generation.
                         </p>
                     </div>
 
@@ -600,7 +600,7 @@ export default function SolarPanelCleaningAdsPage() {
                         </div>
                         <p className="font-bold text-base mb-2" style={{ color: NAVY }}>Manufacturer-Approved Method</p>
                         <p className="text-sm font-light leading-relaxed" style={{ color: "#888" }}>
-                            We use soft-brush, purified water systems — the method recommended by all major solar panel manufacturers. No harsh chemicals, no abrasive tools, zero risk of voiding your warranty.
+                            We use soft-brush, purified water systems - the method recommended by all major solar panel manufacturers. No harsh chemicals, no abrasive tools, zero risk of voiding your warranty.
                         </p>
                     </div>
 
@@ -804,7 +804,7 @@ export default function SolarPanelCleaningAdsPage() {
                     style={{ background: YELLOW, color: NAVY }}
                 >
                     <Phone className="w-4 h-4" />
-                    Call Now — {BUSINESS.phone}
+                    Call Now - {BUSINESS.phone}
                 </Link>
             </div>
             {/* spacer so content isn't hidden behind sticky bar */}

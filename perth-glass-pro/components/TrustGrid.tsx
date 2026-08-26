@@ -1,4 +1,4 @@
-"use client";
+﻿"use client";
 
 import { Shield, Award, Clock, Users, Star, CheckCircle } from "lucide-react";
 import { motion } from "framer-motion";
@@ -44,7 +44,7 @@ const reviews: Review[] = [
         reviews: "1 review",
         rating: 5,
         date: "8 months ago",
-        content: "I recently hired them for window cleaning, and I couldn't be happier with the results. The team was punctual, professional, and paid great attention to detail. Our windows are spotless—inside and out—and they even cleaned the screens and tracks. Highly recommend their service and will definitely use them again.",
+        content: "I recently hired them for window cleaning, and I couldn't be happier with the results. The team was punctual, professional, and paid great attention to detail. Our windows are spotless-inside and out-and they even cleaned the screens and tracks. Highly recommend their service and will definitely use them again.",
     },
     {
         id: 5,

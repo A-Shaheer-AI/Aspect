@@ -1,4 +1,4 @@
-"use client";
+﻿"use client";
 
 import { BUSINESS } from "@/lib/config";
 import { ArrowRight, Building2, CheckCircle, Clock, Home, Phone, Shield } from "lucide-react";
@@ -118,7 +118,7 @@ export default function HeroWithScroll() {
           {/* LEFT CONTENT */}
           <div>
             <p className="text-action-gold text-center md:text-left font-semibold mb-4">
-              No Guesswork — We Visit & Quote For Free
+              No Guesswork - We Visit & Quote For Free
             </p>
 
             <h1 className="text-2xl md:text-3xl xl:text-5xl text-center md:text-left font-bold leading-tight mb-6">

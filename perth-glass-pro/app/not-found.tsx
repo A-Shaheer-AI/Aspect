@@ -1,4 +1,4 @@
-import Link from "next/link";
+﻿import Link from "next/link";
 import { Home, Phone, Droplets } from "lucide-react";
 import { BUSINESS } from "@/lib/config";
 
@@ -44,7 +44,7 @@ export default function NotFound() {
 
                 {/* Subtle branding */}
                 <p className="text-brand-water/40 text-sm mt-12">
-                    Aspect Window Cleaning — Perth&apos;s Window Cleaning Experts
+                    Aspect Window Cleaning - Perth&apos;s Window Cleaning Experts
                 </p>
             </div>
         </main>

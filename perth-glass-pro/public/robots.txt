@@ -1,9 +1,4 @@
-# *
 User-agent: *
 Allow: /
 
-# Host
-Host: https://aspectwindowcleaning.com.au
-
-# Sitemaps
 Sitemap: https://aspectwindowcleaning.com.au/sitemap.xml
