@@ -27,7 +27,7 @@ export const blogs: BlogPost[] = [
     sections: [
       {
         heading: "What is Pure Water?",
-        body: "Pure water is ordinary tap water that has been filtered through a purification system (usually Reverse Osmosis and Deionization) to remove all dissolved solids and minerals. In Perth, our tap water typically has a TDS (Total Dissolved Solids) reading of 100–400ppm. Pure water has a reading of 0ppm."
+        body: "Pure water is ordinary tap water that has been filtered through a purification system (usually Reverse Osmosis and Deionization) to remove all dissolved solids and minerals. In Perth, our tap water typically has a TDS (Total Dissolved Solids) reading of 100ÃƒÂ¢Ã¢â€šÂ¬Ã¢â‚¬Å“400ppm. Pure water has a reading of 0ppm."
       },
       {
         heading: "The Benefits",
@@ -51,7 +51,7 @@ export const blogs: BlogPost[] = [
   },
   {
     id: 2,
-    title: "Residential Window Cleaning in Australia – Professional Home Window Cleaning",
+    title: "Residential Window Cleaning in Australia - Professional Home Window Cleaning",
     slug: "residential-window-cleaning-in-australia-professional-home-window-cleaning",
     date: "2025-09-02T09:00:00Z",
     thumbnail: "https://res.cloudinary.com/dr8tjrszy/image/upload/v1771873841/residential-window-cleaning_nhnoux.jpg",
@@ -80,9 +80,9 @@ export const blogs: BlogPost[] = [
         heading: "How Often Should You Clean Windows?",
         body: "This depends on your location and exposure to environmental factors:",
         bullets: [
-          { label: "Urban areas", body: "Clean windows every 3–6 months" },
-          { label: "Coastal areas", body: "Clean windows every 2–4 months" },
-          { label: "Dusty or rural areas", body: "Clean windows every 2–3 months" }
+          { label: "Urban areas", body: "Clean windows every 3ÃƒÂ¢Ã¢â€šÂ¬Ã¢â‚¬Å“6 months" },
+          { label: "Coastal areas", body: "Clean windows every 2ÃƒÂ¢Ã¢â€šÂ¬Ã¢â‚¬Å“4 months" },
+          { label: "Dusty or rural areas", body: "Clean windows every 2ÃƒÂ¢Ã¢â€šÂ¬Ã¢â‚¬Å“3 months" }
         ]
       }
     ],
@@ -90,7 +90,7 @@ export const blogs: BlogPost[] = [
   },
   {
     id: 3,
-    title: "<a href='/services/commercial-window-cleaning' class='text-action-gold hover:underline font-semibold'>commercial window cleaning</a> in Australia – Professional Office & Business Window Cleaning",
+    title: "Commercial Window Cleaning in Australia - Professional Office & Business Window Cleaning",
     slug: "commercial-window-cleaning-in-australia-professional-office-business-window-cleaning",
     date: "2025-10-14T09:00:00Z",
     thumbnail: "https://res.cloudinary.com/dr8tjrszy/image/upload/v1771960134/commercial-window-cleaning_gzkvaj.jpg",
@@ -131,7 +131,7 @@ export const blogs: BlogPost[] = [
   },
   {
     id: 4,
-    title: "<a href='/services/solar-panel-washing' class='text-action-gold hover:underline font-semibold'>solar panel cleaning</a> in Australia – Professional <a href='/services/solar-panel-washing' class='text-action-gold hover:underline font-semibold'>solar panel cleaning</a> Services",
+    title: "Solar Panel Cleaning in Australia - Professional Solar Panel Cleaning Services",
     slug: "solar-panel-cleaning-in-australia-professional-solar-panel-cleaning-services",
     date: "2025-11-20T09:00:00Z",
     thumbnail: "https://res.cloudinary.com/dr8tjrszy/image/upload/v1771960144/WhatsApp_Image_2026-02-22_at_8.48.18_PM_vt57zl.jpg",
@@ -172,7 +172,7 @@ export const blogs: BlogPost[] = [
   },
   {
     id: 5,
-    title: "<a href='/services/pressure-washing' class='text-action-gold hover:underline font-semibold'>pressure cleaning</a> in Australia – Professional Exterior Cleaning Services",
+    title: "Pressure Cleaning in Australia - Professional Exterior Cleaning Services",
     slug: "pressure-cleaning-in-australia-professional-exterior-cleaning-services",
     date: "2026-01-08T09:00:00Z",
     thumbnail: "https://res.cloudinary.com/dr8tjrszy/image/upload/v1772800983/after-cleaning-street_lhtqux.jpg",
@@ -215,7 +215,7 @@ export const blogs: BlogPost[] = [
   },
   {
     "id": 6,
-    "title": "Why Regular <a href='/services/gutter-cleaning' class='text-action-gold hover:underline font-semibold'>gutter cleaning</a> is Essential for Perth Homes",
+    "title": "Why Regular Gutter Cleaning is Essential for Perth Homes",
     "slug": "why-regular-gutter-cleaning-is-essential-perth-homes",
     "date": "2026-03-15T09:00:00Z",
     "thumbnail": "https://res.cloudinary.com/dr8tjrszy/image/upload/v1775990687/gutter-cleaning_nd8wyn.jpg",
@@ -260,12 +260,12 @@ export const blogs: BlogPost[] = [
   },
   {
     "id": 7,
-    "title": "How <a href='/services/pressure-washing' class='text-action-gold hover:underline font-semibold'>pressure cleaning</a> Improves Property Value in Perth Homes",
+    "title": "How Pressure Cleaning Improves Property Value in Perth Homes",
     "slug": "how-pressure-cleaning-improves-property-value-perth-homes",
     "date": "2026-05-18T09:00:00Z",
     "thumbnail": "https://res.cloudinary.com/dr8tjrszy/image/upload/v1776944964/WhatsApp_Image_2026-04-22_at_8.43.10_PM_ijfzbu.jpg",
     "excerpt": "Discover how professional <a href='/services/pressure-washing' class='text-action-gold hover:underline font-semibold'>pressure cleaning</a> can instantly boost your property's curb appeal, prevent long-term damage, and increase resale value across Perth homes.",
-    "intro": "First impressions matter in real estate, and the exterior of your home is the first thing buyers and visitors see. Over time, driveways, walls, patios, and pathways collect dirt, mould, algae, and stains that make a property look older and poorly maintained. Professional <a href='/services/pressure-washing' class='text-action-gold hover:underline font-semibold'>pressure cleaning</a> restores these surfaces to near-new condition, significantly improving curb appeal and overall property value. In Perth’s harsh sun and coastal conditions, this type of maintenance has a direct impact on how your home is perceived and valued.",
+    "intro": "First impressions matter in real estate, and the exterior of your home is the first thing buyers and visitors see. Over time, driveways, walls, patios, and pathways collect dirt, mould, algae, and stains that make a property look older and poorly maintained. Professional <a href='/services/pressure-washing' class='text-action-gold hover:underline font-semibold'>pressure cleaning</a> restores these surfaces to near-new condition, significantly improving curb appeal and overall property value. In PerthÃƒÂ¢Ã¢â€šÂ¬Ã¢â€žÂ¢s harsh sun and coastal conditions, this type of maintenance has a direct impact on how your home is perceived and valued.",
     "sections": [
       {
         "heading": "Why Exterior Appearance Impacts Property Value",
@@ -294,7 +294,7 @@ export const blogs: BlogPost[] = [
       },
       {
         "heading": "Protecting Surfaces From Long-Term Damage",
-        "body": "Beyond aesthetics, <a href='/services/pressure-washing' class='text-action-gold hover:underline font-semibold'>pressure cleaning</a> prevents long-term damage caused by mould, algae, and grime buildup. In Perth’s climate, organic growth can break down concrete and pavers over time, leading to expensive repairs or resurfacing."
+        "body": "Beyond aesthetics, <a href='/services/pressure-washing' class='text-action-gold hover:underline font-semibold'>pressure cleaning</a> prevents long-term damage caused by mould, algae, and grime buildup. In PerthÃƒÂ¢Ã¢â€šÂ¬Ã¢â€žÂ¢s climate, organic growth can break down concrete and pavers over time, leading to expensive repairs or resurfacing."
       },
       {
         "heading": "Where <a href='/services/pressure-washing' class='text-action-gold hover:underline font-semibold'>pressure cleaning</a> Has the Biggest Impact",

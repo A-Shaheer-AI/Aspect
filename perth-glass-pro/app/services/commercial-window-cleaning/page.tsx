@@ -142,7 +142,7 @@ const pressureWashing: FaqsType[] = [
     {
         question: "How often should commercial premises be cleaned?",
         answer:
-            "Most businesses benefit from cleaning 3–5 times per week, with some high-traffic environments requiring daily service. We'll assess your space and recommend a frequency that keeps your premises consistently clean without unnecessary visits.",
+            "Most businesses benefit from cleaning 3â€“5 times per week, with some high-traffic environments requiring daily service. We'll assess your space and recommend a frequency that keeps your premises consistently clean without unnecessary visits.",
     },
     {
         question: "Can you work outside of business hours?",
@@ -196,7 +196,7 @@ const CommercialWindowCleaning = () => {
                         {/* Badge 1 */}
                         <div className="flex items-center gap-3 bg-white border border-slate-200 hover:border-action-gold/40 px-5 py-4 rounded-2xl shadow-sm hover:shadow transition-all">
                             <div className="w-9 h-9 flex items-center justify-center bg-action-gold/10 rounded-xl text-2xl flex-shrink-0">
-                                ??
+                                💰
                             </div>
                             <div className="min-w-0">
                                 <div className="font-semibold text-brand-navy text-sm md:text-base leading-tight">
@@ -209,7 +209,7 @@ const CommercialWindowCleaning = () => {
                         {/* Badge 2 */}
                         <div className="flex items-center gap-3 bg-white border border-slate-200 hover:border-action-gold/40 px-5 py-4 rounded-2xl shadow-sm hover:shadow transition-all">
                             <div className="w-9 h-9 flex items-center justify-center bg-action-gold/10 rounded-xl text-2xl flex-shrink-0">
-                                ???
+                                🛡️
                             </div>
                             <div className="min-w-0">
                                 <div className="font-semibold text-brand-navy text-sm md:text-base leading-tight">
@@ -222,7 +222,7 @@ const CommercialWindowCleaning = () => {
                         {/* Badge 3 */}
                         <div className="flex items-center gap-3 bg-white border border-slate-200 hover:border-action-gold/40 px-5 py-4 rounded-2xl shadow-sm hover:shadow transition-all">
                             <div className="w-9 h-9 flex items-center justify-center bg-action-gold/10 rounded-xl text-2xl flex-shrink-0">
-                                ??
+                                ⏱️
                             </div>
                             <div className="min-w-0">
                                 <div className="font-semibold text-brand-navy text-sm md:text-base leading-tight">
@@ -235,7 +235,7 @@ const CommercialWindowCleaning = () => {
                         {/* Badge 4 */}
                         <div className="flex items-center gap-3 bg-white border border-slate-200 hover:border-action-gold/40 px-5 py-4 rounded-2xl shadow-sm hover:shadow transition-all">
                             <div className="w-9 h-9 flex items-center justify-center bg-action-gold/10 rounded-xl text-2xl flex-shrink-0">
-                                ?
+                                ⭐
                             </div>
                             <div className="min-w-0">
                                 <div className="font-semibold text-brand-navy text-sm md:text-base leading-tight">
