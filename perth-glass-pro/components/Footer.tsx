@@ -2,8 +2,10 @@ import Link from "next/link";
 import { Phone, Mail, MapPin } from "lucide-react";
 import { BUSINESS } from "@/lib/config";
 import Image from "next/image";
+import { getGmbData } from "@/app/actions/gmb";
 
-export default function Footer() {
+export default async function Footer() {
+    const gmbData = await getGmbData();
     const currentYear = new Date().getFullYear();
 
     const services = [
@@ -99,7 +101,7 @@ export default function Footer() {
                         </p>
                         <div className="flex items-center gap-2 text-gray-300">
                             <MapPin className="w-4 h-4 text-action-gold" aria-hidden="true" />
-                            <span className="text-sm">{BUSINESS.location}</span>
+                            <span className="text-sm">{gmbData.address}</span>
                         </div>
                     </div>
 
@@ -164,7 +166,7 @@ export default function Footer() {
                             </li>
                             <li className="flex items-start gap-3 text-gray-300">
                                 <MapPin className="w-5 h-5 text-action-gold mt-0.5" aria-hidden="true" />
-                                <span className="text-sm">{BUSINESS.location}</span>
+                                <span className="text-sm">{gmbData.address}</span>
                             </li>
                         </ul>
                         <div className="mt-4">

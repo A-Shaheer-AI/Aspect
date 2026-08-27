@@ -3,6 +3,7 @@
 import { useState, useEffect, useRef } from "react";
 import { Phone, CheckCircle2, Star, Shield, Droplets, Zap, Building2, X, Tag, ChevronLeft, ChevronRight } from "lucide-react";
 import { BUSINESS } from "@/lib/config";
+import { useGmb } from "@/components/GmbProvider";
 import Link from "next/link";
 import Image from "next/image";
 import BeforeAfterSlider from "@/components/BeforeAfterSlider";
@@ -252,6 +253,7 @@ const whatsInclude = [
    PAGE
 ───────────────────────────────────────── */
 export default function WindowCleaningAdsPage() {
+    const gmb = useGmb();
     const [modalOpen, setModalOpen] = useState(false);
     const [showPromo, setShowPromo] = useState(false);
     const [galleryOpen, setGalleryOpen] = useState(false);
@@ -454,12 +456,7 @@ export default function WindowCleaningAdsPage() {
                         </div>
 
                         <div className="grid grid-cols-2 gap-2 sm:gap-3 w-full max-w-md">
-                            {[
-                                { icon: "🛡️", text: "$20M Insured" },
-                                { icon: "👮", text: "Police Cleared" },
-                                { icon: "💧", text: "Pure Water Tech" },
-                                { icon: "⭐", text: "5.0 Google Reviews" },
-                            ].map((b) => (
+                            {[ { icon: "\uD83D\uDEE1\uFE0F", text: "$20M Insured" }, { icon: "\uD83C\uDFC5", text: "Police Cleared" }, { icon: "\uD83D\uDCA7", text: "Pure Water Tech" }, { icon: "\u2B50", text: `${gmb.rating} Google Reviews` } ].map((b) => (
                                 <span
                                     key={b.text}
                                     className="flex items-center justify-center gap-1 sm:gap-2 rounded-full px-1 sm:px-5 py-2.5 text-[11px] sm:text-sm md:text-base font-semibold text-center"
@@ -510,12 +507,7 @@ export default function WindowCleaningAdsPage() {
             {/* ─── SECTION 2: STATS STRIP ─── */}
             <section style={{ background: YELLOW }}>
                 <div className="mx-auto grid max-w-4xl grid-cols-4">
-                    {[
-                        { num: "100+", label: "Happy Clients" },
-                        { num: "5.0★", label: "Google Rating" },
-                        { num: "$20M", label: "Insured" },
-                        { num: "24hr", label: "Response Time" },
-                    ].map((s, i) => (
+                    {[ { num: "100+", label: "Happy Clients" }, { num: `${gmb.rating}\u2B50`, label: "Google Rating" }, { num: "$20M", label: "Insured" }, { num: "24hr", label: "Response Time" } ].map((s, i) => (
                         <div
                             key={s.label}
                             className="flex flex-col items-center justify-center py-5 text-center"
@@ -547,7 +539,7 @@ export default function WindowCleaningAdsPage() {
                         className="text-sm font-medium hover:underline"
                         style={{ color: "#888" }}
                     >
-                        5.0 across 30+ Google Reviews
+                        {gmb.rating} across {gmb.reviewCount} Google Reviews
                     </Link>
                 </div>
                 <GoogleReviews reviews={windowCleaningReviews} />

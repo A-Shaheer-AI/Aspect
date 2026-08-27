@@ -1,0 +1,1 @@
+const fs = require("fs"); let content = fs.readFileSync("app/layout.tsx", "utf8"); content = content.replace(/<body[^>]*>/, `$&\\n                <GmbProvider value={{ rating: Number(gmbData.rating).toFixed(1), reviewCount: gmbData.reviewCount + "+", address: gmbData.address }}>`); fs.writeFileSync("app/layout.tsx", content, "utf8");

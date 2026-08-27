@@ -7,6 +7,8 @@ import Navbar from "@/components/Navbar";
 import Footer from "@/components/Footer";
 import StickyInterface from "@/components/ui/StickyInterface";
 import ConditionalLayout from "@/components/ConditionalLayout";
+import { getGmbData } from "@/app/actions/gmb";
+import GmbProvider from "@/components/GmbProvider";
 
 const montserrat = Montserrat({
     subsets: ["latin"],
@@ -70,11 +72,13 @@ export const metadata: Metadata = {
     },
 };
 
-export default function RootLayout({
+export default async function RootLayout({
     children,
 }: Readonly<{
     children: React.ReactNode;
 }>) {
+
+    const gmbData = await getGmbData();
 
     return (
         <html lang="en" className={`${montserrat.variable} ${inter.variable}`} suppressHydrationWarning>
@@ -95,8 +99,8 @@ export default function RootLayout({
                             "priceRange": "$$",
                             "aggregateRating": {
                                 "@type": "AggregateRating",
-                                "ratingValue": "5.0",
-                                "reviewCount": "30"
+                                "ratingValue": gmbData.rating.toString(),
+                                "reviewCount": gmbData.reviewCount.toString()
                             },
                             "address": {
                                 "@type": "PostalAddress",
@@ -137,6 +141,7 @@ export default function RootLayout({
                 />
             </head>
             <body className="bg-brand-snow text-brand-navy font-body antialiased">
+                <GmbProvider value={{ rating: Number(gmbData.rating).toFixed(1), reviewCount: gmbData.reviewCount + "+", address: gmbData.address }}>
                 {/* ACCESSIBILITY: Skip to content link */}
                 <a href="#main-content" className="skip-link">
                     Skip to main content
@@ -153,6 +158,7 @@ export default function RootLayout({
 
                 <GoogleTagManager gtmId="GTM-KFLNCF23" />
                 <SpeedInsights />
+                            </GmbProvider>
             </body>
         </html>
     );
