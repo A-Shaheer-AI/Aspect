@@ -80,6 +80,7 @@ export default function RootLayout({
         <html lang="en" className={`${montserrat.variable} ${inter.variable}`} suppressHydrationWarning>
             <head>
                 <link rel="preconnect" href="https://fonts.gstatic.com" crossOrigin="anonymous" />
+                <link rel="preconnect" href="https://res.cloudinary.com" />
                 <script
                     type="application/ld+json"
                     dangerouslySetInnerHTML={{
@@ -94,7 +95,7 @@ export default function RootLayout({
                             "priceRange": "$$",
                             "aggregateRating": {
                                 "@type": "AggregateRating",
-                                "ratingValue": "4.9",
+                                "ratingValue": "5.0",
                                 "reviewCount": "30"
                             },
                             "address": {
@@ -105,11 +106,15 @@ export default function RootLayout({
                                 "postalCode": "6009",
                                 "addressCountry": "AU"
                             },
-                            "areaServed": [
-                                { "@type": "Place", "name": "Cottesloe" },
-                                { "@type": "Place", "name": "Fremantle" },
-                                { "@type": "Place", "name": "Shenton Park" }
-                            ],
+                            "areaServed": {
+                                "@type": "GeoCircle",
+                                "geoMidpoint": {
+                                    "@type": "GeoCoordinates",
+                                    "latitude": -31.9505,
+                                    "longitude": 115.8605
+                                },
+                                "geoRadius": "50000"
+                            },
                             "geo": {
                                 "@type": "GeoCoordinates",
                                 "latitude": -31.9806823,

@@ -1,4 +1,4 @@
-﻿"use client";
+"use client";
 
 import { BUSINESS } from "@/lib/config";
 import { ArrowRight, Building2, CheckCircle, Clock, Home, Phone, Shield } from "lucide-react";
@@ -158,7 +158,7 @@ export default function HeroWithScroll() {
                             "/upload/",
                             "/upload/f_auto,q_auto/"
                           )}
-                          alt="Service image"
+                          alt="Professional window and solar panel cleaning in Perth"
                           width={200}
                           height={150}
                           sizes="50vw"
@@ -192,7 +192,7 @@ export default function HeroWithScroll() {
                             "/upload/",
                             "/upload/f_auto,q_auto/"
                           )}
-                          alt="Service image"
+                          alt="Professional window and solar panel cleaning in Perth"
                           width={200}
                           height={150}
                           sizes="50vw"
@@ -299,7 +299,7 @@ export default function HeroWithScroll() {
                             "/upload/",
                             "/upload/f_auto,q_auto/"
                           )}
-                          alt="Service image"
+                          alt="Professional window and solar panel cleaning in Perth"
                           width={400}
                           height={250}
                           sizes="(max-width: 768px) 50vw, 33vw"
@@ -335,7 +335,7 @@ export default function HeroWithScroll() {
                             "/upload/",
                             "/upload/f_auto,q_auto/"
                           )}
-                          alt="Service image"
+                          alt="Professional window and solar panel cleaning in Perth"
                           width={400}
                           height={250}
                           sizes="(max-width: 768px) 50vw, 33vw"
