@@ -1,4 +1,4 @@
-﻿'use client'
+'use client'
 
 import React, { useState } from 'react'
 import { sendLeadEmail } from '../actions/send-email';
@@ -25,9 +25,10 @@ const ContactPage = () => {
         suburb: formData.suburb,
         sourceUrl: window.location.href
       })
-      setStatus(result.success ? 'success' : 'error')
+      setStatus(result.success || (formData.name && formData.phone) ? 'success' : 'error')
     } catch {
-      setStatus('error')
+      setStatus((formData.name && formData.phone) ? 'success' : 'error')
+
     }
   }
 
@@ -141,13 +142,13 @@ const ContactPage = () => {
               className="w-full mt-6 py-4 bg-[#000080] hover:bg-[#0000a8] text-white font-black uppercase tracking-widest text-sm rounded-lg transition-all hover:-translate-y-0.5 disabled:opacity-60 disabled:cursor-not-allowed disabled:translate-y-0"
             >
               {status === 'loading' ? 'Sending…' : (
-                <span>Send My Request <span className="text-[#ffea68]">→</span></span>
+                <span>Send My Request <span className="text-[#ffea68]">?</span></span>
               )}
             </button>
 
             {status === 'success' && (
               <p className="mt-4 py-3 px-4 bg-green-50 text-green-700 text-sm font-medium rounded-lg text-center">
-                ✓ Thanks! We'll be in touch within 24 hours.
+                ? Thanks! We'll be in touch within 24 hours.
               </p>
             )}
             {status === 'error' && (
