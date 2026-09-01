@@ -71,12 +71,12 @@ export default function PrivacyPage() {
                     </p>
                     <ul>
                         <li>Phone: 04XX XXX XXX</li>
-                        <li>Email: hello@aspect.com.au</li>
+                        <li>Email: info@aspectwindowcleaning.com.au</li>
                     </ul>
 
                     <div className="mt-12 pt-8 border-t border-slate-200">
                         <Link href="/" className="text-action-gold font-medium hover:underline">
-                            ← Back to Home
+                            â† Back to Home
                         </Link>
                     </div>
                 </div>
