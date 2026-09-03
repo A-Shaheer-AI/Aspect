@@ -7,6 +7,8 @@ import Navbar from "@/components/Navbar";
 import Footer from "@/components/Footer";
 import StickyInterface from "@/components/ui/StickyInterface";
 import ConditionalLayout from "@/components/ConditionalLayout";
+import { getGmbData } from "@/app/actions/gmb";
+import GmbProvider from "@/components/GmbProvider";
 
 const montserrat = Montserrat({
     subsets: ["latin"],
@@ -25,6 +27,7 @@ const inter = Inter({
 });
 
 export const metadata: Metadata = {
+    metadataBase: new URL("https://aspectwindowcleaning.com.au"),
     title: {
         template: "%s | Aspect Window Cleaning Perth",
         default: "Perth's Premier Window Cleaning | Residential & Commercial Specialists",
@@ -51,21 +54,37 @@ export const metadata: Metadata = {
             "Professional window cleaning in Perth. Residential and commercial high-reach specialists. Fully insured. 5-star rated.",
         locale: "en_AU",
         type: "website",
-        url: "https://aspectwindowcleaning.com.au",
         siteName: "Aspect Window Cleaning",
+        images: [
+            {
+                url: "https://res.cloudinary.com/dr8tjrszy/image/upload/v1772130850/white-logo_pzpxjk.png",
+                width: 1200,
+                height: 630,
+                alt: "Aspect Window Cleaning Perth",
+            },
+        ],
+    },
+    twitter: {
+        card: "summary_large_image",
+        title: "Aspect Window Cleaning | Perth's Premier Specialists",
+        description: "Professional window cleaning in Perth. Residential and commercial high-reach specialists. Fully insured. 5-star rated.",
+        images: ["https://res.cloudinary.com/dr8tjrszy/image/upload/v1772130850/white-logo_pzpxjk.png"],
     },
 };
 
-export default function RootLayout({
+export default async function RootLayout({
     children,
 }: Readonly<{
     children: React.ReactNode;
 }>) {
 
+    const gmbData = await getGmbData();
+
     return (
         <html lang="en" className={`${montserrat.variable} ${inter.variable}`} suppressHydrationWarning>
             <head>
                 <link rel="preconnect" href="https://fonts.gstatic.com" crossOrigin="anonymous" />
+                <link rel="preconnect" href="https://res.cloudinary.com" />
                 <script
                     type="application/ld+json"
                     dangerouslySetInnerHTML={{
@@ -80,8 +99,8 @@ export default function RootLayout({
                             "priceRange": "$$",
                             "aggregateRating": {
                                 "@type": "AggregateRating",
-                                "ratingValue": "4.9",
-                                "reviewCount": "30"
+                                "ratingValue": gmbData.rating.toString(),
+                                "reviewCount": gmbData.reviewCount.toString()
                             },
                             "address": {
                                 "@type": "PostalAddress",
@@ -91,11 +110,15 @@ export default function RootLayout({
                                 "postalCode": "6009",
                                 "addressCountry": "AU"
                             },
-                            "areaServed": [
-                                { "@type": "Place", "name": "Cottesloe" },
-                                { "@type": "Place", "name": "Fremantle" },
-                                { "@type": "Place", "name": "Shenton Park" }
-                            ],
+                            "areaServed": {
+                                "@type": "GeoCircle",
+                                "geoMidpoint": {
+                                    "@type": "GeoCoordinates",
+                                    "latitude": -31.9505,
+                                    "longitude": 115.8605
+                                },
+                                "geoRadius": "50000"
+                            },
                             "geo": {
                                 "@type": "GeoCoordinates",
                                 "latitude": -31.9806823,
@@ -118,6 +141,7 @@ export default function RootLayout({
                 />
             </head>
             <body className="bg-brand-snow text-brand-navy font-body antialiased">
+                <GmbProvider value={{ rating: Number(gmbData.rating).toFixed(1), reviewCount: gmbData.reviewCount + "+", address: gmbData.address }}>
                 {/* ACCESSIBILITY: Skip to content link */}
                 <a href="#main-content" className="skip-link">
                     Skip to main content
@@ -134,6 +158,7 @@ export default function RootLayout({
 
                 <GoogleTagManager gtmId="GTM-KFLNCF23" />
                 <SpeedInsights />
+                            </GmbProvider>
             </body>
         </html>
     );

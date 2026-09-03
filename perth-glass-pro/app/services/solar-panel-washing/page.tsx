@@ -9,7 +9,7 @@ import BeforeAfterSlider from "@/components/BeforeAfterSlider";
 
 type FaqsType = {
     question: string;
-    answer: string;
+    answer: React.ReactNode;
 }
 
 export const metadata: Metadata = {
@@ -22,22 +22,22 @@ const stats = [
     {
         icon: TrendingDown,
         value: "30%",
-        label: "Energy loss from dirty panels",
+        label: "Average efficiency lost to grime in Perth",
     },
     {
         icon: Calendar,
-        value: "6–12 Months",
-        label: "Recommended cleaning interval",
+        value: "6â€“12 Months",
+        label: "Optimal cleaning interval for Perth climate",
     },
     {
         icon: ShieldCheck,
         value: "100%",
-        label: "Satisfaction guarantee",
+        label: "Jobs completed with zero panel damage",
     },
     {
         icon: Star,
-        value: "5.0★",
-        label: "Google rating across Perth",
+        value: "5.0?",
+        label: "Google rating from Perth homeowners",
     },
 ];
 
@@ -46,37 +46,37 @@ const whatsInclude = [
         icon: CheckCircle2,
         title: "Dust & Debris Removal",
         description:
-            "Full removal of accumulated dust, dirt, pollen, and loose debris from all panel surfaces using soft-bristle brush heads.",
+            "Full removal of Perth's red dust, eucalyptus pollen, and airborne debris from every panel surface - the buildup that silently costs you money on every sunny day.",
     },
     {
         icon: CheckCircle2,
         title: "Bird Dropping Treatment",
         description:
-            "Stubborn bird droppings are pre-soaked and gently removed without scratching or damaging the anti-reflective panel coating.",
+            "Bird droppings are highly acidic and can permanently etch panel glass if left more than a few weeks. We pre-soak and gently lift every dropping without scratching the anti-reflective coating.",
     },
     {
         icon: CheckCircle2,
         title: "Purified Water Wash",
         description:
-            "We use 100% deionised, mineral-free water — leaving zero residue on the glass so panels dry spotless and streak-free.",
+            "100% deionised water contains zero minerals - so it evaporates leaving no residue, no spots, and no chemical film on your panels. Maximum light transmission, every time.",
     },
     {
         icon: CheckCircle2,
         title: "Panel Surface Inspection",
         description:
-            "While cleaning, our technician visually inspects each panel for cracks, hotspots, or damage and reports any concerns.",
+            "While cleaning, our technician visually inspects each panel for micro-cracks, hotspot discolouration, loose connections, and physical damage - and flags anything that warrants your installer's attention.",
     },
     {
         icon: CheckCircle2,
         title: "Frame & Edge Cleaning",
         description:
-            "Panel frames, edges, and mounting brackets are cleaned to prevent grime buildup that can trap moisture and cause corrosion.",
+            "Grime and moisture in panel frames and around mounting brackets traps water and accelerates corrosion. We clean edges and frames thoroughly - protecting the structure of your solar investment.",
     },
     {
         icon: CheckCircle2,
         title: "Safe Roof Access",
         description:
-            "We use appropriate ladders, poles, and safety equipment for safe roof access — no unnecessary foot traffic on your roof or panels.",
+            "We use appropriate ladders, soft-soled footwear, and roof-safe equipment. We never step directly on panels or compromise your roof's integrity - just safe, methodical access every time.",
     },
 ];
 
@@ -85,25 +85,25 @@ const benefitsOfCleaning = [
         number: "01",
         title: "Restore & Maximise Energy Output",
         description:
-            "Dirt and grime act as a barrier between sunlight and your panels' photovoltaic cells. Professional cleaning restores full sunlight absorption — recovering up to 30% of lost output and maximising the electricity your system generates every day.",
+            "Perth receives over 3,200 hours of sunshine annually - more than almost any other major city in the world. A layer of grime between your panels and that sunshine is pure waste. Professional cleaning removes that barrier and restores your system to full generating capacity - recovering up to 30% of lost output.",
     },
     {
         number: "02",
         title: "Reduce Your Power Bills",
         description:
-            "A fully performing solar system offsets more of your grid electricity usage. Even a modest 10-15% efficiency improvement from cleaning can translate to meaningful savings on your quarterly energy bills — often covering the cost of cleaning many times over.",
+            "Even a modest 10-15% efficiency restoration from a single clean can add up to significant savings across a Perth year. Given our solar irradiance levels, dirty panels in summer aren't just inefficient - they're expensive. Most homeowners find cleaning pays for itself within a few billing cycles.",
     },
     {
         number: "03",
         title: "Extend the Lifespan of Your Panels",
         description:
-            "Bird droppings are highly acidic and can permanently etch and degrade panel glass if left untreated. Regular cleaning prevents this damage, protecting the long-term performance and value of your solar investment.",
+            "Eucalyptus sap and bird droppings are mildly to strongly acidic. Left on panel glass, they don't just block light - they chemically attack the anti-reflective coating, permanently reducing clarity and output. Once the coating is damaged, it cannot be restored. Regular cleaning prevents this irreversible degradation.",
     },
     {
         number: "04",
         title: "Maintain Manufacturer Warranty Compliance",
         description:
-            "Many solar panel warranties require documented, regular maintenance — including cleaning — to remain valid. Professional cleaning by a trained provider helps ensure you remain compliant and protected if a warranty claim ever arises.",
+            "Most major solar panel warranties (LG, SunPower, REC, Jinko) include maintenance requirements - and some explicitly require documented professional cleaning to remain valid. If you ever need to make a warranty claim, having a cleaning record can be the difference between a successful claim and a rejected one.",
     },
 ];
 
@@ -111,22 +111,22 @@ const whyAspectPoints = [
     {
         title: "Manufacturer-Approved Methods",
         description:
-            "We use soft-brush, purified water systems — the cleaning method recommended by all major solar panel manufacturers. No harsh chemicals, no abrasive tools, no risk of voiding your warranty.",
+            "We use only soft-bristle brushes and purified water - the cleaning method explicitly recommended by LG, REC, SunPower, and all major manufacturers. No harsh chemicals, no abrasive pads, no voided warranty - ever.",
     },
     {
         title: "Trained & Insured Technicians",
         description:
-            "Our team is professionally trained in safe roof access and solar panel handling, with $20M public liability insurance and police clearance on every job.",
+            "Our technicians are trained specifically in safe solar panel handling and roof access, with $20M public liability insurance and police clearance on every job. We treat your roof - and your investment - with care.",
     },
     {
         title: "Transparent Pricing, No Hidden Fees",
         description:
-            "You receive a clear, itemised quote before any work begins. The price we quote is the price you pay — guaranteed. No surprises when the invoice arrives.",
+            "You receive a clear, itemised quote before any work begins. The price we quote is the price you pay - guaranteed. No surprises when the invoice arrives.",
     },
     {
         title: "100% Satisfaction Guaranteed",
         description:
-            "We're not finished until you're completely happy with the result. If anything doesn't meet expectations, we return and fix it at no extra cost — that's our promise.",
+            "We're not finished until you're completely happy with the result. If anything doesn't meet expectations, we return and fix it at no extra cost - that's our promise.",
     },
 ];
 
@@ -135,7 +135,7 @@ const processSteps = [
         number: "01",
         title: "Free Quote",
         description:
-            "Share your panel count and address — we'll give you a fast, transparent quote with no obligation.",
+            "Share your panel count and address - we'll give you a fast, transparent quote with no obligation.",
     },
     {
         number: "02",
@@ -161,7 +161,7 @@ const solarFAQs: FaqsType[] = [
     {
         question: "Why is solar panel cleaning important?",
         answer:
-            "Dust, bird droppings, and environmental buildup act as a barrier on your panel surface, reducing the amount of sunlight reaching the photovoltaic cells. Even a thin layer of grime can reduce output by 15–30%, meaning you're generating significantly less than your system is capable of.",
+            "Dust, bird droppings, and environmental buildup act as a barrier on your panel surface, reducing the amount of sunlight reaching the photovoltaic cells. Even a thin layer of grime can reduce output by 15â€“30%, meaning you're generating significantly less than your system is capable of.",
     },
     {
         question: "How often should I have my solar panels cleaned in Perth?",
@@ -171,17 +171,17 @@ const solarFAQs: FaqsType[] = [
     {
         question: "Can I clean my solar panels myself?",
         answer:
-            "While basic rinsing is possible, DIY cleaning carries real risks — including roof fall hazards, scratching panel surfaces, and using tap water that leaves mineral deposits. Professional cleaning is safer and more effective.",
+            "While basic rinsing is possible, DIY cleaning carries real risks - including roof fall hazards, scratching panel surfaces, and using tap water that leaves mineral deposits. Professional cleaning is safer and more effective.",
     },
     {
         question: "What method do you use to clean solar panels?",
         answer:
-            "We use a soft-bristle brush system with 100% purified, deionised water — the method recommended by virtually all solar panel manufacturers. It removes debris without scratching or leaving residue.",
+            "We use a soft-bristle brush system with 100% purified, deionised water - the method recommended by virtually all solar panel manufacturers. It removes debris without scratching or leaving residue.",
     },
     {
         question: "Will cleaning my solar panels void the warranty?",
         answer:
-            "No — professional cleaning using approved methods helps maintain your warranty. Many manufacturers require documented maintenance, including cleaning.",
+            "No - professional cleaning using approved methods helps maintain your warranty. Many manufacturers require documented maintenance, including cleaning.",
     },
     {
         question: "How do I know if my panels need cleaning?",
@@ -282,12 +282,12 @@ const SolarPanelCleaningPage = () => {
                     Maximise Your Solar Panel Efficiency in Perth
                 </h2>
                 <p className="mb-4">
-                    Solar panels are one of the most valuable investments a Perth homeowner can make — but only when they're
+                    Solar panels are one of the most valuable investments a <Link href="/locations" className="text-action-gold hover:underline">Perth</Link> homeowner can make - but only when they're
                     operating at full capacity. Dust, bird droppings, pollen, and grime accumulate on panel surfaces over time, blocking
                     sunlight and silently reducing your energy output by up to 30%. At Aspect Window Cleaning, we provide
-                    professional solar panel cleaning using purified water and soft-brush technology — the same method
-                    recommended by leading panel manufacturers — to safely restore your system's performance and protect your
-                    investment long term.
+                    professional solar panel cleaning using purified water and soft-brush technology - the same method
+                    recommended by leading panel manufacturers - to safely restore your system's performance and protect your 
+                    investment. Combine this with our <Link href="/services/gutter-cleaning" className="text-action-gold hover:underline">gutter cleaning</Link> or <Link href="/services/residential-window-cleaning" className="text-action-gold hover:underline">residential window cleaning</Link> services for a complete exterior refresh.
                 </p>
             </section>
 
@@ -348,14 +348,14 @@ const SolarPanelCleaningPage = () => {
                             {/* Left Icon / Visual */}
                             <div className="flex-shrink-0">
                                 <div className="w-20 h-20 md:w-24 md:h-24 bg-white rounded-2xl shadow flex items-center justify-center border border-amber-200">
-                                    <span className="text-5xl">🧼</span>
+                                    <span className="text-5xl">??</span>
                                 </div>
                             </div>
 
                             {/* Content */}
                             <div className="flex-1">
                                 <div className="inline-flex items-center gap-2 bg-white text-amber-700 text-sm font-medium px-4 py-1.5 rounded-full border border-amber-200 mb-4">
-                                    <span className="text-lg">💡</span>
+                                    <span className="text-lg">??</span>
                                     DID YOU KNOW?
                                 </div>
 
@@ -369,7 +369,7 @@ const SolarPanelCleaningPage = () => {
                                         <span className="font-semibold text-orange-700"> 15-30%</span>.
                                     </p>
                                     <p className="text-brand-slate">
-                                        In Perth's dusty climate — with frequent easterly winds, bushfire smoke, and high bird activity —
+                                        In Perth's dusty climate - with frequent easterly winds, bushfire smoke, and high bird activity -
                                         panels can lose significant efficiency within just a few months.
                                     </p>
                                     <p className="text-brand-slate font-medium">
@@ -383,9 +383,9 @@ const SolarPanelCleaningPage = () => {
                         {/* Optional subtle footer highlight */}
                         <div className="mt-10 pt-8 border-t border-amber-100 text-center">
                             <p className="text-sm text-amber-600 font-medium flex items-center justify-center gap-2">
-                                <span>✨</span>
+                                <span>?</span>
                                 Clean panels = Maximum savings
-                                <span>✨</span>
+                                <span>?</span>
                             </p>
                         </div>
 
@@ -402,7 +402,7 @@ const SolarPanelCleaningPage = () => {
                     What Our Solar Panel Cleaning Service Covers
                 </h2>
                 <p className="mb-10 text-brand-slate">
-                    A complete, safe, and manufacturer-approved clean of your entire solar system — not just a quick rinse.
+                    A complete, safe, and manufacturer-approved clean of your entire solar system - not just a quick rinse.
                 </p>
 
                 <div className="grid md:grid-cols-2 gap-8">
@@ -439,7 +439,7 @@ const SolarPanelCleaningPage = () => {
 
                     {/* Intro paragraph */}
                     <p className="text-center text-brand-slate max-w-3xl mx-auto mb-12">
-                        Cleaning your solar panels isn't just about aesthetics — it directly impacts your energy output, your savings, and the lifespan of your system.
+                        Cleaning your solar panels isn't just about aesthetics - it directly impacts your energy output, your savings, and the lifespan of your system.
                     </p>
 
                     {/* Benefits List */}
@@ -466,7 +466,7 @@ const SolarPanelCleaningPage = () => {
                         <div className="relative w-full max-h-[500px]">
                             <Image
                                 src="https://res.cloudinary.com/dr8tjrszy/image/upload/v1771960139/solar-pannel-clean_cigwab.jpg"
-                                alt="Dirty solar panel — dust and bird dropping buildup"
+                                alt="Dirty solar panel - dust and bird dropping buildup"
                                 fill
                                 className="rounded-xl shadow-md object-cover"
                             />
@@ -475,7 +475,7 @@ const SolarPanelCleaningPage = () => {
                         <div className="w-full">
                             <Image
                                 src="https://res.cloudinary.com/dr8tjrszy/image/upload/v1771960138/sollar-plats-cleaning_gyngjf.jpg"
-                                alt="Clean solar panel — full output after professional wash"
+                                alt="Clean solar panel - full output after professional wash"
                                 width={500}
                                 height={500}
                                 className="rounded-xl shadow-md object-cover"
@@ -502,7 +502,7 @@ const SolarPanelCleaningPage = () => {
 
                     {/* Intro paragraph */}
                     <p className="text-center text-brand-slate max-w-3xl mx-auto mb-12">
-                        We specialise in safe, effective solar panel cleaning using manufacturer-approved methods — so your panels are cleaned thoroughly without any risk of damage.
+                        We specialise in safe, effective solar panel cleaning using manufacturer-approved methods - so your panels are cleaned thoroughly without any risk of damage.
                     </p>
 
                     {/* Points grid */}
@@ -537,7 +537,7 @@ const SolarPanelCleaningPage = () => {
 
                     {/* Intro */}
                     <p className="text-center text-brand-slate max-w-3xl mx-auto mb-12">
-                        Simple, safe, and hassle-free — from first contact to fully restored panels.
+                        Simple, safe, and hassle-free - from first contact to fully restored panels.
                     </p>
 
                     {/* Steps */}

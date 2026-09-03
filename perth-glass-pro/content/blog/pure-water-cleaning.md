@@ -1,7 +1,7 @@
 ---
 title: "Why Pure Water Window Cleaning is Better"
 date: "2024-03-15T10:00:00Z"
-thumbnail: "https://res.cloudinary.com/demo/image/upload/v1312461204/sample.jpg"
+thumbnail: "https://res.cloudinary.com/dr8tjrszy/image/upload/v1771873841/residential-window-cleaning_nhnoux.jpg"
 excerpt: "Discover why traditional squeegees are outdated and how pure water technology delivers a longer-lasting, streak-free shine for your Perth home."
 ---
 

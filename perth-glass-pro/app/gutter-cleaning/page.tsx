@@ -1,4 +1,4 @@
-"use client";
+﻿"use client";
 
 import { useEffect, useState } from "react";
 import { Phone, CheckCircle2, Star, Shield, Droplets, Zap, Home, X, Leaf, Droplet, AlertTriangle, Bug, Hammer, Tag } from "lucide-react";
@@ -19,7 +19,7 @@ type FormDataType = {
 };
 
 /* ─────────────────────────────────────────
-   LEAD FORM — shared by hero + modal
+   LEAD FORM - shared by hero + modal
 ───────────────────────────────────────── */
 function LeadForm({
     submitted,
@@ -94,7 +94,7 @@ function LeadForm({
 }
 
 /* ─────────────────────────────────────────
-   MODAL — reusable, accepts optional promo
+   MODAL - reusable, accepts optional promo
 ───────────────────────────────────────── */
 function QuoteModal({
     open,
@@ -132,7 +132,7 @@ function QuoteModal({
                     animation: "modalPop 0.3s cubic-bezier(0.34,1.56,0.64,1) both",
                 }}
             >
-                {/* Promo banner — only shown on scroll popup */}
+                {/* Promo banner - only shown on scroll popup */}
                 {showPromo && (
                     <div
                         className="relative flex items-center justify-center gap-2 px-4 py-3 text-sm font-semibold"
@@ -182,7 +182,7 @@ function QuoteModal({
                         className="inline-block text-xs font-bold uppercase tracking-widest rounded-full px-3 py-1 mb-4"
                         style={{ background: "rgba(255,229,77,0.12)", color: YELLOW }}
                     >
-                        Free Quote — No Obligation
+                        Free Quote - No Obligation
                     </div>
                     <h3 className="text-white font-bold text-lg mb-1">Get a Fast Text Quote</h3>
                     <p className="text-sm mb-5" style={{ color: "rgba(255,255,255,0.5)" }}>
@@ -270,7 +270,7 @@ export default function GutterCleaningAdsPage() {
         {
             num: "02",
             title: "Book Time",
-            body: "Choose a day that suits — same-week availability across Perth metro.",
+            body: "Choose a day that suits - same-week availability across Perth metro.",
             clickable: false
         },
         {
@@ -317,8 +317,8 @@ export default function GutterCleaningAdsPage() {
     const features = [
         { icon: <Leaf className="w-5 h-5" style={{ color: "#07077E" }} />, title: "Leaf & Debris Removal", body: "Full removal of all leaves, twigs, dirt, and organic buildup from gutters and valleys." },
         { icon: <Droplet className="w-5 h-5" style={{ color: "#07077E" }} />, title: "Downpipe Clearing", body: "We flush and clear all downpipes to ensure unobstructed water flow from roof to drain." },
-        { icon: <Shield className="w-5 h-5" style={{ color: "#07077E" }} />, title: "Gutter Inspection", body: "We check for cracks, rust, sagging, and loose brackets — and flag anything that needs attention." },
-        { icon: <Home className="w-5 h-5" style={{ color: "#07077E" }} />, title: "Safe Debris Disposal", body: "All collected debris is bagged and removed from your property — no mess left behind." },
+        { icon: <Shield className="w-5 h-5" style={{ color: "#07077E" }} />, title: "Gutter Inspection", body: "We check for cracks, rust, sagging, and loose brackets - and flag anything that needs attention." },
+        { icon: <Home className="w-5 h-5" style={{ color: "#07077E" }} />, title: "Safe Debris Disposal", body: "All collected debris is bagged and removed from your property - no mess left behind." },
         {
             icon: <Droplet className="w-5 h-5" style={{ color: "#07077E" }} />,
             title: "Water Flow Test",
@@ -335,7 +335,7 @@ export default function GutterCleaningAdsPage() {
         { icon: <AlertTriangle className="w-5 h-5" />, title: "Prevent Water Damage", body: "Overflowing gutters direct water against walls and foundations, causing dampness and structural cracking. Clean gutters route water safely away." },
         { icon: <Bug className="w-5 h-5" />, title: "Avoid Pest Infestations", body: "Clogged, damp gutters are a favourite nesting spot for mosquitoes, birds, rodents, and wasps. Regular cleaning eliminates this habitat." },
         { icon: <Hammer className="w-5 h-5" />, title: "Protect Your Roof", body: "Debris buildup traps moisture against fascia boards and roof edges, accelerating rot and rust. Clean gutters extend your roofing lifespan." },
-        { icon: <Shield className="w-5 h-5" />, title: "Prevent Structural Failure", body: "A gutter full of saturated debris can weigh tens of kilograms — causing sagging or collapse. Routine cleaning keeps the system secure." },
+        { icon: <Shield className="w-5 h-5" />, title: "Prevent Structural Failure", body: "A gutter full of saturated debris can weigh tens of kilograms - causing sagging or collapse. Routine cleaning keeps the system secure." },
     ];
 
     const NAVY = "#07077E";
@@ -434,7 +434,7 @@ export default function GutterCleaningAdsPage() {
                             Blocked gutters cause water damage, pests, and costly repairs. Fill in your details and we'll text you a price within 60 minutes.
                         </p>
                         <div className="flex flex-col gap-3">
-                            {["Fast reply — usually within the hour", "Same-week and next-day slots available", "Full debris removal & disposal included", "Water flow test after cleaning"].map((point, index) => (
+                            {["Fast reply - usually within the hour", "Same-week and next-day slots available", "Full debris removal & disposal included", "Water flow test after cleaning"].map((point, index) => (
                                 <div key={index} className="flex items-center gap-3 text-sm" style={{ color: "rgba(255,255,255,0.7)" }}>
                                     <div className="flex h-5 w-5 flex-shrink-0 items-center justify-center rounded-full text-xs" style={{ background: "rgba(255,229,77,0.15)", border: "1px solid rgba(255,229,77,0.35)", color: YELLOW }}>✓</div>
                                     {point}
@@ -461,7 +461,7 @@ export default function GutterCleaningAdsPage() {
                         Complete Gutter Cleaning Service
                     </h2>
                     <p className="mx-auto max-w-lg text-base font-light leading-relaxed" style={{ color: "#888" }}>
-                        We don't just scoop out debris — our service covers every component from inlet to outlet.
+                        We don't just scoop out debris - our service covers every component from inlet to outlet.
                     </p>
                 </div>
 
@@ -494,7 +494,7 @@ export default function GutterCleaningAdsPage() {
                         The Real Cost of Blocked Gutters
                     </h2>
                     <p className="mx-auto max-w-lg text-base font-light leading-relaxed" style={{ color: "rgba(255,255,255,0.55)" }}>
-                        Gutter cleaning isn't just maintenance — it's active protection for your home.
+                        Gutter cleaning isn't just maintenance - it's active protection for your home.
                     </p>
                 </div>
 
@@ -525,7 +525,7 @@ export default function GutterCleaningAdsPage() {
                 <div className="mx-auto grid max-w-4xl grid-cols-12 gap-3">
                     <div className="col-span-12 md:col-span-6 rounded-2xl p-6 bg-white">
                         <div className="mb-4 flex h-10 w-10 items-center justify-center rounded-xl" style={{ background: "rgba(7,7,126,0.06)" }}><Shield className="w-5 h-5" style={{ color: NAVY }} /></div>
-                        <p className="font-bold text-base mb-2" style={{ color: NAVY }}>Fully Insured — $20M Cover</p>
+                        <p className="font-bold text-base mb-2" style={{ color: NAVY }}>Fully Insured - $20M Cover</p>
                         <p className="text-sm font-light leading-relaxed" style={{ color: "#888" }}>
                             Complete public liability insurance gives you total peace of mind. We work safely on every property.
                         </p>
@@ -545,7 +545,7 @@ export default function GutterCleaningAdsPage() {
                     <div className="col-span-12 md:col-span-6 rounded-2xl p-6" style={{ background: YELLOW }}>
                         <div className="mb-4 flex h-10 w-10 items-center justify-center rounded-xl" style={{ background: "rgba(7,7,126,0.1)" }}><Home className="w-5 h-5" style={{ color: NAVY }} /></div>
                         <p className="font-bold text-base mb-2" style={{ color: NAVY }}>Transparent Pricing</p>
-                        <p className="text-sm font-light leading-relaxed" style={{ color: "rgba(7,7,126,0.6)" }}>Clear, upfront quote before we start. The price you're given is the price you pay — no surprises.</p>
+                        <p className="text-sm font-light leading-relaxed" style={{ color: "rgba(7,7,126,0.6)" }}>Clear, upfront quote before we start. The price you're given is the price you pay - no surprises.</p>
                     </div>
                     <div className="col-span-12 md:col-span-6 rounded-2xl p-6 bg-white">
                         <div className="mb-4 flex h-10 w-10 items-center justify-center rounded-xl" style={{ background: "rgba(7,7,126,0.06)" }}><Droplets className="w-5 h-5" style={{ color: NAVY }} /></div>
@@ -659,7 +659,7 @@ export default function GutterCleaningAdsPage() {
                 </div>
                 <Link href={`tel:${BUSINESS.phoneRaw}`} className="flex items-center gap-2 rounded-xl px-5 py-3 font-bold text-sm transition-all hover:scale-105 sm:ml-auto" style={{ background: YELLOW, color: NAVY }}>
                     <Phone className="w-4 h-4" />
-                    Call Now — {BUSINESS.phone}
+                    Call Now - {BUSINESS.phone}
                 </Link>
             </div>
             <div className="h-16" style={{ background: NAVY }} />

@@ -1,8 +1,11 @@
-"use client";
+﻿"use client";
 
 import { Shield, Award, Clock, Users, Star, CheckCircle } from "lucide-react";
 import { motion } from "framer-motion";
 import Link from "next/link";
+import { useGmb } from "@/components/GmbProvider";
+import { useState, useEffect } from "react";
+import { getGmbData } from "@/app/actions/gmb";
 
 interface Review {
     id: number;
@@ -44,7 +47,7 @@ const reviews: Review[] = [
         reviews: "1 review",
         rating: 5,
         date: "8 months ago",
-        content: "I recently hired them for window cleaning, and I couldn't be happier with the results. The team was punctual, professional, and paid great attention to detail. Our windows are spotless—inside and out—and they even cleaned the screens and tracks. Highly recommend their service and will definitely use them again.",
+        content: "I recently hired them for window cleaning, and I couldn't be happier with the results. The team was punctual, professional, and paid great attention to detail. Our windows are spotless-inside and out-and they even cleaned the screens and tracks. Highly recommend their service and will definitely use them again.",
     },
     {
         id: 5,
@@ -127,11 +130,13 @@ const getAvatarColor = (name: string) => {
 };
 
 export default function TrustGrid() {
+    const gmb = useGmb();
+
 
     const stats = [
         { value: "1+", label: "Years Experience", icon: Award },
         { value: "100+", label: "Happy Customers", icon: Users },
-        { value: "5.0", label: "Google Rating", icon: Star },
+        { value: gmb.rating, label: "Google Rating", icon: Star },
         { value: "100%", label: "Satisfaction Rate", icon: CheckCircle },
     ];
 
@@ -229,8 +234,8 @@ export default function TrustGrid() {
                                     <Star key={star} className="w-6 h-6 fill-yellow-400 text-yellow-400" />
                                 ))}
                             </div>
-                            <span className="text-2xl font-bold text-brand-navy">5.0</span>
-                            <span className="text-gray-500"> 30+ reviews</span>
+                            <span className="text-2xl font-bold text-brand-navy">{gmb.rating}</span>
+                            <span className="text-gray-500"> {gmb.reviewCount} reviews</span>
                         </div>
                     </div>
 

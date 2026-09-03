@@ -1,0 +1,1 @@
+const fs = require("fs"); let content = fs.readFileSync("app/landing/page.tsx", "utf8"); content = content.replace(/\{ num: \`\$\{gmb\.rating\}\?\`, label: "Google Rating" \}/g, `{ num: \`\${gmb.rating}\\u2B50\`, label: "Google Rating" }`); fs.writeFileSync("app/landing/page.tsx", content, "utf8");

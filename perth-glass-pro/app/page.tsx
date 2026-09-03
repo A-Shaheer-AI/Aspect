@@ -3,7 +3,7 @@ import ClientHomeContent from "@/components/ClientHomeContent";
 import { Metadata } from "next";
 
 export const metadata: Metadata = {
-    title: "BEST Window Cleaning Perth - If you're looking for Window Cleaning Service Perth or even Window Cleaning near me - Aspect Window Cleaning is the place to call",
+    title: "Aspect Window Cleaning Perth | Residential & Commercial | Free Quote",
 }
 
 export default function Home() {

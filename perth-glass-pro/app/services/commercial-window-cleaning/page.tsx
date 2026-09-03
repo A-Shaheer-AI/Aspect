@@ -8,7 +8,7 @@ import BeforeAfterSlider from "@/components/BeforeAfterSlider";
 
 type FaqsType = {
     question: string;
-    answer: string;
+    answer: React.ReactNode;
 }
 
 export const metadata: Metadata = {
@@ -22,37 +22,37 @@ const whatsInclude = [
         icon: ChevronsRight,
         title: "Office & Workspace Cleaning",
         description:
-            "Full cleaning of desks, surfaces, communal areas, meeting rooms, and reception — kept spotless every visit.",
+            "Comprehensive cleaning of all desk surfaces, communal areas, meeting rooms, and reception - creating a workspace that reflects your standards and makes the right impression on every visitor.",
     },
     {
         icon: ChevronsRight,
         title: "Restroom Sanitation",
         description:
-            "Deep cleaning and disinfection of all bathrooms, including fixtures, tiles, mirrors, and replenishment of supplies",
+            "Deep cleaning and disinfection of all fixtures, tiles, mirrors, and surfaces - plus consumable replenishment. The standard your staff and clients expect, maintained on every visit.",
     },
     {
         icon: ChevronsRight,
         title: "Floor Maintenance",
         description:
-            "Vacuuming, mopping, and floor care across all surface types — tiles, carpet, vinyl, and hard floors.",
+            "Vacuuming, mopping, and appropriate care for every floor type in your facility - tiles, carpet, vinyl, and polished concrete - maintaining a clean, professional finish throughout.",
     },
     {
         icon: ChevronsRight,
         title: "Window & Glass Cleaning",
         description:
-            "Interior and exterior glass, partitions, and shopfronts cleaned streak-free using our pure  water system.",
+            "Interior and exterior glass, shopfront panels, and glass partitions cleaned streak-free using our pure water system. Clean glass transforms how your premises look - from both inside and out.",
     },
     {
         icon: ChevronsRight,
         title: "Dusting & High-Touch Surfaces",
         description:
-            "All ledges, skirting boards, vents, and high-touch points like door handles and light switches sanitised thoroughly.",
+            "All ledges, vents, and high-contact points - door handles, light switches, lift buttons - sanitised on every visit. These are the surfaces that matter most for workplace hygiene and infection control.",
     },
     {
         icon: ChevronsRight,
         title: "Waste Removal & Bin Liner Replacement",
         description:
-            "All bins emptied, sanitised, and relined throughout the facility at the end of every service visit.",
+            "Every bin emptied, sanitised, and relined across your facility. We don't skip bins in less-visible areas - every space in your premises is treated with equal care.",
     },
 ];
 
@@ -61,25 +61,25 @@ const benefitsOfCommercialCleaning = [
         number: "01",
         title: "Improved First Impressions & Brand Image",
         description:
-            "Your premises are a direct reflection of your brand. Clean, well-maintained spaces signal professionalism and attention to detail — making a powerful first impression on every client, visitor, and new hire who walks through the door.",
+            "Your premises speak before you do. A clean, well-maintained office or shopfront signals professionalism and attention to detail - the same qualities your clients are looking for in you. A poorly maintained space does the opposite, regardless of what's on the walls.",
     },
     {
         number: "02",
         title: "Enhanced Employee Productivity & Wellbeing",
         description:
-            "A clean, organised workplace reduces stress, improves focus, and boosts morale. Studies consistently show that employees working in clean environments are more productive, take fewer sick days, and feel more valued by their employer.",
+            "Research consistently links workplace cleanliness to employee productivity, satisfaction, and retention. A clean environment reduces cognitive load, minimises distractions, and signals to your team that their workplace - and by extension, they - are valued. It's one of the easiest culture investments you can make.",
     },
     {
         number: "03",
         title: "Healthier Indoor Environment",
         description:
-            "Dust, allergens, and bacteria accumulate quickly in busy commercial spaces. Regular professional cleaning reduces the risk of illness spreading through your team, lowering absenteeism and maintaining a healthier workplace for everyone. ",
+            "Bacteria, dust, and allergens accumulate rapidly in busy offices - on surfaces, in air vents, and in high-traffic areas. Regular professional cleaning reduces pathogen load and sick day frequency, protecting your team's health and keeping your operations running without interruption.",
     },
     {
         number: "04",
         title: "Prolonged Asset Lifespan",
         description:
-            "Regular professional cleaning protects your flooring, fixtures, and surfaces from premature wear caused by dirt and grime buildup. This extends the life of your assets and reduces long-term maintenance and replacement costs significantly",
+            "Floors, fixtures, and surfaces wear significantly faster when grime is allowed to accumulate. Regular cleaning removes the abrasive particles and corrosive buildup that accelerate wear - extending the life of your fitout and reducing long-term capital expenditure on replacements and repairs.",
     },
 ];
 
@@ -87,22 +87,22 @@ const whyAspectPoints = [
     {
         title: "Experienced & Trained Team",
         description:
-            "Our staff are fully trained, background-checked, and experienced across all types of commercial environments — from boutique offices to large industrial facilities.",
+            "Our commercial cleaners are trained across office, retail, industrial, and hospitality environments - and background-checked before they ever set foot in your facility. You get a consistent, professional team that understands your space.",
     },
     {
         title: "Flexible Scheduling Around Your Business",
         description:
-            "We work early mornings, evenings, and weekends — whatever suits your operations. No disruption to your staff or your clients.",
+            "Early mornings, evenings, weekends - we build around your operating hours, not ours. Your staff never need to work around our team, and your clients never see the process, only the result.",
     },
     {
-        title: "Fully Insured — $20M Cover",
+        title: "Fully Insured - $20M Cover",
         description:
-            "Complete public liability cover gives you and your business total peace of mind. We operate responsibly and safely on every site, every single time.",
+            "Complete public liability coverage on every commercial engagement. We operate within your site rules, carry our documentation, and work with full professional accountability - every single visit.",
     },
     {
         title: "100% Satisfaction Guaranteed",
         description:
-            "If anything falls short of your expectations, we return and make it right at no extra cost. Your satisfaction is our standard — every visit.",
+            "Every visit is followed by a quality check. If anything falls short of the agreed standard, we return within 24 hours and make it right - at no additional cost. That's our commitment on every contract.",
     },
 ];
 
@@ -111,7 +111,7 @@ const processSteps = [
         number: "01",
         title: "Free Quote",
         description:
-            "Tell us about your facility and cleaning needs — we'll provide a fast, transparent quote with no obligation.",
+            "Tell us about your facility and cleaning needs - we'll provide a fast, transparent quote with no obligation.",
     },
     {
         number: "02",
@@ -123,7 +123,7 @@ const processSteps = [
         number: "03",
         title: "We Clean",
         description:
-            "Our trained team arrives on time and works methodically through every area — leaving nothing overlooked.",
+            "Our trained team arrives on time and works methodically through every area - leaving nothing overlooked.",
     },
     {
         number: "04",
@@ -142,7 +142,7 @@ const pressureWashing: FaqsType[] = [
     {
         question: "How often should commercial premises be cleaned?",
         answer:
-            "Most businesses benefit from cleaning 3–5 times per week, with some high-traffic environments requiring daily service. We'll assess your space and recommend a frequency that keeps your premises consistently clean without unnecessary visits.",
+            "Most businesses benefit from cleaning 3â€“5 times per week, with some high-traffic environments requiring daily service. We'll assess your space and recommend a frequency that keeps your premises consistently clean without unnecessary visits.",
     },
     {
         question: "Can you work outside of business hours?",
@@ -167,7 +167,7 @@ const pressureWashing: FaqsType[] = [
     {
         question: "What types of commercial premises do you clean?",
         answer:
-            "We service offices, retail spaces, medical and dental clinics, strata complexes, warehouses, childcare centres, and more across the Perth metro area. If you're unsure whether we cover your facility type, just ask — we likely do.",
+            "We service offices, retail spaces, medical and dental clinics, strata complexes, warehouses, childcare centres, and more across the Perth metro area. If you're unsure whether we cover your facility type, just ask - we likely do.",
     },
 ];
 
@@ -258,8 +258,7 @@ const CommercialWindowCleaning = () => {
                     Keep Your Business Spotless with Expert Commercial Cleaning
                 </h2>
                 <p className="mb-4">
-                    A clean business environment is not just about appearances — it directly impacts employee productivity, client
-                    confidence, and workplace health. At Aspect Window Cleaning, we deliver reliable, thorough commercial cleaning services tailored to the specific needs of your facility. Whether you operate a busy office, retail space, strata complex, or industrial site, our experienced team works around your schedule to keep your premises spotless, hygienic, and consistently professional. We use industry-grade equipment and eco-friendly products to deliver outstanding results — every single visit.
+                    A clean business environment is not just about appearances - it directly impacts employee productivity, client confidence, and workplace health. At Aspect Window Cleaning, we deliver reliable, thorough commercial cleaning services tailored to the specific needs of your facility. Whether you operate a busy office, retail space, strata complex, or industrial site, our experienced team works around your schedule to keep your premises spotless, hygienic, and consistently professional. We use industry-grade equipment and eco-friendly products to deliver outstanding results - every single visit. We also offer <Link href="/services/residential-window-cleaning" className="text-action-gold hover:underline">residential window cleaning</Link>, <Link href="/services/pressure-washing" className="text-action-gold hover:underline">pressure washing</Link>, and <Link href="/services/solar-panel-washing" className="text-action-gold hover:underline">solar panel washing</Link> across <Link href="/locations" className="text-action-gold hover:underline">Perth</Link>.
                 </p>
             </section>
 
@@ -286,7 +285,7 @@ const CommercialWindowCleaning = () => {
                     What Our Commercial Cleaning Service Covers
                 </h2>
                 <p className="mb-10 text-brand-slate">
-                    We go beyond the basics — every visit covers every area your team and clients interact with.
+                    We go beyond the basics - every visit covers every area your team and clients interact with.
                 </p>
                 <div className="grid md:grid-cols-3 gap-6">
                     {whatsInclude.map((item, index) => {
@@ -327,7 +326,7 @@ const CommercialWindowCleaning = () => {
 
                     {/* Intro paragraph */}
                     <p className="text-center text-brand-slate max-w-3xl mx-auto mb-12">
-                        Cleaning your workplace isn't just routine maintenance — it directly impacts your team's productivity, your clients' confidence, and the long-term condition of your premises.
+                        Cleaning your workplace isn't just routine maintenance - it directly impacts your team's productivity, your clients' confidence, and the long-term condition of your premises.
                     </p>
 
                     {/* Benefits List */}
@@ -407,7 +406,7 @@ const CommercialWindowCleaning = () => {
 
                     {/* Intro */}
                     <p className="text-center text-brand-slate max-w-3xl mx-auto mb-12">
-                        Simple, hassle-free, and built around your schedule — from first contact to a consistently clean facility.
+                        Simple, hassle-free, and built around your schedule - from first contact to a consistently clean facility.
                     </p>
 
                     {/* Steps */}

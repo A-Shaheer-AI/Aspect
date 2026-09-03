@@ -57,8 +57,9 @@ export default function Navbar() {
                                 }
                                 width={100}
                                 height={100}
+                                priority
                                 sizes="(max-width: 768px) 80px, 100px"
-                                alt="aspect-widnow-cleaning-logo"
+                                alt="aspect-window-cleaning-logo"
                                 className="object-cover"
                             />
                         </Link>
@@ -86,12 +87,7 @@ export default function Navbar() {
                                 <Phone className="w-5 h-5 text-green-500" />
                                 <span className={isScrolled ? "text-brand-navy" : "text-white"}>{BUSINESS.phone}</span>
                             </a>
-                            <button
-                                onClick={() => setIsModalOpen(true)}
-                                className="shimmer-btn text-brand-navy font-bold px-6 py-2.5 rounded-full hover:shadow-lg transition-shadow cursor-pointer"
-                            >
-                                Get Fast Quote
-                            </button>
+                            <a href="/quote" onClick={(e) => { e.preventDefault(); setIsModalOpen(true); }} className="shimmer-btn text-brand-navy font-bold px-6 py-2.5 rounded-full hover:shadow-lg transition-shadow cursor-pointer inline-block">Get Fast Quote</a>
                         </div>
 
                         {/* Mobile Menu Button */}
@@ -134,15 +130,7 @@ export default function Navbar() {
                                     <Phone className="w-5 h-5 text-green-500" />
                                     Call: {BUSINESS.phone}
                                 </a>
-                                <button
-                                    onClick={() => {
-                                        setIsMobileMenuOpen(false);
-                                        setIsModalOpen(true);
-                                    }}
-                                    className="w-full shimmer-btn text-brand-navy font-bold py-3 rounded-full mt-4"
-                                >
-                                    Get Fast Quote
-                                </button>
+                                <a href="/quote" onClick={(e) => { e.preventDefault(); setIsMobileMenuOpen(false); setIsModalOpen(true); }} className="w-full shimmer-btn text-brand-navy font-bold py-3 rounded-full mt-4 inline-block text-center">Get Fast Quote</a>
                             </div>
                         </motion.div>
                     )}

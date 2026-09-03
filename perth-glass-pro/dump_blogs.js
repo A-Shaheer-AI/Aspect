@@ -1,0 +1,1 @@
+const fs = require("fs"); const { blogs } = require("./content/blogs.js") || { blogs: [] }; blogs.forEach(b => fs.writeFileSync(`content/expanded_blogs/blog_${b.id}.json`, JSON.stringify(b, null, 2))); console.log("Dumped " + blogs.length + " blogs.");

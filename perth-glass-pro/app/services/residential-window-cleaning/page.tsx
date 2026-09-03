@@ -8,7 +8,7 @@ import BeforeAfterSlider from "@/components/BeforeAfterSlider";
 
 type FaqsType = {
     question: string;
-    answer: string;
+    answer: React.ReactNode;
 }
 
 export const metadata: Metadata = {
@@ -22,37 +22,37 @@ const whatsInclude = [
         icon: ChevronsRight,
         title: "Interior & Exterior Glass",
         description:
-            "Full clean of both sides of every window pane — removing dirt, water spots, and environmental buildup for a streak-free finish.",
+            "We clean every pane on both sides using pure water technology - removing Perth's salt, dust, and grime for glass so clear it practically disappears.",
     },
     {
         icon: ChevronsRight,
         title: "Frames, Sills & Tracks",
         description:
-            "We clean all frames, sills, and sliding tracks to remove grime, mould, and built-up debris that harbour bacteria and damage seals.",
+            "Salt, moisture, and organic matter trapped in frames and tracks breed mould and corrode seals. We remove all of it - protecting your window system, not just the glass.",
     },
     {
         icon: ChevronsRight,
         title: "Screen & Fly Screen Cleaning",
         description:
-            "Screens are removed, cleaned, and refitted — removing dust, pollen, and grime that blocks airflow and reduces light.",
+            "Dirty screens block up to 25% of natural airflow and cast a visible haze over your view. We remove, wash, and refit every screen - restoring your light and breeze.",
     },
     {
         icon: ChevronsRight,
         title: "Pure Water Cleaning Method",
         description:
-            "We use purified, deionised water that leaves zero mineral residue on glass — meaning windows stay cleaner for longer after each service.",
+            "Our purified, deionised water contains zero minerals - so when it evaporates, it leaves absolutely nothing behind. No residue, no spots, no streaks. Windows stay cleaner for longer.",
     },
     {
         icon: ChevronsRight,
         title: "Hard Water Stain Removal",
         description:
-            "Stubborn mineral deposits and hard water stains are treated with specialist solutions, restoring glass clarity where standard cleaning can't.",
+            "Perth's water is mineral-rich and relentless. We use specialist solutions to dissolve calcium and magnesium deposits before they permanently etch your glass - restoring full clarity.",
     },
     {
         icon: ChevronsRight,
         title: "Streak-Free Polish",
         description:
-            "Every pane is finished with a professional streak-free polish — ensuring your glass looks flawless in all lighting conditions.",
+            "Every pane is hand-finished with a professional streak-free polish. Checked in multiple lighting angles until it's flawless - because streaks are only invisible until the sun hits.",
     },
 ];
 
@@ -61,25 +61,25 @@ const benefitsOfCommercialCleaning = [
         number: "01",
         title: "Maximise Natural Light & Comfort",
         description:
-            "Dirty windows block up to 40% of available natural light. Professional cleaning restores full clarity, making your rooms brighter, warmer, and more comfortable — without touching your power bill.",
+            "Every layer of grime on your windows blocks natural light from entering your home. Professional cleaning removes that barrier - making rooms measurably brighter and more comfortable without changing your electricity bill.",
     },
     {
         number: "02",
         title: "Protect Glass from Long-Term Damage",
         description:
-            "Mineral deposits, hard water, and environmental pollutants etch into glass surfaces over time, causing permanent damage. Regular cleaning removes these before they cause irreversible scratching or clouding.",
+            "Perth's mineral-rich water and salt air etch permanently into glass over time. Once bonded, these deposits can't be removed with standard cleaning - and glass replacement costs hundreds per pane. Regular professional cleaning stops the damage before it starts.",
     },
     {
         number: "03",
         title: "Improve Kerb Appeal & Property Value",
         description:
-            "Clean windows dramatically improve the exterior appearance of your property — crucial if you're selling, renting, or simply taking pride in your home. First impressions start with your windows.",
+            "Sparkling windows transform how your home looks from the street - immediately. Whether you're selling, renting, or just taking pride in your property, clean windows are the fastest way to lift your home's appearance and perceived value.",
     },
     {
         number: "04",
         title: "Healthier Indoor Environment",
         description:
-            "Mould, dust, and pollen accumulate on dirty frames and sills and can circulate indoors. Professional cleaning removes these allergens, contributing to better indoor air quality for your family.",
+            "Mould, dust mites, and pollen accumulate in dirty tracks and sills and circulate through your home every time you open a window. A thorough clean removes these allergens at the source - something a quick wipe can't do.",
     },
 ];
 
@@ -87,22 +87,22 @@ const whyAspectPoints = [
     {
         title: "Pure Water Technology",
         description:
-            "Our purified water system leaves no mineral residue, meaning your windows dry spotless every time — and stay cleaner for longer between services.",
+            "Our purified water system produces 0ppm deionised water - leaving zero mineral residue on glass. Your windows dry spotless every time and stay cleaner up to twice as long between services compared to traditional cleaning methods.",
     },
     {
         title: "Eco-Friendly Cleaning Solutions",
         description:
-            "We use non-toxic, biodegradable products that are completely safe for your family, pets, and garden — with zero compromise on cleaning performance.",
+            "All our products are non-toxic, biodegradable, and safe for kids, pets, and Perth's sensitive garden environments. We deliver professional-grade results without a single drop of harsh chemical on your property.",
     },
     {
         title: "Trained & Police-Cleared Team",
         description:
-            "Every technician is professionally trained, police-cleared, and $20M publicly insured — giving you complete confidence and peace of mind on every visit.",
+            "Every Aspect technician is professionally trained, police-cleared, and covered by $20M public liability insurance. You're not just letting a cleaner in - you're letting in a verified professional.",
     },
     {
         title: "Flexible Scheduling & Reliable Service",
         description:
-            "Same-week bookings available. Whether you need a one-off clean or regular maintenance, we show up on time, every time — and we don't leave until you're satisfied.",
+            "Same-week bookings across the Perth metro. We send a reminder the day before, arrive within the agreed window, and we don't pack up until the job meets our standard - which means it'll meet yours.",
     },
 ];
 
@@ -111,7 +111,7 @@ const processSteps = [
         number: "01",
         title: "Get a Free Quote",
         description:
-            "Tell us your property type and window count — we'll give you a fast, transparent price.",
+            "Tell us your property type and window count - we'll give you a fast, transparent price.",
     },
     {
         number: "02",
@@ -137,17 +137,17 @@ const pressureWashing: FaqsType[] = [
     {
         question: "How often should I have my windows cleaned?",
         answer:
-            "For most Perth homes, twice a year is a good baseline. Properties near the ocean, construction zones, or high-pollen areas benefit from quarterly cleaning. We can recommend the ideal schedule after assessing your property.",
+            "For most Perth homes, twice a year is a solid baseline - but it's rarely enough on its own. Properties within 3km of the coast need cleans every 6-8 weeks due to salt air buildup. Homes surrounded by eucalyptus or in dusty outer suburbs benefit from quarterly visits. We'll recommend the right frequency for your property after the first job.",
     },
     {
         question: "What is pure water window cleaning and why is it better?",
         answer:
-            "Pure water cleaning uses deionised, mineral-free water fed through a pole system. Because it contains zero impurities, it leaves no residue when it dries — meaning a completely spotless, streak-free result without the need for squeegees or chemicals on the glass.",
+            "Pure water cleaning uses deionised water - stripped of every dissolved mineral - fed through an extendable pole with a soft-brush head. Because the water is 100% pure, when it evaporates it leaves nothing behind: no mineral spots, no residue, no streaks. It also allows us to safely clean windows up to 4 stories high from the ground - no ladders on your roof, no risk.",
     },
     {
         question: "Do you clean both the inside and outside of windows?",
         answer:
-            "Yes. Our standard service covers both interior and exterior glass, plus frames, sills, tracks, and screens. If you only need an exterior clean, we can accommodate that too — just let us know when booking.",
+            "Yes - our standard service includes both interior and exterior glass, plus frames, sills, tracks, and screens. If you only need exterior or a specific area done, we can absolutely accommodate that. Just tell us when booking and we'll adjust the scope and quote accordingly.",
     },
     {
         question: "Are your products safe for my family and pets?",
@@ -167,7 +167,7 @@ const pressureWashing: FaqsType[] = [
     {
         question: "What areas of Perth do you service?",
         answer:
-            "We service the full Perth metro area — including Joondalup, Fremantle, Subiaco, Cottesloe, and 100+ surrounding suburbs. Contact us to confirm availability in your area. ",
+            "We service the full Perth metro area - including Joondalup, Fremantle, Subiaco, Cottesloe, and 100+ surrounding suburbs. Contact us to confirm availability in your area. ",
     },
 ];
 
@@ -258,8 +258,11 @@ const ResidentialWindowCleaning = () => {
                     Perth's Premier Window Cleaning Specialists
                 </h2>
                 <p className="mb-4">
-                    Clean windows do far more than improve appearances — they let natural light flood your home, boost your property's kerb appeal, and protect your glass from long-term damage caused by mineral deposits, pollution, and environmental buildup. At Aspect Window Cleaning, we deliver streak-free, crystal-clear results for residential and
-                    commercial properties across the entire Perth metro area. Our trained, police-cleared technicians use the latest pure water technology and eco-friendly solutions to give you spotless windows — every single time.
+                    Clean windows do far more than improve appearances - they let natural light flood your home, 
+boost your property's kerb appeal, and protect your glass from long-term damage caused by mineral deposits, pollution, 
+and environmental buildup. At Aspect Window Cleaning, we deliver streak-free, crystal-clear results for residential and <Link href="/services/commercial-window-cleaning" className="text-action-gold hover:underline">commercial properties</Link> across the entire <Link href="/locations" className="text-action-gold hover:underline">Perth metro area</Link>. Our trained, police-cleared 
+technicians use the latest pure water technology and eco-friendly solutions to give you spotless windows - every 
+single time. We also offer <Link href="/services/solar-panel-washing" className="text-action-gold hover:underline">solar panel washing</Link> and <Link href="/services/gutter-cleaning" className="text-action-gold hover:underline">gutter cleaning</Link>.
                 </p>
             </section>
 
@@ -306,7 +309,7 @@ const ResidentialWindowCleaning = () => {
                             Residential Window Cleaning
                         </h4>
                         <p className="text-brand-slate text-sm leading-relaxed">
-                            Transform your home with crystal-clear windows from top to bottom. We clean every pane, frame, sill, screen, and track — restoring brightness and improving your home's appearance inside and out. Ideal for regular maintenance or pre-sale preparation.
+                            Transform your home with crystal-clear windows from top to bottom. We clean every pane, frame, sill, screen, and track - restoring brightness and improving your home's appearance inside and out. Ideal for regular maintenance or pre-sale preparation.
                         </p>
                     </div>
 
@@ -341,7 +344,7 @@ const ResidentialWindowCleaning = () => {
                     Everything Covered in Our Window Clean
                 </h2>
                 <p className="mb-10 text-brand-slate">
-                    We don't cut corners. Every booking includes a full, thorough clean of all accessible window components — not just the glass.
+                    We don't cut corners. Every booking includes a full, thorough clean of all accessible window components - not just the glass.
                 </p>
                 <div className="grid md:grid-cols-3 gap-6">
                     {whatsInclude.map((item, index) => {
@@ -382,7 +385,7 @@ const ResidentialWindowCleaning = () => {
 
                     {/* Intro paragraph */}
                     <p className="text-center text-brand-slate max-w-3xl mx-auto mb-12">
-                        Regular professional window cleaning is more than cosmetic — it actively protects your glass, improves your living
+                        Regular professional window cleaning is more than cosmetic - it actively protects your glass, improves your living
                         environment, and adds value to your property.
                     </p>
 

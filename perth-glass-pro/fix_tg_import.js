@@ -1,0 +1,1 @@
+const fs = require("fs"); let content = fs.readFileSync("components/TrustGrid.tsx", "utf8"); content = content.replace("import Link from \"next/link\";", "import Link from \"next/link\";\nimport { useGmb } from \"@/components/GmbProvider\";"); fs.writeFileSync("components/TrustGrid.tsx", content, "utf8");

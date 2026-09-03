@@ -1,4 +1,4 @@
-"use client";
+﻿"use client";
 
 import { useState } from "react";
 import Link from "next/link";
@@ -52,7 +52,7 @@ export default function ResidentialPage() {
                         </h1>
                         <p className="text-xl text-brand-water/80 max-w-2xl mx-auto mb-10">
                             Professional window cleaning using Pure Water Technology.
-                            No streaks, no spots, no residue — just crystal-clear results every time.
+                            No streaks, no spots, no residue - just crystal-clear results every time.
                         </p>
                         <div className="flex flex-col sm:flex-row items-center justify-center gap-4">
                             <button

@@ -118,7 +118,7 @@ export default function HeroWithScroll() {
           {/* LEFT CONTENT */}
           <div>
             <p className="text-action-gold text-center md:text-left font-semibold mb-4">
-              No Guesswork — We Visit & Quote For Free
+              No Guesswork - We Visit & Quote For Free
             </p>
 
             <h1 className="text-2xl md:text-3xl xl:text-5xl text-center md:text-left font-bold leading-tight mb-6">
@@ -158,7 +158,7 @@ export default function HeroWithScroll() {
                             "/upload/",
                             "/upload/f_auto,q_auto/"
                           )}
-                          alt="Service image"
+                          alt="Professional window and solar panel cleaning in Perth"
                           width={200}
                           height={150}
                           sizes="50vw"
@@ -192,7 +192,7 @@ export default function HeroWithScroll() {
                             "/upload/",
                             "/upload/f_auto,q_auto/"
                           )}
-                          alt="Service image"
+                          alt="Professional window and solar panel cleaning in Perth"
                           width={200}
                           height={150}
                           sizes="50vw"
@@ -299,7 +299,7 @@ export default function HeroWithScroll() {
                             "/upload/",
                             "/upload/f_auto,q_auto/"
                           )}
-                          alt="Service image"
+                          alt="Professional window and solar panel cleaning in Perth"
                           width={400}
                           height={250}
                           sizes="(max-width: 768px) 50vw, 33vw"
@@ -335,7 +335,7 @@ export default function HeroWithScroll() {
                             "/upload/",
                             "/upload/f_auto,q_auto/"
                           )}
-                          alt="Service image"
+                          alt="Professional window and solar panel cleaning in Perth"
                           width={400}
                           height={250}
                           sizes="(max-width: 768px) 50vw, 33vw"

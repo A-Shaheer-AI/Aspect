@@ -1,4 +1,4 @@
-import Link from "next/link";
+﻿import Link from "next/link";
 import { motion } from "framer-motion";
 import { Star, MapPin, ArrowRight, Quote } from "lucide-react";
 import BeforeAfterSlider from "./BeforeAfterSlider";
@@ -25,11 +25,11 @@ export default function ResultsAndReviews() {
         },
         {
             "question": "How long do the results of pure water cleaning last?",
-            "answer": "Windows cleaned with pure water stay clean longer—typically up to two weeks more compared to traditional cleaning methods."
+            "answer": "Windows cleaned with pure water stay clean longer-typically up to two weeks more compared to traditional cleaning methods."
         },
         {
             "question": "Is pure water cleaning safe for homes with kids and pets?",
-            "answer": "Yes, it is completely safe because it uses no chemicals—only purified water—making it ideal for families and pets."
+            "answer": "Yes, it is completely safe because it uses no chemicals-only purified water-making it ideal for families and pets."
         },
         {
             "question": "Is pure water cleaning environmentally friendly?",

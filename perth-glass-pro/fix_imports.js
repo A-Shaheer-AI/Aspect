@@ -1,0 +1,1 @@
+const fs = require("fs"); let content = fs.readFileSync("app/landing/page.tsx", "utf8"); content = content.replace(/import \{ getGmbData \} from "@\/app\/actions\/gmb";\r?\nimport \{ getGmbData \} from "@\/app\/actions\/gmb";/, "import { getGmbData } from \"@/app/actions/gmb\";"); fs.writeFileSync("app/landing/page.tsx", content, "utf8");

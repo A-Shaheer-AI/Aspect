@@ -100,9 +100,7 @@ export default async function BlogPostPage({ params }: { params: Promise<{ slug:
 
                 {/* Intro */}
                 {post.intro && (
-                    <p className="text-lg text-slate-700 leading-relaxed">
-                        {post.intro}
-                    </p>
+                    <p className="text-lg text-slate-700 leading-relaxed" dangerouslySetInnerHTML={{ __html: post.intro as string }}></p>
                 )}
 
                 {/* Sections */}
@@ -113,7 +111,7 @@ export default async function BlogPostPage({ params }: { params: Promise<{ slug:
                         </h2>
 
                         {"body" in section && section.body && (
-                            <p className="text-slate-700 leading-relaxed">{section.body}</p>
+                            <p className="text-slate-700 leading-relaxed" dangerouslySetInnerHTML={{ __html: section.body as string }}></p>
                         )}
 
                         {/* Subsections (e.g. Benefits) */}
@@ -124,7 +122,7 @@ export default async function BlogPostPage({ params }: { params: Promise<{ slug:
                                         <h3 className="text-lg font-semibold text-brand-navy mb-1">
                                             {sub.heading}
                                         </h3>
-                                        <p className="text-slate-700 leading-relaxed">{sub.body}</p>
+                                        <p className="text-slate-700 leading-relaxed" dangerouslySetInnerHTML={{ __html: sub.body as string }}></p>
                                     </div>
                                 ))}
                             </div>
@@ -142,7 +140,7 @@ export default async function BlogPostPage({ params }: { params: Promise<{ slug:
                                                     {bullet.label}{bullet.body ? ': ' : ''}
                                                 </span>
                                             )}
-                                            {bullet.body}
+                                            {bullet.body && <span dangerouslySetInnerHTML={{ __html: bullet.body as string }} />}
                                         </span>
                                     </li>
                                 ))}
@@ -159,7 +157,7 @@ export default async function BlogPostPage({ params }: { params: Promise<{ slug:
                 {/* Conclusion */}
                 {post.conclusion && (
                     <div className="bg-slate-50 border border-slate-200 rounded-xl p-6">
-                        <p className="text-slate-700 leading-relaxed">{post.conclusion}</p>
+                        <p className="text-slate-700 leading-relaxed" dangerouslySetInnerHTML={{ __html: post.conclusion as string }}></p>
                     </div>
                 )}
             </div>

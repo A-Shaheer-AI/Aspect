@@ -1,8 +1,9 @@
-"use client";
+﻿"use client";
 
 import { useState, useEffect, useRef } from "react";
 import { Phone, CheckCircle2, Star, Shield, Droplets, Zap, Building2, X, Tag, ChevronLeft, ChevronRight } from "lucide-react";
 import { BUSINESS } from "@/lib/config";
+import { useGmb } from "@/components/GmbProvider";
 import Link from "next/link";
 import Image from "next/image";
 import BeforeAfterSlider from "@/components/BeforeAfterSlider";
@@ -18,7 +19,7 @@ type FormDataType = {
 };
 
 /* ─────────────────────────────────────────
-   LEAD FORM — shared by hero + modal
+   LEAD FORM - shared by hero + modal
 ───────────────────────────────────────── */
 function LeadForm({
     submitted,
@@ -93,7 +94,7 @@ function LeadForm({
 }
 
 /* ─────────────────────────────────────────
-   MODAL — reusable, accepts optional promo
+   MODAL - reusable, accepts optional promo
 ───────────────────────────────────────── */
 function QuoteModal({
     open,
@@ -131,7 +132,7 @@ function QuoteModal({
                     animation: "modalPop 0.3s cubic-bezier(0.34,1.56,0.64,1) both",
                 }}
             >
-                {/* Promo banner — only shown on scroll popup */}
+                {/* Promo banner - only shown on scroll popup */}
                 {showPromo && (
                     <div
                         className="relative flex items-center justify-center gap-2 px-4 py-3 text-sm font-semibold"
@@ -181,7 +182,7 @@ function QuoteModal({
                         className="inline-block text-xs font-bold uppercase tracking-widest rounded-full px-3 py-1 mb-4"
                         style={{ background: "rgba(255,229,77,0.12)", color: YELLOW }}
                     >
-                        Free Quote — No Obligation
+                        Free Quote - No Obligation
                     </div>
                     <h3 className="text-white font-bold text-lg mb-1">Get a Fast Text Quote</h3>
                     <p className="text-sm mb-5" style={{ color: "rgba(255,255,255,0.5)" }}>
@@ -213,7 +214,7 @@ const whatsInclude = [
     {
         title: "Interior & Exterior Glass",
         description:
-            "Full clean of both sides of every window pane — removing dirt, water spots, and environmental buildup for a streak-free finish.",
+            "Full clean of both sides of every window pane - removing dirt, water spots, and environmental buildup for a streak-free finish.",
         img: "/gallery/gallery-1.jpeg"
     },
     {
@@ -225,13 +226,13 @@ const whatsInclude = [
     {
         title: "Screen & Fly Screen Cleaning",
         description:
-            "Screens are removed, cleaned, and refitted — removing dust, pollen, and grime that blocks airflow and reduces light.",
+            "Screens are removed, cleaned, and refitted - removing dust, pollen, and grime that blocks airflow and reduces light.",
         img: "/gallery/gallery-3.jpeg"
     },
     {
         title: "Pure Water Cleaning Method",
         description:
-            "We use purified, deionised water that leaves zero mineral residue on glass — meaning windows stay cleaner for longer after each service.",
+            "We use purified, deionised water that leaves zero mineral residue on glass - meaning windows stay cleaner for longer after each service.",
         img: "/gallery/gallery-4.jpeg"
     },
     {
@@ -243,7 +244,7 @@ const whatsInclude = [
     {
         title: "Streak-Free Polish",
         description:
-            "Every pane is finished with a professional streak-free polish — ensuring your glass looks flawless in all lighting conditions.",
+            "Every pane is finished with a professional streak-free polish - ensuring your glass looks flawless in all lighting conditions.",
         img: "/gallery/gallery-6.jpeg"
     },
 ];
@@ -252,6 +253,7 @@ const whatsInclude = [
    PAGE
 ───────────────────────────────────────── */
 export default function WindowCleaningAdsPage() {
+    const gmb = useGmb();
     const [modalOpen, setModalOpen] = useState(false);
     const [showPromo, setShowPromo] = useState(false);
     const [galleryOpen, setGalleryOpen] = useState(false);
@@ -454,12 +456,7 @@ export default function WindowCleaningAdsPage() {
                         </div>
 
                         <div className="grid grid-cols-2 gap-2 sm:gap-3 w-full max-w-md">
-                            {[
-                                { icon: "🛡️", text: "$20M Insured" },
-                                { icon: "👮", text: "Police Cleared" },
-                                { icon: "💧", text: "Pure Water Tech" },
-                                { icon: "⭐", text: "5.0 Google Reviews" },
-                            ].map((b) => (
+                            {[ { icon: "\uD83D\uDEE1\uFE0F", text: "$20M Insured" }, { icon: "\uD83C\uDFC5", text: "Police Cleared" }, { icon: "\uD83D\uDCA7", text: "Pure Water Tech" }, { icon: "\u2B50", text: `${gmb.rating} Google Reviews` } ].map((b) => (
                                 <span
                                     key={b.text}
                                     className="flex items-center justify-center gap-1 sm:gap-2 rounded-full px-1 sm:px-5 py-2.5 text-[11px] sm:text-sm md:text-base font-semibold text-center"
@@ -510,12 +507,7 @@ export default function WindowCleaningAdsPage() {
             {/* ─── SECTION 2: STATS STRIP ─── */}
             <section style={{ background: YELLOW }}>
                 <div className="mx-auto grid max-w-4xl grid-cols-4">
-                    {[
-                        { num: "100+", label: "Happy Clients" },
-                        { num: "5.0★", label: "Google Rating" },
-                        { num: "$20M", label: "Insured" },
-                        { num: "24hr", label: "Response Time" },
-                    ].map((s, i) => (
+                    {[ { num: "100+", label: "Happy Clients" }, { num: `${gmb.rating}\u2B50`, label: "Google Rating" }, { num: "$20M", label: "Insured" }, { num: "24hr", label: "Response Time" } ].map((s, i) => (
                         <div
                             key={s.label}
                             className="flex flex-col items-center justify-center py-5 text-center"
@@ -547,7 +539,7 @@ export default function WindowCleaningAdsPage() {
                         className="text-sm font-medium hover:underline"
                         style={{ color: "#888" }}
                     >
-                        5.0 across 30+ Google Reviews
+                        {gmb.rating} across {gmb.reviewCount} Google Reviews
                     </Link>
                 </div>
                 <GoogleReviews reviews={windowCleaningReviews} />
@@ -608,7 +600,7 @@ export default function WindowCleaningAdsPage() {
                         </div>
                         <p className="font-bold text-base mb-2" style={{ color: NAVY }}>Pure Water Technology</p>
                         <p className="text-sm font-light leading-relaxed" style={{ color: "#888" }}>
-                            Our commercial RO/DI filtration system uses zero chemicals — glass stays cleaner for longer, even after rain. No streaks, no residue.
+                            Our commercial RO/DI filtration system uses zero chemicals - glass stays cleaner for longer, even after rain. No streaks, no residue.
                         </p>
                     </div>
                     {[
@@ -668,7 +660,7 @@ export default function WindowCleaningAdsPage() {
                         Everything Covered in Our Window Clean
                     </h2>
                     <p className="mb-10 text-center max-w-2xl mx-auto text-base font-light" style={{ color: "#888" }}>
-                        We don't cut corners. Every booking includes a full, thorough clean of all accessible window components — not just the glass.
+                        We don't cut corners. Every booking includes a full, thorough clean of all accessible window components - not just the glass.
                     </p>
                     <div className="grid md:grid-cols-3 gap-6">
                         {whatsInclude.map((item, index) => (
@@ -816,7 +808,7 @@ export default function WindowCleaningAdsPage() {
                     style={{ background: YELLOW, color: NAVY }}
                 >
                     <Phone className="w-4 h-4" />
-                    Call Now — {BUSINESS.phone}
+                    Call Now - {BUSINESS.phone}
                 </Link>
             </div>
             {/* spacer */}

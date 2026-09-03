@@ -2,8 +2,10 @@ import Link from "next/link";
 import { Phone, Mail, MapPin } from "lucide-react";
 import { BUSINESS } from "@/lib/config";
 import Image from "next/image";
+import { getGmbData } from "@/app/actions/gmb";
 
-export default function Footer() {
+export default async function Footer() {
+    const gmbData = await getGmbData();
     const currentYear = new Date().getFullYear();
 
     const services = [
@@ -90,7 +92,7 @@ export default function Footer() {
                             width={100}
                             height={100}
                             sizes="200px"
-                            alt="aspect-widnow-cleaning-logo"
+                            alt="aspect-window-cleaning-logo"
                             className="object-cover"
                         />
                         <p className="text-gray-300 text-sm leading-relaxed mb-6">
@@ -99,7 +101,7 @@ export default function Footer() {
                         </p>
                         <div className="flex items-center gap-2 text-gray-300">
                             <MapPin className="w-4 h-4 text-action-gold" aria-hidden="true" />
-                            <span className="text-sm">{BUSINESS.location}</span>
+                            <span className="text-sm">{gmbData.address}</span>
                         </div>
                     </div>
 
@@ -148,7 +150,7 @@ export default function Footer() {
                     {/* Contact */}
                     <div>
                         <h4 className="font-bold text-lg mb-4">Contact Us</h4>
-                        <h2 className="mb-5">Aspect window cleaning</h2>
+                        <p className="mb-5 font-bold text-lg">Aspect window cleaning</p>
                         <ul className="space-y-4">
                             <li>
                                 <a href={`tel:${BUSINESS.phoneRaw}`} className="flex items-center gap-3 text-gray-300 hover:text-action-gold transition-colors">
@@ -164,7 +166,7 @@ export default function Footer() {
                             </li>
                             <li className="flex items-start gap-3 text-gray-300">
                                 <MapPin className="w-5 h-5 text-action-gold mt-0.5" aria-hidden="true" />
-                                <span className="text-sm">{BUSINESS.location}</span>
+                                <span className="text-sm">{gmbData.address}</span>
                             </li>
                         </ul>
                         <div className="mt-4">
