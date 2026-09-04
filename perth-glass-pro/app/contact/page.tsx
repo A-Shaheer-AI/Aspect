@@ -2,6 +2,7 @@
 
 import React, { useState } from 'react'
 import { sendLeadEmail } from '../actions/send-email';
+import TrustGrid from '@/components/TrustGrid';
 
 type FormData = { name: string; email: string; phone: string; suburb: string }
 type FormStatus = 'idle' | 'loading' | 'success' | 'error'
@@ -113,7 +114,7 @@ const ContactPage = () => {
                 { id: 'name', label: 'Full Name', type: 'text', placeholder: 'Jane Smith' },
                 { id: 'email', label: 'Email Address', type: 'email', placeholder: 'jane@example.com' },
                 { id: 'phone', label: 'Phone Number', type: 'tel', placeholder: '04XX XXX XXX' },
-                { id: 'suburb', label: 'Suburb', type: 'text', placeholder: 'e.g. Bondi, Parramatta…' },
+                { id: 'suburb', label: 'Suburb', type: 'text', placeholder: 'e.g. Bondi, Parramattaâ€¦' },
               ].map(field => (
                 <div key={field.id}>
                   <label
@@ -141,7 +142,7 @@ const ContactPage = () => {
               disabled={isDisabled}
               className="w-full mt-6 py-4 bg-[#000080] hover:bg-[#0000a8] text-white font-black uppercase tracking-widest text-sm rounded-lg transition-all hover:-translate-y-0.5 disabled:opacity-60 disabled:cursor-not-allowed disabled:translate-y-0"
             >
-              {status === 'loading' ? 'Sending…' : (
+              {status === 'loading' ? 'Sendingâ€¦' : (
                 <span>Send My Request <span className="text-[#ffea68]">?</span></span>
               )}
             </button>
@@ -164,8 +165,11 @@ const ContactPage = () => {
         </div>
 
       </main>
-
-    </div>
+        {/* Trust Signals Section */}
+        <div className="bg-white pt-8 pb-16">
+          <TrustGrid />
+        </div>
+      </div>
   )
 }
 
