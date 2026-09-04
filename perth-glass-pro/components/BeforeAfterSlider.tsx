@@ -49,7 +49,7 @@ const BeforeAfterSlider = ({
             {/* Slider */}
             <div className="absolute inset-0 flex items-center">
                 <input
-                    type="range"
+                    type="range" aria-label="Window cleaning before and after comparison slider"
                     min="0"
                     max="100"
                     value={sliderPosition}
@@ -61,7 +61,7 @@ const BeforeAfterSlider = ({
                     style={{ left: `${sliderPosition}%` }}
                 >
                     <div className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-10 h-10 bg-white rounded-full shadow-lg flex items-center justify-center">
-                        <span className="text-brand-navy text-xs font-bold">⟷</span>
+                        <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round" className="text-brand-navy w-5 h-5"><path d="M8 3L4 7l4 4"/><path d="M4 7h16"/><path d="M16 21l4-4-4-4"/><path d="M20 17H4"/></svg>
                     </div>
                 </div>
             </div>

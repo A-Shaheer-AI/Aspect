@@ -1,7 +1,7 @@
-﻿"use client";
+"use client";
 
 import { useState, useEffect, useRef } from "react";
-import { Phone, CheckCircle2, Star, Shield, Droplets, Zap, Building2, X, Tag, ChevronLeft, ChevronRight } from "lucide-react";
+import { Phone, CheckCircle2, Star, Shield, Droplets, Zap, Building2, X, Tag, ChevronLeft, ChevronRight, Camera } from "lucide-react";
 import { BUSINESS } from "@/lib/config";
 import { useGmb } from "@/components/GmbProvider";
 import Link from "next/link";
@@ -18,9 +18,9 @@ type FormDataType = {
     promo?: string;
 };
 
-/* ─────────────────────────────────────────
+/* 
    LEAD FORM - shared by hero + modal
-───────────────────────────────────────── */
+ */
 function LeadForm({
     submitted,
     formData,
@@ -84,18 +84,18 @@ function LeadForm({
                     boxShadow: "0 4px 20px rgba(255,229,77,0.4)",
                 }}
             >
-                Send Me a Quote →
-            </button>
+                Send Me a Quote ➔
+              </button>
             <p className="text-center text-xs mt-1" style={{ color: dark ? "rgba(255,255,255,0.45)" : "#aaa" }}>
-                🔒 We never share your details
+                  🔒 We never share your details
             </p>
         </div>
     );
 }
 
-/* ─────────────────────────────────────────
+/* 
    MODAL - reusable, accepts optional promo
-───────────────────────────────────────── */
+ */
 function QuoteModal({
     open,
     onClose,
@@ -153,7 +153,7 @@ function QuoteModal({
                             </span>
                         </span>
 
-                        <span className="opacity-60">•</span>
+                        <span className="opacity-60"> &bull; </span>
 
                         <span className="text-xs font-medium">Use code</span>
 
@@ -184,7 +184,7 @@ function QuoteModal({
                     >
                         Free Quote - No Obligation
                     </div>
-                    <h3 className="text-white font-bold text-lg mb-1">Get a Fast Text Quote</h3>
+                    <h2 className="text-white font-bold text-lg mb-1">Get a Fast Text Quote</h2>
                     <p className="text-sm mb-5" style={{ color: "rgba(255,255,255,0.5)" }}>
                         We reply within 60 minutes.
                     </p>
@@ -249,12 +249,56 @@ const whatsInclude = [
     },
 ];
 
-/* ─────────────────────────────────────────
+/* 
    PAGE
-───────────────────────────────────────── */
+ */
+function FreeTrialForm() {
+    const [formData, setFormData] = useState({ name: "", phone: "", address: "" });
+    const [submitted, setSubmitted] = useState(false);
+
+    const handleSubmit = async (e: any) => {
+        e.preventDefault();
+        if (!formData.name || !formData.phone || !formData.address) return;
+        try {
+            await sendLeadEmail({
+                name: formData.name,
+                phone: formData.phone,
+                email: "No Email Provided (Free Trial)",
+                suburb: formData.address,
+                serviceType: "FREE TRIAL - 2 Windows",
+                message: "User requested the 2-window free trial.",
+            });
+            setSubmitted(true);
+            trackFormCompleted();
+        } catch (error) {
+            console.error(error);
+        }
+    };
+
+    if (submitted) {
+        return (
+            <div className="text-center py-6">
+                <CheckCircle2 className="w-12 h-12 text-green-500 mx-auto mb-4" />
+                <p className="font-bold text-brand-navy">Request Received!</p>
+                <p className="text-sm text-gray-500 mt-2">We'll text you shortly to arrange your free trial.</p>
+            </div>
+        );
+    }
+
+    return (
+        <div className="flex flex-col gap-3">
+            <input type="text" placeholder="Your Name" value={formData.name} onChange={e => setFormData({...formData, name: e.target.value})} className="w-full rounded-xl px-4 py-3 text-sm outline-none bg-white border border-gray-200 text-gray-900 focus:border-brand-navy" />
+            <input type="tel" placeholder="Phone Number" value={formData.phone} onChange={e => setFormData({...formData, phone: e.target.value})} className="w-full rounded-xl px-4 py-3 text-sm outline-none bg-white border border-gray-200 text-gray-900 focus:border-brand-navy" />
+            <input type="text" placeholder="Full Property Address" value={formData.address} onChange={e => setFormData({...formData, address: e.target.value})} className="w-full rounded-xl px-4 py-3 text-sm outline-none bg-white border border-gray-200 text-gray-900 focus:border-brand-navy" />
+            <button onClick={handleSubmit} className="w-full bg-brand-navy text-white font-bold rounded-xl py-3.5 text-sm mt-2 hover:shadow-lg transition-all cursor-pointer">Claim 2 Free Windows</button>
+        </div>
+    );
+}
+
 export default function WindowCleaningAdsPage() {
     const gmb = useGmb();
     const [modalOpen, setModalOpen] = useState(false);
+    const [isDoubleStorey, setIsDoubleStorey] = useState(false);
     const [showPromo, setShowPromo] = useState(false);
     const [galleryOpen, setGalleryOpen] = useState(false);
     const [currentImageIndex, setCurrentImageIndex] = useState(0);
@@ -262,7 +306,7 @@ export default function WindowCleaningAdsPage() {
     const [formData, setFormData] = useState<FormDataType>({ name: "", phone: "", suburb: "", promo: "", });
     const [submitted, setSubmitted] = useState(false);
 
-    /* ── Scroll-triggered popup at 50% page height ── */
+    /*  Scroll-triggered popup at 50% page height  */
     useEffect(() => {
         const handleScroll = () => {
             if (scrollPopupShown) return;
@@ -309,79 +353,55 @@ export default function WindowCleaningAdsPage() {
         { num: "04", title: "You Enjoy", body: "Crystal-clear windows, guaranteed. Book again anytime.", clickable: false },
     ];
 
-    const windowCleaningReviews = [
+            const windowCleaningReviews = [
         {
             id: 1,
-            name: "Hussai",
-            reviews: "2 reviews",
+            name: "Peter & Jill Robinson",
+            reviews: "1 review",
             rating: 5,
-            date: "3 months ago",
-            content:
-                "Great work! I called them for cleaning the windows at my home. The team arrived on time, were friendly and professional, and took great care. The windows came out spotless and clear.",
+            date: "2 weeks ago",
+            content: "Fazal and his team did a great job on our windows, initially keeping us informed as to arrival time, then cleaning high 2 story windows and some hard to get to windows. Very professional and friendly unit, would recommend them to anybody looking for a window cleaner."
         },
         {
             id: 2,
-            name: "June Bird",
-            reviews: "3 reviews",
+            name: "Chantal Parsons",
+            reviews: "8 reviews",
             rating: 5,
-            date: "2 months ago",
-            content:
-                "Guys did a beautiful job. My windows are sparkling. Two very nice gentlemen. Highly recommend.",
+            date: "3 weeks ago",
+            content: "Brilliant work by this team. We were more than impressed and will continue to use them yearly for our new house. We used them for the sale of our house and it changes the whole look of your home when your windows are cleaned professionally. They also removed all marks, paint and tape that were super hard to get off - highly recommend this great team of cleaners!"
         },
         {
             id: 3,
-            name: "Taylor Bow",
+            name: "J Buchanan",
             reviews: "5 reviews",
             rating: 5,
-            date: "2 months ago",
-            content:
-                "Aspect Window Cleaning did a great job cleaning the inside and outside of the windows at my North Perth property. Good service, communication, and professionalism.",
+            date: "19 weeks ago",
+            content: "Aspect cleaned out gutters very professionally and swiftly engaged the task. Job was well done and all parts agreed to were completed exactly as denoted. Highly recommended."
         },
         {
             id: 4,
-            name: "Shabnam",
-            reviews: "1 review",
+            name: "Diane Bayliss",
+            reviews: "5 reviews",
             rating: 5,
-            date: "8 months ago",
-            content:
-                "The team was punctual, professional, and paid great attention to detail. Our windows are spotless inside and out, including screens and tracks.",
+            date: "17 weeks ago",
+            content: "Aspect Window Cleaning did a great job of cleaning out Solar Panels. After showing me photos of the state of the gutters I agreed to them being cleaned and they promptly carried out that cleaning also."
         },
         {
             id: 5,
-            name: "Ross Glossop",
-            reviews: "2 reviews",
-            rating: 5,
-            date: "3 months ago",
-            content:
-                "The Aspect team did an amazing job cleaning our many windows. Enthusiastic and thorough work. Great job thank you.",
-        },
-        {
-            id: 6,
-            name: "Sabine Parker",
-            reviews: "12 reviews",
-            rating: 5,
-            date: "5 months ago",
-            content:
-                "Prompt and professional service. Did an amazing job on our double glazed windows and sliding doors. Highly recommend.",
-        },
-        {
-            id: 7,
-            name: "Krystal Copley",
+            name: "Vicki Slate",
             reviews: "5 reviews",
             rating: 5,
-            date: "2 months ago",
-            content:
-                "Lovely people. Quick reply, came for a free quote. Good communication and very professional service.",
-        },
-        {
-            id: 8,
-            name: "lynne",
-            reviews: "2 reviews",
+            date: "22 weeks ago",
+            content: "These guys did a fantastic job cleaning windows, jams, runners, pressure washing eaves, decks and side walks, removing mould from brickwork., that hadn't been done in probably 10 years. We thought the new owners would need to replace the windows so potentially this added $20,000 value to the house. On time, friendly and professional. Highly recommend them."
+        }
+        ,{
+            id: 6,
+            name: "Katie Hunter",
+            reviews: "4 reviews",
             rating: 5,
-            date: "2 months ago",
-            content:
-                "Good communication, competitive price, fast and efficient service. Beautifully clean windows and screens. Thank you!",
-        },
+            date: "12 weeks ago",
+            content: "Flynn cleaned the top story of our house including sky lights and solar panels. He did a fantastic job. The equipment he uses is amazing. I wouldn't hesitate to recommend Aspect Window Cleaning."
+        }
     ];
 
     const NAVY = "#07077E";
@@ -389,7 +409,7 @@ export default function WindowCleaningAdsPage() {
 
     return (
         <>
-            {/* ─── MODAL ─── */}
+            {/*  MODAL  */}
             <QuoteModal
                 open={modalOpen}
                 onClose={() => setModalOpen(false)}
@@ -400,7 +420,8 @@ export default function WindowCleaningAdsPage() {
                 showPromo={showPromo}
             />
 
-            {/* ─── SECTION 1: HERO ─── */}
+            
+{/* 🔹🔹🔹 SECTION 1: HERO  🔹🔹🔹 */}
             <section
                 className="relative min-h-screen flex flex-col items-center justify-center md:px-5 pb-10 text-white bg-cover bg-center
   bg-[linear-gradient(160deg,rgba(10,22,40,0.5)_0%,rgba(15,37,69,0.8)_60%,rgba(19,48,96,0.8)_100%),url('/landing-hero-bg.jpeg')]
@@ -456,7 +477,7 @@ export default function WindowCleaningAdsPage() {
                         </div>
 
                         <div className="grid grid-cols-2 gap-2 sm:gap-3 w-full max-w-md">
-                            {[ { icon: "\uD83D\uDEE1\uFE0F", text: "$20M Insured" }, { icon: "\uD83C\uDFC5", text: "Police Cleared" }, { icon: "\uD83D\uDCA7", text: "Pure Water Tech" }, { icon: "\u2B50", text: `${gmb.rating} Google Reviews` } ].map((b) => (
+                            {[ { icon: "\uD83D\uDEE1\uFE0F", text: "$20M Insured" }, { icon: "🏅", text: "Police Cleared" }, { icon: "💧", text: "Pure Water Tech" }, { icon: "\u2B50", text: `${gmb.rating} Google Reviews` } ].map((b) => (
                                 <span
                                     key={b.text}
                                     className="flex items-center justify-center gap-1 sm:gap-2 rounded-full px-1 sm:px-5 py-2.5 text-[11px] sm:text-sm md:text-base font-semibold text-center"
@@ -485,9 +506,9 @@ export default function WindowCleaningAdsPage() {
 
                         {/* LEAD FORM */}
                         <div className="rounded-3xl p-5 shadow-2xl w-full bg-white border border-gray-100 mx-auto">
-                            <h3 className="mb-2 font-black text-xl leading-tight text-center" style={{ color: NAVY }}>
+                            <h2 className="mb-2 font-black text-xl leading-tight text-center" style={{ color: NAVY }}>
                                 Ready for Spotless Windows?
-                            </h3>
+                            </h2>
                             <p className="mb-5 text-xs text-center" style={{ color: "#888" }}>
                                 We&apos;ll reply with a fast quote within 60 minutes.
                             </p>
@@ -504,7 +525,8 @@ export default function WindowCleaningAdsPage() {
                 </div>
             </section>
 
-            {/* ─── SECTION 2: STATS STRIP ─── */}
+            
+{/* 🔹🔹🔹 SECTION 2: STATS STRIP  🔹🔹🔹 */}
             <section style={{ background: YELLOW }}>
                 <div className="mx-auto grid max-w-4xl grid-cols-4">
                     {[ { num: "100+", label: "Happy Clients" }, { num: `${gmb.rating}\u2B50`, label: "Google Rating" }, { num: "$20M", label: "Insured" }, { num: "24hr", label: "Response Time" } ].map((s, i) => (
@@ -524,102 +546,10 @@ export default function WindowCleaningAdsPage() {
                 </div>
             </section>
 
-            {/* ─── SECTION 3: REVIEWS ─── */}
-            <section className="max-w-7xl mx-auto px-5 py-16 bg-white">
-                <div className="mx-auto mb-10 max-w-4xl text-center">
-                    <div className="mb-3 flex justify-center gap-1">
-                        {[...Array(5)].map((_, i) => <Star key={i} className="w-6 h-6 fill-yellow-400 text-yellow-400" />)}
-                    </div>
-                    <h2 className="mb-2 leading-none" style={{ fontSize: "clamp(24px,5vw,52px)", color: NAVY }}>
-                        Perth Homeowners Love Us
-                    </h2>
-                    <Link
-                        href="https://www.google.com/maps/place/Aspect+Window+Cleaning/@-31.9806823,115.7929967,17z"
-                        target="_blank"
-                        className="text-sm font-medium hover:underline"
-                        style={{ color: "#888" }}
-                    >
-                        {gmb.rating} across {gmb.reviewCount} Google Reviews
-                    </Link>
-                </div>
-                <GoogleReviews reviews={windowCleaningReviews} />
-            </section>
-
-            {/* ─── SECTION 4: TRUSTED BY ─── */}
-            <section className="px-6 py-10 text-center" style={{ background: "#f4f6ff" }}>
-                <p className="mb-8 text-xs font-semibold uppercase tracking-widest" style={{ color: "#aaa" }}>
-                    Trusted by Perth businesses
-                </p>
-                <div className="flex flex-wrap items-center justify-center gap-10">
-                    {[
-                        { src: "https://res.cloudinary.com/dr8tjrszy/image/upload/v1772795795/toyota-logo_bcplvi.png", alt: "Toyota" },
-                        { src: "https://res.cloudinary.com/dr8tjrszy/image/upload/v1772795795/richad-logo_u2l4jl.png", alt: "Richard Group" },
-                        { src: "https://res.cloudinary.com/dr8tjrszy/image/upload/v1772795794/bespoke-logo_lulwwt.png", alt: "Bespoke" },
-                    ].map((logo) => (
-                        <div key={logo.alt} className="relative h-13 w-28 grayscale transition duration-300 hover:grayscale-0">
-                            <Image
-                                src={logo.src.replace(
-                                    "/upload/",
-                                    "/upload/f_auto,q_auto/"
-                                )}
-                                alt={logo.alt}
-                                fill
-                                sizes="112px"
-                                className="object-contain"
-                            />
-                        </div>
-                    ))}
-                </div>
-            </section>
-
-            {/* ─── SECTION 5: BENTO WHY US ─── */}
-            <section className="px-5 py-16" style={{ background: "#f4f6ff" }}>
-                <div className="mx-auto mb-10 max-w-4xl text-center">
-                    <div className="mb-3 inline-block rounded-full px-3 py-1 text-xs font-bold uppercase tracking-widest" style={{ background: "rgba(7,7,126,0.07)", color: NAVY }}>
-                        Why Aspect
-                    </div>
-                    <h2 className="mb-3 leading-none" style={{ fontSize: "clamp(24px,5vw,52px)", color: NAVY }}>
-                        Not All Window Cleaners Are the Same
-                    </h2>
-                    <p className="mx-auto max-w-lg text-base font-light leading-relaxed" style={{ color: "#888" }}>
-                        We&apos;ve cleaned thousands of Perth homes and businesses. Here&apos;s what makes us different.
-                    </p>
-                </div>
-
-                <div className="mx-auto grid max-w-4xl grid-cols-12 gap-3">
-                    <div className="col-span-12 md:col-span-5 rounded-2xl p-6" style={{ background: NAVY }}>
-                        <div className="mb-2 leading-none font-black" style={{ fontSize: 56, color: YELLOW }}>100%</div>
-                        <p className="font-bold text-base text-white mb-2">Satisfaction Guaranteed</p>
-                        <p className="text-sm font-light leading-relaxed" style={{ color: "rgba(255,255,255,0.55)" }}>
-                            If anything falls short, we return and fix it at no extra cost. No questions asked.
-                        </p>
-                    </div>
-                    <div className="col-span-12 md:col-span-7 rounded-2xl p-6 bg-white">
-                        <div className="mb-4 flex h-10 w-10 items-center justify-center rounded-xl" style={{ background: "rgba(7,7,126,0.07)" }}>
-                            <Droplets className="w-5 h-5" style={{ color: NAVY }} />
-                        </div>
-                        <p className="font-bold text-base mb-2" style={{ color: NAVY }}>Pure Water Technology</p>
-                        <p className="text-sm font-light leading-relaxed" style={{ color: "#888" }}>
-                            Our commercial RO/DI filtration system uses zero chemicals - glass stays cleaner for longer, even after rain. No streaks, no residue.
-                        </p>
-                    </div>
-                    {[
-                        { icon: <Shield className="w-5 h-5" style={{ color: NAVY }} />, title: "Fully Insured", body: "$20M public liability so you're always protected on every job." },
-                        { icon: <Zap className="w-5 h-5" style={{ color: NAVY }} />, title: "Urgent & Flexible", body: "Next-day emergency cleans available for rental inspections." },
-                        { icon: <Building2 className="w-5 h-5" style={{ color: NAVY }} />, title: "Police Cleared", body: "Background-checked team you can trust inside your home.", yellow: true },
-                    ].map((card) => (
-                        <div key={card.title} className="col-span-12 md:col-span-4 rounded-2xl p-5" style={{ background: card.yellow ? YELLOW : "white" }}>
-                            <div className="mb-3 flex h-9 w-9 items-center justify-center rounded-xl" style={{ background: card.yellow ? "rgba(7,7,126,0.1)" : "rgba(7,7,126,0.06)" }}>
-                                {card.icon}
-                            </div>
-                            <p className="font-bold text-sm mb-1.5" style={{ color: NAVY }}>{card.title}</p>
-                            <p className="text-xs font-light leading-relaxed" style={{ color: card.yellow ? "rgba(7,7,126,0.6)" : "#888" }}>{card.body}</p>
-                        </div>
-                    ))}
-                </div>
-            </section>
-
-            {/* ─── SECTION 6: BEFORE / AFTER ─── */}
+            
+{/* 🔹🔹🔹 SECTION 4: TRUSTED BY  🔹🔹🔹 */}
+                        
+{/* 🔹🔹🔹 SECTION 6: BEFORE / AFTER  🔹🔹🔹 */}
             <section className="px-5 py-16 bg-white">
                 <div className="mx-auto mb-8 max-w-4xl text-center">
                     <div className="mb-3 inline-block rounded-full px-3 py-1 text-xs font-bold uppercase tracking-widest" style={{ background: "rgba(7,7,126,0.07)", color: NAVY }}>
@@ -650,12 +580,13 @@ export default function WindowCleaningAdsPage() {
                 </div>
             </section>
 
-            {/* ─── SECTION 6.5: WHAT'S INCLUDED ─── */}
+            
+{/* 🔹🔹🔹 SECTION 6.5: WHAT'S INCLUDED  🔹🔹🔹 */}
             <section className="py-16 bg-gray-50 px-5">
                 <div className="max-w-5xl mx-auto">
-                    <h3 className="text-sm font-semibold uppercase mb-2 text-center" style={{ color: YELLOW }}>
+                    <p className="text-sm font-semibold uppercase mb-2 text-center" style={{ color: YELLOW }}>
                         WHAT'S INCLUDED
-                    </h3>
+                    </p>
                     <h2 className="text-3xl md:text-4xl font-heading font-bold text-center mb-8" style={{ color: NAVY }}>
                         Everything Covered in Our Window Clean
                     </h2>
@@ -678,9 +609,7 @@ export default function WindowCleaningAdsPage() {
                                     />
                                 </div>
                                 <div className="p-6 flex flex-col gap-3">
-                                    <h4 className="font-semibold text-lg" style={{ color: NAVY }}>
-                                        {item.title}
-                                    </h4>
+                                    <h3 className="font-semibold text-lg" style={{ color: NAVY }}>{item.title}</h3>
                                     <p className="text-sm leading-relaxed font-light" style={{ color: "#888" }}>
                                         {item.description}
                                     </p>
@@ -691,7 +620,230 @@ export default function WindowCleaningAdsPage() {
                 </div>
             </section>
 
-            {/* ─── SECTION 7: HOW IT WORKS ─── */}
+            
+<section id="commercial" className="py-12 px-5 bg-white border-y border-gray-100 text-center">
+                <div className="max-w-3xl mx-auto">
+                    <Building2 className="w-8 h-8 text-brand-slate mx-auto mb-4" />
+                    <h2 className="text-xl font-bold text-brand-navy mb-2">Looking for Commercial Services?</h2>
+                    <p className="text-gray-600 mb-6">We provide specialized cleaning for storefronts, strata complexes, and multi-story office buildings across Perth.</p>
+                    <Link href="/services/commercial-window-cleaning" className="text-brand-navy font-bold underline hover:text-action-gold transition-colors">Head to our Commercial Window Cleaning page &rarr;</Link>
+                </div>
+            </section>
+
+<section className="px-6 py-10 text-center" style={{ background: "#f4f6ff" }}>
+                <p className="mb-8 text-xs font-semibold uppercase tracking-widest" style={{ color: "#666" }}>
+                    Trusted by Perth businesses
+                </p>
+                <div className="flex flex-wrap items-center justify-center gap-10">
+                    {[
+                        { src: "https://res.cloudinary.com/dr8tjrszy/image/upload/v1772795795/toyota-logo_bcplvi.png", alt: "Toyota" },
+                        { src: "https://res.cloudinary.com/dr8tjrszy/image/upload/v1772795795/richad-logo_u2l4jl.png", alt: "Richard Group" },
+                        { src: "https://res.cloudinary.com/dr8tjrszy/image/upload/v1772795794/bespoke-logo_lulwwt.png", alt: "Bespoke" },
+                    ].map((logo) => (
+                        <div key={logo.alt} className="relative h-13 w-28 grayscale transition duration-300 hover:grayscale-0">
+                            <Image
+                                src={logo.src.replace(
+                                    "/upload/",
+                                    "/upload/f_auto,q_auto/"
+                                )}
+                                alt={logo.alt}
+                                fill
+                                sizes="112px"
+                                className="object-contain"
+                            />
+                        </div>
+                    ))}
+                </div>
+            </section>
+
+{/* PRICING SNIPPET */}
+            <section id="pricing" className="py-16 bg-white px-5 border-y border-gray-100">
+                <div className="max-w-5xl mx-auto text-center">
+                    <h2 className="text-3xl md:text-4xl font-bold mb-4 text-brand-navy">Clear, Transparent Pricing</h2>
+                    <p className="text-gray-600 max-w-2xl mx-auto mb-8 text-lg">We don't hide our rates. Select your home type below for our starting residential packages. No hidden fees, just guaranteed results.</p>
+                    
+                    <div className="flex justify-center mb-10">
+                        <div className="bg-gray-100 p-1 rounded-full flex gap-1">
+                            <button 
+                                onClick={() => setIsDoubleStorey(false)} 
+                                className={"px-6 py-2 rounded-full font-bold text-sm transition-all " + (!isDoubleStorey ? "bg-white text-brand-navy shadow-sm" : "text-gray-500 hover:text-gray-700 cursor-pointer")}
+                            >
+                                Single Storey
+                            </button>
+                            <button 
+                                onClick={() => setIsDoubleStorey(true)} 
+                                className={"px-6 py-2 rounded-full font-bold text-sm transition-all " + (isDoubleStorey ? "bg-brand-navy text-white shadow-sm" : "text-gray-500 hover:text-gray-700 cursor-pointer")}
+                            >
+                                Double Storey
+                            </button>
+                        </div>
+                    </div>
+
+                    <div className="grid md:grid-cols-3 gap-6">
+                        <div className="p-6 border rounded-xl shadow-sm bg-gray-50 flex flex-col justify-between transition-all duration-300">
+                            <div>
+                                <h3 className="font-bold text-xl text-brand-navy mb-2">Essential</h3>
+                                <p className="text-gray-500 text-sm mb-4">External standard clean only</p>
+                            </div>
+                            <p className="text-3xl font-black text-brand-navy mb-4 transition-all duration-300">{isDoubleStorey ? 'Starting From $279' : 'Starting From $159'}</p>
+                        </div>
+                        <div className="p-6 border-2 border-action-gold rounded-xl shadow-md bg-brand-navy text-white relative transform md:-translate-y-4 mt-4 md:mt-0 flex flex-col justify-between transition-all duration-300">
+                            <div className="absolute top-0 left-1/2 -translate-x-1/2 -translate-y-1/2 bg-action-gold text-brand-navy px-3 py-1 rounded-full text-xs font-bold tracking-wide w-max">MOST POPULAR</div>
+                            <div>
+                                <h3 className="font-bold text-xl mb-2 text-white">Standard</h3>
+                                <p className="text-brand-water text-sm mb-4">Inside and out basic wash</p>
+                            </div>
+                            <p className="text-3xl font-black text-white mb-4 transition-all duration-300">{isDoubleStorey ? 'Starting From $499' : 'Starting From $279'}</p>
+                        </div>
+                        <div className="p-6 border-2 rounded-xl bg-white relative flex flex-col justify-between transition-all duration-300" style={{ borderColor: "#ffd700", boxShadow: "0 0 20px rgba(255, 215, 0, 0.3)" }}>
+                            <div>
+                                <h3 className="font-bold text-xl text-brand-navy mb-2">Supreme</h3>
+                                <p className="text-gray-500 text-sm mb-4">Inside and out detailing (stuck-on paint, hard water)</p>
+                            </div>
+                            <p className="text-3xl font-black text-brand-navy mb-4 transition-all duration-300">{isDoubleStorey ? 'Starting From $859' : 'Starting From $479'}</p>
+                        </div>
+                    </div>
+                    <div className="mt-10">
+                        <button onClick={() => { const form = document.getElementById("quote-form"); if(form) form.scrollIntoView({behavior: "smooth"}); else window.scrollTo(0,0); }} className="text-action-gold bg-brand-navy px-8 py-4 rounded-full font-bold hover:shadow-lg inline-block transition-shadow cursor-pointer">Contact us for full pricing and exact quote</button>
+                    </div>
+                </div>
+            </section>
+
+            
+
+            {/* REAL ESTATE / PRE-SALE SNIPPET */}
+            <section className="py-16 px-5 bg-brand-navy text-white relative overflow-hidden">
+                <div className="absolute top-0 right-0 w-64 h-64 bg-action-gold opacity-10 rounded-full blur-3xl -translate-y-1/2 translate-x-1/3"></div>
+                <div className="max-w-4xl mx-auto flex flex-col md:flex-row items-center gap-8 relative z-10">
+                    <div className="shrink-0 bg-white/10 p-5 rounded-2xl border border-white/20 shadow-lg hidden md:block">
+                        <Camera className="w-12 h-12 text-action-gold" />
+                    </div>
+                    <div className="text-center md:text-left">
+                        <div className="md:hidden flex justify-center mb-4">
+                            <div className="bg-white/10 p-4 rounded-2xl border border-white/20">
+                                <Camera className="w-10 h-10 text-action-gold" />
+                            </div>
+                        </div>
+                        <h2 className="text-2xl md:text-3xl font-bold mb-4 text-white">Pre-Sale & Real Estate Photography Cleaning</h2>
+                        <p className="text-brand-water leading-relaxed mb-4 text-lg">
+                            Getting ready to list your property on the market? First impressions are everything. We offer specialized pre-sale and pre-photography cleaning packages designed to maximize your home's curb appeal.
+                        </p>
+                        <p className="text-gray-300 leading-relaxed text-sm">
+                            Unlike standard exterior washes, our pre-sale team performs an in-depth, top-to-bottom clean. We detail the inside and outside of the glass, scrub the tracks, wash the flyscreens, and clear out all cobwebs. Let us help you get your property picture-perfect and ready for home opens.
+                        </p>
+                    </div>
+                </div>
+            </section>
+
+            {/* COMPARISON / DON'T BE LIKE THESE PEOPLE */}
+            <section id="guarantee" className="py-20 px-5 bg-gray-50 border-b border-gray-200">
+                <div className="max-w-6xl mx-auto">
+                    <div className="text-center mb-16">
+                        <h2 className="text-3xl md:text-4xl font-bold mb-4 text-brand-navy">Don't Risk It With "A Bloke and a Bucket"</h2>
+                        <p className="text-gray-600 max-w-2xl mx-auto text-lg">Choosing an inexperienced cleaner can cost you far more than the initial quote. See what happens when you don't choose a professional.</p>
+                    </div>
+
+                    <div className="grid md:grid-cols-3 gap-6 mb-16">
+                        <div className="bg-white p-6 rounded-2xl shadow-sm border border-red-100 flex flex-col h-full">
+                            <div className="flex gap-1 text-red-500 mb-4">
+                                <Star className="w-5 h-5 fill-current" />
+                                <Star className="w-5 h-5" />
+                                <Star className="w-5 h-5" />
+                                <Star className="w-5 h-5" />
+                                <Star className="w-5 h-5" />
+                            </div>
+                            <p className="text-gray-700 text-sm italic mb-4 flex-grow">"The owner sent out some COMPLETELY INEXPERIENCED guy who SMASHED A WINDOW. He refused to do any more cleaning... they DO NOT HAVE INSURANCE."</p>
+                            <div className="mt-auto pt-4 border-t border-gray-100">
+                                <p className="text-xs text-gray-400 font-bold uppercase tracking-wider">- Review for a competitor</p>
+                            </div>
+                        </div>
+                        <div className="bg-white p-6 rounded-2xl shadow-sm border border-red-100 flex flex-col h-full">
+                            <div className="flex gap-1 text-red-500 mb-4">
+                                <Star className="w-5 h-5 fill-current" />
+                                <Star className="w-5 h-5" />
+                                <Star className="w-5 h-5" />
+                                <Star className="w-5 h-5" />
+                                <Star className="w-5 h-5" />
+                            </div>
+                            <p className="text-gray-700 text-sm italic mb-4 flex-grow">"Very unhappy... Skirtings missed... Watermarks left on sliding doors... Lime scale left on shower door... Left a bottle of 'Coles brand' bleach behind."</p>
+                            <div className="mt-auto pt-4 border-t border-gray-100">
+                                <p className="text-xs text-gray-400 font-bold uppercase tracking-wider">- Review for a competitor</p>
+                            </div>
+                        </div>
+                        <div className="bg-white p-6 rounded-2xl shadow-sm border border-red-100 flex flex-col h-full">
+                            <div className="flex gap-1 text-red-500 mb-4">
+                                <Star className="w-5 h-5 fill-current" />
+                                <Star className="w-5 h-5" />
+                                <Star className="w-5 h-5" />
+                                <Star className="w-5 h-5" />
+                                <Star className="w-5 h-5" />
+                            </div>
+                            <p className="text-gray-700 text-sm italic mb-4 flex-grow">"Yeh, nah. ONE BLOKE and a bucket or two is not ideal. Didn't clean tracks, didn't remove screens... what a waste of my money, expected a lot better."</p>
+                            <div className="mt-auto pt-4 border-t border-gray-100">
+                                <p className="text-xs text-gray-400 font-bold uppercase tracking-wider">- Review for a competitor</p>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div className="bg-brand-navy text-white rounded-3xl p-8 md:p-12 shadow-xl border-l-8 border-action-gold relative overflow-hidden">
+                        <div className="relative z-10">
+                            <h3 className="text-2xl md:text-3xl font-bold mb-4">The Aspect Window Cleaning Difference</h3>
+                            <p className="text-brand-water mb-8 text-lg md:text-xl max-w-3xl">We back our work with a <span className="text-action-gold font-bold">100% Satisfaction Guarantee</span>. Especially for our premium Supreme cleans, the job is not done until you are completely satisfied.</p>
+                            <ul className="grid md:grid-cols-2 gap-6">
+                                <li className="flex items-start gap-4">
+                                    <Shield className="w-8 h-8 text-action-gold shrink-0 mt-1" />
+                                    <span className="text-lg">Fully insured and professionally trained team</span>
+                                </li>
+                                <li className="flex items-start gap-4">
+                                    <Droplets className="w-8 h-8 text-action-gold shrink-0 mt-1" />
+                                    <span className="text-lg">We use Eco-friendly, pet & child-safe Pure Water technology</span>
+                                </li>
+                                <li className="flex items-start gap-4">
+                                    <CheckCircle2 className="w-8 h-8 text-action-gold shrink-0 mt-1" />
+                                    <span className="text-lg">Advanced detailing for hard water stains and paint</span>
+                                </li>
+                                <li className="flex items-start gap-4">
+                                    <CheckCircle2 className="w-8 h-8 text-action-gold shrink-0 mt-1" />
+                                    <span className="text-lg">Tracks, screens, and sills included in standard packages</span>
+                                </li>
+                            </ul>
+                        </div>
+                    </div>
+                </div>
+            </section>
+
+            
+
+            {/* TECHNOLOGY & WHY US */}
+            <section id="technology" className="py-20 px-5 bg-brand-navy text-white text-center">
+                <div className="max-w-5xl mx-auto">
+                    <Zap className="w-12 h-12 text-action-gold mx-auto mb-6" />
+                    <h2 className="text-3xl md:text-4xl font-bold mb-6">Why Aspect? The Technology Behind the Clean</h2>
+                    <div className="text-brand-water text-lg leading-relaxed max-w-3xl mx-auto mb-12">
+                        <p>We don't just use a squeegee and soapy water. We use advanced <strong>Carbon Fibre Poles</strong> and a <strong>Commercial RO/DI Pure Water System</strong>. Why does this matter? Because filtering out all minerals and chemicals means the water evaporates perfectly clear, leaving your windows streak-free and cleaner for much longer. It's safer, faster, and delivers a superior result.</p>
+                    </div>
+                    
+                    <div className="grid md:grid-cols-3 gap-6 text-left">
+                        <div className="bg-white/10 border border-white/20 p-6 rounded-2xl">
+                            <Shield className="w-8 h-8 text-action-gold mb-4" />
+                            <h3 className="font-bold text-xl mb-2 text-white">Fully Insured & Checked</h3>
+                            <p className="text-sm text-brand-water">Our entire team is police-cleared and backed by $20,000,000 Public Liability Insurance for your complete peace of mind.</p>
+                        </div>
+                        <div className="bg-action-gold border border-yellow-400 p-6 rounded-2xl text-brand-navy transform md:-translate-y-4">
+                            <CheckCircle2 className="w-8 h-8 text-brand-navy mb-4" />
+                            <h3 className="font-bold text-xl mb-2">100% Satisfaction</h3>
+                            <p className="text-sm">We guarantee our work. If anything falls short, we return and fix it at no extra cost. No questions asked.</p>
+                        </div>
+                        <div className="bg-white/10 border border-white/20 p-6 rounded-2xl">
+                            <Zap className="w-8 h-8 text-action-gold mb-4" />
+                            <h3 className="font-bold text-xl mb-2 text-white">Urgent & Flexible</h3>
+                            <p className="text-sm text-brand-water">Next-day emergency cleans are available. Whether it's an end-of-lease or a rental inspection, we've got you covered.</p>
+                        </div>
+                    </div>
+                </div>
+            </section>
+
+{/* 🔹🔹🔹 SECTION 7: HOW IT WORKS  🔹🔹🔹 */}
             <section className="px-5 py-16" style={{ background: "#f4f6ff" }}>
                 <div className="mx-auto mb-10 max-w-4xl text-center">
                     <div className="mb-3 inline-block rounded-full px-3 py-1 text-xs font-bold uppercase tracking-widest" style={{ background: "rgba(7,7,126,0.07)", color: NAVY }}>
@@ -760,7 +912,86 @@ export default function WindowCleaningAdsPage() {
 
 
 
-            {/* ─── SECTION 9: FOOTER CTA ─── */}
+            
+{/* 🔹🔹🔹 SECTION 3: REVIEWS  🔹🔹🔹 */}
+                        
+<section id="reviews" className="max-w-7xl mx-auto px-5 py-16 bg-white">
+                <div className="mx-auto mb-10 max-w-4xl text-center">
+                    <div className="mb-3 flex justify-center gap-1">
+                        {[...Array(5)].map((_, i) => <Star key={i} className="w-6 h-6 fill-yellow-400 text-yellow-400" />)}
+                    </div>
+                    <h2 className="mb-2 leading-none" style={{ fontSize: "clamp(24px,5vw,52px)", color: NAVY }}>
+                        Perth Homeowners Love Us
+                    </h2>
+                    <Link
+                        href="https://www.google.com/maps/place/Aspect+Window+Cleaning/@-31.9806823,115.7929967,17z"
+                        target="_blank"
+                        className="text-sm font-medium hover:underline"
+                        style={{ color: "#888" }}
+                    >
+                        {gmb.rating} across {gmb.reviewCount} Google Reviews
+                    </Link>
+                </div>
+                <GoogleReviews reviews={windowCleaningReviews} />
+            </section>
+
+            
+{/* PROMOS */}
+            <section id="promotions" className="py-16 px-5 bg-white border-b border-gray-100">
+                <div className="max-w-6xl mx-auto">
+                    <div className="text-center mb-12">
+                        <h2 className="text-3xl md:text-4xl font-bold mb-4 text-brand-navy">Current Promotions & Bundles</h2>
+                        <p className="text-gray-600 max-w-2xl mx-auto text-lg">Take advantage of our seasonal offers to keep your entire property sparkling from top to bottom.</p>
+                    </div>
+                    <div className="grid md:grid-cols-3 gap-6">
+                        <div className="bg-blue-50 border border-blue-100 p-8 rounded-2xl shadow-sm text-center">
+                            <Tag className="w-10 h-10 text-blue-500 mx-auto mb-4" />
+                            <h3 className="font-bold text-xl text-brand-navy mb-2">Bundle & Save 10%</h3>
+                            <p className="text-gray-600 mb-4 text-sm leading-relaxed">Group multiple services togetherlike window cleaning, gutter cleaning, solar panel washing, or pressure washingand get a flat 10% off your entire package.</p>
+                            <p className="text-xs text-gray-400 font-bold uppercase">No minimum value</p>
+                        </div>
+                        <div className="bg-yellow-50 border border-yellow-100 p-8 rounded-2xl shadow-sm text-center transform md:-translate-y-4 mt-4 md:mt-0">
+                            <div className="bg-action-gold text-brand-navy font-bold text-xs px-3 py-1 rounded-full w-max mx-auto mb-4 tracking-wider uppercase">Most Popular</div>
+                            <h3 className="font-bold text-xl text-brand-navy mb-2">Refer a Friend: $50 Off</h3>
+                            <p className="text-gray-600 mb-4 text-sm leading-relaxed">Love our service? Refer a neighbour or friend and get $30-$50 off your next clean when they book with us.</p>
+                            <p className="text-xs text-gray-400 font-bold uppercase">Min. order value $250</p>
+                        </div>
+                        <div className="bg-gray-50 border border-gray-200 p-8 rounded-2xl shadow-sm text-center">
+                            <Droplets className="w-10 h-10 text-gray-400 mx-auto mb-4" />
+                            <h3 className="font-bold text-xl text-brand-navy mb-2">$50 Off Flyscreen Detail</h3>
+                            <p className="text-gray-600 mb-4 text-sm leading-relaxed">Add comprehensive flyscreen deep cleaning to any standard or supreme window cleaning package and save $50 instantly.</p>
+                            <p className="text-xs text-gray-400 font-bold uppercase">Min. order value $300</p>
+                        </div>
+                    </div>
+                </div>
+            </section>
+
+            
+{/* FREE TRIAL */}
+            <section id="free-trial" className="py-20 px-5 bg-gray-50">
+                <div className="max-w-4xl mx-auto bg-white rounded-3xl p-8 md:p-12 shadow-xl border border-gray-100 flex flex-col md:flex-row gap-10 items-center">
+                    <div className="flex-1">
+                        <h2 className="text-3xl font-bold text-brand-navy mb-4">Still Not Convinced?</h2>
+                        <h3 className="text-xl text-action-gold font-bold mb-4">Try Us For Free</h3>
+                        <p className="text-gray-600 mb-6 leading-relaxed">We are so confident in the quality of our work and the power of our Pure Water systems that we want to prove it to you. Ask us to come over and clean <strong>2 windows absolutely free of charge</strong>.</p>
+                        <p className="text-gray-600 mb-6 leading-relaxed">See the level of service, experience our professionalism, and witness the difference it makes to your home before you spend a single cent. Just drop your address below!</p>
+                        <p className="text-sm text-gray-500 italic">* Offer valid for accessible residential ground-floor windows. Subject to availability.</p>
+                    </div>
+                    <div className="w-full md:w-96 bg-gray-50 p-6 rounded-2xl border border-gray-200">
+                        <h4 className="font-bold text-brand-navy mb-4 text-center">Request Your Free Trial</h4>
+                        <FreeTrialForm />
+                    </div>
+                </div>
+            </section>
+
+            {/* COMMERCIAL SNIPPET */}
+            
+
+
+		
+
+            
+{/* 🔹🔹🔹 SECTION 9: FOOTER CTA  🔹🔹🔹 */}
             <section className="relative overflow-hidden px-5 py-16 text-center" style={{ background: NAVY }}>
                 <div className="pointer-events-none absolute" style={{ top: "-150px", left: "50%", transform: "translateX(-50%)", width: 600, height: 600, border: "1px solid rgba(255,229,77,0.05)", borderRadius: "50%" }} />
                 <div className="relative z-10">
@@ -787,13 +1018,13 @@ export default function WindowCleaningAdsPage() {
                             className="flex items-center gap-2 rounded-2xl border px-7 py-4 font-medium text-base transition-all hover:bg-white/10 cursor-pointer"
                             style={{ borderColor: "rgba(255,255,255,0.25)", color: "white" }}
                         >
-                            Get a Text Quote →
-                        </button>
+                            Get a Text Quote Â </button>
                     </div>
                 </div>
             </section>
 
-            {/* ─── STICKY BAR ─── */}
+            
+{/* 🔹🔹🔹 STICKY BAR 🔹🔹🔹 */}
             <div
                 className="fixed bottom-0 left-0 right-0 z-50 flex items-center justify-center px-5 py-3"
                 style={{ background: NAVY, borderTop: `2px solid ${YELLOW}`, boxShadow: "0 -4px 24px rgba(7,7,126,0.3)" }}

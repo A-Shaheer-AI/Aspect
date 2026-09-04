@@ -103,7 +103,7 @@ export default function GoogleReviews({ reviews }: Props) {
                         </div>
 
                         {/* Content */}
-                        <p className="text-gray-700 text-sm leading-relaxed line-clamp-4">
+                        <p className="text-gray-700 text-sm leading-relaxed ">
                             {review.content}
                         </p>
 
@@ -169,7 +169,7 @@ export default function GoogleReviews({ reviews }: Props) {
                             </div>
 
                             {/* Content */}
-                            <p className="text-sm text-gray-700 line-clamp-3">
+                            <p className="text-sm text-gray-700 ">
                                 {review.content}
                             </p>
 

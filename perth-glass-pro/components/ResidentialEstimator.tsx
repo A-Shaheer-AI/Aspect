@@ -308,7 +308,7 @@ export default function ResidentialEstimator() {
                                 <div className="bg-orange-50 border border-orange-200 text-orange-700 p-3 rounded-xl flex items-start gap-3">
                                     <AlertCircle className="w-5 h-5 shrink-0 mt-0.5" />
                                     <span className="text-sm font-medium">
-                                        ⚡ Priority Slot Applied (+${PRICING.URGENCY_FEE})
+                                        âš¡ Priority Slot Applied (+${PRICING.URGENCY_FEE})
                                         <br />
                                         <span className="text-xs opacity-80 font-normal">Spots are limited this week.</span>
                                     </span>
@@ -622,7 +622,7 @@ export default function ResidentialEstimator() {
                                                 calLink={CAL_LINK}
                                                 style={{ width: "100%", height: "350px", overflow: "auto" }} config={{ layout: "month_view" }}
                                             /> */}
-                                            <iframe
+                                            <iframe title="Online Booking Calendar"
                                                 src="https://www.cal.eu/aspect-window-cleaning/booking"
                                                 width="100%"
                                                 height="600"
