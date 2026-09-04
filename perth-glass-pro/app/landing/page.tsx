@@ -84,10 +84,10 @@ function LeadForm({
                     boxShadow: "0 4px 20px rgba(255,229,77,0.4)",
                 }}
             >
-                Send Me a Quote ÃƒÂ¢Ã…Â¾Ã¢â‚¬Â
+                Send Me a Quote ➔
               </button>
             <p className="text-center text-xs mt-1" style={{ color: dark ? "rgba(255,255,255,0.45)" : "#aaa" }}>
-                  ÃƒÂ°Ã…Â¸Ã¢â‚¬ÂÃ¢â‚¬â„¢ We never share your details
+                  🔒 We never share your details
             </p>
         </div>
     );
@@ -421,7 +421,7 @@ export default function WindowCleaningAdsPage() {
             />
 
             
-{/* ÃƒÂ°Ã…Â¸Ã¢â‚¬ÂÃ‚Â¹ÃƒÂ°Ã…Â¸Ã¢â‚¬ÂÃ‚Â¹ÃƒÂ°Ã…Â¸Ã¢â‚¬ÂÃ‚Â¹ SECTION 1: HERO  ÃƒÂ°Ã…Â¸Ã¢â‚¬ÂÃ‚Â¹ÃƒÂ°Ã…Â¸Ã¢â‚¬ÂÃ‚Â¹ÃƒÂ°Ã…Â¸Ã¢â‚¬ÂÃ‚Â¹ */}
+{/* 🔹🔹🔹 SECTION 1: HERO  🔹🔹🔹 */}
             <section
                 className="relative min-h-screen flex flex-col items-center justify-center md:px-5 pb-10 text-white bg-cover bg-center
   bg-[linear-gradient(160deg,rgba(10,22,40,0.5)_0%,rgba(15,37,69,0.8)_60%,rgba(19,48,96,0.8)_100%),url('/landing-hero-bg.jpeg')]
@@ -477,7 +477,7 @@ export default function WindowCleaningAdsPage() {
                         </div>
 
                         <div className="grid grid-cols-2 gap-2 sm:gap-3 w-full max-w-md">
-                            {[ { icon: "\uD83D\uDEE1\uFE0F", text: "$20M Insured" }, { icon: "ÃƒÂ°Ã…Â¸Ã‚ÂÃ¢â‚¬Â¦", text: "Police Cleared" }, { icon: "ÃƒÂ°Ã…Â¸Ã¢â‚¬â„¢Ã‚Â§", text: "Pure Water Tech" }, { icon: "\u2B50", text: `${gmb.rating} Google Reviews` } ].map((b) => (
+                            {[ { icon: "\uD83D\uDEE1\uFE0F", text: "$20M Insured" }, { icon: "🏅", text: "Police Cleared" }, { icon: "💧", text: "Pure Water Tech" }, { icon: "\u2B50", text: `${gmb.rating} Google Reviews` } ].map((b) => (
                                 <span
                                     key={b.text}
                                     className="flex items-center justify-center gap-1 sm:gap-2 rounded-full px-1 sm:px-5 py-2.5 text-[11px] sm:text-sm md:text-base font-semibold text-center"
@@ -526,7 +526,7 @@ export default function WindowCleaningAdsPage() {
             </section>
 
             
-{/* ÃƒÂ°Ã…Â¸Ã¢â‚¬ÂÃ‚Â¹ÃƒÂ°Ã…Â¸Ã¢â‚¬ÂÃ‚Â¹ÃƒÂ°Ã…Â¸Ã¢â‚¬ÂÃ‚Â¹ SECTION 2: STATS STRIP  ÃƒÂ°Ã…Â¸Ã¢â‚¬ÂÃ‚Â¹ÃƒÂ°Ã…Â¸Ã¢â‚¬ÂÃ‚Â¹ÃƒÂ°Ã…Â¸Ã¢â‚¬ÂÃ‚Â¹ */}
+{/* 🔹🔹🔹 SECTION 2: STATS STRIP  🔹🔹🔹 */}
             <section style={{ background: YELLOW }}>
                 <div className="mx-auto grid max-w-4xl grid-cols-4">
                     {[ { num: "100+", label: "Happy Clients" }, { num: `${gmb.rating}\u2B50`, label: "Google Rating" }, { num: "$20M", label: "Insured" }, { num: "24hr", label: "Response Time" } ].map((s, i) => (
@@ -547,9 +547,9 @@ export default function WindowCleaningAdsPage() {
             </section>
 
             
-{/* ÃƒÂ°Ã…Â¸Ã¢â‚¬ÂÃ‚Â¹ÃƒÂ°Ã…Â¸Ã¢â‚¬ÂÃ‚Â¹ÃƒÂ°Ã…Â¸Ã¢â‚¬ÂÃ‚Â¹ SECTION 4: TRUSTED BY  ÃƒÂ°Ã…Â¸Ã¢â‚¬ÂÃ‚Â¹ÃƒÂ°Ã…Â¸Ã¢â‚¬ÂÃ‚Â¹ÃƒÂ°Ã…Â¸Ã¢â‚¬ÂÃ‚Â¹ */}
+{/* 🔹🔹🔹 SECTION 4: TRUSTED BY  🔹🔹🔹 */}
                         
-{/* ÃƒÂ°Ã…Â¸Ã¢â‚¬ÂÃ‚Â¹ÃƒÂ°Ã…Â¸Ã¢â‚¬ÂÃ‚Â¹ÃƒÂ°Ã…Â¸Ã¢â‚¬ÂÃ‚Â¹ SECTION 6: BEFORE / AFTER  ÃƒÂ°Ã…Â¸Ã¢â‚¬ÂÃ‚Â¹ÃƒÂ°Ã…Â¸Ã¢â‚¬ÂÃ‚Â¹ÃƒÂ°Ã…Â¸Ã¢â‚¬ÂÃ‚Â¹ */}
+{/* 🔹🔹🔹 SECTION 6: BEFORE / AFTER  🔹🔹🔹 */}
             <section className="px-5 py-16 bg-white">
                 <div className="mx-auto mb-8 max-w-4xl text-center">
                     <div className="mb-3 inline-block rounded-full px-3 py-1 text-xs font-bold uppercase tracking-widest" style={{ background: "rgba(7,7,126,0.07)", color: NAVY }}>
@@ -581,7 +581,7 @@ export default function WindowCleaningAdsPage() {
             </section>
 
             
-{/* ÃƒÂ°Ã…Â¸Ã¢â‚¬ÂÃ‚Â¹ÃƒÂ°Ã…Â¸Ã¢â‚¬ÂÃ‚Â¹ÃƒÂ°Ã…Â¸Ã¢â‚¬ÂÃ‚Â¹ SECTION 6.5: WHAT'S INCLUDED  ÃƒÂ°Ã…Â¸Ã¢â‚¬ÂÃ‚Â¹ÃƒÂ°Ã…Â¸Ã¢â‚¬ÂÃ‚Â¹ÃƒÂ°Ã…Â¸Ã¢â‚¬ÂÃ‚Â¹ */}
+{/* 🔹🔹🔹 SECTION 6.5: WHAT'S INCLUDED  🔹🔹🔹 */}
             <section className="py-16 bg-gray-50 px-5">
                 <div className="max-w-5xl mx-auto">
                     <p className="text-sm font-semibold uppercase mb-2 text-center" style={{ color: YELLOW }}>
@@ -818,7 +818,7 @@ export default function WindowCleaningAdsPage() {
                 </div>
             </section>
 
-{/* ÃƒÂ°Ã…Â¸Ã¢â‚¬ÂÃ‚Â¹ÃƒÂ°Ã…Â¸Ã¢â‚¬ÂÃ‚Â¹ÃƒÂ°Ã…Â¸Ã¢â‚¬ÂÃ‚Â¹ SECTION 7: HOW IT WORKS  ÃƒÂ°Ã…Â¸Ã¢â‚¬ÂÃ‚Â¹ÃƒÂ°Ã…Â¸Ã¢â‚¬ÂÃ‚Â¹ÃƒÂ°Ã…Â¸Ã¢â‚¬ÂÃ‚Â¹ */}
+{/* 🔹🔹🔹 SECTION 7: HOW IT WORKS  🔹🔹🔹 */}
             <section className="px-5 py-16" style={{ background: "#f4f6ff" }}>
                 <div className="mx-auto mb-10 max-w-4xl text-center">
                     <div className="mb-3 inline-block rounded-full px-3 py-1 text-xs font-bold uppercase tracking-widest" style={{ background: "rgba(7,7,126,0.07)", color: NAVY }}>
@@ -888,7 +888,7 @@ export default function WindowCleaningAdsPage() {
 
 
             
-{/* ÃƒÂ°Ã…Â¸Ã¢â‚¬ÂÃ‚Â¹ÃƒÂ°Ã…Â¸Ã¢â‚¬ÂÃ‚Â¹ÃƒÂ°Ã…Â¸Ã¢â‚¬ÂÃ‚Â¹ SECTION 3: REVIEWS  ÃƒÂ°Ã…Â¸Ã¢â‚¬ÂÃ‚Â¹ÃƒÂ°Ã…Â¸Ã¢â‚¬ÂÃ‚Â¹ÃƒÂ°Ã…Â¸Ã¢â‚¬ÂÃ‚Â¹ */}
+{/* 🔹🔹🔹 SECTION 3: REVIEWS  🔹🔹🔹 */}
                         
 <section id="reviews" className="max-w-7xl mx-auto px-5 py-16 bg-white">
                 <div className="mx-auto mb-10 max-w-4xl text-center">
@@ -966,7 +966,7 @@ export default function WindowCleaningAdsPage() {
 		
 
             
-{/* ÃƒÂ°Ã…Â¸Ã¢â‚¬ÂÃ‚Â¹ÃƒÂ°Ã…Â¸Ã¢â‚¬ÂÃ‚Â¹ÃƒÂ°Ã…Â¸Ã¢â‚¬ÂÃ‚Â¹ SECTION 9: FOOTER CTA  ÃƒÂ°Ã…Â¸Ã¢â‚¬ÂÃ‚Â¹ÃƒÂ°Ã…Â¸Ã¢â‚¬ÂÃ‚Â¹ÃƒÂ°Ã…Â¸Ã¢â‚¬ÂÃ‚Â¹ */}
+{/* 🔹🔹🔹 SECTION 9: FOOTER CTA  🔹🔹🔹 */}
             <section className="relative overflow-hidden px-5 py-16 text-center" style={{ background: NAVY }}>
                 <div className="pointer-events-none absolute" style={{ top: "-150px", left: "50%", transform: "translateX(-50%)", width: 600, height: 600, border: "1px solid rgba(255,229,77,0.05)", borderRadius: "50%" }} />
                 <div className="relative z-10">
@@ -993,13 +993,13 @@ export default function WindowCleaningAdsPage() {
                             className="flex items-center gap-2 rounded-2xl border px-7 py-4 font-medium text-base transition-all hover:bg-white/10 cursor-pointer"
                             style={{ borderColor: "rgba(255,255,255,0.25)", color: "white" }}
                         >
-                            Get a Text Quote ÃƒÆ’Ã¢â‚¬Å¡Ãƒâ€šÃ‚Â </button>
+                            Get a Text Quote Â </button>
                     </div>
                 </div>
             </section>
 
             
-{/* ÃƒÂ°Ã…Â¸Ã¢â‚¬ÂÃ‚Â¹ÃƒÂ°Ã…Â¸Ã¢â‚¬ÂÃ‚Â¹ÃƒÂ°Ã…Â¸Ã¢â‚¬ÂÃ‚Â¹ STICKY BAR ÃƒÂ°Ã…Â¸Ã¢â‚¬ÂÃ‚Â¹ÃƒÂ°Ã…Â¸Ã¢â‚¬ÂÃ‚Â¹ÃƒÂ°Ã…Â¸Ã¢â‚¬ÂÃ‚Â¹ */}
+{/* 🔹🔹🔹 STICKY BAR 🔹🔹🔹 */}
             <div
                 className="fixed bottom-0 left-0 right-0 z-50 flex items-center justify-center px-5 py-3"
                 style={{ background: NAVY, borderTop: `2px solid ${YELLOW}`, boxShadow: "0 -4px 24px rgba(7,7,126,0.3)" }}
