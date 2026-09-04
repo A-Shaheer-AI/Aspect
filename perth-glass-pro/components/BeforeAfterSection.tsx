@@ -41,7 +41,7 @@ export default function BeforeAfter() {
                 {/* Slider Control */}
                 <div className="absolute inset-0 flex items-center">
                     <input
-                        type="range" aria-label="Image comparison slider"
+                        type="range" aria-label="Window cleaning before and after comparison slider"
                         min="0"
                         max="100"
                         value={sliderPosition}
@@ -53,7 +53,7 @@ export default function BeforeAfter() {
                         style={{ left: `${sliderPosition}%` }}
                     >
                         <div className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-10 h-10 bg-white rounded-full shadow-lg flex items-center justify-center">
-                            <span className="text-brand-navy text-xs font-bold">âŸ·</span>
+                            <span className="text-brand-navy text-xs font-bold">Ã¢Å¸Â·</span>
                         </div>
                     </div>
                 </div>
