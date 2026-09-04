@@ -84,7 +84,7 @@ function LeadForm({
                     boxShadow: "0 4px 20px rgba(255,229,77,0.4)",
                 }}
             >
-                Send Me a Quote âž”
+                Send Me a Quote ➔
               </button>
             <p className="text-center text-xs mt-1" style={{ color: dark ? "rgba(255,255,255,0.45)" : "#aaa" }}>
                   ðŸ”’ We never share your details
@@ -419,7 +419,8 @@ export default function WindowCleaningAdsPage() {
                 showPromo={showPromo}
             />
 
-            {/* ðŸ”¹ðŸ”¹ðŸ”¹ SECTION 1: HERO  ðŸ”¹ðŸ”¹ðŸ”¹ */}
+            
+{/* ðŸ”¹ðŸ”¹ðŸ”¹ SECTION 1: HERO  ðŸ”¹ðŸ”¹ðŸ”¹ */}
             <section
                 className="relative min-h-screen flex flex-col items-center justify-center md:px-5 pb-10 text-white bg-cover bg-center
   bg-[linear-gradient(160deg,rgba(10,22,40,0.5)_0%,rgba(15,37,69,0.8)_60%,rgba(19,48,96,0.8)_100%),url('/landing-hero-bg.jpeg')]
@@ -523,7 +524,8 @@ export default function WindowCleaningAdsPage() {
                 </div>
             </section>
 
-            {/* ðŸ”¹ðŸ”¹ðŸ”¹ SECTION 2: STATS STRIP  ðŸ”¹ðŸ”¹ðŸ”¹ */}
+            
+{/* ðŸ”¹ðŸ”¹ðŸ”¹ SECTION 2: STATS STRIP  ðŸ”¹ðŸ”¹ðŸ”¹ */}
             <section style={{ background: YELLOW }}>
                 <div className="mx-auto grid max-w-4xl grid-cols-4">
                     {[ { num: "100+", label: "Happy Clients" }, { num: `${gmb.rating}\u2B50`, label: "Google Rating" }, { num: "$20M", label: "Insured" }, { num: "24hr", label: "Response Time" } ].map((s, i) => (
@@ -543,8 +545,84 @@ export default function WindowCleaningAdsPage() {
                 </div>
             </section>
 
-            {/* ðŸ”¹ðŸ”¹ðŸ”¹ SECTION 3: REVIEWS  ðŸ”¹ðŸ”¹ðŸ”¹ */}
-                        {/* PRICING SNIPPET */}
+            
+{/* ðŸ”¹ðŸ”¹ðŸ”¹ SECTION 4: TRUSTED BY  ðŸ”¹ðŸ”¹ðŸ”¹ */}
+                        
+{/* ðŸ”¹ðŸ”¹ðŸ”¹ SECTION 6: BEFORE / AFTER  ðŸ”¹ðŸ”¹ðŸ”¹ */}
+            <section className="px-5 py-16 bg-white">
+                <div className="mx-auto mb-8 max-w-4xl text-center">
+                    <div className="mb-3 inline-block rounded-full px-3 py-1 text-xs font-bold uppercase tracking-widest" style={{ background: "rgba(7,7,126,0.07)", color: NAVY }}>
+                        Our results
+                    </div>
+                    <h2 className="leading-none" style={{ fontSize: "clamp(36px,5vw,52px)", color: NAVY }}>
+                        See the Difference
+                    </h2>
+                </div>
+                <div className="mx-auto max-w-4xl">
+                    <div className="mb-4 overflow-hidden rounded-2xl" style={{ height: 380 }}>
+                        <video className="h-full w-full object-cover" controls preload="metadata">
+                            <source src="https://res.cloudinary.com/dr8tjrszy/video/upload/v1772968701/VID-20260228-WA0016_xsz3cm_401388.mp4" type="video/mp4" />
+                        </video>
+                    </div>
+                    <div className="grid grid-cols-1 gap-4 lg:grid-cols-2">
+                        <BeforeAfterSlider
+                            afterImage="https://res.cloudinary.com/dr8tjrszy/image/upload/v1774345158/IMG_9593_1_2_b98bl5.png"
+                            beforeImage="https://res.cloudinary.com/dr8tjrszy/image/upload/v1771960144/WhatsApp_Image_2026-02-22_at_8.48.03_PM_vtb2tn.jpg"
+                            initial={50}
+                        />
+                        <BeforeAfterSlider
+                            afterImage="https://res.cloudinary.com/dr8tjrszy/image/upload/v1785879700/aspect_gallery/after.webp"
+                            beforeImage="https://res.cloudinary.com/dr8tjrszy/image/upload/v1785879695/aspect_gallery/1-before.webp"
+                            initial={50}
+                        />
+                    </div>
+                </div>
+            </section>
+
+            
+{/* ðŸ”¹ðŸ”¹ðŸ”¹ SECTION 6.5: WHAT'S INCLUDED  ðŸ”¹ðŸ”¹ðŸ”¹ */}
+            <section className="py-16 bg-gray-50 px-5">
+                <div className="max-w-5xl mx-auto">
+                    <h3 className="text-sm font-semibold uppercase mb-2 text-center" style={{ color: YELLOW }}>
+                        WHAT'S INCLUDED
+                    </h3>
+                    <h2 className="text-3xl md:text-4xl font-heading font-bold text-center mb-8" style={{ color: NAVY }}>
+                        Everything Covered in Our Window Clean
+                    </h2>
+                    <p className="mb-10 text-center max-w-2xl mx-auto text-base font-light" style={{ color: "#888" }}>
+                        We don't cut corners. Every booking includes a full, thorough clean of all accessible window components - not just the glass.
+                    </p>
+                    <div className="grid md:grid-cols-3 gap-6">
+                        {whatsInclude.map((item, index) => (
+                            <div
+                                key={index}
+                                className="flex flex-col rounded-2xl bg-white border border-gray-100 shadow-sm hover:shadow-lg hover:-translate-y-1 transition-all duration-300 overflow-hidden group"
+                            >
+                                <div className="relative w-full h-48 bg-gray-100 flex-shrink-0 overflow-hidden">
+                                    <Image
+                                        src={item.img}
+                                        alt={item.title}
+                                        fill
+                                        sizes="(max-width: 768px) 100vw, 33vw"
+                                        className="object-cover group-hover:scale-105 transition-transform duration-500"
+                                    />
+                                </div>
+                                <div className="p-6 flex flex-col gap-3">
+                                    <h4 className="font-semibold text-lg" style={{ color: NAVY }}>
+                                        {item.title}
+                                    </h4>
+                                    <p className="text-sm leading-relaxed font-light" style={{ color: "#888" }}>
+                                        {item.description}
+                                    </p>
+                                </div>
+                            </div>
+                        ))}
+                    </div>
+                </div>
+            </section>
+
+            
+{/* PRICING SNIPPET */}
             <section id="pricing" className="py-16 bg-white px-5 border-y border-gray-100">
                 <div className="max-w-5xl mx-auto text-center">
                     <h2 className="text-3xl md:text-4xl font-bold mb-4 text-brand-navy">Clear, Transparent Pricing</h2>
@@ -553,18 +631,18 @@ export default function WindowCleaningAdsPage() {
                         <div className="p-6 border rounded-xl shadow-sm bg-gray-50">
                             <h3 className="font-bold text-xl text-brand-navy mb-2">Essential</h3>
                             <p className="text-gray-500 text-sm mb-4">External standard clean only</p>
-                            <p className="text-3xl font-black text-brand-navy mb-4">From $159</p>
+                            <p className="text-3xl font-black text-brand-navy mb-4">Standard Homes Starting From $159</p>
                         </div>
                         <div className="p-6 border-2 border-action-gold rounded-xl shadow-md bg-brand-navy text-white relative transform md:-translate-y-4 mt-4 md:mt-0">
                             <div className="absolute top-0 left-1/2 -translate-x-1/2 -translate-y-1/2 bg-action-gold text-brand-navy px-3 py-1 rounded-full text-xs font-bold tracking-wide w-max">MOST POPULAR</div>
                             <h3 className="font-bold text-xl mb-2 text-white">Standard</h3>
                             <p className="text-brand-water text-sm mb-4">Inside and out basic wash</p>
-                            <p className="text-3xl font-black text-white mb-4">From $279</p>
+                            <p className="text-3xl font-black text-white mb-4">Standard Homes Starting From $279</p>
                         </div>
                         <div className="p-6 border rounded-xl shadow-sm bg-gray-50">
                             <h3 className="font-bold text-xl text-brand-navy mb-2">Supreme</h3>
                             <p className="text-gray-500 text-sm mb-4">Inside and out detailing (stuck-on paint, hard water)</p>
-                            <p className="text-3xl font-black text-brand-navy mb-4">From $479</p>
+                            <p className="text-3xl font-black text-brand-navy mb-4">Standard Homes Starting From $479</p>
                         </div>
                     </div>
                     <div className="mt-10">
@@ -573,7 +651,8 @@ export default function WindowCleaningAdsPage() {
                 </div>
             </section>
 
-            {/* COMPARISON / DON'T BE LIKE THESE PEOPLE */}
+            
+{/* COMPARISON / DON'T BE LIKE THESE PEOPLE */}
             <section id="guarantee" className="py-20 px-5 bg-gray-50 border-b border-gray-200">
                 <div className="max-w-6xl mx-auto">
                     <div className="text-center mb-16">
@@ -650,243 +729,38 @@ export default function WindowCleaningAdsPage() {
                 </div>
             </section>
 
-            <section id="reviews" className="max-w-7xl mx-auto px-5 py-16 bg-white">
-                <div className="mx-auto mb-10 max-w-4xl text-center">
-                    <div className="mb-3 flex justify-center gap-1">
-                        {[...Array(5)].map((_, i) => <Star key={i} className="w-6 h-6 fill-yellow-400 text-yellow-400" />)}
-                    </div>
-                    <h2 className="mb-2 leading-none" style={{ fontSize: "clamp(24px,5vw,52px)", color: NAVY }}>
-                        Perth Homeowners Love Us
-                    </h2>
-                    <Link
-                        href="https://www.google.com/maps/place/Aspect+Window+Cleaning/@-31.9806823,115.7929967,17z"
-                        target="_blank"
-                        className="text-sm font-medium hover:underline"
-                        style={{ color: "#888" }}
-                    >
-                        {gmb.rating} across {gmb.reviewCount} Google Reviews
-                    </Link>
-                </div>
-                <GoogleReviews reviews={windowCleaningReviews} />
-            </section>
+            
 
-            {/* ðŸ”¹ðŸ”¹ðŸ”¹ SECTION 4: TRUSTED BY  ðŸ”¹ðŸ”¹ðŸ”¹ */}
-                        {/* PROMOS */}
-            <section id="promotions" className="py-16 px-5 bg-white border-b border-gray-100">
-                <div className="max-w-6xl mx-auto">
-                    <div className="text-center mb-12">
-                        <h2 className="text-3xl md:text-4xl font-bold mb-4 text-brand-navy">Current Promotions & Bundles</h2>
-                        <p className="text-gray-600 max-w-2xl mx-auto text-lg">Take advantage of our seasonal offers to keep your entire property sparkling from top to bottom.</p>
-                    </div>
-                    <div className="grid md:grid-cols-3 gap-6">
-                        <div className="bg-blue-50 border border-blue-100 p-8 rounded-2xl shadow-sm text-center">
-                            <Tag className="w-10 h-10 text-blue-500 mx-auto mb-4" />
-                            <h3 className="font-bold text-xl text-brand-navy mb-2">Bundle & Save 10%</h3>
-                            <p className="text-gray-600 mb-4 text-sm leading-relaxed">Group multiple services togetherlike window cleaning, gutter cleaning, solar panel washing, or pressure washingand get a flat 10% off your entire package.</p>
-                            <p className="text-xs text-gray-400 font-bold uppercase">No minimum value</p>
-                        </div>
-                        <div className="bg-yellow-50 border border-yellow-100 p-8 rounded-2xl shadow-sm text-center transform md:-translate-y-4 mt-4 md:mt-0">
-                            <div className="bg-action-gold text-brand-navy font-bold text-xs px-3 py-1 rounded-full w-max mx-auto mb-4 tracking-wider uppercase">Most Popular</div>
-                            <h3 className="font-bold text-xl text-brand-navy mb-2">Refer a Friend: $50 Off</h3>
-                            <p className="text-gray-600 mb-4 text-sm leading-relaxed">Love our service? Refer a neighbour or friend and get $30-$50 off your next clean when they book with us.</p>
-                            <p className="text-xs text-gray-400 font-bold uppercase">Min. order value $250</p>
-                        </div>
-                        <div className="bg-gray-50 border border-gray-200 p-8 rounded-2xl shadow-sm text-center">
-                            <Droplets className="w-10 h-10 text-gray-400 mx-auto mb-4" />
-                            <h3 className="font-bold text-xl text-brand-navy mb-2">$50 Off Flyscreen Detail</h3>
-                            <p className="text-gray-600 mb-4 text-sm leading-relaxed">Add comprehensive flyscreen deep cleaning to any standard or supreme window cleaning package and save $50 instantly.</p>
-                            <p className="text-xs text-gray-400 font-bold uppercase">Min. order value $300</p>
-                        </div>
-                    </div>
-                </div>
-            </section>
-
-            {/* TECHNOLOGY & SAFETY */}
+            {/* TECHNOLOGY & WHY US */}
             <section id="technology" className="py-20 px-5 bg-brand-navy text-white text-center">
-                <div className="max-w-4xl mx-auto">
-                    <Zap className="w-12 h-12 text-action-gold mx-auto mb-6" />
-                    <h2 className="text-3xl md:text-4xl font-bold mb-6">Advanced Carbon Fibre & Pure Water Technology</h2>
-                    <div className="text-brand-water text-lg md:text-xl leading-relaxed space-y-6">
-                        <p>We use advanced <strong>Carbon Fibre Poles</strong> for safe, ladder-free cleaning up to three storeys high (wherever accessible). This ensures zero risk of damage to your property's exterior, garden beds, or roof tiles while guaranteeing a perfect finish on high-reach and difficult-access windows.</p>
-                        <p>Combined with our <strong>100% Eco-Friendly Pure Water System</strong>, we deliver a clean that is completely pet-friendly and child-safe. By filtering out all heavy metals, minerals, and chemicals, the water evaporates perfectly clear, leaving your glass cleaner for much longer.</p>
-                        <p>For your complete peace of mind, our entire team is fully police-cleared and backed by a comprehensive <strong>$20,000,000 Public Liability Insurance</strong> policy. We respect your property and protect it at every step.</p>
-                    </div>
-                </div>
-            </section>
-
-            {/* FREE TRIAL */}
-            <section id="free-trial" className="py-20 px-5 bg-gray-50">
-                <div className="max-w-4xl mx-auto bg-white rounded-3xl p-8 md:p-12 shadow-xl border border-gray-100 flex flex-col md:flex-row gap-10 items-center">
-                    <div className="flex-1">
-                        <h2 className="text-3xl font-bold text-brand-navy mb-4">Still Not Convinced?</h2>
-                        <h3 className="text-xl text-action-gold font-bold mb-4">Try Us For Free</h3>
-                        <p className="text-gray-600 mb-6 leading-relaxed">We are so confident in the quality of our work and the power of our Pure Water systems that we want to prove it to you. Ask us to come over and clean <strong>2 windows absolutely free of charge</strong>.</p>
-                        <p className="text-gray-600 mb-6 leading-relaxed">See the level of service, experience our professionalism, and witness the difference it makes to your home before you spend a single cent. Just drop your address below!</p>
-                        <p className="text-sm text-gray-400 italic">* Offer valid for accessible residential ground-floor windows. Subject to availability.</p>
-                    </div>
-                    <div className="w-full md:w-96 bg-gray-50 p-6 rounded-2xl border border-gray-200">
-                        <h4 className="font-bold text-brand-navy mb-4 text-center">Request Your Free Trial</h4>
-                        <FreeTrialForm />
-                    </div>
-                </div>
-            </section>
-
-            {/* COMMERCIAL SNIPPET */}
-            <section id="commercial" className="py-12 px-5 bg-white border-y border-gray-100 text-center">
-                <div className="max-w-3xl mx-auto">
-                    <Building2 className="w-8 h-8 text-brand-slate mx-auto mb-4" />
-                    <h3 className="text-xl font-bold text-brand-navy mb-2">Looking for Commercial Services?</h3>
-                    <p className="text-gray-600 mb-6">We provide specialized cleaning for storefronts, strata complexes, and multi-story office buildings across Perth.</p>
-                    <Link href="/services/commercial-window-cleaning" className="text-brand-navy font-bold underline hover:text-action-gold transition-colors">Head to our Commercial Window Cleaning page &rarr;</Link>
-                </div>
-            </section>
-
-		<section className="px-6 py-10 text-center" style={{ background: "#f4f6ff" }}>
-                <p className="mb-8 text-xs font-semibold uppercase tracking-widest" style={{ color: "#aaa" }}>
-                    Trusted by Perth businesses
-                </p>
-                <div className="flex flex-wrap items-center justify-center gap-10">
-                    {[
-                        { src: "https://res.cloudinary.com/dr8tjrszy/image/upload/v1772795795/toyota-logo_bcplvi.png", alt: "Toyota" },
-                        { src: "https://res.cloudinary.com/dr8tjrszy/image/upload/v1772795795/richad-logo_u2l4jl.png", alt: "Richard Group" },
-                        { src: "https://res.cloudinary.com/dr8tjrszy/image/upload/v1772795794/bespoke-logo_lulwwt.png", alt: "Bespoke" },
-                    ].map((logo) => (
-                        <div key={logo.alt} className="relative h-13 w-28 grayscale transition duration-300 hover:grayscale-0">
-                            <Image
-                                src={logo.src.replace(
-                                    "/upload/",
-                                    "/upload/f_auto,q_auto/"
-                                )}
-                                alt={logo.alt}
-                                fill
-                                sizes="112px"
-                                className="object-contain"
-                            />
-                        </div>
-                    ))}
-                </div>
-            </section>
-
-            {/* ðŸ”¹ðŸ”¹ðŸ”¹ SECTION 5: BENTO WHY US  ðŸ”¹ðŸ”¹ðŸ”¹ */}
-            <section className="px-5 py-16" style={{ background: "#f4f6ff" }}>
-                <div className="mx-auto mb-10 max-w-4xl text-center">
-                    <div className="mb-3 inline-block rounded-full px-3 py-1 text-xs font-bold uppercase tracking-widest" style={{ background: "rgba(7,7,126,0.07)", color: NAVY }}>
-                        Why Aspect
-                    </div>
-                    <h2 className="mb-3 leading-none" style={{ fontSize: "clamp(24px,5vw,52px)", color: NAVY }}>
-                        Not All Window Cleaners Are the Same
-                    </h2>
-                    <p className="mx-auto max-w-lg text-base font-light leading-relaxed" style={{ color: "#888" }}>
-                        We&apos;ve cleaned thousands of Perth homes and businesses. Here&apos;s what makes us different.
-                    </p>
-                </div>
-
-                <div className="mx-auto grid max-w-4xl grid-cols-12 gap-3">
-                    <div className="col-span-12 md:col-span-5 rounded-2xl p-6" style={{ background: NAVY }}>
-                        <div className="mb-2 leading-none font-black" style={{ fontSize: 56, color: YELLOW }}>100%</div>
-                        <p className="font-bold text-base text-white mb-2">Satisfaction Guaranteed</p>
-                        <p className="text-sm font-light leading-relaxed" style={{ color: "rgba(255,255,255,0.55)" }}>
-                            If anything falls short, we return and fix it at no extra cost. No questions asked.
-                        </p>
-                    </div>
-                    <div className="col-span-12 md:col-span-7 rounded-2xl p-6 bg-white">
-                        <div className="mb-4 flex h-10 w-10 items-center justify-center rounded-xl" style={{ background: "rgba(7,7,126,0.07)" }}>
-                            <Droplets className="w-5 h-5" style={{ color: NAVY }} />
-                        </div>
-                        <p className="font-bold text-base mb-2" style={{ color: NAVY }}>Pure Water Technology</p>
-                        <p className="text-sm font-light leading-relaxed" style={{ color: "#888" }}>
-                            Our commercial RO/DI filtration system uses zero chemicals - glass stays cleaner for longer, even after rain. No streaks, no residue.
-                        </p>
-                    </div>
-                    {[
-                        { icon: <Shield className="w-5 h-5" style={{ color: NAVY }} />, title: "Fully Insured", body: "$20M public liability so you're always protected on every job." },
-                        { icon: <Zap className="w-5 h-5" style={{ color: NAVY }} />, title: "Urgent & Flexible", body: "Next-day emergency cleans available for rental inspections." },
-                        { icon: <Building2 className="w-5 h-5" style={{ color: NAVY }} />, title: "Police Cleared", body: "Background-checked team you can trust inside your home.", yellow: true },
-                    ].map((card) => (
-                        <div key={card.title} className="col-span-12 md:col-span-4 rounded-2xl p-5" style={{ background: card.yellow ? YELLOW : "white" }}>
-                            <div className="mb-3 flex h-9 w-9 items-center justify-center rounded-xl" style={{ background: card.yellow ? "rgba(7,7,126,0.1)" : "rgba(7,7,126,0.06)" }}>
-                                {card.icon}
-                            </div>
-                            <p className="font-bold text-sm mb-1.5" style={{ color: NAVY }}>{card.title}</p>
-                            <p className="text-xs font-light leading-relaxed" style={{ color: card.yellow ? "rgba(7,7,126,0.6)" : "#888" }}>{card.body}</p>
-                        </div>
-                    ))}
-                </div>
-            </section>
-
-            {/* ðŸ”¹ðŸ”¹ðŸ”¹ SECTION 6: BEFORE / AFTER  ðŸ”¹ðŸ”¹ðŸ”¹ */}
-            <section className="px-5 py-16 bg-white">
-                <div className="mx-auto mb-8 max-w-4xl text-center">
-                    <div className="mb-3 inline-block rounded-full px-3 py-1 text-xs font-bold uppercase tracking-widest" style={{ background: "rgba(7,7,126,0.07)", color: NAVY }}>
-                        Our results
-                    </div>
-                    <h2 className="leading-none" style={{ fontSize: "clamp(36px,5vw,52px)", color: NAVY }}>
-                        See the Difference
-                    </h2>
-                </div>
-                <div className="mx-auto max-w-4xl">
-                    <div className="mb-4 overflow-hidden rounded-2xl" style={{ height: 380 }}>
-                        <video className="h-full w-full object-cover" controls preload="metadata">
-                            <source src="https://res.cloudinary.com/dr8tjrszy/video/upload/v1772968701/VID-20260228-WA0016_xsz3cm_401388.mp4" type="video/mp4" />
-                        </video>
-                    </div>
-                    <div className="grid grid-cols-1 gap-4 lg:grid-cols-2">
-                        <BeforeAfterSlider
-                            afterImage="https://res.cloudinary.com/dr8tjrszy/image/upload/v1774345158/IMG_9593_1_2_b98bl5.png"
-                            beforeImage="https://res.cloudinary.com/dr8tjrszy/image/upload/v1771960144/WhatsApp_Image_2026-02-22_at_8.48.03_PM_vtb2tn.jpg"
-                            initial={50}
-                        />
-                        <BeforeAfterSlider
-                            afterImage="https://res.cloudinary.com/dr8tjrszy/image/upload/v1785879700/aspect_gallery/after.webp"
-                            beforeImage="https://res.cloudinary.com/dr8tjrszy/image/upload/v1785879695/aspect_gallery/1-before.webp"
-                            initial={50}
-                        />
-                    </div>
-                </div>
-            </section>
-
-            {/* ðŸ”¹ðŸ”¹ðŸ”¹ SECTION 6.5: WHAT'S INCLUDED  ðŸ”¹ðŸ”¹ðŸ”¹ */}
-            <section className="py-16 bg-gray-50 px-5">
                 <div className="max-w-5xl mx-auto">
-                    <h3 className="text-sm font-semibold uppercase mb-2 text-center" style={{ color: YELLOW }}>
-                        WHAT'S INCLUDED
-                    </h3>
-                    <h2 className="text-3xl md:text-4xl font-heading font-bold text-center mb-8" style={{ color: NAVY }}>
-                        Everything Covered in Our Window Clean
-                    </h2>
-                    <p className="mb-10 text-center max-w-2xl mx-auto text-base font-light" style={{ color: "#888" }}>
-                        We don't cut corners. Every booking includes a full, thorough clean of all accessible window components - not just the glass.
-                    </p>
-                    <div className="grid md:grid-cols-3 gap-6">
-                        {whatsInclude.map((item, index) => (
-                            <div
-                                key={index}
-                                className="flex flex-col rounded-2xl bg-white border border-gray-100 shadow-sm hover:shadow-lg hover:-translate-y-1 transition-all duration-300 overflow-hidden group"
-                            >
-                                <div className="relative w-full h-48 bg-gray-100 flex-shrink-0 overflow-hidden">
-                                    <Image
-                                        src={item.img}
-                                        alt={item.title}
-                                        fill
-                                        sizes="(max-width: 768px) 100vw, 33vw"
-                                        className="object-cover group-hover:scale-105 transition-transform duration-500"
-                                    />
-                                </div>
-                                <div className="p-6 flex flex-col gap-3">
-                                    <h4 className="font-semibold text-lg" style={{ color: NAVY }}>
-                                        {item.title}
-                                    </h4>
-                                    <p className="text-sm leading-relaxed font-light" style={{ color: "#888" }}>
-                                        {item.description}
-                                    </p>
-                                </div>
-                            </div>
-                        ))}
+                    <Zap className="w-12 h-12 text-action-gold mx-auto mb-6" />
+                    <h2 className="text-3xl md:text-4xl font-bold mb-6">Why Aspect? The Technology Behind the Clean</h2>
+                    <div className="text-brand-water text-lg leading-relaxed max-w-3xl mx-auto mb-12">
+                        <p>We don't just use a squeegee and soapy water. We use advanced <strong>Carbon Fibre Poles</strong> and a <strong>Commercial RO/DI Pure Water System</strong>. Why does this matter? Because filtering out all minerals and chemicals means the water evaporates perfectly clear, leaving your windows streak-free and cleaner for much longer. It's safer, faster, and delivers a superior result.</p>
+                    </div>
+                    
+                    <div className="grid md:grid-cols-3 gap-6 text-left">
+                        <div className="bg-white/10 border border-white/20 p-6 rounded-2xl">
+                            <Shield className="w-8 h-8 text-action-gold mb-4" />
+                            <h3 className="font-bold text-xl mb-2 text-white">Fully Insured & Checked</h3>
+                            <p className="text-sm text-brand-water">Our entire team is police-cleared and backed by $20,000,000 Public Liability Insurance for your complete peace of mind.</p>
+                        </div>
+                        <div className="bg-action-gold border border-yellow-400 p-6 rounded-2xl text-brand-navy transform md:-translate-y-4">
+                            <CheckCircle2 className="w-8 h-8 text-brand-navy mb-4" />
+                            <h3 className="font-bold text-xl mb-2">100% Satisfaction</h3>
+                            <p className="text-sm">We guarantee our work. If anything falls short, we return and fix it at no extra cost. No questions asked.</p>
+                        </div>
+                        <div className="bg-white/10 border border-white/20 p-6 rounded-2xl">
+                            <Zap className="w-8 h-8 text-action-gold mb-4" />
+                            <h3 className="font-bold text-xl mb-2 text-white">Urgent & Flexible</h3>
+                            <p className="text-sm text-brand-water">Next-day emergency cleans are available. Whether it's an end-of-lease or a rental inspection, we've got you covered.</p>
+                        </div>
                     </div>
                 </div>
             </section>
 
-            {/* ðŸ”¹ðŸ”¹ðŸ”¹ SECTION 7: HOW IT WORKS  ðŸ”¹ðŸ”¹ðŸ”¹ */}
+{/* ðŸ”¹ðŸ”¹ðŸ”¹ SECTION 7: HOW IT WORKS  ðŸ”¹ðŸ”¹ðŸ”¹ */}
             <section className="px-5 py-16" style={{ background: "#f4f6ff" }}>
                 <div className="mx-auto mb-10 max-w-4xl text-center">
                     <div className="mb-3 inline-block rounded-full px-3 py-1 text-xs font-bold uppercase tracking-widest" style={{ background: "rgba(7,7,126,0.07)", color: NAVY }}>
@@ -955,7 +829,117 @@ export default function WindowCleaningAdsPage() {
 
 
 
-            {/* ðŸ”¹ðŸ”¹ðŸ”¹ SECTION 9: FOOTER CTA  ðŸ”¹ðŸ”¹ðŸ”¹ */}
+            
+{/* ðŸ”¹ðŸ”¹ðŸ”¹ SECTION 3: REVIEWS  ðŸ”¹ðŸ”¹ðŸ”¹ */}
+                        
+<section id="reviews" className="max-w-7xl mx-auto px-5 py-16 bg-white">
+                <div className="mx-auto mb-10 max-w-4xl text-center">
+                    <div className="mb-3 flex justify-center gap-1">
+                        {[...Array(5)].map((_, i) => <Star key={i} className="w-6 h-6 fill-yellow-400 text-yellow-400" />)}
+                    </div>
+                    <h2 className="mb-2 leading-none" style={{ fontSize: "clamp(24px,5vw,52px)", color: NAVY }}>
+                        Perth Homeowners Love Us
+                    </h2>
+                    <Link
+                        href="https://www.google.com/maps/place/Aspect+Window+Cleaning/@-31.9806823,115.7929967,17z"
+                        target="_blank"
+                        className="text-sm font-medium hover:underline"
+                        style={{ color: "#888" }}
+                    >
+                        {gmb.rating} across {gmb.reviewCount} Google Reviews
+                    </Link>
+                </div>
+                <GoogleReviews reviews={windowCleaningReviews} />
+            </section>
+
+            
+{/* PROMOS */}
+            <section id="promotions" className="py-16 px-5 bg-white border-b border-gray-100">
+                <div className="max-w-6xl mx-auto">
+                    <div className="text-center mb-12">
+                        <h2 className="text-3xl md:text-4xl font-bold mb-4 text-brand-navy">Current Promotions & Bundles</h2>
+                        <p className="text-gray-600 max-w-2xl mx-auto text-lg">Take advantage of our seasonal offers to keep your entire property sparkling from top to bottom.</p>
+                    </div>
+                    <div className="grid md:grid-cols-3 gap-6">
+                        <div className="bg-blue-50 border border-blue-100 p-8 rounded-2xl shadow-sm text-center">
+                            <Tag className="w-10 h-10 text-blue-500 mx-auto mb-4" />
+                            <h3 className="font-bold text-xl text-brand-navy mb-2">Bundle & Save 10%</h3>
+                            <p className="text-gray-600 mb-4 text-sm leading-relaxed">Group multiple services togetherlike window cleaning, gutter cleaning, solar panel washing, or pressure washingand get a flat 10% off your entire package.</p>
+                            <p className="text-xs text-gray-400 font-bold uppercase">No minimum value</p>
+                        </div>
+                        <div className="bg-yellow-50 border border-yellow-100 p-8 rounded-2xl shadow-sm text-center transform md:-translate-y-4 mt-4 md:mt-0">
+                            <div className="bg-action-gold text-brand-navy font-bold text-xs px-3 py-1 rounded-full w-max mx-auto mb-4 tracking-wider uppercase">Most Popular</div>
+                            <h3 className="font-bold text-xl text-brand-navy mb-2">Refer a Friend: $50 Off</h3>
+                            <p className="text-gray-600 mb-4 text-sm leading-relaxed">Love our service? Refer a neighbour or friend and get $30-$50 off your next clean when they book with us.</p>
+                            <p className="text-xs text-gray-400 font-bold uppercase">Min. order value $250</p>
+                        </div>
+                        <div className="bg-gray-50 border border-gray-200 p-8 rounded-2xl shadow-sm text-center">
+                            <Droplets className="w-10 h-10 text-gray-400 mx-auto mb-4" />
+                            <h3 className="font-bold text-xl text-brand-navy mb-2">$50 Off Flyscreen Detail</h3>
+                            <p className="text-gray-600 mb-4 text-sm leading-relaxed">Add comprehensive flyscreen deep cleaning to any standard or supreme window cleaning package and save $50 instantly.</p>
+                            <p className="text-xs text-gray-400 font-bold uppercase">Min. order value $300</p>
+                        </div>
+                    </div>
+                </div>
+            </section>
+
+            
+{/* FREE TRIAL */}
+            <section id="free-trial" className="py-20 px-5 bg-gray-50">
+                <div className="max-w-4xl mx-auto bg-white rounded-3xl p-8 md:p-12 shadow-xl border border-gray-100 flex flex-col md:flex-row gap-10 items-center">
+                    <div className="flex-1">
+                        <h2 className="text-3xl font-bold text-brand-navy mb-4">Still Not Convinced?</h2>
+                        <h3 className="text-xl text-action-gold font-bold mb-4">Try Us For Free</h3>
+                        <p className="text-gray-600 mb-6 leading-relaxed">We are so confident in the quality of our work and the power of our Pure Water systems that we want to prove it to you. Ask us to come over and clean <strong>2 windows absolutely free of charge</strong>.</p>
+                        <p className="text-gray-600 mb-6 leading-relaxed">See the level of service, experience our professionalism, and witness the difference it makes to your home before you spend a single cent. Just drop your address below!</p>
+                        <p className="text-sm text-gray-400 italic">* Offer valid for accessible residential ground-floor windows. Subject to availability.</p>
+                    </div>
+                    <div className="w-full md:w-96 bg-gray-50 p-6 rounded-2xl border border-gray-200">
+                        <h4 className="font-bold text-brand-navy mb-4 text-center">Request Your Free Trial</h4>
+                        <FreeTrialForm />
+                    </div>
+                </div>
+            </section>
+
+            {/* COMMERCIAL SNIPPET */}
+            
+<section id="commercial" className="py-12 px-5 bg-white border-y border-gray-100 text-center">
+                <div className="max-w-3xl mx-auto">
+                    <Building2 className="w-8 h-8 text-brand-slate mx-auto mb-4" />
+                    <h3 className="text-xl font-bold text-brand-navy mb-2">Looking for Commercial Services?</h3>
+                    <p className="text-gray-600 mb-6">We provide specialized cleaning for storefronts, strata complexes, and multi-story office buildings across Perth.</p>
+                    <Link href="/services/commercial-window-cleaning" className="text-brand-navy font-bold underline hover:text-action-gold transition-colors">Head to our Commercial Window Cleaning page &rarr;</Link>
+                </div>
+            </section>
+
+		<section className="px-6 py-10 text-center" style={{ background: "#f4f6ff" }}>
+                <p className="mb-8 text-xs font-semibold uppercase tracking-widest" style={{ color: "#aaa" }}>
+                    Trusted by Perth businesses
+                </p>
+                <div className="flex flex-wrap items-center justify-center gap-10">
+                    {[
+                        { src: "https://res.cloudinary.com/dr8tjrszy/image/upload/v1772795795/toyota-logo_bcplvi.png", alt: "Toyota" },
+                        { src: "https://res.cloudinary.com/dr8tjrszy/image/upload/v1772795795/richad-logo_u2l4jl.png", alt: "Richard Group" },
+                        { src: "https://res.cloudinary.com/dr8tjrszy/image/upload/v1772795794/bespoke-logo_lulwwt.png", alt: "Bespoke" },
+                    ].map((logo) => (
+                        <div key={logo.alt} className="relative h-13 w-28 grayscale transition duration-300 hover:grayscale-0">
+                            <Image
+                                src={logo.src.replace(
+                                    "/upload/",
+                                    "/upload/f_auto,q_auto/"
+                                )}
+                                alt={logo.alt}
+                                fill
+                                sizes="112px"
+                                className="object-contain"
+                            />
+                        </div>
+                    ))}
+                </div>
+            </section>
+
+            
+{/* ðŸ”¹ðŸ”¹ðŸ”¹ SECTION 9: FOOTER CTA  ðŸ”¹ðŸ”¹ðŸ”¹ */}
             <section className="relative overflow-hidden px-5 py-16 text-center" style={{ background: NAVY }}>
                 <div className="pointer-events-none absolute" style={{ top: "-150px", left: "50%", transform: "translateX(-50%)", width: 600, height: 600, border: "1px solid rgba(255,229,77,0.05)", borderRadius: "50%" }} />
                 <div className="relative z-10">
@@ -987,7 +971,8 @@ export default function WindowCleaningAdsPage() {
                 </div>
             </section>
 
-            {/* ðŸ”¹ðŸ”¹ðŸ”¹ STICKY BAR ðŸ”¹ðŸ”¹ðŸ”¹ */}
+            
+{/* ðŸ”¹ðŸ”¹ðŸ”¹ STICKY BAR ðŸ”¹ðŸ”¹ðŸ”¹ */}
             <div
                 className="fixed bottom-0 left-0 right-0 z-50 flex items-center justify-center px-5 py-3"
                 style={{ background: NAVY, borderTop: `2px solid ${YELLOW}`, boxShadow: "0 -4px 24px rgba(7,7,126,0.3)" }}
