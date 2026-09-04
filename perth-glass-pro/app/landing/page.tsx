@@ -87,7 +87,7 @@ function LeadForm({
                 Send Me a Quote ➔
               </button>
             <p className="text-center text-xs mt-1" style={{ color: dark ? "rgba(255,255,255,0.45)" : "#aaa" }}>
-                  ðŸ”’ We never share your details
+                  🔒 We never share your details
             </p>
         </div>
     );
@@ -298,6 +298,7 @@ function FreeTrialForm() {
 export default function WindowCleaningAdsPage() {
     const gmb = useGmb();
     const [modalOpen, setModalOpen] = useState(false);
+    const [isDoubleStorey, setIsDoubleStorey] = useState(false);
     const [showPromo, setShowPromo] = useState(false);
     const [galleryOpen, setGalleryOpen] = useState(false);
     const [currentImageIndex, setCurrentImageIndex] = useState(0);
@@ -420,7 +421,7 @@ export default function WindowCleaningAdsPage() {
             />
 
             
-{/* ðŸ”¹ðŸ”¹ðŸ”¹ SECTION 1: HERO  ðŸ”¹ðŸ”¹ðŸ”¹ */}
+{/* 🔹🔹🔹 SECTION 1: HERO  🔹🔹🔹 */}
             <section
                 className="relative min-h-screen flex flex-col items-center justify-center md:px-5 pb-10 text-white bg-cover bg-center
   bg-[linear-gradient(160deg,rgba(10,22,40,0.5)_0%,rgba(15,37,69,0.8)_60%,rgba(19,48,96,0.8)_100%),url('/landing-hero-bg.jpeg')]
@@ -476,7 +477,7 @@ export default function WindowCleaningAdsPage() {
                         </div>
 
                         <div className="grid grid-cols-2 gap-2 sm:gap-3 w-full max-w-md">
-                            {[ { icon: "\uD83D\uDEE1\uFE0F", text: "$20M Insured" }, { icon: "ðŸ…", text: "Police Cleared" }, { icon: "ðŸ’§", text: "Pure Water Tech" }, { icon: "\u2B50", text: `${gmb.rating} Google Reviews` } ].map((b) => (
+                            {[ { icon: "\uD83D\uDEE1\uFE0F", text: "$20M Insured" }, { icon: "🏅", text: "Police Cleared" }, { icon: "💧", text: "Pure Water Tech" }, { icon: "\u2B50", text: `${gmb.rating} Google Reviews` } ].map((b) => (
                                 <span
                                     key={b.text}
                                     className="flex items-center justify-center gap-1 sm:gap-2 rounded-full px-1 sm:px-5 py-2.5 text-[11px] sm:text-sm md:text-base font-semibold text-center"
@@ -525,7 +526,7 @@ export default function WindowCleaningAdsPage() {
             </section>
 
             
-{/* ðŸ”¹ðŸ”¹ðŸ”¹ SECTION 2: STATS STRIP  ðŸ”¹ðŸ”¹ðŸ”¹ */}
+{/* 🔹🔹🔹 SECTION 2: STATS STRIP  🔹🔹🔹 */}
             <section style={{ background: YELLOW }}>
                 <div className="mx-auto grid max-w-4xl grid-cols-4">
                     {[ { num: "100+", label: "Happy Clients" }, { num: `${gmb.rating}\u2B50`, label: "Google Rating" }, { num: "$20M", label: "Insured" }, { num: "24hr", label: "Response Time" } ].map((s, i) => (
@@ -546,9 +547,9 @@ export default function WindowCleaningAdsPage() {
             </section>
 
             
-{/* ðŸ”¹ðŸ”¹ðŸ”¹ SECTION 4: TRUSTED BY  ðŸ”¹ðŸ”¹ðŸ”¹ */}
+{/* 🔹🔹🔹 SECTION 4: TRUSTED BY  🔹🔹🔹 */}
                         
-{/* ðŸ”¹ðŸ”¹ðŸ”¹ SECTION 6: BEFORE / AFTER  ðŸ”¹ðŸ”¹ðŸ”¹ */}
+{/* 🔹🔹🔹 SECTION 6: BEFORE / AFTER  🔹🔹🔹 */}
             <section className="px-5 py-16 bg-white">
                 <div className="mx-auto mb-8 max-w-4xl text-center">
                     <div className="mb-3 inline-block rounded-full px-3 py-1 text-xs font-bold uppercase tracking-widest" style={{ background: "rgba(7,7,126,0.07)", color: NAVY }}>
@@ -580,7 +581,7 @@ export default function WindowCleaningAdsPage() {
             </section>
 
             
-{/* ðŸ”¹ðŸ”¹ðŸ”¹ SECTION 6.5: WHAT'S INCLUDED  ðŸ”¹ðŸ”¹ðŸ”¹ */}
+{/* 🔹🔹🔹 SECTION 6.5: WHAT'S INCLUDED  🔹🔹🔹 */}
             <section className="py-16 bg-gray-50 px-5">
                 <div className="max-w-5xl mx-auto">
                     <h3 className="text-sm font-semibold uppercase mb-2 text-center" style={{ color: YELLOW }}>
@@ -661,23 +662,47 @@ export default function WindowCleaningAdsPage() {
             <section id="pricing" className="py-16 bg-white px-5 border-y border-gray-100">
                 <div className="max-w-5xl mx-auto text-center">
                     <h2 className="text-3xl md:text-4xl font-bold mb-4 text-brand-navy">Clear, Transparent Pricing</h2>
-                    <p className="text-gray-600 max-w-2xl mx-auto mb-10 text-lg">We don't hide our rates. Here is our starting pricing for residential window cleaning packages. No hidden fees, just guaranteed results.</p>
+                    <p className="text-gray-600 max-w-2xl mx-auto mb-8 text-lg">We don't hide our rates. Select your home type below for our starting residential packages. No hidden fees, just guaranteed results.</p>
+                    
+                    <div className="flex justify-center mb-10">
+                        <div className="bg-gray-100 p-1 rounded-full flex gap-1">
+                            <button 
+                                onClick={() => setIsDoubleStorey(false)} 
+                                className={"px-6 py-2 rounded-full font-bold text-sm transition-all " + (!isDoubleStorey ? "bg-white text-brand-navy shadow-sm" : "text-gray-500 hover:text-gray-700 cursor-pointer")}
+                            >
+                                Single Storey
+                            </button>
+                            <button 
+                                onClick={() => setIsDoubleStorey(true)} 
+                                className={"px-6 py-2 rounded-full font-bold text-sm transition-all " + (isDoubleStorey ? "bg-brand-navy text-white shadow-sm" : "text-gray-500 hover:text-gray-700 cursor-pointer")}
+                            >
+                                Double Storey
+                            </button>
+                        </div>
+                    </div>
+
                     <div className="grid md:grid-cols-3 gap-6">
-                        <div className="p-6 border rounded-xl shadow-sm bg-gray-50">
-                            <h3 className="font-bold text-xl text-brand-navy mb-2">Essential</h3>
-                            <p className="text-gray-500 text-sm mb-4">External standard clean only</p>
-                            <p className="text-3xl font-black text-brand-navy mb-4">Standard Homes Starting From $159</p>
+                        <div className="p-6 border rounded-xl shadow-sm bg-gray-50 flex flex-col justify-between transition-all duration-300">
+                            <div>
+                                <h3 className="font-bold text-xl text-brand-navy mb-2">Essential</h3>
+                                <p className="text-gray-500 text-sm mb-4">External standard clean only</p>
+                            </div>
+                            <p className="text-3xl font-black text-brand-navy mb-4 transition-all duration-300">{isDoubleStorey ? 'Starting From $279' : 'Starting From $159'}</p>
                         </div>
-                        <div className="p-6 border-2 border-action-gold rounded-xl shadow-md bg-brand-navy text-white relative transform md:-translate-y-4 mt-4 md:mt-0">
+                        <div className="p-6 border-2 border-action-gold rounded-xl shadow-md bg-brand-navy text-white relative transform md:-translate-y-4 mt-4 md:mt-0 flex flex-col justify-between transition-all duration-300">
                             <div className="absolute top-0 left-1/2 -translate-x-1/2 -translate-y-1/2 bg-action-gold text-brand-navy px-3 py-1 rounded-full text-xs font-bold tracking-wide w-max">MOST POPULAR</div>
-                            <h3 className="font-bold text-xl mb-2 text-white">Standard</h3>
-                            <p className="text-brand-water text-sm mb-4">Inside and out basic wash</p>
-                            <p className="text-3xl font-black text-white mb-4">Standard Homes Starting From $279</p>
+                            <div>
+                                <h3 className="font-bold text-xl mb-2 text-white">Standard</h3>
+                                <p className="text-brand-water text-sm mb-4">Inside and out basic wash</p>
+                            </div>
+                            <p className="text-3xl font-black text-white mb-4 transition-all duration-300">{isDoubleStorey ? 'Starting From $499' : 'Starting From $279'}</p>
                         </div>
-                        <div className="p-6 border rounded-xl shadow-sm bg-gray-50">
-                            <h3 className="font-bold text-xl text-brand-navy mb-2">Supreme</h3>
-                            <p className="text-gray-500 text-sm mb-4">Inside and out detailing (stuck-on paint, hard water)</p>
-                            <p className="text-3xl font-black text-brand-navy mb-4">Standard Homes Starting From $479</p>
+                        <div className="p-6 border-2 rounded-xl bg-white relative flex flex-col justify-between transition-all duration-300" style={{ borderColor: "#ffd700", boxShadow: "0 0 20px rgba(255, 215, 0, 0.3)" }}>
+                            <div>
+                                <h3 className="font-bold text-xl text-brand-navy mb-2">Supreme</h3>
+                                <p className="text-gray-500 text-sm mb-4">Inside and out detailing (stuck-on paint, hard water)</p>
+                            </div>
+                            <p className="text-3xl font-black text-brand-navy mb-4 transition-all duration-300">{isDoubleStorey ? 'Starting From $859' : 'Starting From $479'}</p>
                         </div>
                     </div>
                     <div className="mt-10">
@@ -795,7 +820,7 @@ export default function WindowCleaningAdsPage() {
                 </div>
             </section>
 
-{/* ðŸ”¹ðŸ”¹ðŸ”¹ SECTION 7: HOW IT WORKS  ðŸ”¹ðŸ”¹ðŸ”¹ */}
+{/* 🔹🔹🔹 SECTION 7: HOW IT WORKS  🔹🔹🔹 */}
             <section className="px-5 py-16" style={{ background: "#f4f6ff" }}>
                 <div className="mx-auto mb-10 max-w-4xl text-center">
                     <div className="mb-3 inline-block rounded-full px-3 py-1 text-xs font-bold uppercase tracking-widest" style={{ background: "rgba(7,7,126,0.07)", color: NAVY }}>
@@ -865,7 +890,7 @@ export default function WindowCleaningAdsPage() {
 
 
             
-{/* ðŸ”¹ðŸ”¹ðŸ”¹ SECTION 3: REVIEWS  ðŸ”¹ðŸ”¹ðŸ”¹ */}
+{/* 🔹🔹🔹 SECTION 3: REVIEWS  🔹🔹🔹 */}
                         
 <section id="reviews" className="max-w-7xl mx-auto px-5 py-16 bg-white">
                 <div className="mx-auto mb-10 max-w-4xl text-center">
@@ -943,7 +968,7 @@ export default function WindowCleaningAdsPage() {
 		
 
             
-{/* ðŸ”¹ðŸ”¹ðŸ”¹ SECTION 9: FOOTER CTA  ðŸ”¹ðŸ”¹ðŸ”¹ */}
+{/* 🔹🔹🔹 SECTION 9: FOOTER CTA  🔹🔹🔹 */}
             <section className="relative overflow-hidden px-5 py-16 text-center" style={{ background: NAVY }}>
                 <div className="pointer-events-none absolute" style={{ top: "-150px", left: "50%", transform: "translateX(-50%)", width: 600, height: 600, border: "1px solid rgba(255,229,77,0.05)", borderRadius: "50%" }} />
                 <div className="relative z-10">
@@ -976,7 +1001,7 @@ export default function WindowCleaningAdsPage() {
             </section>
 
             
-{/* ðŸ”¹ðŸ”¹ðŸ”¹ STICKY BAR ðŸ”¹ðŸ”¹ðŸ”¹ */}
+{/* 🔹🔹🔹 STICKY BAR 🔹🔹🔹 */}
             <div
                 className="fixed bottom-0 left-0 right-0 z-50 flex items-center justify-center px-5 py-3"
                 style={{ background: NAVY, borderTop: `2px solid ${YELLOW}`, boxShadow: "0 -4px 24px rgba(7,7,126,0.3)" }}
