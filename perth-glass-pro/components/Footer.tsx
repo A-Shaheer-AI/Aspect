@@ -76,7 +76,7 @@ export default async function Footer() {
                             ))}
                             <li>
                                 <Link href="/locations" className="text-action-gold text-xs font-medium">
-                                    All areas →
+                                    All areas â†’
                                 </Link>
                             </li>
                         </ul>
@@ -141,7 +141,7 @@ export default async function Footer() {
                                     href="/locations"
                                     className="text-action-gold hover:underline text-sm font-medium"
                                 >
-                                    View all 100+ suburbs →
+                                    View all 100+ suburbs â†’
                                 </Link>
                             </li>
                         </ul>
@@ -170,7 +170,7 @@ export default async function Footer() {
                             </li>
                         </ul>
                         <div className="mt-4">
-                            <iframe
+                            <iframe title="Google Maps location of Aspect Window Cleaning"
                                 src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3384.2706528608983!2d115.79041641168274!3d-31.980677723649464!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0xafbbd7c3dd591183%3A0xe683c8a7e7212664!2sAspect%20Window%20Cleaning!5e0!3m2!1sen!2sau!4v1768258784219!5m2!1sen!2sau"
                                 width="100%"
                                 height="200"
@@ -181,7 +181,7 @@ export default async function Footer() {
                             />
                         </div>
                         <div className="mt-4 p-4 bg-white/5 rounded-lg border border-white/10">
-                            <p className="text-xs text-gray-400">Fully insured • Police cleared • ABN Registered</p>
+                            <p className="text-xs text-gray-400">Fully insured â€¢ Police cleared â€¢ ABN Registered</p>
                         </div>
                     </div>
                 </div>
@@ -189,7 +189,7 @@ export default async function Footer() {
                 {/* Bottom Bar */}
                 <div className="border-t border-white/10 mt-8 sm:mt-12 pt-6 sm:pt-8 flex flex-col sm:flex-row justify-between items-center gap-3 sm:gap-4">
                     <p className="text-xs text-gray-500">
-                        © {currentYear} Aspect Window Cleaning
+                        Â© {currentYear} Aspect Window Cleaning
                     </p>
                     <div className="flex gap-4 sm:gap-6 text-xs text-gray-500">
                         <Link href="/privacy" className="hover:text-gray-300">

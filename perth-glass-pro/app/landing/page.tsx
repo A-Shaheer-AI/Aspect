@@ -84,10 +84,10 @@ function LeadForm({
                     boxShadow: "0 4px 20px rgba(255,229,77,0.4)",
                 }}
             >
-                Send Me a Quote ➔
+                Send Me a Quote ÃƒÂ¢Ã…Â¾Ã¢â‚¬Â
               </button>
             <p className="text-center text-xs mt-1" style={{ color: dark ? "rgba(255,255,255,0.45)" : "#aaa" }}>
-                  🔒 We never share your details
+                  ÃƒÂ°Ã…Â¸Ã¢â‚¬ÂÃ¢â‚¬â„¢ We never share your details
             </p>
         </div>
     );
@@ -184,7 +184,7 @@ function QuoteModal({
                     >
                         Free Quote - No Obligation
                     </div>
-                    <h3 className="text-white font-bold text-lg mb-1">Get a Fast Text Quote</h3>
+                    <h2 className="text-white font-bold text-lg mb-1">Get a Fast Text Quote</h2>
                     <p className="text-sm mb-5" style={{ color: "rgba(255,255,255,0.5)" }}>
                         We reply within 60 minutes.
                     </p>
@@ -421,7 +421,7 @@ export default function WindowCleaningAdsPage() {
             />
 
             
-{/* 🔹🔹🔹 SECTION 1: HERO  🔹🔹🔹 */}
+{/* ÃƒÂ°Ã…Â¸Ã¢â‚¬ÂÃ‚Â¹ÃƒÂ°Ã…Â¸Ã¢â‚¬ÂÃ‚Â¹ÃƒÂ°Ã…Â¸Ã¢â‚¬ÂÃ‚Â¹ SECTION 1: HERO  ÃƒÂ°Ã…Â¸Ã¢â‚¬ÂÃ‚Â¹ÃƒÂ°Ã…Â¸Ã¢â‚¬ÂÃ‚Â¹ÃƒÂ°Ã…Â¸Ã¢â‚¬ÂÃ‚Â¹ */}
             <section
                 className="relative min-h-screen flex flex-col items-center justify-center md:px-5 pb-10 text-white bg-cover bg-center
   bg-[linear-gradient(160deg,rgba(10,22,40,0.5)_0%,rgba(15,37,69,0.8)_60%,rgba(19,48,96,0.8)_100%),url('/landing-hero-bg.jpeg')]
@@ -477,7 +477,7 @@ export default function WindowCleaningAdsPage() {
                         </div>
 
                         <div className="grid grid-cols-2 gap-2 sm:gap-3 w-full max-w-md">
-                            {[ { icon: "\uD83D\uDEE1\uFE0F", text: "$20M Insured" }, { icon: "🏅", text: "Police Cleared" }, { icon: "💧", text: "Pure Water Tech" }, { icon: "\u2B50", text: `${gmb.rating} Google Reviews` } ].map((b) => (
+                            {[ { icon: "\uD83D\uDEE1\uFE0F", text: "$20M Insured" }, { icon: "ÃƒÂ°Ã…Â¸Ã‚ÂÃ¢â‚¬Â¦", text: "Police Cleared" }, { icon: "ÃƒÂ°Ã…Â¸Ã¢â‚¬â„¢Ã‚Â§", text: "Pure Water Tech" }, { icon: "\u2B50", text: `${gmb.rating} Google Reviews` } ].map((b) => (
                                 <span
                                     key={b.text}
                                     className="flex items-center justify-center gap-1 sm:gap-2 rounded-full px-1 sm:px-5 py-2.5 text-[11px] sm:text-sm md:text-base font-semibold text-center"
@@ -506,9 +506,9 @@ export default function WindowCleaningAdsPage() {
 
                         {/* LEAD FORM */}
                         <div className="rounded-3xl p-5 shadow-2xl w-full bg-white border border-gray-100 mx-auto">
-                            <h3 className="mb-2 font-black text-xl leading-tight text-center" style={{ color: NAVY }}>
+                            <h2 className="mb-2 font-black text-xl leading-tight text-center" style={{ color: NAVY }}>
                                 Ready for Spotless Windows?
-                            </h3>
+                            </h2>
                             <p className="mb-5 text-xs text-center" style={{ color: "#888" }}>
                                 We&apos;ll reply with a fast quote within 60 minutes.
                             </p>
@@ -526,7 +526,7 @@ export default function WindowCleaningAdsPage() {
             </section>
 
             
-{/* 🔹🔹🔹 SECTION 2: STATS STRIP  🔹🔹🔹 */}
+{/* ÃƒÂ°Ã…Â¸Ã¢â‚¬ÂÃ‚Â¹ÃƒÂ°Ã…Â¸Ã¢â‚¬ÂÃ‚Â¹ÃƒÂ°Ã…Â¸Ã¢â‚¬ÂÃ‚Â¹ SECTION 2: STATS STRIP  ÃƒÂ°Ã…Â¸Ã¢â‚¬ÂÃ‚Â¹ÃƒÂ°Ã…Â¸Ã¢â‚¬ÂÃ‚Â¹ÃƒÂ°Ã…Â¸Ã¢â‚¬ÂÃ‚Â¹ */}
             <section style={{ background: YELLOW }}>
                 <div className="mx-auto grid max-w-4xl grid-cols-4">
                     {[ { num: "100+", label: "Happy Clients" }, { num: `${gmb.rating}\u2B50`, label: "Google Rating" }, { num: "$20M", label: "Insured" }, { num: "24hr", label: "Response Time" } ].map((s, i) => (
@@ -547,9 +547,9 @@ export default function WindowCleaningAdsPage() {
             </section>
 
             
-{/* 🔹🔹🔹 SECTION 4: TRUSTED BY  🔹🔹🔹 */}
+{/* ÃƒÂ°Ã…Â¸Ã¢â‚¬ÂÃ‚Â¹ÃƒÂ°Ã…Â¸Ã¢â‚¬ÂÃ‚Â¹ÃƒÂ°Ã…Â¸Ã¢â‚¬ÂÃ‚Â¹ SECTION 4: TRUSTED BY  ÃƒÂ°Ã…Â¸Ã¢â‚¬ÂÃ‚Â¹ÃƒÂ°Ã…Â¸Ã¢â‚¬ÂÃ‚Â¹ÃƒÂ°Ã…Â¸Ã¢â‚¬ÂÃ‚Â¹ */}
                         
-{/* 🔹🔹🔹 SECTION 6: BEFORE / AFTER  🔹🔹🔹 */}
+{/* ÃƒÂ°Ã…Â¸Ã¢â‚¬ÂÃ‚Â¹ÃƒÂ°Ã…Â¸Ã¢â‚¬ÂÃ‚Â¹ÃƒÂ°Ã…Â¸Ã¢â‚¬ÂÃ‚Â¹ SECTION 6: BEFORE / AFTER  ÃƒÂ°Ã…Â¸Ã¢â‚¬ÂÃ‚Â¹ÃƒÂ°Ã…Â¸Ã¢â‚¬ÂÃ‚Â¹ÃƒÂ°Ã…Â¸Ã¢â‚¬ÂÃ‚Â¹ */}
             <section className="px-5 py-16 bg-white">
                 <div className="mx-auto mb-8 max-w-4xl text-center">
                     <div className="mb-3 inline-block rounded-full px-3 py-1 text-xs font-bold uppercase tracking-widest" style={{ background: "rgba(7,7,126,0.07)", color: NAVY }}>
@@ -581,12 +581,12 @@ export default function WindowCleaningAdsPage() {
             </section>
 
             
-{/* 🔹🔹🔹 SECTION 6.5: WHAT'S INCLUDED  🔹🔹🔹 */}
+{/* ÃƒÂ°Ã…Â¸Ã¢â‚¬ÂÃ‚Â¹ÃƒÂ°Ã…Â¸Ã¢â‚¬ÂÃ‚Â¹ÃƒÂ°Ã…Â¸Ã¢â‚¬ÂÃ‚Â¹ SECTION 6.5: WHAT'S INCLUDED  ÃƒÂ°Ã…Â¸Ã¢â‚¬ÂÃ‚Â¹ÃƒÂ°Ã…Â¸Ã¢â‚¬ÂÃ‚Â¹ÃƒÂ°Ã…Â¸Ã¢â‚¬ÂÃ‚Â¹ */}
             <section className="py-16 bg-gray-50 px-5">
                 <div className="max-w-5xl mx-auto">
-                    <h3 className="text-sm font-semibold uppercase mb-2 text-center" style={{ color: YELLOW }}>
+                    <p className="text-sm font-semibold uppercase mb-2 text-center" style={{ color: YELLOW }}>
                         WHAT'S INCLUDED
-                    </h3>
+                    </p>
                     <h2 className="text-3xl md:text-4xl font-heading font-bold text-center mb-8" style={{ color: NAVY }}>
                         Everything Covered in Our Window Clean
                     </h2>
@@ -609,9 +609,7 @@ export default function WindowCleaningAdsPage() {
                                     />
                                 </div>
                                 <div className="p-6 flex flex-col gap-3">
-                                    <h4 className="font-semibold text-lg" style={{ color: NAVY }}>
-                                        {item.title}
-                                    </h4>
+                                    <h3 className="font-semibold text-lg" style={{ color: NAVY }}>{item.title}</h3>
                                     <p className="text-sm leading-relaxed font-light" style={{ color: "#888" }}>
                                         {item.description}
                                     </p>
@@ -626,14 +624,14 @@ export default function WindowCleaningAdsPage() {
 <section id="commercial" className="py-12 px-5 bg-white border-y border-gray-100 text-center">
                 <div className="max-w-3xl mx-auto">
                     <Building2 className="w-8 h-8 text-brand-slate mx-auto mb-4" />
-                    <h3 className="text-xl font-bold text-brand-navy mb-2">Looking for Commercial Services?</h3>
+                    <h2 className="text-xl font-bold text-brand-navy mb-2">Looking for Commercial Services?</h2>
                     <p className="text-gray-600 mb-6">We provide specialized cleaning for storefronts, strata complexes, and multi-story office buildings across Perth.</p>
                     <Link href="/services/commercial-window-cleaning" className="text-brand-navy font-bold underline hover:text-action-gold transition-colors">Head to our Commercial Window Cleaning page &rarr;</Link>
                 </div>
             </section>
 
 <section className="px-6 py-10 text-center" style={{ background: "#f4f6ff" }}>
-                <p className="mb-8 text-xs font-semibold uppercase tracking-widest" style={{ color: "#aaa" }}>
+                <p className="mb-8 text-xs font-semibold uppercase tracking-widest" style={{ color: "#666" }}>
                     Trusted by Perth businesses
                 </p>
                 <div className="flex flex-wrap items-center justify-center gap-10">
@@ -820,7 +818,7 @@ export default function WindowCleaningAdsPage() {
                 </div>
             </section>
 
-{/* 🔹🔹🔹 SECTION 7: HOW IT WORKS  🔹🔹🔹 */}
+{/* ÃƒÂ°Ã…Â¸Ã¢â‚¬ÂÃ‚Â¹ÃƒÂ°Ã…Â¸Ã¢â‚¬ÂÃ‚Â¹ÃƒÂ°Ã…Â¸Ã¢â‚¬ÂÃ‚Â¹ SECTION 7: HOW IT WORKS  ÃƒÂ°Ã…Â¸Ã¢â‚¬ÂÃ‚Â¹ÃƒÂ°Ã…Â¸Ã¢â‚¬ÂÃ‚Â¹ÃƒÂ°Ã…Â¸Ã¢â‚¬ÂÃ‚Â¹ */}
             <section className="px-5 py-16" style={{ background: "#f4f6ff" }}>
                 <div className="mx-auto mb-10 max-w-4xl text-center">
                     <div className="mb-3 inline-block rounded-full px-3 py-1 text-xs font-bold uppercase tracking-widest" style={{ background: "rgba(7,7,126,0.07)", color: NAVY }}>
@@ -890,7 +888,7 @@ export default function WindowCleaningAdsPage() {
 
 
             
-{/* 🔹🔹🔹 SECTION 3: REVIEWS  🔹🔹🔹 */}
+{/* ÃƒÂ°Ã…Â¸Ã¢â‚¬ÂÃ‚Â¹ÃƒÂ°Ã…Â¸Ã¢â‚¬ÂÃ‚Â¹ÃƒÂ°Ã…Â¸Ã¢â‚¬ÂÃ‚Â¹ SECTION 3: REVIEWS  ÃƒÂ°Ã…Â¸Ã¢â‚¬ÂÃ‚Â¹ÃƒÂ°Ã…Â¸Ã¢â‚¬ÂÃ‚Â¹ÃƒÂ°Ã…Â¸Ã¢â‚¬ÂÃ‚Â¹ */}
                         
 <section id="reviews" className="max-w-7xl mx-auto px-5 py-16 bg-white">
                 <div className="mx-auto mb-10 max-w-4xl text-center">
@@ -952,7 +950,7 @@ export default function WindowCleaningAdsPage() {
                         <h3 className="text-xl text-action-gold font-bold mb-4">Try Us For Free</h3>
                         <p className="text-gray-600 mb-6 leading-relaxed">We are so confident in the quality of our work and the power of our Pure Water systems that we want to prove it to you. Ask us to come over and clean <strong>2 windows absolutely free of charge</strong>.</p>
                         <p className="text-gray-600 mb-6 leading-relaxed">See the level of service, experience our professionalism, and witness the difference it makes to your home before you spend a single cent. Just drop your address below!</p>
-                        <p className="text-sm text-gray-400 italic">* Offer valid for accessible residential ground-floor windows. Subject to availability.</p>
+                        <p className="text-sm text-gray-500 italic">* Offer valid for accessible residential ground-floor windows. Subject to availability.</p>
                     </div>
                     <div className="w-full md:w-96 bg-gray-50 p-6 rounded-2xl border border-gray-200">
                         <h4 className="font-bold text-brand-navy mb-4 text-center">Request Your Free Trial</h4>
@@ -968,7 +966,7 @@ export default function WindowCleaningAdsPage() {
 		
 
             
-{/* 🔹🔹🔹 SECTION 9: FOOTER CTA  🔹🔹🔹 */}
+{/* ÃƒÂ°Ã…Â¸Ã¢â‚¬ÂÃ‚Â¹ÃƒÂ°Ã…Â¸Ã¢â‚¬ÂÃ‚Â¹ÃƒÂ°Ã…Â¸Ã¢â‚¬ÂÃ‚Â¹ SECTION 9: FOOTER CTA  ÃƒÂ°Ã…Â¸Ã¢â‚¬ÂÃ‚Â¹ÃƒÂ°Ã…Â¸Ã¢â‚¬ÂÃ‚Â¹ÃƒÂ°Ã…Â¸Ã¢â‚¬ÂÃ‚Â¹ */}
             <section className="relative overflow-hidden px-5 py-16 text-center" style={{ background: NAVY }}>
                 <div className="pointer-events-none absolute" style={{ top: "-150px", left: "50%", transform: "translateX(-50%)", width: 600, height: 600, border: "1px solid rgba(255,229,77,0.05)", borderRadius: "50%" }} />
                 <div className="relative z-10">
@@ -995,13 +993,13 @@ export default function WindowCleaningAdsPage() {
                             className="flex items-center gap-2 rounded-2xl border px-7 py-4 font-medium text-base transition-all hover:bg-white/10 cursor-pointer"
                             style={{ borderColor: "rgba(255,255,255,0.25)", color: "white" }}
                         >
-                            Get a Text Quote Â </button>
+                            Get a Text Quote ÃƒÆ’Ã¢â‚¬Å¡Ãƒâ€šÃ‚Â </button>
                     </div>
                 </div>
             </section>
 
             
-{/* 🔹🔹🔹 STICKY BAR 🔹🔹🔹 */}
+{/* ÃƒÂ°Ã…Â¸Ã¢â‚¬ÂÃ‚Â¹ÃƒÂ°Ã…Â¸Ã¢â‚¬ÂÃ‚Â¹ÃƒÂ°Ã…Â¸Ã¢â‚¬ÂÃ‚Â¹ STICKY BAR ÃƒÂ°Ã…Â¸Ã¢â‚¬ÂÃ‚Â¹ÃƒÂ°Ã…Â¸Ã¢â‚¬ÂÃ‚Â¹ÃƒÂ°Ã…Â¸Ã¢â‚¬ÂÃ‚Â¹ */}
             <div
                 className="fixed bottom-0 left-0 right-0 z-50 flex items-center justify-center px-5 py-3"
                 style={{ background: NAVY, borderTop: `2px solid ${YELLOW}`, boxShadow: "0 -4px 24px rgba(7,7,126,0.3)" }}
