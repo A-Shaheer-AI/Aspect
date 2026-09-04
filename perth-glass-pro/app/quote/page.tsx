@@ -2,27 +2,13 @@
 
 import { Suspense } from "react";
 import ResidentialEstimator from "@/components/ResidentialEstimator";
-import SmartVideo from "@/components/ui/SmartVideo";
 
 export default function QuotePage() {
     return (
-        <div className="min-h-screen relative flex items-center justify-center p-4">
-            {/* Background - Using SmartVideo for premium feel */}
-            <div className="absolute inset-0 w-full h-full z-0 overflow-hidden">
-                <SmartVideo
-                    posterSrc="/assets/images/hero-poster.jpg"
-                    videoSrc="/assets/videos/hero-bg.webm"
-                    className="w-full h-full object-cover"
-                    priority={true}
-                />
-            </div>
-
-            {/* Overlay for readability */}
-            <div className="absolute inset-0 bg-brand-navy/60 backdrop-blur-sm z-0" />
-
+        <div className="min-h-screen relative flex items-start justify-center p-4 pt-32 pb-24 bg-brand-navy">
             {/* Estimator Wizard - Widened for better layout */}
-            <div className="relative z-10 w-full max-w-4xl py-6 px-4">
-                <div className="text-center mb-8 bg-brand-navy/80 p-6 rounded-2xl border border-white/10 backdrop-blur-md">
+            <div className="relative z-10 w-full max-w-4xl py-6 px-4 mt-8">
+                <div className="text-center mb-8">
                     <h1 className="text-3xl md:text-4xl font-heading font-bold text-white mb-3">
                         Get an Instant Estimate
                     </h1>
