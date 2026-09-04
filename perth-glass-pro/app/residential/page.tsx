@@ -1,4 +1,4 @@
-﻿"use client";
+"use client";
 
 import { useState } from "react";
 import Link from "next/link";
@@ -98,7 +98,7 @@ export default function ResidentialPage() {
                         </div>
                         <div className="text-center mt-8">
                             <Link
-                                href="/quote"
+                                href="/pricing#estimator"
                                 className="inline-flex items-center gap-2 text-action-gold font-medium hover:underline"
                             >
                                 Get detailed pricing <ArrowRight className="w-4 h-4" />

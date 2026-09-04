@@ -1,6 +1,8 @@
 import React from "react";
 import Link from "next/link";
 import { Check, Info } from "lucide-react";
+import { Suspense } from "react";
+import ResidentialEstimator from "@/components/ResidentialEstimator";
 import TrustGrid from "@/components/TrustGrid";
 import ResultsAndReviews from "@/components/ResultsAndReviews";
 
@@ -14,7 +16,7 @@ export default function PricingPage() {
                     <p className="text-xl text-brand-water mb-8 max-w-2xl mx-auto">
                         At Aspect Window Cleaning, we believe in complete transparency. Our pricing structure is designed to give you clear expectations with no hidden fees. Whether you need a quick wash or a supreme detailing, we have a package to suit your property.
                     </p>
-                    <Link href="/quote" className="shimmer-btn bg-action-gold text-brand-navy font-bold px-8 py-4 rounded-full text-lg hover:shadow-xl transition-shadow inline-block">
+                    <Link href="/pricing#estimator" className="shimmer-btn bg-action-gold text-brand-navy font-bold px-8 py-4 rounded-full text-lg hover:shadow-xl transition-shadow inline-block">
                         Get an Instant Quote
                     </Link>
                 </div>
@@ -286,16 +288,24 @@ export default function PricingPage() {
             <TrustGrid />
             <ResultsAndReviews />
 
-            {/* Final CTA */}
-            <section className="bg-brand-navy text-white py-20 text-center px-4 mt-12">
-                <div className="max-w-3xl mx-auto">
-                    <h2 className="text-3xl md:text-4xl font-bold mb-6">Ready to Experience the Aspect Difference?</h2>
-                    <p className="text-brand-water text-lg mb-8">
-                        Our pricing is transparent, and our results are guaranteed. Use our instant residential quote tool to lock in your price and preferred booking date in under 60 seconds.
-                    </p>
-                    <Link href="/quote" className="shimmer-btn bg-action-gold text-brand-navy font-bold px-8 py-4 rounded-full text-lg hover:shadow-xl transition-shadow inline-block">
-                        Get Your Free Estimate Now
-                    </Link>
+                        {/* Final CTA / Estimator Section */}
+            <section id="estimator" className="bg-brand-navy text-white py-20 px-4 mt-12 border-t-[16px] border-action-gold">
+                <div className="max-w-4xl mx-auto">
+                    <div className="text-center mb-10">
+                        <h2 className="text-3xl md:text-4xl font-bold mb-4">Instant Residential Quote</h2>
+                        <p className="text-brand-water text-lg max-w-2xl mx-auto">
+                            Use our instant residential pricing calculator below for a custom quote based on your specific property. Lock in your price and preferred booking date in under 60 seconds.
+                        </p>
+                    </div>
+                    
+                    <Suspense fallback={
+                        <div className="bg-white/10 p-8 rounded-2xl text-center">
+                            <div className="animate-spin w-8 h-8 border-4 border-action-gold border-t-transparent rounded-full mx-auto mb-4"></div>
+                            <p className="text-white font-bold">Loading Pricing Calculator...</p>
+                        </div>
+                    }>
+                        <ResidentialEstimator />
+                    </Suspense>
                 </div>
             </section>
         </main>

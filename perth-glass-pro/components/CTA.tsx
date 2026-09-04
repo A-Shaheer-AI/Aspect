@@ -11,7 +11,7 @@ const CTA = ({ title }: { title: string }) => {
                 <p className="text-brand-water/80 mb-8">
                    Same-week bookings available. Free, no-obligation quote.
                 </p>
-                <Link href="/quote" className="inline-flex items-center gap-2 bg-action-gold text-brand-navy font-bold px-8 py-4 rounded-full text-lg hover:bg-action-gold/90">
+                <Link href="/pricing#estimator" className="inline-flex items-center gap-2 bg-action-gold text-brand-navy font-bold px-8 py-4 rounded-full text-lg hover:bg-action-gold/90">
                     Get Your Free Quote <ArrowRight className="w-5 h-5" />
                 </Link>
             </div>

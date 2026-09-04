@@ -23,6 +23,11 @@ const nextConfig: NextConfig = {
                 permanent: true,
             },
             {
+                source: "/quote",
+                destination: "/pricing",
+                permanent: true,
+            },
+            {
                 source: "/:path*",
                 has: [{ type: "host", value: "www.aspectwindowcleaning.com.au" }],
                 destination: "https://aspectwindowcleaning.com.au/:path*",
