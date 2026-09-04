@@ -8,9 +8,9 @@ import ResultsAndReviews from "@/components/ResultsAndReviews";
 
 export default function PricingPage() {
     return (
-        <main className="min-h-screen bg-gray-50 pt-24 pb-16">
+        <main className="min-h-screen bg-gray-50 pb-16">
             {/* Header Section */}
-            <section className="bg-brand-navy text-white pt-16 pb-20 px-4 text-center">
+            <section className="bg-brand-navy text-white pt-36 pb-20 px-4 text-center">
                 <div className="max-w-4xl mx-auto">
                     <h1 className="text-4xl md:text-5xl font-heading font-bold mb-6">Transparent Pricing for Premium Cleaning</h1>
                     <p className="text-xl text-brand-water mb-8 max-w-2xl mx-auto">
@@ -104,7 +104,8 @@ export default function PricingPage() {
                         </div>
 
                         {/* Supreme */}
-                        <div className="bg-gray-50 rounded-3xl p-8 border border-gray-100 relative flex flex-col">
+                        <div className="bg-white rounded-3xl p-8 border-2 border-action-gold shadow-[0_0_25px_rgba(251,191,36,0.25)] relative flex flex-col">
+                            <div className="absolute top-0 right-8 -translate-y-1/2 bg-action-gold text-brand-navy px-4 py-1 rounded-full text-sm font-bold tracking-wide">PREMIUM</div>
                             <h3 className="text-2xl font-bold text-brand-navy mb-2">Supreme</h3>
                             <p className="text-gray-500 mb-6">Inside and out detailing</p>
                             <ul className="space-y-4 mb-8 flex-1">
