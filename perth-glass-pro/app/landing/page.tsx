@@ -622,6 +622,41 @@ export default function WindowCleaningAdsPage() {
             </section>
 
             
+<section id="commercial" className="py-12 px-5 bg-white border-y border-gray-100 text-center">
+                <div className="max-w-3xl mx-auto">
+                    <Building2 className="w-8 h-8 text-brand-slate mx-auto mb-4" />
+                    <h3 className="text-xl font-bold text-brand-navy mb-2">Looking for Commercial Services?</h3>
+                    <p className="text-gray-600 mb-6">We provide specialized cleaning for storefronts, strata complexes, and multi-story office buildings across Perth.</p>
+                    <Link href="/services/commercial-window-cleaning" className="text-brand-navy font-bold underline hover:text-action-gold transition-colors">Head to our Commercial Window Cleaning page &rarr;</Link>
+                </div>
+            </section>
+
+<section className="px-6 py-10 text-center" style={{ background: "#f4f6ff" }}>
+                <p className="mb-8 text-xs font-semibold uppercase tracking-widest" style={{ color: "#aaa" }}>
+                    Trusted by Perth businesses
+                </p>
+                <div className="flex flex-wrap items-center justify-center gap-10">
+                    {[
+                        { src: "https://res.cloudinary.com/dr8tjrszy/image/upload/v1772795795/toyota-logo_bcplvi.png", alt: "Toyota" },
+                        { src: "https://res.cloudinary.com/dr8tjrszy/image/upload/v1772795795/richad-logo_u2l4jl.png", alt: "Richard Group" },
+                        { src: "https://res.cloudinary.com/dr8tjrszy/image/upload/v1772795794/bespoke-logo_lulwwt.png", alt: "Bespoke" },
+                    ].map((logo) => (
+                        <div key={logo.alt} className="relative h-13 w-28 grayscale transition duration-300 hover:grayscale-0">
+                            <Image
+                                src={logo.src.replace(
+                                    "/upload/",
+                                    "/upload/f_auto,q_auto/"
+                                )}
+                                alt={logo.alt}
+                                fill
+                                sizes="112px"
+                                className="object-contain"
+                            />
+                        </div>
+                    ))}
+                </div>
+            </section>
+
 {/* PRICING SNIPPET */}
             <section id="pricing" className="py-16 bg-white px-5 border-y border-gray-100">
                 <div className="max-w-5xl mx-auto text-center">
@@ -903,40 +938,9 @@ export default function WindowCleaningAdsPage() {
 
             {/* COMMERCIAL SNIPPET */}
             
-<section id="commercial" className="py-12 px-5 bg-white border-y border-gray-100 text-center">
-                <div className="max-w-3xl mx-auto">
-                    <Building2 className="w-8 h-8 text-brand-slate mx-auto mb-4" />
-                    <h3 className="text-xl font-bold text-brand-navy mb-2">Looking for Commercial Services?</h3>
-                    <p className="text-gray-600 mb-6">We provide specialized cleaning for storefronts, strata complexes, and multi-story office buildings across Perth.</p>
-                    <Link href="/services/commercial-window-cleaning" className="text-brand-navy font-bold underline hover:text-action-gold transition-colors">Head to our Commercial Window Cleaning page &rarr;</Link>
-                </div>
-            </section>
 
-		<section className="px-6 py-10 text-center" style={{ background: "#f4f6ff" }}>
-                <p className="mb-8 text-xs font-semibold uppercase tracking-widest" style={{ color: "#aaa" }}>
-                    Trusted by Perth businesses
-                </p>
-                <div className="flex flex-wrap items-center justify-center gap-10">
-                    {[
-                        { src: "https://res.cloudinary.com/dr8tjrszy/image/upload/v1772795795/toyota-logo_bcplvi.png", alt: "Toyota" },
-                        { src: "https://res.cloudinary.com/dr8tjrszy/image/upload/v1772795795/richad-logo_u2l4jl.png", alt: "Richard Group" },
-                        { src: "https://res.cloudinary.com/dr8tjrszy/image/upload/v1772795794/bespoke-logo_lulwwt.png", alt: "Bespoke" },
-                    ].map((logo) => (
-                        <div key={logo.alt} className="relative h-13 w-28 grayscale transition duration-300 hover:grayscale-0">
-                            <Image
-                                src={logo.src.replace(
-                                    "/upload/",
-                                    "/upload/f_auto,q_auto/"
-                                )}
-                                alt={logo.alt}
-                                fill
-                                sizes="112px"
-                                className="object-contain"
-                            />
-                        </div>
-                    ))}
-                </div>
-            </section>
+
+		
 
             
 {/* ðŸ”¹ðŸ”¹ðŸ”¹ SECTION 9: FOOTER CTA  ðŸ”¹ðŸ”¹ðŸ”¹ */}
