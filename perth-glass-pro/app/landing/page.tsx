@@ -1,4 +1,4 @@
-﻿"use client";
+"use client";
 
 import { useState, useEffect, useRef } from "react";
 import { Phone, CheckCircle2, Star, Shield, Droplets, Zap, Building2, X, Tag, ChevronLeft, ChevronRight } from "lucide-react";
@@ -18,9 +18,9 @@ type FormDataType = {
     promo?: string;
 };
 
-/* ─────────────────────────────────────────
+/* â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€
    LEAD FORM - shared by hero + modal
-───────────────────────────────────────── */
+â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€ */
 function LeadForm({
     submitted,
     formData,
@@ -84,18 +84,18 @@ function LeadForm({
                     boxShadow: "0 4px 20px rgba(255,229,77,0.4)",
                 }}
             >
-                Send Me a Quote →
+                Send Me a Quote â†’
             </button>
             <p className="text-center text-xs mt-1" style={{ color: dark ? "rgba(255,255,255,0.45)" : "#aaa" }}>
-                🔒 We never share your details
+                ðŸ”’ We never share your details
             </p>
         </div>
     );
 }
 
-/* ─────────────────────────────────────────
+/* â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€
    MODAL - reusable, accepts optional promo
-───────────────────────────────────────── */
+â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€ */
 function QuoteModal({
     open,
     onClose,
@@ -153,7 +153,7 @@ function QuoteModal({
                             </span>
                         </span>
 
-                        <span className="opacity-60">•</span>
+                        <span className="opacity-60">â€¢</span>
 
                         <span className="text-xs font-medium">Use code</span>
 
@@ -249,9 +249,9 @@ const whatsInclude = [
     },
 ];
 
-/* ─────────────────────────────────────────
+/* â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€
    PAGE
-───────────────────────────────────────── */
+â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€ */
 export default function WindowCleaningAdsPage() {
     const gmb = useGmb();
     const [modalOpen, setModalOpen] = useState(false);
@@ -262,7 +262,7 @@ export default function WindowCleaningAdsPage() {
     const [formData, setFormData] = useState<FormDataType>({ name: "", phone: "", suburb: "", promo: "", });
     const [submitted, setSubmitted] = useState(false);
 
-    /* ── Scroll-triggered popup at 50% page height ── */
+    /* â”€â”€ Scroll-triggered popup at 50% page height â”€â”€ */
     useEffect(() => {
         const handleScroll = () => {
             if (scrollPopupShown) return;
@@ -309,79 +309,47 @@ export default function WindowCleaningAdsPage() {
         { num: "04", title: "You Enjoy", body: "Crystal-clear windows, guaranteed. Book again anytime.", clickable: false },
     ];
 
-    const windowCleaningReviews = [
+        const windowCleaningReviews = [
         {
             id: 1,
-            name: "Hussai",
-            reviews: "2 reviews",
+            name: "Peter & Jill Robinson",
+            reviews: "1 review",
             rating: 5,
-            date: "3 months ago",
-            content:
-                "Great work! I called them for cleaning the windows at my home. The team arrived on time, were friendly and professional, and took great care. The windows came out spotless and clear.",
+            date: "2 weeks ago",
+            content: "Fazal and his team did a great job on our windows, initially keeping us informed as to arrival time, then cleaning high 2 story windows and some hard to get to windows. Very professional and friendly unit, would recommend them to anybody looking for a window cleaner."
         },
         {
             id: 2,
-            name: "June Bird",
-            reviews: "3 reviews",
+            name: "Chantal Parsons",
+            reviews: "8 reviews",
             rating: 5,
-            date: "2 months ago",
-            content:
-                "Guys did a beautiful job. My windows are sparkling. Two very nice gentlemen. Highly recommend.",
+            date: "3 weeks ago",
+            content: "Brilliant work by this team. We were more than impressed and will continue to use them yearly for our new house. We used them for the sale of our house and it changes the whole look of your home when your windows are cleaned professionally. They also removed all marks, paint and tape that were super hard to get off - highly recommend this great team of cleaners!"
         },
         {
             id: 3,
-            name: "Taylor Bow",
+            name: "Vicki Slate",
             reviews: "5 reviews",
             rating: 5,
-            date: "2 months ago",
-            content:
-                "Aspect Window Cleaning did a great job cleaning the inside and outside of the windows at my North Perth property. Good service, communication, and professionalism.",
+            date: "22 weeks ago",
+            content: "These guys did a fantastic job cleaning windows, jams, runners, pressure washing eaves, decks and side walks, removing mould from brickwork., that hadn't been done in probably 10 years. We thought the new owners would need to replace the windows so potentially this added $20,000 value to the house. On time, friendly and professional. Highly recommend them."
         },
         {
             id: 4,
-            name: "Shabnam",
-            reviews: "1 review",
+            name: "Ally Bailey",
+            reviews: "13 reviews",
             rating: 5,
-            date: "8 months ago",
-            content:
-                "The team was punctual, professional, and paid great attention to detail. Our windows are spotless inside and out, including screens and tracks.",
+            date: "8 weeks ago",
+            content: "I highly recommend Aspect Window Cleaning! They were able to come out to Armadale, WA on the same day to clean my roof gutters, and it turned out to be a much bigger job than expected. They happily took on the extra work, were incredibly thorough, and went above and beyond what I had originally asked for. The price was also extremely reasonable... Friendly, reliable and hardworking - I'll definitely be using them again."
         },
         {
             id: 5,
-            name: "Ross Glossop",
-            reviews: "2 reviews",
+            name: "Mick Quinlan",
+            reviews: "10 reviews",
             rating: 5,
-            date: "3 months ago",
-            content:
-                "The Aspect team did an amazing job cleaning our many windows. Enthusiastic and thorough work. Great job thank you.",
-        },
-        {
-            id: 6,
-            name: "Sabine Parker",
-            reviews: "12 reviews",
-            rating: 5,
-            date: "5 months ago",
-            content:
-                "Prompt and professional service. Did an amazing job on our double glazed windows and sliding doors. Highly recommend.",
-        },
-        {
-            id: 7,
-            name: "Krystal Copley",
-            reviews: "5 reviews",
-            rating: 5,
-            date: "2 months ago",
-            content:
-                "Lovely people. Quick reply, came for a free quote. Good communication and very professional service.",
-        },
-        {
-            id: 8,
-            name: "lynne",
-            reviews: "2 reviews",
-            rating: 5,
-            date: "2 months ago",
-            content:
-                "Good communication, competitive price, fast and efficient service. Beautifully clean windows and screens. Thank you!",
-        },
+            date: "23 weeks ago",
+            content: "Aspect Window Cleaning, lead by Fazal, provided a high quality clean to our house windows (inside & out), 24 solar panels & roof gutters on a 2 storey property! Fazal is courteous & professional & provided a great clean."
+        }
     ];
 
     const NAVY = "#07077E";
@@ -389,7 +357,7 @@ export default function WindowCleaningAdsPage() {
 
     return (
         <>
-            {/* ─── MODAL ─── */}
+            {/* â”€â”€â”€ MODAL â”€â”€â”€ */}
             <QuoteModal
                 open={modalOpen}
                 onClose={() => setModalOpen(false)}
@@ -400,7 +368,7 @@ export default function WindowCleaningAdsPage() {
                 showPromo={showPromo}
             />
 
-            {/* ─── SECTION 1: HERO ─── */}
+            {/* â”€â”€â”€ SECTION 1: HERO â”€â”€â”€ */}
             <section
                 className="relative min-h-screen flex flex-col items-center justify-center md:px-5 pb-10 text-white bg-cover bg-center
   bg-[linear-gradient(160deg,rgba(10,22,40,0.5)_0%,rgba(15,37,69,0.8)_60%,rgba(19,48,96,0.8)_100%),url('/landing-hero-bg.jpeg')]
@@ -504,7 +472,7 @@ export default function WindowCleaningAdsPage() {
                 </div>
             </section>
 
-            {/* ─── SECTION 2: STATS STRIP ─── */}
+            {/* â”€â”€â”€ SECTION 2: STATS STRIP â”€â”€â”€ */}
             <section style={{ background: YELLOW }}>
                 <div className="mx-auto grid max-w-4xl grid-cols-4">
                     {[ { num: "100+", label: "Happy Clients" }, { num: `${gmb.rating}\u2B50`, label: "Google Rating" }, { num: "$20M", label: "Insured" }, { num: "24hr", label: "Response Time" } ].map((s, i) => (
@@ -524,7 +492,113 @@ export default function WindowCleaningAdsPage() {
                 </div>
             </section>
 
-            {/* ─── SECTION 3: REVIEWS ─── */}
+            {/* â”€â”€â”€ SECTION 3: REVIEWS â”€â”€â”€ */}
+                        {/* PRICING SNIPPET */}
+            <section className="py-16 bg-white px-5 border-y border-gray-100">
+                <div className="max-w-5xl mx-auto text-center">
+                    <h2 className="text-3xl md:text-4xl font-bold mb-4 text-brand-navy">Clear, Transparent Pricing</h2>
+                    <p className="text-gray-600 max-w-2xl mx-auto mb-10 text-lg">We don't hide our rates. Here is our starting pricing for residential window cleaning packages. No hidden fees, just guaranteed results.</p>
+                    <div className="grid md:grid-cols-3 gap-6">
+                        <div className="p-6 border rounded-xl shadow-sm bg-gray-50">
+                            <h3 className="font-bold text-xl text-brand-navy mb-2">Essential</h3>
+                            <p className="text-gray-500 text-sm mb-4">External standard clean only</p>
+                            <p className="text-3xl font-black text-brand-navy mb-4">From $159</p>
+                        </div>
+                        <div className="p-6 border-2 border-action-gold rounded-xl shadow-md bg-brand-navy text-white relative transform md:-translate-y-4 mt-4 md:mt-0">
+                            <div className="absolute top-0 left-1/2 -translate-x-1/2 -translate-y-1/2 bg-action-gold text-brand-navy px-3 py-1 rounded-full text-xs font-bold tracking-wide w-max">MOST POPULAR</div>
+                            <h3 className="font-bold text-xl mb-2 text-white">Standard</h3>
+                            <p className="text-brand-water text-sm mb-4">Inside and out basic wash</p>
+                            <p className="text-3xl font-black text-white mb-4">From $279</p>
+                        </div>
+                        <div className="p-6 border rounded-xl shadow-sm bg-gray-50">
+                            <h3 className="font-bold text-xl text-brand-navy mb-2">Supreme</h3>
+                            <p className="text-gray-500 text-sm mb-4">Inside and out detailing (stuck-on paint, hard water)</p>
+                            <p className="text-3xl font-black text-brand-navy mb-4">From $479</p>
+                        </div>
+                    </div>
+                    <div className="mt-10">
+                        <Link href="/pricing" className="text-action-gold bg-brand-navy px-8 py-4 rounded-full font-bold hover:shadow-lg inline-block transition-shadow">See All Pricing & Packages</Link>
+                    </div>
+                </div>
+            </section>
+
+            {/* COMPARISON / DON'T BE LIKE THESE PEOPLE */}
+            <section className="py-20 px-5 bg-gray-50 border-b border-gray-200">
+                <div className="max-w-6xl mx-auto">
+                    <div className="text-center mb-16">
+                        <h2 className="text-3xl md:text-4xl font-bold mb-4 text-brand-navy">Don't Risk It With "A Bloke and a Bucket"</h2>
+                        <p className="text-gray-600 max-w-2xl mx-auto text-lg">Choosing an inexperienced cleaner can cost you far more than the initial quote. See what happens when you don't choose a professional.</p>
+                    </div>
+
+                    <div className="grid md:grid-cols-3 gap-6 mb-16">
+                        <div className="bg-white p-6 rounded-2xl shadow-sm border border-red-100 flex flex-col h-full">
+                            <div className="flex gap-1 text-red-500 mb-4">
+                                <Star className="w-5 h-5 fill-current" />
+                                <Star className="w-5 h-5" />
+                                <Star className="w-5 h-5" />
+                                <Star className="w-5 h-5" />
+                                <Star className="w-5 h-5" />
+                            </div>
+                            <p className="text-gray-700 text-sm italic mb-4 flex-grow">"The owner sent out some COMPLETELY INEXPERIENCED guy who SMASHED A WINDOW. He refused to do any more cleaning... they DO NOT HAVE INSURANCE."</p>
+                            <div className="mt-auto pt-4 border-t border-gray-100">
+                                <p className="text-xs text-gray-400 font-bold uppercase tracking-wider">- Review for a competitor</p>
+                            </div>
+                        </div>
+                        <div className="bg-white p-6 rounded-2xl shadow-sm border border-red-100 flex flex-col h-full">
+                            <div className="flex gap-1 text-red-500 mb-4">
+                                <Star className="w-5 h-5 fill-current" />
+                                <Star className="w-5 h-5" />
+                                <Star className="w-5 h-5" />
+                                <Star className="w-5 h-5" />
+                                <Star className="w-5 h-5" />
+                            </div>
+                            <p className="text-gray-700 text-sm italic mb-4 flex-grow">"Very unhappy... Skirtings missed... Watermarks left on sliding doors... Lime scale left on shower door... Left a bottle of 'Coles brand' bleach behind."</p>
+                            <div className="mt-auto pt-4 border-t border-gray-100">
+                                <p className="text-xs text-gray-400 font-bold uppercase tracking-wider">- Review for a competitor</p>
+                            </div>
+                        </div>
+                        <div className="bg-white p-6 rounded-2xl shadow-sm border border-red-100 flex flex-col h-full">
+                            <div className="flex gap-1 text-red-500 mb-4">
+                                <Star className="w-5 h-5 fill-current" />
+                                <Star className="w-5 h-5" />
+                                <Star className="w-5 h-5" />
+                                <Star className="w-5 h-5" />
+                                <Star className="w-5 h-5" />
+                            </div>
+                            <p className="text-gray-700 text-sm italic mb-4 flex-grow">"Yeh, nah. ONE BLOKE and a bucket or two is not ideal. Didn't clean tracks, didn't remove screens... what a waste of my money, expected a lot better."</p>
+                            <div className="mt-auto pt-4 border-t border-gray-100">
+                                <p className="text-xs text-gray-400 font-bold uppercase tracking-wider">- Review for a competitor</p>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div className="bg-brand-navy text-white rounded-3xl p-8 md:p-12 shadow-xl border-l-8 border-action-gold relative overflow-hidden">
+                        <div className="relative z-10">
+                            <h3 className="text-2xl md:text-3xl font-bold mb-4">The Aspect Window Cleaning Difference</h3>
+                            <p className="text-brand-water mb-8 text-lg md:text-xl max-w-3xl">We back our work with a <span className="text-action-gold font-bold">100% Satisfaction Guarantee</span>. Especially for our premium Supreme cleans, the job is not done until you are completely satisfied.</p>
+                            <ul className="grid md:grid-cols-2 gap-6">
+                                <li className="flex items-start gap-4">
+                                    <Shield className="w-8 h-8 text-action-gold shrink-0 mt-1" />
+                                    <span className="text-lg">Fully insured and professionally trained team</span>
+                                </li>
+                                <li className="flex items-start gap-4">
+                                    <Droplets className="w-8 h-8 text-action-gold shrink-0 mt-1" />
+                                    <span className="text-lg">We use Eco-friendly, pet & child-safe Pure Water technology</span>
+                                </li>
+                                <li className="flex items-start gap-4">
+                                    <CheckCircle2 className="w-8 h-8 text-action-gold shrink-0 mt-1" />
+                                    <span className="text-lg">Advanced detailing for hard water stains and paint</span>
+                                </li>
+                                <li className="flex items-start gap-4">
+                                    <CheckCircle2 className="w-8 h-8 text-action-gold shrink-0 mt-1" />
+                                    <span className="text-lg">Tracks, screens, and sills included in standard packages</span>
+                                </li>
+                            </ul>
+                        </div>
+                    </div>
+                </div>
+            </section>
+
             <section className="max-w-7xl mx-auto px-5 py-16 bg-white">
                 <div className="mx-auto mb-10 max-w-4xl text-center">
                     <div className="mb-3 flex justify-center gap-1">
@@ -545,7 +619,7 @@ export default function WindowCleaningAdsPage() {
                 <GoogleReviews reviews={windowCleaningReviews} />
             </section>
 
-            {/* ─── SECTION 4: TRUSTED BY ─── */}
+            {/* â”€â”€â”€ SECTION 4: TRUSTED BY â”€â”€â”€ */}
             <section className="px-6 py-10 text-center" style={{ background: "#f4f6ff" }}>
                 <p className="mb-8 text-xs font-semibold uppercase tracking-widest" style={{ color: "#aaa" }}>
                     Trusted by Perth businesses
@@ -572,7 +646,7 @@ export default function WindowCleaningAdsPage() {
                 </div>
             </section>
 
-            {/* ─── SECTION 5: BENTO WHY US ─── */}
+            {/* â”€â”€â”€ SECTION 5: BENTO WHY US â”€â”€â”€ */}
             <section className="px-5 py-16" style={{ background: "#f4f6ff" }}>
                 <div className="mx-auto mb-10 max-w-4xl text-center">
                     <div className="mb-3 inline-block rounded-full px-3 py-1 text-xs font-bold uppercase tracking-widest" style={{ background: "rgba(7,7,126,0.07)", color: NAVY }}>
@@ -619,7 +693,7 @@ export default function WindowCleaningAdsPage() {
                 </div>
             </section>
 
-            {/* ─── SECTION 6: BEFORE / AFTER ─── */}
+            {/* â”€â”€â”€ SECTION 6: BEFORE / AFTER â”€â”€â”€ */}
             <section className="px-5 py-16 bg-white">
                 <div className="mx-auto mb-8 max-w-4xl text-center">
                     <div className="mb-3 inline-block rounded-full px-3 py-1 text-xs font-bold uppercase tracking-widest" style={{ background: "rgba(7,7,126,0.07)", color: NAVY }}>
@@ -650,7 +724,7 @@ export default function WindowCleaningAdsPage() {
                 </div>
             </section>
 
-            {/* ─── SECTION 6.5: WHAT'S INCLUDED ─── */}
+            {/* â”€â”€â”€ SECTION 6.5: WHAT'S INCLUDED â”€â”€â”€ */}
             <section className="py-16 bg-gray-50 px-5">
                 <div className="max-w-5xl mx-auto">
                     <h3 className="text-sm font-semibold uppercase mb-2 text-center" style={{ color: YELLOW }}>
@@ -691,7 +765,7 @@ export default function WindowCleaningAdsPage() {
                 </div>
             </section>
 
-            {/* ─── SECTION 7: HOW IT WORKS ─── */}
+            {/* â”€â”€â”€ SECTION 7: HOW IT WORKS â”€â”€â”€ */}
             <section className="px-5 py-16" style={{ background: "#f4f6ff" }}>
                 <div className="mx-auto mb-10 max-w-4xl text-center">
                     <div className="mb-3 inline-block rounded-full px-3 py-1 text-xs font-bold uppercase tracking-widest" style={{ background: "rgba(7,7,126,0.07)", color: NAVY }}>
@@ -760,7 +834,7 @@ export default function WindowCleaningAdsPage() {
 
 
 
-            {/* ─── SECTION 9: FOOTER CTA ─── */}
+            {/* â”€â”€â”€ SECTION 9: FOOTER CTA â”€â”€â”€ */}
             <section className="relative overflow-hidden px-5 py-16 text-center" style={{ background: NAVY }}>
                 <div className="pointer-events-none absolute" style={{ top: "-150px", left: "50%", transform: "translateX(-50%)", width: 600, height: 600, border: "1px solid rgba(255,229,77,0.05)", borderRadius: "50%" }} />
                 <div className="relative z-10">
@@ -787,13 +861,13 @@ export default function WindowCleaningAdsPage() {
                             className="flex items-center gap-2 rounded-2xl border px-7 py-4 font-medium text-base transition-all hover:bg-white/10 cursor-pointer"
                             style={{ borderColor: "rgba(255,255,255,0.25)", color: "white" }}
                         >
-                            Get a Text Quote →
+                            Get a Text Quote â†’
                         </button>
                     </div>
                 </div>
             </section>
 
-            {/* ─── STICKY BAR ─── */}
+            {/* â”€â”€â”€ STICKY BAR â”€â”€â”€ */}
             <div
                 className="fixed bottom-0 left-0 right-0 z-50 flex items-center justify-center px-5 py-3"
                 style={{ background: NAVY, borderTop: `2px solid ${YELLOW}`, boxShadow: "0 -4px 24px rgba(7,7,126,0.3)" }}
