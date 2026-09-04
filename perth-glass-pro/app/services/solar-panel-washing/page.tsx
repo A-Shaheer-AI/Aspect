@@ -26,7 +26,7 @@ const stats = [
     },
     {
         icon: Calendar,
-        value: "6â€“12 Months",
+        value: "6Ã¢â‚¬â€œ12 Months",
         label: "Optimal cleaning interval for Perth climate",
     },
     {
@@ -161,7 +161,7 @@ const solarFAQs: FaqsType[] = [
     {
         question: "Why is solar panel cleaning important?",
         answer:
-            "Dust, bird droppings, and environmental buildup act as a barrier on your panel surface, reducing the amount of sunlight reaching the photovoltaic cells. Even a thin layer of grime can reduce output by 15â€“30%, meaning you're generating significantly less than your system is capable of.",
+            "Dust, bird droppings, and environmental buildup act as a barrier on your panel surface, reducing the amount of sunlight reaching the photovoltaic cells. Even a thin layer of grime can reduce output by 15Ã¢â‚¬â€œ30%, meaning you're generating significantly less than your system is capable of.",
     },
     {
         question: "How often should I have my solar panels cleaned in Perth?",
@@ -207,7 +207,7 @@ const SolarPanelCleaningPage = () => {
                 <p className="text-lg md:text-xl max-w-2xl mx-auto mb-6">
                     Maximise your solar output. Protect your investment.
                 </p>
-                <Link href="/quote" className="bg-action-gold text-black px-8 py-4 rounded-full font-bold">
+                <Link href="/pricing#estimator" className="bg-action-gold text-black px-8 py-4 rounded-full font-bold">
                     Get Free Quote
                 </Link>
             </section>
@@ -220,7 +220,7 @@ const SolarPanelCleaningPage = () => {
                         {/* Badge 1 */}
                         <div className="flex items-center gap-3 bg-white border border-slate-200 hover:border-action-gold/40 px-5 py-4 rounded-2xl shadow-sm hover:shadow transition-all">
                             <div className="w-9 h-9 flex items-center justify-center bg-action-gold/10 rounded-xl text-2xl flex-shrink-0">
-                                💰
+                                ðŸ’°
                             </div>
                             <div className="min-w-0">
                                 <div className="font-semibold text-brand-navy text-sm md:text-base leading-tight">
@@ -233,7 +233,7 @@ const SolarPanelCleaningPage = () => {
                         {/* Badge 2 */}
                         <div className="flex items-center gap-3 bg-white border border-slate-200 hover:border-action-gold/40 px-5 py-4 rounded-2xl shadow-sm hover:shadow transition-all">
                             <div className="w-9 h-9 flex items-center justify-center bg-action-gold/10 rounded-xl text-2xl flex-shrink-0">
-                                🛡️
+                                ðŸ›¡ï¸
                             </div>
                             <div className="min-w-0">
                                 <div className="font-semibold text-brand-navy text-sm md:text-base leading-tight">
@@ -246,7 +246,7 @@ const SolarPanelCleaningPage = () => {
                         {/* Badge 3 */}
                         <div className="flex items-center gap-3 bg-white border border-slate-200 hover:border-action-gold/40 px-5 py-4 rounded-2xl shadow-sm hover:shadow transition-all">
                             <div className="w-9 h-9 flex items-center justify-center bg-action-gold/10 rounded-xl text-2xl flex-shrink-0">
-                                ⏱️
+                                â±ï¸
                             </div>
                             <div className="min-w-0">
                                 <div className="font-semibold text-brand-navy text-sm md:text-base leading-tight">
@@ -259,7 +259,7 @@ const SolarPanelCleaningPage = () => {
                         {/* Badge 4 */}
                         <div className="flex items-center gap-3 bg-white border border-slate-200 hover:border-action-gold/40 px-5 py-4 rounded-2xl shadow-sm hover:shadow transition-all">
                             <div className="w-9 h-9 flex items-center justify-center bg-action-gold/10 rounded-xl text-2xl flex-shrink-0">
-                                ⭐
+                                â­
                             </div>
                             <div className="min-w-0">
                                 <div className="font-semibold text-brand-navy text-sm md:text-base leading-tight">

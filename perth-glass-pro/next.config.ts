@@ -8,15 +8,25 @@ const nextConfig: NextConfig = {
                 hostname: "**",
             },
             {
-                protocol: 'https',
-                hostname: 'res.cloudinary.com',
-                pathname: '/**',
+                protocol: "https",
+                hostname: "res.cloudinary.com",
+                pathname: "/**",
             },
         ],
     },
 
     async redirects() {
         return [
+            {
+                source: "/prices",
+                destination: "/pricing",
+                permanent: true,
+            },
+            {
+                source: "/quote",
+                destination: "/pricing",
+                permanent: true,
+            },
             {
                 source: "/:path*",
                 has: [{ type: "host", value: "www.aspectwindowcleaning.com.au" }],
