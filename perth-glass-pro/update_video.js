@@ -1,4 +1,8 @@
-"use client";
+const fs = require('fs');
+let content = fs.readFileSync('components/ui/SmartVideo.tsx', 'utf8');
+
+// We need to add useRef and IntersectionObserver logic.
+const newComponent = `"use client";
 
 import { useState, useEffect, useRef } from "react";
 import Image from "next/image";
@@ -64,7 +68,7 @@ export default function SmartVideo({
     const shouldRenderVideo = !isMobile && !prefersReducedMotion;
 
     return (
-        <div ref={containerRef} className={`relative overflow-hidden ${className}`}>
+        <div ref={containerRef} className={\`relative overflow-hidden \${className}\`}>
             <Image
                 src={posterSrc}
                 alt={alt}
@@ -82,8 +86,8 @@ export default function SmartVideo({
                     muted
                     playsInline
                     onLoadedData={() => setVideoLoaded(true)}
-                    className={`absolute inset-0 w-full h-full object-cover transition-opacity duration-700 ${videoLoaded ? "opacity-100" : "opacity-0"
-                        }`}
+                    className={\`absolute inset-0 w-full h-full object-cover transition-opacity duration-700 \${videoLoaded ? "opacity-100" : "opacity-0"
+                        }\`}
                     poster={posterSrc}
                 >
                     <source src={videoSrc} type="video/webm" />
@@ -93,3 +97,6 @@ export default function SmartVideo({
         </div>
     );
 }
+`;
+fs.writeFileSync('components/ui/SmartVideo.tsx', newComponent, 'utf8');
+console.log("Updated SmartVideo with IntersectionObserver");
