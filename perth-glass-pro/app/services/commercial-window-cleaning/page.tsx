@@ -257,8 +257,8 @@ Same-Week Bookings
             <section className="py-5">
                 <div className="max-w-4xl mx-auto px-4">
                     <Image
-                        src="https://res.cloudinary.com/dr8tjrszy/image/upload/f_auto,q_auto/v1771960135/outside-villa-window-cleaning_yijb3b.jpg"
-                        alt="Commercial cleaning in Perth"
+                        src="https://res.cloudinary.com/dr8tjrszy/image/upload/v1771960129/commercial-sign-cleaning_jzafjr.jpg"
+                        alt="Commercial EWP Cherry Picker Window Cleaning in Perth"
                         width={1000}
                         height={300}
                         className="rounded-xl"

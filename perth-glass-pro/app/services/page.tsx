@@ -109,7 +109,7 @@ export default function ServicesPage() {
             <section className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 mb-24 mt-10">
                 <div className="grid md:grid-cols-2 gap-8">
                     {MAIN_SERVICES.map((service) => (
-                        <div key={service.id} className="bg-white rounded-2xl p-8 shadow-lg border border-slate-100 hover:border-action-gold/30 transition-colors group">
+                        <Link href={service.link} key={service.id} className="relative block bg-white rounded-2xl p-8 shadow-lg border border-slate-100 hover:border-action-gold/30 hover:shadow-xl hover:-translate-y-1 transition-all cursor-pointer group">
                             <div className="flex items-start justify-between mb-6">
                                 <div className="p-3 bg-brand-navy/5 rounded-xl text-brand-navy group-hover:bg-action-gold group-hover:text-brand-navy transition-colors">
                                     <service.icon className="w-8 h-8" />
@@ -128,13 +128,10 @@ export default function ServicesPage() {
                                 ))}
                             </ul>
 
-                            <Link
-                                href={service.link}
-                                className="inline-flex items-center text-action-gold font-bold hover:gap-2 transition-all"
-                            >
+                            <span className="inline-flex items-center text-action-gold font-bold group-hover:gap-2 transition-all">
                                 Learn More <ArrowRight className="w-4 h-4 ml-1" />
-                            </Link>
-                        </div>
+                            </span>
+                        </Link>
                     ))}
                 </div>
             </section>

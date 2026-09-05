@@ -1,5 +1,7 @@
 import { Metadata } from "next";
 import Link from "next/link";
+import Image from "next/image";
+import { openCertificateModal } from "@/components/CertificateModalWrapper";
 import { ArrowRight, Building2, Shield, Phone, CheckCircle2 } from "lucide-react";
 import { BUSINESS } from "@/lib/config";
 
@@ -57,12 +59,28 @@ export default function CommercialPage() {
                             Request a Quote
                         </a>
                         <Link
-                            href="/services/commercial-cleaning"
+                            href="/services/commercial-window-cleaning"
                             className="flex items-center gap-3 bg-white/10 border-2 border-white/30 text-white font-bold text-lg px-8 py-4 rounded-full hover:bg-white/20 transition-colors"
                         >
                             Find Out More
                             <ArrowRight className="w-5 h-5" />
                         </Link>
+                    </div>
+                </div>
+            </section>
+
+
+            {/* EWP IMAGE SECTION */}
+            <section className="py-12 bg-white">
+                <div className="max-w-4xl mx-auto px-4">
+                    <div className="relative w-full aspect-video rounded-2xl overflow-hidden shadow-xl">
+                        <Image
+                            src="https://res.cloudinary.com/dr8tjrszy/image/upload/v1771960129/commercial-sign-cleaning_jzafjr.jpg"
+                            alt="Commercial Window Cleaning with EWP Cherry Picker"
+                            fill
+                            className="object-cover"
+                            sizes="(max-width: 1024px) 100vw, 896px"
+                        />
                     </div>
                 </div>
             </section>

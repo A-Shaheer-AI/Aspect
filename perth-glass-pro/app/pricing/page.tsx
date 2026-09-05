@@ -5,6 +5,7 @@ import { Suspense } from "react";
 import ResidentialEstimator from "@/components/ResidentialEstimator";
 import TrustGrid from "@/components/TrustGrid";
 import ResultsAndReviews from "@/components/ResultsAndReviews";
+import PricingPackages from "@/components/PricingPackages";
 
 export default function PricingPage() {
     return (
@@ -57,77 +58,8 @@ export default function PricingPage() {
                         <p className="text-gray-600 max-w-2xl mx-auto text-lg">Choose the level of thoroughness that matches your property's current condition.</p>
                     </div>
 
-                    <div className="grid lg:grid-cols-3 gap-8">
-                        {/* Essential */}
-                        <div className="bg-gray-50 rounded-3xl p-8 border border-gray-100 relative flex flex-col">
-                            <h3 className="text-2xl font-bold text-brand-navy mb-2">Essential</h3>
-                            <p className="text-gray-500 mb-6">External standard clean only</p>
-                            <ul className="space-y-4 mb-8 flex-1">
-                                <li className="flex items-start gap-3">
-                                    <Check className="w-5 h-5 text-green-500 shrink-0 mt-0.5" />
-                                    <span className="text-gray-700">Exterior glass cleaning using Basic Wash techniques</span>
-                                </li>
-                                <li className="flex items-start gap-3">
-                                    <Check className="w-5 h-5 text-green-500 shrink-0 mt-0.5" />
-                                    <span className="text-gray-700">Removal of general environmental dirt and dust</span>
-                                </li>
-                                <li className="flex items-start gap-3">
-                                    <Check className="w-5 h-5 text-green-500 shrink-0 mt-0.5" />
-                                    <span className="text-gray-700">Perfect for quick touch-ups before an event or inspection</span>
-                                </li>
-                            </ul>
-                        </div>
+                    <PricingPackages />
 
-                        {/* Standard */}
-                        <div className="bg-brand-navy rounded-3xl p-8 border border-brand-navy shadow-xl relative flex flex-col transform md:-translate-y-4">
-                            <div className="absolute top-0 left-1/2 -translate-x-1/2 -translate-y-1/2 bg-action-gold text-brand-navy px-4 py-1 rounded-full text-sm font-bold tracking-wide">MOST POPULAR</div>
-                            <h3 className="text-2xl font-bold text-white mb-2">Standard</h3>
-                            <p className="text-brand-water mb-6">Inside and out basic wash</p>
-                            <ul className="space-y-4 mb-8 flex-1">
-                                <li className="flex items-start gap-3">
-                                    <Check className="w-5 h-5 text-action-gold shrink-0 mt-0.5" />
-                                    <span className="text-gray-200">Both interior and exterior glass cleaning</span>
-                                </li>
-                                <li className="flex items-start gap-3">
-                                    <Check className="w-5 h-5 text-action-gold shrink-0 mt-0.5" />
-                                    <span className="text-gray-200">Major spots will be removed</span>
-                                </li>
-                                <li className="flex items-start gap-3">
-                                    <Check className="w-5 h-5 text-action-gold shrink-0 mt-0.5" />
-                                    <span className="text-gray-200">Expect a 90% finish suitable for most people and regular maintenance</span>
-                                </li>
-                                <li className="flex items-start gap-3">
-                                    <Check className="w-5 h-5 text-action-gold shrink-0 mt-0.5" />
-                                    <span className="text-gray-200">Includes wiping all frames, sills, and flyscreens</span>
-                                </li>
-                            </ul>
-                        </div>
-
-                        {/* Supreme */}
-                        <div className="bg-white rounded-3xl p-8 border-2 border-action-gold shadow-[0_0_25px_rgba(251,191,36,0.25)] relative flex flex-col">
-                            <div className="absolute top-0 right-8 -translate-y-1/2 bg-action-gold text-brand-navy px-4 py-1 rounded-full text-sm font-bold tracking-wide">PREMIUM</div>
-                            <h3 className="text-2xl font-bold text-brand-navy mb-2">Supreme</h3>
-                            <p className="text-gray-500 mb-6">Inside and out detailing</p>
-                            <ul className="space-y-4 mb-8 flex-1">
-                                <li className="flex items-start gap-3">
-                                    <Check className="w-5 h-5 text-green-500 shrink-0 mt-0.5" />
-                                    <span className="text-gray-700">Restorative interior and exterior glass detailing</span>
-                                </li>
-                                <li className="flex items-start gap-3">
-                                    <Check className="w-5 h-5 text-green-500 shrink-0 mt-0.5" />
-                                    <span className="text-gray-700">Removal of all stuck-on items (paint, hard water stains, calcification)</span>
-                                </li>
-                                <li className="flex items-start gap-3">
-                                    <Check className="w-5 h-5 text-green-500 shrink-0 mt-0.5" />
-                                    <span className="text-gray-700">Custom packages available if only some panels require this intense level of detail</span>
-                                </li>
-                                <li className="flex items-start gap-3">
-                                    <Check className="w-5 h-5 text-green-500 shrink-0 mt-0.5" />
-                                    <span className="text-gray-700">Deep cleaning of all frames, sills, and flyscreens</span>
-                                </li>
-                            </ul>
-                        </div>
-                    </div>
                 </div>
             </section>
 
