@@ -1,6 +1,7 @@
 "use client";
 
 import { useState, useEffect, useRef } from "react";
+import { openCertificateModal } from "@/components/CertificateModalWrapper";
 import { Phone, CheckCircle2, Star, Shield, Droplets, Zap, Building2, X, Tag, ChevronLeft, ChevronRight, Camera } from "lucide-react";
 import { BUSINESS } from "@/lib/config";
 import { useGmb } from "@/components/GmbProvider";
@@ -510,15 +511,25 @@ export default function WindowCleaningAdsPage() {
                         </div>
 
                         <div className="grid grid-cols-2 gap-2 sm:gap-3 w-full max-w-md">
-                            {[ { icon: "\uD83D\uDEE1\uFE0F", text: "$20M Insured" }, { icon: "🏅", text: "Police Cleared" }, { icon: "💧", text: "Pure Water Tech" }, { icon: "\u2B50", text: `${gmb.rating} Google Reviews` } ].map((b) => (
-                                <span
-                                    key={b.text}
-                                    className="flex items-center justify-center gap-1 sm:gap-2 rounded-full px-1 sm:px-5 py-2.5 text-[11px] sm:text-sm md:text-base font-semibold text-center"
-                                    style={{ background: "rgba(255,229,77,0.15)", border: "1px solid rgba(255,229,77,0.4)", color: YELLOW }}
-                                >
-                                    <span className="text-sm sm:text-lg">{b.icon}</span> <span className="whitespace-nowrap">{b.text}</span>
-                                </span>
-                            ))}
+                            {[ { icon: "\uD83D\uDEE1\uFE0F", text: "$20M Insured" }, { icon: "🏅", text: "Police Cleared" }, { icon: "💧", text: "Pure Water Tech" }, { icon: "\u2B50", text: `${gmb.rating} Google Reviews` } ].map((b) => 
+                                (() => {
+                                    const isInsured = b.text.includes("Insured");
+                                    const isPolice = b.text.includes("Police");
+                                    const Component = (isInsured || isPolice) ? "button" : "span";
+                                    const clickHandler = isInsured ? () => openCertificateModal('insured') : (isPolice ? () => openCertificateModal('police') : undefined);
+                                    
+                                    return (
+                                        <Component
+                                            key={b.text}
+                                            onClick={clickHandler}
+                                            className={"flex items-center justify-center gap-1 sm:gap-2 rounded-full px-1 sm:px-5 py-2.5 text-[11px] sm:text-sm md:text-base font-semibold text-center " + ((isInsured || isPolice) ? "hover:scale-105 active:scale-95 transition-transform cursor-pointer hover:bg-yellow-400/20" : "")}
+                                            style={{ background: "rgba(255,229,77,0.15)", border: "1px solid rgba(255,229,77,0.4)", color: YELLOW }}
+                                        >
+                                            <span className="text-sm sm:text-lg">{b.icon}</span> <span className="whitespace-nowrap">{b.text}</span>
+                                        </Component>
+                                    );
+                                })()
+)}
                         </div>
                     </div>
 
@@ -825,10 +836,10 @@ export default function WindowCleaningAdsPage() {
                             <h3 className="text-2xl md:text-3xl font-bold mb-4">The Aspect Window Cleaning Difference</h3>
                             <p className="text-brand-water mb-8 text-lg md:text-xl max-w-3xl">We back our work with a <span className="text-action-gold font-bold">100% Satisfaction Guarantee</span>. Especially for our premium Supreme cleans, the job is not done until you are completely satisfied.</p>
                             <ul className="grid md:grid-cols-2 gap-6">
-                                <li className="flex items-start gap-4">
-                                    <Shield className="w-8 h-8 text-action-gold shrink-0 mt-1" />
-                                    <span className="text-lg">Fully insured and professionally trained team</span>
-                                </li>
+                                <li className="flex items-start gap-4 cursor-pointer hover:opacity-80 transition-opacity" onClick={() => openCertificateModal('insured')} title="View Insurance Certificate">
+<Shield className="w-8 h-8 text-action-gold shrink-0 mt-1" />
+<span className="text-lg">Fully insured and professionally trained team <span className="text-action-gold text-sm font-bold block mt-1">View Certificate &rarr;</span></span>
+</li>
                                 <li className="flex items-start gap-4">
                                     <Droplets className="w-8 h-8 text-action-gold shrink-0 mt-1" />
                                     <span className="text-lg">We use Eco-friendly, pet & child-safe Pure Water technology</span>
@@ -859,11 +870,12 @@ export default function WindowCleaningAdsPage() {
                     </div>
                     
                     <div className="grid md:grid-cols-3 gap-6 text-left">
-                        <div className="bg-white/10 border border-white/20 p-6 rounded-2xl">
+                                                  <button onClick={() => openCertificateModal('insured')} className="text-left bg-white/10 border border-white/20 p-6 rounded-2xl hover:bg-white/20 transition-all cursor-pointer">
                             <Shield className="w-8 h-8 text-action-gold mb-4" />
                             <h3 className="font-bold text-xl mb-2 text-white">Fully Insured & Checked</h3>
-                            <p className="text-sm text-brand-water">Our entire team is police-cleared and backed by $20,000,000 Public Liability Insurance for your complete peace of mind.</p>
-                        </div>
+                            <p className="text-sm text-brand-water mb-3">Our entire team is police-cleared and backed by $20,000,000 Public Liability Insurance for your complete peace of mind.</p>
+                            <span className="text-action-gold text-sm font-bold flex items-center gap-1 hover:underline">View Certificates &rarr;</span>
+                        </button>
                         <div className="bg-action-gold border border-yellow-400 p-6 rounded-2xl text-brand-navy transform md:-translate-y-4">
                             <CheckCircle2 className="w-8 h-8 text-brand-navy mb-4" />
                             <h3 className="font-bold text-xl mb-2">100% Satisfaction</h3>

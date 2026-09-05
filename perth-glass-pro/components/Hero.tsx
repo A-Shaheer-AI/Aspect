@@ -4,6 +4,7 @@ import { BUSINESS } from "@/lib/config";
 import { ArrowRight, Building2, CheckCircle, Clock, Home, Phone, Shield } from "lucide-react";
 import Image from "next/image";
 import Link from "next/link";
+import { openCertificateModal } from "@/components/CertificateModalWrapper";
 import { useState } from "react";
 import QuoteModal from "./QuoteModal";
 
@@ -249,18 +250,18 @@ export default function HeroWithScroll() {
 
             {/* Trust Badges */}
             <div className="hidden md:flex flex-wrap items-center gap-4 sm:gap-8 pt-5 border-t border-white/10">
-              <div className="flex items-center gap-2 text-white/70 text-xs sm:text-sm">
-                <Shield className="w-4 h-4 sm:w-5 sm:h-5 text-action-gold" aria-hidden="true" />
-                <span>$20M Insured</span>
-              </div>
+              <button onClick={() => openCertificateModal('insured')} className="flex items-center gap-2 text-white/70 text-xs sm:text-sm hover:text-white transition-colors cursor-pointer">
+<Shield className="w-4 h-4 sm:w-5 sm:h-5 text-action-gold" aria-hidden="true" />
+<span className="border-b border-dashed border-white/30">$20M Insured</span>
+</button>
               <div className="flex items-center gap-2 text-white/70 text-xs sm:text-sm">
                 <Clock className="w-4 h-4 sm:w-5 sm:h-5 text-action-gold" aria-hidden="true" />
                 <span>Trained and Professional</span>
               </div>
-              <div className="flex items-center gap-2 text-white/70 text-xs sm:text-sm">
-                <CheckCircle className="w-4 h-4 sm:w-5 sm:h-5 text-action-gold" aria-hidden="true" />
-                <span>Police Cleared</span>
-              </div>
+              <button onClick={() => openCertificateModal('police')} className="flex items-center gap-2 text-white/70 text-xs sm:text-sm hover:text-white transition-colors cursor-pointer">
+<CheckCircle className="w-4 h-4 sm:w-5 sm:h-5 text-action-gold" aria-hidden="true" />
+<span className="border-b border-dashed border-white/30">Police Cleared</span>
+</button>
             </div>
 
           </div>
