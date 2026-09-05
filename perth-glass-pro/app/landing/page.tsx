@@ -1070,7 +1070,7 @@ export default function WindowCleaningAdsPage() {
                 </div>
                 <Link
                     href={`tel:${BUSINESS.phoneRaw}`}
-                    className="flex items-center gap-2 rounded-xl px-5 py-3 font-bold text-sm transition-all hover:scale-105 sm:ml-auto"
+                    className="flex items-center gap-2 rounded-xl px-5 py-3 font-bold text-sm transition-all hover:scale-105 sm:ml-auto shiny-call-btn"
                     style={{ background: YELLOW, color: NAVY }}
                 >
                     <Phone className="w-4 h-4" />
