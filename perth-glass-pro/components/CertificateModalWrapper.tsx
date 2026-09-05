@@ -15,8 +15,8 @@ export default function CertificateModalWrapper() {
 
     // Provide links here when user provides them
     const imageUrls = {
-        insured: "", // To be filled
-        police: ""   // To be filled
+        insured: "https://res.cloudinary.com/dr8tjrszy/image/upload/v1788618147/20_Million_Insurance_Cover_dyjc9i.jpg",
+        police: "https://res.cloudinary.com/dr8tjrszy/image/upload/v1788618145/Police_Check_Clearance_ywnsjp.jpg"
     };
 
     useEffect(() => {
