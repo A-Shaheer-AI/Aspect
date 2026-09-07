@@ -82,4 +82,46 @@ export const caseStudies: CaseStudy[] = [
     ],
     tags: ["pre-sale cleaning", "mount pleasant", "louvre windows", "pool fencing", "fly screens", "window tracks", "real estate"],
   },
+  {
+    id: 2,
+    slug: "post-renovation-to-auction-window-cleaning-perth",
+    title: "From Post-Renovation to Auction Day: A Complete Property Journey",
+    date: "2026-09-07T10:00:00Z",
+    suburb: "Perth",
+    nearbySuburbs: [
+      "perth", "subiaco", "nedlands", "claremont", "dalkeith", "cottesloe", "city-beach", "mosman-park", "mount-lawley", "south-perth"
+    ],
+    thumbnail: "https://res.cloudinary.com/dr8tjrszy/image/upload/v1771873841/residential-window-cleaning_nhnoux.jpg",
+    images: [],
+    excerpt: "We managed the window cleaning for a beautiful property over a six-month period, handling everything from an intensive post-renovation clean to pristine pre-sale detailing and final pre-auction touch-ups.",
+    serviceType: ["Post-Renovation Cleaning", "Pre-Sale Cleaning", "Strata & Property Management"],
+    challenge: "Following extensive renovations and painting, the property's glass was covered in paint marks, oil residue, construction dust, and chemical buildup. Featuring large glass panels, sliding doors, delicate vintage windows, skylights, and glass pool fencing, the job required meticulous care. The property manager needed a reliable team to maintain this pristine condition through the entire marketing campaign up to auction day.",
+    solution: "We commenced with a highly detailed post-renovation builder's clean, using specialized scrapers and premium solutions to safely lift the paint and construction residue from the glass and frames. Over the subsequent six months, we partnered closely with the property manager, returning for scheduled pre-sale and pre-auction touch-ups. Our established familiarity with the property's unique layout allowed us to work with maximum efficiency.",
+    result: "The property was successfully auctioned! By managing the window cleaning throughout the entire six-month lifecycle, we ensured flawless presentation at every critical stage. The property manager enjoyed total peace of mind, knowing a familiar, reliable team was on hand—even accommodating a last-minute weather-related touch-up before the final home open.",
+    jobDetails: {
+      crew: "Specialist detailing crew",
+      duration: "Multiple visits over 6 months",
+      property: "Premium Renovated Home",
+      services: ["Post-renovation builder's clean", "Pre-sale detailing", "Pre-auction touch-up", "Skylight & vintage window care", "Glass pool fence cleaning"],
+    },
+    sections: [
+      {
+        heading: "Phase 1: The Post-Renovation Clean",
+        body: "We were initially called in after major renovations and painting had wrapped up. Post-renovation cleaning is significantly more demanding than standard maintenance. The glass throughout the property was marred by paint overspray, oil residue, heavy construction dust, and chemical buildup. Because the home featured a mix of large modern glass panels, sliding doors, delicate vintage windows, and extensive glass pool fencing, a 'one size fits all' approach wouldn't work. We utilized specialized glass scrapers and professional-grade mineral removers to carefully strip the contaminants away, bringing the glass back to its best without damaging the underlying surfaces."
+      },
+      {
+        heading: "Phase 2: Market Preparation & The Pre-Auction Polish",
+        body: "Once the property was ready to hit the market, real estate photography and home opens became the priority. We returned for a second comprehensive clean to ensure the property looked pristine for potential buyers. First impressions are critical in real estate, and streaks or smudges on expansive glass features can immediately detract from a home's perceived value. Fast forward to the week of the auction, and the property manager called us in for a final touch-up. We even prepared a contingency plan to quickly return if weekend rain threatened the flawless finish before the auction hammer fell. The result? A highly successful auction and a thrilled vendor."
+      },
+      {
+        heading: "Why We Love Repeat Property Management Work",
+        body: "Some customers call us once. Others become long-term clients. This property is a perfect example. Over approximately six months, we cleaned this property 3–4 times, working alongside the property manager through renovations, market preparation, auction and after-sale maintenance. And there is a big advantage to that: We already know the property. We know which windows need extra attention, where residue tends to build up, which glass needs a gentler approach and all those little nooks and crannies that can easily be missed. After completing yet another clean, the property manager even asked us to come back for a quick touch-up if it rains over the weekend. That is the kind of service we aim to provide — reliable, affordable and familiar with your property."
+      },
+      {
+        heading: "Complete Real Estate & Strata Cleaning Services",
+        body: "Whether you're a property manager, real estate agent, homeowner or landlord, we can help get your property looking its best. Our suite of services includes pre-sale cleans, post-renovation cleans, move-in/move-out cleans, pre-auction cleans, and regular maintenance. We specialize in challenging features like windows, sliding doors, large glass panels, glass pool fencing, and skylights. If you have a property coming onto the market, being renovated, sold or handed over to new owners, give us a call. Let us take care of the glass while you take care of everything else."
+      }
+    ],
+    tags: ["post-renovation", "pre-sale", "auction", "property management", "skylights", "pool fencing", "vintage windows"],
+  }
 ];
