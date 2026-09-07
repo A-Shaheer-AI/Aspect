@@ -4,7 +4,16 @@ module.exports = {
   generateRobotsTxt: true,
   changefreq: 'weekly',
   priority: 0.7,
-  exclude: ['/admin', '/auto-blogs', '/landing'],
+  exclude: [
+    '/admin',
+    '/auto-blogs',
+    '/landing',
+    '/residential',
+    '/commercial',
+    '/gutter-cleaning',
+    '/solar-cleaning',
+    '/pressure-cleaning'
+  ],
   transform: async (config, path) => {
     // Custom priorities
     let priority = config.priority;

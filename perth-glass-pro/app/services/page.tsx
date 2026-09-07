@@ -6,6 +6,7 @@ import ContactSection from "@/components/ContactSection";
 export const metadata: Metadata = {
     title: "Our Services | Aspect Window Cleaning Perth",
     description: "Comprehensive window cleaning services in Perth. From residential and commercial to solar panels and pressure washing. View our full service list.",
+    alternates: { canonical: "https://aspectwindowcleaning.com.au/services" }
 };
 
 const MAIN_SERVICES = [
@@ -91,8 +92,24 @@ const ALL_SERVICES_LIST = [
 const UNIQUE_SERVICES = Array.from(new Set(ALL_SERVICES_LIST)).sort();
 
 export default function ServicesPage() {
+    const servicesSchema = {
+        "@context": "https://schema.org",
+        "@type": "ItemList",
+        "name": "Cleaning Services by Aspect Window Cleaning",
+        "itemListElement": MAIN_SERVICES.map((s, idx) => ({
+            "@type": "ListItem",
+            "position": idx + 1,
+            "name": s.title,
+            "url": `https://aspectwindowcleaning.com.au${s.link}`
+        }))
+    };
+
     return (
         <main className="bg-brand-snow min-h-screen ">
+            <script
+                type="application/ld+json"
+                dangerouslySetInnerHTML={{ __html: JSON.stringify(servicesSchema) }}
+            />
             {/* Hero */}
             <section className="bg-brand-navy text-white pt-32 pb-24">
                 <div className="max-w-5xl mx-auto px-4 text-center">

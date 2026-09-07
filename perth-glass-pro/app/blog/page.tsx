@@ -9,14 +9,31 @@ import { blogs } from "@/content/blogs";
 export const metadata: Metadata = {
     title: "Cleaning Tips & News | Aspect Window Cleaning",
     description: "Expert advice on window cleaning, solar panel maintenance, and property care in Perth.",
+    alternates: { canonical: "https://aspectwindowcleaning.com.au/blog" }
 };
 
 export default function BlogListingPage() {
     // const posts = getAllPosts();
     const posts = blogs;
 
+    const blogSchema = {
+        "@context": "https://schema.org",
+        "@type": "Blog",
+        "name": "Aspect Window Cleaning Blog",
+        "description": "Expert advice on window cleaning, solar panel maintenance, and property care in Perth.",
+        "url": "https://aspectwindowcleaning.com.au/blog",
+        "publisher": {
+            "@type": "Organization",
+            "name": "Aspect Window Cleaning"
+        }
+    };
+
     return (
         <div className="min-h-screen bg-brand-snow bg-pattern-bubbles">
+            <script
+                type="application/ld+json"
+                dangerouslySetInnerHTML={{ __html: JSON.stringify(blogSchema) }}
+            />
             {/* Hero */}
             <section className="bg-brand-navy text-white pt-32 pb-24">
                 <div className="max-w-5xl mx-auto px-4 text-center">

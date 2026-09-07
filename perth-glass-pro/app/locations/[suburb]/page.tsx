@@ -47,9 +47,9 @@ export async function generateMetadata({ params }: { params: Promise<{ suburb: s
 }
 
 const SERVICES = [
-    { id: 'window', title: 'Residential Window Cleaning', description: 'Crystal-clear windows for your home using pure water technology. Inside & out, frames & tracks included.', iconName: "Home", servicePage: '/residential' },
+    { id: 'window', title: 'Residential Window Cleaning', description: 'Crystal-clear windows for your home using pure water technology. Inside & out, frames & tracks included.', iconName: "Home", servicePage: '/services/residential-window-cleaning' },
     { id: 'solar', title: 'Solar Panel Washing', description: 'Boost energy output by up to 30% with professional panel cleaning. Manufacturer-approved methods.', iconName: "Sparkles", servicePage: '/services/solar-panel-washing' },
-    { id: 'commercial', title: 'Commercial & Strata', description: 'High-reach EWP and rope access for offices, retail, and multi-story buildings. Full safety documentation.', iconName: "Building2", servicePage: '/commercial' },
+    { id: 'commercial', title: 'Commercial & Strata', description: 'High-reach EWP and rope access for offices, retail, and multi-story buildings. Full safety documentation.', iconName: "Building2", servicePage: '/services/commercial-window-cleaning' },
     { id: 'gutter', title: 'Gutter Cleaning', description: 'Prevent water damage with complete debris removal and downpipe flushing. Roof inspection included.', iconName: "Droplets", servicePage: '/services/gutter-cleaning' },
     { id: 'pressure', title: 'Pressure Washing', description: 'Revitalize driveways, patios, and outdoor areas. Safe for pavers, concrete, and tiles.', iconName: "Wind", servicePage: '/services/pressure-washing' },
 ];
@@ -63,8 +63,27 @@ export default async function SuburbPage({ params }: { params: Promise<{ suburb:
 
     if (!suburb) notFound();
 
+    const jsonLd = {
+        "@context": "https://schema.org",
+        "@type": "LocalBusiness",
+        "name": `Aspect Window Cleaning - ${suburb.name}`,
+        "image": "https://res.cloudinary.com/dr8tjrszy/image/upload/v1772130850/white-logo_pzpxjk.png",
+        "telephone": BUSINESS.phoneRaw,
+        "url": `https://aspectwindowcleaning.com.au/locations/${suburbSlug}`,
+        "priceRange": "$$",
+        "areaServed": {
+            "@type": "City",
+            "name": suburb.name
+        },
+        "description": `Professional window cleaning, solar panel washing, gutter cleaning, and pressure washing in ${suburb.name}, Perth. Same-week service. Fully insured.`
+    };
+
     return (
         <div className="min-h-screen bg-brand-snow">
+            <script
+                type="application/ld+json"
+                dangerouslySetInnerHTML={{ __html: JSON.stringify(jsonLd) }}
+            />
 
             {/* Hero */}
             <section className="bg-brand-navy text-white py-20 md:py-28">
