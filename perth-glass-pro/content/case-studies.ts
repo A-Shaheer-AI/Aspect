@@ -23,6 +23,7 @@ export type CaseStudy = {
     body: string;
   }[];
   tags: string[];
+  googlePosts?: string[];
 };
 
 export const caseStudies: CaseStudy[] = [
@@ -84,10 +85,10 @@ export const caseStudies: CaseStudy[] = [
   },
   {
     id: 2,
-    slug: "post-renovation-to-auction-window-cleaning-perth",
+    slug: "post-renovation-to-auction-window-cleaning-subiaco",
     title: "From Post-Renovation to Auction Day: A Complete Property Journey",
     date: "2026-09-07T10:00:00Z",
-    suburb: "Perth",
+    suburb: "Subiaco",
     nearbySuburbs: [
       "perth", "subiaco", "nedlands", "claremont", "dalkeith", "cottesloe", "city-beach", "mosman-park", "mount-lawley", "south-perth"
     ],
@@ -123,5 +124,9 @@ export const caseStudies: CaseStudy[] = [
       }
     ],
     tags: ["post-renovation", "pre-sale", "auction", "property management", "skylights", "pool fencing", "vintage windows"],
+    googlePosts: [
+      "https://posts.gle/sRSweqVdnrURyTgQ6",
+      "https://posts.gle/VrXtYmem5fJFzTs16"
+    ],
   }
 ];

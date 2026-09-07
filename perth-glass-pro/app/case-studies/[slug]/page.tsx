@@ -199,6 +199,21 @@ export default async function CaseStudyPage({ params }: { params: Promise<{ slug
                             ))}
                         </div>
 
+                        {/* Google Posts Links */}
+                        {cs.googlePosts && cs.googlePosts.length > 0 && (
+                            <div className="bg-gray-50 border border-gray-200 rounded-xl p-6 mb-10">
+                                <h3 className="text-lg font-bold text-brand-navy mb-3">View More on Google Updates</h3>
+                                <p className="text-sm text-gray-600 mb-4">Check out our official Google Business Profile updates for more photos and behind-the-scenes details of this job.</p>
+                                <div className="flex flex-col sm:flex-row gap-3">
+                                    {cs.googlePosts.map((link, index) => (
+                                        <a key={index} href={link} target="_blank" rel="noopener noreferrer" className="inline-flex items-center justify-center gap-2 bg-white border border-gray-300 text-brand-navy font-semibold px-4 py-2.5 rounded-lg hover:border-action-gold hover:text-action-gold transition-colors text-sm shadow-sm">
+                                            Google Update {index + 1} <ArrowRight className="w-4 h-4" aria-hidden="true" />
+                                        </a>
+                                    ))}
+                                </div>
+                            </div>
+                        )}
+
                         {/* Tags / backlink section */}
                         <div className="border-t border-gray-200 pt-8 mt-8">
                             <h3 className="text-sm font-bold text-gray-500 uppercase tracking-wider mb-3">Related Services</h3>
