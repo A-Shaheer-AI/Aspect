@@ -1,10 +1,2 @@
-import { Metadata } from "next";
-
-export const metadata: Metadata = {
-    title: "Our Work & Portfolio",
-    description: "View our portfolio of residential and commercial window cleaning projects across Perth. See the Aspect Window Cleaning difference.",
-};
-
-export default function Layout({ children }: { children: React.ReactNode }) {
-    return <>{children}</>;
-}
+export const metadata = { title: 'Our Work | Portfolio & Case Studies | Aspect Window Cleaning', description: 'See before and after photos of our professional window cleaning, solar panel washing, and pressure cleaning projects across Perth.', alternates: { canonical: 'https://aspectwindowcleaning.com.au/portfolio' } };
+export default function Layout({ children }: { children: React.ReactNode }) { return <>{children}</>; }

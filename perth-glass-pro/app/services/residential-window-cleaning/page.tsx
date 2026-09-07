@@ -18,6 +18,7 @@ export const metadata: Metadata = {
     title: "Residential Window Cleaning Perth | Interior & Exterior | Aspect Window Cleaning",
     description:
         "Professional residential window cleaning in Perth. Interior, exterior, screens & tracks. Pure water technology, streak-free finish. Fully insured. Free quotes.",
+    alternates: { canonical: "https://aspectwindowcleaning.com.au/services/residential-window-cleaning" }
 };
 
 const whatsInclude = [
@@ -504,3 +505,5 @@ single time. We also offer <Link href="/services/solar-panel-washing" className=
 }
 
 export default ResidentialWindowCleaning
+
+

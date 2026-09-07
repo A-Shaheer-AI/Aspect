@@ -18,6 +18,7 @@ export const metadata: Metadata = {
     title: "Gutter Cleaning Perth | Roof & Downpipe Clearing | Aspect Window Cleaning",
     description:
         "Professional gutter cleaning in Perth. Leaf removal, downpipe clearing & roof valley cleaning. Prevent water damage & pests. Fully insured. Free quotes.",
+    alternates: { canonical: "https://aspectwindowcleaning.com.au/services/gutter-cleaning" }
 };
 
 const whatsInclude = [
@@ -444,3 +445,5 @@ Same-Week Bookings
 }
 
 export default GutterCleaningServices
+
+

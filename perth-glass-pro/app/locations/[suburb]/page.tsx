@@ -1,6 +1,7 @@
 import { Metadata } from "next";
 import Link from "next/link";
 import { notFound } from "next/navigation";
+import { BUSINESS } from "@/lib/config";
 import { ArrowRight, Home, Building2, Sparkles, Droplets, Wind, Phone } from "lucide-react";
 import suburbsData from "@/lib/perth_suburbs.json";
 import ServicesAvailable from "@/components/ServicesAvailable";
@@ -35,8 +36,9 @@ export async function generateMetadata({ params }: { params: Promise<{ suburb: s
     const description = templates[suburbName.length % 4];
 
     return {
-        title: `Window Cleaning ${suburbName} | Window Cleaning Perth | Aspect Window Cleaning`,
+        title: `Window Cleaning in ${suburbName} Perth | Aspect Window Cleaning`,
         description: description,
+        alternates: { canonical: `https://aspectwindowcleaning.com.au/locations/${suburbSlug}` },
         openGraph: {
             title: `Property Cleaning in ${suburbName} | Aspect Window Cleaning`,
             description: `Trusted cleaning services for homes and businesses in ${suburbName}. Fully insured. 5-star rated.`,
@@ -82,7 +84,7 @@ export default async function SuburbPage({ params }: { params: Promise<{ suburb:
                     </p>
 
                     <a
-                        href="tel:+61400000000"
+                        href={`tel:${BUSINESS.phoneRaw}`}
                         className="inline-flex items-center gap-3 bg-action-gold text-brand-navy font-bold text-lg px-8 py-4 rounded-full hover:bg-action-gold/90 transition-colors"
                     >
                         <Phone className="w-5 h-5" />
@@ -126,7 +128,7 @@ export default async function SuburbPage({ params }: { params: Promise<{ suburb:
                     <div className="flex flex-col sm:flex-row items-center justify-center gap-4">
 
                         <a
-                            href="tel:+61400000000"
+                            href={`tel:${BUSINESS.phoneRaw}`}
                             className="inline-flex items-center gap-2 bg-action-gold text-brand-navy font-bold px-8 py-4 rounded-full text-lg hover:bg-action-gold/90 transition-colors"
                         >
                             <Phone className="w-5 h-5" />
@@ -148,3 +150,4 @@ export default async function SuburbPage({ params }: { params: Promise<{ suburb:
         </div>
     );
 }
+

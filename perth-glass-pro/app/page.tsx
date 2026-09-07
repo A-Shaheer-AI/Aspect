@@ -4,6 +4,8 @@ import { Metadata } from "next";
 
 export const metadata: Metadata = {
     title: "Aspect Window Cleaning Perth | Residential & Commercial | Free Quote",
+    description: "Professional window cleaning in Perth — residential, commercial EWP, solar panels, gutters & pressure washing. Police cleared, $20M insured. Get a free same-week quote.",
+    alternates: { canonical: "https://aspectwindowcleaning.com.au" }
 }
 
 export default function Home() {
