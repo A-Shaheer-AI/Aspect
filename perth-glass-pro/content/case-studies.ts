@@ -128,5 +128,50 @@ export const caseStudies: CaseStudy[] = [
       "https://posts.gle/sRSweqVdnrURyTgQ6",
       "https://posts.gle/VrXtYmem5fJFzTs16"
     ],
+  },
+  {
+    id: 3,
+    slug: "coastal-pre-sale-window-cleaning-eglinton",
+    title: "Coastal Pre-Sale Window Cleaning in Eglinton: Erasing Years of Salt Buildup",
+    date: "2026-09-07T11:00:00Z",
+    suburb: "Eglinton",
+    nearbySuburbs: [
+      "eglinton", "alkimos", "yanchep", "jindalee", "butler", "quinns-rocks", "two-rocks", "mindarie", "clarkson"
+    ],
+    thumbnail: "https://res.cloudinary.com/dr8tjrszy/image/upload/v1771873841/residential-window-cleaning_nhnoux.jpg",
+    images: [],
+    excerpt: "See how we transformed this beautiful coastal home in Eglinton on a tight deadline. By removing years of stubborn ocean salt buildup, we helped the homeowner get their property market-ready and looking pristine.",
+    serviceType: ["Residential Window Cleaning", "Pre-Sale Cleaning", "Coastal Property Maintenance"],
+    challenge: "The homeowner of this beautiful coastal property in Eglinton (WA 6034) was preparing to list their home on the market. Located right by the ocean, the windows were heavily coated in years of thick, baked-on salt buildup. Under immense pressure with everything happening at once, the owner required the cleaning to be completed on a very urgent deadline.",
+    solution: "Our team came in clutch to meet the urgent deadline. We utilized professional-grade equipment to carefully break down and strip away the hardened coastal salt spray without risking any damage to the glass or frames. We worked efficiently as a team to transform the entire property's exterior and interior windows within the strict timeframe.",
+    result: "The windows came up beautifully, completely free of the stubborn salt haze, leaving the entire house refreshed and ready for sale. The homeowner was incredibly relieved and thrilled with the results. For our team, hearing the ocean waves in the background while watching years of salt wash away made it a highly satisfying job.",
+    jobDetails: {
+      crew: "Rapid response crew",
+      duration: "Urgent turnaround",
+      property: "Coastal Residential Home",
+      services: ["Pre-sale window cleaning", "Heavy salt residue removal", "Exterior and interior glass detailing"],
+    },
+    sections: [
+      {
+        heading: "The Challenge: Tight Deadlines and Heavy Ocean Salt",
+        body: "Preparing a home for the real estate market is always a stressful time for homeowners, but it becomes even more challenging when you're dealing with coastal conditions. This beautiful property in Eglinton, WA 6034, sits right by the ocean. While the location is stunning, the constant exposure to sea breezes meant the windows had accumulated years of thick salt buildup. The homeowner was under a lot of pressure to get the property listed and needed the windows restored to absolute clarity on a very tight, urgent schedule."
+      },
+      {
+        heading: "Our Approach: Coming in Clutch for the Client",
+        body: "Understanding the urgency of the pre-sale timeline, our team quickly mobilized to get the job done. Removing baked-on sea salt requires more than just a quick wipe down; if not done correctly, the abrasive salt crystals can easily scratch the glass. We systematically broke down the heavy salt layers, meticulously cleaning the glass, frames, and tracks. Despite the rush, we didn't compromise on quality, ensuring every panel was left completely streak-free and sparkling."
+      },
+      {
+        heading: "The Result: A Market-Ready Coastal Home",
+        body: "The homeowner was extremely happy with the final result, and honestly, so were we! There is something incredibly satisfying about hearing the ocean waves in the background while watching years of opaque salt buildup simply melt away from the glass. The windows came up beautifully, and the entire house looked instantly refreshed, maximizing its curb appeal for upcoming home opens and real estate photography."
+      },
+      {
+        heading: "Specialist Cleaning for Coastal Properties",
+        body: "Properties along Perth's northern coastal corridor—from Mindarie and Quinns Rocks up to Alkimos, Eglinton, and Yanchep—require specialized window cleaning. The combination of intense WA sun and continuous salt spray creates a hazy, corrosive layer on glass and aluminium frames that standard household cleaners simply cannot remove. Whether you are selling, renting out, or just want to maintain the value of your oceanfront home, professional window cleaning is an essential investment."
+      }
+    ],
+    tags: ["eglinton", "coastal window cleaning", "pre-sale", "salt removal", "urgent booking", "real estate"],
+    googlePosts: [
+      "https://posts.gle/imdd7sPFtmkXoYBi7"
+    ],
   }
 ];
