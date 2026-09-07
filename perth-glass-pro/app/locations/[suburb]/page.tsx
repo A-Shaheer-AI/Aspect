@@ -5,6 +5,7 @@ import { ArrowRight, Home, Building2, Sparkles, Droplets, Wind, Phone } from "lu
 import suburbsData from "@/lib/perth_suburbs.json";
 import ServicesAvailable from "@/components/ServicesAvailable";
 import ServicesClient from "@/components/ServicesClient";
+import CaseStudiesSection from "@/components/CaseStudiesSection";
 
 const ALL_SUBURBS = [
     ...(suburbsData.regions.north_of_river.suburbs || []),
@@ -101,6 +102,12 @@ export default async function SuburbPage({ params }: { params: Promise<{ suburb:
             {/* Services */}
             <ServicesClient
                 SERVICES={SERVICES}
+                suburbName={suburb.name}
+            />
+
+            {/* Case Studies — only renders if relevant studies exist for this suburb */}
+            <CaseStudiesSection
+                suburbSlug={suburbSlug}
                 suburbName={suburb.name}
             />
 
