@@ -7,6 +7,7 @@ import suburbsData from "@/lib/perth_suburbs.json";
 import ServicesAvailable from "@/components/ServicesAvailable";
 import ServicesClient from "@/components/ServicesClient";
 import CaseStudiesSection from "@/components/CaseStudiesSection";
+import FAQ from "@/components/FAQ";
 
 const ALL_SUBURBS = [
     ...(suburbsData.regions.north_of_river.suburbs || []),
@@ -63,7 +64,26 @@ export default async function SuburbPage({ params }: { params: Promise<{ suburb:
 
     if (!suburb) notFound();
 
-    const jsonLd = {
+    const SUBURB_FAQS = [
+        {
+            question: `How often should windows be cleaned in ${suburb.name}?`,
+            answer: `For most homes in ${suburb.name}, we recommend professional window cleaning every 3 to 6 months. Properties close to the coast or exposed to Perth's summer dust benefit from cleaning every 6 to 8 weeks to prevent permanent glass etching and mineral buildup.`
+        },
+        {
+            question: `Do you service both residential and commercial properties in ${suburb.name}?`,
+            answer: `Yes! Aspect Window Cleaning provides complete cleaning services for residential homes, strata complexes, retail shopfronts, and multi-storey commercial offices across ${suburb.name} and surrounding areas.`
+        },
+        {
+            question: `How much does window cleaning cost in ${suburb.name}?`,
+            answer: `Our pricing is transparent and competitive. Single-storey residential cleans start from affordable standard packages, and you can calculate your exact cost instantly on our pricing page or call our team for a fast quote.`
+        },
+        {
+            question: `Are your technicians insured and police cleared in ${suburb.name}?`,
+            answer: `Yes, every Aspect technician is background-checked, police cleared, and covered by $20 million public liability insurance, ensuring complete security and professionalism on your property.`
+        }
+    ];
+
+    const localBusinessSchema = {
         "@context": "https://schema.org",
         "@type": "LocalBusiness",
         "name": `Aspect Window Cleaning - ${suburb.name}`,
@@ -78,11 +98,28 @@ export default async function SuburbPage({ params }: { params: Promise<{ suburb:
         "description": `Professional window cleaning, solar panel washing, gutter cleaning, and pressure washing in ${suburb.name}, Perth. Same-week service. Fully insured.`
     };
 
+    const faqSchema = {
+        "@context": "https://schema.org",
+        "@type": "FAQPage",
+        "mainEntity": SUBURB_FAQS.map(f => ({
+            "@type": "Question",
+            "name": f.question,
+            "acceptedAnswer": {
+                "@type": "Answer",
+                "text": f.answer
+            }
+        }))
+    };
+
     return (
         <div className="min-h-screen bg-brand-snow">
             <script
                 type="application/ld+json"
-                dangerouslySetInnerHTML={{ __html: JSON.stringify(jsonLd) }}
+                dangerouslySetInnerHTML={{ __html: JSON.stringify(localBusinessSchema) }}
+            />
+            <script
+                type="application/ld+json"
+                dangerouslySetInnerHTML={{ __html: JSON.stringify(faqSchema) }}
             />
 
             {/* Hero */}
@@ -130,6 +167,12 @@ export default async function SuburbPage({ params }: { params: Promise<{ suburb:
             <CaseStudiesSection
                 suburbSlug={suburbSlug}
                 suburbName={suburb.name}
+            />
+
+            {/* FAQs */}
+            <FAQ
+                faqs={SUBURB_FAQS}
+                title={`Common questions about window and exterior cleaning in ${suburb.name}`}
             />
 
             {/* CTA */}

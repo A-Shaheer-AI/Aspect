@@ -48,12 +48,26 @@ export default async function BlogPostPage({ params }: { params: Promise<{ slug:
         '@context': 'https://schema.org',
         '@type': 'BlogPosting',
         headline: post.title,
-        image: post.thumbnail,
+        image: post.thumbnail ? [post.thumbnail] : [],
         datePublished: post.date,
+        dateModified: post.date,
+        mainEntityOfPage: {
+            '@type': 'WebPage',
+            '@id': `https://aspectwindowcleaning.com.au/blog/${slug}`,
+        },
         author: {
             '@type': 'Organization',
             name: 'Aspect Window Cleaning',
-            url: SITE_URL,
+            url: SITE_URL || 'https://aspectwindowcleaning.com.au',
+        },
+        publisher: {
+            '@type': 'Organization',
+            name: 'Aspect Window Cleaning',
+            url: 'https://aspectwindowcleaning.com.au',
+            logo: {
+                '@type': 'ImageObject',
+                url: 'https://res.cloudinary.com/dr8tjrszy/image/upload/v1772130850/white-logo_pzpxjk.png',
+            },
         },
         description: post.excerpt,
     };
