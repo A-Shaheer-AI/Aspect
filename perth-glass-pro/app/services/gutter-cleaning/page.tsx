@@ -173,6 +173,26 @@ const gutterCleaningFaqs: FaqsType[] = [
 const GutterCleaningServices = () => {
     return (
         <div className="bg-white text-brand-slate">
+      <script
+        type="application/ld+json"
+        dangerouslySetInnerHTML={{
+          __html: JSON.stringify({
+            "@context": "https://schema.org",
+            "@type": "Service",
+            "name": "Gutter Cleaning",
+            "provider": {
+              "@type": "LocalBusiness",
+              "name": "Aspect Window Cleaning"
+            },
+            "areaServed": {
+              "@type": "State",
+              "name": "Western Australia"
+            },
+            "url": "https://aspectwindowcleaning.com.au/services/gutter-cleaning"
+          })
+        }}
+      />
+
 
             {/* HERO */}
             <section className="bg-brand-navy text-white pt-30 pb-24 text-center">
