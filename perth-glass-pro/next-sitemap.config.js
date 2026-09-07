@@ -2,6 +2,15 @@
 module.exports = {
   siteUrl: 'https://aspectwindowcleaning.com.au',
   generateRobotsTxt: true,
+  robotsTxtOptions: {
+    policies: [
+      {
+        userAgent: '*',
+        allow: '/',
+        disallow: ['/admin', '/auto-blogs', '/landing'],
+      },
+    ],
+  },
   changefreq: 'weekly',
   priority: 0.7,
   exclude: [

@@ -1,6 +1,9 @@
 # *
 User-agent: *
 Allow: /
+Disallow: /admin
+Disallow: /auto-blogs
+Disallow: /landing
 
 # Host
 Host: https://aspectwindowcleaning.com.au

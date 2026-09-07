@@ -77,7 +77,7 @@ export default async function Footer() {
                             ))}
                             <li>
                                 <Link href="/locations" className="text-action-gold text-xs font-medium">
-                                    All areas â†’
+                                    All areas →
                                 </Link>
                             </li>
                         </ul>
@@ -142,7 +142,7 @@ export default async function Footer() {
                                     href="/locations"
                                     className="text-action-gold hover:underline text-sm font-medium"
                                 >
-                                    View all 100+ suburbs â†’
+                                    View all 100+ suburbs →
                                 </Link>
                             </li>
                         </ul>

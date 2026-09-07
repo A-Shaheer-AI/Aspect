@@ -30,7 +30,7 @@ const stats = [
     },
     {
         icon: Calendar,
-        value: "6Ã¢â‚¬â€œ12 Months",
+        value: "6–12 Months",
         label: "Optimal cleaning interval for Perth climate",
     },
     {
@@ -40,7 +40,7 @@ const stats = [
     },
     {
         icon: Star,
-        value: "5.0?",
+        value: "5.0 ★",
         label: "Google rating from Perth homeowners",
     },
 ];
@@ -165,7 +165,7 @@ const solarFAQs: FaqsType[] = [
     {
         question: "Why is solar panel cleaning important?",
         answer:
-            "Dust, bird droppings, and environmental buildup act as a barrier on your panel surface, reducing the amount of sunlight reaching the photovoltaic cells. Even a thin layer of grime can reduce output by 15Ã¢â‚¬â€œ30%, meaning you're generating significantly less than your system is capable of.",
+            "Dust, bird droppings, and environmental buildup act as a barrier on your panel surface, reducing the amount of sunlight reaching the photovoltaic cells. Even a thin layer of grime can reduce output by 15–30%, meaning you're generating significantly less than your system is capable of.",
     },
     {
         question: "How often should I have my solar panels cleaned in Perth?",
@@ -378,7 +378,7 @@ Same-Week Bookings
                                 <div className="prose prose-slate max-w-none text-lg leading-relaxed">
                                     <p className="text-brand-slate">
                                         Studies show that a thin layer of dust and grime can reduce solar panel output by
-                                        <span className="font-semibold text-orange-700"> 15-30%</span>.
+                                        <span className="font-semibold text-orange-700"> 15–30%</span>.
                                     </p>
                                     <p className="text-brand-slate">
                                         In Perth's dusty climate - with frequent easterly winds, bushfire smoke, and high bird activity -
