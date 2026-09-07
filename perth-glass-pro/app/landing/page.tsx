@@ -1,6 +1,7 @@
 "use client";
 
 import { useState, useEffect, useRef } from "react";
+import { openCertificateModal } from "@/components/CertificateModalWrapper";
 import { Phone, CheckCircle2, Star, Shield, Droplets, Zap, Building2, X, Tag, ChevronLeft, ChevronRight, Camera } from "lucide-react";
 import { BUSINESS } from "@/lib/config";
 import { useGmb } from "@/components/GmbProvider";
@@ -305,6 +306,39 @@ export default function WindowCleaningAdsPage() {
     const [scrollPopupShown, setScrollPopupShown] = useState(false);
     const [formData, setFormData] = useState<FormDataType>({ name: "", phone: "", suburb: "", promo: "", });
     const [submitted, setSubmitted] = useState(false);
+    const [selectedPkg, setSelectedPkg] = useState<{name: string, price: string} | null>(null);
+    const [pkgForm, setPkgForm] = useState({ name: "", phone: "", suburb: "" });
+    const [isPkgSubmitting, setIsPkgSubmitting] = useState(false);
+    const [pkgSubmitted, setPkgSubmitted] = useState(false);
+    const [pkgError, setPkgError] = useState("");
+
+    const handlePkgSubmit = async (e: React.FormEvent) => {
+        e.preventDefault();
+        setIsPkgSubmitting(true);
+        setPkgError("");
+        try {
+            const res = await sendLeadEmail({
+                name: pkgForm.name,
+                phone: pkgForm.phone,
+                suburb: pkgForm.suburb,
+                serviceType: "Residential Window Cleaning",
+                storeys: isDoubleStorey ? "Double Storey" : "Single Storey",
+                selectedTier: selectedPkg?.name,
+                quoteType: "Landing Page Package Selection",
+                message: `Selected Price: ${selectedPkg?.price}`
+            });
+            if (res.error) throw new Error(res.error);
+            
+            trackFormCompleted();
+            setPkgSubmitted(true);
+            setPkgForm({ name: "", phone: "", suburb: "" });
+        } catch (err) {
+            setPkgError("Something went wrong. Please try again or call us.");
+        } finally {
+            setIsPkgSubmitting(false);
+        }
+    };
+
 
     /*  Scroll-triggered popup at 50% page height  */
     useEffect(() => {
@@ -477,15 +511,25 @@ export default function WindowCleaningAdsPage() {
                         </div>
 
                         <div className="grid grid-cols-2 gap-2 sm:gap-3 w-full max-w-md">
-                            {[ { icon: "\uD83D\uDEE1\uFE0F", text: "$20M Insured" }, { icon: "🏅", text: "Police Cleared" }, { icon: "💧", text: "Pure Water Tech" }, { icon: "\u2B50", text: `${gmb.rating} Google Reviews` } ].map((b) => (
-                                <span
-                                    key={b.text}
-                                    className="flex items-center justify-center gap-1 sm:gap-2 rounded-full px-1 sm:px-5 py-2.5 text-[11px] sm:text-sm md:text-base font-semibold text-center"
-                                    style={{ background: "rgba(255,229,77,0.15)", border: "1px solid rgba(255,229,77,0.4)", color: YELLOW }}
-                                >
-                                    <span className="text-sm sm:text-lg">{b.icon}</span> <span className="whitespace-nowrap">{b.text}</span>
-                                </span>
-                            ))}
+                            {[ { icon: "\uD83D\uDEE1\uFE0F", text: "$20M Insured" }, { icon: "🏅", text: "Police Cleared" }, { icon: "💧", text: "Pure Water Tech" }, { icon: "\u2B50", text: `${gmb.rating} Google Reviews` } ].map((b) => 
+                                (() => {
+                                    const isInsured = b.text.includes("Insured");
+                                    const isPolice = b.text.includes("Police");
+                                    const Component = (isInsured || isPolice) ? "button" : "span";
+                                    const clickHandler = isInsured ? () => openCertificateModal('insured') : (isPolice ? () => openCertificateModal('police') : undefined);
+                                    
+                                    return (
+                                        <Component
+                                            key={b.text}
+                                            onClick={clickHandler}
+                                            className={"flex items-center justify-center gap-1 sm:gap-2 rounded-full px-1 sm:px-5 py-2.5 text-[11px] sm:text-sm md:text-base font-semibold text-center " + ((isInsured || isPolice) ? "hover:scale-105 active:scale-95 transition-transform cursor-pointer hover:bg-yellow-400/20" : "")}
+                                            style={{ background: "rgba(255,229,77,0.15)", border: "1px solid rgba(255,229,77,0.4)", color: YELLOW }}
+                                        >
+                                            <span className="text-sm sm:text-lg">{b.icon}</span> <span className="whitespace-nowrap">{b.text}</span>
+                                        </Component>
+                                    );
+                                })()
+)}
                         </div>
                     </div>
 
@@ -660,7 +704,7 @@ export default function WindowCleaningAdsPage() {
             <section id="pricing" className="py-16 bg-white px-5 border-y border-gray-100">
                 <div className="max-w-5xl mx-auto text-center">
                     <h2 className="text-3xl md:text-4xl font-bold mb-4 text-brand-navy">Clear, Transparent Pricing</h2>
-                    <p className="text-gray-600 max-w-2xl mx-auto mb-8 text-lg">We don't hide our rates. Select your home type below for our starting residential packages. No hidden fees, just guaranteed results.</p>
+                    <p className="text-gray-600 max-w-2xl mx-auto mb-8 text-lg">We don't hide our rates. Select your home type below for our starting residential packages. Click a package to book now.</p>
                     
                     <div className="flex justify-center mb-10">
                         <div className="bg-gray-100 p-1 rounded-full flex gap-1">
@@ -680,31 +724,33 @@ export default function WindowCleaningAdsPage() {
                     </div>
 
                     <div className="grid md:grid-cols-3 gap-6">
-                        <div className="p-6 border rounded-xl shadow-sm bg-gray-50 flex flex-col justify-between transition-all duration-300">
+                        <button onClick={() => setSelectedPkg({name: "Essential", price: isDoubleStorey ? 'Starting From $279' : 'Starting From $159'})} className="p-6 border rounded-xl shadow-sm bg-gray-50 flex flex-col justify-between transition-all duration-300 hover:shadow-xl hover:scale-105 hover:border-brand-navy text-left cursor-pointer group">
                             <div>
-                                <h3 className="font-bold text-xl text-brand-navy mb-2">Essential</h3>
+                                <h3 className="font-bold text-xl text-brand-navy mb-2 group-hover:text-action-gold transition-colors">Essential</h3>
                                 <p className="text-gray-500 text-sm mb-4">External standard clean only</p>
                             </div>
                             <p className="text-3xl font-black text-brand-navy mb-4 transition-all duration-300">{isDoubleStorey ? 'Starting From $279' : 'Starting From $159'}</p>
-                        </div>
-                        <div className="p-6 border-2 border-action-gold rounded-xl shadow-md bg-brand-navy text-white relative transform md:-translate-y-4 mt-4 md:mt-0 flex flex-col justify-between transition-all duration-300">
+                            <div className="text-center w-full py-2 bg-gray-200 rounded-lg font-bold text-sm text-gray-700 group-hover:bg-brand-navy group-hover:text-white transition-colors">Select Package</div>
+                        </button>
+
+                        <button onClick={() => setSelectedPkg({name: "Standard", price: isDoubleStorey ? 'Starting From $499' : 'Starting From $279'})} className="p-6 border-2 border-action-gold rounded-xl shadow-md bg-brand-navy text-white relative transform md:-translate-y-4 mt-4 md:mt-0 flex flex-col justify-between transition-all duration-300 hover:shadow-2xl hover:scale-105 text-left cursor-pointer group">
                             <div className="absolute top-0 left-1/2 -translate-x-1/2 -translate-y-1/2 bg-action-gold text-brand-navy px-3 py-1 rounded-full text-xs font-bold tracking-wide w-max">MOST POPULAR</div>
                             <div>
-                                <h3 className="font-bold text-xl mb-2 text-white">Standard</h3>
+                                <h3 className="font-bold text-xl mb-2 text-white group-hover:text-action-gold transition-colors">Standard</h3>
                                 <p className="text-brand-water text-sm mb-4">Inside and out basic wash</p>
                             </div>
                             <p className="text-3xl font-black text-white mb-4 transition-all duration-300">{isDoubleStorey ? 'Starting From $499' : 'Starting From $279'}</p>
-                        </div>
-                        <div className="p-6 border-2 rounded-xl bg-white relative flex flex-col justify-between transition-all duration-300" style={{ borderColor: "#ffd700", boxShadow: "0 0 20px rgba(255, 215, 0, 0.3)" }}>
+                            <div className="text-center w-full py-2 bg-action-gold rounded-lg font-bold text-sm text-brand-navy group-hover:bg-white transition-colors">Select Package</div>
+                        </button>
+
+                        <button onClick={() => setSelectedPkg({name: "Supreme", price: isDoubleStorey ? 'Starting From $859' : 'Starting From $479'})} className="p-6 border-2 rounded-xl bg-white relative flex flex-col justify-between transition-all duration-300 hover:shadow-2xl hover:scale-105 text-left cursor-pointer group" style={{ borderColor: "#ffd700", boxShadow: "0 0 20px rgba(255, 215, 0, 0.3)" }}>
                             <div>
-                                <h3 className="font-bold text-xl text-brand-navy mb-2">Supreme</h3>
+                                <h3 className="font-bold text-xl text-brand-navy mb-2 group-hover:text-action-gold transition-colors">Supreme</h3>
                                 <p className="text-gray-500 text-sm mb-4">Inside and out detailing (stuck-on paint, hard water)</p>
                             </div>
                             <p className="text-3xl font-black text-brand-navy mb-4 transition-all duration-300">{isDoubleStorey ? 'Starting From $859' : 'Starting From $479'}</p>
-                        </div>
-                    </div>
-                    <div className="mt-10">
-                        <button onClick={() => { const form = document.getElementById("quote-form"); if(form) form.scrollIntoView({behavior: "smooth"}); else window.scrollTo(0,0); }} className="text-action-gold bg-brand-navy px-8 py-4 rounded-full font-bold hover:shadow-lg inline-block transition-shadow cursor-pointer">Contact us for full pricing and exact quote</button>
+                            <div className="text-center w-full py-2 bg-gray-100 rounded-lg font-bold text-sm text-brand-navy group-hover:bg-action-gold transition-colors" style={{ border: "1px solid #ffd700" }}>Select Package</div>
+                        </button>
                     </div>
                 </div>
             </section>
@@ -790,10 +836,10 @@ export default function WindowCleaningAdsPage() {
                             <h3 className="text-2xl md:text-3xl font-bold mb-4">The Aspect Window Cleaning Difference</h3>
                             <p className="text-brand-water mb-8 text-lg md:text-xl max-w-3xl">We back our work with a <span className="text-action-gold font-bold">100% Satisfaction Guarantee</span>. Especially for our premium Supreme cleans, the job is not done until you are completely satisfied.</p>
                             <ul className="grid md:grid-cols-2 gap-6">
-                                <li className="flex items-start gap-4">
-                                    <Shield className="w-8 h-8 text-action-gold shrink-0 mt-1" />
-                                    <span className="text-lg">Fully insured and professionally trained team</span>
-                                </li>
+                                <li className="flex items-start gap-4 cursor-pointer hover:opacity-80 transition-opacity" onClick={() => openCertificateModal('insured')} title="View Insurance Certificate">
+<Shield className="w-8 h-8 text-action-gold shrink-0 mt-1" />
+<span className="text-lg">Fully insured and professionally trained team <span className="text-action-gold text-sm font-bold block mt-1">View Certificate &rarr;</span></span>
+</li>
                                 <li className="flex items-start gap-4">
                                     <Droplets className="w-8 h-8 text-action-gold shrink-0 mt-1" />
                                     <span className="text-lg">We use Eco-friendly, pet & child-safe Pure Water technology</span>
@@ -824,11 +870,12 @@ export default function WindowCleaningAdsPage() {
                     </div>
                     
                     <div className="grid md:grid-cols-3 gap-6 text-left">
-                        <div className="bg-white/10 border border-white/20 p-6 rounded-2xl">
+                                                  <button onClick={() => openCertificateModal('insured')} className="text-left bg-white/10 border border-white/20 p-6 rounded-2xl hover:bg-white/20 transition-all cursor-pointer">
                             <Shield className="w-8 h-8 text-action-gold mb-4" />
                             <h3 className="font-bold text-xl mb-2 text-white">Fully Insured & Checked</h3>
-                            <p className="text-sm text-brand-water">Our entire team is police-cleared and backed by $20,000,000 Public Liability Insurance for your complete peace of mind.</p>
-                        </div>
+                            <p className="text-sm text-brand-water mb-3">Our entire team is police-cleared and backed by $20,000,000 Public Liability Insurance for your complete peace of mind.</p>
+                            <span className="text-action-gold text-sm font-bold flex items-center gap-1 hover:underline">View Certificates &rarr;</span>
+                        </button>
                         <div className="bg-action-gold border border-yellow-400 p-6 rounded-2xl text-brand-navy transform md:-translate-y-4">
                             <CheckCircle2 className="w-8 h-8 text-brand-navy mb-4" />
                             <h3 className="font-bold text-xl mb-2">100% Satisfaction</h3>
@@ -1035,7 +1082,7 @@ export default function WindowCleaningAdsPage() {
                 </div>
                 <Link
                     href={`tel:${BUSINESS.phoneRaw}`}
-                    className="flex items-center gap-2 rounded-xl px-5 py-3 font-bold text-sm transition-all hover:scale-105 sm:ml-auto"
+                    className="flex items-center gap-2 rounded-xl px-5 py-3 font-bold text-sm transition-all hover:scale-105 sm:ml-auto shiny-call-btn"
                     style={{ background: YELLOW, color: NAVY }}
                 >
                     <Phone className="w-4 h-4" />
@@ -1061,6 +1108,52 @@ export default function WindowCleaningAdsPage() {
                         <ChevronRight className="w-8 h-8" />
                     </button>
                     <div className="text-white mt-4 font-semibold">{currentImageIndex + 1} / 6</div>
+                </div>
+            )}
+        {/* PACKAGE SELECTION MODAL */}
+            {selectedPkg && (
+                <div className="fixed inset-0 z-50 flex items-center justify-center p-4 bg-black/60 backdrop-blur-sm">
+                    <div className="bg-white rounded-2xl shadow-2xl p-6 md:p-8 max-w-md w-full relative">
+                        <button onClick={() => { setSelectedPkg(null); setPkgSubmitted(false); }} className="absolute top-4 right-4 text-gray-400 hover:text-gray-900 cursor-pointer">
+                            <X className="w-6 h-6" />
+                        </button>
+                        
+                        {pkgSubmitted ? (
+                            <div className="text-center py-8">
+                                <div className="w-16 h-16 bg-green-100 text-green-500 rounded-full flex items-center justify-center mx-auto mb-4">
+                                    <CheckCircle2 className="w-8 h-8" />
+                                </div>
+                                <h3 className="text-2xl font-bold text-brand-navy mb-2">Thank you!</h3>
+                                <p className="text-gray-600">We will reach out soon to confirm your {selectedPkg.name} package.</p>
+                            </div>
+                        ) : (
+                            <>
+                                <h3 className="text-xl md:text-2xl font-bold text-brand-navy mb-2">Book Your Package</h3>
+                                <p className="text-gray-600 text-sm mb-6 leading-relaxed">
+                                    You have selected the <strong className="text-brand-navy">{selectedPkg.name}</strong> package for a <strong>{isDoubleStorey ? "Double Storey" : "Single Storey"}</strong> home ({selectedPkg.price}). Please provide your details to lock this in.
+                                </p>
+                                
+                                <form onSubmit={handlePkgSubmit} className="space-y-4 text-left">
+                                    <div>
+                                        <label className="block text-sm font-bold text-gray-700 mb-1">Your Name</label>
+                                        <input required type="text" value={pkgForm.name} onChange={(e) => setPkgForm({...pkgForm, name: e.target.value})} className="w-full px-4 py-3 rounded-lg border border-gray-300 focus:ring-2 focus:ring-action-gold focus:border-transparent" placeholder="John Doe" />
+                                    </div>
+                                    <div>
+                                        <label className="block text-sm font-bold text-gray-700 mb-1">Phone Number</label>
+                                        <input required type="tel" value={pkgForm.phone} onChange={(e) => setPkgForm({...pkgForm, phone: e.target.value})} className="w-full px-4 py-3 rounded-lg border border-gray-300 focus:ring-2 focus:ring-action-gold focus:border-transparent" placeholder="0400 000 000" />
+                                    </div>
+                                    <div>
+                                        <label className="block text-sm font-bold text-gray-700 mb-1">Suburb</label>
+                                        <input required type="text" value={pkgForm.suburb} onChange={(e) => setPkgForm({...pkgForm, suburb: e.target.value})} className="w-full px-4 py-3 rounded-lg border border-gray-300 focus:ring-2 focus:ring-action-gold focus:border-transparent" placeholder="e.g. Subiaco" />
+                                    </div>
+                                    {pkgError && <p className="text-red-500 text-sm font-semibold">{pkgError}</p>}
+                                    <button disabled={isPkgSubmitting} type="submit" className="w-full bg-action-gold text-brand-navy font-bold py-4 rounded-xl hover:shadow-lg transition-all cursor-pointer">
+                                        {isPkgSubmitting ? "Booking..." : "Book Now &rarr;"}
+                                    </button>
+                                </form>
+                            </>
+                        )}
+                    </div>
                 </div>
             )}
         </>

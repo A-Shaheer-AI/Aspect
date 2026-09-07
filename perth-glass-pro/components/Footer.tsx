@@ -1,4 +1,5 @@
 import Link from "next/link";
+import { openCertificateModal } from "@/components/CertificateModalWrapper";
 import { Phone, Mail, MapPin } from "lucide-react";
 import { BUSINESS } from "@/lib/config";
 import Image from "next/image";
@@ -181,7 +182,11 @@ export default async function Footer() {
                             />
                         </div>
                         <div className="mt-4 p-4 bg-white/5 rounded-lg border border-white/10">
-                            <p className="text-xs text-gray-400">Fully insured â€¢ Police cleared â€¢ ABN Registered</p>
+                            <p className="text-xs text-gray-400">
+    <button onClick={() => openCertificateModal('insured')} className="hover:text-white transition-colors underline decoration-dashed underline-offset-2">Fully insured</button> &bull; 
+    <button onClick={() => openCertificateModal('police')} className="hover:text-white transition-colors underline decoration-dashed underline-offset-2">Police cleared</button> &bull; 
+    ABN Registered
+</p>
                         </div>
                     </div>
                 </div>

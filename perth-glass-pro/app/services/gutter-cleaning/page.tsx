@@ -1,8 +1,11 @@
 import { Metadata } from "next";
 import Image from "next/image";
 import Link from "next/link";
+import ClickableBadge from "@/components/ClickableBadge";
+import { ChevronsRight, Shield, BadgeCheck, Clock, Star, CheckCircle, CheckCircle2 } from "lucide-react";
+
 import FAQ from "@/components/FAQ";
-import { ChevronsRight } from "lucide-react";
+
 import CTA from "@/components/CTA";
 import BeforeAfterSlider from "@/components/BeforeAfterSlider";
 
@@ -189,57 +192,45 @@ const GutterCleaningServices = () => {
                     <div className="grid grid-cols-2 md:grid-cols-4 gap-4 md:gap-6">
 
                         {/* Badge 1 */}
-                        <div className="flex items-center gap-3 bg-white border border-slate-200 hover:border-action-gold/40 px-5 py-4 rounded-2xl shadow-sm hover:shadow transition-all">
-                            <div className="w-9 h-9 flex items-center justify-center bg-action-gold/10 rounded-xl text-2xl flex-shrink-0">
-                                ðŸ’°
-                            </div>
-                            <div className="min-w-0">
-                                <div className="font-semibold text-brand-navy text-sm md:text-base leading-tight">
-                                    $20M Insured
+<ClickableBadge type="insured" className="flex items-center gap-3 bg-white border border-slate-200 hover:border-action-gold/40 px-5 py-4 rounded-2xl shadow-sm hover:shadow transition-all">
+                            <div className="w-9 h-9 flex items-center justify-center bg-action-gold/10 rounded-xl flex-shrink-0"><Shield className="w-5 h-5 text-action-gold" /></div>
+<div className="min-w-0">
+<div className="font-semibold text-brand-navy text-sm md:text-base leading-tight">
+$20M Insured
                                 </div>
                                 <div className="text-xs text-brand-slate">Fully protected</div>
                             </div>
-                        </div>
-
+                        </ClickableBadge>
                         {/* Badge 2 */}
-                        <div className="flex items-center gap-3 bg-white border border-slate-200 hover:border-action-gold/40 px-5 py-4 rounded-2xl shadow-sm hover:shadow transition-all">
-                            <div className="w-9 h-9 flex items-center justify-center bg-action-gold/10 rounded-xl text-2xl flex-shrink-0">
-                                ðŸ›¡ï¸
-                            </div>
-                            <div className="min-w-0">
-                                <div className="font-semibold text-brand-navy text-sm md:text-base leading-tight">
-                                    Police Cleared
+<ClickableBadge type="police" className="flex items-center gap-3 bg-white border border-slate-200 hover:border-action-gold/40 px-5 py-4 rounded-2xl shadow-sm hover:shadow transition-all">
+                            <div className="w-9 h-9 flex items-center justify-center bg-action-gold/10 rounded-xl flex-shrink-0"><BadgeCheck className="w-5 h-5 text-action-gold" /></div>
+<div className="min-w-0">
+<div className="font-semibold text-brand-navy text-sm md:text-base leading-tight">
+Police Cleared
                                 </div>
                                 <div className="text-xs text-brand-slate">Background checked</div>
                             </div>
-                        </div>
-
+                        </ClickableBadge>
                         {/* Badge 3 */}
-                        <div className="flex items-center gap-3 bg-white border border-slate-200 hover:border-action-gold/40 px-5 py-4 rounded-2xl shadow-sm hover:shadow transition-all">
-                            <div className="w-9 h-9 flex items-center justify-center bg-action-gold/10 rounded-xl text-2xl flex-shrink-0">
-                                â±ï¸
-                            </div>
-                            <div className="min-w-0">
-                                <div className="font-semibold text-brand-navy text-sm md:text-base leading-tight">
-                                    Same-Week Bookings
+<ClickableBadge className="flex items-center gap-3 bg-white border border-slate-200 hover:border-action-gold/40 px-5 py-4 rounded-2xl shadow-sm hover:shadow transition-all">
+                            <div className="w-9 h-9 flex items-center justify-center bg-action-gold/10 rounded-xl flex-shrink-0"><Clock className="w-5 h-5 text-action-gold" /></div>
+<div className="min-w-0">
+<div className="font-semibold text-brand-navy text-sm md:text-base leading-tight">
+Same-Week Bookings
                                 </div>
                                 <div className="text-xs text-brand-slate">Fast service</div>
                             </div>
-                        </div>
-
+                        </ClickableBadge>
                         {/* Badge 4 */}
-                        <div className="flex items-center gap-3 bg-white border border-slate-200 hover:border-action-gold/40 px-5 py-4 rounded-2xl shadow-sm hover:shadow transition-all">
-                            <div className="w-9 h-9 flex items-center justify-center bg-action-gold/10 rounded-xl text-2xl flex-shrink-0">
-                                â­
-                            </div>
-                            <div className="min-w-0">
-                                <div className="font-semibold text-brand-navy text-sm md:text-base leading-tight">
-                                    5.0 Google Reviews
+<ClickableBadge className="flex items-center gap-3 bg-white border border-slate-200 hover:border-action-gold/40 px-5 py-4 rounded-2xl shadow-sm hover:shadow transition-all">
+                            <div className="w-9 h-9 flex items-center justify-center bg-action-gold/10 rounded-xl flex-shrink-0"><Star className="w-5 h-5 text-action-gold fill-action-gold" /></div>
+<div className="min-w-0">
+<div className="font-semibold text-brand-navy text-sm md:text-base leading-tight">
+5.0 Google Reviews
                                 </div>
                                 <div className="text-xs text-brand-slate">Happy customers</div>
                             </div>
-                        </div>
-
+                        </ClickableBadge>
                     </div>
                 </div>
             </section>

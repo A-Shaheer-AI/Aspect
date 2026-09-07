@@ -80,7 +80,7 @@ export default function StickyInterface() {
             {isMobile && showMobileCTA && (
                 <a
                     href={`tel:${BUSINESS.phoneRaw}`}
-                    className="fixed bottom-20 right-4 z-50 w-14 h-14 bg-green-500 text-white rounded-full shadow-lg flex items-center justify-center hover:bg-green-600 active:scale-95 transition-all md:hidden"
+                    className="fixed bottom-20 right-4 z-50 w-14 h-14 bg-green-500 text-white rounded-full shadow-lg flex items-center justify-center hover:bg-green-600 active:scale-95 transition-all md:hidden shiny-call-btn"
                     aria-label="Call now"
                     style={{ animation: "scaleIn 0.3s ease-out" }}
                 >
@@ -109,6 +109,28 @@ export default function StickyInterface() {
 
             {/* CSS Animations */}
             <style jsx>{`
+
+                @keyframes btn-shine {
+                    0% { left: -100%; }
+                    20% { left: 100%; }
+                    100% { left: 100%; }
+                }
+                .shiny-call-btn {
+                    position: relative;
+                    overflow: hidden;
+                }
+                .shiny-call-btn::before {
+                    content: "";
+                    position: absolute;
+                    top: 0;
+                    left: -100%;
+                    width: 50%;
+                    height: 100%;
+                    background: linear-gradient(to right, rgba(255,255,255,0) 0%, rgba(255,255,255,0.8) 50%, rgba(255,255,255,0) 100%);
+                    transform: skewX(-25deg);
+                    animation: btn-shine 3s infinite;
+                }
+
                 @keyframes slideUp {
                     from { transform: translateY(100%); opacity: 0; }
                     to { transform: translateY(0); opacity: 1; }

@@ -6,6 +6,7 @@ import "./globals.css";
 import Navbar from "@/components/Navbar";
 import Footer from "@/components/Footer";
 import StickyInterface from "@/components/ui/StickyInterface";
+import CertificateModalWrapper from "@/components/CertificateModalWrapper";
 import ConditionalLayout from "@/components/ConditionalLayout";
 import { getGmbData } from "@/app/actions/gmb";
 import GmbProvider from "@/components/GmbProvider";
