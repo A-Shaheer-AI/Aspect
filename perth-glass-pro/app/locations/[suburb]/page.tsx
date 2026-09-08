@@ -1,11 +1,13 @@
 import { Metadata } from "next";
 import Link from "next/link";
 import { notFound } from "next/navigation";
+import { BUSINESS } from "@/lib/config";
 import { ArrowRight, Home, Building2, Sparkles, Droplets, Wind, Phone } from "lucide-react";
 import suburbsData from "@/lib/perth_suburbs.json";
 import ServicesAvailable from "@/components/ServicesAvailable";
 import ServicesClient from "@/components/ServicesClient";
 import CaseStudiesSection from "@/components/CaseStudiesSection";
+import FAQ from "@/components/FAQ";
 
 const ALL_SUBURBS = [
     ...(suburbsData.regions.north_of_river.suburbs || []),
@@ -35,8 +37,9 @@ export async function generateMetadata({ params }: { params: Promise<{ suburb: s
     const description = templates[suburbName.length % 4];
 
     return {
-        title: `Window Cleaning ${suburbName} | Window Cleaning Perth | Aspect Window Cleaning`,
+        title: `Window Cleaning in ${suburbName} Perth | Aspect Window Cleaning`,
         description: description,
+        alternates: { canonical: `https://aspectwindowcleaning.com.au/locations/${suburbSlug}` },
         openGraph: {
             title: `Property Cleaning in ${suburbName} | Aspect Window Cleaning`,
             description: `Trusted cleaning services for homes and businesses in ${suburbName}. Fully insured. 5-star rated.`,
@@ -45,9 +48,9 @@ export async function generateMetadata({ params }: { params: Promise<{ suburb: s
 }
 
 const SERVICES = [
-    { id: 'window', title: 'Residential Window Cleaning', description: 'Crystal-clear windows for your home using pure water technology. Inside & out, frames & tracks included.', iconName: "Home", servicePage: '/residential' },
+    { id: 'window', title: 'Residential Window Cleaning', description: 'Crystal-clear windows for your home using pure water technology. Inside & out, frames & tracks included.', iconName: "Home", servicePage: '/services/residential-window-cleaning' },
     { id: 'solar', title: 'Solar Panel Washing', description: 'Boost energy output by up to 30% with professional panel cleaning. Manufacturer-approved methods.', iconName: "Sparkles", servicePage: '/services/solar-panel-washing' },
-    { id: 'commercial', title: 'Commercial & Strata', description: 'High-reach EWP and rope access for offices, retail, and multi-story buildings. Full safety documentation.', iconName: "Building2", servicePage: '/commercial' },
+    { id: 'commercial', title: 'Commercial & Strata', description: 'High-reach EWP and rope access for offices, retail, and multi-story buildings. Full safety documentation.', iconName: "Building2", servicePage: '/services/commercial-window-cleaning' },
     { id: 'gutter', title: 'Gutter Cleaning', description: 'Prevent water damage with complete debris removal and downpipe flushing. Roof inspection included.', iconName: "Droplets", servicePage: '/services/gutter-cleaning' },
     { id: 'pressure', title: 'Pressure Washing', description: 'Revitalize driveways, patios, and outdoor areas. Safe for pavers, concrete, and tiles.', iconName: "Wind", servicePage: '/services/pressure-washing' },
 ];
@@ -61,8 +64,63 @@ export default async function SuburbPage({ params }: { params: Promise<{ suburb:
 
     if (!suburb) notFound();
 
+    const SUBURB_FAQS = [
+        {
+            question: `How often should windows be cleaned in ${suburb.name}?`,
+            answer: `For most homes in ${suburb.name}, we recommend professional window cleaning every 3 to 6 months. Properties close to the coast or exposed to Perth's summer dust benefit from cleaning every 6 to 8 weeks to prevent permanent glass etching and mineral buildup.`
+        },
+        {
+            question: `Do you service both residential and commercial properties in ${suburb.name}?`,
+            answer: `Yes! Aspect Window Cleaning provides complete cleaning services for residential homes, strata complexes, retail shopfronts, and multi-storey commercial offices across ${suburb.name} and surrounding areas.`
+        },
+        {
+            question: `How much does window cleaning cost in ${suburb.name}?`,
+            answer: `Our pricing is transparent and competitive. Single-storey residential cleans start from affordable standard packages, and you can calculate your exact cost instantly on our pricing page or call our team for a fast quote.`
+        },
+        {
+            question: `Are your technicians insured and police cleared in ${suburb.name}?`,
+            answer: `Yes, every Aspect technician is background-checked, police cleared, and covered by $20 million public liability insurance, ensuring complete security and professionalism on your property.`
+        }
+    ];
+
+    const localBusinessSchema = {
+        "@context": "https://schema.org",
+        "@type": "LocalBusiness",
+        "name": `Aspect Window Cleaning - ${suburb.name}`,
+        "image": "https://res.cloudinary.com/dr8tjrszy/image/upload/v1772130850/white-logo_pzpxjk.png",
+        "telephone": BUSINESS.phoneRaw,
+        "url": `https://aspectwindowcleaning.com.au/locations/${suburbSlug}`,
+        "priceRange": "$$",
+        "areaServed": {
+            "@type": "City",
+            "name": suburb.name
+        },
+        "description": `Professional window cleaning, solar panel washing, gutter cleaning, and pressure washing in ${suburb.name}, Perth. Same-week service. Fully insured.`
+    };
+
+    const faqSchema = {
+        "@context": "https://schema.org",
+        "@type": "FAQPage",
+        "mainEntity": SUBURB_FAQS.map(f => ({
+            "@type": "Question",
+            "name": f.question,
+            "acceptedAnswer": {
+                "@type": "Answer",
+                "text": f.answer
+            }
+        }))
+    };
+
     return (
         <div className="min-h-screen bg-brand-snow">
+            <script
+                type="application/ld+json"
+                dangerouslySetInnerHTML={{ __html: JSON.stringify(localBusinessSchema) }}
+            />
+            <script
+                type="application/ld+json"
+                dangerouslySetInnerHTML={{ __html: JSON.stringify(faqSchema) }}
+            />
 
             {/* Hero */}
             <section className="bg-brand-navy text-white py-20 md:py-28">
@@ -82,7 +140,7 @@ export default async function SuburbPage({ params }: { params: Promise<{ suburb:
                     </p>
 
                     <a
-                        href="tel:+61400000000"
+                        href={`tel:${BUSINESS.phoneRaw}`}
                         className="inline-flex items-center gap-3 bg-action-gold text-brand-navy font-bold text-lg px-8 py-4 rounded-full hover:bg-action-gold/90 transition-colors"
                     >
                         <Phone className="w-5 h-5" />
@@ -111,6 +169,12 @@ export default async function SuburbPage({ params }: { params: Promise<{ suburb:
                 suburbName={suburb.name}
             />
 
+            {/* FAQs */}
+            <FAQ
+                faqs={SUBURB_FAQS}
+                title={`Common questions about window and exterior cleaning in ${suburb.name}`}
+            />
+
             {/* CTA */}
             <section className="bg-brand-navy text-white py-16">
                 <div className="max-w-3xl mx-auto px-4 text-center">
@@ -126,7 +190,7 @@ export default async function SuburbPage({ params }: { params: Promise<{ suburb:
                     <div className="flex flex-col sm:flex-row items-center justify-center gap-4">
 
                         <a
-                            href="tel:+61400000000"
+                            href={`tel:${BUSINESS.phoneRaw}`}
                             className="inline-flex items-center gap-2 bg-action-gold text-brand-navy font-bold px-8 py-4 rounded-full text-lg hover:bg-action-gold/90 transition-colors"
                         >
                             <Phone className="w-5 h-5" />
@@ -148,3 +212,4 @@ export default async function SuburbPage({ params }: { params: Promise<{ suburb:
         </div>
     );
 }
+

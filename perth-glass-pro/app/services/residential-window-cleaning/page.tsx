@@ -18,6 +18,7 @@ export const metadata: Metadata = {
     title: "Residential Window Cleaning Perth | Interior & Exterior | Aspect Window Cleaning",
     description:
         "Professional residential window cleaning in Perth. Interior, exterior, screens & tracks. Pure water technology, streak-free finish. Fully insured. Free quotes.",
+    alternates: { canonical: "https://aspectwindowcleaning.com.au/services/residential-window-cleaning" }
 };
 
 const whatsInclude = [
@@ -177,6 +178,26 @@ const pressureWashing: FaqsType[] = [
 const ResidentialWindowCleaning = () => {
     return (
         <div className="bg-white text-brand-slate">
+      <script
+        type="application/ld+json"
+        dangerouslySetInnerHTML={{
+          __html: JSON.stringify({
+            "@context": "https://schema.org",
+            "@type": "Service",
+            "name": "Residential Window Cleaning",
+            "provider": {
+              "@type": "LocalBusiness",
+              "name": "Aspect Window Cleaning"
+            },
+            "areaServed": {
+              "@type": "State",
+              "name": "Western Australia"
+            },
+            "url": "https://aspectwindowcleaning.com.au/services/residential-window-cleaning"
+          })
+        }}
+      />
+
 
             {/* HERO */}
             <section className="bg-brand-navy text-white pt-30 pb-24 text-center">
@@ -504,3 +525,5 @@ single time. We also offer <Link href="/services/solar-panel-washing" className=
 }
 
 export default ResidentialWindowCleaning
+
+

@@ -6,6 +6,13 @@ import ResidentialEstimator from "@/components/ResidentialEstimator";
 import TrustGrid from "@/components/TrustGrid";
 import ResultsAndReviews from "@/components/ResultsAndReviews";
 import PricingPackages from "@/components/PricingPackages";
+import { Metadata } from "next";
+
+export const metadata: Metadata = {
+    title: "Window Cleaning Prices Perth | Free Instant Quote",
+    description: "Transparent pricing for residential and commercial window cleaning in Perth. See our service packages, try our instant estimator, and book online.",
+    alternates: { canonical: "https://aspectwindowcleaning.com.au/pricing" }
+};
 
 export default function PricingPage() {
     return (

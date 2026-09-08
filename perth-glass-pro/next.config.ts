@@ -32,6 +32,31 @@ const nextConfig: NextConfig = {
                 has: [{ type: "host", value: "www.aspectwindowcleaning.com.au" }],
                 destination: "https://aspectwindowcleaning.com.au/:path*",
                 permanent: true,
+            },
+            {
+                source: "/gutter-cleaning",
+                destination: "/services/gutter-cleaning",
+                permanent: true,
+            },
+            {
+                source: "/solar-cleaning",
+                destination: "/services/solar-panel-washing",
+                permanent: true,
+            },
+            {
+                source: "/pressure-cleaning",
+                destination: "/services/pressure-washing",
+                permanent: true,
+            },
+            {
+                source: "/residential",
+                destination: "/services/residential-window-cleaning",
+                permanent: true,
+            },
+            {
+                source: "/commercial",
+                destination: "/services/commercial-window-cleaning",
+                permanent: true,
             }
         ]
     }

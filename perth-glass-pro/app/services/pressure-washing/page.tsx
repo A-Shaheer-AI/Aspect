@@ -18,6 +18,7 @@ export const metadata: Metadata = {
     title: "Pressure Cleaning Perth | Driveway & Exterior Washing | Aspect Window Cleaning",
     description:
         "Professional pressure cleaning in Perth. Driveways, patios, walls & commercial surfaces. Remove stains, algae & oil safely. Fully insured. Free quotes.",
+    alternates: { canonical: "https://aspectwindowcleaning.com.au/services/pressure-washing" }
 };
 
 const whatWeClean = [
@@ -177,6 +178,26 @@ const pressureWashing: FaqsType[] = [
 const PressureWashing = () => {
     return (
         <div className="bg-white text-brand-slate">
+      <script
+        type="application/ld+json"
+        dangerouslySetInnerHTML={{
+          __html: JSON.stringify({
+            "@context": "https://schema.org",
+            "@type": "Service",
+            "name": "Pressure Washing",
+            "provider": {
+              "@type": "LocalBusiness",
+              "name": "Aspect Window Cleaning"
+            },
+            "areaServed": {
+              "@type": "State",
+              "name": "Western Australia"
+            },
+            "url": "https://aspectwindowcleaning.com.au/services/pressure-washing"
+          })
+        }}
+      />
+
 
             {/* HERO */}
             <section className="bg-brand-navy text-white pt-30 pb-24 text-center">
@@ -445,3 +466,5 @@ Same-Week Bookings
 }
 
 export default PressureWashing
+
+

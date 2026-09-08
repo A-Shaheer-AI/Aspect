@@ -1,10 +1,2 @@
-import { Metadata } from "next";
-
-export const metadata: Metadata = {
-    title: "Contact Us",
-    description: "Get in touch with Aspect Window Cleaning Perth. Call us or fill out our online form for all your window and solar panel cleaning needs.",
-};
-
-export default function ContactLayout({ children }: { children: React.ReactNode }) {
-    return <>{children}</>;
-}
+export const metadata = { title: 'Contact Us | Aspect Window Cleaning Perth', description: 'Get in touch with Aspect Window Cleaning for a free quote on residential or commercial cleaning services in Perth. Call or book online.', alternates: { canonical: 'https://aspectwindowcleaning.com.au/contact' } };
+export default function Layout({ children }: { children: React.ReactNode }) { return <>{children}</>; }

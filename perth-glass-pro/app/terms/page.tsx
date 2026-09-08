@@ -4,6 +4,7 @@ import Link from "next/link";
 export const metadata: Metadata = {
     title: "Terms of Service | Aspect Window Cleaning",
     description: "Terms and conditions for Aspect Window Cleaning Perth services.",
+    alternates: { canonical: "https://aspectwindowcleaning.com.au/terms" }
 };
 
 export default function TermsPage() {

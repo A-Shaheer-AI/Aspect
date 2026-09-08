@@ -10,9 +10,9 @@ export default async function Footer() {
     const currentYear = new Date().getFullYear();
 
     const services = [
-        { name: "Window Cleaning", href: "/services/window-cleaning" },
+        { name: "Window Cleaning", href: "/services/residential-window-cleaning" },
         { name: "Solar Panel Washing", href: "/services/solar-panel-washing" },
-        { name: "Commercial Cleaning", href: "/services/commercial-cleaning" },
+        { name: "Commercial Cleaning", href: "/services/commercial-window-cleaning" },
         { name: "Gutter Cleaning", href: "/services/gutter-cleaning" },
         { name: "Pressure Washing", href: "/services/pressure-washing" },
     ];
@@ -77,7 +77,7 @@ export default async function Footer() {
                             ))}
                             <li>
                                 <Link href="/locations" className="text-action-gold text-xs font-medium">
-                                    All areas â†’
+                                    All areas →
                                 </Link>
                             </li>
                         </ul>
@@ -142,7 +142,7 @@ export default async function Footer() {
                                     href="/locations"
                                     className="text-action-gold hover:underline text-sm font-medium"
                                 >
-                                    View all 100+ suburbs â†’
+                                    View all 100+ suburbs →
                                 </Link>
                             </li>
                         </ul>
@@ -209,3 +209,4 @@ export default async function Footer() {
         </footer>
     );
 }
+

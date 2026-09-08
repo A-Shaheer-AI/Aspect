@@ -1,9 +1,11 @@
 import { Metadata } from "next";
 import Link from "next/link";
+import { BUSINESS } from "@/lib/config";
 
 export const metadata: Metadata = {
     title: "Privacy Policy | Aspect Window Cleaning",
     description: "Privacy policy for Aspect Window Cleaning Perth. Learn how we collect, use, and protect your personal information.",
+    alternates: { canonical: "https://aspectwindowcleaning.com.au/privacy" }
 };
 
 export default function PrivacyPage() {
@@ -70,13 +72,13 @@ export default function PrivacyPage() {
                         please contact us:
                     </p>
                     <ul>
-                        <li>Phone: 04XX XXX XXX</li>
-                        <li>Email: info@aspectwindowcleaning.com.au</li>
+                        <li>Phone: {BUSINESS.phone}</li>
+                        <li>Email: {BUSINESS.email}</li>
                     </ul>
 
                     <div className="mt-12 pt-8 border-t border-slate-200">
                         <Link href="/" className="text-action-gold font-medium hover:underline">
-                            â† Back to Home
+                            &larr; Back to Home
                         </Link>
                     </div>
                 </div>
