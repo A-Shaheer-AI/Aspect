@@ -155,12 +155,15 @@ export default function CaseStudiesIndexPage() {
                         <p className="text-brand-water/80 mb-8">
                             From tight pre-sale deadlines to routine residential maintenance — we work across Perth metro and deliver consistent, professional results.
                         </p>
-                        <div className="flex flex-col sm:flex-row items-center justify-center gap-4">
-                            <Link href="/pricing#estimator" className="inline-flex items-center gap-2 bg-action-gold text-brand-navy font-bold px-8 py-4 rounded-full text-lg hover:bg-action-gold/90 transition-colors">
+                        <div className="flex flex-wrap items-center justify-center gap-4">
+                            <Link href="/pricing#estimator" className="inline-flex items-center gap-2 bg-action-gold text-brand-navy font-bold px-8 py-4 rounded-full text-base sm:text-lg hover:bg-action-gold/90 transition-colors shadow-md">
                                 Get an Instant Quote <ArrowRight className="w-5 h-5" aria-hidden="true" />
                             </Link>
-                            <Link href="/services/residential-window-cleaning" className="inline-flex items-center gap-2 bg-white/10 border-2 border-white/30 text-white font-bold px-8 py-4 rounded-full text-lg hover:bg-white/20 transition-colors">
-                                Our Services <ArrowRight className="w-5 h-5" aria-hidden="true" />
+                            <Link href="/contact" className="inline-flex items-center gap-2 bg-white/10 border-2 border-white/30 text-white font-bold px-8 py-4 rounded-full text-base sm:text-lg hover:bg-white/20 transition-colors">
+                                Contact Our Team <ArrowRight className="w-5 h-5" aria-hidden="true" />
+                            </Link>
+                            <Link href="/services" className="inline-flex items-center gap-2 bg-white/10 border-2 border-white/30 text-white font-bold px-8 py-4 rounded-full text-base sm:text-lg hover:bg-white/20 transition-colors">
+                                All Services <ArrowRight className="w-5 h-5" aria-hidden="true" />
                             </Link>
                         </div>
                     </div>

@@ -381,7 +381,7 @@ const CommercialWindowCleaning = () => {
                         </p>
                         <div className="mt-4 p-4 rounded-xl bg-slate-50 border border-slate-200 text-sm">
                             <strong className="text-brand-navy block mb-1">Dual-Contract Efficiency:</strong>
-                            Bundle your routine office janitorial schedule with our specialist commercial high-reach glass cleaning for unified invoicing, a single dedicated account manager, and substantial bundle savings.
+                            Bundle your routine office janitorial schedule with our specialist commercial high-reach glass cleaning for unified invoicing, a single dedicated account manager, and substantial bundle savings. See our commercial transformations in our <Link href="/case-studies" className="text-action-gold hover:underline font-semibold">case studies</Link> or request a site tender via our <Link href="/contact" className="text-action-gold hover:underline font-semibold">contact page</Link>.
                         </div>
                     </div>
                 </div>

@@ -360,7 +360,7 @@ single time. We also offer <Link href="/services/solar-panel-washing" className=
                         </div>
                         <h3 className="font-semibold text-xl text-brand-navy mb-3">Residential Window Cleaning</h3>
                         <p className="text-brand-slate text-sm leading-relaxed">
-                            Transform your home with crystal-clear windows from top to bottom. We clean every pane, frame, sill, screen, and track - restoring brightness and improving your home's appearance inside and out. Ideal for regular maintenance or pre-sale preparation.
+                            Transform your home with crystal-clear windows from top to bottom. We clean every pane, frame, sill, screen, and track - restoring brightness and improving your home's appearance inside and out. Ideal for regular maintenance or <Link href="/case-studies" className="text-action-gold hover:underline font-medium">pre-sale preparation</Link>. Check our <Link href="/pricing" className="text-action-gold hover:underline font-medium">packages</Link> or <Link href="/contact" className="text-action-gold hover:underline font-medium">contact us</Link>.
                         </p>
                     </div>
 

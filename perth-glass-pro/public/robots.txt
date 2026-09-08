@@ -7,6 +7,7 @@ Disallow: /landing
 Disallow: /gutter-cleaning
 Disallow: /solar-cleaning
 Disallow: /pressure-cleaning
+Disallow: /booking
 
 # Host
 Host: https://aspectwindowcleaning.com.au

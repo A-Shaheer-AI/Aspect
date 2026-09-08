@@ -205,6 +205,33 @@ export default async function BlogPostPage({ params }: { params: Promise<{ slug:
                         <p className="text-slate-700 leading-relaxed" dangerouslySetInnerHTML={{ __html: post.conclusion as string }}></p>
                     </div>
                 )}
+
+                {/* Helpful Next Steps & Interlinking */}
+                <div className="p-6 sm:p-8 bg-brand-snow border border-slate-200 rounded-2xl">
+                    <h3 className="text-lg font-heading font-bold text-brand-navy mb-2">
+                        Looking for Professional Window Cleaning in Perth?
+                    </h3>
+                    <p className="text-slate-600 text-sm mb-5 leading-relaxed">
+                        Whether you are preparing a property for sale, dealing with stubborn bore water mineral etching, or scheduling regular maintenance, our team delivers guaranteed streak-free results across all 370+ Perth suburbs.
+                    </p>
+                    <div className="flex flex-wrap items-center gap-3 text-xs sm:text-sm font-semibold">
+                        <Link href="/pricing" className="text-brand-navy hover:text-action-gold transition-colors underline underline-offset-4 decoration-action-gold">
+                            Pricing & Packages &rarr;
+                        </Link>
+                        <span className="text-slate-300">|</span>
+                        <Link href="/case-studies" className="text-brand-navy hover:text-action-gold transition-colors underline underline-offset-4 decoration-action-gold">
+                            View Case Studies &rarr;
+                        </Link>
+                        <span className="text-slate-300">|</span>
+                        <Link href="/contact" className="text-brand-navy hover:text-action-gold transition-colors underline underline-offset-4 decoration-action-gold">
+                            Contact Us &rarr;
+                        </Link>
+                        <span className="text-slate-300">|</span>
+                        <Link href="/blog" className="text-brand-navy hover:text-action-gold transition-colors underline underline-offset-4 decoration-action-gold">
+                            All Cleaning Guides &rarr;
+                        </Link>
+                    </div>
+                </div>
             </div>
 
             {/* Sticky Conversion CTA */}

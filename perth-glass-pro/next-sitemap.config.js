@@ -14,6 +14,7 @@ module.exports = {
           '/gutter-cleaning',
           '/solar-cleaning',
           '/pressure-cleaning',
+          '/booking',
         ],
       },
     ],
@@ -26,6 +27,7 @@ module.exports = {
     '/landing',
     '/residential',
     '/commercial',
+    '/booking',
     '/gutter-cleaning',
     '/solar-cleaning',
     '/pressure-cleaning'

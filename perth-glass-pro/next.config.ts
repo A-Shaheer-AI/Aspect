@@ -46,6 +46,16 @@ const nextConfig: NextConfig = {
                 source: "/commercial",
                 destination: "/services/commercial-window-cleaning",
                 permanent: true,
+            },
+            {
+                source: "/booking",
+                destination: "/pricing",
+                permanent: true,
+            },
+            {
+                source: "/booking/:path*",
+                destination: "/pricing",
+                permanent: true,
             }
         ]
     }

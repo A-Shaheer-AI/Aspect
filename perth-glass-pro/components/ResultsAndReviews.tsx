@@ -49,6 +49,23 @@ export default function ResultsAndReviews() {
                             initial={50}
                         />
                     </div>
+
+                    <div className="mt-12 text-center flex flex-wrap items-center justify-center gap-4">
+                        <Link
+                            href="/case-studies"
+                            className="inline-flex items-center gap-2 px-6 py-3 rounded-full bg-brand-navy text-white font-semibold text-sm hover:bg-action-gold hover:text-brand-navy transition-all shadow-sm"
+                        >
+                            <span>Explore Detailed Case Studies & Results</span>
+                            <ArrowRight className="w-4 h-4" />
+                        </Link>
+                        <Link
+                            href="/pricing"
+                            className="inline-flex items-center gap-2 px-6 py-3 rounded-full bg-white text-brand-navy border border-slate-200 font-semibold text-sm hover:border-action-gold transition-all shadow-sm"
+                        >
+                            <span>View Transparent Packages & Pricing</span>
+                            <ArrowRight className="w-4 h-4" />
+                        </Link>
+                    </div>
                 </div>
             </section>
 

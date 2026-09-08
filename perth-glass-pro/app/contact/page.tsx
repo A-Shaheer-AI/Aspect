@@ -1,6 +1,7 @@
 'use client'
 
 import React, { useState } from 'react'
+import Link from 'next/link';
 import { sendLeadEmail } from '../actions/send-email';
 import TrustGrid from '@/components/TrustGrid';
 
@@ -99,6 +100,19 @@ const ContactPage = () => {
                 </div>
               </div>
             ))}
+          </div>
+
+          <div className="mt-8 pt-6 border-t border-gray-200/80 flex flex-col gap-2.5 text-xs text-gray-500">
+            <h3 className="text-xs font-bold text-gray-700 uppercase tracking-wider mb-1">Helpful Resources</h3>
+            <p>
+              Looking for upfront rates? Check our <Link href="/pricing" className="text-brand-navy font-semibold hover:underline">Pricing & Packages</Link> or calculate your quote online.
+            </p>
+            <p>
+              Want to see our previous jobs? Read our <Link href="/case-studies" className="text-brand-navy font-semibold hover:underline">Perth Project Case Studies</Link>.
+            </p>
+            <p>
+              Explore our full service scope in our <Link href="/services" className="text-brand-navy font-semibold hover:underline">Services Directory</Link>.
+            </p>
           </div>
 
         </div>

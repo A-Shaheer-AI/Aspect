@@ -118,13 +118,19 @@ export default function ContactSection() {
                     </div>
 
                     {/* CTA - Desktop only */}
-                    <div className="hidden sm:block text-center mt-12">
+                    <div className="hidden sm:flex flex-wrap items-center justify-center gap-4 mt-12">
                         <Link
                             href={`tel:${BUSINESS.phoneRaw}`}
                             className="inline-flex items-center gap-3 bg-brand-navy text-white font-bold text-lg px-8 py-4 rounded-full hover:bg-brand-navy/90 transition-colors"
                         >
                             <Phone className="w-5 h-5" aria-hidden="true" />
                             Call Now for Free Quote
+                        </Link>
+                        <Link
+                            href="/contact"
+                            className="inline-flex items-center gap-2 bg-action-gold text-brand-navy font-bold text-lg px-8 py-4 rounded-full hover:bg-action-gold/90 transition-colors shadow-sm"
+                        >
+                            <span>Online Quote Form</span>
                         </Link>
                     </div>
                 </div>
