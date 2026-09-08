@@ -19,7 +19,7 @@ export default function HeroWithScroll() {
 
   const items: ScrollItem[] = [
     {
-      src: "https://res.cloudinary.com/dr8tjrszy/video/upload/v1788824528/aspect_hero_new/1.mp4",
+      src: "https://res.cloudinary.com/dr8tjrszy/video/upload/v1788857762/aspect_hero_new/1.mov",
       type: "video",
       className: "col-span-1 row-span-1 h-[180px]"
     },
