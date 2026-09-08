@@ -15,7 +15,7 @@ type FaqsType = {
 }
 
 export const metadata: Metadata = {
-    title: "Residential Window Cleaning Perth | Interior & Exterior | Aspect Window Cleaning",
+    title: { absolute: "Residential Window Cleaning Perth | Aspect Window Cleaning" },
     description:
         "Professional residential window cleaning in Perth. Interior, exterior, screens & tracks. Pure water technology, streak-free finish. Fully insured. Free quotes.",
     alternates: { canonical: "https://aspectwindowcleaning.com.au/services/residential-window-cleaning" }

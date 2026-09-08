@@ -30,8 +30,8 @@ const inter = Inter({
 export const metadata: Metadata = {
     metadataBase: new URL("https://aspectwindowcleaning.com.au"),
     title: {
-        template: "%s | Aspect Window Cleaning Perth",
-        default: "Perth's Premier Window Cleaning | Residential & Commercial Specialists",
+        template: "%s | Aspect Window Cleaning",
+        default: "Aspect Window Cleaning Perth | Residential & Commercial",
     },
     icons: {
         icon: "https://res.cloudinary.com/dr8tjrszy/image/upload/v1772130850/white-logo_pzpxjk.png"

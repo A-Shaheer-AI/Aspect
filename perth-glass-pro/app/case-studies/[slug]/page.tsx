@@ -22,7 +22,7 @@ export async function generateMetadata({ params }: { params: Promise<{ slug: str
     });
 
     return {
-        title: `${cs.title} | Aspect Window Cleaning Perth`,
+        title: { absolute: `${cs.title} | Aspect Window Cleaning` },
         description: cs.excerpt,
         openGraph: {
             title: cs.title,

@@ -15,7 +15,7 @@ type FaqsType = {
 }
 
 export const metadata: Metadata = {
-    title: "Commercial Cleaning Perth | Office & Workplace Cleaning | Aspect Window Cleaning",
+    title: { absolute: "Commercial Cleaning Perth | Aspect Window Cleaning" },
     description:
         "Professional commercial cleaning services in Perth. Office cleaning, restroom sanitation, floor maintenance & window cleaning. Fully insured with $20M cover. Free quotes.",
     alternates: { canonical: "https://aspectwindowcleaning.com.au/services/commercial-window-cleaning" }

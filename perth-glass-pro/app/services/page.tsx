@@ -4,7 +4,7 @@ import { ArrowRight, CheckCircle, Home, Building2, Sun, Droplets,CloudRain } fro
 import ContactSection from "@/components/ContactSection";
 
 export const metadata: Metadata = {
-    title: "Our Services | Aspect Window Cleaning Perth",
+    title: { absolute: "Cleaning Services Perth | Aspect Window Cleaning" },
     description: "Comprehensive window cleaning services in Perth. From residential and commercial to solar panels and pressure washing. View our full service list.",
     alternates: { canonical: "https://aspectwindowcleaning.com.au/services" }
 };

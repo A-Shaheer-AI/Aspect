@@ -16,7 +16,7 @@ type FaqsType = {
 }
 
 export const metadata: Metadata = {
-    title: "Solar Panel Cleaning Perth | Boost Efficiency by 30% | Aspect Window Cleaning",
+    title: { absolute: "Solar Panel Cleaning Perth | Aspect Window Cleaning" },
     description:
         "Professional solar panel cleaning in Perth. Increase energy output by up to 30% using purified water & soft brush systems. Fully insured. Free quotes.",
     alternates: { canonical: "https://aspectwindowcleaning.com.au/services/solar-panel-washing" }

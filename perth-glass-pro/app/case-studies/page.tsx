@@ -5,7 +5,7 @@ import { ArrowRight, Calendar, MapPin, Users, Clock } from "lucide-react";
 import { caseStudies } from "@/content/case-studies";
 
 export const metadata: Metadata = {
-    title: "Window Cleaning Case Studies | Real Jobs Across Perth | Aspect Window Cleaning",
+    title: { absolute: "Window Cleaning Case Studies | Aspect Window Cleaning Perth" },
     description: "See our real window cleaning case studies from across Perth. Residential, commercial, pre-sale, and specialist jobs. Detailed results, timelines, and before-and-after outcomes.",
     openGraph: {
         title: "Window Cleaning Case Studies | Aspect Window Cleaning Perth",

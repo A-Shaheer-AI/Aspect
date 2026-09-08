@@ -9,7 +9,7 @@ import PricingPackages from "@/components/PricingPackages";
 import { Metadata } from "next";
 
 export const metadata: Metadata = {
-    title: "Window Cleaning Prices Perth | Free Instant Quote",
+    title: { absolute: "Window Cleaning Prices Perth | Aspect Window Cleaning" },
     description: "Transparent pricing for residential and commercial window cleaning in Perth. See our service packages, try our instant estimator, and book online.",
     alternates: { canonical: "https://aspectwindowcleaning.com.au/pricing" }
 };

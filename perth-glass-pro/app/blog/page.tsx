@@ -7,7 +7,7 @@ import { format } from "date-fns";
 import { blogs } from "@/content/blogs";
 
 export const metadata: Metadata = {
-    title: "Cleaning Tips & News | Aspect Window Cleaning",
+    title: { absolute: "Window Cleaning Tips & Guides | Aspect Window Cleaning" },
     description: "Expert advice on window cleaning, solar panel maintenance, and property care in Perth.",
     alternates: { canonical: "https://aspectwindowcleaning.com.au/blog" }
 };

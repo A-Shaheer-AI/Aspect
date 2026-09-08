@@ -15,7 +15,7 @@ type FaqsType = {
 }
 
 export const metadata: Metadata = {
-    title: "Pressure Cleaning Perth | Driveway & Exterior Washing | Aspect Window Cleaning",
+    title: { absolute: "Pressure Washing Perth | Aspect Window Cleaning" },
     description:
         "Professional pressure cleaning in Perth. Driveways, patios, walls & commercial surfaces. Remove stains, algae & oil safely. Fully insured. Free quotes.",
     alternates: { canonical: "https://aspectwindowcleaning.com.au/services/pressure-washing" }

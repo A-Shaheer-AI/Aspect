@@ -37,11 +37,11 @@ export async function generateMetadata({ params }: { params: Promise<{ suburb: s
     const description = templates[suburbName.length % 4];
 
     return {
-        title: `Window Cleaning in ${suburbName} Perth | Aspect Window Cleaning`,
+        title: { absolute: `Window Cleaning in ${suburbName} | Aspect Window Cleaning` },
         description: description,
         alternates: { canonical: `https://aspectwindowcleaning.com.au/locations/${suburbSlug}` },
         openGraph: {
-            title: `Property Cleaning in ${suburbName} | Aspect Window Cleaning`,
+            title: `Window Cleaning in ${suburbName} | Aspect Window Cleaning`,
             description: `Trusted cleaning services for homes and businesses in ${suburbName}. Fully insured. 5-star rated.`,
         },
     };
