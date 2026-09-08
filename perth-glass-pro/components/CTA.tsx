@@ -6,7 +6,7 @@ const CTA = ({ title }: { title: string }) => {
         <section className="bg-brand-navy text-white py-16">
             <div className="max-w-3xl mx-auto px-4 text-center">
                 <h2 className="text-3xl font-heading font-bold mb-4">
-                    {title} ?
+                    {title}
                 </h2>
                 <p className="text-brand-water/80 mb-8">
                    Same-week bookings available. Free, no-obligation quote.

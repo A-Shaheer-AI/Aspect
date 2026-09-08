@@ -249,6 +249,23 @@ const SolarPanelCleaningPage = () => {
           })
         }}
       />
+      <script
+        type="application/ld+json"
+        dangerouslySetInnerHTML={{
+          __html: JSON.stringify({
+            "@context": "https://schema.org",
+            "@type": "FAQPage",
+            "mainEntity": solarFAQs.map((f) => ({
+              "@type": "Question",
+              "name": f.question,
+              "acceptedAnswer": {
+                "@type": "Answer",
+                "text": String(f.answer)
+              }
+            }))
+          })
+        }}
+      />
 
 
             {/* HERO */}
@@ -315,9 +332,7 @@ Same-Week Bookings
 
             {/* ABOUT */}
             <section className="mt-5 py-8 max-w-5xl mx-auto px-4">
-                <h5 className="text-action-gold font-semibold mb-2">
-                    About This Service
-                </h5>
+                <span className="text-action-gold font-semibold mb-2 block uppercase tracking-wider text-xs">About This Service</span>
                 <h2 className="text-3xl font-heading font-bold text-brand-navy text-left mb-5">
                     Maximise Your Solar Panel Efficiency in Perth
                 </h2>
@@ -435,9 +450,7 @@ Same-Week Bookings
 
             {/* INCLUDED */}
             <section className="py-16 max-w-5xl mx-auto px-4">
-                <h3 className="text-sm text-action-gold font-semibold uppercase mb-2">
-                    What's Included
-                </h3>
+                <span className="text-sm text-action-gold font-semibold uppercase mb-2 block uppercase tracking-wider text-xs">What's Included</span>
                 <h2 className="text-3xl font-heading font-bold text-brand-navy mb-8">
                     What Our Solar Panel Cleaning Service Covers
                 </h2>
@@ -452,9 +465,7 @@ Same-Week Bookings
                             <div key={index} className="flex gap-4">
                                 <Icon className="w-6 h-6 text-action-gold flex-shrink-0 mt-1" />
                                 <div>
-                                    <h4 className="font-semibold text-lg text-brand-navy mb-1">
-                                        {item.title}
-                                    </h4>
+                                    <h3 className="font-semibold text-lg text-brand-navy mb-1">{item.title}</h3>
                                     <p className="text-brand-slate text-sm">{item.description}</p>
                                 </div>
                             </div>
@@ -468,9 +479,7 @@ Same-Week Bookings
                 <div className="max-w-6xl mx-auto px-4">
 
                     {/* Subheading */}
-                    <h4 className="text-action-gold font-bold text-lg text-center mb-2">
-                        WHY IT MATTERS
-                    </h4>
+                    <span className="text-action-gold font-bold text-lg text-center mb-2 block uppercase tracking-wider text-xs">$2</span>
 
                     {/* Main Heading */}
                     <h2 className="text-3xl md:text-4xl font-heading font-bold text-brand-navy text-center mb-6">
@@ -496,8 +505,8 @@ Same-Week Bookings
                     <div className="max-w-4xl mx-auto w-full">
                         <BeforeAfterSlider
                             initial={50}
-                            beforeImage="https://res.cloudinary.com/dr8tjrszy/image/upload/v1771960139/solar-pannel-clean_cigwab.jpg"
-                            afterImage="https://res.cloudinary.com/dr8tjrszy/image/upload/v1771960138/sollar-plats-cleaning_gyngjf.jpg"
+                            beforeImage="https://res.cloudinary.com/dr8tjrszy/image/upload/f_auto,q_auto/v1771960139/solar-pannel-clean_cigwab.jpg"
+                            afterImage="https://res.cloudinary.com/dr8tjrszy/image/upload/f_auto,q_auto/v1771960138/sollar-plats-cleaning_gyngjf.jpg"
                         />
                     </div>
 
@@ -505,7 +514,7 @@ Same-Week Bookings
                     <div className="grid md:grid-cols-2 gap-6">
                         <div className="relative w-full max-h-[500px]">
                             <Image
-                                src="https://res.cloudinary.com/dr8tjrszy/image/upload/v1771960139/solar-pannel-clean_cigwab.jpg"
+                                src="https://res.cloudinary.com/dr8tjrszy/image/upload/f_auto,q_auto/v1771960139/solar-pannel-clean_cigwab.jpg"
                                 alt="Dirty solar panel - dust and bird dropping buildup"
                                 fill
                                 className="rounded-xl shadow-md object-cover"
@@ -514,7 +523,7 @@ Same-Week Bookings
 
                         <div className="w-full">
                             <Image
-                                src="https://res.cloudinary.com/dr8tjrszy/image/upload/v1771960138/sollar-plats-cleaning_gyngjf.jpg"
+                                src="https://res.cloudinary.com/dr8tjrszy/image/upload/f_auto,q_auto/v1771960138/sollar-plats-cleaning_gyngjf.jpg"
                                 alt="Clean solar panel - full output after professional wash"
                                 width={500}
                                 height={500}
@@ -531,9 +540,7 @@ Same-Week Bookings
                 <div className="max-w-5xl mx-auto px-4">
 
                     {/* Subheading */}
-                    <h4 className="text-action-gold font-bold text-lg text-center mb-2">
-                        WHY ASPECT
-                    </h4>
+                    <span className="text-action-gold font-bold text-lg text-center mb-2 block uppercase tracking-wider text-xs">$2</span>
 
                     {/* Main Heading */}
                     <h2 className="text-3xl md:text-4xl font-heading font-bold text-brand-navy text-center mb-6">
@@ -566,9 +573,7 @@ Same-Week Bookings
                 <div className="max-w-5xl mx-auto px-4">
 
                     {/* Subheading */}
-                    <h4 className="text-action-gold font-semibold uppercase mb-2 text-center">
-                        OUR PROCESS
-                    </h4>
+                    <span className="text-action-gold font-semibold uppercase mb-2 text-center block uppercase tracking-wider text-xs">$2</span>
 
                     {/* Heading */}
                     <h2 className="text-3xl md:text-4xl font-heading font-bold text-brand-navy text-center mb-6">

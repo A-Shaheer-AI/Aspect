@@ -50,7 +50,7 @@ export const caseStudies: CaseStudy[] = [
       "willetton",
       "winthrop"
     ],
-    thumbnail: "https://res.cloudinary.com/dr8tjrszy/image/upload/v1771873841/residential-window-cleaning_nhnoux.jpg",
+    thumbnail: "https://res.cloudinary.com/dr8tjrszy/image/upload/f_auto,q_auto/v1771873841/residential-window-cleaning_nhnoux.jpg",
     images: [],
     excerpt: "A Mount Pleasant homeowner needed a full, detailed window clean — louvre windows, pool fencing, flyscreens and tracks — all completed within a tight pre-sale deadline. We delivered with a four-man crew in four hours.",
     serviceType: ["Residential Window Cleaning", "Pre-Sale Cleaning"],
@@ -92,7 +92,7 @@ export const caseStudies: CaseStudy[] = [
     nearbySuburbs: [
       "perth", "subiaco", "nedlands", "claremont", "dalkeith", "cottesloe", "city-beach", "mosman-park", "mount-lawley", "south-perth"
     ],
-    thumbnail: "https://res.cloudinary.com/dr8tjrszy/image/upload/v1771873841/residential-window-cleaning_nhnoux.jpg",
+    thumbnail: "https://res.cloudinary.com/dr8tjrszy/image/upload/f_auto,q_auto/v1771873841/residential-window-cleaning_nhnoux.jpg",
     images: [],
     excerpt: "We managed the window cleaning for a beautiful property over a six-month period, handling everything from an intensive post-renovation clean to pristine pre-sale detailing and final pre-auction touch-ups.",
     serviceType: ["Post-Renovation Cleaning", "Pre-Sale Cleaning", "Strata & Property Management"],
@@ -138,7 +138,7 @@ export const caseStudies: CaseStudy[] = [
     nearbySuburbs: [
       "eglinton", "alkimos", "yanchep", "jindalee", "butler", "quinns-rocks", "two-rocks", "mindarie", "clarkson"
     ],
-    thumbnail: "https://res.cloudinary.com/dr8tjrszy/image/upload/v1771873841/residential-window-cleaning_nhnoux.jpg",
+    thumbnail: "https://res.cloudinary.com/dr8tjrszy/image/upload/f_auto,q_auto/v1771873841/residential-window-cleaning_nhnoux.jpg",
     images: [],
     excerpt: "See how we transformed this beautiful coastal home in Eglinton on a tight deadline. By removing years of stubborn ocean salt buildup, we helped the homeowner get their property market-ready and looking pristine.",
     serviceType: ["Residential Window Cleaning", "Pre-Sale Cleaning", "Coastal Property Maintenance"],

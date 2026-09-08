@@ -142,7 +142,7 @@ export default async function Footer() {
                                     href="/locations"
                                     className="text-action-gold hover:underline text-sm font-medium"
                                 >
-                                    View all 100+ suburbs →
+                                    View all 373 Perth suburbs →
                                 </Link>
                             </li>
                         </ul>
@@ -194,7 +194,7 @@ export default async function Footer() {
                 {/* Bottom Bar */}
                 <div className="border-t border-white/10 mt-8 sm:mt-12 pt-6 sm:pt-8 flex flex-col sm:flex-row justify-between items-center gap-3 sm:gap-4">
                     <p className="text-xs text-gray-500">
-                        Â© {currentYear} Aspect Window Cleaning
+                        © {currentYear} Aspect Window Cleaning
                     </p>
                     <div className="flex gap-4 sm:gap-6 text-xs text-gray-500">
                         <Link href="/privacy" className="hover:text-gray-300">

@@ -83,7 +83,7 @@ export default function BlogListingPage() {
                                         {post.title}
                                     </h2>
                                     <p className="text-brand-slate line-clamp-3 mb-6 flex-grow">
-                                        {post.excerpt}
+                                        {post.excerpt.replace(/<[^>]+>/g, '')}
                                     </p>
                                     <span className="inline-flex items-center gap-2 text-brand-navy font-bold text-sm group-hover:translate-x-1 transition-transform">
                                         Read Article <ArrowRight className="w-4 h-4 text-action-gold" />

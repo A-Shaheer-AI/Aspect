@@ -20,32 +20,32 @@ export default function ResultsAndReviews() {
 
                     <div className="grid md:grid-cols-2 lg:grid-cols-5 gap-12 items-start">
                         <BeforeAfterSlider
-                            afterImage="https://res.cloudinary.com/dr8tjrszy/image/upload/v1774345158/IMG_9593_1_2_b98bl5.png"
-                            beforeImage="https://res.cloudinary.com/dr8tjrszy/image/upload/v1771960144/WhatsApp_Image_2026-02-22_at_8.48.03_PM_vtb2tn.jpg"
+                            afterImage="https://res.cloudinary.com/dr8tjrszy/image/upload/f_auto,q_auto/v1774345158/IMG_9593_1_2_b98bl5.png"
+                            beforeImage="https://res.cloudinary.com/dr8tjrszy/image/upload/f_auto,q_auto/v1771960144/WhatsApp_Image_2026-02-22_at_8.48.03_PM_vtb2tn.jpg"
                             initial={50}
                         />
 
                         <BeforeAfterSlider
-                            afterImage="https://res.cloudinary.com/dr8tjrszy/image/upload/v1785881088/aspect_gallery/3after.webp"
-                            beforeImage="https://res.cloudinary.com/dr8tjrszy/image/upload/v1785881084/aspect_gallery/3before.webp"
+                            afterImage="https://res.cloudinary.com/dr8tjrszy/image/upload/f_auto,q_auto/v1785881088/aspect_gallery/3after.webp"
+                            beforeImage="https://res.cloudinary.com/dr8tjrszy/image/upload/f_auto,q_auto/v1785881084/aspect_gallery/3before.webp"
                             initial={50}
                         />
 
                         <BeforeAfterSlider
-                            afterImage="https://res.cloudinary.com/dr8tjrszy/image/upload/v1772792157/after-window-cleaning_fs1hhz.jpg"
-                            beforeImage="https://res.cloudinary.com/dr8tjrszy/image/upload/v1772792155/aspect-before-window-cleaning_zfr8ae.jpg"
+                            afterImage="https://res.cloudinary.com/dr8tjrszy/image/upload/f_auto,q_auto/v1772792157/after-window-cleaning_fs1hhz.jpg"
+                            beforeImage="https://res.cloudinary.com/dr8tjrszy/image/upload/f_auto,q_auto/v1772792155/aspect-before-window-cleaning_zfr8ae.jpg"
                             initial={50}
                         />
 
                         <BeforeAfterSlider
-                            afterImage="https://res.cloudinary.com/dr8tjrszy/image/upload/v1785879700/aspect_gallery/after.webp"
-                            beforeImage="https://res.cloudinary.com/dr8tjrszy/image/upload/v1785879695/aspect_gallery/1-before.webp"
+                            afterImage="https://res.cloudinary.com/dr8tjrszy/image/upload/f_auto,q_auto/v1785879700/aspect_gallery/after.webp"
+                            beforeImage="https://res.cloudinary.com/dr8tjrszy/image/upload/f_auto,q_auto/v1785879695/aspect_gallery/1-before.webp"
                             initial={50}
                         />
 
                         <BeforeAfterSlider
-                            afterImage="https://res.cloudinary.com/dr8tjrszy/image/upload/v1785880638/aspect_gallery/2-before.webp"
-                            beforeImage="https://res.cloudinary.com/dr8tjrszy/image/upload/v1785880639/aspect_gallery/2-after.webp"
+                            afterImage="https://res.cloudinary.com/dr8tjrszy/image/upload/f_auto,q_auto/v1785880638/aspect_gallery/2-before.webp"
+                            beforeImage="https://res.cloudinary.com/dr8tjrszy/image/upload/f_auto,q_auto/v1785880639/aspect_gallery/2-after.webp"
                             initial={50}
                         />
                     </div>

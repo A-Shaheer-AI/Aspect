@@ -158,10 +158,7 @@ export default function HeroWithScroll() {
                         />
                       ) : (
                         <Image
-                          src={item.src.replace(
-                            "/upload/",
-                            "/upload/f_auto,q_auto/"
-                          )}
+                          src={(item.src.includes("/f_auto,q_auto/") ? item.src : item.src.replace("/upload/", "/upload/f_auto,q_auto/"))}
                           alt="Professional window and solar panel cleaning in Perth"
                           width={200}
                           height={150}
@@ -192,10 +189,7 @@ export default function HeroWithScroll() {
                         />
                       ) : (
                         <Image
-                          src={item.src.replace(
-                            "/upload/",
-                            "/upload/f_auto,q_auto/"
-                          )}
+                          src={(item.src.includes("/f_auto,q_auto/") ? item.src : item.src.replace("/upload/", "/upload/f_auto,q_auto/"))}
                           alt="Professional window and solar panel cleaning in Perth"
                           width={200}
                           height={150}
@@ -309,10 +303,7 @@ export default function HeroWithScroll() {
                         />
                       ) : (
                         <Image
-                          src={item.src.replace(
-                            "/upload/",
-                            "/upload/f_auto,q_auto/"
-                          )}
+                          src={(item.src.includes("/f_auto,q_auto/") ? item.src : item.src.replace("/upload/", "/upload/f_auto,q_auto/"))}
                           alt="Professional window and solar panel cleaning in Perth"
                           width={400}
                           height={250}
@@ -345,10 +336,7 @@ export default function HeroWithScroll() {
                         />
                       ) : (
                         <Image
-                          src={item.src.replace(
-                            "/upload/",
-                            "/upload/f_auto,q_auto/"
-                          )}
+                          src={(item.src.includes("/f_auto,q_auto/") ? item.src : item.src.replace("/upload/", "/upload/f_auto,q_auto/"))}
                           alt="Professional window and solar panel cleaning in Perth"
                           width={400}
                           height={250}

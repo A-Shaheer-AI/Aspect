@@ -1,6 +1,7 @@
 import type { Metadata } from "next";
 
 export const metadata: Metadata = {
+    alternates: { canonical: "https://aspectwindowcleaning.com.au/pricing" },
     title: { absolute: "Window Cleaning Prices Perth | Aspect Window Cleaning" },
     description: "Transparent Perth window cleaning prices with zero hidden fees. Calculate your instant quote online or view our residential & commercial packages. Book today!",
     openGraph: {

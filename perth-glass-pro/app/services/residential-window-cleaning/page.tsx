@@ -225,6 +225,23 @@ const ResidentialWindowCleaning = () => {
           })
         }}
       />
+      <script
+        type="application/ld+json"
+        dangerouslySetInnerHTML={{
+          __html: JSON.stringify({
+            "@context": "https://schema.org",
+            "@type": "FAQPage",
+            "mainEntity": pressureWashing.map((f) => ({
+              "@type": "Question",
+              "name": f.question,
+              "acceptedAnswer": {
+                "@type": "Answer",
+                "text": String(f.answer)
+              }
+            }))
+          })
+        }}
+      />
 
 
             {/* HERO */}
@@ -291,9 +308,7 @@ Same-Week Bookings
 
             {/* ABOUT */}
             <section className="mt-5 py-8 max-w-5xl mx-auto px-4">
-                <h5 className="text-action-gold font-semibold mb-2">
-                    About This Service
-                </h5>
+                <span className="text-action-gold font-semibold mb-2 block uppercase tracking-wider text-xs">About This Service</span>
                 <h2 className="text-3xl font-heading font-bold text-brand-navy text-left mb-5">
                     Perth's Premier Window Cleaning Specialists
                 </h2>
@@ -322,9 +337,7 @@ single time. We also offer <Link href="/services/solar-panel-washing" className=
 
             {/* Our services */}
             <section className="py-16 max-w-5xl mx-auto px-4">
-                <h3 className="text-sm text-action-gold font-semibold uppercase mb-2">
-                    OUR SERVICES
-                </h3>
+                <span className="text-sm text-action-gold font-semibold uppercase mb-2 block uppercase tracking-wider text-xs">OUR SERVICES</span>
                 <h2 className="text-3xl font-heading font-bold text-brand-navy mb-4">
                     Residential & Commercial Window Cleaning
                 </h2>
@@ -345,9 +358,7 @@ single time. We also offer <Link href="/services/solar-panel-washing" className=
                             />
                             <div className="absolute inset-0 bg-gradient-to-t from-[#ffe54d]/30 to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-300" />
                         </div>
-                        <h4 className="font-semibold text-xl text-brand-navy mb-3">
-                            Residential Window Cleaning
-                        </h4>
+                        <h3 className="font-semibold text-xl text-brand-navy mb-3">Residential Window Cleaning</h3>
                         <p className="text-brand-slate text-sm leading-relaxed">
                             Transform your home with crystal-clear windows from top to bottom. We clean every pane, frame, sill, screen, and track - restoring brightness and improving your home's appearance inside and out. Ideal for regular maintenance or pre-sale preparation.
                         </p>
@@ -357,7 +368,7 @@ single time. We also offer <Link href="/services/solar-panel-washing" className=
                     <div className="group">
                         <div className="relative overflow-hidden rounded-2xl mb-6 aspect-[4/3]">
                             <Image
-                                src="https://res.cloudinary.com/dr8tjrszy/image/upload/v1771960134/commercial-window-cleaning_gzkvaj.jpg"
+                                src="https://res.cloudinary.com/dr8tjrszy/image/upload/f_auto,q_auto/v1771960134/commercial-window-cleaning_gzkvaj.jpg"
                                 alt="Technician cleaning large commercial glass facade"
                                 fill
                                 className="object-cover group-hover:scale-105 transition-transform duration-500"
@@ -365,9 +376,7 @@ single time. We also offer <Link href="/services/solar-panel-washing" className=
                             />
                             <div className="absolute inset-0 bg-gradient-to-t from-[#ffe54d]/30 to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-300" />
                         </div>
-                        <h4 className="font-semibold text-xl text-brand-navy mb-3">
-                            Commercial Window Cleaning
-                        </h4>
+                        <h3 className="font-semibold text-xl text-brand-navy mb-3">Commercial Window Cleaning</h3>
                         <p className="text-brand-slate text-sm leading-relaxed">
                             First impressions matter for your business. Our commercial window cleaning service keeps your shopfront, office, or strata building looking polished and professional at all times. We offer flexible scheduling including after-hours to minimise disruption.
                         </p>
@@ -377,9 +386,7 @@ single time. We also offer <Link href="/services/solar-panel-washing" className=
 
             {/* WHAT's Include */}
             <section className="py-16 max-w-5xl mx-auto px-4">
-                <h3 className="text-sm text-action-gold font-semibold uppercase mb-2">
-                    WHAT'S INCLUDED
-                </h3>
+                <span className="text-sm text-action-gold font-semibold uppercase mb-2 block uppercase tracking-wider text-xs">WHAT'S INCLUDED</span>
                 <h2 className="text-3xl font-heading font-bold text-brand-navy mb-8">
                     Everything Covered in Our Window Clean
                 </h2>
@@ -397,9 +404,7 @@ single time. We also offer <Link href="/services/solar-panel-washing" className=
                                 <div className="w-14 h-14 rounded-xl bg-gradient-to-br from-amber-50 to-orange-100 flex items-center justify-center group-hover:scale-110 transition-transform duration-300">
                                     <Icon className="w-7 h-7 text-action-gold" />
                                 </div>
-                                <h4 className="font-semibold text-lg text-brand-navy">
-                                    {item.title}
-                                </h4>
+                                <h3 className="font-semibold text-lg text-brand-navy">{item.title}</h3>
                                 <p className="text-brand-slate text-sm leading-relaxed">
                                     {item.description}
                                 </p>
@@ -414,9 +419,7 @@ single time. We also offer <Link href="/services/solar-panel-washing" className=
                 <div className="max-w-6xl mx-auto px-4">
 
                     {/* Subheading */}
-                    <h4 className="text-action-gold font-bold text-lg text-center mb-2">
-                        WHY IT MATTERS
-                    </h4>
+                    <span className="text-action-gold font-bold text-lg text-center mb-2 block uppercase tracking-wider text-xs">$2</span>
 
                     {/* Main Heading */}
                     <h2 className="text-3xl md:text-4xl font-heading font-bold text-brand-navy text-center mb-6">
@@ -443,8 +446,8 @@ single time. We also offer <Link href="/services/solar-panel-washing" className=
                     <div className="max-w-3xl mx-auto w-full">
                         <BeforeAfterSlider
                             initial={50}
-                            beforeImage="https://res.cloudinary.com/dr8tjrszy/image/upload/v1771960147/WhatsApp_Image_2026-02-22_at_8.48.08_PM_1_x4ymo2.jpg"
-                            afterImage="https://res.cloudinary.com/dr8tjrszy/image/upload/v1771960136/shope-gates-cleaning_euctx1.jpg"
+                            beforeImage="https://res.cloudinary.com/dr8tjrszy/image/upload/f_auto,q_auto/v1771960147/WhatsApp_Image_2026-02-22_at_8.48.08_PM_1_x4ymo2.jpg"
+                            afterImage="https://res.cloudinary.com/dr8tjrszy/image/upload/f_auto,q_auto/v1771960136/shope-gates-cleaning_euctx1.jpg"
                         />
                     </div>
 
@@ -456,9 +459,7 @@ single time. We also offer <Link href="/services/solar-panel-washing" className=
                 <div className="max-w-5xl mx-auto px-4">
 
                     {/* Subheading */}
-                    <h4 className="text-action-gold font-bold text-lg text-center mb-2">
-                        WHY ASPECT
-                    </h4>
+                    <span className="text-action-gold font-bold text-lg text-center mb-2 block uppercase tracking-wider text-xs">$2</span>
 
                     {/* Main Heading */}
                     <h2 className="text-3xl md:text-4xl font-heading font-bold text-brand-navy text-center mb-6">
@@ -496,9 +497,7 @@ single time. We also offer <Link href="/services/solar-panel-washing" className=
                 <div className="max-w-5xl mx-auto px-4">
 
                     {/* Subheading */}
-                    <h4 className="text-action-gold font-semibold uppercase mb-2 text-center">
-                        OUR PROCESS
-                    </h4>
+                    <span className="text-action-gold font-semibold uppercase mb-2 text-center block uppercase tracking-wider text-xs">$2</span>
 
                     {/* Heading */}
                     <h2 className="text-3xl md:text-4xl font-heading font-bold text-brand-navy text-center mb-6">

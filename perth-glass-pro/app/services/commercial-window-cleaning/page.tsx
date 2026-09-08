@@ -225,6 +225,23 @@ const CommercialWindowCleaning = () => {
           })
         }}
       />
+      <script
+        type="application/ld+json"
+        dangerouslySetInnerHTML={{
+          __html: JSON.stringify({
+            "@context": "https://schema.org",
+            "@type": "FAQPage",
+            "mainEntity": pressureWashing.map((f) => ({
+              "@type": "Question",
+              "name": f.question,
+              "acceptedAnswer": {
+                "@type": "Answer",
+                "text": String(f.answer)
+              }
+            }))
+          })
+        }}
+      />
 
 
             {/* HERO */}
@@ -291,9 +308,7 @@ Same-Week Bookings
 
             {/* ABOUT */}
             <section className="mt-5 py-8 max-w-5xl mx-auto px-4">
-                <h5 className="text-action-gold font-semibold mb-2">
-                    About This Service
-                </h5>
+                <span className="text-action-gold font-semibold mb-2 block uppercase tracking-wider text-xs">About This Service</span>
                 <h2 className="text-3xl font-heading font-bold text-brand-navy text-left mb-5">
                     Keep Your Business Spotless with Expert Commercial Cleaning
                 </h2>
@@ -306,7 +321,7 @@ Same-Week Bookings
             <section className="py-5">
                 <div className="max-w-4xl mx-auto px-4">
                     <Image
-                        src="https://res.cloudinary.com/dr8tjrszy/image/upload/v1771960129/commercial-sign-cleaning_jzafjr.jpg"
+                        src="https://res.cloudinary.com/dr8tjrszy/image/upload/f_auto,q_auto/v1771960129/commercial-sign-cleaning_jzafjr.jpg"
                         alt="Commercial EWP Cherry Picker Window Cleaning in Perth"
                         width={1000}
                         height={300}
@@ -318,9 +333,7 @@ Same-Week Bookings
 
             {/* WHAT'S INCLUDED */}
             <section className="py-16 max-w-5xl mx-auto px-4">
-                <h3 className="text-sm text-action-gold font-semibold uppercase mb-2">
-                    WHAT'S INCLUDED
-                </h3>
+                <span className="text-sm text-action-gold font-semibold uppercase mb-2 block uppercase tracking-wider text-xs">WHAT'S INCLUDED</span>
                 <h2 className="text-3xl font-heading font-bold text-brand-navy mb-8">
                     What Our Commercial Cleaning Service Covers
                 </h2>
@@ -338,9 +351,7 @@ Same-Week Bookings
                                 <div className="w-14 h-14 rounded-xl bg-gradient-to-br from-amber-50 to-orange-100 flex items-center justify-center group-hover:scale-110 transition-transform duration-300">
                                     <Icon className="w-7 h-7 text-action-gold" />
                                 </div>
-                                <h4 className="font-semibold text-lg text-brand-navy">
-                                    {item.title}
-                                </h4>
+                                <h3 className="font-semibold text-lg text-brand-navy">{item.title}</h3>
                                 <p className="text-brand-slate text-sm leading-relaxed">
                                     {item.description}
                                 </p>
@@ -355,9 +366,7 @@ Same-Week Bookings
                 <div className="max-w-6xl mx-auto px-4">
 
                     {/* Subheading */}
-                    <h4 className="text-action-gold font-bold text-lg text-center mb-2">
-                        WHY IT MATTERS
-                    </h4>
+                    <span className="text-action-gold font-bold text-lg text-center mb-2 block uppercase tracking-wider text-xs">$2</span>
 
                     {/* Main Heading */}
                     <h2 className="text-3xl md:text-4xl font-heading font-bold text-brand-navy text-center mb-6">
@@ -383,8 +392,8 @@ Same-Week Bookings
                     <div className="max-w-3xl mx-auto w-full">
                         <BeforeAfterSlider
                             initial={50}
-                            beforeImage="https://res.cloudinary.com/dr8tjrszy/image/upload/v1771960147/WhatsApp_Image_2026-02-22_at_8.48.08_PM_1_x4ymo2.jpg"
-                            afterImage="https://res.cloudinary.com/dr8tjrszy/image/upload/v1771960136/shope-gates-cleaning_euctx1.jpg"
+                            beforeImage="https://res.cloudinary.com/dr8tjrszy/image/upload/f_auto,q_auto/v1771960147/WhatsApp_Image_2026-02-22_at_8.48.08_PM_1_x4ymo2.jpg"
+                            afterImage="https://res.cloudinary.com/dr8tjrszy/image/upload/f_auto,q_auto/v1771960136/shope-gates-cleaning_euctx1.jpg"
                         />
                     </div>
 
@@ -396,9 +405,7 @@ Same-Week Bookings
                 <div className="max-w-5xl mx-auto px-4">
 
                     {/* Subheading */}
-                    <h4 className="text-action-gold font-bold text-lg text-center mb-2">
-                        WHY ASPECT
-                    </h4>
+                    <span className="text-action-gold font-bold text-lg text-center mb-2 block uppercase tracking-wider text-xs">$2</span>
 
                     {/* Main Heading */}
                     <h2 className="text-3xl md:text-4xl font-heading font-bold text-brand-navy text-center mb-6">
@@ -435,9 +442,7 @@ Same-Week Bookings
                 <div className="max-w-5xl mx-auto px-4">
 
                     {/* Subheading */}
-                    <h4 className="text-action-gold font-semibold uppercase mb-2 text-center">
-                        OUR PROCESS
-                    </h4>
+                    <span className="text-action-gold font-semibold uppercase mb-2 text-center block uppercase tracking-wider text-xs">$2</span>
 
                     {/* Heading */}
                     <h2 className="text-3xl md:text-4xl font-heading font-bold text-brand-navy text-center mb-6">

@@ -56,7 +56,7 @@ const ContactPage = () => {
           </h2>
           <div className="w-10 h-1 bg-[#ffea68] mt-2 mb-5" />
           <p className="text-gray-500 text-sm leading-relaxed mb-10">
-            AspectWindow delivers spotless results every time. Our trained team uses professional-grade equipment to bring clarity and shine to every pane - residential or commercial.
+            Aspect Window Cleaning delivers spotless results every time. Our trained team uses professional-grade equipment to bring clarity and shine to every pane - residential or commercial.
           </p>
 
           <div className="flex flex-col gap-5">
@@ -149,7 +149,7 @@ const ContactPage = () => {
 
             {status === 'success' && (
               <p className="mt-4 py-3 px-4 bg-green-50 text-green-700 text-sm font-medium rounded-lg text-center">
-                ? Thanks! We'll be in touch within 24 hours.
+                ✓ Thanks! We'll be in touch within 24 hours.
               </p>
             )}
             {status === 'error' && (

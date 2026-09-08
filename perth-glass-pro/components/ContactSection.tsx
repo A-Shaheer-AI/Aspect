@@ -184,7 +184,7 @@ export default function ContactSection() {
                         className="inline-flex items-center gap-2 text-brand-navy font-medium bg-white px-6 py-3 rounded-full border border-slate-200 shadow-sm"
                     >
                         <Search className="w-4 h-4" />
-                        Browse All 100+ Suburbs
+                        Browse All 373 Perth Suburbs
                     </Link>
                 </div>
 
@@ -193,7 +193,7 @@ export default function ContactSection() {
                         href="/locations"
                         className="inline-flex items-center bg-brand-navy text-white font-bold text-lg px-8 py-4 rounded-full hover:bg-brand-navy/90 transition-colors"
                     >
-                        View all 100+ suburbs
+                        View all 373 suburbs
                     </Link>
                 </div>
             </div>

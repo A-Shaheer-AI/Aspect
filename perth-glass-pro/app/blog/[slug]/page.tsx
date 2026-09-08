@@ -104,6 +104,10 @@ export default async function BlogPostPage({ params }: { params: Promise<{ slug:
                 type="application/ld+json"
                 dangerouslySetInnerHTML={{ __html: JSON.stringify(jsonLd) }}
             />
+            <script
+                type="application/ld+json"
+                dangerouslySetInnerHTML={{ __html: JSON.stringify(breadcrumbSchema) }}
+            />
 
             {/* Header Image */}
             <div className="relative h-[40vh] md:h-[50vh] bg-brand-navy">
