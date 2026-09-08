@@ -5,11 +5,26 @@ import { ArrowRight, Calendar, MapPin, Users, Clock } from "lucide-react";
 import { caseStudies } from "@/content/case-studies";
 
 export const metadata: Metadata = {
-    title: "Window Cleaning Case Studies | Real Jobs Across Perth | Aspect Window Cleaning",
-    description: "See our real window cleaning case studies from across Perth. Residential, commercial, pre-sale, and specialist jobs. Detailed results, timelines, and before-and-after outcomes.",
+    title: { absolute: "Window Cleaning Case Studies | Aspect Window Cleaning Perth" },
+    description: "Explore real window cleaning transformations across Perth. See before-and-after results, timelines, and customer outcomes for residential & commercial jobs.",
     openGraph: {
         title: "Window Cleaning Case Studies | Aspect Window Cleaning Perth",
         description: "Real jobs. Real results. See how Aspect Window Cleaning delivers across Perth homes and businesses.",
+        images: [
+            {
+                url: "/og-image.webp",
+                type: "image/webp",
+                width: 1200,
+                height: 630,
+                alt: "Aspect Window Cleaning Case Studies Perth",
+            },
+        ],
+    },
+    twitter: {
+        card: "summary_large_image",
+        title: "Window Cleaning Case Studies | Aspect Window Cleaning Perth",
+        description: "Real jobs. Real results. See how Aspect Window Cleaning delivers across Perth homes and businesses.",
+        images: ["/og-image.webp"],
     },
     alternates: {
         canonical: "https://aspectwindowcleaning.com.au/case-studies",
@@ -140,12 +155,15 @@ export default function CaseStudiesIndexPage() {
                         <p className="text-brand-water/80 mb-8">
                             From tight pre-sale deadlines to routine residential maintenance — we work across Perth metro and deliver consistent, professional results.
                         </p>
-                        <div className="flex flex-col sm:flex-row items-center justify-center gap-4">
-                            <Link href="/pricing#estimator" className="inline-flex items-center gap-2 bg-action-gold text-brand-navy font-bold px-8 py-4 rounded-full text-lg hover:bg-action-gold/90 transition-colors">
-                                Get an Instant Quote <ArrowRight className="w-5 h-5" aria-hidden="true" />
+                        <div className="flex flex-wrap items-center justify-center gap-4">
+                            <Link href="/pricing" className="inline-flex items-center gap-2 bg-action-gold text-brand-navy font-bold px-8 py-4 rounded-full text-base sm:text-lg hover:bg-action-gold/90 transition-colors shadow-md">
+                                View Pricing Guide <ArrowRight className="w-5 h-5" aria-hidden="true" />
                             </Link>
-                            <Link href="/services/residential-window-cleaning" className="inline-flex items-center gap-2 bg-white/10 border-2 border-white/30 text-white font-bold px-8 py-4 rounded-full text-lg hover:bg-white/20 transition-colors">
-                                Our Services <ArrowRight className="w-5 h-5" aria-hidden="true" />
+                            <Link href="/contact" className="inline-flex items-center gap-2 bg-white/10 border-2 border-white/30 text-white font-bold px-8 py-4 rounded-full text-base sm:text-lg hover:bg-white/20 transition-colors">
+                                Contact Our Team <ArrowRight className="w-5 h-5" aria-hidden="true" />
+                            </Link>
+                            <Link href="/services" className="inline-flex items-center gap-2 bg-white/10 border-2 border-white/30 text-white font-bold px-8 py-4 rounded-full text-base sm:text-lg hover:bg-white/20 transition-colors">
+                                All Services <ArrowRight className="w-5 h-5" aria-hidden="true" />
                             </Link>
                         </div>
                     </div>

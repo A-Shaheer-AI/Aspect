@@ -25,10 +25,10 @@ export default function Navbar() {
     // Updated links with full anchor paths for inner page compatibility
     const navLinks = [
         { name: "Services", href: "/services" },
-        { name: "Commercial", href: "/commercial" },
+        { name: "Commercial", href: "/services/commercial-window-cleaning" },
         { name: "Areas", href: "/#areas" },
         { name: "Reviews", href: "/#reviews" },
-        { name: "Pricing", href: "/quote" },
+        { name: "Pricing", href: "/pricing" },
         { name: "Blog", href: "/blog" },
         { name: "Case Studies", href: "/case-studies" },
         { name: "Contact", href: "/contact" },
@@ -88,7 +88,7 @@ export default function Navbar() {
                                 <Phone className="w-5 h-5 text-green-500" />
                                 <span className={isScrolled ? "text-brand-navy" : "text-white"}>{BUSINESS.phone}</span>
                             </a>
-                            <a href="/pricing#estimator" onClick={(e) => { e.preventDefault(); setIsModalOpen(true); }} className="shimmer-btn text-brand-navy font-bold px-6 py-2.5 rounded-full hover:shadow-lg transition-shadow cursor-pointer inline-block">Get Fast Quote</a>
+                            <a href="/pricing" onClick={(e) => { e.preventDefault(); setIsModalOpen(true); }} className="shimmer-btn text-brand-navy font-bold px-6 py-2.5 rounded-full hover:shadow-lg transition-shadow cursor-pointer inline-block">Get Fast Quote</a>
                         </div>
 
                         {/* Mobile Menu Button */}
@@ -131,7 +131,7 @@ export default function Navbar() {
                                     <Phone className="w-5 h-5 text-green-500" />
                                     Call: {BUSINESS.phone}
                                 </a>
-                                <a href="/pricing#estimator" onClick={(e) => { e.preventDefault(); setIsMobileMenuOpen(false); setIsModalOpen(true); }} className="w-full shimmer-btn text-brand-navy font-bold py-3 rounded-full mt-4 inline-block text-center">Get Fast Quote</a>
+                                <a href="/pricing" onClick={(e) => { e.preventDefault(); setIsMobileMenuOpen(false); setIsModalOpen(true); }} className="w-full shimmer-btn text-brand-navy font-bold py-3 rounded-full mt-4 inline-block text-center">Get Fast Quote</a>
                             </div>
                         </motion.div>
                     )}

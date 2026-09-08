@@ -18,14 +18,14 @@ export default function BeforeAfter() {
                 {/* After Image (Background) */}
                 <div
                     className="absolute inset-0 bg-cover bg-center"
-                    style={{ backgroundImage: `url('https://res.cloudinary.com/dr8tjrszy/image/upload/v1772800983/after-cleaning-street_lhtqux.jpg')` }}
+                    style={{ backgroundImage: `url('https://res.cloudinary.com/dr8tjrszy/image/upload/f_auto,q_auto/v1772800983/after-cleaning-street_lhtqux.jpg')` }}
                 />
 
                 {/* Before Image (Foreground, clipped) */}
                 <div
                     className="absolute inset-0 bg-cover bg-center border-r-2 border-white"
                     style={{
-                        backgroundImage: `url('https://res.cloudinary.com/dr8tjrszy/image/upload/v1772967205/street-before-cleaning_iupbdq.jpg')`,
+                        backgroundImage: `url('https://res.cloudinary.com/dr8tjrszy/image/upload/f_auto,q_auto/v1772967205/street-before-cleaning_iupbdq.jpg')`,
                         clipPath: `inset(0 0 0 ${sliderPosition}%)`, // This will clip the "Before" image based on slider
                     }}
                 />

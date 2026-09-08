@@ -2,7 +2,7 @@ import { Metadata } from "next";
 import Link from "next/link";
 import { notFound } from "next/navigation";
 import { BUSINESS } from "@/lib/config";
-import { ArrowRight, Home, Building2, Sparkles, Droplets, Wind, Phone } from "lucide-react";
+import { ArrowRight, Home, Building2, Sparkles, Droplets, Wind, Phone, MapPin } from "lucide-react";
 import suburbsData from "@/lib/perth_suburbs.json";
 import ServicesAvailable from "@/components/ServicesAvailable";
 import ServicesClient from "@/components/ServicesClient";
@@ -27,22 +27,37 @@ export async function generateMetadata({ params }: { params: Promise<{ suburb: s
         .replace(/-/g, ' ')
         .replace(/\b\w/g, l => l.toUpperCase());
 
-    const templates = [
-        `Professional window cleaning, solar panel washing, gutter cleaning and pressure washing in ${suburbName}, Perth. Same-week service. Free quotes. Call now.`,
-        `Top-rated window cleaners in ${suburbName}. We offer residential and commercial window cleaning, pressure washing, and solar panel cleaning. Get a free quote today!`,
-        `Looking for reliable window cleaning in ${suburbName}? Aspect Window Cleaning provides streak-free results for homes and businesses. Fully insured and police cleared.`,
-        `Expert window and property cleaning services in ${suburbName}, Perth. From multi-story commercial buildings to residential homes, we guarantee a perfect finish.`
+        const templates = [
+        `Looking for spotless windows in ${suburbName}? Enjoy streak-free pure water cleaning from police-cleared, $20M insured Perth pros. Get a free quote today!`,
+        `Need reliable window cleaning in ${suburbName}? We clean glass, tracks, screens & frames with zero streaks. Same-week bookings & free quotes. Call now!`,
+        `Top-rated window & exterior cleaning in ${suburbName}. Fully insured ($20M) & police-cleared Perth team. Streak-free guarantee. Get your instant quote!`,
+        `Sparkling clean windows in ${suburbName} without the hassle. Pure water technology, frames & tracks included. Same-week service. Free instant quotes!`
     ];
 
     const description = templates[suburbName.length % 4];
 
     return {
-        title: `Window Cleaning in ${suburbName} Perth | Aspect Window Cleaning`,
+        title: { absolute: `Window Cleaning in ${suburbName} | Aspect Window Cleaning` },
         description: description,
         alternates: { canonical: `https://aspectwindowcleaning.com.au/locations/${suburbSlug}` },
         openGraph: {
-            title: `Property Cleaning in ${suburbName} | Aspect Window Cleaning`,
+            title: `Window Cleaning in ${suburbName} | Aspect Window Cleaning`,
             description: `Trusted cleaning services for homes and businesses in ${suburbName}. Fully insured. 5-star rated.`,
+            images: [
+                {
+                    url: "/og-image.webp",
+                    type: "image/webp",
+                    width: 1200,
+                    height: 630,
+                    alt: `Aspect Window Cleaning - ${suburbName}`,
+                },
+            ],
+        },
+        twitter: {
+            card: "summary_large_image",
+            title: `Window Cleaning in ${suburbName} | Aspect Window Cleaning`,
+            description: `Trusted cleaning services for homes and businesses in ${suburbName}. Fully insured. 5-star rated.`,
+            images: ["/og-image.webp"],
         },
     };
 }
@@ -87,7 +102,8 @@ export default async function SuburbPage({ params }: { params: Promise<{ suburb:
         "@context": "https://schema.org",
         "@type": "LocalBusiness",
         "name": `Aspect Window Cleaning - ${suburb.name}`,
-        "image": "https://res.cloudinary.com/dr8tjrszy/image/upload/v1772130850/white-logo_pzpxjk.png",
+        "image": "https://aspectwindowcleaning.com.au/og-image.webp",
+        "logo": "https://res.cloudinary.com/dr8tjrszy/image/upload/v1772130850/white-logo_pzpxjk.png",
         "telephone": BUSINESS.phoneRaw,
         "url": `https://aspectwindowcleaning.com.au/locations/${suburbSlug}`,
         "priceRange": "$$",
@@ -96,6 +112,31 @@ export default async function SuburbPage({ params }: { params: Promise<{ suburb:
             "name": suburb.name
         },
         "description": `Professional window cleaning, solar panel washing, gutter cleaning, and pressure washing in ${suburb.name}, Perth. Same-week service. Fully insured.`
+    };
+
+        const breadcrumbSchema = {
+        "@context": "https://schema.org",
+        "@type": "BreadcrumbList",
+        "itemListElement": [
+            {
+                "@type": "ListItem",
+                "position": 1,
+                "name": "Home",
+                "item": "https://aspectwindowcleaning.com.au"
+            },
+            {
+                "@type": "ListItem",
+                "position": 2,
+                "name": "Locations",
+                "item": "https://aspectwindowcleaning.com.au/locations"
+            },
+            {
+                "@type": "ListItem",
+                "position": 3,
+                "name": suburb.name,
+                "item": `https://aspectwindowcleaning.com.au/locations/${suburbSlug}`
+            }
+        ]
     };
 
     const faqSchema = {
@@ -120,6 +161,10 @@ export default async function SuburbPage({ params }: { params: Promise<{ suburb:
             <script
                 type="application/ld+json"
                 dangerouslySetInnerHTML={{ __html: JSON.stringify(faqSchema) }}
+            />
+            <script
+                type="application/ld+json"
+                dangerouslySetInnerHTML={{ __html: JSON.stringify(breadcrumbSchema) }}
             />
 
             {/* Hero */}
@@ -150,11 +195,56 @@ export default async function SuburbPage({ params }: { params: Promise<{ suburb:
                 </div>
             </section>
 
-            <section className="py-8 max-w-4xl mx-auto px-4 text-center text-gray-600">
-                <p>{suburb.local_note}</p>
-                <p className="mt-4 text-sm leading-relaxed">
-                    In addition to our core window cleaning services, we offer <Link href="/services/solar-panel-washing" className="text-action-gold hover:underline font-semibold">solar panel washing</Link>, <Link href="/services/pressure-washing" className="text-action-gold hover:underline font-semibold">pressure washing</Link>, and <Link href="/services/gutter-cleaning" className="text-action-gold hover:underline font-semibold">gutter cleaning</Link> in {suburb.name} and surrounding areas. For business owners, our <Link href="/services/commercial-window-cleaning" className="text-action-gold hover:underline font-semibold">commercial cleaning</Link> team is available for strata, retail, and office properties. Read our <Link href="/blog" className="text-action-gold hover:underline font-semibold">property maintenance guides</Link> to learn more about protecting your Perth home.
-                </p>
+            {/* Local Area Profile & Maintenance Notes */}
+            <section className="py-12 bg-white border-b border-slate-200/80">
+                <div className="max-w-5xl mx-auto px-4 sm:px-6">
+                    <div className="bg-slate-50 border border-slate-200 rounded-3xl p-6 sm:p-10 shadow-sm">
+                        <div className="flex flex-wrap items-center gap-2 mb-4">
+                            <span className="inline-flex items-center gap-1.5 bg-brand-navy/10 text-brand-navy px-3 py-1 rounded-full text-xs font-bold uppercase tracking-wider">
+                                <MapPin className="w-3.5 h-3.5 text-action-gold" />
+                                {suburb.type || "Perth Metro"}
+                            </span>
+                            {suburb.nearby_landmark && (
+                                <span className="inline-flex items-center gap-1.5 bg-action-gold/15 text-brand-navy px-3 py-1 rounded-full text-xs font-semibold">
+                                    Near {suburb.nearby_landmark}
+                                </span>
+                            )}
+                        </div>
+
+                        <h2 className="text-2xl sm:text-3xl font-heading font-bold text-brand-navy mb-4">
+                            Local Window &amp; Exterior Cleaning Guide: {suburb.name}
+                        </h2>
+
+                        <p className="text-brand-slate text-base sm:text-lg leading-relaxed mb-6">
+                            {suburb.service_description || suburb.description}
+                        </p>
+
+                        <div className="grid sm:grid-cols-2 gap-4 mb-6">
+                            <div className="bg-white p-5 rounded-2xl border border-slate-200/80">
+                                <div className="flex items-center gap-2 text-brand-navy font-bold mb-2">
+                                    <Sparkles className="w-4 h-4 text-action-gold" />
+                                    <span>Local Window Care Tip</span>
+                                </div>
+                                <p className="text-sm text-brand-slate leading-relaxed">
+                                    {suburb.window_cleaning_tip || "Regular pure water cleaning prevents environmental mineral bonding on glass surfaces."}
+                                </p>
+                            </div>
+                            <div className="bg-white p-5 rounded-2xl border border-slate-200/80">
+                                <div className="flex items-center gap-2 text-brand-navy font-bold mb-2">
+                                    <Droplets className="w-4 h-4 text-action-gold" />
+                                    <span>Microclimate Environmental Note</span>
+                                </div>
+                                <p className="text-sm text-brand-slate leading-relaxed">
+                                    {suburb.local_note || `Environmental dust and seasonal rain patterns affect glass in ${suburb.name}.`}
+                                </p>
+                            </div>
+                        </div>
+
+                        <p className="text-sm text-brand-slate/90 leading-relaxed pt-2 border-t border-slate-200/60">
+                            In addition to our residential window cleaning in {suburb.name}, we provide <Link href="/services/solar-panel-washing" className="text-action-gold hover:underline font-semibold">solar panel washing</Link>, <Link href="/services/pressure-washing" className="text-action-gold hover:underline font-semibold">pressure washing</Link>, and <Link href="/services/gutter-cleaning" className="text-action-gold hover:underline font-semibold">gutter cleaning</Link>. Business and strata owners can request specialized <Link href="/services/commercial-window-cleaning" className="text-action-gold hover:underline font-semibold">commercial cleaning</Link> with cherry pickers and reach poles. Explore our real Perth <Link href="/case-studies" className="text-action-gold hover:underline font-semibold">case studies</Link>, browse our <Link href="/blog" className="text-action-gold hover:underline font-semibold">cleaning guides</Link>, compare our <Link href="/pricing" className="text-action-gold hover:underline font-semibold">transparent pricing</Link>, or <Link href="/contact" className="text-action-gold hover:underline font-semibold">contact our team</Link> for an upfront quote.
+                        </p>
+                    </div>
+                </div>
             </section>
 
             {/* Services */}
@@ -198,10 +288,10 @@ export default async function SuburbPage({ params }: { params: Promise<{ suburb:
                         </a>
 
                         <Link
-                            href="/pricing#estimator"
+                            href="/pricing"
                             className="inline-flex items-center gap-2 bg-white/10 border-2 border-white/30 text-white font-bold px-8 py-4 rounded-full text-lg hover:bg-white/20 transition-colors"
                         >
-                            Online Quote <ArrowRight className="w-5 h-5" />
+                            View Pricing Guide <ArrowRight className="w-5 h-5" />
                         </Link>
 
                     </div>

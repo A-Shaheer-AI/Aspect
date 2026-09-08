@@ -14,6 +14,7 @@ interface GalleryItem {
     category: Category;
     title: string;
     location: string;
+    position?: string;
 }
 
 const galleryItems: GalleryItem[] = [
@@ -23,7 +24,7 @@ const galleryItems: GalleryItem[] = [
     { id: 3, image: "https://res.cloudinary.com/dr8tjrszy/image/upload/v1771960136/outside-windows-cleaning_lzp8fq.jpg", category: "Residential", title: "Modern Villa", location: "Dalkeith" },
 
     // Commercial
-    { id: 4, image: "https://res.cloudinary.com/dr8tjrszy/image/upload/v1771960134/commercial-window-cleaning_gzkvaj.jpg", category: "Commercial", title: "Office Tower", location: "Perth CBD" },
+    { id: 4, image: "https://res.cloudinary.com/dr8tjrszy/image/upload/v1771960134/commercial-window-cleaning_gzkvaj.jpg", category: "Commercial", title: "Office Tower", location: "Perth CBD", position: "object-top" },
     { id: 5, image: "https://res.cloudinary.com/dr8tjrszy/image/upload/v1771960134/indoor-pool-cleaning_hwpcmj.jpg", category: "Commercial", title: "Retail Complex", location: "Claremont" },
     { id: 6, image: "https://res.cloudinary.com/dr8tjrszy/image/upload/v1771960129/commercial-sign-cleaning_jzafjr.jpg", category: "Commercial", title: "Medical Center", location: "Nedlands" },
 
@@ -109,7 +110,7 @@ export default function PortfolioPage() {
                                     alt={item.title}
                                     fill
                                     sizes="(max-width: 768px) 100vw, (max-width: 1200px) 50vw, 25vw"
-                                    className="object-cover"
+                                    className={`object-cover ${item.position || "object-center"}`}
                                 />
                             </div>
                         ))}
@@ -139,10 +140,10 @@ export default function PortfolioPage() {
                         Join hundreds of happy Perth customers who love their sparkling clean windows.
                     </p>
                     <Link
-                        href="/pricing#estimator"
+                        href="/pricing"
                         className="inline-flex items-center gap-2 bg-action-gold text-brand-navy font-bold px-8 py-4 rounded-full text-lg hover:shadow-lg transition-shadow"
                     >
-                        Get Your Free Quote <ArrowRight className="w-5 h-5" />
+                        View Pricing & Packages <ArrowRight className="w-5 h-5" />
                     </Link>
                 </div>
             </section>

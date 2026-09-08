@@ -1,6 +1,7 @@
 'use client'
 
 import React, { useState } from 'react'
+import Link from 'next/link';
 import { sendLeadEmail } from '../actions/send-email';
 import TrustGrid from '@/components/TrustGrid';
 
@@ -56,7 +57,7 @@ const ContactPage = () => {
           </h2>
           <div className="w-10 h-1 bg-[#ffea68] mt-2 mb-5" />
           <p className="text-gray-500 text-sm leading-relaxed mb-10">
-            AspectWindow delivers spotless results every time. Our trained team uses professional-grade equipment to bring clarity and shine to every pane - residential or commercial.
+            Aspect Window Cleaning delivers spotless results every time. Our trained team uses professional-grade equipment to bring clarity and shine to every pane - residential or commercial.
           </p>
 
           <div className="flex flex-col gap-5">
@@ -99,6 +100,19 @@ const ContactPage = () => {
                 </div>
               </div>
             ))}
+          </div>
+
+          <div className="mt-8 pt-6 border-t border-gray-200/80 flex flex-col gap-2.5 text-xs text-gray-500">
+            <h3 className="text-xs font-bold text-gray-700 uppercase tracking-wider mb-1">Helpful Resources</h3>
+            <p>
+              Looking for upfront rates? Check our <Link href="/pricing" className="text-brand-navy font-semibold hover:underline">Pricing & Packages</Link> or calculate your quote online.
+            </p>
+            <p>
+              Want to see our previous jobs? Read our <Link href="/case-studies" className="text-brand-navy font-semibold hover:underline">Perth Project Case Studies</Link>.
+            </p>
+            <p>
+              Explore our full service scope in our <Link href="/services" className="text-brand-navy font-semibold hover:underline">Services Directory</Link>.
+            </p>
           </div>
 
         </div>
@@ -149,7 +163,7 @@ const ContactPage = () => {
 
             {status === 'success' && (
               <p className="mt-4 py-3 px-4 bg-green-50 text-green-700 text-sm font-medium rounded-lg text-center">
-                ? Thanks! We'll be in touch within 24 hours.
+                ✓ Thanks! We'll be in touch within 24 hours.
               </p>
             )}
             {status === 'error' && (

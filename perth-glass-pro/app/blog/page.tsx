@@ -7,8 +7,8 @@ import { format } from "date-fns";
 import { blogs } from "@/content/blogs";
 
 export const metadata: Metadata = {
-    title: "Cleaning Tips & News | Aspect Window Cleaning",
-    description: "Expert advice on window cleaning, solar panel maintenance, and property care in Perth.",
+    title: { absolute: "Window Cleaning Tips & Guides | Aspect Window Cleaning" },
+    description: "Expert Perth window and property cleaning guides. Practical tips on preventing mineral etching, caring for solar panels, and maintaining your home year-round.",
     alternates: { canonical: "https://aspectwindowcleaning.com.au/blog" }
 };
 
@@ -83,7 +83,7 @@ export default function BlogListingPage() {
                                         {post.title}
                                     </h2>
                                     <p className="text-brand-slate line-clamp-3 mb-6 flex-grow">
-                                        {post.excerpt}
+                                        {post.excerpt.replace(/<[^>]+>/g, '')}
                                     </p>
                                     <span className="inline-flex items-center gap-2 text-brand-navy font-bold text-sm group-hover:translate-x-1 transition-transform">
                                         Read Article <ArrowRight className="w-4 h-4 text-action-gold" />
@@ -96,6 +96,38 @@ export default function BlogListingPage() {
                             <p className="text-brand-slate text-lg">No posts found yet. Check back soon!</p>
                         </div>
                     )}
+                </div>
+            </section>
+
+            {/* Interlinking & Consultation CTA */}
+            <section className="bg-brand-navy text-white py-16 px-4">
+                <div className="max-w-4xl mx-auto text-center">
+                    <h2 className="text-2xl sm:text-3xl font-heading font-bold mb-4">
+                        Ready for Professional Results on Your Property?
+                    </h2>
+                    <p className="text-brand-water/80 max-w-2xl mx-auto mb-8 text-sm sm:text-base leading-relaxed">
+                        Put these cleaning principles into practice with our police-cleared, insured Perth team. Check out our real project results, review transparent packages, or contact us today.
+                    </p>
+                    <div className="flex flex-wrap items-center justify-center gap-4">
+                        <Link
+                            href="/pricing"
+                            className="bg-action-gold text-brand-navy font-bold px-8 py-3.5 rounded-full text-base hover:bg-action-gold/90 transition-all shadow-md"
+                        >
+                            View Pricing Guide
+                        </Link>
+                        <Link
+                            href="/case-studies"
+                            className="bg-white/10 hover:bg-white/20 text-white font-semibold px-8 py-3.5 rounded-full text-base transition-colors border border-white/20"
+                        >
+                            View Case Studies
+                        </Link>
+                        <Link
+                            href="/contact"
+                            className="bg-white/10 hover:bg-white/20 text-white font-semibold px-8 py-3.5 rounded-full text-base transition-colors border border-white/20"
+                        >
+                            Contact Our Team
+                        </Link>
+                    </div>
                 </div>
             </section>
         </div>

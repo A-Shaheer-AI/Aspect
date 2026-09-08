@@ -1,3 +1,7 @@
+if (!process.env.NODE_OPTIONS?.includes('--max-old-space-size')) {
+    process.env.NODE_OPTIONS = `${process.env.NODE_OPTIONS || ''} --max-old-space-size=4096`.trim();
+}
+
 import type { NextConfig } from "next";
 
 const nextConfig: NextConfig = {
@@ -34,21 +38,6 @@ const nextConfig: NextConfig = {
                 permanent: true,
             },
             {
-                source: "/gutter-cleaning",
-                destination: "/services/gutter-cleaning",
-                permanent: true,
-            },
-            {
-                source: "/solar-cleaning",
-                destination: "/services/solar-panel-washing",
-                permanent: true,
-            },
-            {
-                source: "/pressure-cleaning",
-                destination: "/services/pressure-washing",
-                permanent: true,
-            },
-            {
                 source: "/residential",
                 destination: "/services/residential-window-cleaning",
                 permanent: true,
@@ -56,6 +45,16 @@ const nextConfig: NextConfig = {
             {
                 source: "/commercial",
                 destination: "/services/commercial-window-cleaning",
+                permanent: true,
+            },
+            {
+                source: "/booking",
+                destination: "/pricing",
+                permanent: true,
+            },
+            {
+                source: "/booking/:path*",
+                destination: "/pricing",
                 permanent: true,
             }
         ]

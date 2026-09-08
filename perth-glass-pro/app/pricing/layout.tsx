@@ -1,13 +1,29 @@
 import type { Metadata } from "next";
 
 export const metadata: Metadata = {
-    title: "Pricing & Packages | Aspect Window Cleaning Perth",
-    description: "Transparent pricing for residential and commercial window cleaning, solar panels, and gutters in Perth. View our Essential, Standard, and Supreme packages.",
+    alternates: { canonical: "https://aspectwindowcleaning.com.au/pricing" },
+    title: { absolute: "Window Cleaning Prices Perth | Aspect Window Cleaning" },
+    description: "Transparent Perth window cleaning prices with zero hidden fees. Calculate your instant quote online or view our residential & commercial packages. Book today!",
     openGraph: {
         title: "Pricing & Packages | Aspect Window Cleaning Perth",
         description: "Transparent pricing for residential and commercial window cleaning, solar panels, and gutters in Perth. View our Essential, Standard, and Supreme packages.",
         type: "website",
         url: "https://aspectwindowcleaning.com.au/pricing",
+        images: [
+            {
+                url: "/og-image.webp",
+                type: "image/webp",
+                width: 1200,
+                height: 630,
+                alt: "Aspect Window Cleaning Perth Pricing & Packages",
+            },
+        ],
+    },
+    twitter: {
+        card: "summary_large_image",
+        title: "Pricing & Packages | Aspect Window Cleaning Perth",
+        description: "Transparent pricing for residential and commercial window cleaning, solar panels, and gutters in Perth.",
+        images: ["/og-image.webp"],
     },
 };
 

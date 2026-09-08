@@ -15,9 +15,8 @@ type FaqsType = {
 }
 
 export const metadata: Metadata = {
-    title: "Pressure Cleaning Perth | Driveway & Exterior Washing | Aspect Window Cleaning",
-    description:
-        "Professional pressure cleaning in Perth. Driveways, patios, walls & commercial surfaces. Remove stains, algae & oil safely. Fully insured. Free quotes.",
+    title: { absolute: "Pressure Washing Perth | Aspect Window Cleaning" },
+    description: "High-pressure cleaning for Perth driveways, patios & building exteriors. Strip away tough grime, oil & algae safely. $20M insured. Get your free fast quote!",
     alternates: { canonical: "https://aspectwindowcleaning.com.au/services/pressure-washing" }
 };
 
@@ -197,6 +196,52 @@ const PressureWashing = () => {
           })
         }}
       />
+      <script
+        type="application/ld+json"
+        dangerouslySetInnerHTML={{
+          __html: JSON.stringify({
+            "@context": "https://schema.org",
+            "@type": "BreadcrumbList",
+            "itemListElement": [
+              {
+                "@type": "ListItem",
+                "position": 1,
+                "name": "Home",
+                "item": "https://aspectwindowcleaning.com.au"
+              },
+              {
+                "@type": "ListItem",
+                "position": 2,
+                "name": "Services",
+                "item": "https://aspectwindowcleaning.com.au/services"
+              },
+              {
+                "@type": "ListItem",
+                "position": 3,
+                "name": "Pressure Washing",
+                "item": "https://aspectwindowcleaning.com.au/services/pressure-washing"
+              }
+            ]
+          })
+        }}
+      />
+      <script
+        type="application/ld+json"
+        dangerouslySetInnerHTML={{
+          __html: JSON.stringify({
+            "@context": "https://schema.org",
+            "@type": "FAQPage",
+            "mainEntity": pressureWashing.map((f) => ({
+              "@type": "Question",
+              "name": f.question,
+              "acceptedAnswer": {
+                "@type": "Answer",
+                "text": String(f.answer)
+              }
+            }))
+          })
+        }}
+      />
 
 
             {/* HERO */}
@@ -207,8 +252,8 @@ const PressureWashing = () => {
                 <p className="text-lg md:text-xl max-w-2xl mx-auto mb-6">
                     Revitalise Your Property. Restore Every Surface. Perth's Trusted Specialists.
                 </p>
-                <Link href="/pricing#estimator" className="bg-action-gold text-black px-8 py-4 rounded-full font-bold">
-                    Get Free Quote
+                <Link href="/pricing" className="bg-action-gold text-black px-8 py-4 rounded-full font-bold">
+                    View Pricing Guide
                 </Link>
             </section>
 
@@ -263,9 +308,7 @@ Same-Week Bookings
 
             {/* ABOUT */}
             <section className="mt-5 py-8 max-w-5xl mx-auto px-4">
-                <h5 className="text-action-gold font-semibold mb-2">
-                    About This Service
-                </h5>
+                <span className="text-action-gold font-semibold mb-2 block uppercase tracking-wider text-xs">About This Service</span>
                 <h2 className="text-3xl font-heading font-bold text-brand-navy text-left mb-5">
                     Restore Every Surface with Professional Pressure Washing
                 </h2>
@@ -296,9 +339,7 @@ Same-Week Bookings
 
             {/* WHAT WE CLEAN */}
             <section className="py-16 max-w-5xl mx-auto px-4">
-                <h3 className="text-sm text-action-gold font-semibold uppercase mb-2">
-                    WHAT WE CLEAN
-                </h3>
+                <span className="text-sm text-action-gold font-semibold uppercase mb-2 block uppercase tracking-wider text-xs">WHAT WE CLEAN</span>
                 <h2 className="text-3xl font-heading font-bold text-brand-navy mb-8">
                     Surfaces We Pressure Wash
                 </h2>
@@ -316,9 +357,7 @@ Same-Week Bookings
                                 <div className="w-14 h-14 rounded-xl bg-gradient-to-br from-amber-50 to-orange-100 flex items-center justify-center group-hover:scale-110 transition-transform duration-300">
                                     <Icon className="w-7 h-7 text-action-gold" />
                                 </div>
-                                <h4 className="font-semibold text-lg text-brand-navy">
-                                    {item.title}
-                                </h4>
+                                <h3 className="font-semibold text-lg text-brand-navy">{item.title}</h3>
                                 <p className="text-brand-slate text-sm leading-relaxed">
                                     {item.description}
                                 </p>
@@ -333,9 +372,7 @@ Same-Week Bookings
                 <div className="max-w-6xl mx-auto px-4">
 
                     {/* Subheading */}
-                    <h4 className="text-action-gold font-bold text-lg text-center mb-2">
-                        WHY IT MATTERS
-                    </h4>
+                    <span className="text-action-gold font-bold text-lg text-center mb-2 block uppercase tracking-wider text-xs">WHY IT MATTERS</span>
 
                     {/* Main Heading */}
                     <h2 className="text-3xl md:text-4xl font-heading font-bold text-brand-navy text-center mb-6">
@@ -361,8 +398,8 @@ Same-Week Bookings
                     <div className="max-w-3xl mx-auto w-full">
                         <BeforeAfterSlider
                             initial={50}
-                            beforeImage="https://res.cloudinary.com/dr8tjrszy/image/upload/v1772967205/street-before-cleaning_iupbdq.jpg"
-                            afterImage="https://res.cloudinary.com/dr8tjrszy/image/upload/v1772800983/after-cleaning-street_lhtqux.jpg"
+                            beforeImage="https://res.cloudinary.com/dr8tjrszy/image/upload/f_auto,q_auto/v1772967205/street-before-cleaning_iupbdq.jpg"
+                            afterImage="https://res.cloudinary.com/dr8tjrszy/image/upload/f_auto,q_auto/v1772800983/after-cleaning-street_lhtqux.jpg"
                         />
                     </div>
 
@@ -374,9 +411,7 @@ Same-Week Bookings
                 <div className="max-w-5xl mx-auto px-4">
 
                     {/* Subheading */}
-                    <h4 className="text-action-gold font-bold text-lg text-center mb-2">
-                        WHY ASPECT
-                    </h4>
+                    <span className="text-action-gold font-bold text-lg text-center mb-2 block uppercase tracking-wider text-xs">WHY ASPECT</span>
 
                     {/* Main Heading */}
                     <h2 className="text-3xl md:text-4xl font-heading font-bold text-brand-navy text-center mb-6">
@@ -409,9 +444,7 @@ Same-Week Bookings
                 <div className="max-w-5xl mx-auto px-4">
 
                     {/* Subheading */}
-                    <h4 className="text-action-gold font-semibold uppercase mb-2 text-center">
-                        OUR PROCESS
-                    </h4>
+                    <span className="text-action-gold font-semibold uppercase mb-2 text-center block uppercase tracking-wider text-xs">OUR PROCESS</span>
 
                     {/* Heading */}
                     <h2 className="text-3xl md:text-4xl font-heading font-bold text-brand-navy text-center mb-6">

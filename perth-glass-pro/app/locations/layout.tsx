@@ -1,2 +1,2 @@
-export const metadata = { title: 'Service Areas | Window Cleaning Across Perth Suburbs', description: 'Aspect Window Cleaning services all major Perth suburbs. Find local window cleaners near you with our complete service area directory.', alternates: { canonical: 'https://aspectwindowcleaning.com.au/locations' } };
+export const metadata = { title: { absolute: "Service Areas Across Perth | Aspect Window Cleaning" }, description: 'Aspect Window Cleaning services all major Perth suburbs. Find local window cleaners near you with our complete service area directory.', alternates: { canonical: 'https://aspectwindowcleaning.com.au/locations' } };
 export default function Layout({ children }: { children: React.ReactNode }) { return <>{children}</>; }

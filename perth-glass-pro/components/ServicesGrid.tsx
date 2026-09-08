@@ -12,7 +12,7 @@ export default function ServicesGrid() {
             id: "residential",
             title: "Residential Homes",
             subtext: "Inside & out residential window cleaning. Flyscreens & tracks included for a complete finish.",
-            link: "/residential",
+            link: "/services/residential-window-cleaning",
             image: "https://res.cloudinary.com/dr8tjrszy/image/upload/v1771960130/house-windows-cleaning_byke0n.jpg",
             icon: Home,
             className: "md:col-span-2 md:row-span-2", // Hero size - 2x2
@@ -23,7 +23,7 @@ export default function ServicesGrid() {
             id: "commercial",
             title: "Commercial & Strata",
             subtext: "Offices, retail & high-reach EWP commercial window cleaning. Certified professionals.",
-            link: "/commercial",
+            link: "/services/commercial-window-cleaning",
             image: "https://res.cloudinary.com/dr8tjrszy/image/upload/v1771960138/sign-cleaning-2_ozlp2x.jpg",
             icon: Building2,
             className: "md:col-span-1 md:row-span-2", // Tall - 1x2
@@ -112,10 +112,7 @@ export default function ServicesGrid() {
                                             />
                                         ) : (
                                             <Image
-                                                src={service.image.replace(
-                                                    "/upload/",
-                                                    "/upload/f_auto,q_auto/"
-                                                )}
+                                                src={(service.image.includes("/f_auto,q_auto/") ? service.image : service.image.replace("/upload/", "/upload/f_auto,q_auto/"))}
                                                 alt={service.title}
                                                 fill
                                                 className="object-cover"
@@ -180,10 +177,7 @@ export default function ServicesGrid() {
                                             />
                                         ) : (
                                             <Image
-                                                src={service.image.replace(
-                                                    "/upload/",
-                                                    "/upload/f_auto,q_auto/"
-                                                )}
+                                                src={(service.image.includes("/f_auto,q_auto/") ? service.image : service.image.replace("/upload/", "/upload/f_auto,q_auto/"))}
                                                 alt={service.title}
                                                 fill
                                                 unoptimized

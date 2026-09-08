@@ -6,6 +6,7 @@ import Image from "next/image";
 import Link from "next/link";
 import { openCertificateModal } from "@/components/CertificateModalWrapper";
 import { useState } from "react";
+import { useGmb } from "@/components/GmbProvider";
 import QuoteModal from "./QuoteModal";
 
 type ScrollItem = {
@@ -15,6 +16,7 @@ type ScrollItem = {
 };
 
 export default function HeroWithScroll() {
+  const gmb = useGmb();
   const [isModalOpen, setIsModalOpen] = useState(false);
 
   const items: ScrollItem[] = [
@@ -118,13 +120,14 @@ export default function HeroWithScroll() {
 
           {/* LEFT CONTENT */}
           <div>
-            <p className="text-action-gold text-center md:text-left font-semibold mb-4">
-              No Guesswork - We Visit & Quote For Free
-            </p>
+            <div className="inline-flex items-center gap-2 rounded-full border border-white/20 bg-white/10 px-4 py-1.5 text-xs sm:text-sm font-semibold text-action-gold mb-4 mx-auto md:mx-0">
+              <span className="w-2 h-2 rounded-full bg-green-400 animate-pulse" />
+              Same-Week Service Across All Perth Suburbs
+            </div>
 
-            <h1 className="text-2xl md:text-3xl xl:text-5xl text-center md:text-left font-bold leading-tight mb-6">
-              Residential & Commercial Window &  <br />
-              <span className="text-action-gold">Solar Panel Cleaning Across All Perth Suburbs</span>
+            <h1 className="text-3xl sm:text-4xl md:text-5xl xl:text-6xl text-center md:text-left font-bold leading-tight mb-4">
+              Perth&apos;s Trusted Window Cleaners <br />
+              <span className="text-action-gold">Residential, Commercial &amp; High-Reach</span>
             </h1>
 
             {/* Animation On Mobile */}
@@ -155,10 +158,7 @@ export default function HeroWithScroll() {
                         />
                       ) : (
                         <Image
-                          src={item.src.replace(
-                            "/upload/",
-                            "/upload/f_auto,q_auto/"
-                          )}
+                          src={(item.src.includes("/f_auto,q_auto/") ? item.src : item.src.replace("/upload/", "/upload/f_auto,q_auto/"))}
                           alt="Professional window and solar panel cleaning in Perth"
                           width={200}
                           height={150}
@@ -189,10 +189,7 @@ export default function HeroWithScroll() {
                         />
                       ) : (
                         <Image
-                          src={item.src.replace(
-                            "/upload/",
-                            "/upload/f_auto,q_auto/"
-                          )}
+                          src={(item.src.includes("/f_auto,q_auto/") ? item.src : item.src.replace("/upload/", "/upload/f_auto,q_auto/"))}
                           alt="Professional window and solar panel cleaning in Perth"
                           width={200}
                           height={150}
@@ -208,15 +205,25 @@ export default function HeroWithScroll() {
               </div>
             </div>
 
-            <p className="text-gray-300 text-center md:text-left text-lg mb-6 mt-8 md:mt-0">
-              Streak-free results for homes and businesses. <br />
-              100% satisfaction guaranteed.
+            <p className="text-gray-200 text-center md:text-left text-base sm:text-lg mb-4 max-w-xl leading-relaxed mt-6 md:mt-0">
+              Streak-free pure water cleaning for <strong>homes, businesses &amp; strata complexes</strong>. Also specializing in solar panel washing, gutter clearing, and exterior pressure washing.
             </p>
 
-            <div className="flex items-center justify-center md:justify-start gap-4 mb-6">
-              <Link href={"https://www.google.com/maps/place/Aspect+Window+Cleaning/@-31.9806823,115.7929967,17z/data=!3m1!4b1!4m6!3m5!1s0xafbbd7c3dd591183:0xe683c8a7e7212664!8m2!3d-31.9806823!4d115.7929967!16s%2Fg%2F11x1zxrlv3?entry=ttu&g_ep=EgoyMDI2MDMwMi4wIKXMDSoASAFQAw%3D%3D"} className="bg-white/10 px-4 py-2 rounded-full text-sm">
-                ⭐ 5.0 Google Reviews
-              </Link>
+            <div className="flex flex-wrap items-center justify-center md:justify-start gap-3 mb-6">
+              <a
+                href={BUSINESS.google}
+                target="_blank"
+                rel="noopener noreferrer"
+                className="inline-flex items-center gap-2 bg-white/10 hover:bg-white/20 border border-white/20 px-3.5 py-1.5 rounded-full text-sm font-semibold text-white transition-colors"
+              >
+                <span className="text-amber-300">★★★★★</span>
+                <span>{gmb.rating} Google Rating</span>
+                <span className="text-white/60">({gmb.reviewCount} Reviews)</span>
+              </a>
+              <span className="inline-flex items-center gap-1.5 text-xs text-white/90 bg-white/10 border border-white/15 px-3 py-1.5 rounded-full">
+                <CheckCircle className="w-3.5 h-3.5 text-action-gold" />
+                100% Satisfaction Guarantee
+              </span>
             </div>
 
             <div className="flex flex-col lg:flex-row items-start lg:items-center justify-start gap-4 mb-8 w-full">
@@ -230,7 +237,7 @@ export default function HeroWithScroll() {
               </button>
 
               <Link
-                href="/commercial"
+                href="/services/commercial-window-cleaning"
                 className="group flex items-center justify-center gap-3 bg-white/10 backdrop-blur-sm border-2 border-white/30 text-white font-bold text-lg px-6 lg:px-8 py-4 rounded-full hover:bg-white/20 transition-colors focus:outline-none focus:ring-4 focus:ring-white/30 w-full md:w-auto"
               >
                 <Building2 className="w-5 h-5" aria-hidden="true" />
@@ -249,19 +256,19 @@ export default function HeroWithScroll() {
             </a>
 
             {/* Trust Badges */}
-            <div className="hidden md:flex flex-wrap items-center gap-4 sm:gap-8 pt-5 border-t border-white/10">
-              <button onClick={() => openCertificateModal('insured')} className="flex items-center gap-2 text-white/70 text-xs sm:text-sm hover:text-white transition-colors cursor-pointer">
-<Shield className="w-4 h-4 sm:w-5 sm:h-5 text-action-gold" aria-hidden="true" />
-<span className="border-b border-dashed border-white/30">$20M Insured</span>
-</button>
-              <div className="flex items-center gap-2 text-white/70 text-xs sm:text-sm">
+            <div className="flex flex-wrap items-center justify-center md:justify-start gap-4 sm:gap-6 pt-5 border-t border-white/10">
+              <button onClick={() => openCertificateModal('insured')} className="flex items-center gap-2 text-white/80 text-xs sm:text-sm hover:text-white transition-colors cursor-pointer">
+                <Shield className="w-4 h-4 sm:w-5 sm:h-5 text-action-gold" aria-hidden="true" />
+                <span className="border-b border-dashed border-white/30 font-medium">$20M Insured</span>
+              </button>
+              <button onClick={() => openCertificateModal('police')} className="flex items-center gap-2 text-white/80 text-xs sm:text-sm hover:text-white transition-colors cursor-pointer">
+                <CheckCircle className="w-4 h-4 sm:w-5 sm:h-5 text-action-gold" aria-hidden="true" />
+                <span className="border-b border-dashed border-white/30 font-medium">Police Cleared</span>
+              </button>
+              <div className="flex items-center gap-2 text-white/80 text-xs sm:text-sm">
                 <Clock className="w-4 h-4 sm:w-5 sm:h-5 text-action-gold" aria-hidden="true" />
-                <span>Trained and Professional</span>
+                <span className="font-medium">Free On-Site Quotes</span>
               </div>
-              <button onClick={() => openCertificateModal('police')} className="flex items-center gap-2 text-white/70 text-xs sm:text-sm hover:text-white transition-colors cursor-pointer">
-<CheckCircle className="w-4 h-4 sm:w-5 sm:h-5 text-action-gold" aria-hidden="true" />
-<span className="border-b border-dashed border-white/30">Police Cleared</span>
-</button>
             </div>
 
           </div>
@@ -296,10 +303,7 @@ export default function HeroWithScroll() {
                         />
                       ) : (
                         <Image
-                          src={item.src.replace(
-                            "/upload/",
-                            "/upload/f_auto,q_auto/"
-                          )}
+                          src={(item.src.includes("/f_auto,q_auto/") ? item.src : item.src.replace("/upload/", "/upload/f_auto,q_auto/"))}
                           alt="Professional window and solar panel cleaning in Perth"
                           width={400}
                           height={250}
@@ -332,10 +336,7 @@ export default function HeroWithScroll() {
                         />
                       ) : (
                         <Image
-                          src={item.src.replace(
-                            "/upload/",
-                            "/upload/f_auto,q_auto/"
-                          )}
+                          src={(item.src.includes("/f_auto,q_auto/") ? item.src : item.src.replace("/upload/", "/upload/f_auto,q_auto/"))}
                           alt="Professional window and solar panel cleaning in Perth"
                           width={400}
                           height={250}

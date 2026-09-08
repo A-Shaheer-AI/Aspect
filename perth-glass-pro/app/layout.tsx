@@ -30,8 +30,8 @@ const inter = Inter({
 export const metadata: Metadata = {
     metadataBase: new URL("https://aspectwindowcleaning.com.au"),
     title: {
-        template: "%s | Aspect Window Cleaning Perth",
-        default: "Perth's Premier Window Cleaning | Residential & Commercial Specialists",
+        template: "%s | Aspect Window Cleaning",
+        default: "Aspect Window Cleaning Perth | Residential & Commercial",
     },
     icons: {
         icon: "https://res.cloudinary.com/dr8tjrszy/image/upload/v1772130850/white-logo_pzpxjk.png"
@@ -58,7 +58,8 @@ export const metadata: Metadata = {
         siteName: "Aspect Window Cleaning",
         images: [
             {
-                url: "https://res.cloudinary.com/dr8tjrszy/image/upload/v1772130850/white-logo_pzpxjk.png",
+                url: "/og-image.webp",
+                type: "image/webp",
                 width: 1200,
                 height: 630,
                 alt: "Aspect Window Cleaning Perth",
@@ -69,7 +70,7 @@ export const metadata: Metadata = {
         card: "summary_large_image",
         title: "Aspect Window Cleaning | Perth's Premier Specialists",
         description: "Professional window cleaning in Perth. Residential and commercial high-reach specialists. Fully insured. 5-star rated.",
-        images: ["https://res.cloudinary.com/dr8tjrszy/image/upload/v1772130850/white-logo_pzpxjk.png"],
+        images: ["/og-image.webp"],
     },
 };
 
@@ -93,7 +94,8 @@ export default async function RootLayout({
                             "@context": "https://schema.org",
                             "@type": "LocalBusiness",
                             "name": "Aspect Window Cleaning",
-                            "image": "https://res.cloudinary.com/dr8tjrszy/image/upload/v1772130850/white-logo_pzpxjk.png",
+                            "image": "https://aspectwindowcleaning.com.au/og-image.webp",
+                            "logo": "https://res.cloudinary.com/dr8tjrszy/image/upload/v1772130850/white-logo_pzpxjk.png",
                             "@id": "https://aspectwindowcleaning.com.au/",
                             "url": "https://aspectwindowcleaning.com.au/",
                             "telephone": "+61426996192",
@@ -132,6 +134,7 @@ export default async function RootLayout({
                                 "closes": "23:59"
                             },
                             "sameAs": [
+                                "https://maps.app.goo.gl/Ebz6bpfT7M4YguZs6",
                                 "https://www.facebook.com/profile.php?id=61576666721111",
                                 "https://www.instagram.com/aspectwindowcleaningperth/",
                                 "https://www.tiktok.com/@aspect.window.cle"

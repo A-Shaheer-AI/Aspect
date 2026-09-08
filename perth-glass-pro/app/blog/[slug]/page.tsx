@@ -22,7 +22,7 @@ export async function generateMetadata({ params }: { params: Promise<{ slug: str
     }
 
     return {
-        title: post.title,
+        title: { absolute: `${post.title} | Aspect Window Cleaning` },
         description: post.excerpt,
         alternates: { canonical: `https://aspectwindowcleaning.com.au/blog/${slug}` },
         openGraph: {
@@ -72,11 +72,41 @@ export default async function BlogPostPage({ params }: { params: Promise<{ slug:
         description: post.excerpt,
     };
 
+    
+    const breadcrumbSchema = {
+        '@context': 'https://schema.org',
+        '@type': 'BreadcrumbList',
+        itemListElement: [
+            {
+                '@type': 'ListItem',
+                position: 1,
+                name: 'Home',
+                item: 'https://aspectwindowcleaning.com.au',
+            },
+            {
+                '@type': 'ListItem',
+                position: 2,
+                name: 'Blog',
+                item: 'https://aspectwindowcleaning.com.au/blog',
+            },
+            {
+                '@type': 'ListItem',
+                position: 3,
+                name: post.title,
+                item: `https://aspectwindowcleaning.com.au/blog/${slug}`,
+            },
+        ],
+    };
+
     return (
         <article className="min-h-screen bg-white">
             <script
                 type="application/ld+json"
                 dangerouslySetInnerHTML={{ __html: JSON.stringify(jsonLd) }}
+            />
+            <script
+                type="application/ld+json"
+                dangerouslySetInnerHTML={{ __html: JSON.stringify(breadcrumbSchema) }}
             />
 
             {/* Header Image */}
@@ -175,6 +205,33 @@ export default async function BlogPostPage({ params }: { params: Promise<{ slug:
                         <p className="text-slate-700 leading-relaxed" dangerouslySetInnerHTML={{ __html: post.conclusion as string }}></p>
                     </div>
                 )}
+
+                {/* Helpful Next Steps & Interlinking */}
+                <div className="p-6 sm:p-8 bg-brand-snow border border-slate-200 rounded-2xl">
+                    <h3 className="text-lg font-heading font-bold text-brand-navy mb-2">
+                        Looking for Professional Window Cleaning in Perth?
+                    </h3>
+                    <p className="text-slate-600 text-sm mb-5 leading-relaxed">
+                        Whether you are preparing a property for sale, dealing with stubborn bore water mineral etching, or scheduling regular maintenance, our team delivers guaranteed streak-free results across all 370+ Perth suburbs.
+                    </p>
+                    <div className="flex flex-wrap items-center gap-3 text-xs sm:text-sm font-semibold">
+                        <Link href="/pricing" className="text-brand-navy hover:text-action-gold transition-colors underline underline-offset-4 decoration-action-gold">
+                            Pricing & Packages &rarr;
+                        </Link>
+                        <span className="text-slate-300">|</span>
+                        <Link href="/case-studies" className="text-brand-navy hover:text-action-gold transition-colors underline underline-offset-4 decoration-action-gold">
+                            View Case Studies &rarr;
+                        </Link>
+                        <span className="text-slate-300">|</span>
+                        <Link href="/contact" className="text-brand-navy hover:text-action-gold transition-colors underline underline-offset-4 decoration-action-gold">
+                            Contact Us &rarr;
+                        </Link>
+                        <span className="text-slate-300">|</span>
+                        <Link href="/blog" className="text-brand-navy hover:text-action-gold transition-colors underline underline-offset-4 decoration-action-gold">
+                            All Cleaning Guides &rarr;
+                        </Link>
+                    </div>
+                </div>
             </div>
 
             {/* Sticky Conversion CTA */}
@@ -185,10 +242,10 @@ export default async function BlogPostPage({ params }: { params: Promise<{ slug:
                         <p className="text-brand-water/80 text-sm">Get the same sparkling finish for your home.</p>
                     </div>
                     <Link
-                        href="/pricing#estimator"
+                        href="/pricing"
                         className="bg-action-gold text-brand-navy font-bold px-6 py-3 rounded-full hover:bg-action-gold/90 transition-colors inline-flex items-center gap-2 shadow-lg whitespace-nowrap"
                     >
-                        Get Free Quote <ArrowRight className="w-4 h-4" />
+                        View Pricing Guide <ArrowRight className="w-4 h-4" />
                     </Link>
                 </div>
             </div>

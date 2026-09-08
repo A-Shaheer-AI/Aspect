@@ -3,7 +3,7 @@ import Link from "next/link";
 import { BUSINESS } from "@/lib/config";
 
 export const metadata: Metadata = {
-    title: "Privacy Policy | Aspect Window Cleaning",
+    title: { absolute: "Privacy Policy | Aspect Window Cleaning" },
     description: "Privacy policy for Aspect Window Cleaning Perth. Learn how we collect, use, and protect your personal information.",
     alternates: { canonical: "https://aspectwindowcleaning.com.au/privacy" }
 };

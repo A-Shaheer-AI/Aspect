@@ -15,9 +15,8 @@ type FaqsType = {
 }
 
 export const metadata: Metadata = {
-    title: "Gutter Cleaning Perth | Roof & Downpipe Clearing | Aspect Window Cleaning",
-    description:
-        "Professional gutter cleaning in Perth. Leaf removal, downpipe clearing & roof valley cleaning. Prevent water damage & pests. Fully insured. Free quotes.",
+    title: { absolute: "Gutter Cleaning Perth | Aspect Window Cleaning" },
+    description: "Protect your Perth home from water damage. Full gutter debris clearing, downpipe flush & roof inspection. Fully insured experts. Free instant quotes!",
     alternates: { canonical: "https://aspectwindowcleaning.com.au/services/gutter-cleaning" }
 };
 
@@ -192,6 +191,52 @@ const GutterCleaningServices = () => {
           })
         }}
       />
+      <script
+        type="application/ld+json"
+        dangerouslySetInnerHTML={{
+          __html: JSON.stringify({
+            "@context": "https://schema.org",
+            "@type": "BreadcrumbList",
+            "itemListElement": [
+              {
+                "@type": "ListItem",
+                "position": 1,
+                "name": "Home",
+                "item": "https://aspectwindowcleaning.com.au"
+              },
+              {
+                "@type": "ListItem",
+                "position": 2,
+                "name": "Services",
+                "item": "https://aspectwindowcleaning.com.au/services"
+              },
+              {
+                "@type": "ListItem",
+                "position": 3,
+                "name": "Gutter Cleaning",
+                "item": "https://aspectwindowcleaning.com.au/services/gutter-cleaning"
+              }
+            ]
+          })
+        }}
+      />
+      <script
+        type="application/ld+json"
+        dangerouslySetInnerHTML={{
+          __html: JSON.stringify({
+            "@context": "https://schema.org",
+            "@type": "FAQPage",
+            "mainEntity": gutterCleaningFaqs.map((f) => ({
+              "@type": "Question",
+              "name": f.question,
+              "acceptedAnswer": {
+                "@type": "Answer",
+                "text": String(f.answer)
+              }
+            }))
+          })
+        }}
+      />
 
 
             {/* HERO */}
@@ -202,8 +247,8 @@ const GutterCleaningServices = () => {
                 <p className="text-lg md:text-xl max-w-2xl mx-auto mb-6">
                     Professional. Reliable. Perth's Trusted Gutter Specialists.
                 </p>
-                <Link href="/pricing#estimator" className="bg-action-gold text-black px-8 py-4 rounded-full font-bold">
-                    Get Free Quote
+                <Link href="/pricing" className="bg-action-gold text-black px-8 py-4 rounded-full font-bold">
+                    View Pricing Guide
                 </Link>
             </section>
 
@@ -258,9 +303,7 @@ Same-Week Bookings
 
             {/* ABOUT */}
             <section className="mt-5 py-8 max-w-5xl mx-auto px-4">
-                <h5 className="text-action-gold font-semibold mb-2">
-                    About This Service
-                </h5>
+                <span className="text-action-gold font-semibold mb-2 block uppercase tracking-wider text-xs">About This Service</span>
                 <h2 className="text-3xl font-heading font-bold text-brand-navy text-left mb-5">
                     Protect Your Home With Expert Gutter Cleaning
                 </h2>
@@ -286,9 +329,7 @@ Same-Week Bookings
 
             {/* WHAT's Include */}
             <section className="py-16 max-w-5xl mx-auto px-4">
-                <h3 className="text-sm text-action-gold font-semibold uppercase mb-2">
-                    WHAT'S INCLUDED
-                </h3>
+                <span className="text-sm text-action-gold font-semibold uppercase mb-2 block uppercase tracking-wider text-xs">WHAT'S INCLUDED</span>
                 <h2 className="text-3xl font-heading font-bold text-brand-navy mb-8">
                     What's Included in Our Gutter Cleaning Service
                 </h2>
@@ -307,9 +348,7 @@ Same-Week Bookings
                                 <div className="w-14 h-14 rounded-xl bg-gradient-to-br from-amber-50 to-orange-100 flex items-center justify-center group-hover:scale-110 transition-transform duration-300">
                                     <Icon className="w-7 h-7 text-action-gold" />
                                 </div>
-                                <h4 className="font-semibold text-lg text-brand-navy">
-                                    {item.title}
-                                </h4>
+                                <h3 className="font-semibold text-lg text-brand-navy">{item.title}</h3>
                                 <p className="text-brand-slate text-sm leading-relaxed">
                                     {item.description}
                                 </p>
@@ -324,9 +363,7 @@ Same-Week Bookings
                 <div className="max-w-6xl mx-auto px-4">
 
                     {/* Subheading */}
-                    <h4 className="text-action-gold font-bold text-lg text-center mb-2">
-                        WHY IT MATTERS
-                    </h4>
+                    <span className="text-action-gold font-bold text-lg text-center mb-2 block uppercase tracking-wider text-xs">WHY IT MATTERS</span>
 
                     {/* Main Heading */}
                     <h2 className="text-3xl md:text-4xl font-heading font-bold text-brand-navy text-center mb-6">
@@ -355,8 +392,8 @@ Same-Week Bookings
                     {/* <div className="max-w-3xl mx-auto w-full">
                         <BeforeAfterSlider
                             initial={50}
-                            beforeImage="https://res.cloudinary.com/dr8tjrszy/image/upload/v1771960147/WhatsApp_Image_2026-02-22_at_8.48.08_PM_1_x4ymo2.jpg"
-                            afterImage="https://res.cloudinary.com/dr8tjrszy/image/upload/v1771960136/shope-gates-cleaning_euctx1.jpg"
+                            beforeImage="https://res.cloudinary.com/dr8tjrszy/image/upload/f_auto,q_auto/v1771960147/WhatsApp_Image_2026-02-22_at_8.48.08_PM_1_x4ymo2.jpg"
+                            afterImage="https://res.cloudinary.com/dr8tjrszy/image/upload/f_auto,q_auto/v1771960136/shope-gates-cleaning_euctx1.jpg"
                         />
                     </div> */}
 
@@ -368,9 +405,7 @@ Same-Week Bookings
                 <div className="max-w-5xl mx-auto px-4">
 
                     {/* Subheading */}
-                    <h4 className="text-action-gold font-bold text-lg text-center mb-2">
-                        WHY ASPECT
-                    </h4>
+                    <span className="text-action-gold font-bold text-lg text-center mb-2 block uppercase tracking-wider text-xs">WHY ASPECT</span>
 
                     {/* Main Heading */}
                     <h2 className="text-3xl md:text-4xl font-heading font-bold text-brand-navy text-center mb-6">
@@ -408,9 +443,7 @@ Same-Week Bookings
                 <div className="max-w-5xl mx-auto px-4">
 
                     {/* Subheading */}
-                    <h4 className="text-action-gold font-semibold uppercase mb-2 text-center">
-                        OUR PROCESS
-                    </h4>
+                    <span className="text-action-gold font-semibold uppercase mb-2 text-center block uppercase tracking-wider text-xs">OUR PROCESS</span>
 
                     {/* Heading */}
                     <h2 className="text-3xl md:text-4xl font-heading font-bold text-brand-navy text-center mb-6">

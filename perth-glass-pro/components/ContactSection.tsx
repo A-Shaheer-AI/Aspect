@@ -118,13 +118,19 @@ export default function ContactSection() {
                     </div>
 
                     {/* CTA - Desktop only */}
-                    <div className="hidden sm:block text-center mt-12">
+                    <div className="hidden sm:flex flex-wrap items-center justify-center gap-4 mt-12">
                         <Link
                             href={`tel:${BUSINESS.phoneRaw}`}
                             className="inline-flex items-center gap-3 bg-brand-navy text-white font-bold text-lg px-8 py-4 rounded-full hover:bg-brand-navy/90 transition-colors"
                         >
                             <Phone className="w-5 h-5" aria-hidden="true" />
                             Call Now for Free Quote
+                        </Link>
+                        <Link
+                            href="/contact"
+                            className="inline-flex items-center gap-2 bg-action-gold text-brand-navy font-bold text-lg px-8 py-4 rounded-full hover:bg-action-gold/90 transition-colors shadow-sm"
+                        >
+                            <span>Online Quote Form</span>
                         </Link>
                     </div>
                 </div>
@@ -184,7 +190,7 @@ export default function ContactSection() {
                         className="inline-flex items-center gap-2 text-brand-navy font-medium bg-white px-6 py-3 rounded-full border border-slate-200 shadow-sm"
                     >
                         <Search className="w-4 h-4" />
-                        Browse All 100+ Suburbs
+                        Browse All 373 Perth Suburbs
                     </Link>
                 </div>
 
@@ -193,7 +199,7 @@ export default function ContactSection() {
                         href="/locations"
                         className="inline-flex items-center bg-brand-navy text-white font-bold text-lg px-8 py-4 rounded-full hover:bg-brand-navy/90 transition-colors"
                     >
-                        View all 100+ suburbs
+                        View all 373 suburbs
                     </Link>
                 </div>
             </div>

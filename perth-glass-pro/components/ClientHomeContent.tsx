@@ -1,15 +1,8 @@
-"use client";
-
-import dynamic from "next/dynamic";
-
-// Lazy load all below-fold components for better initial load
-const ServicesGrid = dynamic(() => import("./ServicesGrid"), { ssr: false });
-// const PureWaterSection = dynamic(() => import("./PureWaterSection"), { ssr: false });
-const ServiceFinder = dynamic(() => import("./ServiceFinder"), { ssr: false });
-const TrustGrid = dynamic(() => import("./TrustGrid"), { ssr: false });
-const ResultsAndReviews = dynamic(() => import("./ResultsAndReviews"), { ssr: false });
-const AreasServed = dynamic(() => import("./AreasServed"), { ssr: false });
-const ContactSection = dynamic(() => import("./ContactSection"), { ssr: false });
+import ServicesGrid from "./ServicesGrid";
+import TrustGrid from "./TrustGrid";
+import ServiceFinder from "./ServiceFinder";
+import ResultsAndReviews from "./ResultsAndReviews";
+import ContactSection from "./ContactSection";
 
 import HomeQuoteForm from "./HomeQuoteForm";
 
@@ -42,9 +35,6 @@ export default function ClientHomeContent() {
 
             {/* Trust Badges & Stats */}
             <TrustGrid />
-
-            {/* Pure Water Technology - SEO Educational Section */}
-            {/* <PureWaterSection /> */}
 
             {/* Natural Language Service Finder */}
             <ServiceFinder />
