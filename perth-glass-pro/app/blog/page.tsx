@@ -35,20 +35,20 @@ export default function BlogListingPage() {
                 dangerouslySetInnerHTML={{ __html: JSON.stringify(blogSchema) }}
             />
             {/* Hero */}
-            <section className="bg-brand-navy text-white pt-32 pb-24">
+            <section className="bg-brand-navy text-white pt-32 sm:pt-36 pb-16 sm:pb-24">
                 <div className="max-w-5xl mx-auto px-4 text-center">
-                    <h1 className="text-4xl md:text-5xl font-heading font-bold mb-4">
+                    <h1 className="text-3xl sm:text-4xl md:text-5xl font-heading font-bold mb-4">
                         Cleaning Tips & News
                     </h1>
-                    <p className="text-xl text-brand-water/80 max-w-2xl mx-auto">
+                    <p className="text-base sm:text-xl text-brand-water/80 max-w-2xl mx-auto">
                         Expert advice for keeping your Perth property sparkling clean.
                     </p>
                 </div>
             </section>
 
             {/* Blogs Grid */}
-            <section className="py-20 px-4">
-                <div className="max-w-7xl mx-auto grid md:grid-cols-2 lg:grid-cols-3 gap-8">
+            <section className="py-10 sm:py-16 px-4">
+                <div className="max-w-7xl mx-auto grid md:grid-cols-2 lg:grid-cols-3 gap-6 sm:gap-8">
                     {posts.length > 0 ? (
                         posts.map((post) => (
                             <Link
@@ -74,7 +74,7 @@ export default function BlogListingPage() {
                                 </div>
 
                                 {/* Content */}
-                                <div className="p-6 flex flex-col flex-grow">
+                                <div className="p-5 sm:p-6 flex flex-col flex-grow">
                                     <div className="flex items-center gap-2 text-sm text-brand-slate mb-3">
                                         <Calendar className="w-4 h-4 text-action-gold" />
                                         <span>{format(new Date(post.date), 'MMMM d, yyyy')}</span>
@@ -108,22 +108,22 @@ export default function BlogListingPage() {
                     <p className="text-brand-water/80 max-w-2xl mx-auto mb-8 text-sm sm:text-base leading-relaxed">
                         Put these cleaning principles into practice with our police-cleared, insured Perth team. Check out our real project results, review transparent packages, or contact us today.
                     </p>
-                    <div className="flex flex-wrap items-center justify-center gap-4">
+                    <div className="flex flex-col sm:flex-row items-center justify-center gap-3 sm:gap-4">
                         <Link
                             href="/pricing"
-                            className="bg-action-gold text-brand-navy font-bold px-8 py-3.5 rounded-full text-base hover:bg-action-gold/90 transition-all shadow-md"
+                            className="w-full sm:w-auto inline-flex items-center justify-center bg-action-gold text-brand-navy font-bold px-8 py-3.5 rounded-full text-base hover:bg-action-gold/90 transition-all shadow-md min-h-[48px]"
                         >
                             View Pricing Guide
                         </Link>
                         <Link
                             href="/case-studies"
-                            className="bg-white/10 hover:bg-white/20 text-white font-semibold px-8 py-3.5 rounded-full text-base transition-colors border border-white/20"
+                            className="w-full sm:w-auto inline-flex items-center justify-center bg-white/10 hover:bg-white/20 text-white font-semibold px-8 py-3.5 rounded-full text-base transition-colors border border-white/20 min-h-[48px]"
                         >
                             View Case Studies
                         </Link>
                         <Link
                             href="/contact"
-                            className="bg-white/10 hover:bg-white/20 text-white font-semibold px-8 py-3.5 rounded-full text-base transition-colors border border-white/20"
+                            className="w-full sm:w-auto inline-flex items-center justify-center bg-white/10 hover:bg-white/20 text-white font-semibold px-8 py-3.5 rounded-full text-base transition-colors border border-white/20 min-h-[48px]"
                         >
                             Contact Our Team
                         </Link>

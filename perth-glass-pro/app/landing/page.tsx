@@ -66,7 +66,7 @@ function LeadForm({
                         placeholder={f.placeholder}
                         value={formData[f.key as keyof typeof formData]}
                         onChange={(e) => setFormData({ ...formData, [f.key]: e.target.value })}
-                        className="w-full rounded-xl px-4 py-3 text-sm outline-none transition-all"
+                        className="w-full rounded-xl px-4 py-3 text-base outline-none transition-all"
                         style={{
                             background: dark ? "rgba(255,255,255,0.92)" : "#f4f6ff",
                             border: "1.5px solid",
@@ -289,9 +289,9 @@ function FreeTrialForm() {
 
     return (
         <div className="flex flex-col gap-3">
-            <input type="text" placeholder="Your Name" value={formData.name} onChange={e => setFormData({...formData, name: e.target.value})} className="w-full rounded-xl px-4 py-3 text-sm outline-none bg-white border border-gray-200 text-gray-900 focus:border-brand-navy" />
-            <input type="tel" placeholder="Phone Number" value={formData.phone} onChange={e => setFormData({...formData, phone: e.target.value})} className="w-full rounded-xl px-4 py-3 text-sm outline-none bg-white border border-gray-200 text-gray-900 focus:border-brand-navy" />
-            <input type="text" placeholder="Full Property Address" value={formData.address} onChange={e => setFormData({...formData, address: e.target.value})} className="w-full rounded-xl px-4 py-3 text-sm outline-none bg-white border border-gray-200 text-gray-900 focus:border-brand-navy" />
+            <input type="text" placeholder="Your Name" value={formData.name} onChange={e => setFormData({...formData, name: e.target.value})} className="w-full rounded-xl px-4 py-3 text-base outline-none bg-white border border-gray-200 text-gray-900 focus:border-brand-navy" />
+            <input type="tel" placeholder="Phone Number" value={formData.phone} onChange={e => setFormData({...formData, phone: e.target.value})} className="w-full rounded-xl px-4 py-3 text-base outline-none bg-white border border-gray-200 text-gray-900 focus:border-brand-navy" />
+            <input type="text" placeholder="Full Property Address" value={formData.address} onChange={e => setFormData({...formData, address: e.target.value})} className="w-full rounded-xl px-4 py-3 text-base outline-none bg-white border border-gray-200 text-gray-900 focus:border-brand-navy" />
             <button onClick={handleSubmit} className="w-full bg-brand-navy text-white font-bold rounded-xl py-3.5 text-sm mt-2 hover:shadow-lg transition-all cursor-pointer">Claim 2 Free Windows</button>
         </div>
     );
@@ -1074,7 +1074,7 @@ export default function WindowCleaningAdsPage() {
             
 {/* 🔹🔹🔹 STICKY BAR 🔹🔹🔹 */}
             <div
-                className="fixed bottom-0 left-0 right-0 z-50 flex items-center justify-center px-5 py-3"
+                className="fixed bottom-0 left-0 right-0 z-50 flex items-center justify-center px-5 py-3 pb-[max(0.75rem,env(safe-area-inset-bottom))]"
                 style={{ background: NAVY, borderTop: `2px solid ${YELLOW}`, boxShadow: "0 -4px 24px rgba(7,7,126,0.3)" }}
             >
                 <div className="hidden sm:block">
@@ -1091,7 +1091,7 @@ export default function WindowCleaningAdsPage() {
                 </Link>
             </div>
             {/* spacer */}
-            <div className="h-16" style={{ background: NAVY }} />
+            <div className="h-16 pb-[env(safe-area-inset-bottom)]" style={{ background: NAVY }} />
 
             {/* GALLERY SLIDESHOW POPUP */}
             {galleryOpen && (
@@ -1137,15 +1137,15 @@ export default function WindowCleaningAdsPage() {
                                 <form onSubmit={handlePkgSubmit} className="space-y-4 text-left">
                                     <div>
                                         <label className="block text-sm font-bold text-gray-700 mb-1">Your Name</label>
-                                        <input required type="text" value={pkgForm.name} onChange={(e) => setPkgForm({...pkgForm, name: e.target.value})} className="w-full px-4 py-3 rounded-lg border border-gray-300 focus:ring-2 focus:ring-action-gold focus:border-transparent" placeholder="John Doe" />
+                                        <input required type="text" value={pkgForm.name} onChange={(e) => setPkgForm({...pkgForm, name: e.target.value})} className="w-full px-4 py-3 rounded-lg border border-gray-300 focus:ring-2 focus:ring-action-gold focus:border-transparent text-base" placeholder="John Doe" />
                                     </div>
                                     <div>
                                         <label className="block text-sm font-bold text-gray-700 mb-1">Phone Number</label>
-                                        <input required type="tel" value={pkgForm.phone} onChange={(e) => setPkgForm({...pkgForm, phone: e.target.value})} className="w-full px-4 py-3 rounded-lg border border-gray-300 focus:ring-2 focus:ring-action-gold focus:border-transparent" placeholder="0400 000 000" />
+                                        <input required type="tel" value={pkgForm.phone} onChange={(e) => setPkgForm({...pkgForm, phone: e.target.value})} className="w-full px-4 py-3 rounded-lg border border-gray-300 focus:ring-2 focus:ring-action-gold focus:border-transparent text-base" placeholder="0400 000 000" />
                                     </div>
                                     <div>
                                         <label className="block text-sm font-bold text-gray-700 mb-1">Suburb</label>
-                                        <input required type="text" value={pkgForm.suburb} onChange={(e) => setPkgForm({...pkgForm, suburb: e.target.value})} className="w-full px-4 py-3 rounded-lg border border-gray-300 focus:ring-2 focus:ring-action-gold focus:border-transparent" placeholder="e.g. Subiaco" />
+                                        <input required type="text" value={pkgForm.suburb} onChange={(e) => setPkgForm({...pkgForm, suburb: e.target.value})} className="w-full px-4 py-3 rounded-lg border border-gray-300 focus:ring-2 focus:ring-action-gold focus:border-transparent text-base" placeholder="e.g. Subiaco" />
                                     </div>
                                     {pkgError && <p className="text-red-500 text-sm font-semibold">{pkgError}</p>}
                                     <button disabled={isPkgSubmitting} type="submit" className="w-full bg-action-gold text-brand-navy font-bold py-4 rounded-xl hover:shadow-lg transition-all cursor-pointer">

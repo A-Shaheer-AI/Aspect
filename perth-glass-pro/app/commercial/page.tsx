@@ -32,35 +32,35 @@ export default function CommercialPage() {
     return (
         <div className="min-h-screen bg-brand-snow">
             {/* Hero */}
-            <section className="bg-brand-navy text-white pt-32 pb-24">
+            <section className="bg-brand-navy text-white pt-32 sm:pt-36 pb-16 sm:pb-24">
                 <div className="max-w-5xl mx-auto px-4 text-center">
                     <div className="inline-flex items-center gap-2 bg-white/10 border border-white/20 rounded-full px-4 py-2 mb-6">
                         <Building2 className="w-5 h-5 text-action-gold" />
                         <span className="text-sm font-medium">Commercial Services</span>
                     </div>
-                    <h1 className="text-4xl md:text-5xl lg:text-6xl font-heading font-bold mb-6">
+                    <h1 className="text-3xl sm:text-5xl lg:text-6xl font-heading font-bold mb-4 sm:mb-6">
                         Window Cleaning for
                         <br />
                         <span className="text-action-gold">
                             Businesses and Strata
                         </span>
                     </h1>
-                    <p className="text-xl text-brand-water/80 max-w-2xl mx-auto mb-10">
-                        Perth window cleaning services for businesses and apartments. specialized high-reach
+                    <p className="text-base sm:text-xl text-brand-water/80 max-w-2xl mx-auto mb-8 sm:mb-10">
+                        Perth window cleaning services for businesses and apartments. Specialized high-reach
                         cleaning for multi-story buildings, retail establishments, and offices. Completely safety
                         compliant, insured, and certified.
                     </p>
-                    <div className="flex flex-col sm:flex-row items-center justify-center gap-4">
+                    <div className="flex flex-col sm:flex-row items-center justify-center gap-3 sm:gap-4">
                         <a
                             href={`tel:${BUSINESS.phoneRaw}`}
-                            className="flex items-center gap-3 bg-action-gold text-brand-navy font-bold text-lg px-8 py-4 rounded-full hover:bg-action-gold/90 transition-colors"
+                            className="w-full sm:w-auto inline-flex items-center justify-center gap-3 bg-action-gold text-brand-navy font-bold text-base sm:text-lg px-8 py-4 rounded-full hover:bg-action-gold/90 transition-colors min-h-[48px]"
                         >
                             <Phone className="w-5 h-5" />
                             Request a Quote
                         </a>
                         <Link
                             href="/services/commercial-window-cleaning"
-                            className="flex items-center gap-3 bg-white/10 border-2 border-white/30 text-white font-bold text-lg px-8 py-4 rounded-full hover:bg-white/20 transition-colors"
+                            className="w-full sm:w-auto inline-flex items-center justify-center gap-3 bg-white/10 border-2 border-white/30 text-white font-bold text-base sm:text-lg px-8 py-4 rounded-full hover:bg-white/20 transition-colors min-h-[48px]"
                         >
                             Find Out More
                             <ArrowRight className="w-5 h-5" />
@@ -147,7 +147,7 @@ export default function CommercialPage() {
                     </p>
                     <a
                         href={`tel:${BUSINESS.phoneRaw}`}
-                        className="inline-flex items-center gap-2 bg-action-gold text-brand-navy font-bold px-8 py-4 rounded-full text-lg hover:bg-action-gold/90 transition-colors"
+                        className="w-full sm:w-auto inline-flex items-center justify-center gap-2 bg-action-gold text-brand-navy font-bold px-8 py-4 rounded-full text-base sm:text-lg hover:bg-action-gold/90 transition-colors min-h-[48px]"
                     >
                         <Phone className="w-5 h-5" />
                         {BUSINESS.phone}

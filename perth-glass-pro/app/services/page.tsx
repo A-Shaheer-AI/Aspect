@@ -111,22 +111,22 @@ export default function ServicesPage() {
                 dangerouslySetInnerHTML={{ __html: JSON.stringify(servicesSchema) }}
             />
             {/* Hero */}
-            <section className="bg-brand-navy text-white pt-32 pb-24">
+            <section className="bg-brand-navy text-white pt-32 sm:pt-36 pb-16 sm:pb-24">
                 <div className="max-w-5xl mx-auto px-4 text-center">
-                    <h1 className="text-4xl md:text-5xl lg:text-6xl font-heading font-bold text-white mb-6">
+                    <h1 className="text-3xl sm:text-5xl lg:text-6xl font-heading font-bold text-white mb-4 sm:mb-6">
                         Our Cleaning <span className="text-action-gold">Services</span>
                     </h1>
-                    <p className="text-xl text-brand-slate max-w-2xl mx-auto">
+                    <p className="text-base sm:text-xl text-slate-200 max-w-2xl mx-auto">
                         Professional residential and commercial cleaning services across Perth metro.
                     </p>
                 </div>
             </section>
 
             {/* Main Services (Detailed) */}
-            <section className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 mb-24 mt-10">
-                <div className="grid md:grid-cols-2 gap-8">
+            <section className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 mb-16 sm:mb-24 mt-6 sm:mt-10">
+                <div className="grid md:grid-cols-2 gap-6 sm:gap-8">
                     {MAIN_SERVICES.map((service) => (
-                        <Link href={service.link} key={service.id} className="relative block bg-white rounded-2xl p-8 shadow-lg border border-slate-100 hover:border-action-gold/30 hover:shadow-xl hover:-translate-y-1 transition-all cursor-pointer group">
+                        <Link href={service.link} key={service.id} className="relative block bg-white rounded-2xl p-6 sm:p-8 shadow-lg border border-slate-100 hover:border-action-gold/30 hover:shadow-xl hover:-translate-y-1 transition-all cursor-pointer group">
                             <div className="flex items-start justify-between mb-6">
                                 <div className="p-3 bg-brand-navy/5 rounded-xl text-brand-navy group-hover:bg-action-gold group-hover:text-brand-navy transition-colors">
                                     <service.icon className="w-8 h-8" />

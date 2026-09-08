@@ -283,7 +283,7 @@ const CommercialWindowCleaning = () => {
             />
 
             {/* HERO */}
-            <section className="bg-brand-navy text-white pt-28 pb-20 text-center relative overflow-hidden">
+            <section className="bg-brand-navy text-white pt-32 sm:pt-36 pb-16 sm:pb-20 text-center relative overflow-hidden">
                 <div className="max-w-4xl mx-auto px-4 relative z-10">
                     <span className="inline-flex items-center gap-2 bg-action-gold/20 text-action-gold border border-action-gold/30 px-4 py-1.5 rounded-full text-xs font-bold uppercase tracking-wider mb-6">
                         <Clock className="w-3.5 h-3.5" /> 24/7 Availability Across Greater Perth
@@ -295,10 +295,10 @@ const CommercialWindowCleaning = () => {
                         Comprehensive office janitorial care, medical-grade hygiene, workstation sanitation, and specialist high-reach commercial glass cleaning. Tailored contracts designed around your operating hours.
                     </p>
                     <div className="flex flex-col sm:flex-row gap-4 justify-center items-center">
-                        <Link href="/contact" className="w-full sm:w-auto bg-action-gold text-brand-navy hover:bg-action-gold/90 px-8 py-4 rounded-full font-bold text-base shadow-lg transition-all">
+                        <Link href="/contact" className="w-full sm:w-auto bg-action-gold text-brand-navy hover:bg-action-gold/90 px-8 py-4 rounded-full font-bold text-base shadow-lg transition-all text-center">
                             Get Free Commercial Quote
                         </Link>
-                        <a href="tel:0415174977" className="w-full sm:w-auto bg-white/10 hover:bg-white/20 text-white border border-white/20 px-8 py-4 rounded-full font-semibold text-base transition-all">
+                        <a href="tel:0415174977" className="w-full sm:w-auto bg-white/10 hover:bg-white/20 text-white border border-white/20 px-8 py-4 rounded-full font-semibold text-base transition-all text-center">
                             Call 0415 174 977
                         </a>
                     </div>
@@ -306,10 +306,10 @@ const CommercialWindowCleaning = () => {
             </section>
 
             {/* TRUST BADGES */}
-            <section className="bg-white py-10 -mt-6 relative z-10">
+            <section className="bg-white py-8 sm:py-10 -mt-6 relative z-10">
                 <div className="max-w-5xl mx-auto px-4">
-                    <div className="grid grid-cols-2 md:grid-cols-4 gap-4 md:gap-6">
-                        <ClickableBadge type="insured" className="flex items-center gap-3 bg-white border border-slate-200 hover:border-action-gold/40 px-5 py-4 rounded-2xl shadow-sm hover:shadow transition-all">
+                    <div className="grid grid-cols-2 md:grid-cols-4 gap-3 sm:gap-4 md:gap-6">
+                        <ClickableBadge type="insured" className="flex items-center gap-2.5 sm:gap-3 bg-white border border-slate-200 hover:border-action-gold/40 px-3.5 sm:px-5 py-3.5 sm:py-4 rounded-2xl shadow-sm hover:shadow transition-all">
                             <div className="w-9 h-9 flex items-center justify-center bg-action-gold/10 rounded-xl flex-shrink-0">
                                 <Shield className="w-5 h-5 text-action-gold" />
                             </div>
@@ -321,7 +321,7 @@ const CommercialWindowCleaning = () => {
                             </div>
                         </ClickableBadge>
 
-                        <ClickableBadge type="police" className="flex items-center gap-3 bg-white border border-slate-200 hover:border-action-gold/40 px-5 py-4 rounded-2xl shadow-sm hover:shadow transition-all">
+                        <ClickableBadge type="police" className="flex items-center gap-2.5 sm:gap-3 bg-white border border-slate-200 hover:border-action-gold/40 px-3.5 sm:px-5 py-3.5 sm:py-4 rounded-2xl shadow-sm hover:shadow transition-all">
                             <div className="w-9 h-9 flex items-center justify-center bg-action-gold/10 rounded-xl flex-shrink-0">
                                 <BadgeCheck className="w-5 h-5 text-action-gold" />
                             </div>
@@ -333,7 +333,7 @@ const CommercialWindowCleaning = () => {
                             </div>
                         </ClickableBadge>
 
-                        <ClickableBadge className="flex items-center gap-3 bg-white border border-slate-200 hover:border-action-gold/40 px-5 py-4 rounded-2xl shadow-sm hover:shadow transition-all">
+                        <ClickableBadge className="flex items-center gap-2.5 sm:gap-3 bg-white border border-slate-200 hover:border-action-gold/40 px-3.5 sm:px-5 py-3.5 sm:py-4 rounded-2xl shadow-sm hover:shadow transition-all">
                             <div className="w-9 h-9 flex items-center justify-center bg-action-gold/10 rounded-xl flex-shrink-0">
                                 <Clock className="w-5 h-5 text-action-gold" />
                             </div>
@@ -345,7 +345,7 @@ const CommercialWindowCleaning = () => {
                             </div>
                         </ClickableBadge>
 
-                        <ClickableBadge className="flex items-center gap-3 bg-white border border-slate-200 hover:border-action-gold/40 px-5 py-4 rounded-2xl shadow-sm hover:shadow transition-all">
+                        <ClickableBadge className="flex items-center gap-2.5 sm:gap-3 bg-white border border-slate-200 hover:border-action-gold/40 px-3.5 sm:px-5 py-3.5 sm:py-4 rounded-2xl shadow-sm hover:shadow transition-all">
                             <div className="w-9 h-9 flex items-center justify-center bg-action-gold/10 rounded-xl flex-shrink-0">
                                 <Star className="w-5 h-5 text-action-gold fill-action-gold" />
                             </div>

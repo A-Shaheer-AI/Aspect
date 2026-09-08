@@ -147,7 +147,7 @@ export default async function CaseStudyPage({ params }: { params: Promise<{ slug
                                 <li><ArrowRight className="w-3 h-3 text-action-gold/70" aria-hidden="true" /></li>
                                 <li><Link href="/case-studies" className="hover:text-action-gold transition-colors">Case Studies</Link></li>
                                 <li><ArrowRight className="w-3 h-3 text-action-gold/70" aria-hidden="true" /></li>
-                                <li className="text-white/90 font-medium truncate max-w-xs">{cs.title}</li>
+                                <li className="text-white/90 font-medium truncate max-w-[140px] sm:max-w-xs">{cs.title}</li>
                             </ol>
                         </nav>
 
@@ -156,11 +156,11 @@ export default async function CaseStudyPage({ params }: { params: Promise<{ slug
                                 <span key={tag} className="text-xs font-bold bg-action-gold text-brand-navy px-3 py-1 rounded-full uppercase tracking-wider">{tag}</span>
                             ))}
                         </div>
-                        <h1 className="text-3xl md:text-4xl lg:text-5xl font-heading font-bold leading-tight mb-6">
+                        <h1 className="text-2xl sm:text-4xl lg:text-5xl font-heading font-bold leading-tight mb-4 sm:mb-6">
                             {cs.title}
                         </h1>
-                        <p className="text-lg text-brand-water/80 max-w-3xl mb-8 leading-relaxed">{cs.excerpt}</p>
-                        <div className="flex flex-wrap gap-6 text-sm text-brand-water/70">
+                        <p className="text-base sm:text-lg text-brand-water/80 max-w-3xl mb-6 sm:mb-8 leading-relaxed">{cs.excerpt}</p>
+                        <div className="flex flex-wrap gap-3 sm:gap-6 text-xs sm:text-sm text-brand-water/70">
                             <div className="flex items-center gap-2">
                                 <Calendar className="w-4 h-4 text-action-gold" aria-hidden="true" />
                                 <time dateTime={cs.date}>{dateFormatted}</time>
@@ -292,7 +292,7 @@ export default async function CaseStudyPage({ params }: { params: Promise<{ slug
 
                     {/* Sidebar */}
                     <aside>
-                        <div className="sticky top-24 space-y-6">
+                        <div className="lg:sticky lg:top-24 space-y-6">
 
                             {/* Job Details Card */}
                             <div className="bg-white rounded-2xl border border-gray-100 shadow-sm p-6">
@@ -412,13 +412,13 @@ export default async function CaseStudyPage({ params }: { params: Promise<{ slug
                         <div className="flex flex-col sm:flex-row items-center justify-center gap-4">
                             <a
                                 href={`tel:${BUSINESS.phoneRaw}`}
-                                className="inline-flex items-center gap-2 bg-action-gold text-brand-navy font-bold px-8 py-4 rounded-full text-lg hover:bg-action-gold/90 transition-colors"
+                                className="w-full sm:w-auto inline-flex items-center justify-center gap-2 bg-action-gold text-brand-navy font-bold px-8 py-4 rounded-full text-base sm:text-lg hover:bg-action-gold/90 transition-colors min-h-[48px]"
                                 aria-label="Call Aspect Window Cleaning"
                             >
                                 <Phone className="w-5 h-5" aria-hidden="true" />
                                 {BUSINESS.phone}
                             </a>
-                            <Link href="/case-studies" className="inline-flex items-center gap-2 bg-white/10 border-2 border-white/30 text-white font-bold px-8 py-4 rounded-full text-lg hover:bg-white/20 transition-colors">
+                            <Link href="/case-studies" className="w-full sm:w-auto inline-flex items-center justify-center gap-2 bg-white/10 border-2 border-white/30 text-white font-bold px-8 py-4 rounded-full text-base sm:text-lg hover:bg-white/20 transition-colors min-h-[48px]">
                                 View All Case Studies <ArrowRight className="w-5 h-5" aria-hidden="true" />
                             </Link>
                         </div>
