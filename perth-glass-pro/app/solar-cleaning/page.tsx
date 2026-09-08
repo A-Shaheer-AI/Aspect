@@ -172,6 +172,7 @@ function QuoteModal({
                 <div className="p-6">
                     <button
                         onClick={onClose}
+                        aria-label="Close modal"
                         className="absolute top-3 right-4 cursor-pointer"
                         style={{ color: showPromo ? "rgba(255,255,255,0.5)" : "rgba(255,255,255,0.5)", top: showPromo ? "3.2rem" : "1rem" }}
                     >

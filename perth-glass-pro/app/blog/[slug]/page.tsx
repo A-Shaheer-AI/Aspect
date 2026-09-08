@@ -72,6 +72,32 @@ export default async function BlogPostPage({ params }: { params: Promise<{ slug:
         description: post.excerpt,
     };
 
+    
+    const breadcrumbSchema = {
+        '@context': 'https://schema.org',
+        '@type': 'BreadcrumbList',
+        itemListElement: [
+            {
+                '@type': 'ListItem',
+                position: 1,
+                name: 'Home',
+                item: 'https://aspectwindowcleaning.com.au',
+            },
+            {
+                '@type': 'ListItem',
+                position: 2,
+                name: 'Blog',
+                item: 'https://aspectwindowcleaning.com.au/blog',
+            },
+            {
+                '@type': 'ListItem',
+                position: 3,
+                name: post.title,
+                item: `https://aspectwindowcleaning.com.au/blog/${slug}`,
+            },
+        ],
+    };
+
     return (
         <article className="min-h-screen bg-white">
             <script

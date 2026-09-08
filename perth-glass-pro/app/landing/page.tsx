@@ -173,6 +173,7 @@ function QuoteModal({
                 <div className="p-6">
                     <button
                         onClick={onClose}
+                        aria-label="Close modal"
                         className="absolute top-3 right-4 cursor-pointer"
                         style={{ color: showPromo ? "rgba(255,255,255,0.5)" : "rgba(255,255,255,0.5)", top: showPromo ? "3.2rem" : "1rem" }}
                     >
@@ -477,11 +478,11 @@ export default function WindowCleaningAdsPage() {
 
                         {/* MOBILE HEADING (Hidden on desktop) */}
                         <div className="lg:hidden text-center text-white mb-8 w-full">
-                            <h1 className="mb-4 leading-none font-black text-white" style={{ fontSize: "clamp(32px,4vw,56px)", letterSpacing: "1px" }}>
+                            <h2 className="mb-4 leading-none font-black text-white" style={{ fontSize: "clamp(32px,4vw,56px)", letterSpacing: "1px" }}>
                                 Perth&apos;s #1
                                 <br />
                                 <span style={{ color: YELLOW }}>Window Cleaners</span>
-                            </h1>
+                            </h2>
                             <p className="w-full text-base font-light leading-relaxed mx-auto max-w-lg" style={{ color: "rgba(255,255,255,0.8)" }}>
                                 Next-Day Availability. Commercial-Grade Pure Water Cleaning for Homes & Businesses.
                             </p>

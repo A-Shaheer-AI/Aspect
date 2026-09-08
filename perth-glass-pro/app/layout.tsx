@@ -132,6 +132,7 @@ export default async function RootLayout({
                                 "closes": "23:59"
                             },
                             "sameAs": [
+                                "https://maps.app.goo.gl/Ebz6bpfT7M4YguZs6",
                                 "https://www.facebook.com/profile.php?id=61576666721111",
                                 "https://www.instagram.com/aspectwindowcleaningperth/",
                                 "https://www.tiktok.com/@aspect.window.cle"

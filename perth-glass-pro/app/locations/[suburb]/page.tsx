@@ -98,6 +98,31 @@ export default async function SuburbPage({ params }: { params: Promise<{ suburb:
         "description": `Professional window cleaning, solar panel washing, gutter cleaning, and pressure washing in ${suburb.name}, Perth. Same-week service. Fully insured.`
     };
 
+        const breadcrumbSchema = {
+        "@context": "https://schema.org",
+        "@type": "BreadcrumbList",
+        "itemListElement": [
+            {
+                "@type": "ListItem",
+                "position": 1,
+                "name": "Home",
+                "item": "https://aspectwindowcleaning.com.au"
+            },
+            {
+                "@type": "ListItem",
+                "position": 2,
+                "name": "Locations",
+                "item": "https://aspectwindowcleaning.com.au/locations"
+            },
+            {
+                "@type": "ListItem",
+                "position": 3,
+                "name": suburb.name,
+                "item": `https://aspectwindowcleaning.com.au/locations/${suburbSlug}`
+            }
+        ]
+    };
+
     const faqSchema = {
         "@context": "https://schema.org",
         "@type": "FAQPage",
