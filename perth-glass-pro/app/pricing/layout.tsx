@@ -9,6 +9,21 @@ export const metadata: Metadata = {
         description: "Transparent pricing for residential and commercial window cleaning, solar panels, and gutters in Perth. View our Essential, Standard, and Supreme packages.",
         type: "website",
         url: "https://aspectwindowcleaning.com.au/pricing",
+        images: [
+            {
+                url: "/og-image.webp",
+                type: "image/webp",
+                width: 1200,
+                height: 630,
+                alt: "Aspect Window Cleaning Perth Pricing & Packages",
+            },
+        ],
+    },
+    twitter: {
+        card: "summary_large_image",
+        title: "Pricing & Packages | Aspect Window Cleaning Perth",
+        description: "Transparent pricing for residential and commercial window cleaning, solar panels, and gutters in Perth.",
+        images: ["/og-image.webp"],
     },
 };
 

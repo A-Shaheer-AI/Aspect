@@ -43,6 +43,21 @@ export async function generateMetadata({ params }: { params: Promise<{ suburb: s
         openGraph: {
             title: `Window Cleaning in ${suburbName} | Aspect Window Cleaning`,
             description: `Trusted cleaning services for homes and businesses in ${suburbName}. Fully insured. 5-star rated.`,
+            images: [
+                {
+                    url: "/og-image.webp",
+                    type: "image/webp",
+                    width: 1200,
+                    height: 630,
+                    alt: `Aspect Window Cleaning - ${suburbName}`,
+                },
+            ],
+        },
+        twitter: {
+            card: "summary_large_image",
+            title: `Window Cleaning in ${suburbName} | Aspect Window Cleaning`,
+            description: `Trusted cleaning services for homes and businesses in ${suburbName}. Fully insured. 5-star rated.`,
+            images: ["/og-image.webp"],
         },
     };
 }
@@ -87,7 +102,8 @@ export default async function SuburbPage({ params }: { params: Promise<{ suburb:
         "@context": "https://schema.org",
         "@type": "LocalBusiness",
         "name": `Aspect Window Cleaning - ${suburb.name}`,
-        "image": "https://res.cloudinary.com/dr8tjrszy/image/upload/v1772130850/white-logo_pzpxjk.png",
+        "image": "https://aspectwindowcleaning.com.au/og-image.webp",
+        "logo": "https://res.cloudinary.com/dr8tjrszy/image/upload/v1772130850/white-logo_pzpxjk.png",
         "telephone": BUSINESS.phoneRaw,
         "url": `https://aspectwindowcleaning.com.au/locations/${suburbSlug}`,
         "priceRange": "$$",

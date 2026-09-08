@@ -10,6 +10,21 @@ export const metadata: Metadata = {
     openGraph: {
         title: "Window Cleaning Case Studies | Aspect Window Cleaning Perth",
         description: "Real jobs. Real results. See how Aspect Window Cleaning delivers across Perth homes and businesses.",
+        images: [
+            {
+                url: "/og-image.webp",
+                type: "image/webp",
+                width: 1200,
+                height: 630,
+                alt: "Aspect Window Cleaning Case Studies Perth",
+            },
+        ],
+    },
+    twitter: {
+        card: "summary_large_image",
+        title: "Window Cleaning Case Studies | Aspect Window Cleaning Perth",
+        description: "Real jobs. Real results. See how Aspect Window Cleaning delivers across Perth homes and businesses.",
+        images: ["/og-image.webp"],
     },
     alternates: {
         canonical: "https://aspectwindowcleaning.com.au/case-studies",

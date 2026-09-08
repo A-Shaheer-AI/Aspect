@@ -1,3 +1,7 @@
+if (!process.env.NODE_OPTIONS?.includes('--max-old-space-size')) {
+    process.env.NODE_OPTIONS = `${process.env.NODE_OPTIONS || ''} --max-old-space-size=4096`.trim();
+}
+
 import type { NextConfig } from "next";
 
 const nextConfig: NextConfig = {
