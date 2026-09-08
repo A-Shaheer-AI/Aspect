@@ -353,7 +353,7 @@ single time. We also offer <Link href="/services/solar-panel-washing" className=
                                 src="https://res.cloudinary.com/dr8tjrszy/image/upload/f_auto,q_auto/v1771960141/WhatsApp_Image_2026-02-22_at_8.47.56_PM_1_ekwlh4.jpg"
                                 alt="Technician cleaning residential home windows"
                                 fill
-                                className="object-cover group-hover:scale-105 transition-transform duration-500"
+                                className="object-cover object-top group-hover:scale-105 transition-transform duration-500"
                                 sizes="(max-width: 768px) 100vw, 50vw"
                             />
                             <div className="absolute inset-0 bg-gradient-to-t from-[#ffe54d]/30 to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-300" />
@@ -371,7 +371,7 @@ single time. We also offer <Link href="/services/solar-panel-washing" className=
                                 src="https://res.cloudinary.com/dr8tjrszy/image/upload/f_auto,q_auto/v1771960134/commercial-window-cleaning_gzkvaj.jpg"
                                 alt="Technician cleaning large commercial glass facade"
                                 fill
-                                className="object-cover group-hover:scale-105 transition-transform duration-500"
+                                className="object-cover object-top group-hover:scale-105 transition-transform duration-500"
                                 sizes="(max-width: 768px) 100vw, 50vw"
                             />
                             <div className="absolute inset-0 bg-gradient-to-t from-[#ffe54d]/30 to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-300" />

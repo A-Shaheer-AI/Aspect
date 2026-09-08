@@ -390,15 +390,16 @@ const CommercialWindowCleaning = () => {
             {/* IMAGE */}
             <section className="py-4">
                 <div className="max-w-5xl mx-auto px-4">
-                    <div className="relative h-[320px] md:h-[420px] w-full rounded-2xl overflow-hidden shadow-md">
+                    <div className="relative h-[440px] sm:h-[540px] md:h-[640px] w-full rounded-2xl overflow-hidden shadow-md">
                         <Image
                             src="https://res.cloudinary.com/dr8tjrszy/image/upload/f_auto,q_auto/v1771960134/commercial-window-cleaning_gzkvaj.jpg"
-                            alt="Commercial office and high-reach glass cleaning in Perth"
+                            alt="Commercial office and high-reach glass cleaning at Toyota dealership in Perth"
                             fill
-                            className="object-cover"
+                            className="object-cover object-top"
                             sizes="(max-width: 1024px) 100vw, 1024px"
+                            priority
                         />
-                        <div className="absolute inset-0 bg-gradient-to-t from-brand-navy/80 via-transparent to-transparent flex items-end p-8">
+                        <div className="absolute inset-0 bg-gradient-to-t from-brand-navy/90 via-transparent to-transparent flex items-end p-6 sm:p-8">
                             <div className="text-white">
                                 <span className="text-action-gold text-xs font-bold uppercase tracking-wider block mb-1">Corporate Presentation</span>
                                 <h3 className="text-xl md:text-2xl font-bold">Flawless Interior Workspaces & Spotless Exterior Glazing</h3>
