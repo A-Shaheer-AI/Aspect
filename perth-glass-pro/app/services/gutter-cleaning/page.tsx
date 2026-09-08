@@ -363,7 +363,7 @@ Same-Week Bookings
                 <div className="max-w-6xl mx-auto px-4">
 
                     {/* Subheading */}
-                    <span className="text-action-gold font-bold text-lg text-center mb-2 block uppercase tracking-wider text-xs">$2</span>
+                    <span className="text-action-gold font-bold text-lg text-center mb-2 block uppercase tracking-wider text-xs">WHY IT MATTERS</span>
 
                     {/* Main Heading */}
                     <h2 className="text-3xl md:text-4xl font-heading font-bold text-brand-navy text-center mb-6">
@@ -405,7 +405,7 @@ Same-Week Bookings
                 <div className="max-w-5xl mx-auto px-4">
 
                     {/* Subheading */}
-                    <span className="text-action-gold font-bold text-lg text-center mb-2 block uppercase tracking-wider text-xs">$2</span>
+                    <span className="text-action-gold font-bold text-lg text-center mb-2 block uppercase tracking-wider text-xs">WHY ASPECT</span>
 
                     {/* Main Heading */}
                     <h2 className="text-3xl md:text-4xl font-heading font-bold text-brand-navy text-center mb-6">
@@ -443,7 +443,7 @@ Same-Week Bookings
                 <div className="max-w-5xl mx-auto px-4">
 
                     {/* Subheading */}
-                    <span className="text-action-gold font-semibold uppercase mb-2 text-center block uppercase tracking-wider text-xs">$2</span>
+                    <span className="text-action-gold font-semibold uppercase mb-2 text-center block uppercase tracking-wider text-xs">OUR PROCESS</span>
 
                     {/* Heading */}
                     <h2 className="text-3xl md:text-4xl font-heading font-bold text-brand-navy text-center mb-6">

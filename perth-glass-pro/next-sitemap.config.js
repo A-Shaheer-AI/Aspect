@@ -7,7 +7,14 @@ module.exports = {
       {
         userAgent: '*',
         allow: '/',
-        disallow: ['/admin', '/auto-blogs', '/landing'],
+        disallow: [
+          '/admin',
+          '/auto-blogs',
+          '/landing',
+          '/gutter-cleaning',
+          '/solar-cleaning',
+          '/pressure-cleaning',
+        ],
       },
     ],
   },

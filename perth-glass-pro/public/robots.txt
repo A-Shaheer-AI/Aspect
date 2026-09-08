@@ -4,6 +4,9 @@ Allow: /
 Disallow: /admin
 Disallow: /auto-blogs
 Disallow: /landing
+Disallow: /gutter-cleaning
+Disallow: /solar-cleaning
+Disallow: /pressure-cleaning
 
 # Host
 Host: https://aspectwindowcleaning.com.au
