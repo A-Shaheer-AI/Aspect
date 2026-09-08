@@ -308,7 +308,7 @@ export default function ResidentialEstimator() {
                                 <div className="bg-orange-50 border border-orange-200 text-orange-700 p-3 rounded-xl flex items-start gap-3">
                                     <AlertCircle className="w-5 h-5 shrink-0 mt-0.5" />
                                     <span className="text-sm font-medium">
-                                        âš¡ Priority Slot Applied (+${PRICING.URGENCY_FEE})
+                                        ⚡ Priority Slot Applied (+${PRICING.URGENCY_FEE})
                                         <br />
                                         <span className="text-xs opacity-80 font-normal">Spots are limited this week.</span>
                                     </span>

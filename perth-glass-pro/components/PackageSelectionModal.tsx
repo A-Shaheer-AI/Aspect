@@ -49,8 +49,8 @@ export default function PackageSelectionModal({ isOpen, onClose, packageName, pa
     };
 
     return (
-        <div className="fixed inset-0 z-[120] flex items-center justify-center p-4 bg-black/60 backdrop-blur-sm">
-            <div className="bg-white rounded-2xl shadow-2xl p-6 md:p-8 max-w-md w-full relative">
+        <div className="fixed inset-0 z-[120] flex items-center justify-center p-4 bg-black/60 backdrop-blur-sm overflow-y-auto">
+            <div className="bg-white rounded-2xl shadow-2xl p-6 md:p-8 max-w-md w-full relative max-h-[92vh] overflow-y-auto my-auto">
                 <button onClick={() => { onClose(); setPkgSubmitted(false); }} className="absolute top-4 right-4 text-gray-400 hover:text-gray-900 cursor-pointer">
                     <X className="w-6 h-6" />
                 </button>
@@ -79,7 +79,7 @@ export default function PackageSelectionModal({ isOpen, onClose, packageName, pa
                                     required
                                     value={pkgForm.name}
                                     onChange={(e) => setPkgForm({...pkgForm, name: e.target.value})}
-                                    className="w-full px-4 py-3 rounded-xl border border-gray-200 bg-gray-50 focus:bg-white focus:outline-none focus:ring-2 focus:ring-[#D4AF37] transition-all"
+                                    className="w-full px-4 py-3 rounded-xl border border-gray-200 bg-gray-50 focus:bg-white focus:outline-none focus:ring-2 focus:ring-[#D4AF37] text-base transition-all"
                                     placeholder="Your Name"
                                 />
                             </div>
@@ -90,7 +90,7 @@ export default function PackageSelectionModal({ isOpen, onClose, packageName, pa
                                     required
                                     value={pkgForm.phone}
                                     onChange={(e) => setPkgForm({...pkgForm, phone: e.target.value})}
-                                    className="w-full px-4 py-3 rounded-xl border border-gray-200 bg-gray-50 focus:bg-white focus:outline-none focus:ring-2 focus:ring-[#D4AF37] transition-all"
+                                    className="w-full px-4 py-3 rounded-xl border border-gray-200 bg-gray-50 focus:bg-white focus:outline-none focus:ring-2 focus:ring-[#D4AF37] text-base transition-all"
                                     placeholder="Your Phone Number"
                                 />
                             </div>
@@ -101,7 +101,7 @@ export default function PackageSelectionModal({ isOpen, onClose, packageName, pa
                                     required
                                     value={pkgForm.suburb}
                                     onChange={(e) => setPkgForm({...pkgForm, suburb: e.target.value})}
-                                    className="w-full px-4 py-3 rounded-xl border border-gray-200 bg-gray-50 focus:bg-white focus:outline-none focus:ring-2 focus:ring-[#D4AF37] transition-all"
+                                    className="w-full px-4 py-3 rounded-xl border border-gray-200 bg-gray-50 focus:bg-white focus:outline-none focus:ring-2 focus:ring-[#D4AF37] text-base transition-all"
                                     placeholder="Your Suburb"
                                 />
                             </div>

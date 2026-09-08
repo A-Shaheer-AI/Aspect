@@ -96,7 +96,7 @@ export default function Navbar() {
                             onClick={() => setIsMobileMenuOpen(!isMobileMenuOpen)}
                             aria-label={isMobileMenuOpen ? "Close menu" : "Open menu"}
                             aria-expanded={isMobileMenuOpen}
-                            className={`md:hidden p-2 ${isScrolled ? "text-brand-navy" : "text-white"}`}
+                            className={`md:hidden p-2.5 rounded-xl transition-colors ${(isScrolled || isMobileMenuOpen) ? "text-brand-navy hover:bg-slate-100" : "text-white hover:bg-white/10"}`}
                         >
                             {isMobileMenuOpen ? <X className="w-6 h-6" aria-hidden="true" /> : <Menu className="w-6 h-6" aria-hidden="true" />}
                         </button>
@@ -110,28 +110,47 @@ export default function Navbar() {
                             initial={{ opacity: 0, height: 0 }}
                             animate={{ opacity: 1, height: "auto" }}
                             exit={{ opacity: 0, height: 0 }}
-                            className="md:hidden bg-white border-t border-slate-100"
+                            className="md:hidden bg-white border-t border-slate-100 shadow-xl overflow-hidden"
                         >
-                            <div className="px-4 py-6 space-y-4">
-                                {navLinks.map((link) => (
-                                    <Link
-                                        key={link.name}
-                                        href={link.href}
-                                        onClick={() => setIsMobileMenuOpen(false)}
-                                        className="block text-brand-navy font-medium py-2 hover:text-action-gold"
-                                    >
-                                        {link.name}
-                                    </Link>
-                                ))}
+                            <div className="px-4 py-6 space-y-2">
+                                {navLinks.map((link) => {
+                                    const isActive = router === link.href;
+                                    return (
+                                        <Link
+                                            key={link.name}
+                                            href={link.href}
+                                            onClick={() => setIsMobileMenuOpen(false)}
+                                            className={`flex items-center min-h-[48px] px-4 rounded-xl font-semibold text-base transition-colors ${
+                                                isActive
+                                                    ? "bg-brand-navy text-white shadow-sm"
+                                                    : "text-brand-navy hover:bg-slate-50 hover:text-action-gold"
+                                            }`}
+                                        >
+                                            {link.name}
+                                        </Link>
+                                    );
+                                })}
                                 {/* Mobile Call Button */}
-                                <a
-                                    href={`tel:${BUSINESS.phoneRaw}`}
-                                    className="flex items-center gap-2 text-brand-navy font-medium py-2"
-                                >
-                                    <Phone className="w-5 h-5 text-green-500" />
-                                    Call: {BUSINESS.phone}
-                                </a>
-                                <a href="/pricing" onClick={(e) => { e.preventDefault(); setIsMobileMenuOpen(false); setIsModalOpen(true); }} className="w-full shimmer-btn text-brand-navy font-bold py-3 rounded-full mt-4 inline-block text-center">Get Fast Quote</a>
+                                <div className="pt-2 border-t border-slate-100 mt-2">
+                                    <a
+                                        href={`tel:${BUSINESS.phoneRaw}`}
+                                        className="flex items-center gap-3 text-brand-navy font-bold min-h-[48px] px-4 rounded-xl hover:bg-slate-50 transition-colors"
+                                    >
+                                        <Phone className="w-5 h-5 text-green-500 shrink-0" />
+                                        <span>Call: {BUSINESS.phone}</span>
+                                    </a>
+                                    <a
+                                        href="/pricing"
+                                        onClick={(e) => {
+                                            e.preventDefault();
+                                            setIsMobileMenuOpen(false);
+                                            setIsModalOpen(true);
+                                        }}
+                                        className="w-full shimmer-btn text-brand-navy font-bold py-3.5 rounded-full mt-3 inline-flex items-center justify-center text-center shadow-md cursor-pointer"
+                                    >
+                                        Get Fast Quote
+                                    </a>
+                                </div>
                             </div>
                         </motion.div>
                     )}

@@ -150,6 +150,11 @@ export default function ServicesGrid() {
                     })}
                 </div>
 
+                {/* Mobile Carousel Swipe Indicator */}
+                <div className="flex md:hidden items-center justify-center gap-2 pb-6 text-xs text-slate-500 font-medium">
+                    <span>Swipe to explore all 5 services &rarr;</span>
+                </div>
+
                 {/* Desktop: Bento Grid Layout */}
                 <div className="hidden md:grid grid-cols-3 gap-6 auto-rows-[280px] w-full">
                     {services.map((service, index) => {

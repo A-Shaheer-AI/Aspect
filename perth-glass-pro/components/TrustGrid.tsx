@@ -6,6 +6,7 @@ import Link from "next/link";
 import { useGmb } from "@/components/GmbProvider";
 import { useState, useEffect } from "react";
 import { getGmbData } from "@/app/actions/gmb";
+import { BUSINESS } from "@/lib/config";
 
 interface Review {
     id: number;
@@ -334,7 +335,7 @@ export default function TrustGrid() {
                     {/* View All Button */}
                     <div className="text-center mt-10">
                         <Link
-                            href="https://www.google.com/maps/place/Aspect+Window+Cleaning/@-31.9806823,115.7929967,17z/data=!4m8!3m7!1s0xafbbd7c3dd591183:0xe683c8a7e7212664!8m2!3d-31.9806823!4d115.7929967!9m1!1b1!16s%2Fg%2F11x1zxrlv3?entry=ttu&g_ep=EgoyMDI2MDQxMi4wIKXMDSoASAFQAw%3D%3D"
+                            href={BUSINESS.google}
                             target="_blank"
                             rel="noopener noreferrer"
                             className="inline-flex items-center gap-2 bg-brand-navy text-white px-8 py-3 rounded-full font-semibold hover:bg-brand-navy/90 transition-colors shadow-lg shadow-brand-navy/20"

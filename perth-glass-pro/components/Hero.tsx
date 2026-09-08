@@ -137,67 +137,45 @@ export default function HeroWithScroll() {
               <div className="pointer-events-none absolute top-0 left-0 w-full h-16 group-hover:h-8 bg-gradient-to-b from-black to-transparent z-10" />
               <div className="pointer-events-none absolute bottom-0 left-0 w-full h-16 group-hover:h-8 bg-gradient-to-t from-black to-transparent z-10" />
 
-              {/* TWO COLUMN GRID - MOBILE */}
+              {/* TWO COLUMN GRID - MOBILE (Optimized images with zero video lag) */}
               <div className="scroll-track grid grid-cols-2 gap-3">
 
                 {/* Column 1 */}
                 <div className="flex flex-col gap-3">
-                  {[...items, ...items].filter((_, i) => i % 2 === 0).map((item, i) => (
+                  {[...items, ...items].filter(i => i.type === "image").filter((_, i) => i % 2 === 0).map((item, i) => (
                     <div
                       key={`mobile-col1-${i}`}
                       className={`rounded-xl overflow-hidden shadow-lg shadow-[#FFE75B]/10 ${item.className}`}
                     >
-                      {item.type === "video" ? (
-                        <video
-                          autoPlay
-                          muted={true}
-                          playsInline
-                          loop
-                          src={item.src}
-                          className="w-full h-full object-cover"
-                        />
-                      ) : (
-                        <Image
-                          src={(item.src.includes("/f_auto,q_auto/") ? item.src : item.src.replace("/upload/", "/upload/f_auto,q_auto/"))}
-                          alt="Professional window and solar panel cleaning in Perth"
-                          width={200}
-                          height={150}
-                          sizes="50vw"
-                          className="w-full h-full object-cover"
-                          unoptimized
-                        />
-                      )}
+                      <Image
+                        src={(item.src.includes("/f_auto,q_auto/") ? item.src : item.src.replace("/upload/", "/upload/f_auto,q_auto/"))}
+                        alt="Professional window cleaning in Perth"
+                        width={200}
+                        height={150}
+                        sizes="50vw"
+                        className="w-full h-full object-cover"
+                        loading={i < 2 ? "eager" : "lazy"}
+                      />
                     </div>
                   ))}
                 </div>
 
                 {/* Column 2 - offset */}
                 <div className="flex flex-col gap-3 pt-6">
-                  {[...items, ...items].filter((_, i) => i % 2 === 1).map((item, i) => (
+                  {[...items, ...items].filter(i => i.type === "image").filter((_, i) => i % 2 === 1).map((item, i) => (
                     <div
                       key={`mobile-col2-${i}`}
                       className={`rounded-xl overflow-hidden shadow-lg shadow-[#FFE75B]/10 ${item.className}`}
                     >
-                      {item.type === "video" ? (
-                        <video
-                          autoPlay
-                          muted={true}
-                          playsInline
-                          loop
-                          src={item.src}
-                          className="w-full h-full object-cover"
-                        />
-                      ) : (
-                        <Image
-                          src={(item.src.includes("/f_auto,q_auto/") ? item.src : item.src.replace("/upload/", "/upload/f_auto,q_auto/"))}
-                          alt="Professional window and solar panel cleaning in Perth"
-                          width={200}
-                          height={150}
-                          sizes="50vw"
-                          className="w-full h-full object-cover"
-                          unoptimized
-                        />
-                      )}
+                      <Image
+                        src={(item.src.includes("/f_auto,q_auto/") ? item.src : item.src.replace("/upload/", "/upload/f_auto,q_auto/"))}
+                        alt="Professional window cleaning in Perth"
+                        width={200}
+                        height={150}
+                        sizes="50vw"
+                        className="w-full h-full object-cover"
+                        loading={i < 2 ? "eager" : "lazy"}
+                      />
                     </div>
                   ))}
                 </div>
