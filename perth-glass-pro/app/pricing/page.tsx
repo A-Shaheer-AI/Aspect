@@ -10,7 +10,7 @@ import { Metadata } from "next";
 
 export const metadata: Metadata = {
     title: { absolute: "Window Cleaning Prices Perth | Aspect Window Cleaning" },
-    description: "Transparent pricing for residential and commercial window cleaning in Perth. See our service packages, try our instant estimator, and book online.",
+    description: "Transparent Perth window cleaning prices with zero hidden fees. Calculate your instant quote online or view our residential & commercial packages. Book today!",
     alternates: { canonical: "https://aspectwindowcleaning.com.au/pricing" }
 };
 

@@ -2,7 +2,7 @@ import type { Metadata } from "next";
 
 export const metadata: Metadata = {
     title: { absolute: "Window Cleaning Prices Perth | Aspect Window Cleaning" },
-    description: "Transparent pricing for residential and commercial window cleaning, solar panels, and gutters in Perth. View our Essential, Standard, and Supreme packages.",
+    description: "Transparent Perth window cleaning prices with zero hidden fees. Calculate your instant quote online or view our residential & commercial packages. Book today!",
     openGraph: {
         title: "Pricing & Packages | Aspect Window Cleaning Perth",
         description: "Transparent pricing for residential and commercial window cleaning, solar panels, and gutters in Perth. View our Essential, Standard, and Supreme packages.",

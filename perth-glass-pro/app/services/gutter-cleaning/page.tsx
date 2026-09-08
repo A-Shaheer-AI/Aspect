@@ -16,8 +16,7 @@ type FaqsType = {
 
 export const metadata: Metadata = {
     title: { absolute: "Gutter Cleaning Perth | Aspect Window Cleaning" },
-    description:
-        "Professional gutter cleaning in Perth. Leaf removal, downpipe clearing & roof valley cleaning. Prevent water damage & pests. Fully insured. Free quotes.",
+    description: "Protect your Perth home from water damage. Full gutter debris clearing, downpipe flush & roof inspection. Fully insured experts. Free instant quotes!",
     alternates: { canonical: "https://aspectwindowcleaning.com.au/services/gutter-cleaning" }
 };
 

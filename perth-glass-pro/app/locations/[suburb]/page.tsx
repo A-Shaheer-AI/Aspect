@@ -27,11 +27,11 @@ export async function generateMetadata({ params }: { params: Promise<{ suburb: s
         .replace(/-/g, ' ')
         .replace(/\b\w/g, l => l.toUpperCase());
 
-    const templates = [
-        `Professional window cleaning, solar panel washing, gutter cleaning and pressure washing in ${suburbName}, Perth. Same-week service. Free quotes. Call now.`,
-        `Top-rated window cleaners in ${suburbName}. We offer residential and commercial window cleaning, pressure washing, and solar panel cleaning. Get a free quote today!`,
-        `Looking for reliable window cleaning in ${suburbName}? Aspect Window Cleaning provides streak-free results for homes and businesses. Fully insured and police cleared.`,
-        `Expert window and property cleaning services in ${suburbName}, Perth. From multi-story commercial buildings to residential homes, we guarantee a perfect finish.`
+        const templates = [
+        `Looking for spotless windows in ${suburbName}? Enjoy streak-free pure water cleaning from police-cleared, $20M insured Perth pros. Get a free quote today!`,
+        `Need reliable window cleaning in ${suburbName}? We clean glass, tracks, screens & frames with zero streaks. Same-week bookings & free quotes. Call now!`,
+        `Top-rated window & exterior cleaning in ${suburbName}. Fully insured ($20M) & police-cleared Perth team. Streak-free guarantee. Get your instant quote!`,
+        `Sparkling clean windows in ${suburbName} without the hassle. Pure water technology, frames & tracks included. Same-week service. Free instant quotes!`
     ];
 
     const description = templates[suburbName.length % 4];

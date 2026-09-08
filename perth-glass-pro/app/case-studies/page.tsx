@@ -6,7 +6,7 @@ import { caseStudies } from "@/content/case-studies";
 
 export const metadata: Metadata = {
     title: { absolute: "Window Cleaning Case Studies | Aspect Window Cleaning Perth" },
-    description: "See our real window cleaning case studies from across Perth. Residential, commercial, pre-sale, and specialist jobs. Detailed results, timelines, and before-and-after outcomes.",
+    description: "Explore real window cleaning transformations across Perth. See before-and-after results, timelines, and customer outcomes for residential & commercial jobs.",
     openGraph: {
         title: "Window Cleaning Case Studies | Aspect Window Cleaning Perth",
         description: "Real jobs. Real results. See how Aspect Window Cleaning delivers across Perth homes and businesses.",

@@ -230,7 +230,7 @@ export default function HeroWithScroll() {
               </button>
 
               <Link
-                href="/commercial"
+                href="/services/commercial-window-cleaning"
                 className="group flex items-center justify-center gap-3 bg-white/10 backdrop-blur-sm border-2 border-white/30 text-white font-bold text-lg px-6 lg:px-8 py-4 rounded-full hover:bg-white/20 transition-colors focus:outline-none focus:ring-4 focus:ring-white/30 w-full md:w-auto"
               >
                 <Building2 className="w-5 h-5" aria-hidden="true" />

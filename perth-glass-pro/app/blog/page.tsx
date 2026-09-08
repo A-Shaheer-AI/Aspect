@@ -8,7 +8,7 @@ import { blogs } from "@/content/blogs";
 
 export const metadata: Metadata = {
     title: { absolute: "Window Cleaning Tips & Guides | Aspect Window Cleaning" },
-    description: "Expert advice on window cleaning, solar panel maintenance, and property care in Perth.",
+    description: "Expert Perth window and property cleaning guides. Practical tips on preventing mineral etching, caring for solar panels, and maintaining your home year-round.",
     alternates: { canonical: "https://aspectwindowcleaning.com.au/blog" }
 };
 

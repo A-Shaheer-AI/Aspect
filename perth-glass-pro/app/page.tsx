@@ -4,7 +4,7 @@ import { Metadata } from "next";
 
 export const metadata: Metadata = {
     title: { absolute: "Aspect Window Cleaning Perth | Residential & Commercial" },
-    description: "Professional window cleaning in Perth — residential, commercial EWP, solar panels, gutters & pressure washing. Police cleared, $20M insured. Get a free same-week quote.",
+    description: "Perth's premier window, solar & exterior cleaning service. Pure water streak-free results, $20M insured & police-cleared technicians. Get a free quote today!",
     alternates: { canonical: "https://aspectwindowcleaning.com.au" }
 }
 
