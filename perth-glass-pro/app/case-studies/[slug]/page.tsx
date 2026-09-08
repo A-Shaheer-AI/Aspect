@@ -138,19 +138,19 @@ export default async function CaseStudyPage({ params }: { params: Promise<{ slug
             <div className="min-h-screen bg-brand-snow">
 
                 {/* Breadcrumb */}
-                <nav aria-label="Breadcrumb" className="bg-white border-b border-gray-100 py-3 px-4">
-                    <ol className="max-w-5xl mx-auto flex items-center gap-2 text-sm text-gray-500 flex-wrap">
-                        <li><Link href="/" className="hover:text-brand-navy transition-colors">Home</Link></li>
-                        <li><ArrowRight className="w-3 h-3" aria-hidden="true" /></li>
-                        <li><Link href="/case-studies" className="hover:text-brand-navy transition-colors">Case Studies</Link></li>
-                        <li><ArrowRight className="w-3 h-3" aria-hidden="true" /></li>
-                        <li className="text-brand-navy font-medium truncate max-w-xs">{cs.title}</li>
-                    </ol>
-                </nav>
-
-                {/* Hero */}
-                <header className="bg-brand-navy text-white pt-12 pb-16">
+                <header className="bg-brand-navy text-white pt-28 sm:pt-32 md:pt-36 pb-16">
                     <div className="max-w-4xl mx-auto px-4">
+                        {/* Breadcrumb Navigation */}
+                        <nav aria-label="Breadcrumb" className="mb-6">
+                            <ol className="flex items-center gap-2 text-xs sm:text-sm text-slate-300 flex-wrap">
+                                <li><Link href="/" className="hover:text-action-gold transition-colors">Home</Link></li>
+                                <li><ArrowRight className="w-3 h-3 text-action-gold/70" aria-hidden="true" /></li>
+                                <li><Link href="/case-studies" className="hover:text-action-gold transition-colors">Case Studies</Link></li>
+                                <li><ArrowRight className="w-3 h-3 text-action-gold/70" aria-hidden="true" /></li>
+                                <li className="text-white/90 font-medium truncate max-w-xs">{cs.title}</li>
+                            </ol>
+                        </nav>
+
                         <div className="flex flex-wrap gap-2 mb-6">
                             {cs.serviceType.map((tag) => (
                                 <span key={tag} className="text-xs font-bold bg-action-gold text-brand-navy px-3 py-1 rounded-full uppercase tracking-wider">{tag}</span>
