@@ -276,8 +276,8 @@ const SolarPanelCleaningPage = () => {
                 <p className="text-lg md:text-xl max-w-2xl mx-auto mb-6">
                     Maximise your solar output. Protect your investment.
                 </p>
-                <Link href="/pricing#estimator" className="bg-action-gold text-black px-8 py-4 rounded-full font-bold">
-                    Get Free Quote
+                <Link href="/pricing" className="bg-action-gold text-black px-8 py-4 rounded-full font-bold">
+                    View Pricing Guide
                 </Link>
             </section>
 

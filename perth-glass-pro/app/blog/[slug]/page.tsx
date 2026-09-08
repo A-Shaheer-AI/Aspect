@@ -242,10 +242,10 @@ export default async function BlogPostPage({ params }: { params: Promise<{ slug:
                         <p className="text-brand-water/80 text-sm">Get the same sparkling finish for your home.</p>
                     </div>
                     <Link
-                        href="/pricing#estimator"
+                        href="/pricing"
                         className="bg-action-gold text-brand-navy font-bold px-6 py-3 rounded-full hover:bg-action-gold/90 transition-colors inline-flex items-center gap-2 shadow-lg whitespace-nowrap"
                     >
-                        Get Free Quote <ArrowRight className="w-4 h-4" />
+                        View Pricing Guide <ArrowRight className="w-4 h-4" />
                     </Link>
                 </div>
             </div>

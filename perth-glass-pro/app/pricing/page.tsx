@@ -173,7 +173,7 @@ export default function PricingPage() {
                         Clear, Upfront Window Cleaning Prices
                     </h1>
                     <p className="text-xl text-brand-water mb-8 max-w-2xl mx-auto leading-relaxed">
-                        No hidden callout fees, no mystery quotes. Compare our core packages below, check included services with our comparison matrix, or calculate your custom residential quote in seconds.
+                        No hidden callout fees, no mystery quotes. Compare our core packages below, check included services with our comparison matrix, or scroll down for our residential estimator.
                     </p>
                     <div className="flex flex-wrap items-center justify-center gap-4">
                         <Link
@@ -184,11 +184,11 @@ export default function PricingPage() {
                             <ArrowDown className="w-4 h-4" />
                         </Link>
                         <Link
-                            href="#estimator"
+                            href="/contact"
                             className="bg-white/10 hover:bg-white/20 text-white font-semibold px-8 py-4 rounded-full text-base sm:text-lg transition-colors border border-white/20 inline-flex items-center gap-2"
                         >
-                            <Calculator className="w-4 h-4 text-action-gold" />
-                            <span>Instant Calculator</span>
+                            <Sparkles className="w-4 h-4 text-action-gold" />
+                            <span>Request Custom Quote</span>
                         </Link>
                     </div>
                 </div>

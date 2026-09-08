@@ -156,8 +156,8 @@ export default function CaseStudiesIndexPage() {
                             From tight pre-sale deadlines to routine residential maintenance — we work across Perth metro and deliver consistent, professional results.
                         </p>
                         <div className="flex flex-wrap items-center justify-center gap-4">
-                            <Link href="/pricing#estimator" className="inline-flex items-center gap-2 bg-action-gold text-brand-navy font-bold px-8 py-4 rounded-full text-base sm:text-lg hover:bg-action-gold/90 transition-colors shadow-md">
-                                Get an Instant Quote <ArrowRight className="w-5 h-5" aria-hidden="true" />
+                            <Link href="/pricing" className="inline-flex items-center gap-2 bg-action-gold text-brand-navy font-bold px-8 py-4 rounded-full text-base sm:text-lg hover:bg-action-gold/90 transition-colors shadow-md">
+                                View Pricing Guide <ArrowRight className="w-5 h-5" aria-hidden="true" />
                             </Link>
                             <Link href="/contact" className="inline-flex items-center gap-2 bg-white/10 border-2 border-white/30 text-white font-bold px-8 py-4 rounded-full text-base sm:text-lg hover:bg-white/20 transition-colors">
                                 Contact Our Team <ArrowRight className="w-5 h-5" aria-hidden="true" />

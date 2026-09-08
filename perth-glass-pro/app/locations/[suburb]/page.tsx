@@ -288,10 +288,10 @@ export default async function SuburbPage({ params }: { params: Promise<{ suburb:
                         </a>
 
                         <Link
-                            href="/pricing#estimator"
+                            href="/pricing"
                             className="inline-flex items-center gap-2 bg-white/10 border-2 border-white/30 text-white font-bold px-8 py-4 rounded-full text-lg hover:bg-white/20 transition-colors"
                         >
-                            Online Quote <ArrowRight className="w-5 h-5" />
+                            View Pricing Guide <ArrowRight className="w-5 h-5" />
                         </Link>
 
                     </div>

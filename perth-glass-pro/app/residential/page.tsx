@@ -98,7 +98,7 @@ export default function ResidentialPage() {
                         </div>
                         <div className="text-center mt-8">
                             <Link
-                                href="/pricing#estimator"
+                                href="/pricing"
                                 className="inline-flex items-center gap-2 text-action-gold font-medium hover:underline"
                             >
                                 Get detailed pricing <ArrowRight className="w-4 h-4" />

@@ -140,10 +140,10 @@ export default function PortfolioPage() {
                         Join hundreds of happy Perth customers who love their sparkling clean windows.
                     </p>
                     <Link
-                        href="/pricing#estimator"
+                        href="/pricing"
                         className="inline-flex items-center gap-2 bg-action-gold text-brand-navy font-bold px-8 py-4 rounded-full text-lg hover:shadow-lg transition-shadow"
                     >
-                        Get Your Free Quote <ArrowRight className="w-5 h-5" />
+                        View Pricing & Packages <ArrowRight className="w-5 h-5" />
                     </Link>
                 </div>
             </section>

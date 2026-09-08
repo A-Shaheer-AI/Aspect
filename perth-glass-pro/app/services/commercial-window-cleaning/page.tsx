@@ -295,7 +295,7 @@ const CommercialWindowCleaning = () => {
                         Comprehensive office janitorial care, medical-grade hygiene, workstation sanitation, and specialist high-reach commercial glass cleaning. Tailored contracts designed around your operating hours.
                     </p>
                     <div className="flex flex-col sm:flex-row gap-4 justify-center items-center">
-                        <Link href="/pricing#estimator" className="w-full sm:w-auto bg-action-gold text-brand-navy hover:bg-action-gold/90 px-8 py-4 rounded-full font-bold text-base shadow-lg transition-all">
+                        <Link href="/contact" className="w-full sm:w-auto bg-action-gold text-brand-navy hover:bg-action-gold/90 px-8 py-4 rounded-full font-bold text-base shadow-lg transition-all">
                             Get Free Commercial Quote
                         </Link>
                         <a href="tel:0415174977" className="w-full sm:w-auto bg-white/10 hover:bg-white/20 text-white border border-white/20 px-8 py-4 rounded-full font-semibold text-base transition-all">

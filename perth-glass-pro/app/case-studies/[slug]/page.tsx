@@ -349,10 +349,10 @@ export default async function CaseStudyPage({ params }: { params: Promise<{ slug
                                     {BUSINESS.phone}
                                 </a>
                                 <Link
-                                    href="/pricing#estimator"
+                                    href="/pricing"
                                     className="flex items-center justify-center gap-2 bg-white/10 border border-white/20 text-white font-bold py-3 px-5 rounded-xl hover:bg-white/20 transition-colors w-full mt-3 text-sm"
                                 >
-                                    Get an Online Quote <ArrowRight className="w-4 h-4" aria-hidden="true" />
+                                    View Pricing Guide <ArrowRight className="w-4 h-4" aria-hidden="true" />
                                 </Link>
                             </div>
 

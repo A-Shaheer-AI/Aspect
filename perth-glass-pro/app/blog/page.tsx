@@ -110,10 +110,10 @@ export default function BlogListingPage() {
                     </p>
                     <div className="flex flex-wrap items-center justify-center gap-4">
                         <Link
-                            href="/pricing#estimator"
+                            href="/pricing"
                             className="bg-action-gold text-brand-navy font-bold px-8 py-3.5 rounded-full text-base hover:bg-action-gold/90 transition-all shadow-md"
                         >
-                            Instant Online Quote
+                            View Pricing Guide
                         </Link>
                         <Link
                             href="/case-studies"
