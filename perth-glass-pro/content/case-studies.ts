@@ -173,5 +173,98 @@ export const caseStudies: CaseStudy[] = [
     googlePosts: [
       "https://posts.gle/imdd7sPFtmkXoYBi7"
     ],
+  },
+  {
+    id: 4,
+    slug: "rockingham-toyota-dealership-high-reach-commercial-clean",
+    title: "Rockingham Toyota Showroom: High-Reach EWP Facade, Signage & Dealership Detailing",
+    date: "2025-09-15T08:00:00Z",
+    suburb: "Rockingham",
+    nearbySuburbs: [
+      "rockingham",
+      "east-rockingham",
+      "baldivis",
+      "waikiki",
+      "warnbro",
+      "safety-bay",
+      "shoalwater",
+      "port-kennedy",
+      "secret-harbour",
+      "kwinana-town-centre",
+      "kwinana-beach",
+      "wellard",
+      "cooloongup",
+      "hillman",
+      "mandurah",
+      "fremantle",
+      "perth"
+    ],
+    thumbnail: "https://res.cloudinary.com/dr8tjrszy/image/upload/f_auto,q_auto/v1771960129/commercial-sign-cleaning_jzafjr.jpg",
+    images: [
+      "https://res.cloudinary.com/dr8tjrszy/image/upload/f_auto,q_auto/v1771960138/sign-cleaning-2_ozlp2x.jpg"
+    ],
+    excerpt: "When a head contractor needed proven commercial specialists for the Rockingham Toyota showroom, they trusted Aspect. From deploying our first certified EWP cherry picker to deep-cleaning neglected high-level architectural fascia, 3D corporate logos, and towering roadside pylons, here is the story of how our commercial division took flight.",
+    serviceType: [
+      "Commercial Facade Cleaning",
+      "High-Reach Signage Detailing",
+      "EWP Cherry Picker Operation",
+      "Dealership Window Cleaning",
+      "Commercial Subcontracting"
+    ],
+    challenge: "The Rockingham Toyota showroom presented a multifaceted commercial brief: high-level architectural fascia cladding and canopies positioned well above ground level, illuminated 3D corporate signage with intricate internal lighting bays, an un-level ground slope on one building elevation preventing machinery setup, and a massive roadside pylon totem signpost. Crucially, the horizontal top surfaces of the showroom fascia had been neglected during previous cleans, resulting in heavy dirt accumulation that washed down whenever water was applied.",
+    solution: "We deployed an Elevated Work Platform (EWP cherry picker) operated by our certified high-risk work licensed technician, supported by utility support vehicles and carbon-fiber water-fed reach pole systems. Instead of a superficial face rinse, we carried out a comprehensive 360° deep clean—scrubbing the top ledges, undersides, and sign housings, safely disassembling sign faces to hand-detail the interiors with damp microfiber cloths, and adapting to the sloped terrain with long-reach pure water poles from safe ground positions. To ensure complete customer satisfaction, the crew remained late into the evening to detail an overlooked final signboard.",
+    result: "The Toyota dealership manager personally inspected the showroom and expressed genuine appreciation for the immaculate transformation and attention to detail. For Aspect, this milestone project cemented our commercial capabilities, proved our ability to overcome site-specific access challenges safely, and established a trusted subcontracting blueprint that continues to guide our commercial partnerships across Western Australia.",
+    jobDetails: {
+      crew: "Certified EWP boom operator & commercial detailing technicians",
+      duration: "Full-day intensive commercial project (into evening)",
+      property: "Rockingham Toyota Showroom, Service Centre & Yard",
+      services: [
+        "Elevated Work Platform (EWP cherry picker) high-reach operation",
+        "Architectural showroom fascia and parapet cladding restoration",
+        "3D Toyota emblem and dealership lettering detailing",
+        "Signage disassembly and internal housing wipe-down",
+        "High-reach roadside pylon and totem signpost washing",
+        "Sloped-terrain pure water carbon-fiber pole reach cleaning",
+        "Showroom perimeter architectural awning wash & glass finish"
+      ],
+    },
+    sections: [
+      {
+        heading: "The Milestone: How Aspect's Commercial Division Took Flight",
+        body: "Approximately one year ago, Aspect Window Cleaning stood at an exciting crossroad. While our team had established an enviable five-star reputation in residential window cleaning across Perth and had completed smaller commercial premises, we were eager to take on larger, more demanding commercial facilities. The turning point arrived when a prime contracting company reached out to us directly. They had followed our work, seen our glowing customer reviews, and were looking for a reliable, quality-obsessed cleaning team to subcontract a flagship automotive dealership project: Rockingham Toyota. Stepping in as subcontractors for the first time was an exciting opportunity, and the mutual respect and transparent communication we experienced with the head contractor set a high standard for how subcontracting partnerships should work. Aspect remains actively open to subcontracting arrangements with professional contractors, facility managers, and builders across WA—provided there is a mutual understanding of what professional-grade commercial work requires, the equipment involved, fair commercial rates, and the physical effort demanded on site."
+      },
+      {
+        heading: "Machinery, Mobilisation & Certified EWP Operation",
+        body: "Automotive dealerships are high-profile commercial environments where pristine presentation is critical to showroom sales. The Rockingham Toyota showroom features soaring architectural fascia panels, high-level brand bulkheads, and an expansive roadside presence that standard ground-based ladders cannot service safely. This project marked our first time hiring and mobilising an Elevated Work Platform (EWP / cherry picker) alongside dedicated support utes. Safety in commercial environments is paramount: our team included a qualified technician who already held current High Risk Work certification for operating elevated work platforms. Arriving on site early, we established WorkSafe WA-compliant pedestrian exclusion zones, safety cones, and machinery outrigger pads. With our certified operator at the controls, we were able to safely position personnel right up against the high-level showroom facade, enabling hands-on detailing that ground equipment simply cannot replicate."
+      },
+      {
+        heading: "The 'Hidden Grime' Discovery: Why Surface Rinsing Isn't Enough",
+        body: "One of the most eye-opening moments of the day came when we began washing the architectural fascia—the wide cladding band above the showroom windows where the iconic Toyota emblem is mounted. The dealership had supposedly been cleaned just six months prior by another contractor, and from the ground, the vertical front face appeared relatively clean. However, the moment our technician elevated above the parapet and introduced pure water to the top ledge, torrents of thick, black sludge and baked-on dust came cascading down. The previous cleaners had simply sprayed the front face from below, neglecting the wide horizontal shelf above it. Every time it rained, that trapped dirt would wash down across the brand logo and showroom windows, ruining the finish. At Aspect, we refuse to cut corners. We carried out a complete 360-degree clean: scrubbing the top shelf, pressure-detailing the fascia joints, cleaning the underside return, and washing the 3D logo. Wherever possible, we carefully removed the sign faces to wipe down the internal lighting bays and housings with damp microfiber cloths, restoring the brilliant clarity of the illumination."
+      },
+      {
+        heading: "Overcoming the Ground Slope Challenge",
+        body: "No commercial site is entirely uniform, and Rockingham Toyota provided a real-world masterclass in adaptability. On one side elevation of the showroom, the ground featured an uneven, steep slope directly underneath the elevated Toyota logo. Operating an EWP requires level ground and stable outrigger engagement; deploying a heavy cherry picker on that particular gradient would have violated safety protocols and risked ground slippage. Rather than taking unacceptable risks or skipping that elevation, our team adapted immediately. We transitioned to our ultra-lightweight carbon-fiber water-fed reach pole system, running 0ppm deionised pure water directly from our mobile purification unit. Operating from secure, level ground footholds, our technicians carefully navigated the pole over the sloped terrain, applying specialized soft-bristle brushes to thoroughly scrub the logo and the running architectural perimeter aisle that spans across the showroom. While we could not disassemble the sign's interior from the pole, the exterior finish was brought up to a brilliant, streak-free shine that matched the rest of the facility."
+      },
+      {
+        heading: "The Late-Night Extra Signboard & The Dealership Manager's Praise",
+        body: "After tackling the showroom building, we moved our equipment out to the street to clean the towering roadside pylon signpost outside the Rockingham showroom—a prominent landmark visible to thousands of passing motorists along the main thoroughfare. Working at height against fading afternoon light, we detailed every panel of the pylon until it shone. As evening fell and the crew began the rigorous process of packing down hoses, outriggers, and machinery, we noticed one additional dealership signboard tucked away on the property that had been missed in the initial scope. Many contractors would have clocked off and left it behind. Instead, our crew unpacked the gear, reset our pure water poles, and finished the final signboard before signing off. The Rockingham Toyota dealership general manager conducted the final walkthrough and was genuinely impressed by our thoroughness, our honesty, and our commitment to leaving the entire facility spotless."
+      },
+      {
+        heading: "A Foundation for Ongoing Commercial Growth",
+        body: "Looking back, the Rockingham Toyota project was far more than just a successful day's work. It was a foundational learning experience that accelerated Aspect's evolution into a trusted commercial contractor in Western Australia. We learned firsthand the intricate choreography of machinery transport, high-reach safety planning, terrain adaptation, and the value of going above and beyond expectations. Today, Aspect Window Cleaning regularly services commercial office buildings, strata properties, retail centres, and automotive dealerships throughout the Perth metropolitan area and south to Rockingham and Mandurah. Whether working directly for property managers or providing dependable subcontracting support to fellow commercial trade contractors, we bring the same relentless work ethic, certified expertise, and pride in detail to every single job."
+      }
+    ],
+    tags: [
+      "rockingham",
+      "toyota dealership",
+      "commercial window cleaning",
+      "ewp cherry picker",
+      "signage cleaning",
+      "subcontracting",
+      "fascia cleaning",
+      "pure water pole",
+      "working at heights",
+      "automotive showroom"
+    ],
   }
 ];
