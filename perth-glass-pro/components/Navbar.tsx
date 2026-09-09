@@ -53,8 +53,8 @@ export default function Navbar() {
                             </span> */}
                             <Image
                                 src={`${isScrolled ?
-                                    "https://res.cloudinary.com/dr8tjrszy/image/upload/v1772045271/aspect-logo-removebg-preview_fvfhlo.png" :
-                                    "https://res.cloudinary.com/dr8tjrszy/image/upload/v1772130850/white-logo_pzpxjk.png"}`
+                                    "https://res.cloudinary.com/dr8tjrszy/image/upload/f_auto,q_auto/v1772045271/aspect-logo-removebg-preview_fvfhlo.png" :
+                                    "https://res.cloudinary.com/dr8tjrszy/image/upload/f_auto,q_auto/v1772130850/white-logo_pzpxjk.png"}`
                                 }
                                 width={100}
                                 height={100}

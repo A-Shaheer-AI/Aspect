@@ -21,92 +21,92 @@ export default function HeroWithScroll() {
 
   const items: ScrollItem[] = [
     {
-      src: "https://res.cloudinary.com/dr8tjrszy/image/upload/v1771960138/sign-cleaning-2_ozlp2x.jpg",
+      src: "https://res.cloudinary.com/dr8tjrszy/image/upload/f_auto,q_auto/v1771960138/sign-cleaning-2_ozlp2x.jpg",
       type: "image",
       className: "col-span-1 row-span-1 h-[180px]"
     },
     {
-      src: "https://res.cloudinary.com/dr8tjrszy/image/upload/v1771960130/house-windows-cleaning_byke0n.jpg",
+      src: "https://res.cloudinary.com/dr8tjrszy/image/upload/f_auto,q_auto/v1771960130/house-windows-cleaning_byke0n.jpg",
       type: "image",
       className: "col-span-1 row-span-2 h-[280px]"
     },
     {
-      src: "https://res.cloudinary.com/dr8tjrszy/image/upload/v1774450638/pressure-cleaning-giff_ulc4tk.gif",
+      src: "https://res.cloudinary.com/dr8tjrszy/image/upload/f_auto,q_auto/v1774450638/pressure-cleaning-giff_ulc4tk.gif",
       type: "image",
       className: "col-span-1 row-span-2 h-[260px]"
     },
     {
-      src: "https://res.cloudinary.com/dr8tjrszy/image/upload/v1771960138/sollar-plats-cleaning_gyngjf.jpg",
+      src: "https://res.cloudinary.com/dr8tjrszy/image/upload/f_auto,q_auto/v1771960138/sollar-plats-cleaning_gyngjf.jpg",
       type: "image",
       className: "col-span-1 row-span-1 h-[200px]"
     },
     {
-      src: "https://res.cloudinary.com/dr8tjrszy/image/upload/v1777441115/WhatsApp_Image_2026-04-27_at_12.43.52_PM_1_opiclg.jpg",
+      src: "https://res.cloudinary.com/dr8tjrszy/image/upload/f_auto,q_auto/v1777441115/WhatsApp_Image_2026-04-27_at_12.43.52_PM_1_opiclg.jpg",
       type: "image",
       className: "col-span-1 row-span-1 h-[250px]"
     },
     {
-      src: "https://res.cloudinary.com/dr8tjrszy/image/upload/v1771960144/WhatsApp_Image_2026-02-22_at_8.48.09_PM_1_hnnwtr.jpg",
+      src: "https://res.cloudinary.com/dr8tjrszy/image/upload/f_auto,q_auto/v1771960144/WhatsApp_Image_2026-02-22_at_8.48.09_PM_1_hnnwtr.jpg",
       type: "image",
       className: "col-span-1 row-span-1 h-[200px]"
     },
     {
-      src: "https://res.cloudinary.com/dr8tjrszy/image/upload/v1771960142/WhatsApp_Image_2026-02-22_at_8.48.02_PM_hzrubr.jpg",
+      src: "https://res.cloudinary.com/dr8tjrszy/image/upload/f_auto,q_auto/v1771960142/WhatsApp_Image_2026-02-22_at_8.48.02_PM_hzrubr.jpg",
       type: "image",
       className: "col-span-1 row-span-1 h-[200px]"
     },
     {
-      src: "https://res.cloudinary.com/dr8tjrszy/image/upload/v1776944966/WhatsApp_Image_2026-04-22_at_8.41.53_PM_qgm1ae.jpg",
+      src: "https://res.cloudinary.com/dr8tjrszy/image/upload/f_auto,q_auto/v1776944966/WhatsApp_Image_2026-04-22_at_8.41.53_PM_qgm1ae.jpg",
       type: "image",
       className: "col-span-1 row-span-1 h-[200px]"
     },
     {
-      src: "https://res.cloudinary.com/dr8tjrszy/image/upload/v1776944965/WhatsApp_Image_2026-04-22_at_8.42.45_PM_1_ly1fp8.jpg",
+      src: "https://res.cloudinary.com/dr8tjrszy/image/upload/f_auto,q_auto/v1776944965/WhatsApp_Image_2026-04-22_at_8.42.45_PM_1_ly1fp8.jpg",
       type: "image",
       className: "col-span-1 row-span-1 h-[200px]"
     },
     {
-      src: "https://res.cloudinary.com/dr8tjrszy/image/upload/v1776944964/WhatsApp_Image_2026-04-22_at_8.41.53_PM_1_cjdbjc.jpg",
+      src: "https://res.cloudinary.com/dr8tjrszy/image/upload/f_auto,q_auto/v1776944964/WhatsApp_Image_2026-04-22_at_8.41.53_PM_1_cjdbjc.jpg",
       type: "image",
       className: "col-span-1 row-span-1 h-[200px]"
     },
     {
-      src: "https://res.cloudinary.com/dr8tjrszy/image/upload/v1776944964/WhatsApp_Image_2026-04-22_at_8.42.46_PM_ldt9rn.jpg",
+      src: "https://res.cloudinary.com/dr8tjrszy/image/upload/f_auto,q_auto/v1776944964/WhatsApp_Image_2026-04-22_at_8.42.46_PM_ldt9rn.jpg",
       type: "image",
       className: "col-span-1 row-span-1 h-[200px]"
     },
     {
-      src: "https://res.cloudinary.com/dr8tjrszy/image/upload/v1776944963/WhatsApp_Image_2026-04-22_at_8.43.06_PM_abtqe0.jpg",
+      src: "https://res.cloudinary.com/dr8tjrszy/image/upload/f_auto,q_auto/v1776944963/WhatsApp_Image_2026-04-22_at_8.43.06_PM_abtqe0.jpg",
       type: "image",
       className: "col-span-1 row-span-1 h-[200px]"
     },
     {
-      src: "https://res.cloudinary.com/dr8tjrszy/image/upload/v1776944964/WhatsApp_Image_2026-04-22_at_8.42.45_PM_ebzigv.jpg",
+      src: "https://res.cloudinary.com/dr8tjrszy/image/upload/f_auto,q_auto/v1776944964/WhatsApp_Image_2026-04-22_at_8.42.45_PM_ebzigv.jpg",
       type: "image",
       className: "col-span-1 row-span-1 h-[200px]"
     },
     {
-      src: "https://res.cloudinary.com/dr8tjrszy/video/upload/v1777100058/WhatsApp_Video_2026-04-22_at_8.42.43_PM_ej6lpg.mp4",
+      src: "https://res.cloudinary.com/dr8tjrszy/video/upload/q_auto/v1777100058/WhatsApp_Video_2026-04-22_at_8.42.43_PM_ej6lpg.mp4",
       type: "video",
       className: "col-span-1 row-span-1 h-[200px]"
     },
     {
-      src: "https://res.cloudinary.com/dr8tjrszy/video/upload/v1777100063/WhatsApp_Video_2026-04-22_at_8.43.19_PM_nzcn9x.mp4",
+      src: "https://res.cloudinary.com/dr8tjrszy/video/upload/q_auto/v1777100063/WhatsApp_Video_2026-04-22_at_8.43.19_PM_nzcn9x.mp4",
       type: "video",
       className: "col-span-1 row-span-1 h-[200px]"
     },
     {
-      src: "https://res.cloudinary.com/dr8tjrszy/video/upload/v1777101674/WhatsApp_Video_2026-04-22_at_8.42.41_PM_1_vztwq2.mp4",
+      src: "https://res.cloudinary.com/dr8tjrszy/video/upload/q_auto/v1777101674/WhatsApp_Video_2026-04-22_at_8.42.41_PM_1_vztwq2.mp4",
       type: "video",
       className: "col-span-1 row-span-1 h-[200px]"
     },
     {
-      src: "https://res.cloudinary.com/dr8tjrszy/video/upload/v1777100063/WhatsApp_Video_2026-04-22_at_8.43.33_PM_fra9x4.mp4",
+      src: "https://res.cloudinary.com/dr8tjrszy/video/upload/q_auto/v1777100063/WhatsApp_Video_2026-04-22_at_8.43.33_PM_fra9x4.mp4",
       type: "video",
       className: "col-span-1 row-span-1 h-[200px]"
     },
     {
-      src: "https://res.cloudinary.com/dr8tjrszy/video/upload/v1777100063/WhatsApp_Video_2026-04-22_at_8.43.19_PM_nzcn9x.mp4",
+      src: "https://res.cloudinary.com/dr8tjrszy/video/upload/q_auto/v1777100063/WhatsApp_Video_2026-04-22_at_8.43.19_PM_nzcn9x.mp4",
       type: "video",
       className: "col-span-1 row-span-1 h-[200px]"
     },

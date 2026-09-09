@@ -13,7 +13,7 @@ export default function ServicesGrid() {
             title: "Residential Homes",
             subtext: "Inside & out residential window cleaning. Flyscreens & tracks included for a complete finish.",
             link: "/services/residential-window-cleaning",
-            image: "https://res.cloudinary.com/dr8tjrszy/image/upload/v1771960130/house-windows-cleaning_byke0n.jpg",
+            image: "https://res.cloudinary.com/dr8tjrszy/image/upload/f_auto,q_auto/v1771960130/house-windows-cleaning_byke0n.jpg",
             icon: Home,
             className: "md:col-span-2 md:row-span-2", // Hero size - 2x2
             accent: "from-blue-500/20 to-cyan-500/20",
@@ -24,7 +24,7 @@ export default function ServicesGrid() {
             title: "Commercial & Strata",
             subtext: "Offices, retail & high-reach EWP commercial window cleaning. Certified professionals.",
             link: "/services/commercial-window-cleaning",
-            image: "https://res.cloudinary.com/dr8tjrszy/image/upload/v1771960138/sign-cleaning-2_ozlp2x.jpg",
+            image: "https://res.cloudinary.com/dr8tjrszy/image/upload/f_auto,q_auto/v1771960138/sign-cleaning-2_ozlp2x.jpg",
             icon: Building2,
             className: "md:col-span-1 md:row-span-2", // Tall - 1x2
             accent: "from-purple-500/20 to-pink-500/20",
@@ -35,7 +35,7 @@ export default function ServicesGrid() {
             title: "Pressure Cleaning",
             subtext: "Driveways, pavers & exterior pressure cleaning. Soft washing available.",
             link: "/services/pressure-washing",
-            image: "https://res.cloudinary.com/dr8tjrszy/image/upload/v1774450638/pressure-cleaning-giff_ulc4tk.gif",
+            image: "https://res.cloudinary.com/dr8tjrszy/image/upload/f_auto,q_auto/v1774450638/pressure-cleaning-giff_ulc4tk.gif",
             icon: Zap,
             className: "md:col-span-1 md:row-span-1", // Standard
             accent: "from-orange-500/20 to-red-500/20",
@@ -46,7 +46,7 @@ export default function ServicesGrid() {
             title: "Solar Maintenance",
             subtext: "Increase solar efficiency with pure water solar panel cleaning.",
             link: "/services/solar-panel-washing",
-            image: "https://res.cloudinary.com/dr8tjrszy/image/upload/v1771960138/sollar-plats-cleaning_gyngjf.jpg",
+            image: "https://res.cloudinary.com/dr8tjrszy/image/upload/f_auto,q_auto/v1771960138/sollar-plats-cleaning_gyngjf.jpg",
             icon: Sparkles,
             className: "md:col-span-1 md:row-span-1", // Standard
             accent: "from-yellow-500/20 to-amber-500/20",
@@ -57,7 +57,7 @@ export default function ServicesGrid() {
             title: "Gutter Cleaning",
             subtext: "Roof gutters, downpipes & valleys cleared. Prevent water damage with regular maintenance.",
             link: "/services/gutter-cleaning",
-            image: "https://res.cloudinary.com/dr8tjrszy/image/upload/v1775990687/gutter-cleaning_nd8wyn.jpg",
+            image: "https://res.cloudinary.com/dr8tjrszy/image/upload/f_auto,q_auto/v1775990687/gutter-cleaning_nd8wyn.jpg",
             icon: Droplets,
             className: "md:col-span-1 md:row-span-1", // Standard
             accent: "from-emerald-500/20 to-teal-500/20",
