@@ -2,7 +2,7 @@
 
 import { useState, useEffect, useRef } from "react";
 import { openCertificateModal } from "@/components/CertificateModalWrapper";
-import { Phone, CheckCircle2, Star, Shield, Droplets, Zap, Building2, X, Tag, ChevronLeft, ChevronRight, Camera } from "lucide-react";
+import { Phone, CheckCircle2, Star, Shield, Droplets, Zap, Building2, X, Tag, ChevronLeft, ChevronRight, Camera, Check, ArrowRight, Sparkles } from "lucide-react";
 import { BUSINESS } from "@/lib/config";
 import { useGmb } from "@/components/GmbProvider";
 import Link from "next/link";
@@ -38,10 +38,10 @@ function LeadForm({
     dark?: boolean;
 }) {
     const fields = [
-        { key: "name", placeholder: "Your Name", type: "text" },
-        { key: "phone", placeholder: "Phone Number", type: "tel" },
-        { key: "suburb", placeholder: "Your Suburb", type: "text" },
-        { key: "promo", placeholder: "Promo Code", type: "text" },
+        { key: "name", placeholder: "Your Name", type: "text", autoComplete: "name" },
+        { key: "phone", placeholder: "Phone Number", type: "tel", autoComplete: "tel" },
+        { key: "suburb", placeholder: "Your Suburb", type: "text", autoComplete: "address-level2" },
+        { key: "promo", placeholder: "Promo Code", type: "text", autoComplete: "off" },
     ];
     if (submitted) {
         return (
@@ -57,15 +57,29 @@ function LeadForm({
         );
     }
     return (
-        <div className="flex flex-col gap-2.5">
+        <form
+            onSubmit={(e) => {
+                e.preventDefault();
+                onSubmit();
+            }}
+            action="/api/quote"
+            method="POST"
+            className="flex flex-col gap-2.5"
+        >
+            <input type="hidden" name="source" value="landing-lead-form" />
+            <input type="hidden" name="service" value="Residential Window Cleaning" />
             {fields.filter((f) => !(f.key === "promo" && !showPromo))
                 .map((f) => (
                     <input
                         key={f.key}
+                        name={f.key}
+                        id={`lead-${f.key}`}
+                        autoComplete={f.autoComplete}
                         type={f.type}
                         placeholder={f.placeholder}
-                        value={formData[f.key as keyof typeof formData]}
+                        value={formData[f.key as keyof typeof formData] || ""}
                         onChange={(e) => setFormData({ ...formData, [f.key]: e.target.value })}
+                        required={f.key !== "promo"}
                         className="w-full rounded-xl px-4 py-3 text-base outline-none transition-all"
                         style={{
                             background: dark ? "rgba(255,255,255,0.92)" : "#f4f6ff",
@@ -77,7 +91,7 @@ function LeadForm({
                     />
                 ))}
             <button
-                onClick={onSubmit}
+                type="submit"
                 className="w-full rounded-xl py-3.5 text-sm font-bold mt-1 transition-all hover:-translate-y-0.5 cursor-pointer"
                 style={{
                     background: "#FFE54D",
@@ -86,11 +100,11 @@ function LeadForm({
                 }}
             >
                 Send Me a Quote ➔
-              </button>
+            </button>
             <p className="text-center text-xs mt-1" style={{ color: dark ? "rgba(255,255,255,0.45)" : "#aaa" }}>
-                  🔒 We never share your details
+                🔒 We never share your details
             </p>
-        </div>
+        </form>
     );
 }
 
@@ -122,7 +136,11 @@ function QuoteModal({
     return (
         <div
             className="fixed inset-0 z-50 flex items-center justify-center px-4"
-            style={{ background: "rgba(7,7,126,0.65)", backdropFilter: "blur(8px)" }}
+            style={{
+                backgroundColor: "rgba(7,7,126,0.88)",
+                backdropFilter: "blur(8px)",
+                WebkitBackdropFilter: "blur(8px)",
+            }}
             onClick={(e) => { if (e.target === e.currentTarget) onClose(); }}
         >
             <div
@@ -174,8 +192,8 @@ function QuoteModal({
                     <button
                         onClick={onClose}
                         aria-label="Close modal"
-                        className="absolute top-3 right-4 cursor-pointer"
-                        style={{ color: showPromo ? "rgba(255,255,255,0.5)" : "rgba(255,255,255,0.5)", top: showPromo ? "3.2rem" : "1rem" }}
+                        className="absolute right-3 cursor-pointer w-10 h-10 rounded-full flex items-center justify-center bg-white/10 hover:bg-white/20 text-white transition-colors z-20"
+                        style={{ top: showPromo ? "3.2rem" : "0.75rem" }}
                     >
                         <X className="w-5 h-5" />
                     </button>
@@ -212,42 +230,92 @@ function QuoteModal({
     );
 }
 
-const whatsInclude = [
+interface InclusionItem {
+    title: string;
+    description: string;
+    detail: string;
+    benefits: string[];
+    img: string;
+}
+
+const whatsInclude: InclusionItem[] = [
     {
         title: "Interior & Exterior Glass",
         description:
-            "Full clean of both sides of every window pane - removing dirt, water spots, and environmental buildup for a streak-free finish.",
-        img: "/gallery/gallery-1.jpeg"
+            "Full clean of both sides of every window pane — removing dirt, water spots, and environmental buildup for a streak-free finish.",
+        detail:
+            "Using 100% pure deionised water on external panes and professional squeegees with microfibre detailing on interiors. We remove traffic film, coastal salt haze, dust, fingerprints, and smudges, leaving crystal-clear clarity from edge to edge.",
+        benefits: [
+            "Zero mineral spots, haze, or water droplets left behind",
+            "Safe high-reach cleaning up to 4 storeys from ground level",
+            "Both sides cleaned to immaculate streak-free standard",
+        ],
+        img: "/gallery/gallery-1.jpeg",
     },
     {
         title: "Frames, Sills & Tracks",
         description:
             "We clean all frames, sills, and sliding tracks to remove grime, mould, and built-up debris that harbour bacteria and damage seals.",
-        img: "/gallery/gallery-2.jpeg"
+        detail:
+            "Perth's coastal winds and dry summer dust accumulate heavily in sliding tracks and sills, causing sliding rollers to jam and window seals to degrade prematurely. We vacuum deep track channels, wipe clean all internal sills, and wash exterior frame surrounds.",
+        benefits: [
+            "Prevents expensive roller wear and track corrosion",
+            "Removes trapped moisture, mould spores, and allergens",
+            "Included as standard on all residential service bookings",
+        ],
+        img: "/gallery/gallery-2.jpeg",
     },
     {
         title: "Screen & Fly Screen Cleaning",
         description:
-            "Screens are removed, cleaned, and refitted - removing dust, pollen, and grime that blocks airflow and reduces light.",
-        img: "/gallery/gallery-3.jpeg"
+            "Screens are removed, cleaned, and refitted — removing dust, pollen, and grime that blocks airflow and reduces light.",
+        detail:
+            "Dirty flyscreens act like dirty air filters, blocking up to 25% of fresh breeze and casting a dark haze across your view even when the glass is clean. We carefully detach each flyscreen, brush away cobwebs, wash down the mesh, and refit securely.",
+        benefits: [
+            "Restores maximum airflow and natural sunlight indoors",
+            "Eliminates trapped eucalyptus pollen, dust, and spider webs",
+            "Carefully removed, washed, and refitted by trained technicians",
+        ],
+        img: "/gallery/gallery-3.jpeg",
     },
     {
         title: "Pure Water Cleaning Method",
         description:
-            "We use purified, deionised water that leaves zero mineral residue on glass - meaning windows stay cleaner for longer after each service.",
-        img: "/gallery/gallery-4.jpeg"
+            "We use purified, deionised water that leaves zero mineral residue on glass — meaning windows stay cleaner for longer after each service.",
+        detail:
+            "Perth tap water is rich in dissolved minerals (calcium and magnesium) that dry into unsightly white water spots. Our 4-stage reverse osmosis filtration system produces 0ppm deionised pure water that naturally dissolves dirt without soaps or chemicals.",
+        benefits: [
+            "100% deionised water with zero dissolved minerals (0ppm)",
+            "Environmentally friendly — safe for children, pets, and gardens",
+            "No chemical residue means glass stays cleaner up to 2x longer",
+        ],
+        img: "/gallery/gallery-4.jpeg",
     },
     {
         title: "Hard Water Stain Removal",
         description:
             "Stubborn mineral deposits and hard water stains are treated with specialist solutions, restoring glass clarity where standard cleaning can't.",
-        img: "/gallery/gallery-5.jpeg"
+        detail:
+            "Bore water sprinklers and harsh weather can etch dense mineral scale into glass that no ordinary wash can remove. Our restorative detailing utilizes specialised acid descaling agents, safety glass scrapers, and grade-0000 bronze wool to restore glass clarity.",
+        benefits: [
+            "Dissolves stubborn Perth bore water and calcium etching",
+            "Non-scratch restorative technique for delicate glass",
+            "Saves thousands of dollars compared to glass replacement",
+        ],
+        img: "/gallery/gallery-5.jpeg",
     },
     {
         title: "Streak-Free Polish",
         description:
-            "Every pane is finished with a professional streak-free polish - ensuring your glass looks flawless in all lighting conditions.",
-        img: "/gallery/gallery-6.jpeg"
+            "Every pane is finished with a professional streak-free polish — ensuring your glass looks flawless in all lighting conditions.",
+        detail:
+            "Windows that seem clean in the shade can reveal distracting swirl marks as soon as direct Perth afternoon sunlight strikes the pane. Our team inspects each pane across multiple lighting angles and hand-buffs edges with lint-free microfibres.",
+        benefits: [
+            "Crystal-clear results even under harsh afternoon sunlight",
+            "Multi-angle quality inspection before leaving your property",
+            "Backed by our 100% satisfaction re-clean guarantee",
+        ],
+        img: "/gallery/gallery-6.jpeg",
     },
 ];
 
@@ -288,12 +356,54 @@ function FreeTrialForm() {
     }
 
     return (
-        <div className="flex flex-col gap-3">
-            <input type="text" placeholder="Your Name" value={formData.name} onChange={e => setFormData({...formData, name: e.target.value})} className="w-full rounded-xl px-4 py-3 text-base outline-none bg-white border border-gray-200 text-gray-900 focus:border-brand-navy" />
-            <input type="tel" placeholder="Phone Number" value={formData.phone} onChange={e => setFormData({...formData, phone: e.target.value})} className="w-full rounded-xl px-4 py-3 text-base outline-none bg-white border border-gray-200 text-gray-900 focus:border-brand-navy" />
-            <input type="text" placeholder="Full Property Address" value={formData.address} onChange={e => setFormData({...formData, address: e.target.value})} className="w-full rounded-xl px-4 py-3 text-base outline-none bg-white border border-gray-200 text-gray-900 focus:border-brand-navy" />
-            <button onClick={handleSubmit} className="w-full bg-brand-navy text-white font-bold rounded-xl py-3.5 text-sm mt-2 hover:shadow-lg transition-all cursor-pointer">Claim 2 Free Windows</button>
-        </div>
+        <form
+            onSubmit={handleSubmit}
+            action="/api/quote"
+            method="POST"
+            className="flex flex-col gap-3"
+        >
+            <input type="hidden" name="service" value="FREE TRIAL - 2 Windows" />
+            <input type="hidden" name="message" value="User requested the 2-window free trial." />
+            <input
+                id="trial-name"
+                name="name"
+                autoComplete="name"
+                required
+                type="text"
+                placeholder="Your Name"
+                value={formData.name}
+                onChange={e => setFormData({...formData, name: e.target.value})}
+                className="w-full rounded-xl px-4 py-3 text-base outline-none bg-white border border-gray-200 text-gray-900 focus:border-brand-navy"
+            />
+            <input
+                id="trial-phone"
+                name="phone"
+                autoComplete="tel"
+                required
+                type="tel"
+                placeholder="Phone Number"
+                value={formData.phone}
+                onChange={e => setFormData({...formData, phone: e.target.value})}
+                className="w-full rounded-xl px-4 py-3 text-base outline-none bg-white border border-gray-200 text-gray-900 focus:border-brand-navy"
+            />
+            <input
+                id="trial-address"
+                name="suburb"
+                autoComplete="street-address"
+                required
+                type="text"
+                placeholder="Full Property Address"
+                value={formData.address}
+                onChange={e => setFormData({...formData, address: e.target.value})}
+                className="w-full rounded-xl px-4 py-3 text-base outline-none bg-white border border-gray-200 text-gray-900 focus:border-brand-navy"
+            />
+            <button
+                type="submit"
+                className="w-full bg-brand-navy text-white font-bold rounded-xl py-3.5 text-sm mt-2 hover:shadow-lg transition-all cursor-pointer"
+            >
+                Claim 2 Free Windows
+            </button>
+        </form>
     );
 }
 
@@ -308,6 +418,7 @@ export default function WindowCleaningAdsPage() {
     const [formData, setFormData] = useState<FormDataType>({ name: "", phone: "", suburb: "", promo: "", });
     const [submitted, setSubmitted] = useState(false);
     const [selectedPkg, setSelectedPkg] = useState<{name: string, price: string} | null>(null);
+    const [selectedInclusion, setSelectedInclusion] = useState<InclusionItem | null>(null);
     const [pkgForm, setPkgForm] = useState({ name: "", phone: "", suburb: "" });
     const [isPkgSubmitting, setIsPkgSubmitting] = useState(false);
     const [pkgSubmitted, setPkgSubmitted] = useState(false);
@@ -456,11 +567,23 @@ export default function WindowCleaningAdsPage() {
             />
 
             
-{/* 🔹🔹🔹 SECTION 1: HERO  🔹🔹🔹 */}
+            {/* ZERO-JS EMERGENCY CLICK-TO-CALL BANNER */}
+            <noscript>
+                <div className="bg-amber-400 text-[#07077E] px-4 py-3.5 text-center font-bold text-sm sm:text-base border-b-2 border-[#07077E] sticky top-0 z-[60] shadow-lg">
+                    <span>⚡ Need fast window cleaning in Perth? Call us directly: </span>
+                    <a href={`tel:${BUSINESS.phoneRaw}`} className="underline font-black hover:text-black">
+                        {BUSINESS.phone}
+                    </a>
+                    <span> (Available 7 Days • Fast Quotes by Phone)</span>
+                </div>
+            </noscript>
+
+            {/* 🔹🔹🔹 SECTION 1: HERO  🔹🔹🔹 */}
             <section
                 className="relative min-h-screen flex flex-col items-center justify-center md:px-5 pb-10 text-white bg-cover bg-center
   bg-[linear-gradient(160deg,rgba(10,22,40,0.5)_0%,rgba(15,37,69,0.8)_60%,rgba(19,48,96,0.8)_100%),url('/landing-hero-bg.jpeg')]
   md:bg-[linear-gradient(160deg,rgba(10,22,40,0.5)_0%,rgba(15,37,69,0.8)_60%,rgba(19,48,96,0.8)_100%),url('/landing-hero-bg.jpeg')]"
+                style={{ backgroundColor: "#0A1628" }}
             >
 
                 {/* HERO BODY */}
@@ -642,9 +765,19 @@ export default function WindowCleaningAdsPage() {
                         {whatsInclude.map((item, index) => (
                             <div
                                 key={index}
-                                className="flex flex-col rounded-2xl bg-white border border-gray-100 shadow-sm hover:shadow-lg hover:-translate-y-1 transition-all duration-300 overflow-hidden group"
+                                onClick={() => setSelectedInclusion(item)}
+                                role="button"
+                                tabIndex={0}
+                                onKeyDown={(e) => {
+                                    if (e.key === "Enter" || e.key === " ") {
+                                        e.preventDefault();
+                                        setSelectedInclusion(item);
+                                    }
+                                }}
+                                aria-label={`View details for ${item.title}`}
+                                className="flex flex-col rounded-2xl bg-white border border-gray-200/90 shadow-sm hover:shadow-2xl hover:-translate-y-1.5 transition-all duration-300 overflow-hidden group cursor-pointer text-left select-none ring-1 ring-transparent hover:ring-action-gold/50"
                             >
-                                <div className="relative w-full h-48 bg-gray-100 flex-shrink-0 overflow-hidden">
+                                <div className="relative w-full h-52 bg-gray-100 flex-shrink-0 overflow-hidden">
                                     <Image
                                         src={item.img}
                                         alt={item.title}
@@ -652,12 +785,28 @@ export default function WindowCleaningAdsPage() {
                                         sizes="(max-width: 768px) 100vw, 33vw"
                                         className="object-cover group-hover:scale-105 transition-transform duration-500"
                                     />
+                                    <div className="absolute inset-0 bg-gradient-to-t from-black/40 via-transparent to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-300" />
+                                    <div
+                                        className="absolute top-3 right-3 bg-white/95 backdrop-blur-sm px-3 py-1 rounded-full text-xs font-bold text-brand-navy shadow-md group-hover:bg-action-gold transition-colors flex items-center gap-1.5"
+                                        style={{ backgroundColor: "rgba(255,255,255,0.95)", WebkitBackdropFilter: "blur(4px)" }}
+                                    >
+                                        <span>Inspect Feature</span>
+                                        <ArrowRight className="w-3 h-3 group-hover:translate-x-0.5 transition-transform" />
+                                    </div>
                                 </div>
-                                <div className="p-6 flex flex-col gap-3">
-                                    <h3 className="font-semibold text-lg" style={{ color: NAVY }}>{item.title}</h3>
-                                    <p className="text-sm leading-relaxed font-light" style={{ color: "#888" }}>
-                                        {item.description}
-                                    </p>
+                                <div className="p-6 flex flex-col gap-3 flex-1 justify-between">
+                                    <div>
+                                        <h3 className="font-bold text-lg text-brand-navy group-hover:text-action-gold transition-colors mb-1">
+                                            {item.title}
+                                        </h3>
+                                        <p className="text-sm leading-relaxed text-gray-600 font-normal">
+                                            {item.description}
+                                        </p>
+                                    </div>
+                                    <div className="pt-3 border-t border-gray-100 flex items-center justify-between text-xs font-bold text-action-gold group-hover:text-brand-navy transition-colors">
+                                        <span>Click to view full details</span>
+                                        <span className="text-base">&rarr;</span>
+                                    </div>
                                 </div>
                             </div>
                         ))}
@@ -724,34 +873,210 @@ export default function WindowCleaningAdsPage() {
                         </div>
                     </div>
 
-                    <div className="grid md:grid-cols-3 gap-6">
-                        <button onClick={() => setSelectedPkg({name: "Essential", price: isDoubleStorey ? 'Starting From $279' : 'Starting From $159'})} className="p-6 border rounded-xl shadow-sm bg-gray-50 flex flex-col justify-between transition-all duration-300 hover:shadow-xl hover:scale-105 hover:border-brand-navy text-left cursor-pointer group">
+                    <div className="grid md:grid-cols-3 gap-6 text-left">
+                        {/* Essential Package */}
+                        <div
+                            role="button"
+                            tabIndex={0}
+                            onClick={() => setSelectedPkg({ name: "Essential", price: isDoubleStorey ? "Starting From $279" : "Starting From $159" })}
+                            onKeyDown={(e) => {
+                                if (e.key === "Enter" || e.key === " ") {
+                                    e.preventDefault();
+                                    setSelectedPkg({ name: "Essential", price: isDoubleStorey ? "Starting From $279" : "Starting From $159" });
+                                }
+                            }}
+                            className="p-6 sm:p-7 border border-slate-200 rounded-3xl shadow-sm bg-gray-50 flex flex-col justify-between transition-all duration-300 hover:shadow-2xl hover:-translate-y-2 hover:border-brand-navy cursor-pointer group select-none relative"
+                        >
                             <div>
-                                <h3 className="font-bold text-xl text-brand-navy mb-2 group-hover:text-action-gold transition-colors">Essential</h3>
-                                <p className="text-gray-500 text-sm mb-4">External standard clean only</p>
-                            </div>
-                            <p className="text-3xl font-black text-brand-navy mb-4 transition-all duration-300">{isDoubleStorey ? 'Starting From $279' : 'Starting From $159'}</p>
-                            <div className="text-center w-full py-2 bg-gray-200 rounded-lg font-bold text-sm text-gray-700 group-hover:bg-brand-navy group-hover:text-white transition-colors">Select Package</div>
-                        </button>
+                                <div className="flex items-center justify-between mb-3">
+                                    <span className="inline-block px-3 py-1 rounded-full text-xs font-bold uppercase tracking-wider bg-slate-200/80 text-slate-700">
+                                        Basic Wash Tier
+                                    </span>
+                                    <span className="text-xs font-semibold text-slate-500 uppercase tracking-wider">
+                                        Exterior Only
+                                    </span>
+                                </div>
+                                <h3 className="font-bold text-2xl text-brand-navy mb-1.5 group-hover:text-action-gold transition-colors">
+                                    Essential
+                                </h3>
+                                <p className="text-gray-500 text-sm mb-4 leading-relaxed">
+                                    Quick exterior refresh to lift surface grime and restore street appeal.
+                                </p>
 
-                        <button onClick={() => setSelectedPkg({name: "Standard", price: isDoubleStorey ? 'Starting From $499' : 'Starting From $279'})} className="p-6 border-2 border-action-gold rounded-xl shadow-md bg-brand-navy text-white relative transform md:-translate-y-4 mt-4 md:mt-0 flex flex-col justify-between transition-all duration-300 hover:shadow-2xl hover:scale-105 text-left cursor-pointer group">
-                            <div className="absolute top-0 left-1/2 -translate-x-1/2 -translate-y-1/2 bg-action-gold text-brand-navy px-3 py-1 rounded-full text-xs font-bold tracking-wide w-max">MOST POPULAR</div>
-                            <div>
-                                <h3 className="font-bold text-xl mb-2 text-white group-hover:text-action-gold transition-colors">Standard</h3>
-                                <p className="text-brand-water text-sm mb-4">Inside and out basic wash</p>
-                            </div>
-                            <p className="text-3xl font-black text-white mb-4 transition-all duration-300">{isDoubleStorey ? 'Starting From $499' : 'Starting From $279'}</p>
-                            <div className="text-center w-full py-2 bg-action-gold rounded-lg font-bold text-sm text-brand-navy group-hover:bg-white transition-colors">Select Package</div>
-                        </button>
+                                <div className="p-3.5 rounded-2xl bg-white border border-slate-200/80 mb-5">
+                                    <span className="text-xs font-semibold text-slate-500 block mb-0.5">Starting From</span>
+                                    <p className="text-3xl font-black text-brand-navy transition-all duration-300">
+                                        {isDoubleStorey ? "From $279" : "From $159"}
+                                    </p>
+                                </div>
 
-                        <button onClick={() => setSelectedPkg({name: "Supreme", price: isDoubleStorey ? 'Starting From $859' : 'Starting From $479'})} className="p-6 border-2 rounded-xl bg-white relative flex flex-col justify-between transition-all duration-300 hover:shadow-2xl hover:scale-105 text-left cursor-pointer group" style={{ borderColor: "#ffd700", boxShadow: "0 0 20px rgba(255, 215, 0, 0.3)" }}>
-                            <div>
-                                <h3 className="font-bold text-xl text-brand-navy mb-2 group-hover:text-action-gold transition-colors">Supreme</h3>
-                                <p className="text-gray-500 text-sm mb-4">Inside and out detailing (stuck-on paint, hard water)</p>
+                                <div className="space-y-2.5 mb-6 text-xs sm:text-sm text-slate-700">
+                                    <div className="flex items-start gap-2.5">
+                                        <Check className="w-4 h-4 text-emerald-600 shrink-0 mt-0.5" />
+                                        <span>100% pure deionised water exterior wash</span>
+                                    </div>
+                                    <div className="flex items-start gap-2.5">
+                                        <Check className="w-4 h-4 text-emerald-600 shrink-0 mt-0.5" />
+                                        <span>Spot-free, streak-free mineral-free dry</span>
+                                    </div>
+                                    <div className="flex items-start gap-2.5">
+                                        <Check className="w-4 h-4 text-emerald-600 shrink-0 mt-0.5" />
+                                        <span>Exterior window frames & sills wiped</span>
+                                    </div>
+                                    <div className="flex items-start gap-2.5">
+                                        <Check className="w-4 h-4 text-emerald-600 shrink-0 mt-0.5" />
+                                        <span>Cobweb clearing around all frames</span>
+                                    </div>
+                                </div>
                             </div>
-                            <p className="text-3xl font-black text-brand-navy mb-4 transition-all duration-300">{isDoubleStorey ? 'Starting From $859' : 'Starting From $479'}</p>
-                            <div className="text-center w-full py-2 bg-gray-100 rounded-lg font-bold text-sm text-brand-navy group-hover:bg-action-gold transition-colors" style={{ border: "1px solid #ffd700" }}>Select Package</div>
-                        </button>
+
+                            <div className="w-full py-3.5 px-4 rounded-xl font-bold text-sm text-center flex items-center justify-center gap-2 bg-slate-200 text-brand-navy group-hover:bg-brand-navy group-hover:text-white transition-all shadow-sm">
+                                <span>Book Essential Package</span>
+                                <ArrowRight className="w-4 h-4 group-hover:translate-x-1 transition-transform" />
+                            </div>
+                        </div>
+
+                        {/* Standard Package (MOST POPULAR) */}
+                        <div
+                            role="button"
+                            tabIndex={0}
+                            onClick={() => setSelectedPkg({ name: "Standard", price: isDoubleStorey ? "Starting From $499" : "Starting From $279" })}
+                            onKeyDown={(e) => {
+                                if (e.key === "Enter" || e.key === " ") {
+                                    e.preventDefault();
+                                    setSelectedPkg({ name: "Standard", price: isDoubleStorey ? "Starting From $499" : "Starting From $279" });
+                                }
+                            }}
+                            className="p-6 sm:p-7 border-2 border-action-gold rounded-3xl shadow-xl bg-brand-navy text-white relative transform md:-translate-y-3 flex flex-col justify-between transition-all duration-300 hover:shadow-2xl hover:scale-[1.03] cursor-pointer group select-none"
+                        >
+                            <div className="absolute top-0 left-1/2 -translate-x-1/2 -translate-y-1/2 bg-action-gold text-brand-navy px-4 py-1 rounded-full text-xs font-extrabold tracking-wider shadow-md whitespace-nowrap uppercase">
+                                ★ MOST POPULAR CHOICE
+                            </div>
+
+                            <div>
+                                <div className="flex items-center justify-between mb-3 mt-1">
+                                    <span className="inline-block px-3 py-1 rounded-full text-xs font-bold uppercase tracking-wider bg-white/15 text-action-gold">
+                                        Basic Wash Tier
+                                    </span>
+                                    <span className="text-xs font-semibold text-brand-water uppercase tracking-wider">
+                                        Inside & Out
+                                    </span>
+                                </div>
+
+                                <h3 className="font-bold text-2xl text-white mb-1.5 group-hover:text-action-gold transition-colors">
+                                    Standard
+                                </h3>
+                                <p className="text-slate-300 text-sm mb-4 leading-relaxed">
+                                    Complete clarity inside and out — our signature full home residential clean.
+                                </p>
+
+                                <div className="p-3.5 rounded-2xl bg-white/10 border border-white/15 mb-5">
+                                    <span className="text-xs font-semibold text-slate-300 block mb-0.5">Starting From</span>
+                                    <p className="text-3xl font-black text-action-gold transition-all duration-300">
+                                        {isDoubleStorey ? "From $499" : "From $279"}
+                                    </p>
+                                </div>
+
+                                <div className="space-y-2.5 mb-6 text-xs sm:text-sm text-slate-200">
+                                    <div className="flex items-start gap-2.5">
+                                        <Check className="w-4 h-4 text-action-gold shrink-0 mt-0.5" />
+                                        <span>Both interior & exterior glass washed</span>
+                                    </div>
+                                    <div className="flex items-start gap-2.5">
+                                        <Check className="w-4 h-4 text-action-gold shrink-0 mt-0.5" />
+                                        <span>Pure water exterior + precision squeegee inside</span>
+                                    </div>
+                                    <div className="flex items-start gap-2.5">
+                                        <Check className="w-4 h-4 text-action-gold shrink-0 mt-0.5" />
+                                        <span>External & internal frames and sills wiped</span>
+                                    </div>
+                                    <div className="flex items-start gap-2.5">
+                                        <Check className="w-4 h-4 text-action-gold shrink-0 mt-0.5" />
+                                        <span>Flyscreens removed, dusted & refitted</span>
+                                    </div>
+                                    <div className="flex items-start gap-2.5">
+                                        <Check className="w-4 h-4 text-action-gold shrink-0 mt-0.5" />
+                                        <span>Full spider & cobweb surround removal</span>
+                                    </div>
+                                </div>
+                            </div>
+
+                            <div className="w-full py-3.5 px-4 rounded-xl font-bold text-sm text-center flex items-center justify-center gap-2 bg-action-gold text-brand-navy group-hover:bg-white transition-all shadow-md">
+                                <span>Book Standard Package</span>
+                                <ArrowRight className="w-4 h-4 group-hover:translate-x-1 transition-transform" />
+                            </div>
+                        </div>
+
+                        {/* Supreme Package (PREMIUM) */}
+                        <div
+                            role="button"
+                            tabIndex={0}
+                            onClick={() => setSelectedPkg({ name: "Supreme", price: isDoubleStorey ? "Starting From $859" : "Starting From $479" })}
+                            onKeyDown={(e) => {
+                                if (e.key === "Enter" || e.key === " ") {
+                                    e.preventDefault();
+                                    setSelectedPkg({ name: "Supreme", price: isDoubleStorey ? "Starting From $859" : "Starting From $479" });
+                                }
+                            }}
+                            className="p-6 sm:p-7 border-2 border-action-gold rounded-3xl bg-white relative flex flex-col justify-between transition-all duration-300 hover:shadow-2xl hover:-translate-y-2 cursor-pointer group select-none shadow-[0_0_20px_rgba(251,191,36,0.25)]"
+                        >
+                            <div className="absolute top-0 right-6 -translate-y-1/2 bg-action-gold text-brand-navy px-3.5 py-1 rounded-full text-xs font-extrabold tracking-wider uppercase shadow-md flex items-center gap-1.5">
+                                <Sparkles className="w-3.5 h-3.5" /> Restorative Detailing
+                            </div>
+
+                            <div>
+                                <div className="flex items-center justify-between mb-3 mt-1">
+                                    <span className="inline-block px-3 py-1 rounded-full text-xs font-bold uppercase tracking-wider bg-amber-100 text-amber-900">
+                                        Full Detailing
+                                    </span>
+                                    <span className="text-xs font-semibold text-slate-500 uppercase tracking-wider">
+                                        Premium Restoration
+                                    </span>
+                                </div>
+
+                                <h3 className="font-bold text-2xl text-brand-navy mb-1.5 group-hover:text-action-gold transition-colors">
+                                    Supreme
+                                </h3>
+                                <p className="text-gray-500 text-sm mb-4 leading-relaxed">
+                                    Intensive restorative detailing for bore water stains, paint, and neglected glass.
+                                </p>
+
+                                <div className="p-3.5 rounded-2xl bg-amber-50/70 border border-amber-200/80 mb-5">
+                                    <span className="text-xs font-semibold text-slate-500 block mb-0.5">Starting From</span>
+                                    <p className="text-3xl font-black text-brand-navy transition-all duration-300">
+                                        {isDoubleStorey ? "From $859" : "From $479"}
+                                    </p>
+                                </div>
+
+                                <div className="space-y-2.5 mb-6 text-xs sm:text-sm text-slate-700">
+                                    <div className="flex items-start gap-2.5">
+                                        <Check className="w-4 h-4 text-emerald-600 shrink-0 mt-0.5" />
+                                        <span>Complete restorative interior & exterior clean</span>
+                                    </div>
+                                    <div className="flex items-start gap-2.5">
+                                        <Check className="w-4 h-4 text-emerald-600 shrink-0 mt-0.5" />
+                                        <span>Tracks & sliding channels vacuumed & detailed</span>
+                                    </div>
+                                    <div className="flex items-start gap-2.5">
+                                        <Check className="w-4 h-4 text-emerald-600 shrink-0 mt-0.5" />
+                                        <span>Perth bore water & mineral stain descaling</span>
+                                    </div>
+                                    <div className="flex items-start gap-2.5">
+                                        <Check className="w-4 h-4 text-emerald-600 shrink-0 mt-0.5" />
+                                        <span>Paint overspray, plaster, render & sticker scraping</span>
+                                    </div>
+                                    <div className="flex items-start gap-2.5">
+                                        <Check className="w-4 h-4 text-emerald-600 shrink-0 mt-0.5" />
+                                        <span>Grade-0000 bronze wool restorative polishing</span>
+                                    </div>
+                                </div>
+                            </div>
+
+                            <div className="w-full py-3.5 px-4 rounded-xl font-bold text-sm text-center flex items-center justify-center gap-2 bg-action-gold text-brand-navy group-hover:bg-brand-navy group-hover:text-white transition-all shadow-sm">
+                                <span>Book Supreme Package</span>
+                                <ArrowRight className="w-4 h-4 group-hover:translate-x-1 transition-transform" />
+                            </div>
+                        </div>
                     </div>
                 </div>
             </section>
@@ -1053,20 +1378,21 @@ export default function WindowCleaningAdsPage() {
                         Same-week slots available. Free, no-obligation quote in 60 minutes.
                     </p>
                     <div className="flex flex-wrap justify-center gap-3">
-                        <Link
+                        <a
                             href={`tel:${BUSINESS.phoneRaw}`}
                             className="flex items-center gap-2 rounded-2xl px-7 py-4 font-bold text-base transition-all hover:-translate-y-0.5"
                             style={{ background: YELLOW, color: NAVY, boxShadow: "0 6px 28px rgba(255,229,77,0.35)" }}
                         >
                             <Phone className="w-5 h-5" />
                             Call {BUSINESS.phone}
-                        </Link>
+                        </a>
                         <button
                             onClick={openRegularModal}
                             className="flex items-center gap-2 rounded-2xl border px-7 py-4 font-medium text-base transition-all hover:bg-white/10 cursor-pointer"
                             style={{ borderColor: "rgba(255,255,255,0.25)", color: "white" }}
                         >
-                            Get a Text Quote Â </button>
+                            Get a Text Quote &nbsp;
+                        </button>
                     </div>
                 </div>
             </section>
@@ -1075,20 +1401,20 @@ export default function WindowCleaningAdsPage() {
 {/* 🔹🔹🔹 STICKY BAR 🔹🔹🔹 */}
             <div
                 className="fixed bottom-0 left-0 right-0 z-50 flex items-center justify-center px-5 py-3 pb-[max(0.75rem,env(safe-area-inset-bottom))]"
-                style={{ background: NAVY, borderTop: `2px solid ${YELLOW}`, boxShadow: "0 -4px 24px rgba(7,7,126,0.3)" }}
+                style={{ backgroundColor: NAVY, borderTop: `2px solid ${YELLOW}`, boxShadow: "0 -4px 24px rgba(7,7,126,0.3)" }}
             >
                 <div className="hidden sm:block">
                     <p className="text-xs font-semibold text-white">Aspect Window Cleaning</p>
                     <p className="text-xs" style={{ color: "rgba(255,255,255,0.5)" }}>Perth&apos;s #1 Rated</p>
                 </div>
-                <Link
+                <a
                     href={`tel:${BUSINESS.phoneRaw}`}
                     className="flex items-center gap-2 rounded-xl px-5 py-3 font-bold text-sm transition-all hover:scale-105 sm:ml-auto shiny-call-btn"
                     style={{ background: YELLOW, color: NAVY }}
                 >
                     <Phone className="w-4 h-4" />
                     Call Now - {BUSINESS.phone}
-                </Link>
+                </a>
             </div>
             {/* spacer */}
             <div className="h-16 pb-[env(safe-area-inset-bottom)]" style={{ background: NAVY }} />
@@ -1111,11 +1437,108 @@ export default function WindowCleaningAdsPage() {
                     <div className="text-white mt-4 font-semibold">{currentImageIndex + 1} / 6</div>
                 </div>
             )}
-        {/* PACKAGE SELECTION MODAL */}
+        {/* WHAT'S INCLUDED DETAIL POP-UP MODAL */}
+            {selectedInclusion && (
+                <div
+                    className="fixed inset-0 z-50 flex items-center justify-center p-4 bg-black/80 backdrop-blur-sm overflow-y-auto"
+                    style={{ backgroundColor: "rgba(0,0,0,0.85)", WebkitBackdropFilter: "blur(8px)" }}
+                    onClick={(e) => {
+                        if (e.target === e.currentTarget) setSelectedInclusion(null);
+                    }}
+                >
+                    <div className="relative w-full max-w-lg bg-white rounded-3xl shadow-2xl overflow-hidden my-auto border border-gray-100 flex flex-col max-h-[92vh]">
+                        {/* Picture on top */}
+                        <div className="relative w-full h-56 sm:h-64 bg-slate-800 shrink-0 overflow-hidden">
+                            <Image
+                                src={selectedInclusion.img}
+                                alt={selectedInclusion.title}
+                                fill
+                                sizes="(max-width: 640px) 100vw, 512px"
+                                className="object-cover"
+                            />
+                            {/* Subtle dark gradient overlay */}
+                            <div className="absolute inset-0 bg-gradient-to-t from-black/40 via-transparent to-black/20" />
+
+                            {/* Big cross on top right in red */}
+                            <button
+                                onClick={() => setSelectedInclusion(null)}
+                                aria-label="Close details"
+                                className="absolute top-4 right-4 z-20 w-11 h-11 rounded-full bg-white/95 text-red-600 hover:text-red-700 hover:bg-red-50 flex items-center justify-center shadow-xl transition-all duration-200 hover:scale-110 active:scale-95 cursor-pointer border-2 border-red-500/30"
+                            >
+                                <X className="w-7 h-7 stroke-[3]" />
+                            </button>
+
+                            {/* Standard Inclusions Badge */}
+                            <div className="absolute bottom-4 left-4 z-10">
+                                <span
+                                    className="px-3.5 py-1.5 rounded-full text-brand-navy font-bold text-xs shadow-md uppercase tracking-wider backdrop-blur-sm"
+                                    style={{ backgroundColor: "rgba(255,255,255,0.95)", WebkitBackdropFilter: "blur(4px)" }}
+                                >
+                                    Standard Inclusions
+                                </span>
+                            </div>
+                        </div>
+
+                        {/* Modal Body */}
+                        <div className="p-6 sm:p-7 overflow-y-auto flex-1 space-y-4 text-left">
+                            <div>
+                                <h3 className="text-2xl sm:text-3xl font-heading font-bold text-brand-navy mb-2">
+                                    {selectedInclusion.title}
+                                </h3>
+                                <p className="text-slate-600 text-sm sm:text-base leading-relaxed">
+                                    {selectedInclusion.description}
+                                </p>
+                            </div>
+
+                            {/* Extended description / details */}
+                            {selectedInclusion.detail && (
+                                <p className="text-slate-700 text-sm sm:text-base leading-relaxed bg-slate-50 p-4 rounded-2xl border border-slate-100">
+                                    {selectedInclusion.detail}
+                                </p>
+                            )}
+
+                            {/* Key Inclusions Highlights */}
+                            {selectedInclusion.benefits && selectedInclusion.benefits.length > 0 && (
+                                <div className="space-y-2 pt-1">
+                                    {selectedInclusion.benefits.map((benefit, idx) => (
+                                        <div key={idx} className="flex items-center gap-2.5 text-xs sm:text-sm font-semibold text-brand-navy">
+                                            <CheckCircle2 className="w-4 h-4 text-emerald-500 shrink-0" />
+                                            <span>{benefit}</span>
+                                        </div>
+                                    ))}
+                                </div>
+                            )}
+                        </div>
+
+                        {/* CTA at the bottom of the pop up */}
+                        <div className="p-4 sm:p-6 bg-slate-50 border-t border-slate-100 shrink-0">
+                            <button
+                                onClick={() => {
+                                    setSelectedInclusion(null);
+                                    setModalOpen(true);
+                                }}
+                                className="w-full py-4 px-5 rounded-2xl bg-action-gold text-brand-navy font-extrabold text-sm sm:text-base hover:bg-brand-navy hover:text-white transition-all duration-200 flex items-center justify-center gap-2 shadow-lg hover:shadow-xl cursor-pointer text-center group"
+                            >
+                                <span>Looking for exactly this?? Book now to get your free quote</span>
+                                <ArrowRight className="w-4 h-4 shrink-0 group-hover:translate-x-1 transition-transform" />
+                            </button>
+                        </div>
+                    </div>
+                </div>
+            )}
+
+            {/* PACKAGE SELECTION MODAL */}
             {selectedPkg && (
-                <div className="fixed inset-0 z-50 flex items-center justify-center p-4 bg-black/60 backdrop-blur-sm">
+                <div
+                    className="fixed inset-0 z-50 flex items-center justify-center p-4 bg-black/80 backdrop-blur-sm"
+                    style={{ backgroundColor: "rgba(0,0,0,0.85)", WebkitBackdropFilter: "blur(8px)" }}
+                >
                     <div className="bg-white rounded-2xl shadow-2xl p-6 md:p-8 max-w-md w-full relative">
-                        <button onClick={() => { setSelectedPkg(null); setPkgSubmitted(false); }} className="absolute top-4 right-4 text-gray-400 hover:text-gray-900 cursor-pointer">
+                        <button
+                            onClick={() => { setSelectedPkg(null); setPkgSubmitted(false); }}
+                            aria-label="Close package booking"
+                            className="absolute top-4 right-4 w-10 h-10 rounded-full flex items-center justify-center text-gray-400 hover:text-gray-900 hover:bg-gray-100 transition-colors cursor-pointer"
+                        >
                             <X className="w-6 h-6" />
                         </button>
                         
@@ -1134,22 +1557,24 @@ export default function WindowCleaningAdsPage() {
                                     You have selected the <strong className="text-brand-navy">{selectedPkg.name}</strong> package for a <strong>{isDoubleStorey ? "Double Storey" : "Single Storey"}</strong> home ({selectedPkg.price}). Please provide your details to lock this in.
                                 </p>
                                 
-                                <form onSubmit={handlePkgSubmit} className="space-y-4 text-left">
+                                <form onSubmit={handlePkgSubmit} action="/api/quote" method="POST" className="space-y-4 text-left">
+                                    <input type="hidden" name="service" value={`Residential Window Cleaning - ${selectedPkg.name} (${isDoubleStorey ? "Double Storey" : "Single Storey"})`} />
+                                    <input type="hidden" name="message" value={`Selected Price: ${selectedPkg.price}`} />
                                     <div>
-                                        <label className="block text-sm font-bold text-gray-700 mb-1">Your Name</label>
-                                        <input required type="text" value={pkgForm.name} onChange={(e) => setPkgForm({...pkgForm, name: e.target.value})} className="w-full px-4 py-3 rounded-lg border border-gray-300 focus:ring-2 focus:ring-action-gold focus:border-transparent text-base" placeholder="John Doe" />
+                                        <label htmlFor="pkg-name" className="block text-sm font-bold text-gray-700 mb-1">Your Name</label>
+                                        <input id="pkg-name" name="name" autoComplete="name" required type="text" value={pkgForm.name} onChange={(e) => setPkgForm({...pkgForm, name: e.target.value})} className="w-full px-4 py-3 rounded-lg border border-gray-300 focus:ring-2 focus:ring-action-gold focus:border-transparent text-base" placeholder="John Doe" />
                                     </div>
                                     <div>
-                                        <label className="block text-sm font-bold text-gray-700 mb-1">Phone Number</label>
-                                        <input required type="tel" value={pkgForm.phone} onChange={(e) => setPkgForm({...pkgForm, phone: e.target.value})} className="w-full px-4 py-3 rounded-lg border border-gray-300 focus:ring-2 focus:ring-action-gold focus:border-transparent text-base" placeholder="0400 000 000" />
+                                        <label htmlFor="pkg-phone" className="block text-sm font-bold text-gray-700 mb-1">Phone Number</label>
+                                        <input id="pkg-phone" name="phone" autoComplete="tel" required type="tel" value={pkgForm.phone} onChange={(e) => setPkgForm({...pkgForm, phone: e.target.value})} className="w-full px-4 py-3 rounded-lg border border-gray-300 focus:ring-2 focus:ring-action-gold focus:border-transparent text-base" placeholder="0400 000 000" />
                                     </div>
                                     <div>
-                                        <label className="block text-sm font-bold text-gray-700 mb-1">Suburb</label>
-                                        <input required type="text" value={pkgForm.suburb} onChange={(e) => setPkgForm({...pkgForm, suburb: e.target.value})} className="w-full px-4 py-3 rounded-lg border border-gray-300 focus:ring-2 focus:ring-action-gold focus:border-transparent text-base" placeholder="e.g. Subiaco" />
+                                        <label htmlFor="pkg-suburb" className="block text-sm font-bold text-gray-700 mb-1">Suburb</label>
+                                        <input id="pkg-suburb" name="suburb" autoComplete="address-level2" required type="text" value={pkgForm.suburb} onChange={(e) => setPkgForm({...pkgForm, suburb: e.target.value})} className="w-full px-4 py-3 rounded-lg border border-gray-300 focus:ring-2 focus:ring-action-gold focus:border-transparent text-base" placeholder="e.g. Subiaco" />
                                     </div>
                                     {pkgError && <p className="text-red-500 text-sm font-semibold">{pkgError}</p>}
                                     <button disabled={isPkgSubmitting} type="submit" className="w-full bg-action-gold text-brand-navy font-bold py-4 rounded-xl hover:shadow-lg transition-all cursor-pointer">
-                                        {isPkgSubmitting ? "Booking..." : "Book Now &rarr;"}
+                                        {isPkgSubmitting ? "Booking..." : "Book Now \u2192"}
                                     </button>
                                 </form>
                             </>

@@ -33,7 +33,11 @@ export default function CertificateModalWrapper() {
     const currentUrl = certType ? imageUrls[certType] : "";
 
     return (
-        <div className="fixed inset-0 z-[9999] flex items-center justify-center p-4 bg-black/80 backdrop-blur-sm" onClick={() => setIsOpen(false)}>
+        <div
+            className="fixed inset-0 z-[9999] flex items-center justify-center p-4 bg-black/85 backdrop-blur-sm"
+            style={{ backgroundColor: "rgba(0,0,0,0.85)", WebkitBackdropFilter: "blur(8px)" }}
+            onClick={() => setIsOpen(false)}
+        >
             <div className="bg-white rounded-2xl shadow-2xl overflow-hidden max-w-3xl w-full relative" onClick={e => e.stopPropagation()}>
                 <button onClick={() => setIsOpen(false)} className="absolute top-4 right-4 z-10 text-gray-800 bg-white/80 p-2 rounded-full hover:bg-white hover:text-gray-900 cursor-pointer shadow">
                     <X className="w-6 h-6" />
