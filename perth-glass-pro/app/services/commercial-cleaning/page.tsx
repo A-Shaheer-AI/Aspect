@@ -548,7 +548,7 @@ const CommercialCleaning = () => {
                                 <div className="font-semibold text-brand-navy text-sm md:text-base leading-tight">
                                     5.0 Google Reviews
                                 </div>
-                                <div className="text-xs text-brand-slate">Perth businesses</div>
+                                <div className="text-xs text-brand-slate">43+ Verified Reviews</div>
                             </div>
                         </ClickableBadge>
                     </div>
@@ -879,7 +879,7 @@ const CommercialCleaning = () => {
                         Why Perth Businesses Choose Aspect
                     </h2>
                     <p className="text-center text-brand-slate max-w-3xl mx-auto mb-12">
-                        With hundreds of 5-star reviews across Perth, Aspect Window Cleaning is the trusted name for professional, reliable commercial cleaning and office janitorial care that never cuts corners.
+                        With 43+ 5-star reviews across Perth, Aspect Window Cleaning is the trusted name for professional, reliable commercial cleaning and office janitorial care that never cuts corners.
                     </p>
 
                     <div className="grid md:grid-cols-2 gap-8">

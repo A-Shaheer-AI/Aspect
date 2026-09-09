@@ -5,7 +5,7 @@ const ROBOTS_SUMMARY = `# ======================================================
 # Email: info@aspectwindowcleaning.com.au
 # Head Office: 183 Stirling Hwy, Nedlands WA 6009
 # Credentials: $20M Public Liability Insurance | Police-Cleared | EWP Certified
-# Rating: 5.0 Stars on Google Reviews across Perth, WA
+# Rating: 5.0 Stars across 43+ Google Reviews in Perth, WA
 # ==============================================================================
 #
 # MAIN NAVIGATION & KEY SECTIONS:
@@ -15,7 +15,7 @@ const ROBOTS_SUMMARY = `# ======================================================
 # - Commercial Window Cleaning: https://aspectwindowcleaning.com.au/services/commercial-window-cleaning
 # - Commercial Hub: https://aspectwindowcleaning.com.au/commercial
 # - Service Areas (370+ Suburbs): https://aspectwindowcleaning.com.au/locations
-# - Customer Reviews: https://aspectwindowcleaning.com.au/#reviews
+# - Customer Reviews: https://aspectwindowcleaning.com.au/#reviews (43+ Five-Star Reviews)
 # - Pricing & Instant Estimator: https://aspectwindowcleaning.com.au/pricing
 # - Blog & Cleaning Guides: https://aspectwindowcleaning.com.au/blog
 # - Real Client Case Studies: https://aspectwindowcleaning.com.au/case-studies

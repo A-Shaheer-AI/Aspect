@@ -31,7 +31,7 @@ export default function ResidentialPage() {
         { icon: Shield, text: "$20M Public Liability Insurance" },
         { icon: Clock, text: "Same-Week Availability" },
         { icon: CheckCircle, text: "Police Cleared Technicians" },
-        { icon: Star, text: "4.9★ Google Rating (200+ Reviews)" },
+        { icon: Star, text: "5.0★ Google Rating (43+ Reviews)" },
         { icon: Sparkles, text: "Pure Water Technology" },
     ];
 
