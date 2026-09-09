@@ -55,19 +55,19 @@ export default function CommercialPage() {
                         compliant, insured, and certified.
                     </p>
                     <div className="flex flex-col sm:flex-row items-center justify-center gap-3 sm:gap-4">
-                        <a
-                            href={`tel:${BUSINESS.phoneRaw}`}
-                            className="w-full sm:w-auto inline-flex items-center justify-center gap-3 bg-action-gold text-brand-navy font-bold text-base sm:text-lg px-8 py-4 rounded-full hover:bg-action-gold/90 transition-colors min-h-[48px]"
-                        >
-                            <Phone className="w-5 h-5" />
-                            Request a Quote
-                        </a>
                         <Link
                             href="/services/commercial-window-cleaning"
-                            className="w-full sm:w-auto inline-flex items-center justify-center gap-3 bg-white/10 border-2 border-white/30 text-white font-bold text-base sm:text-lg px-8 py-4 rounded-full hover:bg-white/20 transition-colors min-h-[48px]"
+                            className="w-full sm:w-auto inline-flex items-center justify-center gap-2 bg-action-gold text-brand-navy font-bold text-base px-8 py-4 rounded-full hover:bg-action-gold/90 transition-colors min-h-[48px]"
                         >
-                            Find Out More
-                            <ArrowRight className="w-5 h-5" />
+                            Commercial Window Cleaning
+                            <ArrowRight className="w-4 h-4" />
+                        </Link>
+                        <Link
+                            href="/services/commercial-cleaning"
+                            className="w-full sm:w-auto inline-flex items-center justify-center gap-2 bg-white/10 border-2 border-white/30 text-white font-bold text-base px-8 py-4 rounded-full hover:bg-white/20 transition-colors min-h-[48px]"
+                        >
+                            Office Janitorial Services
+                            <ArrowRight className="w-4 h-4" />
                         </Link>
                     </div>
                 </div>
@@ -103,7 +103,7 @@ export default function CommercialPage() {
                             </div>
                         ))}
                     </div>
-                    <div className="mt-10 p-6 rounded-2xl bg-gradient-to-r from-brand-navy to-slate-900 text-white flex flex-col sm:flex-row items-center justify-between gap-6 shadow-md">
+                    <div className="mt-10 p-6 rounded-2xl bg-gradient-to-r from-brand-navy to-slate-900 text-white flex flex-col md:flex-row items-center justify-between gap-6 shadow-md">
                         <div>
                             <span className="text-action-gold text-xs font-bold uppercase tracking-wider block mb-1">Dual-Contract Advantage</span>
                             <h3 className="text-lg font-bold text-white mb-1">Complete Office Janitorial + High-Reach Window Cleaning</h3>
@@ -111,12 +111,20 @@ export default function CommercialPage() {
                                 Consolidate routine workstation sanitation, restroom restocking, floor care, and external facade washing under one vetted team and one invoice. Save up to 20% on bundled contracts.
                             </p>
                         </div>
-                        <Link
-                            href="/services/commercial-window-cleaning"
-                            className="w-full sm:w-auto inline-flex items-center justify-center gap-2 bg-action-gold text-brand-navy font-bold px-6 py-3 rounded-full text-sm hover:bg-action-gold/90 transition-all flex-shrink-0 min-h-[44px]"
-                        >
-                            Explore Full Scope <ArrowRight className="w-4 h-4" />
-                        </Link>
+                        <div className="flex flex-col sm:flex-row gap-3 w-full md:w-auto flex-shrink-0">
+                            <Link
+                                href="/services/commercial-cleaning"
+                                className="inline-flex items-center justify-center gap-2 bg-action-gold text-brand-navy font-bold px-6 py-3 rounded-full text-sm hover:bg-action-gold/90 transition-all min-h-[44px]"
+                            >
+                                Office Janitorial <ArrowRight className="w-4 h-4" />
+                            </Link>
+                            <Link
+                                href="/services/commercial-window-cleaning"
+                                className="inline-flex items-center justify-center gap-2 bg-white/10 border border-white/20 text-white font-bold px-6 py-3 rounded-full text-sm hover:bg-white/20 transition-all min-h-[44px]"
+                            >
+                                Window Cleaning <ArrowRight className="w-4 h-4" />
+                            </Link>
+                        </div>
                     </div>
                 </div>
             </section>

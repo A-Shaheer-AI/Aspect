@@ -279,8 +279,8 @@ export default function PricingPage() {
                             </span>
                             <h2 className="text-2xl sm:text-3xl font-bold text-brand-navy">Commercial Pricing</h2>
                         </div>
-                        <Link href="/services/commercial-window-cleaning" className="text-blue-600 hover:underline font-semibold hidden md:block">
-                            Learn more about Commercial Cleaning &rarr;
+                        <Link href="/commercial" className="text-blue-600 hover:underline font-semibold hidden md:block">
+                            Learn more about Commercial Services &rarr;
                         </Link>
                     </div>
                     

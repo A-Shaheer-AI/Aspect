@@ -25,7 +25,7 @@ export default function Navbar() {
     // Updated links with full anchor paths for inner page compatibility
     const navLinks = [
         { name: "Services", href: "/services" },
-        { name: "Commercial", href: "/services/commercial-window-cleaning" },
+        { name: "Commercial", href: "/commercial" },
         { name: "Areas", href: "/#areas" },
         { name: "Reviews", href: "/#reviews" },
         { name: "Pricing", href: "/pricing" },

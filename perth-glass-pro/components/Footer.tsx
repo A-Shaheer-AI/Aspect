@@ -11,7 +11,8 @@ export default async function Footer() {
 
     const services = [
         { name: "Residential Window Cleaning", href: "/services/residential-window-cleaning" },
-        { name: "Commercial Cleaning", href: "/services/commercial-window-cleaning" },
+        { name: "Commercial Window Cleaning", href: "/services/commercial-window-cleaning" },
+        { name: "Commercial Office Cleaning", href: "/services/commercial-cleaning" },
         { name: "Solar Panel Washing", href: "/services/solar-panel-washing" },
         { name: "Gutter Cleaning", href: "/services/gutter-cleaning" },
         { name: "Pressure Washing", href: "/services/pressure-washing" },
@@ -62,7 +63,7 @@ export default async function Footer() {
                     <div>
                         <h4 className="font-bold text-sm mb-3 text-white">Services</h4>
                         <ul className="space-y-1.5">
-                            {services.slice(0, 4).map((service) => (
+                            {services.map((service) => (
                                 <li key={service.name}>
                                     <Link href={service.href} className="text-gray-400 hover:text-action-gold text-xs">
                                         {service.name}
