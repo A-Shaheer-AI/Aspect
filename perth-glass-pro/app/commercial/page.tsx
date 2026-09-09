@@ -6,27 +6,31 @@ import { ArrowRight, Building2, Shield, Phone, CheckCircle2 } from "lucide-react
 import { BUSINESS } from "@/lib/config";
 
 export const metadata: Metadata = {
-    title: "Commercial & Strata Window Cleaning",
-    description: "Professional commercial window cleaning in Perth. Cherry picker (EWP), water-fed pole, and multi-story specialists. Offices, retail, and strata buildings. Free quotes.",
+    title: "Commercial Cleaning, Janitorial & Window Cleaning Perth | Aspect",
+    description: "Perth commercial cleaning, office janitorial, and high-reach window cleaning. Directly employed police-cleared staff, EWP certified, $20M insured. 24/7 service.",
 };
 
 export default function CommercialPage() {
     const features = [
-        "Certified Cherry Picker (EWP) operators for cleaning windows in high-rise buildings",
-        "Water-Fed Pole System for safe commercial window cleaning (up to 4 stories)",
-        "Access to lifts and scissor lifts is available for buildings with multiple levels.",
-        "Adjustable schedule that includes commercial cleaning after hours",
-        "Thorough safety records and adherence",
-        "Friendly service from the strata and property manager",
+        "Certified Cherry Picker (EWP) operators for high-reach glass and facade cleaning",
+        "Water-Fed Pole System for pure-water cleaning up to 4 storeys from the ground",
+        "Comprehensive office janitorial care & hospital-grade surface sanitisation",
+        "Commercial hard floor strip & seal and carpet hot water extraction",
+        "100% directly employed, police-cleared staff — zero subcontracting",
+        "Adjustable 24/7 schedule including after-hours and weekend maintenance",
+        "Thorough WorkSafe WA compliance, strict SWMS, and $20M public liability",
+        "Proactive supervisory audits and single dedicated local account manager",
     ];
 
     const industries = [
-        "Office Buildings",
-        "Retail Centres",
-        "Hotels & Hospitality",
-        "Educational Facilities",
-        "Medical Centres",
-        "Industrial Warehouses",
+        "Corporate Office Buildings",
+        "Medical & Healthcare Clinics",
+        "Strata & Multi-Unit Complexes",
+        "Retail Centres & Showrooms",
+        "Industrial & Warehouse Facilities",
+        "Educational & Childcare Facilities",
+        "Gyms & Fitness Centres",
+        "Hospitality & Commercial Dining",
     ];
 
     return (
@@ -89,7 +93,7 @@ export default function CommercialPage() {
             <section className="py-16 bg-white">
                 <div className="max-w-5xl mx-auto px-4">
                     <h2 className="text-3xl font-heading font-bold text-brand-navy text-center mb-12">
-                        Why Pick Aspect for Cleaning Commercial Windows?
+                        Why Pick Aspect for Commercial Cleaning & High-Reach Glazing?
                     </h2>
                     <div className="grid md:grid-cols-2 lg:grid-cols-3 gap-6">
                         {features.map((feature) => (
@@ -98,6 +102,21 @@ export default function CommercialPage() {
                                 <span className="text-brand-slate">{feature}</span>
                             </div>
                         ))}
+                    </div>
+                    <div className="mt-10 p-6 rounded-2xl bg-gradient-to-r from-brand-navy to-slate-900 text-white flex flex-col sm:flex-row items-center justify-between gap-6 shadow-md">
+                        <div>
+                            <span className="text-action-gold text-xs font-bold uppercase tracking-wider block mb-1">Dual-Contract Advantage</span>
+                            <h3 className="text-lg font-bold text-white mb-1">Complete Office Janitorial + High-Reach Window Cleaning</h3>
+                            <p className="text-slate-300 text-sm max-w-xl">
+                                Consolidate routine workstation sanitation, restroom restocking, floor care, and external facade washing under one vetted team and one invoice. Save up to 20% on bundled contracts.
+                            </p>
+                        </div>
+                        <Link
+                            href="/services/commercial-window-cleaning"
+                            className="w-full sm:w-auto inline-flex items-center justify-center gap-2 bg-action-gold text-brand-navy font-bold px-6 py-3 rounded-full text-sm hover:bg-action-gold/90 transition-all flex-shrink-0 min-h-[44px]"
+                        >
+                            Explore Full Scope <ArrowRight className="w-4 h-4" />
+                        </Link>
                     </div>
                 </div>
             </section>
