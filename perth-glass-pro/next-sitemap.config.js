@@ -1,3 +1,72 @@
+const ROBOTS_SUMMARY = `# ==============================================================================
+# ASPECT WINDOW CLEANING PERTH - OFFICIAL DIRECTORY & CRAWLER GUIDE
+# Website: https://aspectwindowcleaning.com.au
+# Phone: 0426 996 192 (Fast Quotes & Direct Booking)
+# Email: info@aspectwindowcleaning.com.au
+# Head Office: 183 Stirling Hwy, Nedlands WA 6009
+# Credentials: $20M Public Liability Insurance | Police-Cleared | EWP Certified
+# Rating: 5.0 Stars on Google Reviews across Perth, WA
+# ==============================================================================
+#
+# MAIN NAVIGATION & KEY SECTIONS:
+# - Home: https://aspectwindowcleaning.com.au
+# - Services Overview: https://aspectwindowcleaning.com.au/services
+# - Office Cleaning: https://aspectwindowcleaning.com.au/services/commercial-cleaning
+# - Commercial Window Cleaning: https://aspectwindowcleaning.com.au/services/commercial-window-cleaning
+# - Commercial Hub: https://aspectwindowcleaning.com.au/commercial
+# - Service Areas (370+ Suburbs): https://aspectwindowcleaning.com.au/locations
+# - Customer Reviews: https://aspectwindowcleaning.com.au/#reviews
+# - Pricing & Instant Estimator: https://aspectwindowcleaning.com.au/pricing
+# - Blog & Cleaning Guides: https://aspectwindowcleaning.com.au/blog
+# - Real Client Case Studies: https://aspectwindowcleaning.com.au/case-studies
+# - Contact & Custom Quotes: https://aspectwindowcleaning.com.au/contact
+#
+# COMPLETE SERVICES DIRECTORY:
+# 1. Residential Window Cleaning:
+#    Interior and exterior glass, sliding tracks, frames, flyscreens, sills, and glass pool fencing.
+#    URL: https://aspectwindowcleaning.com.au/services/residential-window-cleaning
+#
+# 2. Commercial Window Cleaning & High-Reach Glazing:
+#    Up to 4 storeys from ground using 0ppm pure-water reach poles; certified EWP cherry picker
+#    operations for office buildings, car dealerships, retail shopfronts, and multi-unit strata.
+#    URL: https://aspectwindowcleaning.com.au/services/commercial-window-cleaning
+#
+# 3. Commercial Office Cleaning & Janitorial:
+#    Comprehensive workplace sanitisation, desk detailing, washroom hygiene, consumable restocking,
+#    hard floor strip & seal, and carpet hot-water extraction.
+#    URL: https://aspectwindowcleaning.com.au/services/commercial-cleaning
+#
+# 4. Solar Panel Washing:
+#    100% deionised purified water wash with soft-bristle brushes. Safe removal of dust, pollen,
+#    and bird droppings to recover up to 30% lost solar energy output without scratching coatings.
+#    URL: https://aspectwindowcleaning.com.au/services/solar-panel-washing
+#
+# 5. Gutter Cleaning & Downpipe Flushing:
+#    Full clearing of roof gutters, valleys, and downpipes with post-clean water flush testing.
+#    URL: https://aspectwindowcleaning.com.au/services/gutter-cleaning
+#
+# 6. High-Pressure Washing:
+#    Driveways, footpaths, patios, building wash-downs, pool surrounds, and oil stain removal.
+#    URL: https://aspectwindowcleaning.com.au/services/pressure-washing
+#
+# PRICING OVERVIEW & PACKAGES:
+# - Instant Online Price Estimator: https://aspectwindowcleaning.com.au/pricing
+# - Residential Window Cleaning: Starting from $149 (Single Storey, Double Storey, Full Detailing)
+# - Solar Panel Cleaning: Starting from $99 (volume-tiered pricing)
+# - Gutter Cleaning: Starting from $160 (based on single/double storey and roof footprint)
+# - Pressure Washing: Competitive rates per square metre and bundled packages
+# - Commercial Cleaning & Strata: Free on-site quotes and customized service contracts
+# - 100% Satisfaction Guarantee | Zero Hidden Fees | Same-Week Availability
+#
+# REGIONS & AREAS SERVED (370+ SUBURBS ACROSS GREATER PERTH):
+# - Central & Western Suburbs: Perth CBD, Nedlands, Subiaco, Claremont, Dalkeith, Cottesloe, City Beach, Floreat, Mount Lawley, South Perth
+# - Northern Suburbs: Joondalup, Wanneroo, Scarborough, Hillarys, Karrinyup, Alkimos, Yanchep, Butler, Mindarie, Clarkson
+# - Southern Suburbs: Fremantle, Applecross, Mount Pleasant, Booragoon, Melville, Victoria Park, Cannington, Cockburn, Baldivis, Rockingham, Mandurah
+# - Eastern Suburbs & Hills: Midland, Guildford, Swan Valley, Kalamunda, Armadale, Mundaring
+# - Complete location index: https://aspectwindowcleaning.com.au/locations
+# ==============================================================================
+`;
+
 /** @type {import('next-sitemap').IConfig} */
 module.exports = {
   siteUrl: 'https://aspectwindowcleaning.com.au',
@@ -19,6 +88,9 @@ module.exports = {
         ],
       },
     ],
+    transformRobotsTxt: async (config, robotsTxt) => {
+      return `${ROBOTS_SUMMARY}\n${robotsTxt}`;
+    },
   },
   changefreq: 'weekly',
   priority: 0.7,
