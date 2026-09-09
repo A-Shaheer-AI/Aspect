@@ -109,7 +109,7 @@ export default function HeroWithScroll() {
       src: "https://res.cloudinary.com/dr8tjrszy/video/upload/q_auto/v1777100063/WhatsApp_Video_2026-04-22_at_8.43.19_PM_nzcn9x.mp4",
       type: "video",
       className: "col-span-1 row-span-1 h-[200px]"
-    },
+    }
   ];
 
   return (
