@@ -1,7 +1,7 @@
 ---
 title: "Residential Window Cleaning in Australia – Professional Home Window Cleaning"
 date: "2024-03-15T10:00:00Z"
-thumbnail: "https://res.cloudinary.com/dr8tjrszy/image/upload/v1771873841/residential-window-cleaning_nhnoux.jpg"
+thumbnail: "https://res.cloudinary.com/dr8tjrszy/image/upload/f_auto,q_auto/v1771873841/residential-window-cleaning_nhnoux.jpg"
 excerpt: "Professional residential window cleaning in Australia. Keep your windows spotless, bright, and streak-free. Hire professional home window cleaners today."
 ---
 
@@ -34,7 +34,7 @@ Professional residential window cleaning is an easy and effective way to keep yo
 
 title: "Commercial Window Cleaning in Australia – Professional Office & Business Window Cleaning"
 date: "2024-03-15T10:00:00Z"
-thumbnail: "https://res.cloudinary.com/dr8tjrszy/image/upload/v1771873841/residential-window-cleaning_nhnoux.jpg"
+thumbnail: "https://res.cloudinary.com/dr8tjrszy/image/upload/f_auto,q_auto/v1771873841/residential-window-cleaning_nhnoux.jpg"
 excerpt: "Professional commercial window cleaning across Australia. Keep your office and business windows spotless and streak-free. Book expert commercial window cleaners today."
 ---
 
@@ -71,7 +71,7 @@ Commercial window cleaning is a necessary service for businesses that aim to pro
 
 title: "Solar Panel Cleaning in Australia – Professional Solar Panel Cleaning Services"
 date: "2024-03-15T10:00:00Z"
-thumbnail: "https://res.cloudinary.com/dr8tjrszy/image/upload/v1771873841/residential-window-cleaning_nhnoux.jpg"
+thumbnail: "https://res.cloudinary.com/dr8tjrszy/image/upload/f_auto,q_auto/v1771873841/residential-window-cleaning_nhnoux.jpg"
 excerpt: "Keep your solar panels efficient and clean with professional solar panel cleaning services in Australia. Boost energy efficiency and performance."
 ---
 
@@ -106,7 +106,7 @@ It is essential to hire professionals to clean your solar panels to keep them wo
 
 title: "Pressure Cleaning in Australia – Professional Exterior Cleaning Services"
 date: "2024-03-15T10:00:00Z"
-thumbnail: "https://res.cloudinary.com/dr8tjrszy/image/upload/v1771873841/residential-window-cleaning_nhnoux.jpg"
+thumbnail: "https://res.cloudinary.com/dr8tjrszy/image/upload/f_auto,q_auto/v1771873841/residential-window-cleaning_nhnoux.jpg"
 excerpt: "Professional pressure cleaning services across Australia. Clean driveways, patios, walls, and more. Keep your property spotless and well-maintained."
 ---
 

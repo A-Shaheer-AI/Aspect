@@ -103,7 +103,7 @@ export default async function SuburbPage({ params }: { params: Promise<{ suburb:
         "@type": "LocalBusiness",
         "name": `Aspect Window Cleaning - ${suburb.name}`,
         "image": "https://aspectwindowcleaning.com.au/og-image.webp",
-        "logo": "https://res.cloudinary.com/dr8tjrszy/image/upload/v1772130850/white-logo_pzpxjk.png",
+        "logo": "https://res.cloudinary.com/dr8tjrszy/image/upload/f_auto,q_auto/v1772130850/white-logo_pzpxjk.png",
         "telephone": BUSINESS.phoneRaw,
         "url": `https://aspectwindowcleaning.com.au/locations/${suburbSlug}`,
         "priceRange": "$$",

@@ -25,6 +25,7 @@ export default function Navbar() {
     // Updated links with full anchor paths for inner page compatibility
     const navLinks = [
         { name: "Services", href: "/services" },
+        { name: "Office Cleaning", href: "/services/commercial-cleaning" },
         { name: "Commercial", href: "/commercial" },
         { name: "Areas", href: "/#areas" },
         { name: "Reviews", href: "/#reviews" },
@@ -53,8 +54,8 @@ export default function Navbar() {
                             </span> */}
                             <Image
                                 src={`${isScrolled ?
-                                    "https://res.cloudinary.com/dr8tjrszy/image/upload/v1772045271/aspect-logo-removebg-preview_fvfhlo.png" :
-                                    "https://res.cloudinary.com/dr8tjrszy/image/upload/v1772130850/white-logo_pzpxjk.png"}`
+                                    "https://res.cloudinary.com/dr8tjrszy/image/upload/f_auto,q_auto/v1772045271/aspect-logo-removebg-preview_fvfhlo.png" :
+                                    "https://res.cloudinary.com/dr8tjrszy/image/upload/f_auto,q_auto/v1772130850/white-logo_pzpxjk.png"}`
                                 }
                                 width={100}
                                 height={100}
@@ -66,7 +67,7 @@ export default function Navbar() {
                         </Link>
 
                         {/* Desktop Navigation */}
-                        <div className="hidden md:flex items-center gap-6">
+                        <div className="hidden md:flex items-center gap-3.5 lg:gap-4 xl:gap-5 text-sm xl:text-base whitespace-nowrap">
                             {navLinks.map((link) => (
                                 <Link
                                     key={link.name}

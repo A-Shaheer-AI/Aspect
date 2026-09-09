@@ -105,7 +105,7 @@ export default async function RootLayout({
                             "@type": "LocalBusiness",
                             "name": "Aspect Window Cleaning",
                             "image": "https://aspectwindowcleaning.com.au/og-image.webp",
-                            "logo": "https://res.cloudinary.com/dr8tjrszy/image/upload/v1772130850/white-logo_pzpxjk.png",
+                            "logo": "https://res.cloudinary.com/dr8tjrszy/image/upload/f_auto,q_auto/v1772130850/white-logo_pzpxjk.png",
                             "@id": "https://aspectwindowcleaning.com.au/",
                             "url": "https://aspectwindowcleaning.com.au/",
                             "telephone": "+61426996192",

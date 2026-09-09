@@ -79,7 +79,7 @@ export default function CommercialPage() {
                 <div className="max-w-4xl mx-auto px-4">
                     <div className="relative w-full aspect-video rounded-2xl overflow-hidden shadow-xl">
                         <Image
-                            src="https://res.cloudinary.com/dr8tjrszy/image/upload/v1771960129/commercial-sign-cleaning_jzafjr.jpg"
+                            src="https://res.cloudinary.com/dr8tjrszy/image/upload/f_auto,q_auto/v1771960129/commercial-sign-cleaning_jzafjr.jpg"
                             alt="Commercial Window Cleaning with EWP Cherry Picker"
                             fill
                             className="object-cover"

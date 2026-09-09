@@ -19,29 +19,29 @@ interface GalleryItem {
 
 const galleryItems: GalleryItem[] = [
     // Residential
-    { id: 1, image: "https://res.cloudinary.com/dr8tjrszy/image/upload/v1771960144/WhatsApp_Image_2026-02-22_at_8.48.09_PM_1_hnnwtr.jpg", category: "Residential", title: "Coastal Home", location: "Cottesloe" },
-    { id: 2, image: "https://res.cloudinary.com/dr8tjrszy/image/upload/v1771960139/WhatsApp_Image_2026-02-22_at_8.47.53_PM_1_utloaq.jpg", category: "Residential", title: "Family Home", location: "Subiaco" },
-    { id: 3, image: "https://res.cloudinary.com/dr8tjrszy/image/upload/v1771960136/outside-windows-cleaning_lzp8fq.jpg", category: "Residential", title: "Modern Villa", location: "Dalkeith" },
+    { id: 1, image: "https://res.cloudinary.com/dr8tjrszy/image/upload/f_auto,q_auto/v1771960144/WhatsApp_Image_2026-02-22_at_8.48.09_PM_1_hnnwtr.jpg", category: "Residential", title: "Coastal Home", location: "Cottesloe" },
+    { id: 2, image: "https://res.cloudinary.com/dr8tjrszy/image/upload/f_auto,q_auto/v1771960139/WhatsApp_Image_2026-02-22_at_8.47.53_PM_1_utloaq.jpg", category: "Residential", title: "Family Home", location: "Subiaco" },
+    { id: 3, image: "https://res.cloudinary.com/dr8tjrszy/image/upload/f_auto,q_auto/v1771960136/outside-windows-cleaning_lzp8fq.jpg", category: "Residential", title: "Modern Villa", location: "Dalkeith" },
 
     // Commercial
-    { id: 4, image: "https://res.cloudinary.com/dr8tjrszy/image/upload/v1771960134/commercial-window-cleaning_gzkvaj.jpg", category: "Commercial", title: "Office Tower", location: "Perth CBD", position: "object-top" },
-    { id: 5, image: "https://res.cloudinary.com/dr8tjrszy/image/upload/v1771960134/indoor-pool-cleaning_hwpcmj.jpg", category: "Commercial", title: "Retail Complex", location: "Claremont" },
-    { id: 6, image: "https://res.cloudinary.com/dr8tjrszy/image/upload/v1771960129/commercial-sign-cleaning_jzafjr.jpg", category: "Commercial", title: "Medical Center", location: "Nedlands" },
+    { id: 4, image: "https://res.cloudinary.com/dr8tjrszy/image/upload/f_auto,q_auto/v1771960134/commercial-window-cleaning_gzkvaj.jpg", category: "Commercial", title: "Office Tower", location: "Perth CBD", position: "object-top" },
+    { id: 5, image: "https://res.cloudinary.com/dr8tjrszy/image/upload/f_auto,q_auto/v1771960134/indoor-pool-cleaning_hwpcmj.jpg", category: "Commercial", title: "Retail Complex", location: "Claremont" },
+    { id: 6, image: "https://res.cloudinary.com/dr8tjrszy/image/upload/f_auto,q_auto/v1771960129/commercial-sign-cleaning_jzafjr.jpg", category: "Commercial", title: "Medical Center", location: "Nedlands" },
 
     // Solar
-    { id: 7, image: "https://res.cloudinary.com/dr8tjrszy/image/upload/v1771960127/home-rough-solar-cleaning_c6z3z9.jpg", category: "Solar", title: "Solar Restoration", location: "Joondalup" },
-    { id: 8, image: "https://res.cloudinary.com/dr8tjrszy/image/upload/v1771960139/solar-plates-cleaning_lasnea.jpg", category: "Solar", title: "Panel Cleaning", location: "Fremantle" },
-    { id: 9, image: "https://res.cloudinary.com/dr8tjrszy/image/upload/v1771960142/WhatsApp_Image_2026-02-22_at_8.47.57_PM_kidsnl.jpg", category: "Solar", title: "Roof Solar", location: "Mandurah" },
+    { id: 7, image: "https://res.cloudinary.com/dr8tjrszy/image/upload/f_auto,q_auto/v1771960127/home-rough-solar-cleaning_c6z3z9.jpg", category: "Solar", title: "Solar Restoration", location: "Joondalup" },
+    { id: 8, image: "https://res.cloudinary.com/dr8tjrszy/image/upload/f_auto,q_auto/v1771960139/solar-plates-cleaning_lasnea.jpg", category: "Solar", title: "Panel Cleaning", location: "Fremantle" },
+    { id: 9, image: "https://res.cloudinary.com/dr8tjrszy/image/upload/f_auto,q_auto/v1771960142/WhatsApp_Image_2026-02-22_at_8.47.57_PM_kidsnl.jpg", category: "Solar", title: "Roof Solar", location: "Mandurah" },
 
     // Pressure
-    { id: 10, image: "https://res.cloudinary.com/dr8tjrszy/image/upload/v1771960139/WhatsApp_Image_2026-02-22_at_8.47.52_PM_kzbneh.jpg", category: "Pressure", title: "Driveway Clean", location: "Mount Lawley" },
-    { id: 11, image: "https://res.cloudinary.com/dr8tjrszy/image/upload/v1772800983/after-cleaning-street_lhtqux.jpg", category: "Pressure", title: "Patio Restore", location: "Victoria Park" },
-    { id: 12, image: "https://res.cloudinary.com/dr8tjrszy/image/upload/v1771960141/WhatsApp_Image_2026-02-22_at_8.47.56_PM_ceiqiy.jpg", category: "Pressure", title: "Deck Cleaning", location: "South Perth" },
+    { id: 10, image: "https://res.cloudinary.com/dr8tjrszy/image/upload/f_auto,q_auto/v1771960139/WhatsApp_Image_2026-02-22_at_8.47.52_PM_kzbneh.jpg", category: "Pressure", title: "Driveway Clean", location: "Mount Lawley" },
+    { id: 11, image: "https://res.cloudinary.com/dr8tjrszy/image/upload/f_auto,q_auto/v1772800983/after-cleaning-street_lhtqux.jpg", category: "Pressure", title: "Patio Restore", location: "Victoria Park" },
+    { id: 12, image: "https://res.cloudinary.com/dr8tjrszy/image/upload/f_auto,q_auto/v1771960141/WhatsApp_Image_2026-02-22_at_8.47.56_PM_ceiqiy.jpg", category: "Pressure", title: "Deck Cleaning", location: "South Perth" },
 
     // Gutter
-    { id: 13, image: "https://res.cloudinary.com/dr8tjrszy/image/upload/v1775990687/gutter-cleaning_nd8wyn.jpg", category: "Gutter", title: "Gutter Clear", location: "Wembley" },
-    // { id: 14, image: "/https://res.cloudinary.com/dr8tjrszy/image/upload/v1775689518/gutter_cleaning_vszeu8.jpg", category: "Gutter", title: "Downpipe Clean", location: "Leederville" },
-    { id: 15, image: "https://res.cloudinary.com/dr8tjrszy/image/upload/v1775331528/gutter-cleaning_ym4thx.jpg", category: "Gutter", title: "Roof Gutters", location: "Floreat" },
+    { id: 13, image: "https://res.cloudinary.com/dr8tjrszy/image/upload/f_auto,q_auto/v1775990687/gutter-cleaning_nd8wyn.jpg", category: "Gutter", title: "Gutter Clear", location: "Wembley" },
+    // { id: 14, image: "/https://res.cloudinary.com/dr8tjrszy/image/upload/f_auto,q_auto/v1775689518/gutter_cleaning_vszeu8.jpg", category: "Gutter", title: "Downpipe Clean", location: "Leederville" },
+    { id: 15, image: "https://res.cloudinary.com/dr8tjrszy/image/upload/f_auto,q_auto/v1775331528/gutter-cleaning_ym4thx.jpg", category: "Gutter", title: "Roof Gutters", location: "Floreat" },
 ];
 
 const categories: Category[] = ["All", "Residential", "Commercial", "Solar", "Pressure", "Gutter"];

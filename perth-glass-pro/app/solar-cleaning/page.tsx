@@ -340,8 +340,8 @@ export default function SolarPanelCleaningAdsPage() {
             {/* ─── SECTION 1: HERO - with background image ─── */}
             <section
                 className="relative min-h-screen flex flex-col overflow-hidden bg-cover bg-center
-                    bg-[linear-gradient(160deg,rgba(7,7,126,0.75)_0%,rgba(5,5,80,0.85)_60%,rgba(3,3,50,0.92)_100%),url('https://res.cloudinary.com/dr8tjrszy/image/upload/v1771960139/solar-plates-cleaning_lasnea.jpg')]
-                    md:bg-[linear-gradient(160deg,rgba(7,7,126,0.7)_0%,rgba(5,5,80,0.82)_60%,rgba(3,3,50,0.9)_100%),url('https://res.cloudinary.com/dr8tjrszy/image/upload/v1771960144/WhatsApp_Image_2026-02-22_at_8.48.18_PM_vt57zl.jpg')]"
+                    bg-[linear-gradient(160deg,rgba(7,7,126,0.75)_0%,rgba(5,5,80,0.85)_60%,rgba(3,3,50,0.92)_100%),url('https://res.cloudinary.com/dr8tjrszy/image/upload/f_auto,q_auto/v1771960139/solar-plates-cleaning_lasnea.jpg')]
+                    md:bg-[linear-gradient(160deg,rgba(7,7,126,0.7)_0%,rgba(5,5,80,0.82)_60%,rgba(3,3,50,0.9)_100%),url('https://res.cloudinary.com/dr8tjrszy/image/upload/f_auto,q_auto/v1771960144/WhatsApp_Image_2026-02-22_at_8.48.18_PM_vt57zl.jpg')]"
             >
 
                 {/* NAV */}
@@ -510,9 +510,9 @@ export default function SolarPanelCleaningAdsPage() {
                 </p>
                 <div className="flex flex-wrap items-center justify-center gap-10">
                     {[
-                        { src: "https://res.cloudinary.com/dr8tjrszy/image/upload/v1772795795/toyota-logo_bcplvi.png", alt: "Toyota" },
-                        { src: "https://res.cloudinary.com/dr8tjrszy/image/upload/v1772795795/richad-logo_u2l4jl.png", alt: "Richard Group" },
-                        { src: "https://res.cloudinary.com/dr8tjrszy/image/upload/v1772795794/bespoke-logo_lulwwt.png", alt: "Bespoke" },
+                        { src: "https://res.cloudinary.com/dr8tjrszy/image/upload/f_auto,q_auto/v1772795795/toyota-logo_bcplvi.png", alt: "Toyota" },
+                        { src: "https://res.cloudinary.com/dr8tjrszy/image/upload/f_auto,q_auto/v1772795795/richad-logo_u2l4jl.png", alt: "Richard Group" },
+                        { src: "https://res.cloudinary.com/dr8tjrszy/image/upload/f_auto,q_auto/v1772795794/bespoke-logo_lulwwt.png", alt: "Bespoke" },
                     ].map((logo) => (
                         <div key={logo.alt} className="relative h-13 w-28 grayscale transition duration-300 hover:grayscale-0">
                             <Image
@@ -651,8 +651,8 @@ export default function SolarPanelCleaningAdsPage() {
                     <div className="grid grid-cols-1 gap-4">
                         <BeforeAfterSlider
                             initial={50}
-                            beforeImage="https://res.cloudinary.com/dr8tjrszy/image/upload/v1771960139/solar-pannel-clean_cigwab.jpg"
-                            afterImage="https://res.cloudinary.com/dr8tjrszy/image/upload/v1771960138/sollar-plats-cleaning_gyngjf.jpg"
+                            beforeImage="https://res.cloudinary.com/dr8tjrszy/image/upload/f_auto,q_auto/v1771960139/solar-pannel-clean_cigwab.jpg"
+                            afterImage="https://res.cloudinary.com/dr8tjrszy/image/upload/f_auto,q_auto/v1771960138/sollar-plats-cleaning_gyngjf.jpg"
                         />
                     </div>
                 </div>
