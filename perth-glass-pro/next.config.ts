@@ -56,6 +56,11 @@ const nextConfig: NextConfig = {
                 source: "/booking/:path*",
                 destination: "/pricing",
                 permanent: true,
+            },
+            {
+                source: "/sitemap-0.xml",
+                destination: "/sitemap.xml",
+                permanent: true,
             }
         ]
     }
