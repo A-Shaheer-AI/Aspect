@@ -25,6 +25,7 @@ export default function Navbar() {
     // Updated links with full anchor paths for inner page compatibility
     const navLinks = [
         { name: "Services", href: "/services" },
+        { name: "Office Cleaning", href: "/services/commercial-cleaning" },
         { name: "Commercial", href: "/commercial" },
         { name: "Areas", href: "/#areas" },
         { name: "Reviews", href: "/#reviews" },
@@ -66,7 +67,7 @@ export default function Navbar() {
                         </Link>
 
                         {/* Desktop Navigation */}
-                        <div className="hidden md:flex items-center gap-6">
+                        <div className="hidden md:flex items-center gap-3.5 lg:gap-4 xl:gap-5 text-sm xl:text-base whitespace-nowrap">
                             {navLinks.map((link) => (
                                 <Link
                                     key={link.name}
