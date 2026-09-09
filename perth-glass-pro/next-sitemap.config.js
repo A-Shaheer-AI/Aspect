@@ -2,6 +2,7 @@
 module.exports = {
   siteUrl: 'https://aspectwindowcleaning.com.au',
   generateRobotsTxt: true,
+  generateIndexSitemap: false,
   robotsTxtOptions: {
     policies: [
       {
