@@ -554,12 +554,12 @@ export default function WindowCleaningAdsPage() {
     const YELLOW = "#FFE54D";
 
     const galleryImages = [
-        "https://res.cloudinary.com/dr8tjrszy/image/upload/v1788989140/aspect_landing/IMG_1128.jpg",
-        "https://res.cloudinary.com/dr8tjrszy/image/upload/v1788989142/aspect_landing/IMG_1537.jpg",
-        "https://res.cloudinary.com/dr8tjrszy/image/upload/v1788989145/aspect_landing/IMG_2240.jpg",
-        "https://res.cloudinary.com/dr8tjrszy/image/upload/v1788989148/aspect_landing/IMG_2274.jpg",
-        "https://res.cloudinary.com/dr8tjrszy/image/upload/v1788989151/aspect_landing/IMG_2569.jpg",
-        "https://res.cloudinary.com/dr8tjrszy/image/upload/v1788989153/aspect_landing/IMG_9323.jpg"
+        "https://res.cloudinary.com/dr8tjrszy/image/upload/f_auto,q_auto/v1788989140/aspect_landing/IMG_1128.jpg",
+        "https://res.cloudinary.com/dr8tjrszy/image/upload/f_auto,q_auto/v1788989142/aspect_landing/IMG_1537.jpg",
+        "https://res.cloudinary.com/dr8tjrszy/image/upload/f_auto,q_auto/v1788989145/aspect_landing/IMG_2240.jpg",
+        "https://res.cloudinary.com/dr8tjrszy/image/upload/f_auto,q_auto/v1788989148/aspect_landing/IMG_2274.jpg",
+        "https://res.cloudinary.com/dr8tjrszy/image/upload/f_auto,q_auto/v1788989151/aspect_landing/IMG_2569.jpg",
+        "https://res.cloudinary.com/dr8tjrszy/image/upload/f_auto,q_auto/v1788989153/aspect_landing/IMG_9323.jpg"
     ];
 
     return (
