@@ -56,9 +56,8 @@ export default function GoogleReviews({ reviews }: Props) {
                 {reviews.slice(0, 6).map((review, i) => (
                     <motion.div
                         key={review.id}
-                        initial={{ opacity: 0, y: 20 }}
+                        initial={false}
                         whileInView={{ opacity: 1, y: 0 }}
-                        transition={{ delay: i * 0.1 }}
                         className="bg-white rounded-2xl shadow-lg border border-slate-100 hover:shadow-xl transition overflow-hidden flex flex-col"
                     >
                         {/* Image Header */}

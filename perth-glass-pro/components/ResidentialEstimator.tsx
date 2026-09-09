@@ -51,10 +51,13 @@ const INITIAL_DATA: FormData = {
 
 // --- Typing Animation Component (Desktop Only) ---
 function TypingHeadline({ text, className }: { text: string; className?: string }) {
-    const [displayedText, setDisplayedText] = useState("");
-    const [isComplete, setIsComplete] = useState(false);
+    const [displayedText, setDisplayedText] = useState(text);
+    const [isComplete, setIsComplete] = useState(true);
 
     useEffect(() => {
+        if (typeof window !== "undefined" && window.matchMedia("(prefers-reduced-motion: reduce)").matches) {
+            return;
+        }
         setDisplayedText("");
         setIsComplete(false);
         let i = 0;

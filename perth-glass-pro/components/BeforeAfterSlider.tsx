@@ -17,18 +17,18 @@ const BeforeAfterSlider = ({
     const [sliderPosition, setSliderPosition] = useState(initial);
 
     return (
-        <motion.div
-            initial={{ opacity: 0, x: -20 }}
-            whileInView={{ opacity: 1, x: 0 }}
-            viewport={{ once: true }}
-            className="relative aspect-[4/3] rounded-2xl overflow-hidden shadow-xl bg-slate-200"
+        <div
+            className="relative aspect-[4/3] rounded-2xl overflow-hidden shadow-xl bg-slate-200 transition-all duration-300"
         >
             {/* Before (Background) */}
             <div
                 className="absolute inset-0 bg-cover bg-center"
                 style={{ backgroundImage: `url('${beforeImage}')` }}
             >
-                <div className="absolute top-4 left-4 bg-black/50 text-white text-xs px-2 py-1 rounded backdrop-blur-sm">
+                <div
+                    className="absolute top-4 left-4 bg-black/70 text-white text-xs px-2 py-1 rounded backdrop-blur-sm font-semibold"
+                    style={{ backgroundColor: "rgba(0,0,0,0.75)", WebkitBackdropFilter: "blur(4px)" }}
+                >
                     Before
                 </div>
             </div>
@@ -41,7 +41,10 @@ const BeforeAfterSlider = ({
                     clipPath: `inset(0 0 0 ${sliderPosition}%)`,
                 }}
             >
-                <div className="absolute top-4 right-4 bg-black/50 text-white text-xs px-2 py-1 rounded backdrop-blur-sm">
+                <div
+                    className="absolute top-4 right-4 bg-black/70 text-white text-xs px-2 py-1 rounded backdrop-blur-sm font-semibold"
+                    style={{ backgroundColor: "rgba(0,0,0,0.75)", WebkitBackdropFilter: "blur(4px)" }}
+                >
                     After
                 </div>
             </div>
@@ -65,7 +68,7 @@ const BeforeAfterSlider = ({
                     </div>
                 </div>
             </div>
-        </motion.div>
+        </div>
     );
 };
 

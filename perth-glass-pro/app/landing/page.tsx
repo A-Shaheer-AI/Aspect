@@ -38,10 +38,10 @@ function LeadForm({
     dark?: boolean;
 }) {
     const fields = [
-        { key: "name", placeholder: "Your Name", type: "text" },
-        { key: "phone", placeholder: "Phone Number", type: "tel" },
-        { key: "suburb", placeholder: "Your Suburb", type: "text" },
-        { key: "promo", placeholder: "Promo Code", type: "text" },
+        { key: "name", placeholder: "Your Name", type: "text", autoComplete: "name" },
+        { key: "phone", placeholder: "Phone Number", type: "tel", autoComplete: "tel" },
+        { key: "suburb", placeholder: "Your Suburb", type: "text", autoComplete: "address-level2" },
+        { key: "promo", placeholder: "Promo Code", type: "text", autoComplete: "off" },
     ];
     if (submitted) {
         return (
@@ -57,15 +57,29 @@ function LeadForm({
         );
     }
     return (
-        <div className="flex flex-col gap-2.5">
+        <form
+            onSubmit={(e) => {
+                e.preventDefault();
+                onSubmit();
+            }}
+            action="/api/quote"
+            method="POST"
+            className="flex flex-col gap-2.5"
+        >
+            <input type="hidden" name="source" value="landing-lead-form" />
+            <input type="hidden" name="service" value="Residential Window Cleaning" />
             {fields.filter((f) => !(f.key === "promo" && !showPromo))
                 .map((f) => (
                     <input
                         key={f.key}
+                        name={f.key}
+                        id={`lead-${f.key}`}
+                        autoComplete={f.autoComplete}
                         type={f.type}
                         placeholder={f.placeholder}
-                        value={formData[f.key as keyof typeof formData]}
+                        value={formData[f.key as keyof typeof formData] || ""}
                         onChange={(e) => setFormData({ ...formData, [f.key]: e.target.value })}
+                        required={f.key !== "promo"}
                         className="w-full rounded-xl px-4 py-3 text-base outline-none transition-all"
                         style={{
                             background: dark ? "rgba(255,255,255,0.92)" : "#f4f6ff",
@@ -77,7 +91,7 @@ function LeadForm({
                     />
                 ))}
             <button
-                onClick={onSubmit}
+                type="submit"
                 className="w-full rounded-xl py-3.5 text-sm font-bold mt-1 transition-all hover:-translate-y-0.5 cursor-pointer"
                 style={{
                     background: "#FFE54D",
@@ -86,11 +100,11 @@ function LeadForm({
                 }}
             >
                 Send Me a Quote ➔
-              </button>
+            </button>
             <p className="text-center text-xs mt-1" style={{ color: dark ? "rgba(255,255,255,0.45)" : "#aaa" }}>
-                  🔒 We never share your details
+                🔒 We never share your details
             </p>
-        </div>
+        </form>
     );
 }
 
@@ -122,7 +136,11 @@ function QuoteModal({
     return (
         <div
             className="fixed inset-0 z-50 flex items-center justify-center px-4"
-            style={{ background: "rgba(7,7,126,0.65)", backdropFilter: "blur(8px)" }}
+            style={{
+                backgroundColor: "rgba(7,7,126,0.88)",
+                backdropFilter: "blur(8px)",
+                WebkitBackdropFilter: "blur(8px)",
+            }}
             onClick={(e) => { if (e.target === e.currentTarget) onClose(); }}
         >
             <div
@@ -174,8 +192,8 @@ function QuoteModal({
                     <button
                         onClick={onClose}
                         aria-label="Close modal"
-                        className="absolute top-3 right-4 cursor-pointer"
-                        style={{ color: showPromo ? "rgba(255,255,255,0.5)" : "rgba(255,255,255,0.5)", top: showPromo ? "3.2rem" : "1rem" }}
+                        className="absolute right-3 cursor-pointer w-10 h-10 rounded-full flex items-center justify-center bg-white/10 hover:bg-white/20 text-white transition-colors z-20"
+                        style={{ top: showPromo ? "3.2rem" : "0.75rem" }}
                     >
                         <X className="w-5 h-5" />
                     </button>
@@ -338,12 +356,54 @@ function FreeTrialForm() {
     }
 
     return (
-        <div className="flex flex-col gap-3">
-            <input type="text" placeholder="Your Name" value={formData.name} onChange={e => setFormData({...formData, name: e.target.value})} className="w-full rounded-xl px-4 py-3 text-base outline-none bg-white border border-gray-200 text-gray-900 focus:border-brand-navy" />
-            <input type="tel" placeholder="Phone Number" value={formData.phone} onChange={e => setFormData({...formData, phone: e.target.value})} className="w-full rounded-xl px-4 py-3 text-base outline-none bg-white border border-gray-200 text-gray-900 focus:border-brand-navy" />
-            <input type="text" placeholder="Full Property Address" value={formData.address} onChange={e => setFormData({...formData, address: e.target.value})} className="w-full rounded-xl px-4 py-3 text-base outline-none bg-white border border-gray-200 text-gray-900 focus:border-brand-navy" />
-            <button onClick={handleSubmit} className="w-full bg-brand-navy text-white font-bold rounded-xl py-3.5 text-sm mt-2 hover:shadow-lg transition-all cursor-pointer">Claim 2 Free Windows</button>
-        </div>
+        <form
+            onSubmit={handleSubmit}
+            action="/api/quote"
+            method="POST"
+            className="flex flex-col gap-3"
+        >
+            <input type="hidden" name="service" value="FREE TRIAL - 2 Windows" />
+            <input type="hidden" name="message" value="User requested the 2-window free trial." />
+            <input
+                id="trial-name"
+                name="name"
+                autoComplete="name"
+                required
+                type="text"
+                placeholder="Your Name"
+                value={formData.name}
+                onChange={e => setFormData({...formData, name: e.target.value})}
+                className="w-full rounded-xl px-4 py-3 text-base outline-none bg-white border border-gray-200 text-gray-900 focus:border-brand-navy"
+            />
+            <input
+                id="trial-phone"
+                name="phone"
+                autoComplete="tel"
+                required
+                type="tel"
+                placeholder="Phone Number"
+                value={formData.phone}
+                onChange={e => setFormData({...formData, phone: e.target.value})}
+                className="w-full rounded-xl px-4 py-3 text-base outline-none bg-white border border-gray-200 text-gray-900 focus:border-brand-navy"
+            />
+            <input
+                id="trial-address"
+                name="suburb"
+                autoComplete="street-address"
+                required
+                type="text"
+                placeholder="Full Property Address"
+                value={formData.address}
+                onChange={e => setFormData({...formData, address: e.target.value})}
+                className="w-full rounded-xl px-4 py-3 text-base outline-none bg-white border border-gray-200 text-gray-900 focus:border-brand-navy"
+            />
+            <button
+                type="submit"
+                className="w-full bg-brand-navy text-white font-bold rounded-xl py-3.5 text-sm mt-2 hover:shadow-lg transition-all cursor-pointer"
+            >
+                Claim 2 Free Windows
+            </button>
+        </form>
     );
 }
 
@@ -507,11 +567,23 @@ export default function WindowCleaningAdsPage() {
             />
 
             
-{/* 🔹🔹🔹 SECTION 1: HERO  🔹🔹🔹 */}
+            {/* ZERO-JS EMERGENCY CLICK-TO-CALL BANNER */}
+            <noscript>
+                <div className="bg-amber-400 text-[#07077E] px-4 py-3.5 text-center font-bold text-sm sm:text-base border-b-2 border-[#07077E] sticky top-0 z-[60] shadow-lg">
+                    <span>⚡ Need fast window cleaning in Perth? Call us directly: </span>
+                    <a href={`tel:${BUSINESS.phoneRaw}`} className="underline font-black hover:text-black">
+                        {BUSINESS.phone}
+                    </a>
+                    <span> (Available 7 Days • Fast Quotes by Phone)</span>
+                </div>
+            </noscript>
+
+            {/* 🔹🔹🔹 SECTION 1: HERO  🔹🔹🔹 */}
             <section
                 className="relative min-h-screen flex flex-col items-center justify-center md:px-5 pb-10 text-white bg-cover bg-center
   bg-[linear-gradient(160deg,rgba(10,22,40,0.5)_0%,rgba(15,37,69,0.8)_60%,rgba(19,48,96,0.8)_100%),url('/landing-hero-bg.jpeg')]
   md:bg-[linear-gradient(160deg,rgba(10,22,40,0.5)_0%,rgba(15,37,69,0.8)_60%,rgba(19,48,96,0.8)_100%),url('/landing-hero-bg.jpeg')]"
+                style={{ backgroundColor: "#0A1628" }}
             >
 
                 {/* HERO BODY */}
@@ -714,7 +786,10 @@ export default function WindowCleaningAdsPage() {
                                         className="object-cover group-hover:scale-105 transition-transform duration-500"
                                     />
                                     <div className="absolute inset-0 bg-gradient-to-t from-black/40 via-transparent to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-300" />
-                                    <div className="absolute top-3 right-3 bg-white/95 backdrop-blur-sm px-3 py-1 rounded-full text-xs font-bold text-brand-navy shadow-md group-hover:bg-action-gold transition-colors flex items-center gap-1.5">
+                                    <div
+                                        className="absolute top-3 right-3 bg-white/95 backdrop-blur-sm px-3 py-1 rounded-full text-xs font-bold text-brand-navy shadow-md group-hover:bg-action-gold transition-colors flex items-center gap-1.5"
+                                        style={{ backgroundColor: "rgba(255,255,255,0.95)", WebkitBackdropFilter: "blur(4px)" }}
+                                    >
                                         <span>Inspect Feature</span>
                                         <ArrowRight className="w-3 h-3 group-hover:translate-x-0.5 transition-transform" />
                                     </div>
@@ -1303,20 +1378,21 @@ export default function WindowCleaningAdsPage() {
                         Same-week slots available. Free, no-obligation quote in 60 minutes.
                     </p>
                     <div className="flex flex-wrap justify-center gap-3">
-                        <Link
+                        <a
                             href={`tel:${BUSINESS.phoneRaw}`}
                             className="flex items-center gap-2 rounded-2xl px-7 py-4 font-bold text-base transition-all hover:-translate-y-0.5"
                             style={{ background: YELLOW, color: NAVY, boxShadow: "0 6px 28px rgba(255,229,77,0.35)" }}
                         >
                             <Phone className="w-5 h-5" />
                             Call {BUSINESS.phone}
-                        </Link>
+                        </a>
                         <button
                             onClick={openRegularModal}
                             className="flex items-center gap-2 rounded-2xl border px-7 py-4 font-medium text-base transition-all hover:bg-white/10 cursor-pointer"
                             style={{ borderColor: "rgba(255,255,255,0.25)", color: "white" }}
                         >
-                            Get a Text Quote Â </button>
+                            Get a Text Quote &nbsp;
+                        </button>
                     </div>
                 </div>
             </section>
@@ -1325,20 +1401,20 @@ export default function WindowCleaningAdsPage() {
 {/* 🔹🔹🔹 STICKY BAR 🔹🔹🔹 */}
             <div
                 className="fixed bottom-0 left-0 right-0 z-50 flex items-center justify-center px-5 py-3 pb-[max(0.75rem,env(safe-area-inset-bottom))]"
-                style={{ background: NAVY, borderTop: `2px solid ${YELLOW}`, boxShadow: "0 -4px 24px rgba(7,7,126,0.3)" }}
+                style={{ backgroundColor: NAVY, borderTop: `2px solid ${YELLOW}`, boxShadow: "0 -4px 24px rgba(7,7,126,0.3)" }}
             >
                 <div className="hidden sm:block">
                     <p className="text-xs font-semibold text-white">Aspect Window Cleaning</p>
                     <p className="text-xs" style={{ color: "rgba(255,255,255,0.5)" }}>Perth&apos;s #1 Rated</p>
                 </div>
-                <Link
+                <a
                     href={`tel:${BUSINESS.phoneRaw}`}
                     className="flex items-center gap-2 rounded-xl px-5 py-3 font-bold text-sm transition-all hover:scale-105 sm:ml-auto shiny-call-btn"
                     style={{ background: YELLOW, color: NAVY }}
                 >
                     <Phone className="w-4 h-4" />
                     Call Now - {BUSINESS.phone}
-                </Link>
+                </a>
             </div>
             {/* spacer */}
             <div className="h-16 pb-[env(safe-area-inset-bottom)]" style={{ background: NAVY }} />
@@ -1364,14 +1440,15 @@ export default function WindowCleaningAdsPage() {
         {/* WHAT'S INCLUDED DETAIL POP-UP MODAL */}
             {selectedInclusion && (
                 <div
-                    className="fixed inset-0 z-50 flex items-center justify-center p-4 bg-black/70 backdrop-blur-sm overflow-y-auto"
+                    className="fixed inset-0 z-50 flex items-center justify-center p-4 bg-black/80 backdrop-blur-sm overflow-y-auto"
+                    style={{ backgroundColor: "rgba(0,0,0,0.85)", WebkitBackdropFilter: "blur(8px)" }}
                     onClick={(e) => {
                         if (e.target === e.currentTarget) setSelectedInclusion(null);
                     }}
                 >
                     <div className="relative w-full max-w-lg bg-white rounded-3xl shadow-2xl overflow-hidden my-auto border border-gray-100 flex flex-col max-h-[92vh]">
                         {/* Picture on top */}
-                        <div className="relative w-full h-56 sm:h-64 bg-slate-100 shrink-0 overflow-hidden">
+                        <div className="relative w-full h-56 sm:h-64 bg-slate-800 shrink-0 overflow-hidden">
                             <Image
                                 src={selectedInclusion.img}
                                 alt={selectedInclusion.title}
@@ -1393,7 +1470,10 @@ export default function WindowCleaningAdsPage() {
 
                             {/* Standard Inclusions Badge */}
                             <div className="absolute bottom-4 left-4 z-10">
-                                <span className="px-3.5 py-1.5 rounded-full bg-white/95 text-brand-navy font-bold text-xs shadow-md uppercase tracking-wider backdrop-blur-sm">
+                                <span
+                                    className="px-3.5 py-1.5 rounded-full text-brand-navy font-bold text-xs shadow-md uppercase tracking-wider backdrop-blur-sm"
+                                    style={{ backgroundColor: "rgba(255,255,255,0.95)", WebkitBackdropFilter: "blur(4px)" }}
+                                >
                                     Standard Inclusions
                                 </span>
                             </div>
@@ -1449,9 +1529,16 @@ export default function WindowCleaningAdsPage() {
 
             {/* PACKAGE SELECTION MODAL */}
             {selectedPkg && (
-                <div className="fixed inset-0 z-50 flex items-center justify-center p-4 bg-black/60 backdrop-blur-sm">
+                <div
+                    className="fixed inset-0 z-50 flex items-center justify-center p-4 bg-black/80 backdrop-blur-sm"
+                    style={{ backgroundColor: "rgba(0,0,0,0.85)", WebkitBackdropFilter: "blur(8px)" }}
+                >
                     <div className="bg-white rounded-2xl shadow-2xl p-6 md:p-8 max-w-md w-full relative">
-                        <button onClick={() => { setSelectedPkg(null); setPkgSubmitted(false); }} className="absolute top-4 right-4 text-gray-400 hover:text-gray-900 cursor-pointer">
+                        <button
+                            onClick={() => { setSelectedPkg(null); setPkgSubmitted(false); }}
+                            aria-label="Close package booking"
+                            className="absolute top-4 right-4 w-10 h-10 rounded-full flex items-center justify-center text-gray-400 hover:text-gray-900 hover:bg-gray-100 transition-colors cursor-pointer"
+                        >
                             <X className="w-6 h-6" />
                         </button>
                         
@@ -1470,22 +1557,24 @@ export default function WindowCleaningAdsPage() {
                                     You have selected the <strong className="text-brand-navy">{selectedPkg.name}</strong> package for a <strong>{isDoubleStorey ? "Double Storey" : "Single Storey"}</strong> home ({selectedPkg.price}). Please provide your details to lock this in.
                                 </p>
                                 
-                                <form onSubmit={handlePkgSubmit} className="space-y-4 text-left">
+                                <form onSubmit={handlePkgSubmit} action="/api/quote" method="POST" className="space-y-4 text-left">
+                                    <input type="hidden" name="service" value={`Residential Window Cleaning - ${selectedPkg.name} (${isDoubleStorey ? "Double Storey" : "Single Storey"})`} />
+                                    <input type="hidden" name="message" value={`Selected Price: ${selectedPkg.price}`} />
                                     <div>
-                                        <label className="block text-sm font-bold text-gray-700 mb-1">Your Name</label>
-                                        <input required type="text" value={pkgForm.name} onChange={(e) => setPkgForm({...pkgForm, name: e.target.value})} className="w-full px-4 py-3 rounded-lg border border-gray-300 focus:ring-2 focus:ring-action-gold focus:border-transparent text-base" placeholder="John Doe" />
+                                        <label htmlFor="pkg-name" className="block text-sm font-bold text-gray-700 mb-1">Your Name</label>
+                                        <input id="pkg-name" name="name" autoComplete="name" required type="text" value={pkgForm.name} onChange={(e) => setPkgForm({...pkgForm, name: e.target.value})} className="w-full px-4 py-3 rounded-lg border border-gray-300 focus:ring-2 focus:ring-action-gold focus:border-transparent text-base" placeholder="John Doe" />
                                     </div>
                                     <div>
-                                        <label className="block text-sm font-bold text-gray-700 mb-1">Phone Number</label>
-                                        <input required type="tel" value={pkgForm.phone} onChange={(e) => setPkgForm({...pkgForm, phone: e.target.value})} className="w-full px-4 py-3 rounded-lg border border-gray-300 focus:ring-2 focus:ring-action-gold focus:border-transparent text-base" placeholder="0400 000 000" />
+                                        <label htmlFor="pkg-phone" className="block text-sm font-bold text-gray-700 mb-1">Phone Number</label>
+                                        <input id="pkg-phone" name="phone" autoComplete="tel" required type="tel" value={pkgForm.phone} onChange={(e) => setPkgForm({...pkgForm, phone: e.target.value})} className="w-full px-4 py-3 rounded-lg border border-gray-300 focus:ring-2 focus:ring-action-gold focus:border-transparent text-base" placeholder="0400 000 000" />
                                     </div>
                                     <div>
-                                        <label className="block text-sm font-bold text-gray-700 mb-1">Suburb</label>
-                                        <input required type="text" value={pkgForm.suburb} onChange={(e) => setPkgForm({...pkgForm, suburb: e.target.value})} className="w-full px-4 py-3 rounded-lg border border-gray-300 focus:ring-2 focus:ring-action-gold focus:border-transparent text-base" placeholder="e.g. Subiaco" />
+                                        <label htmlFor="pkg-suburb" className="block text-sm font-bold text-gray-700 mb-1">Suburb</label>
+                                        <input id="pkg-suburb" name="suburb" autoComplete="address-level2" required type="text" value={pkgForm.suburb} onChange={(e) => setPkgForm({...pkgForm, suburb: e.target.value})} className="w-full px-4 py-3 rounded-lg border border-gray-300 focus:ring-2 focus:ring-action-gold focus:border-transparent text-base" placeholder="e.g. Subiaco" />
                                     </div>
                                     {pkgError && <p className="text-red-500 text-sm font-semibold">{pkgError}</p>}
                                     <button disabled={isPkgSubmitting} type="submit" className="w-full bg-action-gold text-brand-navy font-bold py-4 rounded-xl hover:shadow-lg transition-all cursor-pointer">
-                                        {isPkgSubmitting ? "Booking..." : "Book Now &rarr;"}
+                                        {isPkgSubmitting ? "Booking..." : "Book Now \u2192"}
                                     </button>
                                 </form>
                             </>
