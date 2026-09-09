@@ -56,17 +56,17 @@ export default function PortfolioPage() {
     return (
         <main className="min-h-screen bg-white">
             {/* Hero Section */}
-            <section className="bg-brand-navy py-20 sm:pt-32 sm:pb-24 relative overflow-hidden">
+            <section className="bg-brand-navy pt-32 sm:pt-36 pb-16 sm:pb-24 relative overflow-hidden">
                 <div className="absolute inset-0 bg-[radial-gradient(ellipse_at_top_right,_var(--tw-gradient-stops))] from-blue-600/20 via-transparent to-transparent" />
                 <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 text-center relative z-10">
                     <div className="inline-flex items-center gap-2 bg-white/10 backdrop-blur-sm border border-white/20 rounded-full px-4 py-2 mb-6">
                         <Camera className="w-4 h-4 text-action-gold" />
                         <span className="text-white/90 text-sm font-medium">Our Portfolio</span>
                     </div>
-                    <h1 className="text-4xl sm:text-5xl lg:text-6xl font-heading font-bold text-white mb-6">
+                    <h1 className="text-3xl sm:text-5xl lg:text-6xl font-heading font-bold text-white mb-4 sm:mb-6">
                         Stunning Results
                     </h1>
-                    <p className="text-xl text-brand-water/90 max-w-2xl mx-auto">
+                    <p className="text-base sm:text-xl text-brand-water/90 max-w-2xl mx-auto">
                         Browse our gallery of transformations.
                     </p>
                 </div>
@@ -141,7 +141,7 @@ export default function PortfolioPage() {
                     </p>
                     <Link
                         href="/pricing"
-                        className="inline-flex items-center gap-2 bg-action-gold text-brand-navy font-bold px-8 py-4 rounded-full text-lg hover:shadow-lg transition-shadow"
+                        className="w-full sm:w-auto inline-flex items-center justify-center gap-2 bg-action-gold text-brand-navy font-bold px-8 py-4 rounded-full text-base sm:text-lg hover:shadow-lg transition-shadow min-h-[48px]"
                     >
                         View Pricing & Packages <ArrowRight className="w-5 h-5" />
                     </Link>

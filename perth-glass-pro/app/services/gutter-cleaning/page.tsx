@@ -240,59 +240,59 @@ const GutterCleaningServices = () => {
 
 
             {/* HERO */}
-            <section className="bg-brand-navy text-white pt-30 pb-24 text-center">
+            <section className="bg-brand-navy text-white pt-32 sm:pt-36 pb-16 sm:pb-24 text-center px-4">
                 <h1 className="text-3xl md:text-5xl font-bold mb-4">
                     Gutter Cleaning Services
                 </h1>
-                <p className="text-lg md:text-xl max-w-2xl mx-auto mb-6">
+                <p className="text-base md:text-xl max-w-2xl mx-auto mb-6 text-slate-200">
                     Professional. Reliable. Perth's Trusted Gutter Specialists.
                 </p>
-                <Link href="/pricing" className="bg-action-gold text-black px-8 py-4 rounded-full font-bold">
+                <Link href="/pricing" className="inline-flex items-center justify-center bg-action-gold text-brand-navy hover:bg-action-gold/90 px-8 py-4 rounded-full font-bold text-base shadow-md transition-all">
                     View Pricing Guide
                 </Link>
             </section>
 
             {/* TRUST BADGES */}
-            <section className="bg-white py-10 -mt-8 relative z-10">
+            <section className="bg-white py-8 sm:py-10 -mt-6 sm:-mt-8 relative z-10">
                 <div className="max-w-5xl mx-auto px-4">
-                    <div className="grid grid-cols-2 md:grid-cols-4 gap-4 md:gap-6">
+                    <div className="grid grid-cols-2 md:grid-cols-4 gap-3 sm:gap-4 md:gap-6">
 
                         {/* Badge 1 */}
-<ClickableBadge type="insured" className="flex items-center gap-3 bg-white border border-slate-200 hover:border-action-gold/40 px-5 py-4 rounded-2xl shadow-sm hover:shadow transition-all">
+                        <ClickableBadge type="insured" className="flex items-center gap-2.5 sm:gap-3 bg-white border border-slate-200 hover:border-action-gold/40 px-3.5 sm:px-5 py-3.5 sm:py-4 rounded-2xl shadow-sm hover:shadow transition-all">
                             <div className="w-9 h-9 flex items-center justify-center bg-action-gold/10 rounded-xl flex-shrink-0"><Shield className="w-5 h-5 text-action-gold" /></div>
-<div className="min-w-0">
-<div className="font-semibold text-brand-navy text-sm md:text-base leading-tight">
-$20M Insured
+                            <div className="min-w-0">
+                                <div className="font-semibold text-brand-navy text-sm md:text-base leading-tight">
+                                    $20M Insured
                                 </div>
                                 <div className="text-xs text-brand-slate">Fully protected</div>
                             </div>
                         </ClickableBadge>
                         {/* Badge 2 */}
-<ClickableBadge type="police" className="flex items-center gap-3 bg-white border border-slate-200 hover:border-action-gold/40 px-5 py-4 rounded-2xl shadow-sm hover:shadow transition-all">
+                        <ClickableBadge type="police" className="flex items-center gap-2.5 sm:gap-3 bg-white border border-slate-200 hover:border-action-gold/40 px-3.5 sm:px-5 py-3.5 sm:py-4 rounded-2xl shadow-sm hover:shadow transition-all">
                             <div className="w-9 h-9 flex items-center justify-center bg-action-gold/10 rounded-xl flex-shrink-0"><BadgeCheck className="w-5 h-5 text-action-gold" /></div>
-<div className="min-w-0">
-<div className="font-semibold text-brand-navy text-sm md:text-base leading-tight">
-Police Cleared
+                            <div className="min-w-0">
+                                <div className="font-semibold text-brand-navy text-sm md:text-base leading-tight">
+                                    Police Cleared
                                 </div>
                                 <div className="text-xs text-brand-slate">Background checked</div>
                             </div>
                         </ClickableBadge>
                         {/* Badge 3 */}
-<ClickableBadge className="flex items-center gap-3 bg-white border border-slate-200 hover:border-action-gold/40 px-5 py-4 rounded-2xl shadow-sm hover:shadow transition-all">
+                        <ClickableBadge className="flex items-center gap-2.5 sm:gap-3 bg-white border border-slate-200 hover:border-action-gold/40 px-3.5 sm:px-5 py-3.5 sm:py-4 rounded-2xl shadow-sm hover:shadow transition-all">
                             <div className="w-9 h-9 flex items-center justify-center bg-action-gold/10 rounded-xl flex-shrink-0"><Clock className="w-5 h-5 text-action-gold" /></div>
-<div className="min-w-0">
-<div className="font-semibold text-brand-navy text-sm md:text-base leading-tight">
-Same-Week Bookings
+                            <div className="min-w-0">
+                                <div className="font-semibold text-brand-navy text-sm md:text-base leading-tight">
+                                    Same-Week Bookings
                                 </div>
                                 <div className="text-xs text-brand-slate">Fast service</div>
                             </div>
                         </ClickableBadge>
                         {/* Badge 4 */}
-<ClickableBadge className="flex items-center gap-3 bg-white border border-slate-200 hover:border-action-gold/40 px-5 py-4 rounded-2xl shadow-sm hover:shadow transition-all">
+                        <ClickableBadge className="flex items-center gap-2.5 sm:gap-3 bg-white border border-slate-200 hover:border-action-gold/40 px-3.5 sm:px-5 py-3.5 sm:py-4 rounded-2xl shadow-sm hover:shadow transition-all">
                             <div className="w-9 h-9 flex items-center justify-center bg-action-gold/10 rounded-xl flex-shrink-0"><Star className="w-5 h-5 text-action-gold fill-action-gold" /></div>
-<div className="min-w-0">
-<div className="font-semibold text-brand-navy text-sm md:text-base leading-tight">
-5.0 Google Reviews
+                            <div className="min-w-0">
+                                <div className="font-semibold text-brand-navy text-sm md:text-base leading-tight">
+                                    5.0 Google Reviews
                                 </div>
                                 <div className="text-xs text-brand-slate">Happy customers</div>
                             </div>

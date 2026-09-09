@@ -168,7 +168,7 @@ export default async function SuburbPage({ params }: { params: Promise<{ suburb:
             />
 
             {/* Hero */}
-            <section className="bg-brand-navy text-white py-20 md:py-28">
+            <section className="bg-brand-navy text-white pt-32 sm:pt-36 pb-16 sm:pb-24">
                 <div className="max-w-5xl mx-auto px-4 text-center">
 
                     <div className="inline-flex items-center gap-2 bg-white/10 border border-white/20 rounded-full px-4 py-2 mb-6">
@@ -180,13 +180,13 @@ export default async function SuburbPage({ params }: { params: Promise<{ suburb:
                         Window Cleaning in {suburb.name}
                     </h1>
 
-                    <p className="text-lg md:text-xl text-brand-water/80 max-w-2xl mx-auto mb-8">
+                    <p className="text-base sm:text-lg md:text-xl text-brand-water/80 max-w-2xl mx-auto mb-8">
                         {suburb.description}
                     </p>
 
                     <a
                         href={`tel:${BUSINESS.phoneRaw}`}
-                        className="inline-flex items-center gap-3 bg-action-gold text-brand-navy font-bold text-lg px-8 py-4 rounded-full hover:bg-action-gold/90 transition-colors"
+                        className="inline-flex items-center justify-center gap-3 bg-action-gold text-brand-navy font-bold text-base sm:text-lg px-8 py-4 rounded-full hover:bg-action-gold/90 transition-colors shadow-md min-h-[48px] w-full sm:w-auto"
                     >
                         <Phone className="w-5 h-5" />
                         Call for Free Quote
@@ -281,7 +281,7 @@ export default async function SuburbPage({ params }: { params: Promise<{ suburb:
 
                         <a
                             href={`tel:${BUSINESS.phoneRaw}`}
-                            className="inline-flex items-center gap-2 bg-action-gold text-brand-navy font-bold px-8 py-4 rounded-full text-lg hover:bg-action-gold/90 transition-colors"
+                            className="inline-flex items-center justify-center gap-2 bg-action-gold text-brand-navy font-bold px-8 py-4 rounded-full text-base sm:text-lg hover:bg-action-gold/90 transition-colors w-full sm:w-auto min-h-[48px]"
                         >
                             <Phone className="w-5 h-5" />
                             Call Now
@@ -289,7 +289,7 @@ export default async function SuburbPage({ params }: { params: Promise<{ suburb:
 
                         <Link
                             href="/pricing"
-                            className="inline-flex items-center gap-2 bg-white/10 border-2 border-white/30 text-white font-bold px-8 py-4 rounded-full text-lg hover:bg-white/20 transition-colors"
+                            className="inline-flex items-center justify-center gap-2 bg-white/10 border-2 border-white/30 text-white font-bold px-8 py-4 rounded-full text-base sm:text-lg hover:bg-white/20 transition-colors w-full sm:w-auto min-h-[48px]"
                         >
                             View Pricing Guide <ArrowRight className="w-5 h-5" />
                         </Link>

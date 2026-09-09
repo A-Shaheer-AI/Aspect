@@ -1,4 +1,4 @@
-﻿"use client";
+"use client";
 
 import { useEffect, useState } from "react";
 import { Phone, CheckCircle2, Star, Shield, Zap, Droplets, Leaf, X, Tag } from "lucide-react";
@@ -65,7 +65,7 @@ function LeadForm({
                         placeholder={f.placeholder}
                         value={formData[f.key as keyof typeof formData]}
                         onChange={(e) => setFormData({ ...formData, [f.key]: e.target.value })}
-                        className="w-full rounded-xl px-4 py-3 text-sm outline-none transition-all"
+                        className="w-full rounded-xl px-4 py-3 text-base outline-none transition-all"
                         style={{
                             background: dark ? "rgba(255,255,255,0.92)" : "#f4f6ff",
                             border: "1.5px solid",
@@ -800,7 +800,7 @@ export default function PressureWashingAdsPage() {
 
             {/* ─── STICKY BAR ─── */}
             <div
-                className="fixed bottom-0 left-0 right-0 z-50 flex items-center justify-between px-5 py-3"
+                className="fixed bottom-0 left-0 right-0 z-50 flex items-center justify-between px-5 py-3 pb-[max(0.75rem,env(safe-area-inset-bottom))]"
                 style={{ background: NAVY, borderTop: `2px solid ${YELLOW}`, boxShadow: "0 -4px 24px rgba(7,7,126,0.3)" }}
             >
                 <div className="hidden sm:block">
@@ -817,7 +817,7 @@ export default function PressureWashingAdsPage() {
                 </Link>
             </div>
             {/* spacer */}
-            <div className="h-16" style={{ background: NAVY }} />
+            <div className="h-16 pb-[env(safe-area-inset-bottom)]" style={{ background: NAVY }} />
 
             <style>{`
                 @keyframes pulse {

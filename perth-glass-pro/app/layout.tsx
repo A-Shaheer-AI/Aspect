@@ -34,8 +34,18 @@ export const metadata: Metadata = {
         default: "Aspect Window Cleaning Perth | Residential & Commercial",
     },
     icons: {
-        icon: "https://res.cloudinary.com/dr8tjrszy/image/upload/v1772130850/white-logo_pzpxjk.png"
+        icon: [
+            { url: "/favicon.ico", sizes: "any" },
+            { url: "/favicon.svg", type: "image/svg+xml" },
+            { url: "/icon.png", type: "image/png", sizes: "32x32" },
+            { url: "/icon-192.png", type: "image/png", sizes: "192x192" },
+        ],
+        apple: [
+            { url: "/apple-touch-icon.png", sizes: "180x180", type: "image/png" },
+        ],
+        shortcut: "/favicon.ico",
     },
+    manifest: "/site.webmanifest",
     description:
         "Professional window cleaning in Perth. Specialists in residential homes and commercial high-reach (EWP) cleaning. Streak-free results. Fully insured. Same-week service.",
     keywords: [

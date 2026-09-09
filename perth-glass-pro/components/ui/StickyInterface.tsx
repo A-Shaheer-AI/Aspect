@@ -51,7 +51,7 @@ export default function StickyInterface() {
             {/* Mobile: Sticky Bottom Bar with full labels */}
             {isMobile && showMobileCTA && (
                 <div
-                    className="fixed bottom-0 left-0 right-0 z-50 p-3 bg-white/95 backdrop-blur-md border-t border-slate-200 md:hidden shadow-[0_-4px_20px_rgba(0,0,0,0.1)]"
+                    className="fixed bottom-0 left-0 right-0 z-40 p-3 pb-[max(0.75rem,env(safe-area-inset-bottom))] bg-white/95 backdrop-blur-md border-t border-slate-200 md:hidden shadow-[0_-4px_20px_rgba(0,0,0,0.1)]"
                     style={{ animation: "slideUp 0.3s ease-out" }}
                 >
                     <div className="flex gap-2">
@@ -66,7 +66,7 @@ export default function StickyInterface() {
 
                         {/* Commercial - Full name */}
                         <Link
-                            href="/services/commercial-window-cleaning"
+                            href="/commercial"
                             className="flex-1 bg-brand-navy text-white font-bold py-3 rounded-lg text-sm flex items-center justify-center gap-2 active:scale-95 transition-transform"
                         >
                             <Building2 className="w-4 h-4" aria-hidden="true" />
@@ -80,7 +80,7 @@ export default function StickyInterface() {
             {isMobile && showMobileCTA && (
                 <a
                     href={`tel:${BUSINESS.phoneRaw}`}
-                    className="fixed bottom-20 right-4 z-50 w-14 h-14 bg-green-500 text-white rounded-full shadow-lg flex items-center justify-center hover:bg-green-600 active:scale-95 transition-all md:hidden shiny-call-btn"
+                    className="fixed bottom-20 right-4 z-40 w-14 h-14 bg-green-500 text-white rounded-full shadow-lg flex items-center justify-center hover:bg-green-600 active:scale-95 transition-all md:hidden shiny-call-btn"
                     aria-label="Call now"
                     style={{ animation: "scaleIn 0.3s ease-out" }}
                 >

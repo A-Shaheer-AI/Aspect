@@ -1,4 +1,4 @@
-﻿"use client";
+"use client";
 
 import { useEffect, useState } from "react";
 import { Phone, CheckCircle2, Star, Shield, Droplets, Zap, Home, X, Leaf, Droplet, AlertTriangle, Bug, Hammer, Tag } from "lucide-react";
@@ -65,7 +65,7 @@ function LeadForm({
                         placeholder={f.placeholder}
                         value={formData[f.key as keyof typeof formData]}
                         onChange={(e) => setFormData({ ...formData, [f.key]: e.target.value })}
-                        className="w-full rounded-xl px-4 py-3 text-sm outline-none transition-all"
+                        className="w-full rounded-xl px-4 py-3 text-base outline-none transition-all"
                         style={{
                             background: dark ? "rgba(255,255,255,0.92)" : "#f4f6ff",
                             border: "1.5px solid",
@@ -653,7 +653,7 @@ export default function GutterCleaningAdsPage() {
             </section>
 
             {/* ─── STICKY BAR ─── */}
-            <div className="fixed bottom-0 left-0 right-0 z-50 flex items-center justify-center px-5 py-3" style={{ background: NAVY, borderTop: `2px solid ${YELLOW}`, boxShadow: "0 -4px 24px rgba(7,7,126,0.3)" }}>
+            <div className="fixed bottom-0 left-0 right-0 z-50 flex items-center justify-center px-5 py-3 pb-[max(0.75rem,env(safe-area-inset-bottom))]" style={{ background: NAVY, borderTop: `2px solid ${YELLOW}`, boxShadow: "0 -4px 24px rgba(7,7,126,0.3)" }}>
                 <div className="hidden sm:block">
                     <p className="text-xs font-semibold text-white">Aspect Gutter Cleaning</p>
                     <p className="text-xs" style={{ color: "rgba(255,255,255,0.5)" }}>Perth&apos;s #1 Rated</p>

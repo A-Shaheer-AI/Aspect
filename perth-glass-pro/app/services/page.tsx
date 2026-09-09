@@ -1,6 +1,6 @@
 import { Metadata } from "next";
 import Link from "next/link";
-import { ArrowRight, CheckCircle, Home, Building2, Sun, Droplets,CloudRain } from "lucide-react";
+import { ArrowRight, CheckCircle, Home, Building2, Sun, Droplets, CloudRain, Briefcase } from "lucide-react";
 import ContactSection from "@/components/ContactSection";
 
 export const metadata: Metadata = {
@@ -13,18 +13,26 @@ const MAIN_SERVICES = [
     {
         id: "residential",
         title: "Residential Window Cleaning",
-        description: "Complete interior and exterior window cleaning for Perth homes of all sizes. Includes flyscreen cleaning, track vacuuming, and frame detailing.We treat your home with care and respect.",
+        description: "Complete interior and exterior window cleaning for Perth homes of all sizes. Includes flyscreen cleaning, track vacuuming, and frame detailing. We treat your home with care and respect.",
         icon: Home,
         features: ["Interior & Exterior", "Flyscreens & Tracks", "Frame Cleaning", "Double Story Homes"],
         link: "/services/residential-window-cleaning",
     },
     {
-        id: "commercial",
-        title: "Commercial Window Cleaning",
-        description: "Professional commercial window cleaning for offices, retail shops, and strata properties across Perth. We use water-fed poles for high-reach access and comply with all safety regulations, including EWP services.",
+        id: "commercial-window",
+        title: "Commercial Window Cleaning & High-Reach Glazing",
+        description: "Specialist exterior and interior commercial glass cleaning for office towers, retail shopfronts, car dealerships, and strata complexes. Certified EWP cherry picker operators and 0ppm pure-water reach poles up to 4 storeys.",
         icon: Building2,
-        features: ["Offices & Retail", "Strata Complexes", "High Reach (EWP)", "Fully Safety Compliant"],
+        features: ["High-Reach Pure Water (4 Storeys)", "Certified Cherry Picker (EWP)", "Shopfronts & Corporate Facades", "Strata Multi-Unit Glazing"],
         link: "/services/commercial-window-cleaning",
+    },
+    {
+        id: "commercial-cleaning",
+        title: "Commercial Cleaning & Office Janitorial Services",
+        description: "Comprehensive office janitorial care and facility maintenance across Perth. Workstation hygiene, hospital-grade washroom sanitation, hard floor strip & seal, carpet steam extraction, and consumable replenishment. 100% directly employed staff.",
+        icon: Briefcase,
+        features: ["Workstation & Restroom Deep Care", "Hard Floor Strip & Seal", "Carpet Hot Water Extraction", "100% In-House Staff (No Subcontractors)"],
+        link: "/services/commercial-cleaning",
     },
     {
         id: "solar",
@@ -37,7 +45,7 @@ const MAIN_SERVICES = [
     {
         id: "pressure",
         title: "Pressure Cleaning",
-        description: "High-pressure driveway and exterior pressure cleaning services in Perth. We remove stubborn stains, moss, algae, and surface dirt to restore driveways, pavers, patios, and   building facades.",
+        description: "High-pressure driveway and exterior pressure cleaning services in Perth. We remove stubborn stains, moss, algae, and surface dirt to restore driveways, pavers, patios, and building facades.",
         icon: Droplets,
         features: ["Driveways & Paving", "Building Washdowns", "Soft Washing", "Stain Removal"],
         link: "/services/pressure-washing",
@@ -46,7 +54,7 @@ const MAIN_SERVICES = [
         id: "gutter",
         title: "Gutter Cleaning",
         description: "Professional gutter cleaning and maintenance to prevent water damage and protect your property. We remove leaves, debris, and blockages while checking for damage and ensuring proper water flow.",
-        icon: CloudRain, // or Shield, Filter, or any icon you prefer
+        icon: CloudRain,
         features: ["Debris Removal", "Downpipe Clearing", "Damage Inspection", "Roof Valley Cleaning"],
         link: "/services/gutter-cleaning",
     },
@@ -111,22 +119,22 @@ export default function ServicesPage() {
                 dangerouslySetInnerHTML={{ __html: JSON.stringify(servicesSchema) }}
             />
             {/* Hero */}
-            <section className="bg-brand-navy text-white pt-32 pb-24">
+            <section className="bg-brand-navy text-white pt-32 sm:pt-36 pb-16 sm:pb-24">
                 <div className="max-w-5xl mx-auto px-4 text-center">
-                    <h1 className="text-4xl md:text-5xl lg:text-6xl font-heading font-bold text-white mb-6">
+                    <h1 className="text-3xl sm:text-5xl lg:text-6xl font-heading font-bold text-white mb-4 sm:mb-6">
                         Our Cleaning <span className="text-action-gold">Services</span>
                     </h1>
-                    <p className="text-xl text-brand-slate max-w-2xl mx-auto">
+                    <p className="text-base sm:text-xl text-slate-200 max-w-2xl mx-auto">
                         Professional residential and commercial cleaning services across Perth metro.
                     </p>
                 </div>
             </section>
 
             {/* Main Services (Detailed) */}
-            <section className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 mb-24 mt-10">
-                <div className="grid md:grid-cols-2 gap-8">
+            <section className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 mb-16 sm:mb-24 mt-6 sm:mt-10">
+                <div className="grid md:grid-cols-2 gap-6 sm:gap-8">
                     {MAIN_SERVICES.map((service) => (
-                        <Link href={service.link} key={service.id} className="relative block bg-white rounded-2xl p-8 shadow-lg border border-slate-100 hover:border-action-gold/30 hover:shadow-xl hover:-translate-y-1 transition-all cursor-pointer group">
+                        <Link href={service.link} key={service.id} className="relative block bg-white rounded-2xl p-6 sm:p-8 shadow-lg border border-slate-100 hover:border-action-gold/30 hover:shadow-xl hover:-translate-y-1 transition-all cursor-pointer group">
                             <div className="flex items-start justify-between mb-6">
                                 <div className="p-3 bg-brand-navy/5 rounded-xl text-brand-navy group-hover:bg-action-gold group-hover:text-brand-navy transition-colors">
                                     <service.icon className="w-8 h-8" />

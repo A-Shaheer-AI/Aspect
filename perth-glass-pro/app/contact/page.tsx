@@ -41,14 +41,14 @@ const ContactPage = () => {
 
       {/* HERO */}
 
-      <section className="bg-brand-navy text-white pt-30 pb-24 text-center">
+      <section className="bg-brand-navy text-white pt-32 sm:pt-36 pb-16 sm:pb-24 text-center px-4">
         <h1 className="text-3xl md:text-5xl font-bold mb-4">
           Contact Us
         </h1>
       </section>
 
       {/* MAIN */}
-      <main className="flex-1 max-w-5xl w-full mx-auto px-6 md:px-10 py-16 grid grid-cols-1 md:grid-cols-2 gap-16">
+      <main className="flex-1 max-w-5xl w-full mx-auto px-4 sm:px-6 md:px-10 py-10 sm:py-16 grid grid-cols-1 md:grid-cols-2 gap-10 md:gap-16">
 
         {/* INFO */}
         <div className="flex flex-col">
@@ -119,7 +119,7 @@ const ContactPage = () => {
 
         {/* FORM */}
         <div>
-          <div className="bg-white rounded-xl shadow-md border-t-4 border-[#000080] p-8 md:p-10">
+          <div className="bg-white rounded-xl shadow-md border-t-4 border-[#000080] p-6 sm:p-8 md:p-10">
             <h2 className="text-[#000080] text-2xl font-black uppercase mb-1">Request a Quote</h2>
             <p className="text-gray-400 text-sm mb-7">Fill in your details and we'll be in touch shortly.</p>
 
@@ -145,7 +145,7 @@ const ContactPage = () => {
                     value={formData[field.id as keyof FormData]}
                     onChange={handleChange}
                     disabled={isDisabled}
-                    className="w-full px-4 py-3 rounded-lg border border-gray-200 bg-gray-50 text-[#000080] text-sm placeholder-gray-300 outline-none focus:border-[#000080] focus:ring-2 focus:ring-[#000080]/10 focus:bg-white transition disabled:opacity-50"
+                    className="w-full px-4 py-3 rounded-lg border border-gray-200 bg-gray-50 text-[#000080] text-base placeholder-gray-400 outline-none focus:border-[#000080] focus:ring-2 focus:ring-[#000080]/10 focus:bg-white transition disabled:opacity-50"
                   />
                 </div>
               ))}

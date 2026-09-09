@@ -6,64 +6,68 @@ import { ArrowRight, Building2, Shield, Phone, CheckCircle2 } from "lucide-react
 import { BUSINESS } from "@/lib/config";
 
 export const metadata: Metadata = {
-    title: "Commercial & Strata Window Cleaning",
-    description: "Professional commercial window cleaning in Perth. Cherry picker (EWP), water-fed pole, and multi-story specialists. Offices, retail, and strata buildings. Free quotes.",
+    title: "Commercial Cleaning, Janitorial & Window Cleaning Perth | Aspect",
+    description: "Perth commercial cleaning, office janitorial, and high-reach window cleaning. Directly employed police-cleared staff, EWP certified, $20M insured. 24/7 service.",
 };
 
 export default function CommercialPage() {
     const features = [
-        "Certified Cherry Picker (EWP) operators for cleaning windows in high-rise buildings",
-        "Water-Fed Pole System for safe commercial window cleaning (up to 4 stories)",
-        "Access to lifts and scissor lifts is available for buildings with multiple levels.",
-        "Adjustable schedule that includes commercial cleaning after hours",
-        "Thorough safety records and adherence",
-        "Friendly service from the strata and property manager",
+        "Certified Cherry Picker (EWP) operators for high-reach glass and facade cleaning",
+        "Water-Fed Pole System for pure-water cleaning up to 4 storeys from the ground",
+        "Comprehensive office janitorial care & hospital-grade surface sanitisation",
+        "Commercial hard floor strip & seal and carpet hot water extraction",
+        "100% directly employed, police-cleared staff — zero subcontracting",
+        "Adjustable 24/7 schedule including after-hours and weekend maintenance",
+        "Thorough WorkSafe WA compliance, strict SWMS, and $20M public liability",
+        "Proactive supervisory audits and single dedicated local account manager",
     ];
 
     const industries = [
-        "Office Buildings",
-        "Retail Centres",
-        "Hotels & Hospitality",
-        "Educational Facilities",
-        "Medical Centres",
-        "Industrial Warehouses",
+        "Corporate Office Buildings",
+        "Medical & Healthcare Clinics",
+        "Strata & Multi-Unit Complexes",
+        "Retail Centres & Showrooms",
+        "Industrial & Warehouse Facilities",
+        "Educational & Childcare Facilities",
+        "Gyms & Fitness Centres",
+        "Hospitality & Commercial Dining",
     ];
 
     return (
         <div className="min-h-screen bg-brand-snow">
             {/* Hero */}
-            <section className="bg-brand-navy text-white pt-32 pb-24">
+            <section className="bg-brand-navy text-white pt-32 sm:pt-36 pb-16 sm:pb-24">
                 <div className="max-w-5xl mx-auto px-4 text-center">
                     <div className="inline-flex items-center gap-2 bg-white/10 border border-white/20 rounded-full px-4 py-2 mb-6">
                         <Building2 className="w-5 h-5 text-action-gold" />
                         <span className="text-sm font-medium">Commercial Services</span>
                     </div>
-                    <h1 className="text-4xl md:text-5xl lg:text-6xl font-heading font-bold mb-6">
+                    <h1 className="text-3xl sm:text-5xl lg:text-6xl font-heading font-bold mb-4 sm:mb-6">
                         Window Cleaning for
                         <br />
                         <span className="text-action-gold">
                             Businesses and Strata
                         </span>
                     </h1>
-                    <p className="text-xl text-brand-water/80 max-w-2xl mx-auto mb-10">
-                        Perth window cleaning services for businesses and apartments. specialized high-reach
+                    <p className="text-base sm:text-xl text-brand-water/80 max-w-2xl mx-auto mb-8 sm:mb-10">
+                        Perth window cleaning services for businesses and apartments. Specialized high-reach
                         cleaning for multi-story buildings, retail establishments, and offices. Completely safety
                         compliant, insured, and certified.
                     </p>
-                    <div className="flex flex-col sm:flex-row items-center justify-center gap-4">
-                        <a
-                            href={`tel:${BUSINESS.phoneRaw}`}
-                            className="flex items-center gap-3 bg-action-gold text-brand-navy font-bold text-lg px-8 py-4 rounded-full hover:bg-action-gold/90 transition-colors"
-                        >
-                            <Phone className="w-5 h-5" />
-                            Request a Quote
-                        </a>
+                    <div className="flex flex-col sm:flex-row items-center justify-center gap-3 sm:gap-4">
                         <Link
                             href="/services/commercial-window-cleaning"
-                            className="flex items-center gap-3 bg-white/10 border-2 border-white/30 text-white font-bold text-lg px-8 py-4 rounded-full hover:bg-white/20 transition-colors"
+                            className="w-full sm:w-auto inline-flex items-center justify-center gap-2 bg-action-gold text-brand-navy font-bold text-base px-8 py-4 rounded-full hover:bg-action-gold/90 transition-colors min-h-[48px]"
                         >
-                            Find Out More
-                            <ArrowRight className="w-5 h-5" />
+                            Commercial Window Cleaning
+                            <ArrowRight className="w-4 h-4" />
+                        </Link>
+                        <Link
+                            href="/services/commercial-cleaning"
+                            className="w-full sm:w-auto inline-flex items-center justify-center gap-2 bg-white/10 border-2 border-white/30 text-white font-bold text-base px-8 py-4 rounded-full hover:bg-white/20 transition-colors min-h-[48px]"
+                        >
+                            Office Janitorial Services
+                            <ArrowRight className="w-4 h-4" />
                         </Link>
                     </div>
                 </div>
@@ -89,7 +93,7 @@ export default function CommercialPage() {
             <section className="py-16 bg-white">
                 <div className="max-w-5xl mx-auto px-4">
                     <h2 className="text-3xl font-heading font-bold text-brand-navy text-center mb-12">
-                        Why Pick Aspect for Cleaning Commercial Windows?
+                        Why Pick Aspect for Commercial Cleaning & High-Reach Glazing?
                     </h2>
                     <div className="grid md:grid-cols-2 lg:grid-cols-3 gap-6">
                         {features.map((feature) => (
@@ -98,6 +102,29 @@ export default function CommercialPage() {
                                 <span className="text-brand-slate">{feature}</span>
                             </div>
                         ))}
+                    </div>
+                    <div className="mt-10 p-6 rounded-2xl bg-gradient-to-r from-brand-navy to-slate-900 text-white flex flex-col md:flex-row items-center justify-between gap-6 shadow-md">
+                        <div>
+                            <span className="text-action-gold text-xs font-bold uppercase tracking-wider block mb-1">Dual-Contract Advantage</span>
+                            <h3 className="text-lg font-bold text-white mb-1">Complete Office Janitorial + High-Reach Window Cleaning</h3>
+                            <p className="text-slate-300 text-sm max-w-xl">
+                                Consolidate routine workstation sanitation, restroom restocking, floor care, and external facade washing under one vetted team and one invoice. Save up to 20% on bundled contracts.
+                            </p>
+                        </div>
+                        <div className="flex flex-col sm:flex-row gap-3 w-full md:w-auto flex-shrink-0">
+                            <Link
+                                href="/services/commercial-cleaning"
+                                className="inline-flex items-center justify-center gap-2 bg-action-gold text-brand-navy font-bold px-6 py-3 rounded-full text-sm hover:bg-action-gold/90 transition-all min-h-[44px]"
+                            >
+                                Office Janitorial <ArrowRight className="w-4 h-4" />
+                            </Link>
+                            <Link
+                                href="/services/commercial-window-cleaning"
+                                className="inline-flex items-center justify-center gap-2 bg-white/10 border border-white/20 text-white font-bold px-6 py-3 rounded-full text-sm hover:bg-white/20 transition-all min-h-[44px]"
+                            >
+                                Window Cleaning <ArrowRight className="w-4 h-4" />
+                            </Link>
+                        </div>
                     </div>
                 </div>
             </section>
@@ -147,7 +174,7 @@ export default function CommercialPage() {
                     </p>
                     <a
                         href={`tel:${BUSINESS.phoneRaw}`}
-                        className="inline-flex items-center gap-2 bg-action-gold text-brand-navy font-bold px-8 py-4 rounded-full text-lg hover:bg-action-gold/90 transition-colors"
+                        className="w-full sm:w-auto inline-flex items-center justify-center gap-2 bg-action-gold text-brand-navy font-bold px-8 py-4 rounded-full text-base sm:text-lg hover:bg-action-gold/90 transition-colors min-h-[48px]"
                     >
                         <Phone className="w-5 h-5" />
                         {BUSINESS.phone}

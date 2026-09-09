@@ -110,7 +110,7 @@ export default async function BlogPostPage({ params }: { params: Promise<{ slug:
             />
 
             {/* Header Image */}
-            <div className="relative h-[40vh] md:h-[50vh] bg-brand-navy">
+            <div className="relative min-h-[280px] sm:min-h-[340px] h-[40vh] md:h-[50vh] bg-brand-navy">
                 {post.thumbnail ? (
                     <Image
                         src={post.thumbnail}
@@ -125,12 +125,12 @@ export default async function BlogPostPage({ params }: { params: Promise<{ slug:
                 )}
                 <div className="absolute inset-0 bg-gradient-to-t from-brand-navy/90 to-transparent" />
 
-                <div className="absolute bottom-0 left-0 right-0 p-4 pb-12">
+                <div className="absolute bottom-0 left-0 right-0 p-4 pb-8 sm:pb-12">
                     <div className="max-w-3xl mx-auto">
-                        <h1 className="text-3xl md:text-5xl font-heading font-bold text-white mb-4 leading-tight">
+                        <h1 className="text-2xl sm:text-3xl md:text-5xl font-heading font-bold text-white mb-3 sm:mb-4 leading-tight">
                             {post.title}
                         </h1>
-                        <div className="flex items-center gap-2 text-white/80">
+                        <div className="flex items-center gap-2 text-white/80 text-xs sm:text-sm">
                             <Calendar className="w-4 h-4 text-action-gold" />
                             <time dateTime={post.date}>
                                 {format(new Date(post.date), 'MMMM d, yyyy')}
@@ -234,16 +234,16 @@ export default async function BlogPostPage({ params }: { params: Promise<{ slug:
                 </div>
             </div>
 
-            {/* Sticky Conversion CTA */}
-            <div className="sticky bottom-4 z-40 px-4 mb-4">
-                <div className="max-w-3xl mx-auto bg-brand-navy text-white p-4 sm:p-6 rounded-2xl shadow-2xl flex flex-col sm:flex-row items-center justify-between gap-4 border border-white/10">
+            {/* Conversion CTA */}
+            <div className="relative my-8 sm:sticky sm:bottom-4 z-30 px-4 mb-4">
+                <div className="max-w-3xl mx-auto bg-brand-navy text-white p-5 sm:p-6 rounded-2xl shadow-2xl flex flex-col sm:flex-row items-center justify-between gap-4 border border-white/10">
                     <div className="text-center sm:text-left">
                         <h3 className="font-bold text-lg mb-1">Liked this result?</h3>
                         <p className="text-brand-water/80 text-sm">Get the same sparkling finish for your home.</p>
                     </div>
                     <Link
                         href="/pricing"
-                        className="bg-action-gold text-brand-navy font-bold px-6 py-3 rounded-full hover:bg-action-gold/90 transition-colors inline-flex items-center gap-2 shadow-lg whitespace-nowrap"
+                        className="w-full sm:w-auto bg-action-gold text-brand-navy font-bold px-6 py-3.5 rounded-full hover:bg-action-gold/90 transition-colors inline-flex items-center justify-center gap-2 shadow-lg whitespace-nowrap min-h-[44px]"
                     >
                         View Pricing Guide <ArrowRight className="w-4 h-4" />
                     </Link>

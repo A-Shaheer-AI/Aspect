@@ -116,7 +116,7 @@ export default function QuoteModal({
 
             {/* Modal Card */}
             <div
-                className="relative bg-white w-full max-w-md rounded-2xl shadow-2xl p-6 sm:p-8 overflow-hidden"
+                className="relative bg-white w-full max-w-md rounded-2xl shadow-2xl p-6 sm:p-8 max-h-[92vh] overflow-y-auto my-auto"
                 style={{ animation: "scaleIn 0.2s ease-out" }}
             >
                 {/* Close Button */}
@@ -195,7 +195,7 @@ export default function QuoteModal({
                                         placeholder="Your name"
                                         value={formData.name}
                                         onChange={(e) => setFormData({ ...formData, name: e.target.value })}
-                                        className="w-full px-4 py-3 rounded-lg border border-slate-200 focus:border-action-gold focus:ring-2 focus:ring-action-gold/20 outline-none transition-all"
+                                        className="w-full px-4 py-3 rounded-lg border border-slate-200 focus:border-action-gold focus:ring-2 focus:ring-action-gold/20 outline-none text-base transition-all"
                                     />
                                 </div>
                                 <div>
@@ -206,7 +206,7 @@ export default function QuoteModal({
                                         placeholder="Your suburb (e.g., Joondalup)"
                                         value={formData.suburb}
                                         onChange={(e) => setFormData({ ...formData, suburb: e.target.value })}
-                                        className="w-full px-4 py-3 rounded-lg border border-slate-200 focus:border-action-gold focus:ring-2 focus:ring-action-gold/20 outline-none transition-all"
+                                        className="w-full px-4 py-3 rounded-lg border border-slate-200 focus:border-action-gold focus:ring-2 focus:ring-action-gold/20 outline-none text-base transition-all"
                                     />
                                 </div>
                                 <button
@@ -231,7 +231,7 @@ export default function QuoteModal({
                                         placeholder="Email address (optional)"
                                         value={formData.email}
                                         onChange={(e) => setFormData({ ...formData, email: e.target.value })}
-                                        className="w-full px-4 py-3 rounded-lg border border-slate-200 focus:border-action-gold focus:ring-2 focus:ring-action-gold/20 outline-none transition-all"
+                                        className="w-full px-4 py-3 rounded-lg border border-slate-200 focus:border-action-gold focus:ring-2 focus:ring-action-gold/20 outline-none text-base transition-all"
                                     />
                                 </div>
                                 <div>
@@ -242,7 +242,7 @@ export default function QuoteModal({
                                         placeholder="Phone number"
                                         value={formData.phone}
                                         onChange={(e) => setFormData({ ...formData, phone: e.target.value })}
-                                        className="w-full px-4 py-3 rounded-lg border border-slate-200 focus:border-action-gold focus:ring-2 focus:ring-action-gold/20 outline-none transition-all"
+                                        className="w-full px-4 py-3 rounded-lg border border-slate-200 focus:border-action-gold focus:ring-2 focus:ring-action-gold/20 outline-none text-base transition-all"
                                     />
                                 </div>
                                 <div>
@@ -253,7 +253,7 @@ export default function QuoteModal({
                                         value={formData.message}
                                         onChange={(e) => setFormData({ ...formData, message: e.target.value })}
                                         rows={3}
-                                        className="w-full px-4 py-3 rounded-lg border border-slate-200 focus:border-action-gold focus:ring-2 focus:ring-action-gold/20 outline-none transition-all resize-none"
+                                        className="w-full px-4 py-3 rounded-lg border border-slate-200 focus:border-action-gold focus:ring-2 focus:ring-action-gold/20 outline-none text-base transition-all resize-none"
                                     />
                                 </div>
                                 <div className="flex gap-3">
