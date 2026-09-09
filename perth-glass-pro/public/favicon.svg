@@ -1,0 +1,55 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 512 512" width="512" height="512">
+  <defs>
+    <linearGradient id="bgGrad" x1="0%" y1="0%" x2="100%" y2="100%">
+      <stop offset="0%" stop-color="#0E2442" />
+      <stop offset="60%" stop-color="#0A182E" />
+      <stop offset="100%" stop-color="#050C18" />
+    </linearGradient>
+    <linearGradient id="squeegeeGold" x1="0%" y1="0%" x2="100%" y2="0%">
+      <stop offset="0%" stop-color="#F59E0B" />
+      <stop offset="50%" stop-color="#FBBF24" />
+      <stop offset="100%" stop-color="#FCD34D" />
+    </linearGradient>
+    <linearGradient id="waterSheen" x1="0%" y1="0%" x2="100%" y2="0%">
+      <stop offset="0%" stop-color="#0284C7" />
+      <stop offset="50%" stop-color="#38BDF8" />
+      <stop offset="100%" stop-color="#7DD3FC" />
+    </linearGradient>
+    <linearGradient id="letterWhite" x1="0%" y1="0%" x2="0%" y2="100%">
+      <stop offset="0%" stop-color="#FFFFFF" />
+      <stop offset="100%" stop-color="#F1F5F9" />
+    </linearGradient>
+  </defs>
+
+  <!-- High-contrast Brand Squircle with subtle Cyan outer rim -->
+  <rect width="512" height="512" rx="112" fill="url(#bgGrad)" />
+  <rect x="7" y="7" width="498" height="498" rx="105" fill="none" stroke="#38BDF8" stroke-opacity="0.35" stroke-width="8" />
+
+  <!-- Bold Stylized Letter "A" -->
+  <g>
+    <!-- Base "A" silhouette -->
+    <path d="M 112 418 L 224 96 C 232 74, 244 64, 256 64 C 268 64, 280 74, 288 96 L 400 418 C 406 434, 394 448, 376 448 L 318 448 C 306 448, 296 440, 292 428 L 268 350 L 244 350 L 220 428 C 216 440, 206 448, 194 448 L 136 448 C 118 448, 106 434, 112 418 Z" fill="url(#letterWhite)" />
+
+    <!-- Negative space inside the A -->
+    <polygon points="256,156 290,268 222,268" fill="#0A182E" />
+
+    <!-- Squeegee Crossbar: Slightly tilted golden channel with water glide edge -->
+    <g transform="rotate(-6 256 296)">
+      <!-- Golden squeegee metal channel -->
+      <rect x="120" y="274" width="272" height="28" rx="8" fill="url(#squeegeeGold)" />
+      <!-- Cyan pure water glide rubber blade underneath -->
+      <rect x="114" y="302" width="284" height="10" rx="5" fill="url(#waterSheen)" />
+      <!-- Squeegee handle connector bracket -->
+      <path d="M 242 302 L 248 334 L 264 334 L 270 302 Z" fill="#D97706" />
+    </g>
+
+    <!-- Crystal Clean Glass Sparkle on Top-Right Apex -->
+    <g transform="translate(346, 88)">
+      <!-- Outer cyan 4-point star -->
+      <path d="M 0 -36 Q 0 0 -36 0 Q 0 0 0 36 Q 0 0 36 0 Q 0 0 0 -36 Z" fill="#38BDF8" />
+      <!-- Inner brilliant white core -->
+      <path d="M 0 -18 Q 0 0 -18 0 Q 0 0 0 18 Q 0 0 18 0 Q 0 0 0 -18 Z" fill="#FFFFFF" />
+      <circle cx="0" cy="0" r="4.5" fill="#FEF08A" />
+    </g>
+  </g>
+</svg>
