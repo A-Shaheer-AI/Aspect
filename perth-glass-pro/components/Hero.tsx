@@ -21,92 +21,92 @@ export default function HeroWithScroll() {
 
   const items: ScrollItem[] = [
     {
-      src: "https://res.cloudinary.com/dr8tjrszy/video/upload/v1788857762/aspect_hero_new/1.mov",
+      src: "https://res.cloudinary.com/dr8tjrszy/video/upload/v1788857762/aspect_hero_new/residential-window-cleaning-perth-showcase.mov",
       type: "video",
       className: "col-span-1 row-span-1 h-[180px]"
     },
     {
-      src: "https://res.cloudinary.com/dr8tjrszy/video/upload/v1788824710/aspect_hero_new/2.mov",
+      src: "https://res.cloudinary.com/dr8tjrszy/video/upload/v1788824710/aspect_hero_new/commercial-glass-cleaning-services-wa.mov",
       type: "video",
       className: "col-span-1 row-span-2 h-[280px]"
     },
     {
-      src: "https://res.cloudinary.com/dr8tjrszy/image/upload/v1788824713/aspect_hero_new/3.jpg",
+      src: "https://res.cloudinary.com/dr8tjrszy/image/upload/v1788824713/aspect_hero_new/pure-water-fed-pole-system-perth.jpg",
       type: "image",
       className: "col-span-1 row-span-2 h-[260px]"
     },
     {
-      src: "https://res.cloudinary.com/dr8tjrszy/image/upload/v1788824715/aspect_hero_new/4.jpg",
+      src: "https://res.cloudinary.com/dr8tjrszy/image/upload/v1788824715/aspect_hero_new/streak-free-window-washing-results.jpg",
       type: "image",
       className: "col-span-1 row-span-1 h-[200px]"
     },
     {
-      src: "https://res.cloudinary.com/dr8tjrszy/video/upload/v1788824718/aspect_hero_new/5.mp4",
+      src: "https://res.cloudinary.com/dr8tjrszy/video/upload/v1788824718/aspect_hero_new/two-story-house-window-cleaning-perth.mp4",
       type: "video",
       className: "col-span-1 row-span-1 h-[250px]"
     },
     {
-      src: "https://res.cloudinary.com/dr8tjrszy/video/upload/v1788824722/aspect_hero_new/6.mov",
+      src: "https://res.cloudinary.com/dr8tjrszy/video/upload/v1788824722/aspect_hero_new/eco-friendly-glass-cleaners-wa.mov",
       type: "video",
       className: "col-span-1 row-span-1 h-[200px]"
     },
     {
-      src: "https://res.cloudinary.com/dr8tjrszy/image/upload/v1788824724/aspect_hero_new/7.jpg",
+      src: "https://res.cloudinary.com/dr8tjrszy/image/upload/v1788824724/aspect_hero_new/exterior-window-cleaning-experts-perth.jpg",
       type: "image",
       className: "col-span-1 row-span-1 h-[200px]"
     },
     {
-      src: "https://res.cloudinary.com/dr8tjrszy/image/upload/v1788824727/aspect_hero_new/8.jpg",
+      src: "https://res.cloudinary.com/dr8tjrszy/image/upload/v1788824727/aspect_hero_new/professional-window-cleaners-in-action.jpg",
       type: "image",
       className: "col-span-1 row-span-1 h-[200px]"
     },
     {
-      src: "https://res.cloudinary.com/dr8tjrszy/image/upload/v1788824729/aspect_hero_new/9.jpg",
+      src: "https://res.cloudinary.com/dr8tjrszy/image/upload/v1788824729/aspect_hero_new/hard-water-stain-removal-perth.jpg",
       type: "image",
       className: "col-span-1 row-span-1 h-[200px]"
     },
     {
-      src: "https://res.cloudinary.com/dr8tjrszy/image/upload/v1788824530/aspect_hero_new/10.jpg",
+      src: "https://res.cloudinary.com/dr8tjrszy/image/upload/v1788824530/aspect_hero_new/solar-panel-cleaning-services-wa.jpg",
       type: "image",
       className: "col-span-1 row-span-1 h-[200px]"
     },
     {
-      src: "https://res.cloudinary.com/dr8tjrszy/image/upload/v1788824533/aspect_hero_new/11.jpg",
+      src: "https://res.cloudinary.com/dr8tjrszy/image/upload/v1788824533/aspect_hero_new/gutter-cleaning-and-window-washing-perth.jpg",
       type: "image",
       className: "col-span-1 row-span-1 h-[200px]"
     },
     {
-      src: "https://res.cloudinary.com/dr8tjrszy/image/upload/v1788824732/aspect_hero_new/IMG_0144.jpg",
+      src: "https://res.cloudinary.com/dr8tjrszy/image/upload/v1788824732/aspect_hero_new/flyscreen-and-track-cleaning-wa.jpg",
       type: "image",
       className: "col-span-1 row-span-1 h-[200px]"
     },
     {
-      src: "https://res.cloudinary.com/dr8tjrszy/video/upload/v1788824569/aspect_hero_new/13.mov",
+      src: "https://res.cloudinary.com/dr8tjrszy/video/upload/v1788824569/aspect_hero_new/shop-front-window-cleaning-perth.mov",
       type: "video",
       className: "col-span-1 row-span-1 h-[200px]"
     },
     {
-      src: "https://res.cloudinary.com/dr8tjrszy/video/upload/v1788824599/aspect_hero_new/14.mov",
+      src: "https://res.cloudinary.com/dr8tjrszy/video/upload/v1788824599/aspect_hero_new/office-building-glass-cleaning-wa.mov",
       type: "video",
       className: "col-span-1 row-span-1 h-[200px]"
     },
     {
-      src: "https://res.cloudinary.com/dr8tjrszy/video/upload/v1788824865/aspect_hero_new/15.mov",
+      src: "https://res.cloudinary.com/dr8tjrszy/video/upload/v1788824865/aspect_hero_new/strata-window-cleaning-specialists-perth.mov",
       type: "video",
       className: "col-span-1 row-span-1 h-[200px]"
     },
     {
-      src: "https://res.cloudinary.com/dr8tjrszy/video/upload/v1788824692/aspect_hero_new/16.mov",
+      src: "https://res.cloudinary.com/dr8tjrszy/video/upload/v1788824692/aspect_hero_new/high-reach-window-cleaning-wa.mov",
       type: "video",
       className: "col-span-1 row-span-1 h-[200px]"
     },
     {
-      src: "https://res.cloudinary.com/dr8tjrszy/image/upload/v1788824694/aspect_hero_new/17.jpg",
+      src: "https://res.cloudinary.com/dr8tjrszy/image/upload/v1788824694/aspect_hero_new/trusted-perth-window-cleaners.jpg",
       type: "image",
       className: "col-span-1 row-span-1 h-[200px]"
     },
     {
-      src: "https://res.cloudinary.com/dr8tjrszy/video/upload/v1788824699/aspect_hero_new/18.mp4",
+      src: "https://res.cloudinary.com/dr8tjrszy/video/upload/v1788824699/aspect_hero_new/aspect-window-cleaning-results.mp4",
       type: "video",
       className: "col-span-1 row-span-1 h-[200px]"
     }

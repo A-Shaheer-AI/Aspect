@@ -554,12 +554,12 @@ export default function WindowCleaningAdsPage() {
     const YELLOW = "#FFE54D";
 
     const galleryImages = [
-        "https://res.cloudinary.com/dr8tjrszy/image/upload/f_auto,q_auto/v1788989140/aspect_landing/IMG_1128.jpg",
-        "https://res.cloudinary.com/dr8tjrszy/image/upload/f_auto,q_auto/v1788989142/aspect_landing/IMG_1537.jpg",
-        "https://res.cloudinary.com/dr8tjrszy/image/upload/f_auto,q_auto/v1788989145/aspect_landing/IMG_2240.jpg",
-        "https://res.cloudinary.com/dr8tjrszy/image/upload/f_auto,q_auto/v1788989148/aspect_landing/IMG_2274.jpg",
-        "https://res.cloudinary.com/dr8tjrszy/image/upload/f_auto,q_auto/v1788989151/aspect_landing/IMG_2569.jpg",
-        "https://res.cloudinary.com/dr8tjrszy/image/upload/f_auto,q_auto/v1788989153/aspect_landing/IMG_9323.jpg"
+        "https://res.cloudinary.com/dr8tjrszy/image/upload/f_auto,q_auto,w_800/v1789141016/aspect_landing/expert-window-cleaning-perth.jpg",
+        "https://res.cloudinary.com/dr8tjrszy/image/upload/f_auto,q_auto,w_800/v1789143222/aspect_landing/perth-window-cleaning-service-expert.jpg",
+        "https://res.cloudinary.com/dr8tjrszy/image/upload/f_auto,q_auto,w_800/v1789141708/aspect_landing/exterior-glass-cleaning-perth-specialists.jpg",
+        "https://res.cloudinary.com/dr8tjrszy/image/upload/f_auto,q_auto,w_800/v1789142616/aspect_landing/professional-window-washers-perth.jpg",
+        "https://res.cloudinary.com/dr8tjrszy/image/upload/f_auto,q_auto,w_800/v1789142856/aspect_landing/perth-window-cleaners-in-action.jpg",
+        "https://res.cloudinary.com/dr8tjrszy/image/upload/f_auto,q_auto,w_800/v1789141508/aspect_landing/residential-window-cleaning-wa.jpg"
     ];
 
     return (
@@ -745,13 +745,13 @@ export default function WindowCleaningAdsPage() {
                     </div>
                     <div className="grid grid-cols-1 gap-4 lg:grid-cols-2">
                         <BeforeAfterSlider
-                            afterImage="https://res.cloudinary.com/dr8tjrszy/image/upload/f_auto,q_auto/v1774345158/IMG_9593_1_2_b98bl5.png"
-                            beforeImage="https://res.cloudinary.com/dr8tjrszy/image/upload/f_auto,q_auto/v1771960144/WhatsApp_Image_2026-02-22_at_8.48.03_PM_vtb2tn.jpg"
+                            afterImage="https://res.cloudinary.com/dr8tjrszy/image/upload/f_auto,q_auto,w_800/v1774345158/IMG_9593_1_2_b98bl5.png"
+                            beforeImage="https://res.cloudinary.com/dr8tjrszy/image/upload/f_auto,q_auto,w_800/v1771960144/WhatsApp_Image_2026-02-22_at_8.48.03_PM_vtb2tn.jpg"
                             initial={50}
                         />
                         <BeforeAfterSlider
-                            afterImage="https://res.cloudinary.com/dr8tjrszy/image/upload/f_auto,q_auto/v1785879700/aspect_gallery/after.webp"
-                            beforeImage="https://res.cloudinary.com/dr8tjrszy/image/upload/f_auto,q_auto/v1785879695/aspect_gallery/1-before.webp"
+                            afterImage="https://res.cloudinary.com/dr8tjrszy/image/upload/f_auto,q_auto,w_800/v1785879700/aspect_gallery/after.webp"
+                            beforeImage="https://res.cloudinary.com/dr8tjrszy/image/upload/f_auto,q_auto,w_800/v1785879695/aspect_gallery/1-before.webp"
                             initial={50}
                         />
                     </div>
