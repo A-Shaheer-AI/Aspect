@@ -553,6 +553,15 @@ export default function WindowCleaningAdsPage() {
     const NAVY = "#07077E";
     const YELLOW = "#FFE54D";
 
+    const galleryImages = [
+        "https://res.cloudinary.com/dr8tjrszy/image/upload/f_auto,q_auto,w_800/v1789141016/aspect_landing/expert-window-cleaning-perth.jpg",
+        "https://res.cloudinary.com/dr8tjrszy/image/upload/f_auto,q_auto,w_800/v1789143222/aspect_landing/perth-window-cleaning-service-expert.jpg",
+        "https://res.cloudinary.com/dr8tjrszy/image/upload/f_auto,q_auto,w_800/v1789141708/aspect_landing/exterior-glass-cleaning-perth-specialists.jpg",
+        "https://res.cloudinary.com/dr8tjrszy/image/upload/f_auto,q_auto,w_800/v1789142616/aspect_landing/professional-window-washers-perth.jpg",
+        "https://res.cloudinary.com/dr8tjrszy/image/upload/f_auto,q_auto,w_800/v1789142856/aspect_landing/perth-window-cleaners-in-action.jpg",
+        "https://res.cloudinary.com/dr8tjrszy/image/upload/f_auto,q_auto,w_800/v1789141508/aspect_landing/residential-window-cleaning-wa.jpg"
+    ];
+
     return (
         <>
             {/*  MODAL  */}
@@ -616,19 +625,20 @@ export default function WindowCleaningAdsPage() {
                             <style>{`
                                 .snap-x::-webkit-scrollbar { display: none; }
                             `}</style>
-                            {[1, 2, 3, 4, 5, 6].map((num) => (
+                            {galleryImages.map((src, index) => (
                                 <div
-                                    key={num}
-                                    onClick={() => { setCurrentImageIndex(num - 1); setGalleryOpen(true); }}
+                                    key={index}
+                                    onClick={() => { setCurrentImageIndex(index); setGalleryOpen(true); }}
                                     className="relative w-48 h-36 lg:w-full lg:aspect-[4/3] lg:h-auto flex-shrink-0 snap-center rounded-xl overflow-hidden shadow-lg border border-white/20 hover:scale-105 cursor-pointer transition-all duration-300"
                                 >
                                     <Image
-                                        src={`/gallery/gallery-${num}.jpeg`}
-                                        alt={`Recent Work ${num}`}
+                                        src={src}
+                                        alt={`Recent Work ${index + 1}`}
                                         fill
                                         sizes="(max-width: 1024px) 192px, 33vw"
-                                        priority={num <= 3}
+                                        priority={index <= 2}
                                         className="object-cover"
+                                        unoptimized
                                     />
                                 </div>
                             ))}
@@ -735,13 +745,13 @@ export default function WindowCleaningAdsPage() {
                     </div>
                     <div className="grid grid-cols-1 gap-4 lg:grid-cols-2">
                         <BeforeAfterSlider
-                            afterImage="https://res.cloudinary.com/dr8tjrszy/image/upload/f_auto,q_auto/v1774345158/IMG_9593_1_2_b98bl5.png"
-                            beforeImage="https://res.cloudinary.com/dr8tjrszy/image/upload/f_auto,q_auto/v1771960144/WhatsApp_Image_2026-02-22_at_8.48.03_PM_vtb2tn.jpg"
+                            afterImage="https://res.cloudinary.com/dr8tjrszy/image/upload/f_auto,q_auto,w_800/v1774345158/IMG_9593_1_2_b98bl5.png"
+                            beforeImage="https://res.cloudinary.com/dr8tjrszy/image/upload/f_auto,q_auto,w_800/v1771960144/WhatsApp_Image_2026-02-22_at_8.48.03_PM_vtb2tn.jpg"
                             initial={50}
                         />
                         <BeforeAfterSlider
-                            afterImage="https://res.cloudinary.com/dr8tjrszy/image/upload/f_auto,q_auto/v1785879700/aspect_gallery/after.webp"
-                            beforeImage="https://res.cloudinary.com/dr8tjrszy/image/upload/f_auto,q_auto/v1785879695/aspect_gallery/1-before.webp"
+                            afterImage="https://res.cloudinary.com/dr8tjrszy/image/upload/f_auto,q_auto,w_800/v1785879700/aspect_gallery/after.webp"
+                            beforeImage="https://res.cloudinary.com/dr8tjrszy/image/upload/f_auto,q_auto,w_800/v1785879695/aspect_gallery/1-before.webp"
                             initial={50}
                         />
                     </div>
@@ -1426,15 +1436,15 @@ export default function WindowCleaningAdsPage() {
                         <X className="w-8 h-8" />
                     </button>
                     <div className="relative w-full max-w-4xl aspect-[4/3] lg:aspect-video rounded-xl overflow-hidden">
-                        <Image src={`/gallery/gallery-${currentImageIndex + 1}.jpeg`} alt="Gallery" fill className="object-contain" />
+                        <Image src={galleryImages[currentImageIndex]} alt="Gallery" fill className="object-contain" unoptimized />
                     </div>
-                    <button onClick={() => setCurrentImageIndex(prev => prev > 0 ? prev - 1 : 5)} className="absolute left-4 top-1/2 -translate-y-1/2 text-white p-2 bg-black/50 rounded-full hover:bg-black transition-colors">
+                    <button onClick={() => setCurrentImageIndex(prev => prev > 0 ? prev - 1 : galleryImages.length - 1)} className="absolute left-4 top-1/2 -translate-y-1/2 text-white p-2 bg-black/50 rounded-full hover:bg-black transition-colors">
                         <ChevronLeft className="w-8 h-8" />
                     </button>
-                    <button onClick={() => setCurrentImageIndex(prev => prev < 5 ? prev + 1 : 0)} className="absolute right-4 top-1/2 -translate-y-1/2 text-white p-2 bg-black/50 rounded-full hover:bg-black transition-colors">
+                    <button onClick={() => setCurrentImageIndex(prev => prev < galleryImages.length - 1 ? prev + 1 : 0)} className="absolute right-4 top-1/2 -translate-y-1/2 text-white p-2 bg-black/50 rounded-full hover:bg-black transition-colors">
                         <ChevronRight className="w-8 h-8" />
                     </button>
-                    <div className="text-white mt-4 font-semibold">{currentImageIndex + 1} / 6</div>
+                    <div className="text-white mt-4 font-semibold">{currentImageIndex + 1} / {galleryImages.length}</div>
                 </div>
             )}
         {/* WHAT'S INCLUDED DETAIL POP-UP MODAL */}
