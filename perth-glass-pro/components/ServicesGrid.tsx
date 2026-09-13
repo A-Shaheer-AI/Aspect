@@ -35,7 +35,7 @@ export default function ServicesGrid() {
             title: "Pressure Cleaning",
             subtext: "Driveways, pavers & exterior pressure cleaning. Soft washing available.",
             link: "/services/pressure-washing",
-            image: "https://res.cloudinary.com/dr8tjrszy/image/upload/f_webp,q_auto,w_600/v1774450638/pressure-cleaning-giff_ulc4tk.gif",
+            image: "https://res.cloudinary.com/dr8tjrszy/image/upload/f_auto,q_auto,w_600/v1774450638/pressure-cleaning-giff_ulc4tk.gif",
             icon: Zap,
             className: "md:col-span-1 md:row-span-1", // Standard
             accent: "from-orange-500/20 to-red-500/20",
@@ -115,6 +115,7 @@ export default function ServicesGrid() {
                                                 src={(service.image.includes("/f_auto,q_auto/") ? service.image : service.image.replace("/upload/", "/upload/f_auto,q_auto/"))}
                                                 alt={service.title}
                                                 fill
+                                                unoptimized={true}
                                                 className="object-cover"
                                             />
                                         )}
