@@ -1,6 +1,6 @@
 export async function getGmbData() {
     if (!process.env.GOOGLE_PLACES_API_KEY || !process.env.GOOGLE_PLACE_ID) {
-        return { rating: 5.0, reviewCount: 41, address: "183 Stirling Hwy, Nedlands WA 6009" };
+        return { rating: 5.0, reviewCount: 43, address: "183 Stirling Hwy, Nedlands WA 6009" };
     }
     
     try {
@@ -17,13 +17,13 @@ export async function getGmbData() {
         if (data.result) {
             return {
                 rating: data.result.rating || 5.0,
-                reviewCount: data.result.user_ratings_total || 41,
+                reviewCount: data.result.user_ratings_total || 43,
                 address: data.result.formatted_address || "183 Stirling Hwy, Nedlands WA 6009"
             };
         }
-        return { rating: 5.0, reviewCount: 41, address: "183 Stirling Hwy, Nedlands WA 6009" };
+        return { rating: 5.0, reviewCount: 43, address: "183 Stirling Hwy, Nedlands WA 6009" };
     } catch (error) {
         console.error("GMB fetch error:", error);
-        return { rating: 5.0, reviewCount: 41, address: "183 Stirling Hwy, Nedlands WA 6009" };
+        return { rating: 5.0, reviewCount: 43, address: "183 Stirling Hwy, Nedlands WA 6009" };
     }
 }

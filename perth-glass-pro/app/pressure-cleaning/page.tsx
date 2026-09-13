@@ -753,7 +753,7 @@ export default function PressureWashingAdsPage() {
                         className="text-sm font-medium hover:underline"
                         style={{ color: "#888" }}
                     >
-                        5.0 across 30+ Google Reviews
+                        5.0 across 43+ Google Reviews
                     </Link>
                 </div>
                 <GoogleReviews reviews={pressureCleaningReviews} />

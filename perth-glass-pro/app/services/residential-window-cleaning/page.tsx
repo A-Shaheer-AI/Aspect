@@ -299,7 +299,7 @@ const ResidentialWindowCleaning = () => {
                                 <div className="font-semibold text-brand-navy text-sm md:text-base leading-tight">
                                     5.0 Google Reviews
                                 </div>
-                                <div className="text-xs text-brand-slate">Happy customers</div>
+                                <div className="text-xs text-brand-slate">43+ Happy Customers</div>
                             </div>
                         </ClickableBadge>
                     </div>
@@ -468,7 +468,7 @@ single time. We also offer <Link href="/services/solar-panel-washing" className=
 
                     {/* Intro paragraph */}
                     <p className="text-center text-brand-slate max-w-3xl mx-auto mb-12">
-                        With a 5.0 Google rating and hundreds of five-star reviews, Aspect Window Cleaning is Perth's most trusted
+                        With a 5.0 Google rating across 43+ five-star reviews, Aspect Window Cleaning is Perth's most trusted
                         window cleaning service.
                     </p>
 

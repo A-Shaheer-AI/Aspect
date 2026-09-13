@@ -619,7 +619,7 @@ export default function GutterCleaningAdsPage() {
                         Perth Homeowners Love Us
                     </h2>
                     <Link href="https://www.google.com/maps/place/Aspect+Window+Cleaning/@-31.9806823,115.7929967,17z" target="_blank" className="text-sm font-medium hover:underline" style={{ color: "#888" }}>
-                        5.0 across 30+ Google Reviews
+                        5.0 across 43+ Google Reviews
                     </Link>
                 </div>
 

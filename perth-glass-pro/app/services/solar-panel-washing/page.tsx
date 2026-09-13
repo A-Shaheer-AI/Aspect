@@ -323,7 +323,7 @@ const SolarPanelCleaningPage = () => {
                                 <div className="font-semibold text-brand-navy text-sm md:text-base leading-tight">
                                     5.0 Google Reviews
                                 </div>
-                                <div className="text-xs text-brand-slate">Happy customers</div>
+                                <div className="text-xs text-brand-slate">43+ Happy Customers</div>
                             </div>
                         </ClickableBadge>
                     </div>

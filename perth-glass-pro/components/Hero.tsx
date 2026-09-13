@@ -287,7 +287,6 @@ export default function HeroWithScroll() {
                           height={250}
                           sizes="(max-width: 768px) 50vw, 33vw"
                           className="w-full h-full object-cover"
-                          unoptimized
                         />
                       )}
                     </div>
@@ -320,7 +319,6 @@ export default function HeroWithScroll() {
                           height={250}
                           sizes="(max-width: 768px) 50vw, 33vw"
                           className="w-full h-full object-cover"
-                          unoptimized
                         />
                       )}
                     </div>

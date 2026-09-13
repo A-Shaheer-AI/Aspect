@@ -2,7 +2,7 @@
 
 import React, { createContext, useContext } from "react";
 
-const defaultGmb = { rating: 5.0, reviewCount: "40+", address: "183 Stirling Hwy, Nedlands WA 6009" };
+const defaultGmb = { rating: 5.0, reviewCount: "43+", address: "183 Stirling Hwy, Nedlands WA 6009" };
 export const GmbContext = createContext(defaultGmb);
 
 export const useGmb = () => useContext(GmbContext);

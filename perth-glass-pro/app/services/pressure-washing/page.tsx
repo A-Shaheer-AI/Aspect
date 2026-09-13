@@ -299,7 +299,7 @@ const PressureWashing = () => {
                                 <div className="font-semibold text-brand-navy text-sm md:text-base leading-tight">
                                     5.0 Google Reviews
                                 </div>
-                                <div className="text-xs text-brand-slate">Happy customers</div>
+                                <div className="text-xs text-brand-slate">43+ Happy Customers</div>
                             </div>
                         </ClickableBadge>
                     </div>
@@ -420,7 +420,7 @@ const PressureWashing = () => {
 
                     {/* Intro paragraph */}
                     <p className="text-center text-brand-slate max-w-3xl mx-auto mb-12">
-                        With hundreds of 5-star reviews across Perth, Aspect Window Cleaning is the trusted name for safe, effective pressure washing that delivers results every time.
+                        With 43+ 5-star reviews across Perth, Aspect Window Cleaning is the trusted name for safe, effective pressure washing that delivers results every time.
                     </p>
 
                     {/* Points grid */}
