@@ -1,6 +1,6 @@
 "use client";
 
-import { Phone, Mail, MapPin, Clock, Search } from "lucide-react";
+import { Phone, Mail, MapPin, Clock, Search, FileText, ArrowRight, ExternalLink, Star } from "lucide-react";
 import { BUSINESS } from "@/lib/config";
 import Link from "next/link";
 import { getSuburbsByRegion } from "@/lib/suburbs";
@@ -23,115 +23,138 @@ export default function ContactSection() {
                         </p>
                     </div>
 
-                    {/* MOBILE: 2x2 Grid */}
-                    <div className="grid grid-cols-1 gap-3 sm:hidden">
-                        {/* Phone */}
+                    {/* 4 Interactive Contact CTA Cards - Fully Clickable Boxes */}
+                    <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-4 sm:gap-6">
+                        {/* 1. Phone CTA Box */}
                         <a
                             href={`tel:${BUSINESS.phoneRaw}`}
-                            className="bg-slate-50 p-4 rounded-xl text-center hover:bg-action-gold/10 transition-colors"
+                            className="group relative flex flex-col justify-between bg-slate-50 hover:bg-white p-6 sm:p-7 rounded-2xl sm:rounded-3xl border-2 border-slate-200 hover:border-action-gold shadow-sm hover:shadow-xl transition-all duration-300 text-left active:scale-[0.99] cursor-pointer"
+                            aria-label={`Call Aspect Window Cleaning at ${BUSINESS.phone}`}
                         >
-                            <Phone className="w-8 h-8 text-action-gold mx-auto mb-2" aria-hidden="true" />
-                            <h3 className="font-bold text-brand-navy text-sm">Call Us</h3>
-                            <p className="text-brand-slate text-xs mt-1">{BUSINESS.phone}</p>
+                            <div>
+                                <div className="flex items-center justify-between mb-4">
+                                    <div className="w-12 h-12 rounded-2xl bg-action-gold/15 flex items-center justify-center text-brand-navy group-hover:bg-action-gold group-hover:scale-110 transition-all duration-300">
+                                        <Phone className="w-6 h-6 text-brand-navy" aria-hidden="true" />
+                                    </div>
+                                    <span className="text-[11px] font-bold tracking-wider uppercase bg-brand-navy/5 text-brand-navy px-2.5 py-1 rounded-full group-hover:bg-action-gold/20 transition-colors">
+                                        Direct Call
+                                    </span>
+                                </div>
+                                <h3 className="text-lg font-bold text-brand-navy mb-1">
+                                    Call Us Directly
+                                </h3>
+                                <p className="text-xl font-extrabold text-brand-navy tracking-tight mt-1 group-hover:text-action-gold transition-colors">
+                                    {BUSINESS.phone}
+                                </p>
+                                <p className="text-xs text-brand-slate mt-2 leading-relaxed">
+                                    Fast on-the-spot quotes & same-week bookings across Perth.
+                                </p>
+                            </div>
+
+                            <div className="mt-6 pt-4 border-t border-slate-200/80 flex items-center justify-between text-xs sm:text-sm font-semibold text-brand-navy group-hover:text-action-gold transition-colors">
+                                <span>Click to Call Now</span>
+                                <ArrowRight className="w-4 h-4 transform group-hover:translate-x-1 transition-transform" />
+                            </div>
                         </a>
 
-                        {/* Email */}
+                        {/* 2. Email CTA Box */}
                         <a
                             href={`mailto:${BUSINESS.email}`}
-                            className="bg-slate-50 p-4 rounded-xl text-center hover:bg-action-gold/10 transition-colors"
+                            className="group relative flex flex-col justify-between bg-slate-50 hover:bg-white p-6 sm:p-7 rounded-2xl sm:rounded-3xl border-2 border-slate-200 hover:border-action-gold shadow-sm hover:shadow-xl transition-all duration-300 text-left active:scale-[0.99] cursor-pointer"
+                            aria-label={`Email Aspect Window Cleaning at ${BUSINESS.email}`}
                         >
-                            <Mail className="w-8 h-8 text-action-gold mx-auto mb-2" aria-hidden="true" />
-                            <h3 className="font-bold text-brand-navy text-sm">Email</h3>
-                            <p className="text-brand-slate text-xs mt-1">{BUSINESS.email}</p>
+                            <div>
+                                <div className="flex items-center justify-between mb-4">
+                                    <div className="w-12 h-12 rounded-2xl bg-action-gold/15 flex items-center justify-center text-brand-navy group-hover:bg-action-gold group-hover:scale-110 transition-all duration-300">
+                                        <Mail className="w-6 h-6 text-brand-navy" aria-hidden="true" />
+                                    </div>
+                                    <span className="text-[11px] font-bold tracking-wider uppercase bg-brand-navy/5 text-brand-navy px-2.5 py-1 rounded-full group-hover:bg-action-gold/20 transition-colors">
+                                        Email Us
+                                    </span>
+                                </div>
+                                <h3 className="text-lg font-bold text-brand-navy mb-1">
+                                    Send an Email
+                                </h3>
+                                <p className="text-sm font-bold text-brand-navy break-all mt-1 group-hover:text-action-gold transition-colors leading-snug">
+                                    {BUSINESS.email}
+                                </p>
+                                <p className="text-xs text-brand-slate mt-2 leading-relaxed">
+                                    Send property photos, site specs, or tender requests.
+                                </p>
+                            </div>
+
+                            <div className="mt-6 pt-4 border-t border-slate-200/80 flex items-center justify-between text-xs sm:text-sm font-semibold text-brand-navy group-hover:text-action-gold transition-colors">
+                                <span>Click to Email</span>
+                                <ArrowRight className="w-4 h-4 transform group-hover:translate-x-1 transition-transform" />
+                            </div>
                         </a>
 
-                        {/* Location - Links to GMB */}
-                        <a
-                            href={BUSINESS.google}
-                            target="_blank"
-                            rel="noopener noreferrer"
-                            className="bg-slate-50 p-4 rounded-xl text-center hover:bg-action-gold/10 transition-colors"
-                        >
-                            <MapPin className="w-8 h-8 text-action-gold mx-auto mb-2" aria-hidden="true" />
-                            <h3 className="font-bold text-brand-navy text-sm">Location</h3>
-                            <p className="text-brand-slate text-xs mt-1">Perth Metro</p>
-                        </a>
-
-                        {/* Hours - Links to GMB */}
-                        <a
-                            href={BUSINESS.google}
-                            target="_blank"
-                            rel="noopener noreferrer"
-                            className="bg-slate-50 p-4 rounded-xl text-center hover:bg-action-gold/10 transition-colors"
-                        >
-                            <Clock className="w-8 h-8 text-action-gold mx-auto mb-2" aria-hidden="true" />
-                            <h3 className="font-bold text-brand-navy text-sm">Hours</h3>
-                            <p className="text-brand-slate text-xs mt-1">24/7 Availability</p>
-                        </a>
-                    </div>
-
-                    {/* DESKTOP: 4 Column Grid */}
-                    <div className="hidden sm:grid md:grid-cols-2 lg:grid-cols-4 gap-6">
-                        {/* Phone */}
-                        <a
-                            href={`tel:${BUSINESS.phoneRaw}`}
-                            className="group bg-slate-50 py-8 px-8 rounded-2xl hover:bg-action-gold/10 transition-colors text-center"
-                        >
-                            <Phone className="w-10 h-10 text-action-gold mx-auto mb-4 group-hover:scale-110 transition-transform" aria-hidden="true" />
-                            <h3 className="font-bold text-brand-navy mb-1">Call Us</h3>
-                            <p className="text-brand-slate">{BUSINESS.phone}</p>
-                        </a>
-
-                        {/* Email */}
-                        <a
-                            href={`mailto:${BUSINESS.email}`}
-                            className="group bg-slate-50 py-8 px-0 rounded-2xl hover:bg-action-gold/10 transition-colors text-center"
-                        >
-                            <Mail className="w-10 h-10 text-action-gold mx-auto mb-4 group-hover:scale-110 transition-transform" aria-hidden="true" />
-                            <h3 className="font-bold text-brand-navy mb-1">Email Us</h3>
-                            <p className="text-brand-slate">{BUSINESS.email}</p>
-                        </a>
-
-                        {/* Location */}
-                        <a
-                            href={BUSINESS.google}
-                            target="_blank"
-                            rel="noopener noreferrer"
-                            className="group bg-slate-50 py-8 px-8 rounded-2xl hover:bg-action-gold/10 transition-colors text-center"
-                        >
-                            <MapPin className="w-10 h-10 text-action-gold mx-auto mb-4 group-hover:scale-110 transition-transform" aria-hidden="true" />
-                            <h3 className="font-bold text-brand-navy mb-1">Location</h3>
-                            <p className="text-brand-slate">{BUSINESS.location}</p>
-                        </a>
-
-                        {/* Hours */}
-                        <a
-                            href={BUSINESS.google}
-                            target="_blank"
-                            rel="noopener noreferrer"
-                            className="group bg-slate-50 py-8 px-8 rounded-2xl hover:bg-action-gold/10 transition-colors text-center"
-                        >
-                            <Clock className="w-10 h-10 text-action-gold mx-auto mb-4 group-hover:scale-110 transition-transform" aria-hidden="true" />
-                            <h3 className="font-bold text-brand-navy mb-1">Hours</h3>
-                            <p className="text-brand-slate text-xs mt-1">24/7 Availability</p>
-                        </a>
-                    </div>
-
-                    {/* CTA - Desktop only */}
-                    <div className="hidden sm:flex flex-wrap items-center justify-center gap-4 mt-12">
-                        <Link
-                            href={`tel:${BUSINESS.phoneRaw}`}
-                            className="inline-flex items-center gap-3 bg-brand-navy text-white font-bold text-lg px-8 py-4 rounded-full hover:bg-brand-navy/90 transition-colors"
-                        >
-                            <Phone className="w-5 h-5" aria-hidden="true" />
-                            Call Now for Free Quote
-                        </Link>
+                        {/* 3. Online Form CTA Box */}
                         <Link
                             href="/contact"
-                            className="inline-flex items-center gap-2 bg-action-gold text-brand-navy font-bold text-lg px-8 py-4 rounded-full hover:bg-action-gold/90 transition-colors shadow-sm"
+                            className="group relative flex flex-col justify-between bg-slate-50 hover:bg-white p-6 sm:p-7 rounded-2xl sm:rounded-3xl border-2 border-slate-200 hover:border-action-gold shadow-sm hover:shadow-xl transition-all duration-300 text-left active:scale-[0.99] cursor-pointer"
+                            aria-label="Fill online quote form"
                         >
-                            <span>Online Quote Form</span>
+                            <div>
+                                <div className="flex items-center justify-between mb-4">
+                                    <div className="w-12 h-12 rounded-2xl bg-action-gold/15 flex items-center justify-center text-brand-navy group-hover:bg-action-gold group-hover:scale-110 transition-all duration-300">
+                                        <FileText className="w-6 h-6 text-brand-navy" aria-hidden="true" />
+                                    </div>
+                                    <span className="text-[11px] font-bold tracking-wider uppercase bg-brand-navy/5 text-brand-navy px-2.5 py-1 rounded-full group-hover:bg-action-gold/20 transition-colors">
+                                        Online Form
+                                    </span>
+                                </div>
+                                <h3 className="text-lg font-bold text-brand-navy mb-1">
+                                    Fill Online Form
+                                </h3>
+                                <p className="text-xl font-extrabold text-brand-navy tracking-tight mt-1 group-hover:text-action-gold transition-colors">
+                                    Instant Quote Request
+                                </p>
+                                <p className="text-xs text-brand-slate mt-2 leading-relaxed">
+                                    Guaranteed response within 60 minutes during business hours.
+                                </p>
+                            </div>
+
+                            <div className="mt-6 pt-4 border-t border-slate-200/80 flex items-center justify-between text-xs sm:text-sm font-semibold text-brand-navy group-hover:text-action-gold transition-colors">
+                                <span>Open Quote Form</span>
+                                <ArrowRight className="w-4 h-4 transform group-hover:translate-x-1 transition-transform" />
+                            </div>
                         </Link>
+
+                        {/* 4. Location & Google Profile CTA Box */}
+                        <a
+                            href={BUSINESS.google}
+                            target="_blank"
+                            rel="noopener noreferrer"
+                            className="group relative flex flex-col justify-between bg-slate-50 hover:bg-white p-6 sm:p-7 rounded-2xl sm:rounded-3xl border-2 border-slate-200 hover:border-action-gold shadow-sm hover:shadow-xl transition-all duration-300 text-left active:scale-[0.99] cursor-pointer"
+                            aria-label="View Aspect Window Cleaning Google Business Profile"
+                        >
+                            <div>
+                                <div className="flex items-center justify-between mb-4">
+                                    <div className="w-12 h-12 rounded-2xl bg-action-gold/15 flex items-center justify-center text-brand-navy group-hover:bg-action-gold group-hover:scale-110 transition-all duration-300">
+                                        <MapPin className="w-6 h-6 text-brand-navy" aria-hidden="true" />
+                                    </div>
+                                    <span className="text-[11px] font-bold tracking-wider uppercase bg-action-gold/20 text-brand-navy px-2.5 py-1 rounded-full flex items-center gap-1">
+                                        <Star className="w-3 h-3 fill-action-gold text-action-gold" />
+                                        5.0 Google
+                                    </span>
+                                </div>
+                                <h3 className="text-lg font-bold text-brand-navy mb-1">
+                                    Our Office & Profile
+                                </h3>
+                                <p className="text-sm font-bold text-brand-navy mt-1 group-hover:text-action-gold transition-colors leading-snug">
+                                    {BUSINESS.location}
+                                </p>
+                                <p className="text-xs text-brand-slate mt-2 leading-relaxed">
+                                    Verified Google business listing with 43+ five-star reviews.
+                                </p>
+                            </div>
+
+                            <div className="mt-6 pt-4 border-t border-slate-200/80 flex items-center justify-between text-xs sm:text-sm font-semibold text-brand-navy group-hover:text-action-gold transition-colors">
+                                <span>View Google Profile</span>
+                                <ExternalLink className="w-4 h-4 transform group-hover:translate-x-0.5 group-hover:-translate-y-0.5 transition-transform" />
+                            </div>
+                        </a>
                     </div>
                 </div>
             </section>
