@@ -33,6 +33,7 @@ export const metadata: Metadata = {
         template: "%s | Aspect Window Cleaning",
         default: "Aspect Window Cleaning Perth | Residential & Commercial",
     },
+    description: "Professional window and solar panel cleaning services in Perth. Fast, reliable, and fully insured. Get a free quote today!",
     icons: {
         icon: [
             { url: "/favicon.ico", sizes: "any" },
