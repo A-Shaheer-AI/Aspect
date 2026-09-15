@@ -840,9 +840,9 @@ export default function WindowCleaningAdsPage() {
                 </p>
                 <div className="flex flex-wrap items-center justify-center gap-10">
                     {[
-                        { src: "https://res.cloudinary.com/dr8tjrszy/image/upload/f_auto,q_auto/v1772795795/toyota-logo_bcplvi.png", alt: "Toyota" },
-                        { src: "https://res.cloudinary.com/dr8tjrszy/image/upload/f_auto,q_auto/v1772795795/richad-logo_u2l4jl.png", alt: "Richard Group" },
-                        { src: "https://res.cloudinary.com/dr8tjrszy/image/upload/f_auto,q_auto/v1772795794/bespoke-logo_lulwwt.png", alt: "Bespoke" },
+                        { src: "/assets/images/clients/toyota-logo.png", alt: "Toyota" },
+                        { src: "/assets/images/clients/richard-group-logo.png", alt: "Richard Group" },
+                        { src: "/assets/images/clients/bespoke-logo.png", alt: "Bespoke" },
                     ].map((logo) => (
                         <div key={logo.alt} className="relative h-13 w-28 grayscale transition duration-300 hover:grayscale-0">
                             <Image

@@ -47,10 +47,7 @@ export default function Navbar() {
                         {/* Logo */}
                         <Link href="/" className="shrink-0 flex items-center">
                             <Image
-                                src={isScrolled ?
-                                    "https://res.cloudinary.com/dr8tjrszy/image/upload/f_auto,q_auto,e_trim/v1772045271/aspect-logo-removebg-preview_fvfhlo.png" :
-                                    "https://res.cloudinary.com/dr8tjrszy/image/upload/f_auto,q_auto,e_trim/v1772130850/white-logo_pzpxjk.png"
-                                }
+                                src={isScrolled ? "/assets/images/logo-dark.png" : "/assets/images/logo-white.png"}
                                 width={120}
                                 height={62}
                                 priority

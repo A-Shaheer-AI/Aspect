@@ -10,10 +10,10 @@ export default function ServicesGrid() {
     const services = [
         {
             id: "residential",
-            title: "Residential Homes",
+            title: "Residential Glass",
             subtext: "Inside & out residential window cleaning. Flyscreens & tracks included for a complete finish.",
             link: "/services/residential-window-cleaning",
-            image: "https://res.cloudinary.com/dr8tjrszy/image/upload/f_auto,q_auto/v1771960130/house-windows-cleaning_byke0n.jpg",
+            image: "/assets/images/services/house-windows-cleaning.webp",
             icon: Home,
             className: "md:col-span-2 md:row-span-2", // Hero size - 2x2
             accent: "from-blue-500/20 to-cyan-500/20",
@@ -24,7 +24,7 @@ export default function ServicesGrid() {
             title: "Commercial & Strata",
             subtext: "Offices, retail & high-reach EWP commercial window cleaning. Certified professionals.",
             link: "/services/commercial-window-cleaning",
-            image: "https://res.cloudinary.com/dr8tjrszy/image/upload/f_auto,q_auto/v1771960138/sign-cleaning-2_ozlp2x.jpg",
+            image: "/assets/images/services/commercial-sign-cleaning.webp",
             icon: Building2,
             className: "md:col-span-1 md:row-span-2", // Tall - 1x2
             accent: "from-purple-500/20 to-pink-500/20",
@@ -46,7 +46,7 @@ export default function ServicesGrid() {
             title: "Solar Maintenance",
             subtext: "Increase solar efficiency with pure water solar panel cleaning.",
             link: "/services/solar-panel-washing",
-            image: "https://res.cloudinary.com/dr8tjrszy/image/upload/f_auto,q_auto/v1771960138/sollar-plats-cleaning_gyngjf.jpg",
+            image: "/assets/images/services/solar-panel-cleaning.webp",
             icon: Sparkles,
             className: "md:col-span-1 md:row-span-1", // Standard
             accent: "from-yellow-500/20 to-amber-500/20",
@@ -57,7 +57,7 @@ export default function ServicesGrid() {
             title: "Gutter Cleaning",
             subtext: "Roof gutters, downpipes & valleys cleared. Prevent water damage with regular maintenance.",
             link: "/services/gutter-cleaning",
-            image: "https://res.cloudinary.com/dr8tjrszy/image/upload/f_auto,q_auto/v1775990687/gutter-cleaning_nd8wyn.jpg",
+            image: "/assets/images/services/gutter-cleaning.webp",
             icon: Droplets,
             className: "md:col-span-1 md:row-span-1", // Standard
             accent: "from-emerald-500/20 to-teal-500/20",
@@ -112,7 +112,7 @@ export default function ServicesGrid() {
                                             />
                                         ) : (
                                             <Image
-                                                src={service.image.includes("/upload/f_auto") ? service.image : service.image.replace("/upload/", "/upload/f_auto,q_auto/")}
+                                                src={service.image}
                                                 alt={service.title}
                                                 fill
                                                 unoptimized={true}
@@ -183,7 +183,7 @@ export default function ServicesGrid() {
                                             />
                                         ) : (
                                             <Image
-                                                src={service.image.includes("/upload/f_auto") ? service.image : service.image.replace("/upload/", "/upload/f_auto,q_auto/")}
+                                                src={service.image}
                                                 alt={service.title}
                                                 fill
                                                 unoptimized={true}

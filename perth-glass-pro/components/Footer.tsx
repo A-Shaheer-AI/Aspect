@@ -113,7 +113,7 @@ export default async function Footer() {
                     {/* Brand */}
                     <div className="flex flex-col gap-4 lg:col-span-1">
                         <Image
-                            src="https://res.cloudinary.com/dr8tjrszy/image/upload/f_auto,q_auto/v1772130850/white-logo_pzpxjk.png"
+                            src="/assets/images/logo-white.png"
                             width={90}
                             height={90}
                             sizes="180px"
