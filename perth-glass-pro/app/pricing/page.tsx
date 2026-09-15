@@ -25,31 +25,96 @@ const pricingFaqs = [
                 </p>
                 <div className="p-4 rounded-xl bg-slate-50 border border-slate-200">
                     <strong className="text-brand-navy block mb-1">1. Basic Wash (Essential & Standard Packages):</strong>
-                    Our standard routine cleaning procedure using 100% purified deionised water, professional applicator wands, and precision squeegees. It is designed to lift and wash away general environmental dust, pollen, spider webs, road film, fingerprints, and everyday grime that accumulates over 2 to 6 months. It leaves glass 100% streak-free, crystal-clear, and spot-free for normal conditions, but is not designed to remove baked-on building debris or chemically bonded minerals.
+                    Our standard routine cleaning procedure using 100% purified deionised water, professional applicator wands, and precision squeegees. It lifts and washes away general environmental dust, coastal salt film, pollen, spider webs, fingerprints, and everyday grime that accumulates over 2 to 6 months. Standard packages also include wiping exterior frames and sills, and dusting flyscreens. It leaves glass 100% streak-free, crystal-clear, and spot-free for normal conditions, but is not formulated to strip chemically bonded minerals or post-construction debris.
                 </div>
                 <div className="p-4 rounded-xl bg-amber-50/70 border border-amber-200">
                     <strong className="text-brand-navy block mb-1">2. Detailing / Premium (Supreme Package):</strong>
-                    Our advanced, restorative cleaning process required when glass has stubborn, bonded debris that will not budge with standard washing. This includes hard water mineral stains (especially from Perth bore water systems), calcification, paint overspray, plaster, cement render splatter, construction silicone, rust marks, and heavy sticker residue. Detailing requires specialized safety glass scrapers, grade-0000 ultra-fine bronze wool, and commercial acid descaling solutions. Because of the intensive manual labor, Detailing is priced starting at 40% higher than a Basic Wash. If only a few specific panes suffer from sprinkler mineral etching, we can quote a standard clean with detailing applied only to the affected panels.
+                    Our advanced, restorative cleaning process required when glass has stubborn, bonded debris that will not budge with standard washing. This includes hard water mineral stains (especially from Perth bore water reticulation), calcification, paint overspray, plaster, cement render splatter, construction silicone, rust marks, and heavy sticker residue. Detailing utilizes specialized safety glass scrapers, grade-0000 ultra-fine bronze wool, and commercial acid descaling solutions. The Supreme package also includes removing and deep-washing flyscreens and HEPA-vacuuming tracks and sliding channels. If only a few specific panes suffer from sprinkler mineral etching, we can quote a standard clean with detailing applied only to the affected panels.
                 </div>
             </div>
         ),
-        schemaAnswer: "Our Basic Wash (Essential and Standard packages) is our routine maintenance clean using 100% purified deionised water and squeegees to remove general environmental dust, road film, and everyday grime. Detailing (Supreme package) is our intensive restorative process for stubborn, bonded debris such as paint overspray, builder render, stickers, and hard water bore mineral etching, utilizing specialized scrapers, grade-0000 bronze wool, and acid descaling agents."
+        schemaAnswer: "Our Basic Wash (Essential and Standard packages) is our routine maintenance clean using 100% purified deionised water and squeegees to remove general environmental dust, road film, and everyday grime. Detailing (Supreme package) is our intensive restorative process for stubborn, bonded debris such as paint overspray, builder render, stickers, and hard water bore mineral etching, utilizing specialized scrapers, grade-0000 bronze wool, acid descaling agents, deep track vacuuming, and screen washing."
     },
     {
-        question: "Do you offer per-panel and per-hour pricing as well?",
+        question: "How is pricing calculated, and do you offer per-panel, hourly rates, or free on-site assessments?",
         answer: (
             <div className="space-y-3">
                 <p>
-                    Yes, we accommodate flexible pricing models depending on your project type and commercial requirements:
+                    We believe in transparent, upfront pricing tailored to your property type and commercial requirements:
                 </p>
                 <ul className="list-disc pl-5 space-y-1.5 text-sm sm:text-base">
-                    <li><strong>Per-Panel Pricing:</strong> Ideal for commercial shopfronts, solar panel arrays (from $1.80/panel for large solar farms, or package rates for residential roofs), glass pool fencing ($10–$15 per panel), or when you only require a few specific glass panes detailed following renovations or localized bore water damage.</li>
-                    <li><strong>Hourly Rates:</strong> Primarily utilized for post-construction builders cleans, complex architectural properties with non-standard access, or commercial properties requiring ongoing janitorial porter services. Our hourly rates are quoted transparently with zero hidden surcharges.</li>
-                    <li><strong>Fixed-Price Packages:</strong> For standard residential properties, our fixed packages (Single Storey from $159, Double Storey from $279) provide the best value with guaranteed pricing and zero surprise charges.</li>
+                    <li><strong>Fixed-Price Packages:</strong> For standard residential properties, our fixed packages (Single Storey from $159, Double Storey from $279) provide the best value with guaranteed pricing and zero surprise charges. You can use our instant online estimator below to calculate your package price in under 60 seconds.</li>
+                    <li><strong>Per-Panel Rates:</strong> Ideal for commercial shopfronts, solar panel arrays (from $1.80/panel for large arrays, or package rates for residential roofs), glass pool fencing ($10–$15 per panel), or when you only require a few specific glass panes detailed following renovations or localized bore water damage.</li>
+                    <li><strong>Hourly Rates:</strong> Primarily utilized for post-construction builders cleans, complex architectural properties with non-standard access, or commercial properties requiring ongoing janitorial porter services.</li>
+                    <li><strong>Free On-Site Assessments:</strong> For custom architectural homes, multi-storey commercial buildings, or strata complexes, an experienced technician visits in person to assess window accessibility, glass condition, and specific requirements, providing a fixed written quote with zero obligation.</li>
                 </ul>
             </div>
         ),
-        schemaAnswer: "Yes, we offer per-panel pricing (for solar panels, glass pool fencing, shopfronts, or isolated pane restoration), per-hour pricing (for builders cleans and complex commercial porter jobs), and fixed-price packages for standard residential and commercial properties."
+        schemaAnswer: "We offer fixed-price residential packages (from $159 single storey, $279 double storey), per-panel pricing (for solar panels, glass pool fencing, shopfronts, or isolated pane restoration), per-hour pricing (for builders cleans and complex commercial jobs), and free on-site quote assessments for custom architectural homes, strata, and commercial facilities."
+    },
+    {
+        question: "Do you offer combo discounts, multi-service packages, or referral rewards?",
+        answer: (
+            <div className="space-y-3">
+                <p>
+                    Yes! We provide multi-service package discounts and customer referral credits:
+                </p>
+                <ul className="list-disc pl-5 space-y-1.5 text-sm sm:text-base">
+                    <li><strong>Window Cleaning + Solar Panel Washing:</strong> Save 15% on solar panel washing when combined with a residential window package.</li>
+                    <li><strong>Window Cleaning + Gutter Clearing:</strong> Complete seasonal roof and glass protection with 15% to 20% bundle savings.</li>
+                    <li><strong>The Full Exterior Refresh:</strong> Group windows, gutters, solar panels, and driveway pressure washing during the same visit for maximum savings and property curb appeal uplift.</li>
+                    <li><strong>Refer-a-Friend Rewards:</strong> When a neighbour, friend, or business contact you refer books a service with Aspect, you receive a $30 to $50 credit toward your next cleaning service.</li>
+                </ul>
+            </div>
+        ),
+        schemaAnswer: "Yes. Bundling window cleaning with solar panel washing, gutter cleaning, or driveway pressure washing on the same visit unlocks multi-service bundle savings of 15% to 20%. Furthermore, our Refer-a-Friend program rewards you with $30 to $50 off your next service when your referred contact books with Aspect."
+    },
+    {
+        question: "Are there any hidden fees, travel costs, or callout charges across Perth?",
+        answer: (
+            <div className="space-y-2">
+                <p>
+                    <strong>None whatsoever.</strong> Aspect Window Cleaning operates with complete pricing transparency. We service all 370+ suburbs across the Greater Perth metropolitan region — from Joondalup and Alkimos in the north to Rockingham and Mandurah in the south, coastal suburbs to the Perth Hills — with <strong>zero travel charges or callout fees</strong> on all confirmed bookings.
+                </p>
+                <p>
+                    Every quote covers pure water filtration, professional labor, height safety equipment, eco-friendly supplies, and $20M public liability insurance. The price you are quoted is the price on your invoice.
+                </p>
+            </div>
+        ),
+        schemaAnswer: "There are no hidden fees, travel charges, or callout fees anywhere across the 370+ suburbs in Greater Perth. All quotes include pure water filtration, labor, equipment, and $20M public liability insurance."
+    },
+    {
+        question: "How do you handle double-storey homes and high-reach glass, and how does it affect pricing?",
+        answer: (
+            <div className="space-y-2">
+                <p>
+                    Our double-storey pricing reflects the additional equipment and reach requirements needed for upper-level glass. However, because we utilize carbon-fibre water-fed telescopic poles operating with purified reverse osmosis water, we can clean up to 4 storeys safely from the ground.
+                </p>
+                <p>
+                    This eliminates the need for expensive scaffolding or cherry pickers for most residential jobs, keeping our double-storey packages highly competitive (starting from $279 for Essential). For difficult-access interior glass (such as high stairwell voids), our technician performs an access check and quotes a fixed price upfront.
+                </p>
+                <p>
+                    For commercial buildings, retail centres, and strata complexes requiring elevated access, our team includes licensed Elevated Work Platform (EWP) cherry picker and scissor lift operators compliant with WorkSafe WA height safety standards.
+                </p>
+            </div>
+        ),
+        schemaAnswer: "Double-storey residential pricing is kept affordable (from $279) because our carbon-fibre pure water reach poles allow us to clean up to 4 storeys safely from the ground without expensive scaffolding or scissor lifts. For commercial and strata high-reach projects, we provide licensed EWP cherry picker operators compliant with WorkSafe WA safety standards."
+    },
+    {
+        question: "Do you offer recurring maintenance discounts for regular cleans?",
+        answer: (
+            <div className="space-y-2">
+                <p>
+                    Yes. Regular maintenance prevents hard water etching from bonding to your glass and takes less time to clean, which allows us to offer discounted recurring rates:
+                </p>
+                <ul className="list-disc pl-5 space-y-1 text-sm sm:text-base">
+                    <li><strong>Every 6–8 Weeks:</strong> Recommended for coastal suburbs (Cottesloe, Scarborough, Trigg, City Beach, Alkimos) exposed to continuous ocean salt spray.</li>
+                    <li><strong>Quarterly (Every 3 Months):</strong> Ideal for homes surrounded by eucalyptus trees, garden reticulation, or busy roads.</li>
+                    <li><strong>Bi-Annual (Every 6 Months):</strong> The standard Perth residential schedule to keep glass spotless throughout summer and winter.</li>
+                </ul>
+            </div>
+        ),
+        schemaAnswer: "Yes, we offer locked-in discounted rates for recurring residential and commercial cleans on 6-8 week (coastal), quarterly (every 3 months), and bi-annual (every 6 months) schedules."
     },
     {
         question: "Do you offer separate after-hours or weekend commercial pricing?",
@@ -66,78 +131,63 @@ const pricingFaqs = [
         schemaAnswer: "We operate 24/7 across Perth for commercial clients. Pre-scheduled after-hours, early morning, and weekend cleans are delivered at standard contracted rates with zero penalty fees. One-off emergency or public holiday callouts may incur a nominal after-hours fee that is quoted upfront."
     },
     {
-        question: "Are there any hidden fees, travel costs, or callout charges across Perth?",
-        answer: (
-            <div className="space-y-2">
-                <p>
-                    <strong>None whatsoever.</strong> Aspect Window Cleaning operates with complete pricing transparency. We service all 370+ suburbs across the Greater Perth metropolitan region — from Joondalup and Alkimos in the north to Rockingham and Mandurah in the south, plus the Perth Hills — with <strong>zero travel charges or callout fees</strong> on all confirmed bookings.
-                </p>
-                <p>
-                    Every quote covers pure water filtration, professional labor, height safety equipment, eco-friendly supplies, and $20M public liability insurance. The price you are quoted is the price on your invoice.
-                </p>
-            </div>
-        ),
-        schemaAnswer: "There are no hidden fees, travel charges, or callout fees anywhere across the 370+ suburbs in Greater Perth. All quotes include pure water filtration, labor, equipment, and $20M public liability insurance."
-    },
-    {
-        question: "Can I bundle window cleaning with solar panels, gutters, or pressure washing for a discount?",
+        question: "When is payment due, what payment methods do you accept, and is there a satisfaction guarantee?",
         answer: (
             <div className="space-y-3">
                 <p>
-                    Yes! We provide multi-service package discounts when you book two or more exterior cleaning services during the same visit:
-                </p>
-                <ul className="list-disc pl-5 space-y-1 text-sm sm:text-base">
-                    <li><strong>Window Cleaning + Solar Panel Washing:</strong> Save 15% on solar washing when combined with a residential window package.</li>
-                    <li><strong>Window Cleaning + Gutter Clearing:</strong> Complete seasonal roof and glass protection with 15% to 20% bundle savings.</li>
-                    <li><strong>The Full Exterior Refresh:</strong> Windows + gutters + solar panels + driveway pressure washing bundled for maximum property value uplift.</li>
-                </ul>
-            </div>
-        ),
-        schemaAnswer: "Yes. Bundling window cleaning with solar panel washing, gutter cleaning, or driveway pressure washing on the same visit unlocks multi-service bundle savings of 15% to 20%."
-    },
-    {
-        question: "How is pricing calculated for double-storey homes or difficult-to-reach windows?",
-        answer: (
-            <div className="space-y-2">
-                <p>
-                    Our double-storey pricing reflects the additional equipment and reach requirements needed for upper-level glass. However, because we utilize carbon-fibre water-fed telescopic poles operating with purified reverse osmosis water, we can clean up to 4 storeys safely from the ground.
+                    For residential customers, payment is only due <strong>after the work is completed</strong> and you have inspected the windows to confirm complete satisfaction under our <strong>100% Streak-Free Guarantee</strong>.
                 </p>
                 <p>
-                    This eliminates the need for expensive scaffolding or scissor lifts in most residential jobs, keeping our double-storey packages highly competitive (starting from $279 for Essential). For difficult-access interior glass (such as high stairwell voids), our technician performs an access check and quotes a fixed price before starting.
-                </p>
-            </div>
-        ),
-        schemaAnswer: "Double-storey pricing is kept affordable (from $279) because our carbon-fibre pure water reach poles allow us to clean up to 4 storeys safely from the ground without expensive scaffolding or scissor lifts. Difficult interior void windows are assessed and quoted upfront."
-    },
-    {
-        question: "What payment methods do you accept, and when is payment due?",
-        answer: (
-            <div className="space-y-2">
-                <p>
-                    For residential customers, payment is only due <strong>after the work is completed</strong> and you have inspected the windows to confirm complete satisfaction under our 100% Streak-Free Guarantee.
+                    If anything does not meet your expectations during the walkthrough, we reclean it immediately on the spot. If you notice any missed spot or streak after we leave, simply notify us within 48 hours and we will return to make it right at no additional cost.
                 </p>
                 <p>
                     We accept all major credit and debit cards (Visa, Mastercard, AMEX) via mobile EFTPOS, direct bank transfer (EFT), and cash. For commercial clients and strata managers, we provide flexible 14-day or 30-day net tax invoicing.
                 </p>
             </div>
         ),
-        schemaAnswer: "Residential payment is due upon completion after you inspect the work. We accept Visa, Mastercard, AMEX, EFTPOS, direct bank transfer, and cash. Commercial clients receive 14-day or 30-day net invoicing."
+        schemaAnswer: "Residential payment is only due after completion and your walkthrough inspection. Backed by our 100% Streak-Free Guarantee: if you notice any issues within 48 hours, we return to make it right for free. We accept Visa, Mastercard, AMEX, EFTPOS, EFT, cash, and provide 14/30-day net invoicing for commercial clients."
     },
     {
-        question: "Do you offer recurring maintenance discounts for regular cleans?",
+        question: "How does 0 PPM pure water technology save me money and keep glass cleaner for longer?",
         answer: (
             <div className="space-y-2">
                 <p>
-                    Yes. Regular maintenance prevents hard water etching from bonding to your glass and takes less time to clean, which allows us to offer discounted recurring rates:
+                    Standard Perth tap water contains high concentrations of dissolved minerals (calcium, magnesium, and chlorides) measuring 200 to 400+ PPM (Parts Per Million). Washing windows with tap water or detergent leaves microscopic chemical residues that attract dirt and cause mineral etching over time.
                 </p>
-                <ul className="list-disc pl-5 space-y-1 text-sm sm:text-base">
-                    <li><strong>Every 6–8 Weeks:</strong> Recommended for coastal suburbs (Cottesloe, Scarborough, Trigg, City Beach) exposed to continuous ocean salt spray.</li>
-                    <li><strong>Quarterly (Every 3 Months):</strong> Ideal for homes surrounded by eucalyptus trees, garden reticulation, or busy roads.</li>
-                    <li><strong>Bi-Annual (Every 6 Months):</strong> The standard Perth residential schedule to keep glass spotless throughout summer and winter.</li>
-                </ul>
+                <p>
+                    Our onboard 4-stage reverse osmosis (RO) and deionisation (DI) filtration units strip all dissolved minerals to 0 PPM. In this ultra-pure state, water acts as a powerful natural solvent, lifting dirt and coastal salt without chemical detergents. Because the rinse water contains zero impurities, it evaporates naturally into a 100% spotless finish. With no sticky soap residue left on the glass, your windows stay clean up to twice as long, reducing your ongoing maintenance costs.
+                </p>
             </div>
         ),
-        schemaAnswer: "Yes, we offer locked-in discounted rates for recurring residential and commercial cleans on 6-8 week (coastal), quarterly (every 3 months), and bi-annual (every 6 months) schedules."
+        schemaAnswer: "Perth tap water contains 200 to 400+ PPM of dissolved minerals that leave white spots. Our 4-stage filtration produces 0 PPM pure water that dries 100% spot-free with zero detergent residue. Because there is no sticky soap film to attract dirt, your windows stay clean up to twice as long, saving you money on cleaning frequency."
+    },
+    {
+        question: "Are your technicians fully insured, police cleared, and safety certified?",
+        answer: (
+            <div className="space-y-2">
+                <p>
+                    Yes. Aspect Window Cleaning carries comprehensive <strong>$20,000,000 public liability insurance</strong> covering all residential and commercial operations across Greater Perth.
+                </p>
+                <p>
+                    Every technician on our team has undergone thorough Australian police background vetting, holds valid police clearances, and carries Working at Heights certifications. Our team arrives on time in uniform with well-maintained, professional equipment and adheres to all WorkSafe WA safety standards.
+                </p>
+            </div>
+        ),
+        schemaAnswer: "Yes. Aspect Window Cleaning carries $20,000,000 public liability insurance. All technicians hold verified Australian police clearances, Working at Heights certifications, and arrive in uniform with commercial-grade equipment."
+    },
+    {
+        question: "Do I need to be home while you clean, and can you accommodate urgent pre-sale deadlines?",
+        answer: (
+            <div className="space-y-2">
+                <p>
+                    You do not need to be home for exterior cleaning services. As long as our crew has safe perimeter access around your property (unlocked side gates and pets secured indoors), we can complete exterior windows, gutters, solar panels, or pressure washing while you are away. For interior glass cleaning, someone over 18 simply needs to provide access at the start of the appointment.
+                </p>
+                <p>
+                    We also specialize in rapid turnaround deadlines for real estate photography, auction day, end-of-lease handovers, or urgent corporate events. We offer same-week bookings across Perth with rapid-response multi-person crews available when timing is critical.
+                </p>
+            </div>
+        ),
+        schemaAnswer: "You do not need to be home for exterior cleaning as long as side gates are unlocked and pets are secured. An adult must provide access for interior cleans. We also accommodate same-week and urgent pre-sale or photography deadlines with rapid-response crews."
     }
 ];
 
@@ -393,7 +443,7 @@ export default function PricingPage() {
 
             {/* Trust and Reviews Section */}
             <TrustGrid />
-            <ResultsAndReviews />
+            <ResultsAndReviews showFaq={false} />
 
             {/* Pricing FAQ Section with Rich SEO Content */}
             <section className="py-8">

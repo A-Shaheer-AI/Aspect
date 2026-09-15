@@ -4,7 +4,11 @@ import BeforeAfterSlider from "./BeforeAfterSlider";
 import FAQ from "./FAQ";
 import { HOME_FAQS } from "@/content/home-faqs";
 
-export default function ResultsAndReviews() {
+export interface ResultsAndReviewsProps {
+    showFaq?: boolean;
+}
+
+export default function ResultsAndReviews({ showFaq = true }: ResultsAndReviewsProps) {
     return (
         <>
             <section id="reviews" className="py-20 bg-slate-50">
@@ -70,7 +74,7 @@ export default function ResultsAndReviews() {
             </section>
 
             {/* Faqs */}
-            <FAQ title="" faqs={HOME_FAQS} />
+            {showFaq && <FAQ title="" faqs={HOME_FAQS} />}
         </>
     );
 }
