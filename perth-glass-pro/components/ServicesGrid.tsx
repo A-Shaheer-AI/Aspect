@@ -112,7 +112,7 @@ export default function ServicesGrid() {
                                             />
                                         ) : (
                                             <Image
-                                                src={(service.image.includes("/f_auto,q_auto/") ? service.image : service.image.replace("/upload/", "/upload/f_auto,q_auto/"))}
+                                                src={service.image.includes("/upload/f_auto") ? service.image : service.image.replace("/upload/", "/upload/f_auto,q_auto/")}
                                                 alt={service.title}
                                                 fill
                                                 unoptimized={true}
@@ -183,9 +183,10 @@ export default function ServicesGrid() {
                                             />
                                         ) : (
                                             <Image
-                                                src={(service.image.includes("/f_auto,q_auto/") ? service.image : service.image.replace("/upload/", "/upload/f_auto,q_auto/"))}
+                                                src={service.image.includes("/upload/f_auto") ? service.image : service.image.replace("/upload/", "/upload/f_auto,q_auto/")}
                                                 alt={service.title}
                                                 fill
+                                                unoptimized={true}
                                                 sizes="(max-width: 1200px) 50vw, 33vw"
                                                 className="object-cover transform group-hover:scale-110 transition-transform duration-700"
                                             />

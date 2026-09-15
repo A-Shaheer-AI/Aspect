@@ -148,10 +148,11 @@ export default function HeroWithScroll() {
                       className={`rounded-xl overflow-hidden shadow-lg shadow-[#FFE75B]/10 ${item.className}`}
                     >
                       <Image
-                        src={(item.src.includes("/f_auto,q_auto/") ? item.src : item.src.replace("/upload/", "/upload/f_auto,q_auto/"))}
+                        src={item.src.includes("/upload/f_auto") ? item.src : item.src.replace("/upload/", "/upload/f_auto,q_auto,w_600/")}
                         alt="Professional window cleaning in Perth"
                         width={200}
                         height={150}
+                        unoptimized={true}
                         sizes="50vw"
                         className="w-full h-full object-cover"
                         loading={i < 2 ? "eager" : "lazy"}
@@ -168,10 +169,11 @@ export default function HeroWithScroll() {
                       className={`rounded-xl overflow-hidden shadow-lg shadow-[#FFE75B]/10 ${item.className}`}
                     >
                       <Image
-                        src={(item.src.includes("/f_auto,q_auto/") ? item.src : item.src.replace("/upload/", "/upload/f_auto,q_auto/"))}
+                        src={item.src.includes("/upload/f_auto") ? item.src : item.src.replace("/upload/", "/upload/f_auto,q_auto,w_600/")}
                         alt="Professional window cleaning in Perth"
                         width={200}
                         height={150}
+                        unoptimized={true}
                         sizes="50vw"
                         className="w-full h-full object-cover"
                         loading={i < 2 ? "eager" : "lazy"}
@@ -281,7 +283,7 @@ export default function HeroWithScroll() {
                         />
                       ) : (
                         <Image
-                          src={(item.src.includes("/f_auto,q_auto/") ? item.src : item.src.replace("/upload/", "/upload/f_auto,q_auto/"))}
+                          src={item.src.includes("/upload/f_auto") ? item.src : item.src.replace("/upload/", "/upload/f_auto,q_auto,w_600/")}
                           alt="Professional window and solar panel cleaning in Perth"
                           width={400}
                           height={250}
@@ -314,10 +316,11 @@ export default function HeroWithScroll() {
                         />
                       ) : (
                         <Image
-                          src={(item.src.includes("/f_auto,q_auto/") ? item.src : item.src.replace("/upload/", "/upload/f_auto,q_auto/"))}
+                          src={item.src.includes("/upload/f_auto") ? item.src : item.src.replace("/upload/", "/upload/f_auto,q_auto,w_600/")}
                           alt="Professional window and solar panel cleaning in Perth"
                           width={400}
                           height={250}
+                          unoptimized={true}
                           sizes="(max-width: 768px) 50vw, 33vw"
                           className="w-full h-full object-cover"
                         />

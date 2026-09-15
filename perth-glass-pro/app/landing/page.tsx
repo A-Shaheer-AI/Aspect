@@ -740,7 +740,7 @@ export default function WindowCleaningAdsPage() {
                 <div className="mx-auto max-w-4xl">
                     <div className="mb-4 overflow-hidden rounded-2xl" style={{ height: 380 }}>
                         <video className="h-full w-full object-cover" controls preload="metadata">
-                            <source src="https://res.cloudinary.com/dr8tjrszy/video/upload/v1772968701/VID-20260228-WA0016_xsz3cm_401388.mp4" type="video/mp4" />
+                            <source src="https://res.cloudinary.com/dr8tjrszy/video/upload/q_auto,w_800,vc_auto/v1772968701/VID-20260228-WA0016_xsz3cm_401388.mp4" type="video/mp4" />
                         </video>
                     </div>
                     <div className="grid grid-cols-1 gap-4 lg:grid-cols-2">
@@ -846,12 +846,10 @@ export default function WindowCleaningAdsPage() {
                     ].map((logo) => (
                         <div key={logo.alt} className="relative h-13 w-28 grayscale transition duration-300 hover:grayscale-0">
                             <Image
-                                src={logo.src.replace(
-                                    "/upload/",
-                                    "/upload/f_auto,q_auto/"
-                                )}
+                                src={logo.src}
                                 alt={logo.alt}
                                 fill
+                                unoptimized={true}
                                 sizes="112px"
                                 className="object-contain"
                             />
