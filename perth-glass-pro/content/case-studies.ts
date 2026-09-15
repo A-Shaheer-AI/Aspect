@@ -266,5 +266,131 @@ export const caseStudies: CaseStudy[] = [
       "working at heights",
       "automotive showroom"
     ],
+  },
+  {
+    id: 5,
+    slug: "kalamunda-roof-gutter-clearing-downpipe-flush",
+    title: "Kalamunda Bushland Property: Heavy Eucalyptus Gutter Clearing & Downpipe Flush Before Winter Storms",
+    date: "2026-09-08T09:00:00Z",
+    suburb: "Kalamunda",
+    nearbySuburbs: [
+      "kalamunda", "gooseberry-hill", "lesmurdie", "roleystone", "mundaring", "midland", "maida-vale", "high-wycombe", "forrestfield", "walliston"
+    ],
+    thumbnail: "/assets/images/services/gutter-cleaning.webp",
+    images: [],
+    excerpt: "A two-storey Kalamunda home surrounded by mature gum trees faced severe roof overflow and fire hazards from compacted eucalyptus litter. Our specialist crew cleared over 65kg of debris, flushed all four downpipes, and verified unobstructed drainage.",
+    serviceType: ["Gutter Cleaning", "Downpipe Clearing", "Roof Valley Maintenance"],
+    challenge: "Nestled in the Perth Hills bushland, the property had not had gutters serviced in over 18 months. Heavy eucalyptus canopies had dropped kilograms of leaves, gumnuts, and bark into roof valleys, completely choking four separate downpipe drop outlets. With winter storm fronts approaching, the homeowner feared roof cavity leaks, rotted fascia boards, and water pooling against the home's foundations.",
+    solution: "Working with certified roof-safety equipment, our two-technician team manually scooped compacted sediment and organic sludge from 48 metres of perimeter guttering and three deep roof valleys. We cleared the blocked downpipes using high-pressure water jetting until full flow was restored to street soakwells, conducted a comprehensive visual pitch and bracket inspection, and finished with a full water flush test.",
+    result: "All gutters and downpipes were restored to 100% capacity with zero overflow. The technician flagged one loose bracket join and resealed it on the spot. All collected organic waste (over 65kg) was bagged and removed from the premises, leaving the owner completely protected heading into Perth's heavy winter rainfall.",
+    jobDetails: {
+      crew: "2-man height-safety certified crew",
+      duration: "3.5 hours",
+      property: "Two-storey residential home, Kalamunda Hills",
+      services: ["Perimeter gutter clearing", "Roof valley debris extraction", "High-pressure downpipe flushing", "Gutter bracket & fall inspection", "Bagged waste disposal"],
+    },
+    sections: [
+      {
+        heading: "The Challenge: Bushland Canopies & Blocked Water Flow",
+        body: "Properties in the Perth Hills enjoy stunning natural bushland settings, but they face relentless organic debris. In Kalamunda, mature marri and jarrah trees drop dense leaves, heavy gumnuts, and sticky resin year-round. When left unattended over dry summer months, this buildup creates a dense, baked-on mat inside gutters and roof valleys. In this home, four separate downpipes had become entirely jammed with organic compost, meaning the first heavy downpour would inevitably overflow back under the eaves into internal ceiling cavities."
+      },
+      {
+        heading: "Safety, Deep Cleaning & High-Pressure Downpipe Flushing",
+        body: "Because the home features multiple roof pitches and two-storey drops, safety was paramount. Wearing fall-arrest harnesses and soft-grip safety boots, our technicians methodically cleared every metre of guttering by hand and specialized scoop tools into heavy-duty disposal bags. Special attention was paid to the internal roof valleys where water naturally concentrates. Once the main gutters were spotless, we tackled the choked downpipes, using specialized hose nozzle attachments to break up the dense plugs of gumnuts and wash them cleanly into storm soakwells until crystal-clear water ran freely."
+      },
+      {
+        heading: "The Crucial Flush Test & Proactive Bracket Repair",
+        body: "At Aspect, we never consider a gutter clean complete until we perform a live water flush test. Running hoses from the highest elevation confirms proper water gradient and validates that no hidden blockages remain in bends or elbows. During the test, our technician noticed minor water seepage from a sagging seam bracket on the eastern elevation. We re-aligned the bracket and resealed the join immediately—preventing an expensive future repair for the homeowner."
+      },
+      {
+        heading: "Preventative Gutter Maintenance Across the Perth Hills",
+        body: "In high-fire and heavy-leaf suburbs like Kalamunda, Lesmurdie, Mundaring, and Roleystone, bi-annual gutter cleaning is not just preventative property care—it is an essential bushfire preparedness requirement. Clean gutters eliminate dry fuel loads during summer and protect building foundations from devastating water damage during Perth's torrential winter storms."
+      }
+    ],
+    tags: ["gutter cleaning", "kalamunda", "perth hills", "downpipe flush", "roof valleys", "eucalyptus debris", "storm protection"],
+  },
+  {
+    id: 6,
+    slug: "joondalup-solar-panel-efficiency-restoration",
+    title: "Joondalup 6.6kW Residential Array: Restoring 24% Solar Output Lost to Red Dust & Bird Droppings",
+    date: "2026-09-09T09:00:00Z",
+    suburb: "Joondalup",
+    nearbySuburbs: [
+      "joondalup", "connolly", "currambine", "edgewater", "heathridge", "iluka", "kinross", "ocean-reef", "kallaroo", "beldon"
+    ],
+    thumbnail: "/assets/images/services/solar-panel-cleaning.webp",
+    images: [],
+    excerpt: "A 16-panel residential solar system in Joondalup had lost nearly a quarter of its energy generation due to baked-on summer dust and acidic bird droppings. Our deionised pure-water wash safely restored system efficiency back to peak performance.",
+    serviceType: ["Solar Panel Washing", "Pure Water Cleaning", "Renewable Energy Maintenance"],
+    challenge: "The homeowner noticed their solar monitoring app reporting an alarming 24% drop in daily kilowatt-hour generation compared to the same period the previous year. Positioned near open parkland in Joondalup, the 16 rooftop photovoltaic panels were coated in an opaque layer of red summer dust, coastal airborne salt haze, and heavy bird droppings that standard garden hose spraying could not lift.",
+    solution: "Using our vehicle-mounted 4-stage reverse osmosis and deionisation purification system, we fed 0ppm pure mineral-free water through ultra-soft carbon-fibre telescopic poles. We pre-soaked the stubborn bird droppings with eco-friendly enzymatic descalers safe for anti-reflective coatings, followed by dual-pass mechanical scrubbing and a spotless pure-water rinse.",
+    result: "The panels dried with zero mineral spots, streaks, or residue. The homeowner monitored their solar inverter app the following sunny afternoon and confirmed an immediate 24% increase in energy production, recovering approximately $280 in annual electricity bill savings.",
+    jobDetails: {
+      crew: "2-man trained solar cleaning specialists",
+      duration: "1.5 hours",
+      property: "Single-storey home, 16-panel 6.6kW solar array, Joondalup",
+      services: ["Anti-reflective safe pre-soak", "0ppm deionised pure water scrub", "Bird dropping removal", "Surface crack & frame inspection", "Post-clean generation verification"],
+    },
+    sections: [
+      {
+        heading: "The Problem: The 'Invisible Cost' of Dirty Solar Panels",
+        body: "Perth enjoys over 3,200 hours of sunshine each year, making solar panels one of the best investments for local homeowners. However, Western Australia's dry, windy climate blows fine red silica dust and pollen over rooftops. Combined with morning coastal dew, this dust forms a baked-on cement-like film. Furthermore, acidic bird droppings create micro-hotspots that can permanently damage photovoltaic cells. For this Joondalup client, their 6.6kW system was generating almost 5 kWh less electricity per day than it should have."
+      },
+      {
+        heading: "Why Tap Water & Soaps Harm Solar Arrays",
+        body: "Many homeowners make the costly mistake of washing solar panels with garden hoses or dish soap. Perth tap water contains high levels of dissolved calcium and magnesium (150–250 ppm) which dry into chalky white mineral spots, blocking sunlight further. Harsh detergents leave chemical residues that attract dirt even faster and risk voiding panel manufacturer warranties (such as LG, SunPower, and Jinko). Aspect uses only 0ppm deionised pure water and manufacturer-approved ultra-soft bristle heads."
+      },
+      {
+        heading: "Execution & Immediate Solar Generation Surge",
+        body: "Our technicians accessed the roof safely using anchored roof ladders and soft-soled safety footwear. We gently broke down stubborn bird droppings without scraping the tempered glass, washed each panel frame where moss tends to harbor, and rinsed with pure water. Because deionised water evaporates cleanly with no residue, the panels were left crystal-clear. The following afternoon, the homeowner shared a screenshot of their solar app showing generation had bounced straight back to expected peak summer curves."
+      },
+      {
+        heading: "Recommended Cleaning Frequency in Perth's Northern Suburbs",
+        body: "For residential solar installations across Joondalup, Wanneroo, and northern coastal suburbs, we recommend professional cleaning at least every 6 to 12 months. Regular cleaning pays for itself multiple times over in recovered energy feed-in credits and lower power bills."
+      }
+    ],
+    tags: ["solar panel cleaning", "joondalup", "pure water", "efficiency restoration", "renewable energy", "perth solar maintenance"],
+  },
+  {
+    id: 7,
+    slug: "fremantle-heritage-brick-paver-pressure-clean",
+    title: "Fremantle Heritage Property: Restoring Stained Limestone Pavers & Slippery Algae Pool Decking",
+    date: "2026-09-10T09:00:00Z",
+    suburb: "Fremantle",
+    nearbySuburbs: [
+      "fremantle", "east-fremantle", "north-fremantle", "south-perth", "cottesloe", "white-gum-valley", "beaconsfield", "hamilton-hill", "palmyra"
+    ],
+    thumbnail: "https://res.cloudinary.com/dr8tjrszy/image/upload/f_auto,q_auto/v1771960136/shope-gates-cleaning_euctx1.jpg",
+    images: [],
+    excerpt: "Winter moisture and ocean breezes left this historic Fremantle home's natural limestone pavers and timber pool surrounds coated in dark, slippery algae. Our commercial-grade rotary pressure wash restored the stone's original honey warmth without surface damage.",
+    serviceType: ["Pressure Washing", "Driveway & Paver Restoration", "Pool Surround Cleaning"],
+    challenge: "Natural limestone and heritage paving are highly porous materials common throughout Fremantle and coastal Perth. A combination of winter shade, coastal humidity, and bore water sprinklers had allowed black algae, moss, and mineral stains to blanket 120 square metres of pool coping, entertaining patio, and driveway. The slippery surface had become a safety hazard for the owners' elderly parents and visiting grandchildren.",
+    solution: "We applied an eco-friendly, biodegradable pH-neutral pre-treatment to break down deep biological algae roots without corroding the porous limestone. We then utilized a dual-nozzle 20-inch rotary surface cleaner calibrated to optimal pressure, ensuring uniform cleaning with zero zebra striping or surface gouging, finished with a high-volume soft rinse into stormwater drains.",
+    result: "The limestone pavers were completely revitalized, returning to their rich natural golden-buff hue. All slick green and black algae were eradicated from pool coping and timber steps, eliminating the slip hazard completely while preserving the integrity of the heritage masonry.",
+    jobDetails: {
+      crew: "2-man commercial pressure washing specialists",
+      duration: "4 hours",
+      property: "Heritage residential home & pool surrounds, Fremantle",
+      services: ["Rotary flat-surface pressure washing", "Biodegradable algae & mould treatment", "Limestone coping detailing", "Driveway stain removal", "Garden & plant protective rinse"],
+    },
+    sections: [
+      {
+        heading: "The Danger of Algae on Porous Coastal Pavers",
+        body: "Fremantle's coastal microclimate means outdoor limestone, liquid limestone, and brick pavers stay damp throughout Perth's winter. Microscopic spores of green and black algae take root in the microscopic pores of the stone, blooming into an unsightly and dangerously slippery film. Standard homeowner pressure washers often do more harm than good: using narrow spray tips at excessive PSI gouges the soft limestone, leaves permanent streaks, and blows out polymeric joint sand."
+      },
+      {
+        heading: "Our Gentle, Commercial Rotary Washing Approach",
+        body: "To protect the valuable stone, we employed our professional commercial pressure washing rig. We began by saturating surrounding garden beds and pot plants with fresh water to shield delicate foliage, then applied our biodegradable cleaning agent. Using a 20-inch rotary surface cleaner, two counter-rotating jets delivered constant, evenly distributed pressure across every square centimetre. This lifted the grime and biological growth cleanly without etching lines or loosening the pavers."
+      },
+      {
+        heading: "Pool Coping Detailing & Non-Slip Safety Restored",
+        body: "Around the swimming pool, our technicians carefully washed the bullnose coping tiles away from the water to prevent runoff from entering the pool filtration system. The transformation was dramatic: years of dark grey oxidation and green moss disappeared, revealing the original honey-coloured limestone texture underneath. The non-slip friction of the pavers was 100% restored, giving the family complete peace of mind when entertaining around the pool."
+      },
+      {
+        heading: "Long-Term Surface Protection for Perth Homes",
+        body: "Periodic high-pressure washing every 12 to 18 months prevents biological growth from permanently etching into concrete, brick, and limestone. Aspect provides full exterior hardstand cleaning across Perth, including driveways, council crossovers, patios, timber decking, and commercial parking bays."
+      }
+    ],
+    tags: ["pressure washing", "fremantle", "limestone pavers", "pool surround", "algae removal", "driveway cleaning", "heritage property"],
   }
 ];

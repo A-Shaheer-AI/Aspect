@@ -4,42 +4,68 @@ import { ArrowRight, MapPin, Clock } from "lucide-react";
 import { caseStudies } from "@/content/case-studies";
 
 type Props = {
-    suburbSlug: string;
-    suburbName: string;
+    suburbSlug?: string;
+    suburbName?: string;
+    serviceType?: string;
+    slugs?: string[];
+    title?: string;
+    subtitle?: string;
+    limit?: number;
 };
 
-export default function CaseStudiesSection({ suburbSlug, suburbName }: Props) {
-    // Find case studies that list this suburb in their nearbySuburbs array
-    const relevant = caseStudies.filter((cs) =>
-        cs.nearbySuburbs.includes(suburbSlug)
-    );
+export default function CaseStudiesSection({
+    suburbSlug,
+    suburbName,
+    serviceType,
+    slugs,
+    title,
+    subtitle = "Real Work, Real Results",
+    limit = 3
+}: Props) {
+    let relevant = caseStudies;
+
+    if (slugs && slugs.length > 0) {
+        relevant = slugs
+            .map((s) => caseStudies.find((cs) => cs.slug === s))
+            .filter((cs): cs is typeof caseStudies[0] => cs !== undefined);
+    } else if (serviceType) {
+        const lowerService = serviceType.toLowerCase();
+        relevant = caseStudies.filter(
+            (cs) =>
+                cs.serviceType.some((t) => t.toLowerCase().includes(lowerService)) ||
+                cs.tags.some((t) => t.toLowerCase().includes(lowerService))
+        );
+    } else if (suburbSlug) {
+        relevant = caseStudies.filter((cs) =>
+            cs.nearbySuburbs.includes(suburbSlug)
+        );
+    }
 
     if (relevant.length === 0) return null;
 
+    const headingText = title || (suburbName ? `Case Studies Near ${suburbName}` : "Featured Case Studies");
+    const ariaLabel = title || (suburbName ? `Window cleaning case studies near ${suburbName}` : "Window and exterior cleaning case studies");
+
     return (
-        <section className="py-14 max-w-5xl mx-auto px-4" aria-label={`Window cleaning case studies near ${suburbName}`}>
+        <section className="py-14 max-w-5xl mx-auto px-4" aria-label={ariaLabel}>
             <div className="flex items-center justify-between mb-8">
                 <div>
-                    <p className="text-action-gold font-semibold text-sm uppercase tracking-wider mb-1">Real Work, Real Results</p>
+                    <p className="text-action-gold font-semibold text-sm uppercase tracking-wider mb-1">{subtitle}</p>
                     <h2 className="text-2xl md:text-3xl font-heading font-bold text-brand-navy">
-                        Case Studies Near {suburbName}
+                        {headingText}
                     </h2>
                 </div>
                 <Link
                     href="/case-studies"
                     className="hidden sm:inline-flex items-center gap-1 text-sm text-action-gold font-bold hover:underline"
-                    aria-label="View all window cleaning case studies"
+                    aria-label="View all case studies"
                 >
                     View All <ArrowRight className="w-4 h-4" aria-hidden="true" />
                 </Link>
             </div>
 
-            <div className="grid sm:grid-cols-2 lg:grid-cols-3 gap-6">
-                {relevant.slice(0, 3).map((cs) => {
-                    const dateFormatted = new Date(cs.date).toLocaleDateString("en-AU", {
-                        year: "numeric",
-                        month: "short",
-                    });
+            <div className={`grid gap-6 ${relevant.length === 1 ? "max-w-xl mx-auto md:max-w-none md:grid-cols-1" : relevant.length === 2 ? "sm:grid-cols-2" : "sm:grid-cols-2 lg:grid-cols-3"}`}>
+                {relevant.slice(0, limit).map((cs) => {
                     return (
                         <Link
                             key={cs.slug}
@@ -50,7 +76,7 @@ export default function CaseStudiesSection({ suburbSlug, suburbName }: Props) {
                             <div className="relative w-full aspect-video bg-gray-100">
                                 <Image
                                     src={cs.thumbnail}
-                                    alt={`${cs.serviceType[0]} near ${suburbName} — ${cs.title}`}
+                                    alt={`${cs.serviceType[0]} — ${cs.title}`}
                                     fill
                                     className="object-cover group-hover:scale-105 transition-transform duration-500"
                                     sizes="(max-width: 640px) 100vw, (max-width: 1024px) 50vw, 33vw"
@@ -58,7 +84,7 @@ export default function CaseStudiesSection({ suburbSlug, suburbName }: Props) {
                             </div>
                             <div className="p-5 flex flex-col flex-1">
                                 <div className="flex flex-wrap gap-2 mb-2">
-                                    {cs.serviceType.slice(0, 1).map((t) => (
+                                    {cs.serviceType.slice(0, 2).map((t) => (
                                         <span key={t} className="text-xs font-bold text-action-gold bg-action-gold/10 px-2 py-0.5 rounded-full">{t}</span>
                                     ))}
                                 </div>
@@ -79,7 +105,7 @@ export default function CaseStudiesSection({ suburbSlug, suburbName }: Props) {
                                 </div>
                                 <p className="text-gray-500 text-xs leading-relaxed line-clamp-2 flex-1">{cs.excerpt}</p>
                                 <div className="flex items-center gap-1 text-action-gold font-bold text-xs mt-3 group-hover:gap-2 transition-all">
-                                    Read More <ArrowRight className="w-3 h-3" aria-hidden="true" />
+                                    Read Full Case Study <ArrowRight className="w-3 h-3" aria-hidden="true" />
                                 </div>
                             </div>
                         </Link>

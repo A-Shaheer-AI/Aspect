@@ -8,6 +8,7 @@ import FAQ from "@/components/FAQ";
 
 import CTA from "@/components/CTA";
 import BeforeAfterSlider from "@/components/BeforeAfterSlider";
+import CaseStudiesSection from "@/components/CaseStudiesSection";
 
 type FaqsType = {
     question: string;
@@ -482,6 +483,14 @@ const GutterCleaningServices = () => {
                 </div>
             </section>
 
+            {/* REAL PROJECT CASE STUDIES */}
+            <CaseStudiesSection
+                serviceType="Gutter Cleaning"
+                title="Real Gutter Cleaning Results in Perth"
+                subtitle="Recent Case Studies"
+                limit={3}
+            />
+
             {/* FAQ */}
             <section className="pt-5 pb-10 max-w-5xl mx-auto px-4">
                 <FAQ
@@ -491,7 +500,7 @@ const GutterCleaningServices = () => {
             </section>
 
             {/* CTA */}
-            <CTA title="Book Your Window Cleaning Today" />
+            <CTA title="Book Your Gutter Cleaning Today" />
 
         </div>
     );

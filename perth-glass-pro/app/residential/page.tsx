@@ -4,6 +4,7 @@ import { useState } from "react";
 import Link from "next/link";
 import { ArrowRight, Home, Phone, CheckCircle, Shield, Clock, Star, Sparkles } from "lucide-react";
 import QuoteModal from "@/components/QuoteModal";
+import CaseStudiesSection from "@/components/CaseStudiesSection";
 import { BUSINESS } from "@/lib/config";
 
 export default function ResidentialPage() {
@@ -126,6 +127,20 @@ export default function ResidentialPage() {
                         </div>
                     </div>
                 </section>
+
+                {/* REAL PROJECT CASE STUDIES */}
+                <div className="bg-slate-50 border-t border-slate-100">
+                    <CaseStudiesSection
+                        slugs={[
+                            "mount-pleasant-pre-sale-window-cleaning",
+                            "coastal-pre-sale-window-cleaning-eglinton",
+                            "post-renovation-to-auction-window-cleaning-subiaco"
+                        ]}
+                        title="Real Perth Residential Transformations"
+                        subtitle="Proven Results"
+                        limit={3}
+                    />
+                </div>
 
                 {/* CTA */}
                 <section className="py-16 bg-brand-navy text-white">

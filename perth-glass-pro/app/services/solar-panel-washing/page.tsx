@@ -9,6 +9,7 @@ import FAQ from "@/components/FAQ";
 
 import CTA from "@/components/CTA";
 import BeforeAfterSlider from "@/components/BeforeAfterSlider";
+import CaseStudiesSection from "@/components/CaseStudiesSection";
 
 type FaqsType = {
     question: string;
@@ -612,10 +613,18 @@ const SolarPanelCleaningPage = () => {
                 </div>
             </section>
 
+            {/* REAL SOLAR PROJECT CASE STUDY */}
+            <CaseStudiesSection
+                slugs={["joondalup-solar-panel-efficiency-restoration"]}
+                title="Real Solar Panel Washing Results in Perth"
+                subtitle="Efficiency Restored"
+                limit={1}
+            />
+
             {/* FAQ */}
             <section className="pt-5 pb-10 max-w-5xl mx-auto px-4">
                 <FAQ
-                    title="Solar Panl Cleaning FAQs"
+                    title="Solar Panel Cleaning FAQs"
                     faqs={solarFAQs}
                 />
             </section>

@@ -8,6 +8,7 @@ import FAQ from "@/components/FAQ";
 
 import CTA from "@/components/CTA";
 import BeforeAfterSlider from "@/components/BeforeAfterSlider";
+import CaseStudiesSection from "@/components/CaseStudiesSection";
 
 type FaqsType = {
     question: string;
@@ -535,6 +536,18 @@ single time. We also offer <Link href="/services/solar-panel-washing" className=
 
                 </div>
             </section>
+
+            {/* REAL PROJECT CASE STUDIES */}
+            <CaseStudiesSection
+                slugs={[
+                    "mount-pleasant-pre-sale-window-cleaning",
+                    "coastal-pre-sale-window-cleaning-eglinton",
+                    "post-renovation-to-auction-window-cleaning-subiaco"
+                ]}
+                title="Featured Residential Window Cleaning Case Studies"
+                subtitle="Real Perth Transformations"
+                limit={3}
+            />
 
             {/* FAQ */}
             <section className="pt-5 pb-10 max-w-5xl mx-auto px-4">

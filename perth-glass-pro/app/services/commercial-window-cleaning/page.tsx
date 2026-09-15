@@ -27,6 +27,7 @@ import {
 import FAQ from "@/components/FAQ";
 import CTA from "@/components/CTA";
 import BeforeAfterSlider from "@/components/BeforeAfterSlider";
+import CaseStudiesSection from "@/components/CaseStudiesSection";
 import { BUSINESS } from "@/lib/config";
 
 type FaqsType = {
@@ -463,6 +464,14 @@ const CommercialWindowCleaning = () => {
                     </div>
                 </div>
             </section>
+
+            {/* REAL PROJECT CASE STUDY */}
+            <CaseStudiesSection
+                slugs={["rockingham-toyota-dealership-high-reach-commercial-clean"]}
+                title="Featured Commercial Project: Rockingham Toyota"
+                subtitle="Flagship Commercial Showcase"
+                limit={1}
+            />
 
             {/* FAQ */}
             <section className="pt-5 pb-10 max-w-5xl mx-auto px-4">

@@ -3,6 +3,7 @@ import Link from "next/link";
 import Image from "next/image";
 import { openCertificateModal } from "@/components/CertificateModalWrapper";
 import { ArrowRight, Building2, Shield, Phone, CheckCircle2 } from "lucide-react";
+import CaseStudiesSection from "@/components/CaseStudiesSection";
 import { BUSINESS } from "@/lib/config";
 
 export const metadata: Metadata = {
@@ -144,6 +145,16 @@ export default function CommercialPage() {
                     </div>
                 </div>
             </section>
+
+            {/* REAL COMMERCIAL CASE STUDY */}
+            <div className="bg-white border-t border-slate-200">
+                <CaseStudiesSection
+                    slugs={["rockingham-toyota-dealership-high-reach-commercial-clean"]}
+                    title="Featured Commercial Project: Rockingham Toyota"
+                    subtitle="Commercial Portfolio"
+                    limit={1}
+                />
+            </div>
 
             {/* Trust */}
             <section className="py-12 bg-white border-y border-slate-200">

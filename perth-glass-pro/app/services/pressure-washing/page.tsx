@@ -8,6 +8,7 @@ import FAQ from "@/components/FAQ";
 
 import CTA from "@/components/CTA";
 import BeforeAfterSlider from "@/components/BeforeAfterSlider";
+import CaseStudiesSection from "@/components/CaseStudiesSection";
 
 type FaqsType = {
     question: string;
@@ -482,6 +483,14 @@ const PressureWashing = () => {
 
                 </div>
             </section>
+
+            {/* REAL PRESSURE WASHING CASE STUDY */}
+            <CaseStudiesSection
+                slugs={["fremantle-heritage-brick-paver-pressure-clean"]}
+                title="Real Pressure Washing Results in Perth"
+                subtitle="Surface Restoration"
+                limit={1}
+            />
 
             {/* FAQ */}
             <section className="pt-5 pb-10 max-w-5xl mx-auto px-4">
