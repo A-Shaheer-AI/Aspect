@@ -378,7 +378,7 @@ const CommercialWindowCleaning = () => {
                 <div className="max-w-5xl mx-auto px-4">
                     <div className="relative h-[440px] sm:h-[540px] md:h-[640px] w-full rounded-2xl overflow-hidden shadow-md">
                         <Image
-                            src="https://res.cloudinary.com/dr8tjrszy/image/upload/f_auto,q_auto/v1771960134/commercial-window-cleaning_gzkvaj.jpg"
+                            src="https://res.cloudinary.com/dr8tjrszy/image/upload/f_auto,q_auto,w_800/v1771960134/commercial-window-cleaning_gzkvaj.jpg"
                             alt="Commercial high-reach window cleaning at Toyota dealership in Perth"
                             fill
                             className="object-cover object-top"
@@ -458,8 +458,8 @@ const CommercialWindowCleaning = () => {
                     <div className="max-w-3xl mx-auto w-full">
                         <BeforeAfterSlider
                             initial={50}
-                            beforeImage="https://res.cloudinary.com/dr8tjrszy/image/upload/f_auto,q_auto/v1771960147/WhatsApp_Image_2026-02-22_at_8.48.08_PM_1_x4ymo2.jpg"
-                            afterImage="https://res.cloudinary.com/dr8tjrszy/image/upload/f_auto,q_auto/v1771960136/shope-gates-cleaning_euctx1.jpg"
+                            beforeImage="https://res.cloudinary.com/dr8tjrszy/image/upload/f_auto,q_auto,w_800/v1771960147/WhatsApp_Image_2026-02-22_at_8.48.08_PM_1_x4ymo2.jpg"
+                            afterImage="https://res.cloudinary.com/dr8tjrszy/image/upload/f_auto,q_auto,w_800/v1771960136/shope-gates-cleaning_euctx1.jpg"
                         />
                     </div>
                 </div>

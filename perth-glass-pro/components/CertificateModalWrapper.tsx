@@ -13,10 +13,10 @@ export default function CertificateModalWrapper() {
     const [isOpen, setIsOpen] = useState(false);
     const [certType, setCertType] = useState<"insured" | "police" | null>(null);
 
-    // Provide links here when user provides them
+    // Static certificate assets hosted locally for instant loading with 0 Cloudinary bandwidth
     const imageUrls = {
-        insured: "https://res.cloudinary.com/dr8tjrszy/image/upload/f_auto,q_auto/v1788618147/20_Million_Insurance_Cover_dyjc9i.jpg",
-        police: "https://res.cloudinary.com/dr8tjrszy/image/upload/f_auto,q_auto/v1788618145/Police_Check_Clearance_ywnsjp.jpg"
+        insured: "/certificates/20_Million_Insurance_Cover.jpg",
+        police: "/certificates/Police_Check_Clearance.jpg"
     };
 
     useEffect(() => {

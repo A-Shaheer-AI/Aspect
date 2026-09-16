@@ -21,92 +21,92 @@ export default function HeroWithScroll() {
 
   const items: ScrollItem[] = [
     {
-      src: "https://res.cloudinary.com/dr8tjrszy/video/upload/so_0,eo_6,f_auto,q_auto,w_600/v1789328537/aspect_hero_optimized/shop-front-window-cleaning-perth-4862.mp4",
+      src: "/media/video/upload/so_0,eo_6,f_auto,q_auto:eco,vc_auto,w_500/v1789328537/aspect_hero_optimized/shop-front-window-cleaning-perth-4862.mp4",
       type: "video",
       className: "col-span-1 row-span-1 h-[180px]"
     },
     {
-      src: "https://res.cloudinary.com/dr8tjrszy/image/upload/f_auto,q_auto,w_600/v1789328549/aspect_hero_optimized/residential-window-washing-specialists-7103.jpg",
+      src: "/media/image/upload/f_auto,q_auto,w_600/v1789328549/aspect_hero_optimized/residential-window-washing-specialists-7103.jpg",
       type: "image",
       className: "col-span-1 row-span-2 h-[280px]"
     },
     {
-      src: "https://res.cloudinary.com/dr8tjrszy/video/upload/so_0,eo_6,f_auto,q_auto,w_600/v1789328542/aspect_hero_optimized/strata-window-cleaning-specialists-perth-9060.mp4",
+      src: "/media/video/upload/so_0,eo_6,f_auto,q_auto:eco,vc_auto,w_500/v1789328542/aspect_hero_optimized/strata-window-cleaning-specialists-perth-9060.mp4",
       type: "video",
       className: "col-span-1 row-span-2 h-[260px]"
     },
     {
-      src: "https://res.cloudinary.com/dr8tjrszy/video/upload/so_0,eo_6,f_auto,q_auto,w_600/v1789328545/aspect_hero_optimized/high-reach-window-cleaning-wa-1905.mp4",
+      src: "/media/video/upload/so_0,eo_6,f_auto,q_auto:eco,vc_auto,w_500/v1789328545/aspect_hero_optimized/high-reach-window-cleaning-wa-1905.mp4",
       type: "video",
       className: "col-span-1 row-span-1 h-[200px]"
     },
     {
-      src: "https://res.cloudinary.com/dr8tjrszy/video/upload/so_0,eo_6,f_auto,q_auto,w_600/v1789328529/aspect_hero_optimized/commercial-glass-cleaning-services-wa-3763.mp4",
+      src: "/media/video/upload/so_0,eo_6,f_auto,q_auto:eco,vc_auto,w_500/v1789328529/aspect_hero_optimized/commercial-glass-cleaning-services-wa-3763.mp4",
       type: "video",
       className: "col-span-1 row-span-1 h-[250px]"
     },
     {
-      src: "https://res.cloudinary.com/dr8tjrszy/video/upload/so_0,eo_6,f_auto,q_auto,w_600/v1789328540/aspect_hero_optimized/office-building-glass-cleaning-wa-6613.mp4",
+      src: "/media/video/upload/so_0,eo_6,f_auto,q_auto:eco,vc_auto,w_500/v1789328540/aspect_hero_optimized/office-building-glass-cleaning-wa-6613.mp4",
       type: "video",
       className: "col-span-1 row-span-1 h-[200px]"
     },
     {
-      src: "https://res.cloudinary.com/dr8tjrszy/image/upload/f_auto,q_auto,w_600/v1789328553/aspect_hero_optimized/professional-window-cleaning-results-0978.jpg",
+      src: "/media/image/upload/f_auto,q_auto,w_600/v1789328553/aspect_hero_optimized/professional-window-cleaning-results-0978.jpg",
       type: "image",
       className: "col-span-1 row-span-1 h-[200px]"
     },
     {
-      src: "https://res.cloudinary.com/dr8tjrszy/video/upload/so_0,eo_6,f_auto,q_auto,w_600/v1789328536/aspect_hero_optimized/eco-friendly-glass-cleaners-wa-8114.mp4",
+      src: "/media/video/upload/so_0,eo_6,f_auto,q_auto:eco,vc_auto,w_500/v1789328536/aspect_hero_optimized/eco-friendly-glass-cleaners-wa-8114.mp4",
       type: "video",
       className: "col-span-1 row-span-1 h-[200px]"
     },
     {
-      src: "https://res.cloudinary.com/dr8tjrszy/image/upload/f_auto,q_auto,w_600/v1789328550/aspect_hero_optimized/commercial-glass-cleaning-perth-cbd-8293.jpg",
+      src: "/media/image/upload/f_auto,q_auto,w_600/v1789328550/aspect_hero_optimized/commercial-glass-cleaning-perth-cbd-8293.jpg",
       type: "image",
       className: "col-span-1 row-span-1 h-[200px]"
     },
     {
-      src: "https://res.cloudinary.com/dr8tjrszy/image/upload/f_auto,q_auto,w_600/v1789328555/aspect_hero_optimized/flyscreen-and-track-cleaning-wa-2641.jpg",
+      src: "/media/image/upload/f_auto,q_auto,w_600/v1789328555/aspect_hero_optimized/flyscreen-and-track-cleaning-wa-2641.jpg",
       type: "image",
       className: "col-span-1 row-span-1 h-[200px]"
     },
     {
-      src: "https://res.cloudinary.com/dr8tjrszy/image/upload/f_auto,q_auto,w_600/v1789328548/aspect_hero_optimized/pure-water-window-cleaners-perth-6391.jpg",
+      src: "/media/image/upload/f_auto,q_auto,w_600/v1789328548/aspect_hero_optimized/pure-water-window-cleaners-perth-6391.jpg",
       type: "image",
       className: "col-span-1 row-span-1 h-[200px]"
     },
     {
-      src: "https://res.cloudinary.com/dr8tjrszy/image/upload/f_auto,q_auto,w_600/v1789328555/aspect_hero_optimized/solar-panel-cleaning-experts-perth-3397.jpg",
+      src: "/media/image/upload/f_auto,q_auto,w_600/v1789328555/aspect_hero_optimized/solar-panel-cleaning-experts-perth-3397.jpg",
       type: "image",
       className: "col-span-1 row-span-1 h-[200px]"
     },
     {
-      src: "https://res.cloudinary.com/dr8tjrszy/image/upload/f_auto,q_auto,w_600/v1789328552/aspect_hero_optimized/exterior-glass-washing-experts-9950.jpg",
+      src: "/media/image/upload/f_auto,q_auto,w_600/v1789328552/aspect_hero_optimized/exterior-glass-washing-experts-9950.jpg",
       type: "image",
       className: "col-span-1 row-span-1 h-[200px]"
     },
     {
-      src: "https://res.cloudinary.com/dr8tjrszy/image/upload/f_auto,q_auto,w_600/v1789328547/aspect_hero_optimized/expert-window-cleaning-services-perth-4622.jpg",
+      src: "/media/image/upload/f_auto,q_auto,w_600/v1789328547/aspect_hero_optimized/expert-window-cleaning-services-perth-4622.jpg",
       type: "image",
       className: "col-span-1 row-span-1 h-[200px]"
     },
     {
-      src: "https://res.cloudinary.com/dr8tjrszy/image/upload/f_auto,q_auto,w_600/v1789328551/aspect_hero_optimized/two-story-house-window-cleaner-9209.jpg",
+      src: "/media/image/upload/f_auto,q_auto,w_600/v1789328551/aspect_hero_optimized/two-story-house-window-cleaner-9209.jpg",
       type: "image",
       className: "col-span-1 row-span-1 h-[200px]"
     },
     {
-      src: "https://res.cloudinary.com/dr8tjrszy/image/upload/f_auto,q_auto,w_600/v1789328554/aspect_hero_optimized/hard-water-stain-removal-glass-1719.jpg",
+      src: "/media/image/upload/f_auto,q_auto,w_600/v1789328554/aspect_hero_optimized/hard-water-stain-removal-glass-1719.jpg",
       type: "image",
       className: "col-span-1 row-span-1 h-[200px]"
     },
     {
-      src: "https://res.cloudinary.com/dr8tjrszy/image/upload/f_auto,q_auto,w_600/v1789328547/aspect_hero_optimized/streak-free-glass-washing-wa-5425.jpg",
+      src: "/media/image/upload/f_auto,q_auto,w_600/v1789328547/aspect_hero_optimized/streak-free-glass-washing-wa-5425.jpg",
       type: "image",
       className: "col-span-1 row-span-1 h-[180px]"
     },
     {
-      src: "https://res.cloudinary.com/dr8tjrszy/video/upload/so_0,eo_6,f_auto,q_auto,w_600/v1789328524/aspect_hero_optimized/residential-window-cleaning-perth-showcase-9996.mp4",
+      src: "/media/video/upload/so_0,eo_6,f_auto,q_auto:eco,vc_auto,w_500/v1789328524/aspect_hero_optimized/residential-window-cleaning-perth-showcase-9996.mp4",
       type: "video",
       className: "col-span-1 row-span-1 h-[180px]"
     }
@@ -152,7 +152,6 @@ export default function HeroWithScroll() {
                         alt="Professional window cleaning in Perth"
                         width={200}
                         height={150}
-                        unoptimized={true}
                         sizes="50vw"
                         className="w-full h-full object-cover"
                         loading={i < 2 ? "eager" : "lazy"}
@@ -173,7 +172,6 @@ export default function HeroWithScroll() {
                         alt="Professional window cleaning in Perth"
                         width={200}
                         height={150}
-                        unoptimized={true}
                         sizes="50vw"
                         className="w-full h-full object-cover"
                         loading={i < 2 ? "eager" : "lazy"}
@@ -287,7 +285,6 @@ export default function HeroWithScroll() {
                           alt="Professional window and solar panel cleaning in Perth"
                           width={400}
                           height={250}
-                          unoptimized={true}
                           sizes="(max-width: 768px) 50vw, 33vw"
                           className="w-full h-full object-cover"
                         />
@@ -320,7 +317,6 @@ export default function HeroWithScroll() {
                           alt="Professional window and solar panel cleaning in Perth"
                           width={400}
                           height={250}
-                          unoptimized={true}
                           sizes="(max-width: 768px) 50vw, 33vw"
                           className="w-full h-full object-cover"
                         />

@@ -317,7 +317,7 @@ const GutterCleaningServices = () => {
             <section className="py-5">
                 <div className="max-w-5xl mx-auto px-4">
                     <Image
-                        src="https://res.cloudinary.com/dr8tjrszy/image/upload/f_auto,q_auto/v1775331528/gutter-cleaning_ym4thx.jpg"
+                        src="https://res.cloudinary.com/dr8tjrszy/image/upload/f_auto,q_auto,w_800/v1775331528/gutter-cleaning_ym4thx.jpg"
                         alt="gutter cleaning in Perth"
                         width={1000}
                         height={300}
@@ -393,8 +393,8 @@ const GutterCleaningServices = () => {
                     {/* <div className="max-w-3xl mx-auto w-full">
                         <BeforeAfterSlider
                             initial={50}
-                            beforeImage="https://res.cloudinary.com/dr8tjrszy/image/upload/f_auto,q_auto/v1771960147/WhatsApp_Image_2026-02-22_at_8.48.08_PM_1_x4ymo2.jpg"
-                            afterImage="https://res.cloudinary.com/dr8tjrszy/image/upload/f_auto,q_auto/v1771960136/shope-gates-cleaning_euctx1.jpg"
+                            beforeImage="https://res.cloudinary.com/dr8tjrszy/image/upload/f_auto,q_auto,w_800/v1771960147/WhatsApp_Image_2026-02-22_at_8.48.08_PM_1_x4ymo2.jpg"
+                            afterImage="https://res.cloudinary.com/dr8tjrszy/image/upload/f_auto,q_auto,w_800/v1771960136/shope-gates-cleaning_euctx1.jpg"
                         />
                     </div> */}
 

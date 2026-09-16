@@ -347,7 +347,8 @@ export default function PressureWashingAdsPage() {
 
     const NAVY = "#07077E";
     const YELLOW = "#FFE54D";
-    const HERO_VIDEO_URL = "https://res.cloudinary.com/dr8tjrszy/video/upload/v1776147185/window-cleaning-services-in-perth_ejfjoh.mp4";
+    const HERO_VIDEO_URL = "/media/video/upload/so_0,eo_6,f_auto,q_auto:eco,vc_auto,w_800/v1776147185/window-cleaning-services-in-perth_ejfjoh.mp4";
+    const HERO_POSTER_URL = "/media/video/upload/so_0,f_auto,q_auto,w_800/v1776147185/window-cleaning-services-in-perth_ejfjoh.jpg";
     return (
         <>
             {/* ─── MODAL ─── */}
@@ -370,7 +371,7 @@ export default function PressureWashingAdsPage() {
                     loop
                     muted
                     playsInline
-                    poster={HERO_VIDEO_URL}
+                    poster={HERO_POSTER_URL}
                     className="absolute inset-0 w-full h-full object-cover"
                 >
                     <source src={HERO_VIDEO_URL} type="video/mp4" />
@@ -536,9 +537,9 @@ export default function PressureWashingAdsPage() {
                 </p>
                 <div className="flex flex-wrap items-center justify-center gap-10">
                     {[
-                        { src: "https://res.cloudinary.com/dr8tjrszy/image/upload/f_auto,q_auto/v1772795795/toyota-logo_bcplvi.png", alt: "Toyota" },
-                        { src: "https://res.cloudinary.com/dr8tjrszy/image/upload/f_auto,q_auto/v1772795795/richad-logo_u2l4jl.png", alt: "Richard Group" },
-                        { src: "https://res.cloudinary.com/dr8tjrszy/image/upload/f_auto,q_auto/v1772795794/bespoke-logo_lulwwt.png", alt: "Bespoke" },
+                        { src: "https://res.cloudinary.com/dr8tjrszy/image/upload/f_auto,q_auto,w_800/v1772795795/toyota-logo_bcplvi.png", alt: "Toyota" },
+                        { src: "https://res.cloudinary.com/dr8tjrszy/image/upload/f_auto,q_auto,w_800/v1772795795/richad-logo_u2l4jl.png", alt: "Richard Group" },
+                        { src: "https://res.cloudinary.com/dr8tjrszy/image/upload/f_auto,q_auto,w_800/v1772795794/bespoke-logo_lulwwt.png", alt: "Bespoke" },
                     ].map((logo) => (
                         <div key={logo.alt} className="relative h-13 w-28 grayscale transition duration-300 hover:grayscale-0">
                             <Image
@@ -668,8 +669,8 @@ export default function PressureWashingAdsPage() {
                 <div className="mx-auto max-w-4xl">
                     <div className="grid grid-cols-1 gap-4">
                         <BeforeAfterSlider
-                            afterImage="https://res.cloudinary.com/dr8tjrszy/image/upload/f_auto,q_auto/v1772800983/after-cleaning-street_lhtqux.jpg"
-                            beforeImage="https://res.cloudinary.com/dr8tjrszy/image/upload/f_auto,q_auto/v1772967205/street-before-cleaning_iupbdq.jpg"
+                            afterImage="https://res.cloudinary.com/dr8tjrszy/image/upload/f_auto,q_auto,w_800/v1772800983/after-cleaning-street_lhtqux.jpg"
+                            beforeImage="https://res.cloudinary.com/dr8tjrszy/image/upload/f_auto,q_auto,w_800/v1772967205/street-before-cleaning_iupbdq.jpg"
                             initial={50}
                         />
                     </div>

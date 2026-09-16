@@ -328,7 +328,7 @@ const PressureWashing = () => {
             <section className="py-5">
                 <div className="max-w-5xl mx-auto px-4">
                     <Image
-                        src="https://res.cloudinary.com/dr8tjrszy/image/upload/f_auto,q_auto/v1771960122/indoor-cleaning_ioqiqq.jpg"
+                        src="https://res.cloudinary.com/dr8tjrszy/image/upload/f_auto,q_auto,w_800/v1771960122/indoor-cleaning_ioqiqq.jpg"
                         alt="Technician cleaning solar panels in Perth"
                         width={1200}
                         height={300}
@@ -399,8 +399,8 @@ const PressureWashing = () => {
                     <div className="max-w-3xl mx-auto w-full">
                         <BeforeAfterSlider
                             initial={50}
-                            beforeImage="https://res.cloudinary.com/dr8tjrszy/image/upload/f_auto,q_auto/v1772967205/street-before-cleaning_iupbdq.jpg"
-                            afterImage="https://res.cloudinary.com/dr8tjrszy/image/upload/f_auto,q_auto/v1772800983/after-cleaning-street_lhtqux.jpg"
+                            beforeImage="https://res.cloudinary.com/dr8tjrszy/image/upload/f_auto,q_auto,w_800/v1772967205/street-before-cleaning_iupbdq.jpg"
+                            afterImage="https://res.cloudinary.com/dr8tjrszy/image/upload/f_auto,q_auto,w_800/v1772800983/after-cleaning-street_lhtqux.jpg"
                         />
                     </div>
 
