@@ -94,8 +94,18 @@ export const caseStudies: CaseStudy[] = [
     nearbySuburbs: [
       "perth", "subiaco", "nedlands", "claremont", "dalkeith", "cottesloe", "city-beach", "mosman-park", "mount-lawley", "south-perth"
     ],
-    thumbnail: "https://res.cloudinary.com/dr8tjrszy/image/upload/f_auto,q_auto,w_800/v1771873841/residential-window-cleaning_nhnoux.jpg",
-    images: [],
+    thumbnail: "https://res.cloudinary.com/dr8tjrszy/image/upload/f_auto,q_auto,w_800/v1789578382/Pre-sale_Window_Cleaning_in_Subiaco_tf2rtg.jpg",
+    images: [
+      "https://res.cloudinary.com/dr8tjrszy/image/upload/f_auto,q_auto,w_800/v1789578382/Pre-sale_Window_Cleaning_in_Subiaco_tf2rtg.jpg",
+      "https://res.cloudinary.com/dr8tjrszy/image/upload/f_auto,q_auto,w_800/v1789578794/Window_Cleaning_Crew_in_Subiaco_kdigjx.heic",
+      "https://res.cloudinary.com/dr8tjrszy/image/upload/f_auto,q_auto,w_800/v1789578789/Skylights_Cleaning_in_Subiaco_nntr7x.heic",
+      "https://res.cloudinary.com/dr8tjrszy/image/upload/f_auto,q_auto,w_800/v1789578791/Pool_fence_cleaning_s1z8zt.heic",
+      "https://res.cloudinary.com/dr8tjrszy/image/upload/f_auto,q_auto,w_800/v1789578789/Glass_balustrade_cleaning_ti7s2k.heic",
+      "https://res.cloudinary.com/dr8tjrszy/image/upload/f_auto,q_auto,w_800/v1789578790/Bathroom_High_Reach_Windows_r8ma3d.heic",
+      "https://res.cloudinary.com/dr8tjrszy/image/upload/f_auto,q_auto,w_800/v1789578789/Million_dollar_property_maintenance_standards_cych8d.heic",
+      "https://res.cloudinary.com/dr8tjrszy/image/upload/f_auto,q_auto,w_800/v1789578790/Pre-sale_inspection_window_cleaning_i8ypwb.heic",
+      "https://res.cloudinary.com/dr8tjrszy/image/upload/f_auto,q_auto,w_800/v1789142856/aspect_landing/perth-window-cleaners-in-action.jpg"
+    ],
     excerpt: "We managed the window cleaning for a beautiful property over a six-month period, handling everything from an intensive post-renovation clean to pristine pre-sale detailing and final pre-auction touch-ups.",
     serviceType: ["Post-Renovation Cleaning", "Pre-Sale Cleaning", "Strata & Property Management"],
     challenge: "Following extensive renovations and painting, the property's glass was covered in paint marks, oil residue, construction dust, and chemical buildup. Featuring large glass panels, sliding doors, delicate vintage windows, skylights, and glass pool fencing, the job required meticulous care. The property manager needed a reliable team to maintain this pristine condition through the entire marketing campaign up to auction day.",
