@@ -67,7 +67,7 @@ export default async function CaseStudyPage({ params }: { params: Promise<{ slug
             "url": "https://aspectwindowcleaning.com.au",
             "logo": {
                 "@type": "ImageObject",
-                "url": "https://res.cloudinary.com/dr8tjrszy/image/upload/f_auto,q_auto/v1772130850/white-logo_pzpxjk.png"
+                "url": "https://aspectwindowcleaning.com.au/brand/white-logo.png"
             }
         },
         "image": {

@@ -326,7 +326,7 @@ single time. We also offer <Link href="/services/solar-panel-washing" className=
             <section className="py-5">
                 <div className="max-w-5xl mx-auto px-4">
                     <Image
-                        src="https://res.cloudinary.com/dr8tjrszy/image/upload/f_auto,q_auto/v1771960139/WhatsApp_Image_2026-02-22_at_8.47.53_PM_1_utloaq.jpg"
+                        src="https://res.cloudinary.com/dr8tjrszy/image/upload/f_auto,q_auto,w_800/v1771960139/WhatsApp_Image_2026-02-22_at_8.47.53_PM_1_utloaq.jpg"
                         alt="Residential window cleaning in Perth"
                         width={1000}
                         height={300}
@@ -351,7 +351,7 @@ single time. We also offer <Link href="/services/solar-panel-washing" className=
                     <div className="group">
                         <div className="relative overflow-hidden rounded-2xl mb-6 aspect-[4/3]">
                             <Image
-                                src="https://res.cloudinary.com/dr8tjrszy/image/upload/f_auto,q_auto/v1771960141/WhatsApp_Image_2026-02-22_at_8.47.56_PM_1_ekwlh4.jpg"
+                                src="https://res.cloudinary.com/dr8tjrszy/image/upload/f_auto,q_auto,w_800/v1771960141/WhatsApp_Image_2026-02-22_at_8.47.56_PM_1_ekwlh4.jpg"
                                 alt="Technician cleaning residential home windows"
                                 fill
                                 className="object-cover object-top group-hover:scale-105 transition-transform duration-500"
@@ -369,7 +369,7 @@ single time. We also offer <Link href="/services/solar-panel-washing" className=
                     <div className="group">
                         <div className="relative overflow-hidden rounded-2xl mb-6 aspect-[4/3]">
                             <Image
-                                src="https://res.cloudinary.com/dr8tjrszy/image/upload/f_auto,q_auto/v1771960134/commercial-window-cleaning_gzkvaj.jpg"
+                                src="https://res.cloudinary.com/dr8tjrszy/image/upload/f_auto,q_auto,w_800/v1771960134/commercial-window-cleaning_gzkvaj.jpg"
                                 alt="Technician cleaning large commercial glass facade"
                                 fill
                                 className="object-cover object-top group-hover:scale-105 transition-transform duration-500"
@@ -447,8 +447,8 @@ single time. We also offer <Link href="/services/solar-panel-washing" className=
                     <div className="max-w-3xl mx-auto w-full">
                         <BeforeAfterSlider
                             initial={50}
-                            beforeImage="https://res.cloudinary.com/dr8tjrszy/image/upload/f_auto,q_auto/v1771960147/WhatsApp_Image_2026-02-22_at_8.48.08_PM_1_x4ymo2.jpg"
-                            afterImage="https://res.cloudinary.com/dr8tjrszy/image/upload/f_auto,q_auto/v1771960136/shope-gates-cleaning_euctx1.jpg"
+                            beforeImage="https://res.cloudinary.com/dr8tjrszy/image/upload/f_auto,q_auto,w_800/v1771960147/WhatsApp_Image_2026-02-22_at_8.48.08_PM_1_x4ymo2.jpg"
+                            afterImage="https://res.cloudinary.com/dr8tjrszy/image/upload/f_auto,q_auto,w_800/v1771960136/shope-gates-cleaning_euctx1.jpg"
                         />
                     </div>
 

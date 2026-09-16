@@ -50,7 +50,7 @@ export const caseStudies: CaseStudy[] = [
       "willetton",
       "winthrop"
     ],
-    thumbnail: "https://res.cloudinary.com/dr8tjrszy/image/upload/f_auto,q_auto/v1771873841/residential-window-cleaning_nhnoux.jpg",
+    thumbnail: "https://res.cloudinary.com/dr8tjrszy/image/upload/f_auto,q_auto,w_800/v1771873841/residential-window-cleaning_nhnoux.jpg",
     images: [],
     excerpt: "A Mount Pleasant homeowner needed a full, detailed window clean — louvre windows, pool fencing, flyscreens and tracks — all completed within a tight pre-sale deadline. We delivered with a four-man crew in four hours.",
     serviceType: ["Residential Window Cleaning", "Pre-Sale Cleaning"],
@@ -92,7 +92,7 @@ export const caseStudies: CaseStudy[] = [
     nearbySuburbs: [
       "perth", "subiaco", "nedlands", "claremont", "dalkeith", "cottesloe", "city-beach", "mosman-park", "mount-lawley", "south-perth"
     ],
-    thumbnail: "https://res.cloudinary.com/dr8tjrszy/image/upload/f_auto,q_auto/v1771873841/residential-window-cleaning_nhnoux.jpg",
+    thumbnail: "https://res.cloudinary.com/dr8tjrszy/image/upload/f_auto,q_auto,w_800/v1771873841/residential-window-cleaning_nhnoux.jpg",
     images: [],
     excerpt: "We managed the window cleaning for a beautiful property over a six-month period, handling everything from an intensive post-renovation clean to pristine pre-sale detailing and final pre-auction touch-ups.",
     serviceType: ["Post-Renovation Cleaning", "Pre-Sale Cleaning", "Strata & Property Management"],
@@ -138,7 +138,7 @@ export const caseStudies: CaseStudy[] = [
     nearbySuburbs: [
       "eglinton", "alkimos", "yanchep", "jindalee", "butler", "quinns-rocks", "two-rocks", "mindarie", "clarkson"
     ],
-    thumbnail: "https://res.cloudinary.com/dr8tjrszy/image/upload/f_auto,q_auto/v1771873841/residential-window-cleaning_nhnoux.jpg",
+    thumbnail: "https://res.cloudinary.com/dr8tjrszy/image/upload/f_auto,q_auto,w_800/v1771873841/residential-window-cleaning_nhnoux.jpg",
     images: [],
     excerpt: "See how we transformed this beautiful coastal home in Eglinton on a tight deadline. By removing years of stubborn ocean salt buildup, we helped the homeowner get their property market-ready and looking pristine.",
     serviceType: ["Residential Window Cleaning", "Pre-Sale Cleaning", "Coastal Property Maintenance"],
@@ -199,9 +199,9 @@ export const caseStudies: CaseStudy[] = [
       "fremantle",
       "perth"
     ],
-    thumbnail: "https://res.cloudinary.com/dr8tjrszy/image/upload/f_auto,q_auto/v1771960129/commercial-sign-cleaning_jzafjr.jpg",
+    thumbnail: "https://res.cloudinary.com/dr8tjrszy/image/upload/f_auto,q_auto,w_800/v1771960129/commercial-sign-cleaning_jzafjr.jpg",
     images: [
-      "https://res.cloudinary.com/dr8tjrszy/image/upload/f_auto,q_auto/v1771960138/sign-cleaning-2_ozlp2x.jpg"
+      "https://res.cloudinary.com/dr8tjrszy/image/upload/f_auto,q_auto,w_800/v1771960138/sign-cleaning-2_ozlp2x.jpg"
     ],
     excerpt: "When a head contractor needed proven commercial specialists for the Rockingham Toyota showroom, they trusted Aspect. From deploying our first certified EWP cherry picker to deep-cleaning neglected high-level architectural fascia, 3D corporate logos, and towering roadside pylons, here is the story of how our commercial division took flight.",
     serviceType: [
@@ -360,7 +360,7 @@ export const caseStudies: CaseStudy[] = [
     nearbySuburbs: [
       "fremantle", "east-fremantle", "north-fremantle", "south-perth", "cottesloe", "white-gum-valley", "beaconsfield", "hamilton-hill", "palmyra"
     ],
-    thumbnail: "https://res.cloudinary.com/dr8tjrszy/image/upload/f_auto,q_auto/v1771960136/shope-gates-cleaning_euctx1.jpg",
+    thumbnail: "https://res.cloudinary.com/dr8tjrszy/image/upload/f_auto,q_auto,w_800/v1771960136/shope-gates-cleaning_euctx1.jpg",
     images: [],
     excerpt: "Winter moisture and ocean breezes left this historic Fremantle home's natural limestone pavers and timber pool surrounds coated in dark, slippery algae. Our commercial-grade rotary pressure wash restored the stone's original honey warmth without surface damage.",
     serviceType: ["Pressure Washing", "Driveway & Paver Restoration", "Pool Surround Cleaning"],

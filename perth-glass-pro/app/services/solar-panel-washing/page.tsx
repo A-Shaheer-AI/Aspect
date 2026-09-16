@@ -351,7 +351,7 @@ const SolarPanelCleaningPage = () => {
             <section className="py-5">
                 <div className="max-w-5xl mx-auto px-4">
                     <Image
-                        src="https://res.cloudinary.com/dr8tjrszy/image/upload/f_auto,q_auto/v1771960144/WhatsApp_Image_2026-02-22_at_8.48.18_PM_vt57zl.jpg"
+                        src="https://res.cloudinary.com/dr8tjrszy/image/upload/f_auto,q_auto,w_800/v1771960144/WhatsApp_Image_2026-02-22_at_8.48.18_PM_vt57zl.jpg"
                         alt="Technician cleaning solar panels in Perth"
                         width={1200}
                         height={300}
@@ -506,8 +506,8 @@ const SolarPanelCleaningPage = () => {
                     <div className="max-w-4xl mx-auto w-full">
                         <BeforeAfterSlider
                             initial={50}
-                            beforeImage="https://res.cloudinary.com/dr8tjrszy/image/upload/f_auto,q_auto/v1771960139/solar-pannel-clean_cigwab.jpg"
-                            afterImage="https://res.cloudinary.com/dr8tjrszy/image/upload/f_auto,q_auto/v1771960138/sollar-plats-cleaning_gyngjf.jpg"
+                            beforeImage="https://res.cloudinary.com/dr8tjrszy/image/upload/f_auto,q_auto,w_800/v1771960139/solar-pannel-clean_cigwab.jpg"
+                            afterImage="https://res.cloudinary.com/dr8tjrszy/image/upload/f_auto,q_auto,w_800/v1771960138/sollar-plats-cleaning_gyngjf.jpg"
                         />
                     </div>
 
@@ -515,7 +515,7 @@ const SolarPanelCleaningPage = () => {
                     <div className="grid md:grid-cols-2 gap-6">
                         <div className="relative w-full max-h-[500px]">
                             <Image
-                                src="https://res.cloudinary.com/dr8tjrszy/image/upload/f_auto,q_auto/v1771960139/solar-pannel-clean_cigwab.jpg"
+                                src="https://res.cloudinary.com/dr8tjrszy/image/upload/f_auto,q_auto,w_800/v1771960139/solar-pannel-clean_cigwab.jpg"
                                 alt="Dirty solar panel - dust and bird dropping buildup"
                                 fill
                                 className="rounded-xl shadow-md object-cover"
@@ -524,7 +524,7 @@ const SolarPanelCleaningPage = () => {
 
                         <div className="w-full">
                             <Image
-                                src="https://res.cloudinary.com/dr8tjrszy/image/upload/f_auto,q_auto/v1771960138/sollar-plats-cleaning_gyngjf.jpg"
+                                src="https://res.cloudinary.com/dr8tjrszy/image/upload/f_auto,q_auto,w_800/v1771960138/sollar-plats-cleaning_gyngjf.jpg"
                                 alt="Clean solar panel - full output after professional wash"
                                 width={500}
                                 height={500}

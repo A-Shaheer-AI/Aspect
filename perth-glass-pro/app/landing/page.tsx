@@ -739,8 +739,8 @@ export default function WindowCleaningAdsPage() {
                 </div>
                 <div className="mx-auto max-w-4xl">
                     <div className="mb-4 overflow-hidden rounded-2xl" style={{ height: 380 }}>
-                        <video className="h-full w-full object-cover" controls preload="metadata">
-                            <source src="https://res.cloudinary.com/dr8tjrszy/video/upload/q_auto,w_800,vc_auto/v1772968701/VID-20260228-WA0016_xsz3cm_401388.mp4" type="video/mp4" />
+                        <video className="h-full w-full object-cover" controls preload="none">
+                            <source src="/media/video/upload/q_auto:eco,w_800,vc_auto/v1772968701/VID-20260228-WA0016_xsz3cm_401388.mp4" type="video/mp4" />
                         </video>
                     </div>
                     <div className="grid grid-cols-1 gap-4 lg:grid-cols-2">
