@@ -404,10 +404,10 @@ export const caseStudies: CaseStudy[] = [
     nearbySuburbs: [
       "west-perth", "perth", "subiaco", "leederville", "east-perth", "northbridge", "nedlands", "kings-park", "shenton-park", "highgate", "mount-lawley", "north-perth"
     ],
-    thumbnail: "/gallery/commercial-window-cleaning.webp",
+    thumbnail: "https://res.cloudinary.com/dr8tjrszy/image/upload/f_auto,q_auto,w_800/v1789575306/Grounded_Office_Window_Cleaning_after-hours_r9kc23.jpg",
     clientLogo: "/brand/grounded-logo-dark.svg",
     clientName: "Grounded Construction Group",
-    images: ["/gallery/office.jpeg"],
+    images: [],
     excerpt: "When WA mining and civil infrastructure leader Grounded required urgent overnight window cleaning for their corporate headquarters at 11 Harvest Terrace in West Perth, Aspect mobilized an agile 3-man crew. Working carefully around sensitive IT hardware, monitors, and complex multi-pane architectural lattices under facility camera surveillance, we delivered spotless, streak-free clarity before morning staff arrived.",
     serviceType: ["Commercial Window Cleaning", "Office Window Cleaning", "After-Hours Cleaning"],
     challenge: "Grounded Construction Group contacted Aspect with an urgent, time-critical requirement: their corporate office on Harvest Terrace, West Perth needed a comprehensive window clean completed strictly overnight so the workspace would be 100% ready for business the next morning. The job presented several unique obstacles: 40 to 45 window sections featuring intricate architectural lattice assemblies, where a single long lattice frame contained up to 24 individual small square glass panes. Cleaning dozens of small individual panes requires intensive manual edging and detailed frame wipe-downs. Furthermore, because the glass bordered active staff workstations loaded with dual-monitor setups, desktop PCs, electrical cabling, and workers' personal belongings, our crew had to follow strict zero-drip protocols and exercise extreme care around all electronics.",
