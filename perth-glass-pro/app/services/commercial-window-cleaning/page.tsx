@@ -467,9 +467,9 @@ const CommercialWindowCleaning = () => {
 
             {/* REAL PROJECT CASE STUDY */}
             <CaseStudiesSection
-                slugs={["rockingham-toyota-dealership-high-reach-commercial-clean"]}
-                title="Featured Commercial Project: Rockingham Toyota"
-                subtitle="Flagship Commercial Showcase"
+                slugs={["grounded-office-window-cleaning-west-perth"]}
+                title="Featured Commercial Project: Grounded (West Perth)"
+                subtitle="Commercial Office Showcase"
                 limit={1}
             />
 

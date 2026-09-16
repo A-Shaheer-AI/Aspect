@@ -273,6 +273,16 @@ export default async function CaseStudyPage({ params }: { params: Promise<{ slug
                                         Residential Window Cleaning <ArrowRight className="w-3 h-3" aria-hidden="true" />
                                     </Link>
                                 )}
+                                {cs.serviceType.includes("Commercial Window Cleaning") && (
+                                    <Link href="/services/commercial-window-cleaning" className="inline-flex items-center gap-1 px-4 py-2 bg-white border border-gray-200 rounded-full text-sm font-medium text-brand-navy hover:border-action-gold hover:text-action-gold transition-colors">
+                                        Commercial Window Cleaning <ArrowRight className="w-3 h-3" aria-hidden="true" />
+                                    </Link>
+                                )}
+                                {cs.serviceType.includes("Office Window Cleaning") && (
+                                    <Link href="/commercial" className="inline-flex items-center gap-1 px-4 py-2 bg-white border border-gray-200 rounded-full text-sm font-medium text-brand-navy hover:border-action-gold hover:text-action-gold transition-colors">
+                                        Commercial Office Services <ArrowRight className="w-3 h-3" aria-hidden="true" />
+                                    </Link>
+                                )}
                                 {cs.serviceType.includes("Pre-Sale Cleaning") && (
                                     <Link href="/pricing" className="inline-flex items-center gap-1 px-4 py-2 bg-white border border-gray-200 rounded-full text-sm font-medium text-brand-navy hover:border-action-gold hover:text-action-gold transition-colors">
                                         View Our Pricing <ArrowRight className="w-3 h-3" aria-hidden="true" />
@@ -298,6 +308,24 @@ export default async function CaseStudyPage({ params }: { params: Promise<{ slug
                             <div className="bg-white rounded-2xl border border-gray-100 shadow-sm p-6">
                                 <h2 className="font-heading font-bold text-brand-navy text-lg mb-4">Job at a Glance</h2>
                                 <dl className="space-y-3 text-sm">
+                                    {cs.clientName && (
+                                        <div className="pb-3 border-b border-gray-100">
+                                            <dt className="text-gray-500 font-medium mb-1.5">Client</dt>
+                                            <dd className="flex flex-col gap-2">
+                                                {cs.clientLogo && (
+                                                    <div className="relative w-36 h-9 bg-slate-50 p-1 rounded-lg border border-slate-200">
+                                                        <Image
+                                                            src={cs.clientLogo}
+                                                            alt={cs.clientName}
+                                                            fill
+                                                            className="object-contain p-1"
+                                                        />
+                                                    </div>
+                                                )}
+                                                <span className="text-brand-navy font-semibold text-sm">{cs.clientName}</span>
+                                            </dd>
+                                        </div>
+                                    )}
                                     {cs.jobDetails.property && (
                                         <div>
                                             <dt className="text-gray-500 font-medium">Property</dt>

@@ -149,9 +149,9 @@ export default function CommercialPage() {
             {/* REAL COMMERCIAL CASE STUDY */}
             <div className="bg-white border-t border-slate-200">
                 <CaseStudiesSection
-                    slugs={["rockingham-toyota-dealership-high-reach-commercial-clean"]}
-                    title="Featured Commercial Project: Rockingham Toyota"
-                    subtitle="Commercial Portfolio"
+                    slugs={["grounded-office-window-cleaning-west-perth"]}
+                    title="Featured Commercial Project: Grounded (West Perth)"
+                    subtitle="Commercial Office Portfolio"
                     limit={1}
                 />
             </div>

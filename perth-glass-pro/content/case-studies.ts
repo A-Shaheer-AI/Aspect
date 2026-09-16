@@ -7,6 +7,8 @@ export type CaseStudy = {
   nearbySuburbs: string[]; // slugs of related location pages to show this study on
   thumbnail: string; // main image URL
   images?: string[]; // additional gallery images
+  clientLogo?: string; // optional client logo
+  clientName?: string; // optional client name
   excerpt: string;
   serviceType: string[];
   challenge: string;
@@ -392,5 +394,60 @@ export const caseStudies: CaseStudy[] = [
       }
     ],
     tags: ["pressure washing", "fremantle", "limestone pavers", "pool surround", "algae removal", "driveway cleaning", "heritage property"],
+  },
+  {
+    id: 8,
+    slug: "grounded-office-window-cleaning-west-perth",
+    title: "Urgent After-Hours Office Window Cleaning for Grounded Construction Group — 11 Harvest Terrace, West Perth",
+    date: "2026-09-12T09:00:00Z",
+    suburb: "West Perth",
+    nearbySuburbs: [
+      "west-perth", "perth", "subiaco", "leederville", "east-perth", "northbridge", "nedlands", "kings-park", "shenton-park", "highgate", "mount-lawley", "north-perth"
+    ],
+    thumbnail: "https://res.cloudinary.com/dr8tjrszy/image/upload/f_auto,q_auto,w_800/v1789575306/Grounded_Office_Window_Cleaning_after-hours_r9kc23.jpg",
+    clientLogo: "/brand/grounded-logo-dark.svg",
+    clientName: "Grounded Construction Group",
+    images: [],
+    excerpt: "When WA mining and civil infrastructure leader Grounded required urgent overnight window cleaning for their corporate headquarters at 11 Harvest Terrace in West Perth, Aspect mobilized an agile 3-man crew. Working carefully around sensitive IT hardware, monitors, and complex multi-pane architectural lattices under facility camera surveillance, we delivered spotless, streak-free clarity before morning staff arrived.",
+    serviceType: ["Commercial Window Cleaning", "Office Window Cleaning", "After-Hours Cleaning"],
+    challenge: "Grounded Construction Group contacted Aspect with an urgent, time-critical requirement: their corporate office on Harvest Terrace, West Perth needed a comprehensive window clean completed strictly overnight so the workspace would be 100% ready for business the next morning. The job presented several unique obstacles: 40 to 45 window sections featuring intricate architectural lattice assemblies, where a single long lattice frame contained up to 24 individual small square glass panes. Cleaning dozens of small individual panes requires intensive manual edging and detailed frame wipe-downs. Furthermore, because the glass bordered active staff workstations loaded with dual-monitor setups, desktop PCs, electrical cabling, and workers' personal belongings, our crew had to follow strict zero-drip protocols and exercise extreme care around all electronics.",
+    solution: "We deployed a dedicated 3-man commercial window cleaning crew to 11 Harvest Terrace that very evening. A Grounded staff member granted building access, and our team adhered to all security protocols under continuous facility CCTV surveillance, providing regular entry, progress, and departure updates to management. To protect computers, keyboards, and paperwork, we placed waterproof drop sheets across all desk areas and used controlled low-moisture microfibre applicators. With three technicians on site, two focused on the intricate interior lattice glass and detailed frame wipe-downs, while our third specialist washed the exterior glass panels.",
+    result: "The after-hours commercial clean was completed hours before staff arrived for work. All 40+ panels and intricate lattice panes were left streak-free and sparkling, with all frames and sills thoroughly cleaned. All computer hardware and personal belongings remained untouched, completely dry, and in pristine condition. Grounded management commended our rapid response, meticulous care around their equipment, and seamless security communication, securing Aspect for upcoming recurring commercial maintenance.",
+    jobDetails: {
+      crew: "3-man commercial specialist team",
+      duration: "Overnight turnaround (approx. 4.5 hours)",
+      property: "Corporate Mining Office (Level 4, 11 Harvest Terrace, West Perth)",
+      services: [
+        "Urgent overnight commercial window cleaning",
+        "Multi-pane lattice architectural glass detailing",
+        "Interior and exterior window pane washing",
+        "Window frame, mullion, and track deep wipe-down",
+        "Low-moisture protection for IT equipment & monitors",
+        "After-hours security access & surveillance compliance"
+      ],
+    },
+    sections: [
+      {
+        heading: "The Client & The Brief: Urgent Overnight Service in West Perth",
+        body: "Grounded Construction Group is one of Western Australia's premier infrastructure and civil engineering specialists, delivering large-scale non-process infrastructure, remote villages, and modular accommodation across the WA mining sector. Their corporate headquarters at 11 Harvest Terrace in West Perth serves as the central command hub for executive leadership and project management. When Grounded contacted Aspect Window Cleaning requiring urgent, overnight cleaning for their office floor on a strict deadline, we mobilized immediately. For busy corporate offices in prestigious business precincts like West Perth, daytime window cleaning is out of the question—it disrupts meetings, phone calls, and client consultations. Our mission was clear: enter after business hours, execute a comprehensive clean, and leave the workspace completely pristine before staff arrived the next morning."
+      },
+      {
+        heading: "Overcoming Complex Architectural Lattices & Small Glass Panes",
+        body: "Upon starting the clean, our initial estimate of 40 to 45 panels revealed a much more intricate architectural layout. Rather than large, standard floor-to-ceiling plate glass, several window sections were constructed with long multi-pane lattice dividers. Each lattice section was divided into grids of smaller cubes and squares—holding up to 24 individual miniature glass panes per partition. Cleaning dozens of small panes is significantly more labor-intensive than squeegeeing wide glass panels: every individual square requires precision hand blade work, microfibre edging, and meticulous corner detailing. Fortunately, because the glass was in relatively good baseline condition, and because we deployed an agile 3-man crew, we were able to absorb the unexpected intricacy. Two technicians methodically detailed the interior lattices and wiped down every aluminium mullion and sill, while our third specialist tackled the exterior elevations."
+      },
+      {
+        heading: "Meticulous Care Around Sensitive IT Equipment & Workstations",
+        body: "In a fast-paced mining and engineering office, every desk is packed with vital business technology: high-resolution dual monitors, desktop workstations, sensitive docking stations, and active paperwork. Cleaning interior glass directly above or behind computer terminals requires extreme discipline. Standard window cleaning tools can drip water onto desks and cause devastating electrical shorts. At Aspect, our commercial team followed strict zero-drip protocols: laying waterproof drop sheets over keyboards and towers, using controlled-damp applicator sleeves, and finishing edges with dry lint-free microfibre cloths. Not a single drop of cleaning solution reached any desk surface or electrical component, ensuring complete peace of mind for Grounded's IT and management teams."
+      },
+      {
+        heading: "Security Compliance, Building Access & Real-Time Communication",
+        body: "Commercial office towers in West Perth maintain strict facility security. We coordinated arrival directly with Grounded's staff member, who admitted our crew to the building. Knowing the premises were under 24/7 CCTV surveillance, our technicians maintained absolute professionalism throughout the night, wearing company uniforms and adhering to all site protocols. We also kept open lines of communication with our client contact—sending clear SMS confirmations upon entry, mid-shift progress updates, and final sign-off upon securing the building when leaving. That transparency, combined with a flawless finish across all 40+ windows and lattices, earned glowing praise from the Grounded team. They are already planning their next recurring commercial service with us."
+      },
+      {
+        heading: "Why West Perth Corporate Offices Rely on Aspect for Commercial Window Cleaning",
+        body: "From mining and engineering resource companies on Harvest Terrace, Kings Park Road, and Ord Street in West Perth to law firms in the Perth CBD and corporate offices in Subiaco, businesses rely on Aspect Window Cleaning for reliability, discretion, and quality. We carry comprehensive $20M public liability insurance, all technicians hold current police clearances, and we offer flexible out-of-hours scheduling (evenings, overnight, and weekends) so your office operations are never interrupted. Whether your premises feature multi-pane architectural lattices, glass partitions, shopfronts, or multi-storey external glass, Aspect delivers streak-free clarity every time. Contact our Perth commercial team today for a rapid, tailored commercial quote."
+      }
+    ],
+    tags: ["commercial window cleaning", "west perth", "office window cleaning", "after-hours cleaning", "grounded", "harvest terrace", "corporate cleaning", "lattice windows", "perth mining offices"],
   }
 ];
