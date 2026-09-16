@@ -37,6 +37,20 @@ export async function generateMetadata({ params }: { params: Promise<{ slug: str
     };
 }
 
+function getGalleryImageLabel(url: string, defaultLabel: string): string {
+    try {
+        const filename = url.split("/").pop()?.split(".")[0] || "";
+        const clean = decodeURIComponent(filename)
+            .replace(/_[a-z0-9]{6}$/i, "")
+            .replace(/[-_]/g, " ")
+            .trim();
+        if (!clean) return defaultLabel;
+        return clean.charAt(0).toUpperCase() + clean.slice(1);
+    } catch {
+        return defaultLabel;
+    }
+}
+
 export default async function CaseStudyPage({ params }: { params: Promise<{ slug: string }> }) {
     const { slug } = await params;
     const cs = caseStudies.find((c) => c.slug === slug);
@@ -232,19 +246,33 @@ export default async function CaseStudyPage({ params }: { params: Promise<{ slug
                         {/* Project Gallery */}
                         {cs.images && cs.images.length > 0 && (
                             <div className="mb-10">
-                                <h2 className="text-2xl font-heading font-bold text-brand-navy mb-6">Project Gallery</h2>
-                                <div className="grid grid-cols-2 md:grid-cols-3 gap-4">
-                                    {cs.images.map((img, idx) => (
-                                        <div key={idx} className="relative w-full aspect-square rounded-xl overflow-hidden bg-gray-100 border border-gray-200">
-                                            <Image
-                                                src={img}
-                                                alt={`${cs.title} - Gallery Image ${idx + 1}`}
-                                                fill
-                                                className="object-cover hover:scale-105 transition-transform duration-500"
-                                                sizes="(max-width: 768px) 50vw, 33vw"
-                                            />
-                                        </div>
-                                    ))}
+                                <div className="flex items-center justify-between mb-6">
+                                    <h2 className="text-2xl font-heading font-bold text-brand-navy">Project Gallery</h2>
+                                    <span className="text-xs font-semibold text-brand-slate bg-slate-100 px-3 py-1 rounded-full">
+                                        {cs.images.length} Photos
+                                    </span>
+                                </div>
+                                <div className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 gap-4">
+                                    {cs.images.map((img, idx) => {
+                                        const label = getGalleryImageLabel(img, `${cs.title} - Photo ${idx + 1}`);
+                                        return (
+                                            <div key={idx} className="group relative w-full aspect-[4/3] rounded-xl overflow-hidden bg-gray-100 border border-gray-200 shadow-sm hover:shadow-md transition-all duration-300">
+                                                <Image
+                                                    src={img}
+                                                    alt={`${label} — ${cs.title}`}
+                                                    fill
+                                                    className="object-cover group-hover:scale-105 transition-transform duration-500"
+                                                    sizes="(max-width: 640px) 100vw, (max-width: 1024px) 50vw, 33vw"
+                                                />
+                                                <div className="absolute inset-0 bg-gradient-to-t from-black/80 via-black/20 to-transparent opacity-80 group-hover:opacity-95 transition-opacity" />
+                                                <div className="absolute bottom-0 inset-x-0 p-3">
+                                                    <p className="text-white text-xs font-medium leading-snug drop-shadow-sm">
+                                                        {label}
+                                                    </p>
+                                                </div>
+                                            </div>
+                                        );
+                                    })}
                                 </div>
                             </div>
                         )}
