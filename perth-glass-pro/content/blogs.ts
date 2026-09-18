@@ -1,9 +1,9 @@
-type Section =
+export type Section =
   | { heading: string; body: string }
   | { heading: string; subsections: { heading: string; body: string }[] }
   | { heading: string; bullets: { label: string; body?: string }[]; note?: string }
 
-type BlogPost = {
+export type BlogPost = {
   id: number;
   title: string;
   slug: string;

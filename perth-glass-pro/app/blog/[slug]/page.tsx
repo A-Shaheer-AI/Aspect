@@ -5,52 +5,87 @@ import { notFound } from 'next/navigation';
 import { Calendar, ArrowLeft, ArrowRight } from 'lucide-react';
 import { format } from 'date-fns';
 import { SITE_URL } from '../../../lib/constants';
-import { blogs } from '@/content/blogs';
+import { getUnifiedBlogBySlug, getAllUnifiedBlogSlugs } from '@/lib/babylovegrowth';
+import { ArticleJsonLd } from '@/app/blog-daily/components/ArticleJsonLd';
+import { TagList } from '@/app/blog-daily/components/TagList';
+import '@/app/blog-daily/blog-content.css';
+
+export const revalidate = 86400;
 
 export async function generateStaticParams() {
-    return blogs.map((item) => ({
-        slug: item.slug
+    const slugs = await getAllUnifiedBlogSlugs();
+    return slugs.map((slug) => ({
+        slug,
     }));
 }
 
 export async function generateMetadata({ params }: { params: Promise<{ slug: string }> }): Promise<Metadata> {
     const { slug } = await params;
-    const post = blogs.find(blog => blog.slug === slug);
+    const result = await getUnifiedBlogBySlug(slug);
 
-    if (!post) {
+    if (!result) {
         return { title: 'Post Not Found' };
     }
 
+    if (result.source === 'local') {
+        const post = result.post;
+        return {
+            title: { absolute: `${post.title} | Aspect Window Cleaning` },
+            description: post.excerpt,
+            alternates: { canonical: `https://aspectwindowcleaning.com.au/blog/${slug}` },
+            openGraph: {
+                title: post.title,
+                description: post.excerpt,
+                type: 'article',
+                publishedTime: post.date,
+                authors: ['Aspect Window Cleaning'],
+                images: [{ url: post.thumbnail || '' }],
+            },
+        };
+    }
+
+    const article = result.article;
     return {
-        title: { absolute: `${post.title} | Aspect Window Cleaning` },
-        description: post.excerpt,
+        title: { absolute: `${article.title} | Aspect Window Cleaning` },
+        description: article.meta_description || article.excerpt,
         alternates: { canonical: `https://aspectwindowcleaning.com.au/blog/${slug}` },
         openGraph: {
-            title: post.title,
-            description: post.excerpt,
+            title: article.title,
+            description: article.meta_description || article.excerpt,
             type: 'article',
-            publishedTime: post.date,
+            publishedTime: article.created_at,
+            modifiedTime: article.updated_at,
             authors: ['Aspect Window Cleaning'],
-            images: [{ url: post.thumbnail || '' }],
+            images: article.hero_image_url ? [{ url: article.hero_image_url }] : [],
         },
     };
 }
 
 export default async function BlogPostPage({ params }: { params: Promise<{ slug: string }> }) {
     const { slug } = await params;
-    const post = blogs.find(blog => blog.slug === slug);
+    const result = await getUnifiedBlogBySlug(slug);
 
-    if (!post) {
+    if (!result) {
         notFound();
     }
 
-    const jsonLd = {
+    const isLocal = result.source === 'local';
+    const post = isLocal ? result.post : null;
+    const article = !isLocal ? result.article : null;
+
+    const title = isLocal ? post!.title : article!.title;
+    const thumbnail = isLocal ? post!.thumbnail : (article!.hero_image_url || '');
+    const date = isLocal ? post!.date : article!.created_at;
+    const parsedDate = new Date(date);
+    const formattedDate = !isNaN(parsedDate.getTime()) ? format(parsedDate, 'MMMM d, yyyy') : '';
+
+    const localJsonLd = isLocal ? {
         '@context': 'https://schema.org',
         '@type': 'BlogPosting',
-        headline: post.title,
-        image: post.thumbnail ? [post.thumbnail] : [],
-        datePublished: post.date,
-        dateModified: post.date,
+        headline: post!.title,
+        image: post!.thumbnail ? [post!.thumbnail] : [],
+        datePublished: post!.date,
+        dateModified: post!.date,
         mainEntityOfPage: {
             '@type': 'WebPage',
             '@id': `https://aspectwindowcleaning.com.au/blog/${slug}`,
@@ -69,10 +104,9 @@ export default async function BlogPostPage({ params }: { params: Promise<{ slug:
                 url: 'https://aspectwindowcleaning.com.au/brand/white-logo.png',
             },
         },
-        description: post.excerpt,
-    };
+        description: post!.excerpt,
+    } : null;
 
-    
     const breadcrumbSchema = {
         '@context': 'https://schema.org',
         '@type': 'BreadcrumbList',
@@ -92,7 +126,7 @@ export default async function BlogPostPage({ params }: { params: Promise<{ slug:
             {
                 '@type': 'ListItem',
                 position: 3,
-                name: post.title,
+                name: title,
                 item: `https://aspectwindowcleaning.com.au/blog/${slug}`,
             },
         ],
@@ -100,10 +134,18 @@ export default async function BlogPostPage({ params }: { params: Promise<{ slug:
 
     return (
         <article className="min-h-screen bg-white">
-            <script
-                type="application/ld+json"
-                dangerouslySetInnerHTML={{ __html: JSON.stringify(jsonLd) }}
-            />
+            {isLocal && localJsonLd && (
+                <script
+                    type="application/ld+json"
+                    dangerouslySetInnerHTML={{ __html: JSON.stringify(localJsonLd) }}
+                />
+            )}
+            {!isLocal && article && (
+                <>
+                    <ArticleJsonLd data={article.jsonLd} />
+                    <ArticleJsonLd data={article.faqJsonLd} />
+                </>
+            )}
             <script
                 type="application/ld+json"
                 dangerouslySetInnerHTML={{ __html: JSON.stringify(breadcrumbSchema) }}
@@ -111,10 +153,10 @@ export default async function BlogPostPage({ params }: { params: Promise<{ slug:
 
             {/* Header Image */}
             <div className="relative min-h-[280px] sm:min-h-[340px] h-[40vh] md:h-[50vh] bg-brand-navy">
-                {post.thumbnail ? (
+                {thumbnail ? (
                     <Image
-                        src={post.thumbnail}
-                        alt={post.title}
+                        src={thumbnail}
+                        alt={title}
                         fill
                         unoptimized={true}
                         sizes="100vw"
@@ -128,83 +170,106 @@ export default async function BlogPostPage({ params }: { params: Promise<{ slug:
 
                 <div className="absolute bottom-0 left-0 right-0 p-4 pb-8 sm:pb-12">
                     <div className="max-w-3xl mx-auto">
+                        <Link
+                            href="/blog"
+                            className="inline-flex items-center gap-1 text-xs sm:text-sm font-semibold text-action-gold hover:underline mb-3 sm:mb-4"
+                        >
+                            <ArrowLeft className="w-4 h-4" /> All Cleaning Guides
+                        </Link>
                         <h1 className="text-2xl sm:text-3xl md:text-5xl font-heading font-bold text-white mb-3 sm:mb-4 leading-tight">
-                            {post.title}
+                            {title}
                         </h1>
-                        <div className="flex items-center gap-2 text-white/80 text-xs sm:text-sm">
-                            <Calendar className="w-4 h-4 text-action-gold" />
-                            <time dateTime={post.date}>
-                                {format(new Date(post.date), 'MMMM d, yyyy')}
-                            </time>
-                        </div>
+                        {formattedDate && (
+                            <div className="flex items-center gap-2 text-white/80 text-xs sm:text-sm">
+                                <Calendar className="w-4 h-4 text-action-gold" />
+                                <time dateTime={date}>
+                                    {formattedDate}
+                                </time>
+                            </div>
+                        )}
                     </div>
                 </div>
             </div>
 
             {/* Content Body */}
             <div className="max-w-3xl mx-auto px-4 py-16 space-y-10">
-
-                {/* Intro */}
-                {post.intro && (
-                    <p className="text-lg text-slate-700 leading-relaxed" dangerouslySetInnerHTML={{ __html: post.intro as string }}></p>
-                )}
-
-                {/* Sections */}
-                {post.sections?.map((section, i) => (
-                    <div key={i} className="space-y-4">
-                        <h2 className="text-2xl font-heading font-bold text-brand-navy">
-                            {section.heading}
-                        </h2>
-
-                        {"body" in section && section.body && (
-                            <p className="text-slate-700 leading-relaxed" dangerouslySetInnerHTML={{ __html: section.body as string }}></p>
+                {isLocal && post && (
+                    <>
+                        {/* Intro */}
+                        {post.intro && (
+                            <p className="text-lg text-slate-700 leading-relaxed" dangerouslySetInnerHTML={{ __html: post.intro as string }}></p>
                         )}
 
-                        {/* Subsections (e.g. Benefits) */}
-                        {"subsections" in section && section.subsections && (
-                            <div className="space-y-4 mt-2">
-                                {section.subsections.map((sub, j) => (
-                                    <div key={j} className="pl-4 border-l-4 border-action-gold">
-                                        <h3 className="text-lg font-semibold text-brand-navy mb-1">
-                                            {sub.heading}
-                                        </h3>
-                                        <p className="text-slate-700 leading-relaxed" dangerouslySetInnerHTML={{ __html: sub.body as string }}></p>
+                        {/* Sections */}
+                        {post.sections?.map((section, i) => (
+                            <div key={i} className="space-y-4">
+                                <h2 className="text-2xl font-heading font-bold text-brand-navy">
+                                    {section.heading}
+                                </h2>
+
+                                {"body" in section && section.body && (
+                                    <p className="text-slate-700 leading-relaxed" dangerouslySetInnerHTML={{ __html: section.body as string }}></p>
+                                )}
+
+                                {/* Subsections (e.g. Benefits) */}
+                                {"subsections" in section && section.subsections && (
+                                    <div className="space-y-4 mt-2">
+                                        {section.subsections.map((sub, j) => (
+                                            <div key={j} className="pl-4 border-l-4 border-action-gold">
+                                                <h3 className="text-lg font-semibold text-brand-navy mb-1">
+                                                    {sub.heading}
+                                                </h3>
+                                                <p className="text-slate-700 leading-relaxed" dangerouslySetInnerHTML={{ __html: sub.body as string }}></p>
+                                            </div>
+                                        ))}
                                     </div>
-                                ))}
+                                )}
+
+                                {/* Bullet list */}
+                                {'bullets' in section && section.bullets && (
+                                    <ul className="space-y-2 mt-2">
+                                        {section.bullets.map((bullet, k) => (
+                                            <li key={k} className="flex gap-2 text-slate-700">
+                                                <span className="mt-1.5 w-2 h-2 rounded-full bg-action-gold flex-shrink-0" />
+                                                <span>
+                                                    {bullet.label && (
+                                                        <span className="font-semibold text-brand-navy">
+                                                            {bullet.label}{bullet.body ? ': ' : ''}
+                                                        </span>
+                                                    )}
+                                                    {bullet.body && <span dangerouslySetInnerHTML={{ __html: bullet.body as string }} />}
+                                                </span>
+                                            </li>
+                                        ))}
+                                    </ul>
+                                )}
+
+                                {/* Note */}
+                                {"note" in section && section.note && (
+                                    <p className="text-sm text-slate-500 italic mt-2">{section.note}</p>
+                                )}
+                            </div>
+                        ))}
+
+                        {/* Conclusion */}
+                        {post.conclusion && (
+                            <div className="bg-slate-50 border border-slate-200 rounded-xl p-6">
+                                <p className="text-slate-700 leading-relaxed" dangerouslySetInnerHTML={{ __html: post.conclusion as string }}></p>
                             </div>
                         )}
+                    </>
+                )}
 
-                        {/* Bullet list */}
-                        {'bullets' in section && section.bullets && (
-                            <ul className="space-y-2 mt-2">
-                                {section.bullets.map((bullet, k) => (
-                                    <li key={k} className="flex gap-2 text-slate-700">
-                                        <span className="mt-1.5 w-2 h-2 rounded-full bg-action-gold flex-shrink-0" />
-                                        <span>
-                                            {bullet.label && (
-                                                <span className="font-semibold text-brand-navy">
-                                                    {bullet.label}{bullet.body ? ': ' : ''}
-                                                </span>
-                                            )}
-                                            {bullet.body && <span dangerouslySetInnerHTML={{ __html: bullet.body as string }} />}
-                                        </span>
-                                    </li>
-                                ))}
-                            </ul>
-                        )}
-
-                        {/* Note */}
-                        {"note" in section && section.note && (
-                            <p className="text-sm text-slate-500 italic mt-2">{section.note}</p>
-                        )}
-                    </div>
-                ))}
-
-                {/* Conclusion */}
-                {post.conclusion && (
-                    <div className="bg-slate-50 border border-slate-200 rounded-xl p-6">
-                        <p className="text-slate-700 leading-relaxed" dangerouslySetInnerHTML={{ __html: post.conclusion as string }}></p>
-                    </div>
+                {!isLocal && article && (
+                    <>
+                        <div
+                            className="blog-content"
+                            dangerouslySetInnerHTML={{ __html: article.content_html }}
+                        />
+                        <footer className="mt-10 border-t border-slate-200 pt-6">
+                            <TagList keywords={[article.seedKeyword ?? '', ...article.keywords]} />
+                        </footer>
+                    </>
                 )}
 
                 {/* Helpful Next Steps & Interlinking */}
