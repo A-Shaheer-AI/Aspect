@@ -4,6 +4,7 @@ import React, { useState } from 'react'
 import Link from 'next/link';
 import { sendLeadEmail } from '../actions/send-email';
 import TrustGrid from '@/components/TrustGrid';
+import { BUSINESS } from '@/lib/config';
 
 type FormData = { name: string; email: string; phone: string; suburb: string }
 type FormStatus = 'idle' | 'loading' | 'success' | 'error'
@@ -60,45 +61,60 @@ const ContactPage = () => {
             Aspect Window Cleaning delivers spotless results every time. Our trained team uses professional-grade equipment to bring clarity and shine to every pane - residential or commercial.
           </p>
 
-          <div className="flex flex-col gap-5">
+          <div className="flex flex-col gap-4">
             {[
               {
                 label: 'Phone',
-                value: '0426 996 192',
+                value: BUSINESS.phone,
+                subtext: 'Click to call directly',
+                href: `tel:${BUSINESS.phoneRaw}`,
+                isExternal: false,
                 icon: (
-                  <svg viewBox="0 0 24 24" className="w-5 h-5 fill-[#ffea68]">
+                  <svg viewBox="0 0 24 24" className="w-5 h-5 fill-[#ffea68]" aria-hidden="true">
                     <path d="M6.6 10.8c1.4 2.8 3.8 5.1 6.6 6.6l2.2-2.2c.3-.3.7-.4 1-.2 1.1.4 2.3.6 3.6.6.6 0 1 .4 1 1V20c0 .6-.4 1-1 1-9.4 0-17-7.6-17-17 0-.6.4-1 1-1h3.5c.6 0 1 .4 1 1 0 1.3.2 2.5.6 3.6.1.3 0 .7-.2 1l-2.3 2.2z" />
                   </svg>
                 ),
               },
               {
                 label: 'Email',
-                value: 'info@aspectwindowcleaning.com.au',
+                value: BUSINESS.email,
+                subtext: 'Click to send an email',
+                href: `mailto:${BUSINESS.email}`,
+                isExternal: false,
                 icon: (
-                  <svg viewBox="0 0 24 24" className="w-5 h-5 fill-[#ffea68]">
+                  <svg viewBox="0 0 24 24" className="w-5 h-5 fill-[#ffea68]" aria-hidden="true">
                     <path d="M20 4H4c-1.1 0-2 .9-2 2v12c0 1.1.9 2 2 2h16c1.1 0 2-.9 2-2V6c0-1.1-.9-2-2-2zm0 4l-8 5-8-5V6l8 5 8-5v2z" />
                   </svg>
                 ),
               },
               {
                 label: 'Service Area',
-                value: '183 Stirling Hwy, Nedlands WA 6009',
+                value: BUSINESS.location,
+                subtext: 'View on Google Maps & See 5★ Reviews',
+                href: BUSINESS.google,
+                isExternal: true,
                 icon: (
-                  <svg viewBox="0 0 24 24" className="w-5 h-5 fill-[#ffea68]">
+                  <svg viewBox="0 0 24 24" className="w-5 h-5 fill-[#ffea68]" aria-hidden="true">
                     <path d="M12 2C8.13 2 5 5.13 5 9c0 5.25 7 13 7 13s7-7.75 7-13c0-3.87-3.13-7-7-7zm0 9.5c-1.38 0-2.5-1.12-2.5-2.5S10.62 6.5 12 6.5s2.5 1.12 2.5 2.5S13.38 11.5 12 11.5z" />
                   </svg>
                 ),
               },
             ].map(item => (
-              <div key={item.label} className="flex items-start gap-4">
-                <div className="w-10 h-10 bg-[#000080] rounded-lg flex items-center justify-center shrink-0">
+              <a
+                key={item.label}
+                href={item.href}
+                {...(item.isExternal ? { target: '_blank', rel: 'noopener noreferrer' } : {})}
+                className="group flex items-start gap-4 p-3 -mx-3 rounded-xl hover:bg-white hover:shadow-sm border border-transparent hover:border-gray-200/80 transition-all duration-200"
+              >
+                <div className="w-10 h-10 bg-[#000080] group-hover:bg-[#0000a8] rounded-lg flex items-center justify-center shrink-0 transition-colors shadow-sm">
                   {item.icon}
                 </div>
-                <div>
-                  <p className="text-[10px] font-semibold tracking-[2px] uppercase text-gray-400 mb-0.5">{item.label}</p>
-                  <p className="text-[#000080] font-semibold text-sm">{item.value}</p>
+                <div className="min-w-0 flex-1">
+                  <p className="text-[10px] font-semibold tracking-[2px] uppercase text-gray-400 mb-0.5 group-hover:text-[#000080] transition-colors">{item.label}</p>
+                  <p className="text-[#000080] font-semibold text-sm group-hover:text-action-gold transition-colors break-words">{item.value}</p>
+                  <p className="text-[11px] text-gray-400 group-hover:text-gray-600 transition-colors mt-0.5">{item.subtext}</p>
                 </div>
-              </div>
+              </a>
             ))}
           </div>
 
@@ -168,7 +184,7 @@ const ContactPage = () => {
             )}
             {status === 'error' && (
               <p className="mt-4 py-3 px-4 bg-red-50 text-red-700 text-sm font-medium rounded-lg text-center">
-                Something went wrong. Please try again or call us directly.
+                Something went wrong. Please try again or <a href={`tel:${BUSINESS.phoneRaw}`} className="underline font-bold hover:text-red-900">call us directly at {BUSINESS.phone}</a>.
               </p>
             )}
 
