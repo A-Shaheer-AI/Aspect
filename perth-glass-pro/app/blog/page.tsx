@@ -2,9 +2,10 @@ import { Metadata } from "next";
 import Image from "next/image";
 import Link from "next/link";
 import { Calendar, ArrowRight } from "lucide-react";
-import { getAllPosts } from "@/lib/blog";
 import { format } from "date-fns";
-import { blogs } from "@/content/blogs";
+import { getAllUnifiedBlogs } from "@/lib/babylovegrowth";
+
+export const revalidate = 86400;
 
 export const metadata: Metadata = {
     title: { absolute: "Window Cleaning Tips & Guides | Aspect Window Cleaning" },
@@ -12,9 +13,8 @@ export const metadata: Metadata = {
     alternates: { canonical: "https://aspectwindowcleaning.com.au/blog" }
 };
 
-export default function BlogListingPage() {
-    // const posts = getAllPosts();
-    const posts = blogs;
+export default async function BlogListingPage() {
+    const posts = await getAllUnifiedBlogs();
 
     const blogSchema = {
         "@context": "https://schema.org",
@@ -50,48 +50,54 @@ export default function BlogListingPage() {
             <section className="py-10 sm:py-16 px-4">
                 <div className="max-w-7xl mx-auto grid md:grid-cols-2 lg:grid-cols-3 gap-6 sm:gap-8">
                     {posts.length > 0 ? (
-                        posts.map((post) => (
-                            <Link
-                                key={post.title}
-                                href={`/blog/${post.slug}`}
-                                className="group bg-white rounded-2xl overflow-hidden shadow-sm hover:shadow-xl transition-all duration-300 border border-slate-100 flex flex-col h-full"
-                            >
-                                {/* Thumbnail */}
-                                <div className="relative aspect-video bg-slate-100 overflow-hidden">
-                                    {post.thumbnail ? (
-                                        <Image
-                                            src={post.thumbnail}
-                                            alt={post.title}
-                                            fill
-                                            unoptimized={true}
-                                            sizes="(max-width: 768px) 100vw, (max-width: 1200px) 50vw, 33vw"
-                                            className="object-cover group-hover:scale-105 transition-transform duration-500"
-                                        />
-                                    ) : (
-                                        <div className="w-full h-full flex items-center justify-center text-brand-slate/30">
-                                            No Image
-                                        </div>
-                                    )}
-                                </div>
-
-                                {/* Content */}
-                                <div className="p-5 sm:p-6 flex flex-col flex-grow">
-                                    <div className="flex items-center gap-2 text-sm text-brand-slate mb-3">
-                                        <Calendar className="w-4 h-4 text-action-gold" />
-                                        <span>{format(new Date(post.date), 'MMMM d, yyyy')}</span>
+                        posts.map((post) => {
+                            const postDate = new Date(post.date);
+                            const formattedDate = !isNaN(postDate.getTime()) ? format(postDate, 'MMMM d, yyyy') : '';
+                            return (
+                                <Link
+                                    key={post.slug}
+                                    href={`/blog/${post.slug}`}
+                                    className="group bg-white rounded-2xl overflow-hidden shadow-sm hover:shadow-xl transition-all duration-300 border border-slate-100 flex flex-col h-full"
+                                >
+                                    {/* Thumbnail */}
+                                    <div className="relative aspect-video bg-slate-100 overflow-hidden">
+                                        {post.thumbnail ? (
+                                            <Image
+                                                src={post.thumbnail}
+                                                alt={post.title}
+                                                fill
+                                                unoptimized={true}
+                                                sizes="(max-width: 768px) 100vw, (max-width: 1200px) 50vw, 33vw"
+                                                className="object-cover group-hover:scale-105 transition-transform duration-500"
+                                            />
+                                        ) : (
+                                            <div className="w-full h-full flex items-center justify-center text-brand-slate/30">
+                                                No Image
+                                            </div>
+                                        )}
                                     </div>
-                                    <h2 className="text-xl font-heading font-bold text-brand-navy mb-3 group-hover:text-action-gold transition-colors line-clamp-2">
-                                        {post.title}
-                                    </h2>
-                                    <p className="text-brand-slate line-clamp-3 mb-6 flex-grow">
-                                        {post.excerpt.replace(/<[^>]+>/g, '')}
-                                    </p>
-                                    <span className="inline-flex items-center gap-2 text-brand-navy font-bold text-sm group-hover:translate-x-1 transition-transform">
-                                        Read Article <ArrowRight className="w-4 h-4 text-action-gold" />
-                                    </span>
-                                </div>
-                            </Link>
-                        ))
+
+                                    {/* Content */}
+                                    <div className="p-5 sm:p-6 flex flex-col flex-grow">
+                                        {formattedDate && (
+                                            <div className="flex items-center gap-2 text-sm text-brand-slate mb-3">
+                                                <Calendar className="w-4 h-4 text-action-gold" />
+                                                <span>{formattedDate}</span>
+                                            </div>
+                                        )}
+                                        <h2 className="text-xl font-heading font-bold text-brand-navy mb-3 group-hover:text-action-gold transition-colors line-clamp-2">
+                                            {post.title}
+                                        </h2>
+                                        <p className="text-brand-slate line-clamp-3 mb-6 flex-grow">
+                                            {(post.excerpt || '').replace(/<[^>]+>/g, '')}
+                                        </p>
+                                        <span className="inline-flex items-center gap-2 text-brand-navy font-bold text-sm group-hover:translate-x-1 transition-transform">
+                                            Read Article <ArrowRight className="w-4 h-4 text-action-gold" />
+                                        </span>
+                                    </div>
+                                </Link>
+                            );
+                        })
                     ) : (
                         <div className="col-span-full text-center py-20">
                             <p className="text-brand-slate text-lg">No posts found yet. Check back soon!</p>
