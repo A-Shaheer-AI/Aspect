@@ -9,12 +9,16 @@ const nextConfig: NextConfig = {
         remotePatterns: [
             {
                 protocol: "https",
-                hostname: "**",
+                hostname: "*",
             },
             {
                 protocol: "https",
                 hostname: "res.cloudinary.com",
                 pathname: "/**",
+            },
+            {
+                protocol: "https",
+                hostname: "**.babylovegrowth.ai",
             },
         ],
     },
