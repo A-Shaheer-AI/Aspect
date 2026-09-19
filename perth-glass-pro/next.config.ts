@@ -3,6 +3,7 @@ if (!process.env.NODE_OPTIONS?.includes('--max-old-space-size')) {
 }
 
 import type { NextConfig } from "next";
+import { withOpinlyConfig } from "@opinly/next";
 
 const nextConfig: NextConfig = {
     images: {
@@ -121,4 +122,10 @@ const nextConfig: NextConfig = {
     }
 };
 
-export default nextConfig;
+export default withOpinlyConfig({
+    blogPath: '/blog',
+    imagesPath: '/images',
+    companyName: 'Aspect Window Cleaning',
+    cdnNamespace: 'ilGRqUw5shCGM2jPUvhHH',
+    siteUrl: 'https://aspectwindowcleaning.com.au',
+})(nextConfig);

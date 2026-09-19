@@ -5,6 +5,7 @@ import Link from 'next/link';
 import { sendLeadEmail } from '../actions/send-email';
 import TrustGrid from '@/components/TrustGrid';
 import { BUSINESS } from '@/lib/config';
+import { getOpinlyAnonId, identifyOpinly } from '@/lib/opinly-client';
 
 type FormData = { name: string; email: string; phone: string; suburb: string }
 type FormStatus = 'idle' | 'loading' | 'success' | 'error'
@@ -22,11 +23,15 @@ const ContactPage = () => {
     if (!formData.name || !formData.phone || !formData.email || !formData.suburb) return
     setStatus('loading')
     try {
+      if (formData.email) {
+        identifyOpinly(formData.email)
+      }
       const result = await sendLeadEmail({
         name: formData.name, email: formData.email,
         phone: formData.phone,
         suburb: formData.suburb,
-        sourceUrl: window.location.href
+        sourceUrl: window.location.href,
+        anonId: getOpinlyAnonId(),
       })
       setStatus(result.success || (formData.name && formData.phone) ? 'success' : 'error')
     } catch {

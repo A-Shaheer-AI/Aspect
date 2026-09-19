@@ -8,6 +8,7 @@ import { addDays, isBefore, startOfToday } from "date-fns";
 import { ALL_SUBURBS } from "@/lib/suburbs";
 import { sendLeadEmail } from "@/app/actions/send-email";
 import { CAL_LINK } from "@/lib/config";
+import { getOpinlyAnonId, identifyOpinly } from "@/lib/opinly-client";
 
 // --- Math Engine Constants ---
 const PRICING = {
@@ -165,6 +166,7 @@ export default function ResidentialEstimator() {
                 name: formData.name,
                 phone: formData.phone,
                 suburb: formData.suburb,
+                anonId: getOpinlyAnonId(),
             });
             if (result.success) {
                 console.log("successfully submited!")
@@ -189,6 +191,7 @@ export default function ResidentialEstimator() {
                 isUrgent,
                 flexibleNotes: formData.flexibleNotes,
                 serviceType: "Residential Window Cleaning",
+                anonId: getOpinlyAnonId(),
             });
             if (result.success) {
                 console.log("successfully submited form")
@@ -226,6 +229,7 @@ export default function ResidentialEstimator() {
                 isUrgent,
                 flexibleNotes: formData.flexibleNotes,
                 serviceType: "Residential Window Cleaning",
+                anonId: getOpinlyAnonId(),
             });
 
             if (result.success) {
