@@ -403,6 +403,78 @@ function InclusionCard({
 }
 
 /* 
+   SCROLL-TRIGGERED AUTOPLAY VIDEO
+   - Automatically plays when scrolled into view (25%+ visible)
+   - Automatically pauses when scrolled out of view to save resources
+   - Plays inline, muted, and loops with controls for user interaction
+*/
+function ScrollAutoplayVideo({
+    src,
+    type = "video/mp4",
+    className = "h-full w-full object-cover",
+}: {
+    src: string;
+    type?: string;
+    className?: string;
+}) {
+    const videoRef = useRef<HTMLVideoElement>(null);
+
+    useEffect(() => {
+        const video = videoRef.current;
+        if (!video) return;
+
+        // Guarantee muted & inline playback for iOS Safari and mobile WebKit
+        video.muted = true;
+        video.playsInline = true;
+        video.setAttribute("playsinline", "true");
+        video.setAttribute("webkit-playsinline", "true");
+
+        const observer = new IntersectionObserver(
+            (entries) => {
+                entries.forEach((entry) => {
+                    if (entry.isIntersecting) {
+                        const playPromise = video.play();
+                        if (playPromise !== undefined) {
+                            playPromise.catch((err) => {
+                                if (err.name === "NotAllowedError") {
+                                    video.muted = true;
+                                    video.play().catch(() => {});
+                                }
+                            });
+                        }
+                    } else {
+                        video.pause();
+                    }
+                });
+            },
+            {
+                threshold: 0.25,
+            }
+        );
+
+        observer.observe(video);
+
+        return () => {
+            observer.disconnect();
+        };
+    }, []);
+
+    return (
+        <video
+            ref={videoRef}
+            className={className}
+            controls
+            muted
+            playsInline
+            loop
+            preload="metadata"
+        >
+            <source src={src} type={type} />
+        </video>
+    );
+}
+
+/* 
    PAGE
  */
 function FreeTrialForm() {
@@ -822,9 +894,10 @@ export default function WindowCleaningAdsPage() {
                 </div>
                 <div className="mx-auto max-w-4xl">
                     <div className="mb-4 overflow-hidden rounded-2xl" style={{ height: 380 }}>
-                        <video className="h-full w-full object-cover" controls preload="none">
-                            <source src="/media/video/upload/q_auto:eco,w_800,vc_auto/v1772968701/VID-20260228-WA0016_xsz3cm_401388.mp4" type="video/mp4" />
-                        </video>
+                        <ScrollAutoplayVideo
+                            src="/media/video/upload/q_auto:eco,w_800,vc_auto/v1772968701/VID-20260228-WA0016_xsz3cm_401388.mp4"
+                            type="video/mp4"
+                        />
                     </div>
                     <div className="grid grid-cols-1 gap-4 lg:grid-cols-2">
                         <BeforeAfterSlider
