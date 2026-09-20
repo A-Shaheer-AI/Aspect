@@ -898,7 +898,7 @@ export default function WindowCleaningAdsPage() {
                         { src: "/assets/images/clients/richard-group-logo.png", alt: "Richard Group" },
                         { src: "/assets/images/clients/bespoke-logo.png", alt: "Bespoke" },
                     ].map((logo) => (
-                        <div key={logo.alt} className="relative h-13 w-28 grayscale transition duration-300 hover:grayscale-0">
+                        <div key={logo.alt} className="relative h-13 w-28 grayscale-0 md:grayscale transition duration-300 md:hover:grayscale-0">
                             <Image
                                 src={logo.src}
                                 alt={logo.alt}
