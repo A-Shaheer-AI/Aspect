@@ -2,7 +2,8 @@
 
 import { useState, useEffect, useRef } from "react";
 import { openCertificateModal } from "@/components/CertificateModalWrapper";
-import { Phone, CheckCircle2, Star, Shield, Droplets, Zap, Building2, X, Tag, ChevronLeft, ChevronRight, Camera, Check, ArrowRight, Sparkles } from "lucide-react";
+import { Phone, CheckCircle2, Star, Shield, Droplets, Zap, Building2, X, Tag, ChevronLeft, ChevronRight, Camera, Check, ArrowRight, ArrowDown, Sparkles } from "lucide-react";
+import { motion, useScroll, useTransform } from "framer-motion";
 import { BUSINESS } from "@/lib/config";
 import { useGmb } from "@/components/GmbProvider";
 import Link from "next/link";
@@ -304,20 +305,102 @@ const whatsInclude: InclusionItem[] = [
         ],
         img: "/gallery/gallery-5.jpeg",
     },
-    {
-        title: "Streak-Free Polish",
-        description:
-            "Every pane is finished with a professional streak-free polish — ensuring your glass looks flawless in all lighting conditions.",
-        detail:
-            "Windows that seem clean in the shade can reveal distracting swirl marks as soon as direct Perth afternoon sunlight strikes the pane. Our team inspects each pane across multiple lighting angles and hand-buffs edges with lint-free microfibres.",
-        benefits: [
-            "Crystal-clear results even under harsh afternoon sunlight",
-            "Multi-angle quality inspection before leaving your property",
-            "Backed by our 100% satisfaction re-clean guarantee",
-        ],
-        img: "/gallery/gallery-6.jpeg",
-    },
 ];
+
+/* 
+   WHAT'S INCLUDED CARD COMPONENT
+   - Compact overlay layout on mobile where text sits directly on the lower part of the photo
+   - Scroll-driven reveal: text smoothly translates from bottom to top over the image as you scroll
+   - Inspect Feature pill on top right, redundant click-to-view footer removed
+*/
+function InclusionCard({
+    item,
+    onSelect,
+}: {
+    item: InclusionItem;
+    onSelect: () => void;
+}) {
+    const cardRef = useRef<HTMLDivElement>(null);
+    const { scrollYProgress } = useScroll({
+        target: cardRef,
+        offset: ["start end", "center center"],
+    });
+
+    // Mobile scroll-driven text reveal: text starts lower and rises up from bottom to top as you scroll into the card
+    const textY = useTransform(scrollYProgress, [0, 0.75], [26, 0]);
+    const textOpacity = useTransform(scrollYProgress, [0, 0.5], [0.35, 1]);
+    const scrimOpacity = useTransform(scrollYProgress, [0, 0.5], [0.5, 0.95]);
+
+    return (
+        <div
+            ref={cardRef}
+            onClick={onSelect}
+            role="button"
+            tabIndex={0}
+            onKeyDown={(e) => {
+                if (e.key === "Enter" || e.key === " ") {
+                    e.preventDefault();
+                    onSelect();
+                }
+            }}
+            aria-label={`View details for ${item.title}`}
+            className="w-full md:w-[calc(50%-12px)] lg:w-[calc(33.333%-16px)] flex flex-col rounded-2xl bg-white border border-gray-200/90 shadow-sm hover:shadow-2xl hover:-translate-y-1.5 transition-all duration-300 overflow-hidden group cursor-pointer text-left select-none ring-1 ring-transparent hover:ring-action-gold/50 relative h-48 sm:h-52 md:h-auto"
+        >
+            {/* Visual Media Header / Mobile Background */}
+            <div className="absolute inset-0 w-full h-full md:relative md:h-48 bg-gray-100 flex-shrink-0 overflow-hidden">
+                <Image
+                    src={item.img}
+                    alt={item.title}
+                    fill
+                    sizes="(max-width: 768px) 100vw, 33vw"
+                    className="object-cover group-hover:scale-105 transition-transform duration-500"
+                />
+
+                {/* Desktop hover gradient */}
+                <div className="hidden md:block absolute inset-0 bg-gradient-to-t from-black/40 via-transparent to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-300" />
+
+                {/* Inspect Feature Pill - Kept cleanly at top right */}
+                <div
+                    className="absolute top-2.5 right-2.5 md:top-3 md:right-3 bg-white/95 backdrop-blur-sm px-2.5 py-1 md:px-3 md:py-1 rounded-full text-[11px] md:text-xs font-bold text-brand-navy shadow-md group-hover:bg-action-gold transition-colors flex items-center gap-1.5 z-20"
+                    style={{ backgroundColor: "rgba(255,255,255,0.95)", WebkitBackdropFilter: "blur(4px)" }}
+                >
+                    <span>Inspect Feature</span>
+                    <ArrowRight className="w-3 h-3 group-hover:translate-x-0.5 transition-transform" />
+                </div>
+            </div>
+
+            {/* Mobile View: Text sits over the lower half of the image and smoothly rises from bottom to top as you scroll */}
+            <motion.div
+                style={{ y: textY, opacity: textOpacity }}
+                className="md:hidden absolute inset-x-0 bottom-0 z-10 p-3.5 sm:p-4 flex flex-col justify-end"
+            >
+                {/* Dynamic dark gradient scrim under the text */}
+                <motion.div
+                    style={{ opacity: scrimOpacity }}
+                    className="absolute inset-0 bg-gradient-to-t from-[#07077E] via-[#07077E]/85 via-50% to-transparent -z-10 pointer-events-none"
+                />
+                <h3 className="font-bold text-base sm:text-lg text-white group-hover:text-action-gold transition-colors mb-1 leading-tight drop-shadow-sm">
+                    {item.title}
+                </h3>
+                <p className="text-xs sm:text-sm leading-snug text-white/90 font-normal line-clamp-2 drop-shadow-sm">
+                    {item.description}
+                </p>
+            </motion.div>
+
+            {/* Desktop View: Clean text body under image */}
+            <div className="hidden md:flex p-5 flex-col gap-2 flex-1 justify-between bg-white z-10">
+                <div>
+                    <h3 className="font-bold text-lg text-brand-navy group-hover:text-action-gold transition-colors mb-1">
+                        {item.title}
+                    </h3>
+                    <p className="text-sm leading-relaxed text-gray-600 font-normal">
+                        {item.description}
+                    </p>
+                </div>
+            </div>
+        </div>
+    );
+}
 
 /* 
    PAGE
@@ -759,66 +842,37 @@ export default function WindowCleaningAdsPage() {
             </section>
 
             
-{/* 🔹🔹🔹 SECTION 6.5: WHAT'S INCLUDED  🔹🔹🔹 */}
-            <section className="py-16 bg-gray-50 px-5">
+            {/* 🔹🔹🔹 SECTION 6.5: WHAT'S INCLUDED  🔹🔹🔹 */}
+            <section className="py-10 md:py-16 bg-gray-50 px-4 sm:px-5">
                 <div className="max-w-5xl mx-auto">
-                    <p className="text-sm font-semibold uppercase mb-2 text-center" style={{ color: YELLOW }}>
+                    <p className="text-xs sm:text-sm font-semibold uppercase mb-1.5 text-center" style={{ color: YELLOW }}>
                         WHAT'S INCLUDED
                     </p>
-                    <h2 className="text-3xl md:text-4xl font-heading font-bold text-center mb-8" style={{ color: NAVY }}>
+                    <h2 className="text-2xl sm:text-3xl md:text-4xl font-heading font-bold text-center mb-2.5 md:mb-4" style={{ color: NAVY }}>
                         Everything Covered in Our Window Clean
                     </h2>
-                    <p className="mb-10 text-center max-w-2xl mx-auto text-base font-light" style={{ color: "#888" }}>
+                    <p className="mb-4 md:mb-8 text-center max-w-2xl mx-auto text-xs sm:text-base font-light text-gray-500">
                         We don't cut corners. Every booking includes a full, thorough clean of all accessible window components - not just the glass.
                     </p>
-                    <div className="grid md:grid-cols-3 gap-6">
+
+                    {/* Mobile shortcut directly to pricing to reduce scrolling */}
+                    <div className="text-center mb-5 md:hidden">
+                        <a
+                            href="#pricing"
+                            className="inline-flex items-center gap-1.5 px-3.5 py-1.5 rounded-full bg-brand-navy/5 border border-brand-navy/15 text-brand-navy font-bold text-xs hover:bg-action-gold transition-colors shadow-2xs"
+                        >
+                            <span>Skip to Pricing Packages</span>
+                            <ArrowDown className="w-3.5 h-3.5 text-action-gold" />
+                        </a>
+                    </div>
+
+                    <div className="flex flex-wrap justify-center gap-3 md:gap-6">
                         {whatsInclude.map((item, index) => (
-                            <div
+                            <InclusionCard
                                 key={index}
-                                onClick={() => setSelectedInclusion(item)}
-                                role="button"
-                                tabIndex={0}
-                                onKeyDown={(e) => {
-                                    if (e.key === "Enter" || e.key === " ") {
-                                        e.preventDefault();
-                                        setSelectedInclusion(item);
-                                    }
-                                }}
-                                aria-label={`View details for ${item.title}`}
-                                className="flex flex-col rounded-2xl bg-white border border-gray-200/90 shadow-sm hover:shadow-2xl hover:-translate-y-1.5 transition-all duration-300 overflow-hidden group cursor-pointer text-left select-none ring-1 ring-transparent hover:ring-action-gold/50"
-                            >
-                                <div className="relative w-full h-52 bg-gray-100 flex-shrink-0 overflow-hidden">
-                                    <Image
-                                        src={item.img}
-                                        alt={item.title}
-                                        fill
-                                        sizes="(max-width: 768px) 100vw, 33vw"
-                                        className="object-cover group-hover:scale-105 transition-transform duration-500"
-                                    />
-                                    <div className="absolute inset-0 bg-gradient-to-t from-black/40 via-transparent to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-300" />
-                                    <div
-                                        className="absolute top-3 right-3 bg-white/95 backdrop-blur-sm px-3 py-1 rounded-full text-xs font-bold text-brand-navy shadow-md group-hover:bg-action-gold transition-colors flex items-center gap-1.5"
-                                        style={{ backgroundColor: "rgba(255,255,255,0.95)", WebkitBackdropFilter: "blur(4px)" }}
-                                    >
-                                        <span>Inspect Feature</span>
-                                        <ArrowRight className="w-3 h-3 group-hover:translate-x-0.5 transition-transform" />
-                                    </div>
-                                </div>
-                                <div className="p-6 flex flex-col gap-3 flex-1 justify-between">
-                                    <div>
-                                        <h3 className="font-bold text-lg text-brand-navy group-hover:text-action-gold transition-colors mb-1">
-                                            {item.title}
-                                        </h3>
-                                        <p className="text-sm leading-relaxed text-gray-600 font-normal">
-                                            {item.description}
-                                        </p>
-                                    </div>
-                                    <div className="pt-3 border-t border-gray-100 flex items-center justify-between text-xs font-bold text-action-gold group-hover:text-brand-navy transition-colors">
-                                        <span>Click to view full details</span>
-                                        <span className="text-base">&rarr;</span>
-                                    </div>
-                                </div>
-                            </div>
+                                item={item}
+                                onSelect={() => setSelectedInclusion(item)}
+                            />
                         ))}
                     </div>
                 </div>
