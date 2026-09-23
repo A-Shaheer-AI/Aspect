@@ -1,4 +1,5 @@
 import type { Metadata } from "next";
+import Script from "next/script";
 import { Montserrat, Inter } from "next/font/google";
 import { GoogleTagManager } from "@next/third-parties/google";
 import { SpeedInsights } from "@vercel/speed-insights/next";
@@ -147,7 +148,8 @@ export default async function RootLayout({
                                 "https://maps.app.goo.gl/Ebz6bpfT7M4YguZs6",
                                 "https://www.facebook.com/profile.php?id=61576666721111",
                                 "https://www.instagram.com/aspectwindowcleaningperth/",
-                                "https://www.tiktok.com/@aspect.window.cle"
+                                "https://www.tiktok.com/@aspect.window.cle",
+                                "https://hipages.com.au/connect/aspectwindowcleaning"
                             ],
                             "description": "Professional window cleaning in Perth. Residential and commercial high-reach specialists. Fully insured. 5-star rated."
                         })
@@ -172,7 +174,13 @@ export default async function RootLayout({
 
                 <GoogleTagManager gtmId="GTM-KFLNCF23" />
                 <SpeedInsights />
-                            </GmbProvider>
+                <Script
+                    id="opinly-pixel"
+                    strategy="afterInteractive"
+                    src="https://static.opinly.ai/p.js"
+                    data-key="pk-ShLsgn2k4ISr5PAiQqqkx69tn35GLZxg3Wbwq4V"
+                />
+            </GmbProvider>
             </body>
         </html>
     );

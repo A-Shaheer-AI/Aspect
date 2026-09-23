@@ -30,6 +30,8 @@ export async function POST(request: NextRequest) {
                     (data.service as string) ||
                     (data.serviceType as string) ||
                     "Quote Request (Landing)",
+                priceEstimate: data.priceEstimate ? Number(data.priceEstimate) : undefined,
+                anonId: (data.anonId as string) || undefined,
                 message:
                     (data.message as string) ||
                     (data.promo ? `Promo code: ${data.promo}` : undefined),

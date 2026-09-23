@@ -22,6 +22,7 @@ interface LeadEmailData {
     quoteType?: string;
 
     sourceUrl?: string; // 👈 ADD THIS
+    anonId?: string;
 }
 
 export async function sendLeadEmail(data: LeadEmailData) {
@@ -155,6 +156,47 @@ export async function sendLeadEmail(data: LeadEmailData) {
         if (error) {
             console.error("Resend API Error:", error);
             return { success: false, error: error.message };
+        }
+
+        // Track conversion in Opinly Analytics
+        if (process.env.OPINLY_API_KEY && (data.email || data.anonId)) {
+            try {
+                const { opinly } = await import('@/clients/opinly');
+                const eventId = `lead_${Date.now()}_${Math.random().toString(36).slice(2, 7)}`;
+
+                await opinly.track(
+                    'generate_lead',
+                    {
+                        service: data.serviceType || data.selectedTier || 'Window Cleaning',
+                        suburb: data.suburb,
+                        priceEstimate: data.priceEstimate,
+                        scope: data.scope,
+                    },
+                    {
+                        email: data.email,
+                        anonId: data.anonId,
+                        externalEventId: eventId,
+                    }
+                );
+
+                if (data.priceEstimate && Number(data.priceEstimate) > 0) {
+                    await opinly.track(
+                        'purchase',
+                        {
+                            value: Number(data.priceEstimate),
+                            currency: 'AUD',
+                            transaction_id: eventId,
+                        },
+                        {
+                            email: data.email,
+                            anonId: data.anonId,
+                            externalEventId: `order_${eventId}`,
+                        }
+                    );
+                }
+            } catch (opinlyErr) {
+                console.warn('Opinly server tracking error:', opinlyErr);
+            }
         }
 
         console.log("Email sent successfully:", emailResult?.id);

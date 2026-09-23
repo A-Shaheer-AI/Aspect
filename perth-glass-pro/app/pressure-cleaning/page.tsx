@@ -541,7 +541,7 @@ export default function PressureWashingAdsPage() {
                         { src: "https://res.cloudinary.com/dr8tjrszy/image/upload/f_auto,q_auto,w_800/v1772795795/richad-logo_u2l4jl.png", alt: "Richard Group" },
                         { src: "https://res.cloudinary.com/dr8tjrszy/image/upload/f_auto,q_auto,w_800/v1772795794/bespoke-logo_lulwwt.png", alt: "Bespoke" },
                     ].map((logo) => (
-                        <div key={logo.alt} className="relative h-13 w-28 grayscale transition duration-300 hover:grayscale-0">
+                        <div key={logo.alt} className="relative h-13 w-28 grayscale-0 md:grayscale transition duration-300 md:hover:grayscale-0">
                             <Image
                                 src={logo.src.replace(
                                     "/upload/",

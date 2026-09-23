@@ -4,6 +4,7 @@ import { useState } from "react";
 import { ArrowRight, Loader2, CheckCircle, Lock } from "lucide-react";
 import { sendLeadEmail } from "@/app/actions/send-email";
 import { trackFormCompleted } from "@/hooks/useGtm";
+import { getOpinlyAnonId } from "@/lib/opinly-client";
 
 export default function HomeQuoteForm() {
     const [isLoading, setIsLoading] = useState(false);
@@ -35,6 +36,7 @@ export default function HomeQuoteForm() {
                 suburb: formData.suburb,
                 serviceType: "General (Quick Form)",
                 message: "Submitted from Home Page Quick Form",
+                anonId: getOpinlyAnonId(),
             });
             
             if (result.success) {

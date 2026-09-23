@@ -4,6 +4,7 @@ import { useState, useEffect } from "react";
 import { X, ArrowRight, Loader2, CheckCircle, Home, Building2, MapPin, Sparkles } from "lucide-react";
 import { sendLeadEmail } from "@/app/actions/send-email";
 import { trackFormStart, trackFormStep2, trackFormCompleted } from "@/hooks/useGtm";
+import { getOpinlyAnonId, identifyOpinly } from "@/lib/opinly-client";
 
 interface QuoteModalProps {
     isOpen: boolean;
@@ -68,6 +69,9 @@ export default function QuoteModal({
         setErrorMessage(null);
 
         try {
+            if (formData.email) {
+                identifyOpinly(formData.email);
+            }
             const result = await sendLeadEmail({
                 name: formData.name,
                 phone: formData.phone,
@@ -75,6 +79,7 @@ export default function QuoteModal({
                 suburb: formData.suburb,
                 serviceType: formData.service || quoteType,
                 message: formData.message,
+                anonId: getOpinlyAnonId(),
             });
             if (result.success) {
                 trackFormCompleted();
