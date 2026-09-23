@@ -384,7 +384,7 @@ const CommercialCleaning = () => {
                         "provider": {
                             "@type": "LocalBusiness",
                             "name": "Aspect Window Cleaning",
-                            "telephone": "0415 174 977",
+                            "telephone": "0426 996 192",
                             "priceRange": "$$",
                             "openingHours": "Mo-Su 00:00-23:59"
                         },
@@ -493,8 +493,8 @@ const CommercialCleaning = () => {
                         <Link href="/contact" className="w-full sm:w-auto bg-action-gold text-brand-navy hover:bg-action-gold/90 px-8 py-4 rounded-full font-bold text-base shadow-lg transition-all text-center min-h-[48px] inline-flex items-center justify-center">
                             Get Free Commercial Quote
                         </Link>
-                        <a href="tel:0415174977" className="w-full sm:w-auto bg-white/10 hover:bg-white/20 text-white border border-white/20 px-8 py-4 rounded-full font-semibold text-base transition-all text-center min-h-[48px] inline-flex items-center justify-center">
-                            Call 0415 174 977
+                        <a href="tel:0426996192" className="w-full sm:w-auto bg-white/10 hover:bg-white/20 text-white border border-white/20 px-8 py-4 rounded-full font-semibold text-base transition-all text-center min-h-[48px] inline-flex items-center justify-center">
+                            Call 0426 996 192
                         </a>
                     </div>
                 </div>
@@ -969,10 +969,10 @@ const CommercialCleaning = () => {
                                 Book On-Site Inspection <ArrowRight className="w-4 h-4" />
                             </Link>
                             <a
-                                href="tel:0415174977"
+                                href="tel:0426996192"
                                 className="w-full sm:w-auto inline-flex items-center justify-center gap-2 bg-white/10 hover:bg-white/20 text-white border border-white/20 px-8 py-4 rounded-full font-semibold text-base transition-all min-h-[48px]"
                             >
-                                <Phone className="w-4 h-4 text-action-gold" /> Call 0415 174 977
+                                <Phone className="w-4 h-4 text-action-gold" /> Call 0426 996 192
                             </a>
                         </div>
                     </div>
