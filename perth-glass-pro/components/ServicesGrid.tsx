@@ -2,7 +2,7 @@
 
 import Image from "next/image";
 import Link from "next/link";
-import { ArrowUpRight, Droplets, Home, Building2, Zap, Sparkles } from "lucide-react";
+import { ArrowUpRight, Droplets, Home, Building2, Zap, Sparkles, Briefcase } from "lucide-react";
 import { motion } from "framer-motion";
 
 export default function ServicesGrid() {
@@ -21,7 +21,7 @@ export default function ServicesGrid() {
         },
         {
             id: "commercial",
-            title: "Commercial & Strata",
+            title: "Commercial & Strata Glass",
             subtext: "Offices, retail & high-reach EWP commercial window cleaning. Certified professionals.",
             link: "/services/commercial-window-cleaning",
             image: "/assets/images/services/commercial-sign-cleaning.webp",
@@ -31,13 +31,24 @@ export default function ServicesGrid() {
             iconBg: "bg-purple-500",
         },
         {
+            id: "office-cleaning",
+            title: "Office & Commercial Cleaning",
+            subtext: "Workstation hygiene, restroom sanitation, floor care & routine janitorial for Perth workplaces.",
+            link: "/services/commercial-cleaning",
+            image: "/assets/images/services/commercial-office-cleaning.webp",
+            icon: Briefcase,
+            className: "md:col-span-2 md:row-span-1", // Wide - 2x1
+            accent: "from-indigo-500/20 to-blue-600/20",
+            iconBg: "bg-indigo-600",
+        },
+        {
             id: "pressure",
             title: "Pressure Cleaning",
             subtext: "Driveways, pavers & exterior pressure cleaning. Soft washing available.",
             link: "/services/pressure-washing",
             image: "https://res.cloudinary.com/dr8tjrszy/image/upload/f_auto,q_auto,w_600/v1774450638/pressure-cleaning-giff_ulc4tk.gif",
             icon: Zap,
-            className: "md:col-span-1 md:row-span-1", // Standard
+            className: "md:col-span-1 md:row-span-1", // Standard - 1x1
             accent: "from-orange-500/20 to-red-500/20",
             iconBg: "bg-orange-500",
         },
@@ -48,7 +59,7 @@ export default function ServicesGrid() {
             link: "/services/solar-panel-washing",
             image: "/assets/images/services/solar-panel-cleaning.webp",
             icon: Sparkles,
-            className: "md:col-span-1 md:row-span-1", // Standard
+            className: "md:col-span-1 md:row-span-1", // Standard - 1x1
             accent: "from-yellow-500/20 to-amber-500/20",
             iconBg: "bg-yellow-500",
         },
@@ -59,7 +70,7 @@ export default function ServicesGrid() {
             link: "/services/gutter-cleaning",
             image: "/assets/images/services/gutter-cleaning.webp",
             icon: Droplets,
-            className: "md:col-span-1 md:row-span-1", // Standard
+            className: "md:col-span-2 md:row-span-1", // Wide - 2x1
             accent: "from-emerald-500/20 to-teal-500/20",
             iconBg: "bg-emerald-500",
         },
@@ -82,7 +93,7 @@ export default function ServicesGrid() {
                         Our <span className="text-[#000080]">Services</span>
                     </h2>
                     <p className="text-slate-600 text-lg max-w-2xl mx-auto leading-relaxed">
-                        Professional <Link href="/services/commercial-window-cleaning" className="text-action-gold hover:underline font-semibold">commercial</Link> and <Link href="/services/residential-window-cleaning" className="text-action-gold hover:underline font-semibold">residential cleaning solutions</Link> tailored to your needs across <Link href="/locations" className="text-action-gold hover:underline font-semibold">Perth</Link>. Read our <Link href="/blog" className="text-action-gold hover:underline font-semibold">latest guides</Link> or click on the services below for more information.
+                        Professional <Link href="/services/commercial-cleaning" className="text-action-gold hover:underline font-semibold">commercial office</Link>, <Link href="/services/commercial-window-cleaning" className="text-action-gold hover:underline font-semibold">strata facade</Link>, and <Link href="/services/residential-window-cleaning" className="text-action-gold hover:underline font-semibold">residential cleaning solutions</Link> tailored to your needs across <Link href="/locations" className="text-action-gold hover:underline font-semibold">Perth</Link>. Read our <Link href="/blog" className="text-action-gold hover:underline font-semibold">latest guides</Link> or click on the services below for more information.
                     </p>
                 </motion.div>
 
@@ -153,11 +164,11 @@ export default function ServicesGrid() {
 
                 {/* Mobile Carousel Swipe Indicator */}
                 <div className="flex md:hidden items-center justify-center gap-2 pb-6 text-xs text-slate-500 font-medium">
-                    <span>Swipe to explore all 5 services &rarr;</span>
+                    <span>Swipe to explore all 6 services &rarr;</span>
                 </div>
 
                 {/* Desktop: Bento Grid Layout */}
-                <div className="hidden md:grid grid-cols-3 gap-6 auto-rows-[280px] w-full">
+                <div className="hidden md:grid grid-cols-3 gap-6 auto-rows-[270px] w-full">
                     {services.map((service, index) => {
                         const Icon = service.icon;
                         return (

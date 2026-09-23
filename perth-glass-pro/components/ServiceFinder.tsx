@@ -15,10 +15,11 @@ export default function ServiceFinder() {
 
     const SERVICE_LIST = [
         'Window Cleaning',
+        'Commercial Cleaning',
+        'Office Cleaning',
         'Solar Panel Washing',
         'Gutter Cleaning',
         'House Washing',
-        'Commercial Cleaning',
         'Pressure Washing',
     ];
 

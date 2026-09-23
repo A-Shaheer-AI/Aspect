@@ -160,7 +160,7 @@ const CommercialWindowCleaning = () => {
                         "provider": {
                             "@type": "LocalBusiness",
                             "name": "Aspect Window Cleaning",
-                            "telephone": "0415 174 977",
+                            "telephone": "0426 996 192",
                             "priceRange": "$$",
                             "openingHours": "Mo-Su 00:00-23:59"
                         },
@@ -276,8 +276,8 @@ const CommercialWindowCleaning = () => {
                         <Link href="/contact" className="w-full sm:w-auto bg-action-gold text-brand-navy hover:bg-action-gold/90 px-8 py-4 rounded-full font-bold text-base shadow-lg transition-all text-center min-h-[48px] inline-flex items-center justify-center">
                             Get Commercial Glass Quote
                         </Link>
-                        <a href="tel:0415174977" className="w-full sm:w-auto bg-white/10 hover:bg-white/20 text-white border border-white/20 px-8 py-4 rounded-full font-semibold text-base transition-all text-center min-h-[48px] inline-flex items-center justify-center">
-                            Call 0415 174 977
+                        <a href="tel:0426996192" className="w-full sm:w-auto bg-white/10 hover:bg-white/20 text-white border border-white/20 px-8 py-4 rounded-full font-semibold text-base transition-all text-center min-h-[48px] inline-flex items-center justify-center">
+                            Call 0426 996 192
                         </a>
                     </div>
                 </div>

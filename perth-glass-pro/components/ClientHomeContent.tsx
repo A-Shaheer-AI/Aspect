@@ -1,10 +1,11 @@
-import ServicesGrid from "./ServicesGrid";
-import TrustGrid from "./TrustGrid";
-import ServiceFinder from "./ServiceFinder";
-import ResultsAndReviews from "./ResultsAndReviews";
-import ContactSection from "./ContactSection";
-
 import HomeQuoteForm from "./HomeQuoteForm";
+import ServicesGrid from "./ServicesGrid";
+import { TrustStatsBar, ReviewsSection } from "./TrustGrid";
+import { SeeTheDifference } from "./ResultsAndReviews";
+import ServiceFinder from "./ServiceFinder";
+import FAQ from "./FAQ";
+import { HOME_FAQS } from "@/content/home-faqs";
+import ContactSection from "./ContactSection";
 
 export default function ClientHomeContent() {
     return (
@@ -30,19 +31,26 @@ export default function ClientHomeContent() {
                     </div>
                 </div>
             </section>
-            {/* Services Bento Grid */}
+
+            {/* 1. Services Bento Grid */}
             <ServicesGrid />
 
-            {/* Trust Badges & Stats */}
-            <TrustGrid />
+            {/* 2. Modern 1-Line Prominent Stats & Trust Bar */}
+            <TrustStatsBar />
 
-            {/* Natural Language Service Finder */}
+            {/* 3. See the Difference Section (Above Reviews) */}
+            <SeeTheDifference />
+
+            {/* 4. Customer Reviews Section */}
+            <ReviewsSection />
+
+            {/* 5. Natural Language Service Finder */}
             <ServiceFinder />
 
-            {/* Results & Reviews */}
-            <ResultsAndReviews />
+            {/* 6. Frequently Asked Questions */}
+            <FAQ title="" faqs={HOME_FAQS} />
 
-            {/* Contact Section */}
+            {/* 7. Contact Section */}
             <ContactSection />
         </>
     );
