@@ -148,7 +148,8 @@ export default async function RootLayout({
                                 "https://maps.app.goo.gl/Ebz6bpfT7M4YguZs6",
                                 "https://www.facebook.com/profile.php?id=61576666721111",
                                 "https://www.instagram.com/aspectwindowcleaningperth/",
-                                "https://www.tiktok.com/@aspect.window.cle"
+                                "https://www.tiktok.com/@aspect.window.cle",
+                                "https://hipages.com.au/connect/aspectwindowcleaning"
                             ],
                             "description": "Professional window cleaning in Perth. Residential and commercial high-reach specialists. Fully insured. 5-star rated."
                         })
