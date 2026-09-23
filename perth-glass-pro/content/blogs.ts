@@ -703,4 +703,91 @@ export const blogs: BlogPost[] = [
     ],
     "conclusion": "Ultimately, a professional window clean by Aspect Window Cleaning is about so much more than just achieving clean glass. It is a comprehensive maintenance service designed to protect your valuable property, drastically improve your daily home environment by maximizing natural light, and deliver stunning results that outlast any DIY effort. From the moment our uniformed technician arrives to the moment we conduct the final sign-off, every single step is meticulously designed to deliver maximum value, unparalleled quality, and the minimum possible disruption to your busy day. We take the hassle out of property maintenance so you can simply enjoy the view. If you are ready to experience the true difference that a professional touch can make, get in touch with our friendly Perth team for a free, no-obligation quote today."
   }
+,
+  {
+  "id": 11,
+  "title": "The Strata Manager's Guide to Commercial Window & Facade Cleaning in Perth",
+  "slug": "strata-managers-guide-window-facade-cleaning-perth",
+  "date": "2026-08-20T09:00:00Z",
+  "thumbnail": "https://res.cloudinary.com/dr8tjrszy/image/upload/f_auto,q_auto,w_800/v1771960134/commercial-window-cleaning_gzkvaj.jpg",
+  "excerpt": "Managing multi-residential and strata window maintenance in Perth requires navigating complex access, strict safety compliance, and resident logistics. Here is how professional strata window cleaning is planned, quoted, and executed.",
+  "intro": "Managing a strata community or multi-residential apartment complex across the Perth metropolitan area is a balancing act of maintenance budgets, resident privacy, and rigorous occupational health and safety standards. Among all building upkeep tasks, exterior window and architectural facade cleaning consistently presents the most unique logistical challenges for council of owners and strata managers alike. Between sloped courtyards that make ladder work hazardous, strict WorkSafe WA height compliance, and the need for itemized tender transparent pricing, choosing the right contractor can make or break a building's maintenance cycle. At Aspect Window Cleaning, we specialize in delivering professional <a href='/services/commercial-window-cleaning' class='text-action-gold hover:underline font-semibold'>strata window cleaning in Perth</a>, working hand-in-hand with leading strata management companies and residential committees to deliver crystal-clear results with zero disruption.",
+  "sections": [
+    {
+      "heading": "The Real Access Challenges: Sloped Courtyards & Narrow Walkways",
+      "body": "Modern Perth multi-residential developments—from boutique apartment complexes in Subiaco and West Perth to sprawling townhouse strata communities in Mount Lawley and Como—are rarely built on perfectly flat, wide-open ground. Common architectural access hurdles include steeply sloped internal courtyards, landscaped garden verges, narrow side walkways between boundary fences, and private gated entryways.\n\nIn these environments, traditional ladder work is often physically impossible and legally hazardous. Setting up a ladder on an unlevel gradient or unstable paving creates extreme fall risks and violates modern height safety protocols. Aspect solves this challenge through advanced, vehicle-mounted water-fed telescopic pole technology. Utilizing ultra-lightweight carbon-fiber poles fed with 0ppm deionised pure water, our certified technicians can reach and scrub glass up to 4 and 5 storeys high directly from secure, level ground footholds. This completely eliminates ladder fall hazards, prevents structural impact on delicate facade renders, and allows full exterior access to windows previously deemed unreachable."
+    },
+    {
+      "heading": "Navigating the Strata Tender: Transparent & Itemized Quoting",
+      "body": "Strata managers and executive committees do not look for vague, lump-sum estimates. Because council members represent the collective financial interests of multiple lot owners, they require clear, itemized tenders that allow the committee to evaluate different maintenance priorities side-by-side.\n\nRecently, one of Perth's leading, long-established strata management companies reached out to Aspect to tender for a multi-unit complex. Their committee required a customized, three-tier quote breakdown: (1) a baseline quote for a general exterior window clean across all standard elevations; (2) a separate itemized cost for high-level, hard-to-access architectural glass requiring specialized reach equipment; and (3) an independent schedule for manually unscrewing, detailing, and refitting removable flyscreens. Providing granular, transparent tenders ensures council committees have the exact data needed to vote on budgets with complete confidence."
+    },
+    {
+      "heading": "Safety & Compliance: The Non-Negotiable Strata Checklist",
+      "subsections": [
+        {
+          "heading": "1. $20 Million Public Liability Insurance",
+          "body": "Under WA strata law, any contractor entering common property must carry comprehensive liability protection. Aspect holds full $20M Public Liability Insurance, protecting the strata company, individual lot owners, and property managers against any unforeseen incident."
+        },
+        {
+          "heading": "2. Certified Working at Heights & EWP Licensing",
+          "body": "Where multi-storey parapets or elevated boom lifts (cherry pickers) are required, our technicians hold current High Risk Work certifications and certified Working at Heights credentials in accordance with WorkSafe WA regulations."
+        },
+        {
+          "heading": "3. Full Workers' Compensation & SWMS Documentation",
+          "body": "Every commercial and strata project is backed by comprehensive Workers' Compensation coverage and site-specific Safe Work Method Statements (SWMS), identifying hazard zones, pedestrian exclusion areas, and safety outriggers before water ever touches the glass."
+        }
+      ]
+    },
+    {
+      "heading": "Resident Logistics & Smooth Committee Communication",
+      "body": "A successful strata clean depends on timely, respectful resident communication. Our operations team works directly with the appointed strata manager or the designated resident spokesperson on the strata committee. We establish a firm schedule well in advance, providing clear notices that managers can circulate to residents regarding scheduled cleaning dates, requests to close windows and remove personal items from balconies, pet safety protocols, and privacy windows.\n\nOur crew is police-cleared and trained to operate with quiet, professional discretion on residential common grounds, ensuring that work proceeds seamlessly without disrupting residents who work from home or enjoy morning privacy."
+    },
+    {
+      "heading": "Recommended Cleaning Frequency & The 10% Strata Advantage",
+      "body": "Perth's intense UV index, coastal sea breeze carrying airborne salt, and easterly red dust mean that unmaintained glass rapidly develops mineral scaling and etched silicate damage. For strata complexes across the Perth metro area, we recommend a comprehensive exterior window clean at least once per year, and ideally every six months to preserve window seals, frames, and property valuation.\n\nTo help strata councils optimize their long-term maintenance sinking funds, Aspect provides an ongoing **10% recurring discount** for any strata company that schedules bi-annual (six-monthly) service agreements. You can explore our current maintenance tiers and <a href='/#offers' class='text-action-gold hover:underline font-semibold'>special offers on our homepage</a>."
+    }
+  ],
+  "conclusion": "Professional strata window cleaning requires more than clean squeegees—it demands safety compliance, commercial reach equipment, and flawless resident communication. If your strata council or building management committee is preparing for upcoming maintenance tenders, contact Aspect Window Cleaning today for a transparent, itemized site assessment tailored to your property."
+},
+  {
+  "id": 12,
+  "title": "Commercial Window & Office Cleaning Rates in Perth: What Businesses Should Expect to Pay",
+  "slug": "commercial-window-office-cleaning-rates-perth",
+  "date": "2026-09-05T09:00:00Z",
+  "thumbnail": "https://res.cloudinary.com/dr8tjrszy/image/upload/f_auto,q_auto,w_800/v1789575306/Grounded_Office_Window_Cleaning_after-hours_r9kc23.jpg",
+  "excerpt": "Curious how commercial cleaning company rates are calculated in Western Australia? From retail shopfronts to corporate office towers, here is a transparent look at pricing factors, frequency discounts, and hidden competitor traps.",
+  "intro": "For Perth business owners, office managers, and facility supervisors, first impressions are critical. Sparkling, streak-free glass and immaculate workplace hygiene signal professionalism, attention to detail, and quality before a customer or client even walks through your door. Yet when researching <a href='/services/commercial-cleaning' class='text-action-gold hover:underline font-semibold'>commercial cleaning company rates in Perth</a>, businesses are often met with vague estimates, hidden add-on fees, or wildly inconsistent quotes. At Aspect Window Cleaning, we believe commercial trade services should be completely transparent. In this comprehensive guide, we demystify how commercial cleaning rates are formulated across Western Australia, outline realistic ballpark costs for shopfronts and offices, reveal common competitor pricing traps, and explain why recurring maintenance schedules drastically reduce your annual upkeep spend.",
+  "sections": [
+    {
+      "heading": "How Commercial Window & Office Cleaning Quotes Are Formulated",
+      "body": "Commercial window cleaning is never a generic 'one-size-fits-all' service. Unlike residential properties with standard window layouts, commercial premises feature vastly different architectural glass, accessibility requirements, and foot-traffic demands. When our commercial estimators assess a commercial site, quotes are driven by three fundamental criteria:\n\n1. **Accessibility and Elevation:** Ground-level glass differs significantly from high-reach architectural facades. Sites that can be serviced quickly using carbon-fiber water-fed reach poles cost less than sites requiring certified Elevated Work Platforms (EWPs / cherry pickers), boom-lift permits, or pedestrian traffic control.\n2. **Frequency of Service:** This is the single biggest factor in your unit price. The exact same glass pane costs dramatically less to maintain on a recurring fortnightly schedule than on a one-off annual clean. Regular maintenance takes our technicians a fraction of the time because dust, fingerprints, and traffic exhaust never have the chance to bake into the glass.\n3. **Water Supply & Site Logistics:** Access to outdoor commercial water connections versus requiring our team to transport pre-purified deionised water tanks on-site affects crew mobilization and setup times."
+    },
+    {
+      "heading": "Perth Commercial Pricing: Realistic Ballpark Benchmarks",
+      "subsections": [
+        {
+          "heading": "1. Ground-Floor Retail Shopfronts & Hospitality Cafes (Starting from $120)",
+          "body": "For retail boutiques, high-street showrooms, and cafes (such as in Perth CBD, Leederville, Fremantle, or Claremont), pristine presentation is a daily revenue driver. Greasy handprints, nose prints from pets, and roadside exhaust grime degrade shopfront presentation rapidly. For standard ground-floor retail shopfronts, exterior window cleaning typically starts from **$120** per visit. In retail, a recurring schedule every 15 days is the industry standard to maintain flawless customer curb appeal."
+        },
+        {
+          "heading": "2. Standalone Single-Storey & 2-Storey Commercial Offices (Starting from $300)",
+          "body": "For commercial office buildings, medical centres, and corporate business parks (such as in West Perth, Osborne Park, Belmont, or Malaga), external glass does not suffer from constant pedestrian touch, but it does accumulate Perth's summer dust, vehicle emissions, and airborne salt haze. For a standard single-storey commercial office building, external window cleaning averages from **$300** on a 6-monthly recurring maintenance plan, varying based on total glass square meterage and architectural window counts."
+        }
+      ]
+    },
+    {
+      "heading": "The Frequency Advantage: Save 10% on Bi-Annual Cleans",
+      "body": "One of the most common mistakes Perth businesses make is waiting until windows look visibly dirty before booking an emergency clean. One-off cleans require intense restorative labor—chemical degreasing, scraping mineral scale, and dislodging oxidized debris from tracks—which commands higher hourly rates.\n\nBy contrast, setting up an ongoing maintenance agreement saves businesses significant money. At Aspect, we provide an automatic **10% discount** for any commercial client who schedules a 6-monthly recurring clean. For high-traffic retail locations, scheduling cleans fortnightly or monthly drops the per-visit cost even further because routine maintenance requires far less time on-site, passing immediate labor savings directly back to you."
+    },
+    {
+      "heading": "Competitor Traps: What Aspect Includes For Free",
+      "body": "When comparing commercial tenders, look closely at the fine print. Many budget window cleaners quote an attractive low headline price, only to hit facility managers with surprise add-ons once on site:\n\n* **Charging Extra for Frames & Sills:** Many contractors wash only the glass pane, leaving grimy, oxidized aluminium frames untouched unless you pay an extra surcharge.\n* **Aspect's Standard:** We believe clean glass inside dirty frames looks amateur. On every commercial clean, **Aspect washes and details external window frames and tracks essentially for free** as a standard inclusion, ensuring your whole building exterior looks sharp and well-managed.\n* **Surprise Water & Equipment Fees:** We bring our own high-capacity commercial deionisation purification units, providing transparent, all-inclusive pricing with zero hidden surcharges."
+    },
+    {
+      "heading": "After-Hours & Overnight Cleaning: The Corporate Office Reality",
+      "body": "While exterior window cleaning can often occur during standard business hours, comprehensive interior glass and office cleaning requires specialized after-hours or weekend execution. During normal working hours, commercial offices are bustling with meetings, client presentations, and focused staff. Working inside an active office risks disrupting telephone calls, tripping over equipment lines, or risking moisture near electrical desks.\n\nFurthermore, modern corporate offices feature sensitive technology: dual-screen desktop setups, exposed server racks, client confidential files, and complex internal glass boardroom partitions. When leading WA mining and civil infrastructure group Grounded Construction needed an urgent commercial window overhaul for their corporate headquarters, Aspect mobilized an agile crew to execute the entire project strictly after hours. You can read how our team detailed sensitive multi-pane office lattices overnight in our <a href='/case-studies/grounded-office-window-cleaning-west-perth' class='text-action-gold hover:underline font-semibold'>Grounded West Perth case study</a>.\n\nWhether you need after-hours interior glass detailing or ongoing daytime facade maintenance, pairing your routine office care with our specialized <a href='/services/commercial-window-cleaning' class='text-action-gold hover:underline font-semibold'>commercial window cleaning services in Perth</a> ensures your commercial space always looks its absolute best."
+    }
+  ],
+  "conclusion": "Investing in professional commercial cleaning isn't just an operational expense—it's an investment in your company's brand image, client trust, and building preservation. Contact Aspect Window Cleaning today for an honest, upfront quote and discover how simple, dependable commercial maintenance can be."
+}
 ];
