@@ -8,6 +8,7 @@ import { openCertificateModal } from "@/components/CertificateModalWrapper";
 import { useState } from "react";
 import { useGmb } from "@/components/GmbProvider";
 import QuoteModal from "./QuoteModal";
+import { TrustpilotLogoIcon, TrustpilotRatingBoxes } from "./TrustGrid";
 
 type ScrollItem = {
   src: string;
@@ -202,9 +203,11 @@ export default function HeroWithScroll() {
                 href={BUSINESS.trustpilot}
                 target="_blank"
                 rel="noopener noreferrer"
-                className="inline-flex items-center gap-1.5 sm:gap-2 bg-[#00b67a]/20 hover:bg-[#00b67a]/30 border border-[#00b67a]/40 px-3 sm:px-3.5 py-1.5 rounded-full text-xs sm:text-sm font-semibold text-white transition-colors"
+                className="inline-flex items-center gap-1.5 sm:gap-2 bg-[#00b67a]/20 hover:bg-[#00b67a]/30 border border-[#00b67a]/40 px-3 sm:px-3.5 py-1.5 rounded-full text-xs sm:text-sm font-semibold text-white transition-colors group"
+                title="View Aspect Window Cleaning on Trustpilot"
               >
-                <span className="inline-flex items-center justify-center w-4 h-4 bg-[#00b67a] text-white text-[10px] font-bold rounded-sm">★</span>
+                <TrustpilotLogoIcon className="w-4 h-4 shrink-0 group-hover:scale-110 transition-transform" />
+                <TrustpilotRatingBoxes size="xs" gap="xs" />
                 <span>5.0 on Trustpilot</span>
               </a>
               <span className="inline-flex items-center gap-1.5 text-xs text-white/90 bg-white/10 border border-white/15 px-3 py-1.5 rounded-full">
