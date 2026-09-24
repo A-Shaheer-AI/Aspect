@@ -34,6 +34,7 @@
 | **Sep 2026** | **Publisher Network Audit** | `scratch/fast_audit_results.json` | Audited all 100 domains in Greg Rogers' publisher network. Filtered out 85 ghost/PBN shells with 0–4 referring domains. Verified the "Elite 7" (>900 referring domains). |
 | **Sep 2026** | **GSC & Keyword Data Ingestion** | `data/gsc_keywords_data.json` | Extracted and permanently saved 376 live GSC queries and 20 high-value target keywords. Categorized into Page 1, Page 2 striking distance, and Page 3 targets. |
 | **Sep 2026** | **Content Architecture (Blogs 11 & 12)** | `content/blogs.ts` | Published Blog 11 (*Strata Manager's Guide*) with internal link to `/#offers`; published Blog 12 (*Commercial Rates Guide*) featuring Grounded West Perth case study. |
+| **Sep 2026** | **Content Architecture (Blogs 13 & 14)** | `content/blogs.ts` | Published Blog 13 (*Office Window Cleaning & Internal Partitions*) featuring zero-drip safety, clutter protocols, and Grounded West Perth case study; published Blog 14 (*Perth Coastal Salt & Hard Water Etching*) detailing proprietary mineral chemistry, glass scrapers, and Eglinton case study. |
 | **Sep 2026** | **Strategic Blueprint Refinement** | `data/seo_strategy_matrix.md` | Restructured the 7-placement package into a concentrated 9-link strike map strictly targeting GSC queries ranking between Pos 11.42 and 26.30. |
 
 ---
