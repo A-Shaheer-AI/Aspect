@@ -36,6 +36,7 @@
 | **Sep 2026** | **Content Architecture (Blogs 11 & 12)** | `content/blogs.ts` | Published Blog 11 (*Strata Manager's Guide*) with internal link to `/#offers`; published Blog 12 (*Commercial Rates Guide*) featuring Grounded West Perth case study. |
 | **Sep 2026** | **Content Architecture (Blogs 13 & 14)** | `content/blogs.ts` | Published Blog 13 (*Office Window Cleaning & Internal Partitions*) featuring zero-drip safety, clutter protocols, and Grounded West Perth case study; published Blog 14 (*Perth Coastal Salt & Hard Water Etching*) detailing proprietary mineral chemistry, glass scrapers, and Eglinton case study. |
 | **Sep 2026** | **Strategic Blueprint Refinement** | `data/seo_strategy_matrix.md` | Restructured the 7-placement package into a concentrated 9-link strike map strictly targeting GSC queries ranking between Pos 11.42 and 26.30. |
+| **Sep 2026** | **Trust & Social Proof Integration** | `app/layout.tsx`, `components/TrustGrid.tsx`, `components/Hero.tsx`, `components/Footer.tsx`, `lib/config.ts` | Connected verified 5-star Trustpilot review and profile. Added Trustpilot badge to Hero, TrustStatsBar, ReviewsSection dual header, and Footer. Expanded Schema.org LocalBusiness `sameAs` entity graph with Trustpilot profile. |
 
 ---
 

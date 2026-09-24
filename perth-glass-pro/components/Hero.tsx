@@ -187,20 +187,29 @@ export default function HeroWithScroll() {
               Streak-free pure water cleaning for <strong>homes, businesses &amp; strata complexes</strong>. Also specializing in solar panel washing, gutter clearing, and exterior pressure washing.
             </p>
 
-            <div className="flex flex-wrap items-center justify-center md:justify-start gap-3 mb-6">
+            <div className="flex flex-wrap items-center justify-center md:justify-start gap-2.5 sm:gap-3 mb-6">
               <a
                 href={BUSINESS.google}
                 target="_blank"
                 rel="noopener noreferrer"
-                className="inline-flex items-center gap-2 bg-white/10 hover:bg-white/20 border border-white/20 px-3.5 py-1.5 rounded-full text-sm font-semibold text-white transition-colors"
+                className="inline-flex items-center gap-1.5 sm:gap-2 bg-white/10 hover:bg-white/20 border border-white/20 px-3 sm:px-3.5 py-1.5 rounded-full text-xs sm:text-sm font-semibold text-white transition-colors"
               >
                 <span className="text-amber-300">★★★★★</span>
-                <span>{gmb.rating} Google Rating</span>
-                <span className="text-white/60">({gmb.reviewCount} Reviews)</span>
+                <span>{gmb.rating} Google</span>
+                <span className="text-white/60">({gmb.reviewCount})</span>
+              </a>
+              <a
+                href={BUSINESS.trustpilot}
+                target="_blank"
+                rel="noopener noreferrer"
+                className="inline-flex items-center gap-1.5 sm:gap-2 bg-[#00b67a]/20 hover:bg-[#00b67a]/30 border border-[#00b67a]/40 px-3 sm:px-3.5 py-1.5 rounded-full text-xs sm:text-sm font-semibold text-white transition-colors"
+              >
+                <span className="inline-flex items-center justify-center w-4 h-4 bg-[#00b67a] text-white text-[10px] font-bold rounded-sm">★</span>
+                <span>5.0 on Trustpilot</span>
               </a>
               <span className="inline-flex items-center gap-1.5 text-xs text-white/90 bg-white/10 border border-white/15 px-3 py-1.5 rounded-full">
                 <CheckCircle className="w-3.5 h-3.5 text-action-gold" />
-                100% Satisfaction Guarantee
+                100% Satisfaction
               </span>
             </div>
 

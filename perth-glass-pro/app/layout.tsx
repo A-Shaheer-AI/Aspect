@@ -146,6 +146,7 @@ export default async function RootLayout({
                             },
                             "sameAs": [
                                 "https://maps.app.goo.gl/Ebz6bpfT7M4YguZs6",
+                                "https://www.trustpilot.com/review/aspectwindowcleaning.com.au",
                                 "https://www.facebook.com/profile.php?id=61576666721111",
                                 "https://www.instagram.com/aspectwindowcleaningperth/",
                                 "https://www.tiktok.com/@aspect.window.cle",
