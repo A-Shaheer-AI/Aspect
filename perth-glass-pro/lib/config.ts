@@ -18,11 +18,13 @@ export const BUSINESS = {
     location: "183 Stirling Hwy, Nedlands WA 6009",
     insurance: "$20M Public Liability",
     google: process.env.NEXT_PUBLIC_GMB_URL || "https://maps.app.goo.gl/Ebz6bpfT7M4YguZs6",
+    trustpilot: "https://www.trustpilot.com/review/aspectwindowcleaning.com.au",
 } as const;
 
 // Social Links (add when ready)
 export const SOCIAL = {
     google: "https://maps.app.goo.gl/Ebz6bpfT7M4YguZs6",
+    trustpilot: "https://www.trustpilot.com/review/aspectwindowcleaning.com.au",
     facebook: "",
     instagram: "",
 } as const;

@@ -56,6 +56,15 @@ export default async function Footer() {
                                 <Mail className="w-4 h-4 text-action-gold" aria-hidden="true" />
                                 {BUSINESS.email}
                             </a>
+                            <a
+                                href={BUSINESS.trustpilot}
+                                target="_blank"
+                                rel="noopener noreferrer"
+                                className="flex items-center gap-2 text-xs text-slate-300 hover:text-white transition-colors pt-1"
+                            >
+                                <span className="inline-flex items-center justify-center w-4 h-4 bg-[#00b67a] text-white text-[10px] font-bold rounded-sm">★</span>
+                                <span>Rated <strong>5.0 Stars</strong> on Trustpilot</span>
+                            </a>
                         </div>
                     </div>
 
@@ -236,6 +245,15 @@ export default async function Footer() {
                                 ABN Registered
                             </p>
                         </div>
+                        <a
+                            href={BUSINESS.trustpilot}
+                            target="_blank"
+                            rel="noopener noreferrer"
+                            className="mt-2.5 inline-flex items-center gap-2 text-xs text-slate-300 hover:text-white transition-colors"
+                        >
+                            <span className="inline-flex items-center justify-center w-4 h-4 bg-[#00b67a] text-white text-[10px] font-bold rounded-sm">★</span>
+                            <span>Rated <strong>5.0 Stars</strong> on Trustpilot</span>
+                        </a>
                     </div>
                 </div>
 
