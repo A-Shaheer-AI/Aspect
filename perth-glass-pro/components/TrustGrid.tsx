@@ -27,6 +27,18 @@ export interface Review {
 
 export const reviews: Review[] = [
     {
+        id: 0,
+        name: "Vicki Slate",
+        reviews: "5 reviews",
+        rating: 5,
+        date: "22 weeks ago",
+        tag: "Pre-Sale Window & Pressure Clean • Added $20,000 Value",
+        service: "Windows, jams, runners, pressure washing eaves, decks & walks",
+        content: "These guys did a fantastic job cleaning windows, jams, runners, pressure washing eaves, decks and side walks, removing mould from brickwork., that hadn't been done in probably 10 years. We thought the new owners would need to replace the windows so potentially this added $20,000 value to the house. On time, friendly and professional. Highly recommend them.",
+        source: "google",
+        avatarColor: "bg-[#7B1FA2]",
+    },
+    {
         id: 1,
         name: "Terri Surman",
         reviews: "10 reviews · 0 photos",
@@ -34,7 +46,7 @@ export const reviews: Review[] = [
         date: "2 weeks ago",
         tag: "Great price",
         badge: "NEW",
-        service: "Interior and exterior window cleaning",
+        service: "Interior and exterior window cleaning (2-storey)",
         content: "We have a two storey home with a tonne of windows & some are extremely hard to get to because of an added alfresco area & Vergola. Aspect Window Cleaning managed to get to all these windows and do a fantastic job. The gentleman are so lovely & hard working! Very impressed with all the communication & even phone calls on the day confirming time of arrival. Fazal came & quoted beforehand & even reminded us if we had some tinted windows they might need to be aware of (& we did)! Very thorough service. Thank you 🙏",
         source: "google",
         avatarColor: "bg-[#C2410C]",
@@ -54,7 +66,7 @@ export const reviews: Review[] = [
         source: "google",
     },
     {
-        id: 0,
+        id: 99,
         name: "Verified Customer",
         reviews: "Trustpilot Verified Review · 1 review",
         rating: 5,
@@ -77,6 +89,19 @@ export const reviews: Review[] = [
         source: "google",
     },
     {
+        id: 5,
+        name: "Admin Ben Pitts Concrete",
+        reviews: "2 reviews · 0 photos",
+        rating: 5,
+        date: "3 weeks ago",
+        badge: "NEW",
+        service: "Interior and exterior window cleaning",
+        avatarImage: "/images/reviewers/ben-pitts.png",
+        content: "Arrived on time and did a fantastic job. Very happy with results. Highly recommend",
+        source: "google",
+    },
+    // Page 2 Reviews (6 more client reviews)
+    {
         id: 4,
         name: "Mandy Thompson",
         reviews: "4 reviews · 0 photos",
@@ -89,19 +114,6 @@ export const reviews: Review[] = [
         source: "google",
         avatarColor: "bg-[#00897B]",
     },
-    {
-        id: 5,
-        name: "Admin Ben Pitts Concrete",
-        reviews: "2 reviews · 0 photos",
-        rating: 5,
-        date: "3 weeks ago",
-        badge: "NEW",
-        service: "Interior and exterior window cleaning",
-        avatarImage: "/images/reviewers/ben-pitts.png",
-        content: "Arrived on time and did a fantastic job. Very happy with results. Highly recommend",
-        source: "google",
-    },
-    // Page 2 Reviews (6 more impactful reviews)
     {
         id: 6,
         name: "Wendy Smith",
@@ -156,17 +168,6 @@ export const reviews: Review[] = [
         content: "Flynn from Aspect Window Cleaning cleaned all of the exterior windows and frames on our house. He did a great job and the windows look great. The prices were very reasonable and the work done to a great standard. Thank you.",
         source: "google",
         avatarColor: "bg-[#3949AB]",
-    },
-    {
-        id: 11,
-        name: "Shabnam",
-        reviews: "1 review",
-        rating: 5,
-        date: "8 months ago",
-        service: "Spotless windows, flyscreens & tracks",
-        content: "I recently hired them for window cleaning, and I couldn't be happier with the results. The team was punctual, professional, and paid great attention to detail. Our windows are spotless-inside and out-and they even cleaned the screens and tracks. Highly recommend their service and will definitely use them again.",
-        source: "google",
-        avatarColor: "bg-[#D81B60]",
     },
 ];
 
@@ -405,9 +406,10 @@ export function TrustStatsBar() {
 /**
  * Verified Customer Testimonials & Reviews Section
  * Features authentic Google Review UI styling, Trustpilot brand fidelity,
- * full text reviews (no truncation), and a 2-page carousel to view 6 more reviews.
+ * full text reviews (no truncation), and sleek black/white scroll arrows.
  */
 export function ReviewsSection() {
+    const gmb = useGmb();
     const [currentPage, setCurrentPage] = useState<number>(0);
     const reviewsPerPage = 6;
     const totalPages = Math.ceil(reviews.length / reviewsPerPage);
@@ -441,16 +443,16 @@ export function ReviewsSection() {
                         </div>
                         <span className="text-slate-300 hidden sm:inline">•</span>
                         <span className="text-xs sm:text-sm font-medium text-slate-700">
-                            100% 5-Star Track Record Across Google & Trustpilot • All Clients Verified
+                            {gmb.reviewCount}+ Verified Client Ratings Across Google & Trustpilot • 100% 5-Star Track Record
                         </span>
                     </div>
                 </div>
 
-                {/* Desktop Carousel Controls Strip */}
-                <div className="hidden md:flex items-center justify-between mb-6 pb-2 border-b border-slate-100">
+                {/* Desktop Carousel Controls Strip (Clean Black & White Arrow Style) */}
+                <div className="hidden md:flex items-center justify-between mb-6 pb-3 border-b border-slate-100">
                     <div className="flex items-center gap-2">
-                        <span className="text-sm font-semibold text-slate-800">
-                            Showing {startIndex + 1}–{Math.min(startIndex + reviewsPerPage, reviews.length)} of {reviews.length} Verified Reviews
+                        <span className="text-sm sm:text-base font-bold text-slate-900">
+                            {gmb.reviewCount}+ Verified Customer Reviews
                         </span>
                         <span className="text-xs text-slate-300">•</span>
                         <span className="text-xs font-semibold text-emerald-700 bg-emerald-50 border border-emerald-200/80 px-2.5 py-0.5 rounded-full inline-flex items-center gap-1">
@@ -459,46 +461,24 @@ export function ReviewsSection() {
                         </span>
                     </div>
 
+                    {/* Black & White Scroll Arrow Controls */}
                     <div className="flex items-center gap-2">
                         <button
-                            onClick={() => setCurrentPage(0)}
-                            className={`px-3.5 py-1.5 rounded-lg text-xs font-semibold transition-all ${
-                                currentPage === 0
-                                    ? "bg-brand-navy text-white shadow-sm"
-                                    : "bg-slate-100 text-slate-600 hover:bg-slate-200"
-                            }`}
+                            onClick={() => setCurrentPage(prev => (prev === 0 ? totalPages - 1 : prev - 1))}
+                            className="w-9 h-9 rounded-full border-2 border-black bg-white hover:bg-black text-black hover:text-white flex items-center justify-center transition-colors shadow-xs"
+                            aria-label="Previous reviews"
+                            title="Previous reviews"
                         >
-                            Featured Reviews
+                            <ChevronLeft className="w-4 h-4 stroke-[2.5]" />
                         </button>
                         <button
-                            onClick={() => setCurrentPage(1)}
-                            className={`px-3.5 py-1.5 rounded-lg text-xs font-semibold transition-all ${
-                                currentPage === 1
-                                    ? "bg-brand-navy text-white shadow-sm"
-                                    : "bg-slate-100 text-slate-600 hover:bg-slate-200"
-                            }`}
+                            onClick={() => setCurrentPage(prev => (prev === totalPages - 1 ? 0 : prev + 1))}
+                            className="w-9 h-9 rounded-full border-2 border-black bg-black text-white hover:bg-neutral-800 flex items-center justify-center transition-colors shadow-xs"
+                            aria-label="Next reviews"
+                            title="Next reviews"
                         >
-                            View 6 More Reviews →
+                            <ChevronRight className="w-4 h-4 stroke-[2.5]" />
                         </button>
-
-                        <div className="flex items-center gap-1 ml-2 border-l border-slate-200 pl-3">
-                            <button
-                                onClick={() => setCurrentPage(prev => (prev === 0 ? totalPages - 1 : prev - 1))}
-                                className="w-8 h-8 rounded-full border border-slate-200 bg-white hover:bg-slate-50 flex items-center justify-center text-slate-700 hover:text-brand-navy shadow-xs transition-colors"
-                                aria-label="Previous reviews"
-                                title="Previous reviews"
-                            >
-                                <ChevronLeft className="w-4 h-4" />
-                            </button>
-                            <button
-                                onClick={() => setCurrentPage(prev => (prev === totalPages - 1 ? 0 : prev + 1))}
-                                className="w-8 h-8 rounded-full border border-slate-200 bg-white hover:bg-slate-50 flex items-center justify-center text-slate-700 hover:text-brand-navy shadow-xs transition-colors"
-                                aria-label="Next reviews"
-                                title="Next reviews"
-                            >
-                                <ChevronRight className="w-4 h-4" />
-                            </button>
-                        </div>
                     </div>
                 </div>
 
@@ -656,33 +636,13 @@ export function ReviewsSection() {
                             })}
                         </motion.div>
                     </AnimatePresence>
-
-                    {/* Bottom Carousel Toggle Bar */}
-                    <div className="flex justify-center items-center gap-3 mt-8">
-                        <button
-                            onClick={() => setCurrentPage(prev => (prev === 0 ? 1 : 0))}
-                            className="inline-flex items-center gap-2 text-sm font-semibold text-brand-navy hover:text-blue-600 transition-colors py-2 px-5 rounded-full border border-slate-200 hover:border-slate-300 bg-white shadow-xs hover:shadow-sm"
-                        >
-                            {currentPage === 0 ? (
-                                <>
-                                    <span>View 6 More Verified Reviews</span>
-                                    <ChevronRight className="w-4 h-4" />
-                                </>
-                            ) : (
-                                <>
-                                    <ChevronLeft className="w-4 h-4" />
-                                    <span>Back to Featured Reviews</span>
-                                </>
-                            )}
-                        </button>
-                    </div>
                 </div>
 
-                {/* Mobile Horizontal Swipeable Scroll (Shows All 12 Reviews) */}
+                {/* Mobile Horizontal Swipeable Scroll (Shows All Reviews) */}
                 <div className="md:hidden">
                     <div className="flex items-center justify-between mb-3 px-1">
                         <span className="text-xs font-semibold text-slate-700">
-                            Swipe to view all 12 reviews →
+                            {gmb.reviewCount}+ Customer Reviews (Swipe to view all →)
                         </span>
                         <span className="text-[11px] text-emerald-700 font-bold bg-emerald-50 px-2 py-0.5 rounded-full border border-emerald-200">
                             100% Verified
@@ -824,7 +784,7 @@ export function ReviewsSection() {
                         className="inline-flex items-center gap-2.5 bg-brand-navy text-white px-7 py-3 rounded-full font-semibold hover:bg-brand-navy/90 transition-colors shadow-lg shadow-brand-navy/20 text-sm sm:text-base group"
                     >
                         <GoogleGLogo className="w-5 h-5 shrink-0 group-hover:scale-110 transition-transform" />
-                        <span>View All on Google ({reviews.length}+ Reviews)</span>
+                        <span>View All on Google ({gmb.reviewCount} Reviews)</span>
                     </Link>
                     <Link
                         href={BUSINESS.trustpilot}
@@ -832,7 +792,9 @@ export function ReviewsSection() {
                         rel="noopener noreferrer"
                         className="inline-flex items-center gap-2.5 bg-[#00b67a] hover:bg-[#009b67] text-white px-7 py-3 rounded-full font-semibold transition-all shadow-lg shadow-[#00b67a]/25 text-sm sm:text-base group"
                     >
-                        <TrustpilotLogoIcon className="w-5 h-5 shrink-0 group-hover:scale-110 transition-transform" />
+                        <span className="inline-flex items-center justify-center w-5 h-5 bg-white text-[#00b67a] rounded-xs shrink-0 group-hover:scale-110 transition-transform">
+                            <TrustpilotStar className="w-3.5 h-3.5 fill-[#00b67a]" />
+                        </span>
                         <span>View on Trustpilot</span>
                         <span className="bg-white/20 text-white text-xs px-2 py-0.5 rounded-full font-bold ml-0.5">5.0 ★</span>
                     </Link>
