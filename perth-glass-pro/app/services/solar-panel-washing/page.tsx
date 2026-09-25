@@ -2,7 +2,7 @@ import { Metadata } from "next";
 import Image from "next/image";
 import Link from "next/link";
 import ClickableBadge from "@/components/ClickableBadge";
-import { CheckCircle2, CheckCircle, Shield, BadgeCheck, Clock, TrendingDown, Calendar, ShieldCheck, Star } from "lucide-react";
+import { CheckCircle2, CheckCircle, Shield, BadgeCheck, Clock, TrendingDown, Calendar, ShieldCheck, Star, Zap, Sun } from "lucide-react";
 
 
 import FAQ from "@/components/FAQ";
@@ -324,7 +324,7 @@ const SolarPanelCleaningPage = () => {
                                 <div className="font-semibold text-brand-navy text-sm md:text-base leading-tight">
                                     5.0 Google Reviews
                                 </div>
-                                <div className="text-xs text-brand-slate">43+ Happy Customers</div>
+                                <div className="text-xs text-brand-slate">200+ Happy Customers</div>
                             </div>
                         </ClickableBadge>
                     </div>
@@ -335,15 +335,13 @@ const SolarPanelCleaningPage = () => {
             <section className="mt-5 py-8 max-w-5xl mx-auto px-4">
                 <span className="text-action-gold font-semibold mb-2 block uppercase tracking-wider text-xs">About This Service</span>
                 <h2 className="text-3xl font-heading font-bold text-brand-navy text-left mb-5">
-                    Maximise Your Solar Panel Efficiency in Perth
+                    Clean Solar Panels Perth: Maximise Your System's Efficiency
                 </h2>
-                <p className="mb-4">
-                    Solar panels are one of the most valuable investments a <Link href="/locations" className="text-action-gold hover:underline">Perth</Link> homeowner can make - but only when they're
-                    operating at full capacity. Dust, bird droppings, pollen, and grime accumulate on panel surfaces over time, blocking
-                    sunlight and silently reducing your energy output by up to 30%. At Aspect Window Cleaning, we provide
-                    professional solar panel cleaning using purified water and soft-brush technology - the same method
-                    recommended by leading panel manufacturers - to safely restore your system's performance and protect your 
-                    investment. Combine this with our <Link href="/services/gutter-cleaning" className="text-action-gold hover:underline">gutter cleaning</Link> or <Link href="/services/residential-window-cleaning" className="text-action-gold hover:underline">residential window cleaning</Link> services for a complete exterior refresh.
+                <p className="mb-4 text-base md:text-lg leading-relaxed text-slate-700">
+                    Solar panels are one of the highest-yielding investments a <Link href="/locations" className="text-action-gold hover:underline">Perth</Link> homeowner or commercial facility can make — but only when they are operating at full peak capacity. When you clean solar panels in Perth on a regular schedule, you prevent baked-on mineral deposits, coastal salt film, and acidic bird droppings from permanently etching into the glass and silently reducing your daily power generation by up to 30%.
+                </p>
+                <p className="mb-4 text-base md:text-lg leading-relaxed text-slate-700">
+                    At Aspect Window Cleaning, we specialise in professional pure-water solar washing using 100% deionised water and scratch-free, soft-bristle brushes — the exact manufacturer-approved methodology recommended by SunPower, LG, REC, and Jinko. Combine your solar clean with our <Link href="/services/gutter-cleaning" className="text-action-gold hover:underline">gutter cleaning</Link> or <Link href="/services/residential-window-cleaning" className="text-action-gold hover:underline">residential window cleaning</Link> packages for a comprehensive exterior refresh.
                 </p>
             </section>
 
@@ -404,14 +402,14 @@ const SolarPanelCleaningPage = () => {
                             {/* Left Icon / Visual */}
                             <div className="flex-shrink-0">
                                 <div className="w-20 h-20 md:w-24 md:h-24 bg-white rounded-2xl shadow flex items-center justify-center border border-amber-200">
-                                    <span className="text-5xl">??</span>
+                                    <Zap className="w-10 h-10 md:w-12 md:h-12 text-amber-500" />
                                 </div>
                             </div>
 
                             {/* Content */}
                             <div className="flex-1">
                                 <div className="inline-flex items-center gap-2 bg-white text-amber-700 text-sm font-medium px-4 py-1.5 rounded-full border border-amber-200 mb-4">
-                                    <span className="text-lg">??</span>
+                                    <Zap className="w-4 h-4 text-amber-600" />
                                     DID YOU KNOW?
                                 </div>
 
@@ -425,7 +423,7 @@ const SolarPanelCleaningPage = () => {
                                         <span className="font-semibold text-orange-700"> 15–30%</span>.
                                     </p>
                                     <p className="text-brand-slate">
-                                        In Perth's dusty climate - with frequent easterly winds, bushfire smoke, and high bird activity -
+                                        In Perth's dusty climate — with frequent easterly winds, bushfire smoke, and high bird activity —
                                         panels can lose significant efficiency within just a few months.
                                     </p>
                                     <p className="text-brand-slate font-medium">
@@ -439,9 +437,9 @@ const SolarPanelCleaningPage = () => {
                         {/* Optional subtle footer highlight */}
                         <div className="mt-10 pt-8 border-t border-amber-100 text-center">
                             <p className="text-sm text-amber-600 font-medium flex items-center justify-center gap-2">
-                                <span>?</span>
+                                <Sun className="w-4 h-4 text-amber-500" />
                                 Clean panels = Maximum savings
-                                <span>?</span>
+                                <Sun className="w-4 h-4 text-amber-500" />
                             </p>
                         </div>
 
@@ -489,7 +487,7 @@ const SolarPanelCleaningPage = () => {
 
                     {/* Intro paragraph */}
                     <p className="text-center text-brand-slate max-w-3xl mx-auto mb-12">
-                        Cleaning your solar panels isn't just about aesthetics - it directly impacts your energy output, your savings, and the lifespan of your system.
+                        Cleaning your solar panels isn't just about aesthetics — keeping clean solar panels in Perth directly impacts your daily energy output, electricity savings, and the operating lifespan of your photovoltaic system.
                     </p>
 
                     {/* Benefits List */}
