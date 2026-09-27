@@ -343,7 +343,7 @@ const CommercialWindowCleaning = () => {
                                 <div className="font-semibold text-brand-navy text-sm md:text-base leading-tight">
                                     5.0 Google Reviews
                                 </div>
-                                <div className="text-xs text-brand-slate">200+ Happy Perth Businesses</div>
+                                <div className="text-xs text-brand-slate">Trusted by Perth Businesses</div>
                             </div>
                         </ClickableBadge>
                     </div>
