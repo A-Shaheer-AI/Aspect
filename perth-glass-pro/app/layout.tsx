@@ -114,7 +114,9 @@ export default async function RootLayout({
                             "aggregateRating": {
                                 "@type": "AggregateRating",
                                 "ratingValue": gmbData.rating.toString(),
-                                "reviewCount": gmbData.reviewCount.toString()
+                                "reviewCount": gmbData.reviewCount.toString(),
+                                "bestRating": "5",
+                                "worstRating": "1"
                             },
                             "address": {
                                 "@type": "PostalAddress",
@@ -152,7 +154,7 @@ export default async function RootLayout({
                                 "https://www.tiktok.com/@aspect.window.cle",
                                 "https://hipages.com.au/connect/aspectwindowcleaning"
                             ],
-                            "description": "Professional window cleaning in Perth. Residential and commercial high-reach specialists. Fully insured. 5-star rated."
+                            "description": "Professional window cleaning in Perth. Residential and commercial multi-storey pure water specialists up to 4 storeys. Fully insured. 5-star rated."
                         })
                     }}
                 />

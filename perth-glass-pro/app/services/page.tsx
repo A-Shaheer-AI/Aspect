@@ -20,10 +20,10 @@ const MAIN_SERVICES = [
     },
     {
         id: "commercial-window",
-        title: "Commercial Window Cleaning & High-Reach Glazing",
-        description: "Specialist exterior and interior commercial glass cleaning for office towers, retail shopfronts, car dealerships, and strata complexes. Certified EWP cherry picker operators and 0ppm pure-water reach poles up to 4 storeys.",
+        title: "Commercial Window Cleaning & Multi-Storey Glazing",
+        description: "Specialist exterior and interior commercial glass cleaning for offices, retail shopfronts, car dealerships, and strata complexes. Certified scissor lift (EWP) operators and 0ppm pure-water reach poles up to 4 storeys.",
         icon: Building2,
-        features: ["High-Reach Pure Water (4 Storeys)", "Certified Cherry Picker (EWP)", "Shopfronts & Corporate Facades", "Strata Multi-Unit Glazing"],
+        features: ["Pure Water Poles (Up to 4 Storeys)", "Certified Scissor Lift (EWP)", "Shopfronts & Commercial Facades", "Strata Multi-Unit Glazing"],
         link: "/services/commercial-window-cleaning",
     },
     {

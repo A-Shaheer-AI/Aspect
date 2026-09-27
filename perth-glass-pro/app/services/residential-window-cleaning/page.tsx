@@ -252,7 +252,14 @@ export default function ResidentialWindowCleaning() {
                             "name": "Aspect Window Cleaning",
                             "telephone": BUSINESS.phone,
                             "priceRange": "$$",
-                            "url": "https://aspectwindowcleaning.com.au"
+                            "url": "https://aspectwindowcleaning.com.au",
+                            "aggregateRating": {
+                                "@type": "AggregateRating",
+                                "ratingValue": "5.0",
+                                "reviewCount": "43",
+                                "bestRating": "5",
+                                "worstRating": "1"
+                            }
                         },
                         "areaServed": {
                             "@type": "State",

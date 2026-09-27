@@ -208,10 +208,20 @@ const SolarPanelCleaningPage = () => {
           __html: JSON.stringify({
             "@context": "https://schema.org",
             "@type": "Service",
-            "name": "Solar Panel Washing",
+            "name": "Clean Solar Panels Perth: Professional Solar Panel Cleaning",
             "provider": {
               "@type": "LocalBusiness",
-              "name": "Aspect Window Cleaning"
+              "name": "Aspect Window Cleaning",
+              "telephone": "0426 996 192",
+              "priceRange": "$$",
+              "url": "https://aspectwindowcleaning.com.au",
+              "aggregateRating": {
+                "@type": "AggregateRating",
+                "ratingValue": "5.0",
+                "reviewCount": "43",
+                "bestRating": "5",
+                "worstRating": "1"
+              }
             },
             "areaServed": {
               "@type": "State",

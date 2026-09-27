@@ -65,7 +65,7 @@ export async function generateMetadata({ params }: { params: Promise<{ suburb: s
 const SERVICES = [
     { id: 'window', title: 'Residential Window Cleaning', description: 'Crystal-clear windows for your home using pure water technology. Inside & out, frames & tracks included.', iconName: "Home", servicePage: '/services/residential-window-cleaning' },
     { id: 'solar', title: 'Solar Panel Washing', description: 'Boost energy output by up to 30% with professional panel cleaning. Manufacturer-approved methods.', iconName: "Sparkles", servicePage: '/services/solar-panel-washing' },
-    { id: 'commercial', title: 'Commercial & Strata', description: 'High-reach EWP and rope access for offices, retail, and multi-story buildings. Full safety documentation.', iconName: "Building2", servicePage: '/services/commercial-window-cleaning' },
+    { id: 'commercial', title: 'Commercial & Strata', description: 'Scissor lift EWP and water-fed pure water poles up to 4 storeys for offices, retail, and strata complexes. Full safety documentation.', iconName: "Building2", servicePage: '/services/commercial-window-cleaning' },
     { id: 'gutter', title: 'Gutter Cleaning', description: 'Prevent water damage with complete debris removal and downpipe flushing. Roof inspection included.', iconName: "Droplets", servicePage: '/services/gutter-cleaning' },
     { id: 'pressure', title: 'Pressure Washing', description: 'Revitalize driveways, patios, and outdoor areas. Safe for pavers, concrete, and tiles.', iconName: "Wind", servicePage: '/services/pressure-washing' },
 ];
@@ -79,7 +79,33 @@ export default async function SuburbPage({ params }: { params: Promise<{ suburb:
 
     if (!suburb) notFound();
 
+    const customFaqs: { question: string; answer: string }[] = [];
+    if (suburbSlug === 'joondalup') {
+        customFaqs.push(
+            {
+                question: "Do you offer gutter cleaning and downpipe clearing in Joondalup?",
+                answer: "Yes! Gutter cleaning in Joondalup is one of our most requested services. With native eucalyptus trees and seasonal leaf drop throughout the northern corridor, our thorough gutter clearing and downpipe flushing protect your rooflines and foundations from water damage."
+            },
+            {
+                question: "Can Aspect clean multi-storey commercial offices in Joondalup CBD?",
+                answer: "Yes. We service commercial buildings, retail shopfronts, and strata facilities up to 4 storeys across the Joondalup city centre using pure water reach poles and certified scissor lifts."
+            }
+        );
+    } else if (suburbSlug === 'fremantle') {
+        customFaqs.push(
+            {
+                question: "How do you handle coastal salt spray on Fremantle windows?",
+                answer: "Fremantle's coastal exposure and sea breezes off the harbour leave a sticky salt crust on glass. Our 0ppm pure water system dissolves salt and mineral residue without scratching glass or damaging heritage window frames."
+            },
+            {
+                question: "Do you clean heritage shopfronts and commercial glazing in Fremantle?",
+                answer: "Yes. Aspect provides specialized commercial window cleaning for Fremantle's heritage shopfronts, cafes, and historic buildings, taking extra care with character timber and vintage glazing."
+            }
+        );
+    }
+
     const SUBURB_FAQS = [
+        ...customFaqs,
         {
             question: `How often should windows be cleaned in ${suburb.name}?`,
             answer: `For most homes in ${suburb.name}, we recommend professional window cleaning every 3 to 6 months. Properties close to the coast or exposed to Perth's summer dust benefit from cleaning every 6 to 8 weeks to prevent permanent glass etching and mineral buildup.`
@@ -110,6 +136,13 @@ export default async function SuburbPage({ params }: { params: Promise<{ suburb:
         "areaServed": {
             "@type": "City",
             "name": suburb.name
+        },
+        "aggregateRating": {
+            "@type": "AggregateRating",
+            "ratingValue": "5.0",
+            "reviewCount": "43",
+            "bestRating": "5",
+            "worstRating": "1"
         },
         "description": `Professional window cleaning, solar panel washing, gutter cleaning, and pressure washing in ${suburb.name}, Perth. Same-week service. Fully insured.`
     };
@@ -241,7 +274,7 @@ export default async function SuburbPage({ params }: { params: Promise<{ suburb:
                         </div>
 
                         <p className="text-sm text-brand-slate/90 leading-relaxed pt-2 border-t border-slate-200/60">
-                            In addition to our <Link href="/services/residential-window-cleaning" className="text-action-gold hover:underline font-semibold">residential window cleaning in {suburb.name}</Link>, we provide professional pure-water <Link href="/services/solar-panel-washing" className="text-action-gold hover:underline font-semibold">clean solar panels in Perth</Link>, exterior <Link href="/services/pressure-washing" className="text-action-gold hover:underline font-semibold">pressure washing</Link>, and complete <Link href="/services/gutter-cleaning" className="text-action-gold hover:underline font-semibold">roof gutter cleaning in Perth</Link>. Business and strata managers can book certified <Link href="/services/commercial-window-cleaning" className="text-action-gold hover:underline font-semibold">commercial window cleaners in Perth</Link> with cherry pickers and reach poles. Looking for a trusted <Link href="/" className="text-action-gold hover:underline font-semibold">window cleaning service in Perth</Link>? Explore our real <Link href="/case-studies" className="text-action-gold hover:underline font-semibold">Perth case studies</Link>, browse our <Link href="/blog" className="text-action-gold hover:underline font-semibold">cleaning guides</Link>, compare our <Link href="/pricing" className="text-action-gold hover:underline font-semibold">transparent pricing</Link>, or <Link href="/contact" className="text-action-gold hover:underline font-semibold">contact our team</Link> for an upfront quote.
+                            In addition to our <Link href="/services/residential-window-cleaning" className="text-action-gold hover:underline font-semibold">residential window cleaning in {suburb.name}</Link>, we provide professional pure-water <Link href="/services/solar-panel-washing" className="text-action-gold hover:underline font-semibold">clean solar panels in Perth</Link>, exterior <Link href="/services/pressure-washing" className="text-action-gold hover:underline font-semibold">pressure washing</Link>, and complete <Link href="/services/gutter-cleaning" className="text-action-gold hover:underline font-semibold">roof gutter cleaning in Perth</Link>. Business and strata managers can book certified <Link href="/services/commercial-window-cleaning" className="text-action-gold hover:underline font-semibold">commercial window cleaners in Perth</Link> with scissor lifts and pure-water reach poles up to 4 storeys. Looking for a trusted <Link href="/" className="text-action-gold hover:underline font-semibold">window cleaning service in Perth</Link>? Explore our real <Link href="/case-studies" className="text-action-gold hover:underline font-semibold">Perth case studies</Link>, browse our <Link href="/blog" className="text-action-gold hover:underline font-semibold">cleaning guides</Link>, compare our <Link href="/pricing" className="text-action-gold hover:underline font-semibold">transparent pricing</Link>, or <Link href="/contact" className="text-action-gold hover:underline font-semibold">contact our team</Link> for an upfront quote.
                         </p>
                     </div>
                 </div>

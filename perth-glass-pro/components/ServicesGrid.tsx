@@ -22,7 +22,7 @@ export default function ServicesGrid() {
         {
             id: "commercial",
             title: "Commercial & Strata Glass",
-            subtext: "Offices, retail & high-reach EWP commercial window cleaning. Certified professionals.",
+            subtext: "Offices, retail & multi-storey scissor lift commercial window cleaning up to 4 storeys.",
             link: "/services/commercial-window-cleaning",
             image: "/assets/images/services/commercial-sign-cleaning.webp",
             icon: Building2,
