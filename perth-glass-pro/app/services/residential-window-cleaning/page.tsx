@@ -555,8 +555,8 @@ export default function ResidentialWindowCleaning() {
                         </div>
                         <BeforeAfterSlider
                             initial={50}
-                            beforeImage="https://res.cloudinary.com/dr8tjrszy/image/upload/f_auto,q_auto,w_800/v1772792155/aspect-before-window-cleaning_zfr8ae.jpg"
-                            afterImage="https://res.cloudinary.com/dr8tjrszy/image/upload/f_auto,q_auto,w_800/v1772792157/after-window-cleaning_fs1hhz.jpg"
+                            beforeImage="https://res.cloudinary.com/dr8tjrszy/image/upload/f_auto,q_auto,w_600/v1772792155/aspect-before-window-cleaning_zfr8ae.jpg"
+                            afterImage="https://res.cloudinary.com/dr8tjrszy/image/upload/f_auto,q_auto,w_600/v1772792157/after-window-cleaning_fs1hhz.jpg"
                         />
                     </div>
                 </div>
@@ -589,6 +589,63 @@ export default function ResidentialWindowCleaning() {
                                 </p>
                             </div>
                         ))}
+                    </div>
+                </div>
+            </section>
+
+            {/* COMPARISON: PROFESSIONAL VS INEXPERIENCED */}
+            <section className="py-16 bg-slate-50 border-t border-slate-200/60">
+                <div className="max-w-5xl mx-auto px-4">
+                    <div className="text-center max-w-2xl mx-auto mb-12">
+                        <span className="text-action-gold font-bold text-xs uppercase tracking-wider block mb-2">PROTECT YOUR HOME</span>
+                        <h2 className="text-3xl sm:text-4xl font-heading font-bold text-brand-navy mb-4">
+                            Don&apos;t Risk It With &ldquo;A Bloke and a Bucket&rdquo;
+                        </h2>
+                        <p className="text-brand-slate text-sm sm:text-base">
+                            Choosing an uninsured, inexperienced cleaner can cost you far more than the initial quote. Here is what Perth homeowners experience when they don&apos;t hire a verified professional.
+                        </p>
+                    </div>
+
+                    <div className="grid md:grid-cols-3 gap-6">
+                        <div className="bg-white p-6 rounded-2xl shadow-sm border border-red-100 flex flex-col h-full">
+                            <div className="flex gap-1 text-red-500 mb-4">
+                                <Star className="w-5 h-5 fill-current" />
+                                <Star className="w-5 h-5" />
+                                <Star className="w-5 h-5" />
+                                <Star className="w-5 h-5" />
+                                <Star className="w-5 h-5" />
+                            </div>
+                            <p className="text-gray-700 text-sm italic mb-4 flex-grow">&ldquo;The owner sent out some COMPLETELY INEXPERIENCED guy who SMASHED A WINDOW. He refused to do any more cleaning... they DO NOT HAVE INSURANCE.&rdquo;</p>
+                            <div className="mt-auto pt-4 border-t border-gray-100">
+                                <p className="text-xs text-gray-400 font-bold uppercase tracking-wider">- Verified review for a competitor</p>
+                            </div>
+                        </div>
+                        <div className="bg-white p-6 rounded-2xl shadow-sm border border-red-100 flex flex-col h-full">
+                            <div className="flex gap-1 text-red-500 mb-4">
+                                <Star className="w-5 h-5 fill-current" />
+                                <Star className="w-5 h-5" />
+                                <Star className="w-5 h-5" />
+                                <Star className="w-5 h-5" />
+                                <Star className="w-5 h-5" />
+                            </div>
+                            <p className="text-gray-700 text-sm italic mb-4 flex-grow">&ldquo;Very unhappy... Skirtings missed... Watermarks left on sliding doors... Lime scale left on shower door... Left a bottle of &apos;Coles brand&apos; bleach behind.&rdquo;</p>
+                            <div className="mt-auto pt-4 border-t border-gray-100">
+                                <p className="text-xs text-gray-400 font-bold uppercase tracking-wider">- Verified review for a competitor</p>
+                            </div>
+                        </div>
+                        <div className="bg-white p-6 rounded-2xl shadow-sm border border-red-100 flex flex-col h-full">
+                            <div className="flex gap-1 text-red-500 mb-4">
+                                <Star className="w-5 h-5 fill-current" />
+                                <Star className="w-5 h-5" />
+                                <Star className="w-5 h-5" />
+                                <Star className="w-5 h-5" />
+                                <Star className="w-5 h-5" />
+                            </div>
+                            <p className="text-gray-700 text-sm italic mb-4 flex-grow">&ldquo;Yeh, nah. ONE BLOKE and a bucket or two is not ideal. Didn&apos;t clean tracks, didn&apos;t remove screens... what a waste of my money, expected a lot better.&rdquo;</p>
+                            <div className="mt-auto pt-4 border-t border-gray-100">
+                                <p className="text-xs text-gray-400 font-bold uppercase tracking-wider">- Verified review for a competitor</p>
+                            </div>
+                        </div>
                     </div>
                 </div>
             </section>
