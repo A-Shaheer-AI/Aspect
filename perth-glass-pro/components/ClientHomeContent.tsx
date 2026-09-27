@@ -19,7 +19,7 @@ export default function ClientHomeContent() {
                     <div className="flex flex-col lg:flex-row items-center gap-8 lg:gap-12">
                         <div className="lg:w-1/3 text-center lg:text-left">
                             <h2 className="text-2xl lg:text-3xl xl:text-4xl font-heading font-bold text-[#000080] mb-3 leading-tight">
-                                Free Custom Quote within 1 Hour
+                                Fast Quote: Perth Window Cleaning Service
                             </h2>
                             <p className="text-gray-600 text-lg">
                                 Fill out the form and our team will get back to you with a competitive quote in no time.
@@ -48,7 +48,7 @@ export default function ClientHomeContent() {
             <ServiceFinder />
 
             {/* 6. Frequently Asked Questions */}
-            <FAQ title="" faqs={HOME_FAQS} />
+            <FAQ heading="Window Cleaning Perth: Frequently Asked Questions" title="" faqs={HOME_FAQS} />
 
             {/* 7. Contact Section */}
             <ContactSection />

@@ -272,7 +272,7 @@ const SolarPanelCleaningPage = () => {
             {/* HERO */}
             <section className="bg-brand-navy text-white pt-32 sm:pt-36 pb-16 sm:pb-24 text-center px-4">
                 <h1 className="text-3xl md:text-5xl font-bold mb-4">
-                    Solar Panel Cleaning Services in Perth
+                    Clean Solar Panels Perth: Professional Solar Panel Cleaning
                 </h1>
                 <p className="text-base md:text-xl max-w-2xl mx-auto mb-6 text-slate-200">
                     Maximise your solar output. Protect your investment.

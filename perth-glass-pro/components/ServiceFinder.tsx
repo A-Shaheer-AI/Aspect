@@ -81,7 +81,7 @@ export default function ServiceFinder() {
                 {/* Form Container */}
                 <div className="bg-white rounded-3xl shadow-xl p-8 md:p-12 max-w-4xl mx-auto text-center">
                     <h2 className="text-3xl md:text-4xl font-heading font-bold text-brand-navy mb-8">
-                        Find Your Service
+                        Book Window Cleaning Services Across Perth
                     </h2>
 
                     {/* Natural Language Form */}

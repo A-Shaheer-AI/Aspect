@@ -267,10 +267,14 @@ const CommercialWindowCleaning = () => {
                         <Building2 className="w-3.5 h-3.5" /> Certified EWP & High-Reach Specialist
                     </span>
                     <h1 className="text-3xl md:text-5xl lg:text-6xl font-heading font-bold mb-6 tracking-tight">
-                        Commercial Window Cleaning & High-Reach Glazing Perth
+                        Commercial Window Cleaning Perth
+                        <br />
+                        <span className="text-action-gold text-2xl md:text-4xl font-medium block mt-2">
+                            Office, Strata &amp; High-Reach Commercial Window Cleaners
+                        </span>
                     </h1>
                     <p className="text-base md:text-xl text-slate-200 max-w-3xl mx-auto mb-8 leading-relaxed">
-                        Specialist exterior and interior commercial glass cleaning for office towers, retail shopfronts, car showrooms, and strata complexes. Certified EWP operators, 0ppm pure-water reach poles up to 4 storeys, and $20M insurance.
+                        Looking for a trusted <strong>commercial window cleaning service near me</strong>? Aspect delivers specialist exterior and interior glass cleaning for corporate office towers, retail showrooms, and strata complexes across Perth, WA. Certified EWP operators, 0ppm pure-water reach poles up to 4 storeys, and $20M insurance.
                     </p>
                     <div className="flex flex-col sm:flex-row gap-4 justify-center items-center">
                         <Link href="/contact" className="w-full sm:w-auto bg-action-gold text-brand-navy hover:bg-action-gold/90 px-8 py-4 rounded-full font-bold text-base shadow-lg transition-all text-center min-h-[48px] inline-flex items-center justify-center">
@@ -331,7 +335,7 @@ const CommercialWindowCleaning = () => {
                                 <div className="font-semibold text-brand-navy text-sm md:text-base leading-tight">
                                     5.0 Google Reviews
                                 </div>
-                                <div className="text-xs text-brand-slate">43+ Verified Reviews</div>
+                                <div className="text-xs text-brand-slate">200+ Happy Perth Businesses</div>
                             </div>
                         </ClickableBadge>
                     </div>
@@ -343,7 +347,7 @@ const CommercialWindowCleaning = () => {
                 <div className="text-center max-w-3xl mx-auto mb-10">
                     <span className="text-action-gold font-semibold uppercase mb-2 block tracking-wider text-xs">ADVANCED ACCESS CAPABILITIES</span>
                     <h2 className="text-3xl font-heading font-bold text-brand-navy mb-4">
-                        High-Reach Commercial Window Cleaning Solutions
+                        Office &amp; Strata Window Cleaning Perth: High-Reach Access
                     </h2>
                     <p className="text-brand-slate text-sm sm:text-base">
                         From ground-level retail shopfronts to 4-storey reach poles and cherry picker boom lifts, we have the specialized access equipment to clean every commercial pane safely.
@@ -399,7 +403,7 @@ const CommercialWindowCleaning = () => {
             <section className="py-16 max-w-5xl mx-auto px-4">
                 <span className="text-sm text-action-gold font-semibold uppercase mb-2 block tracking-wider text-xs">WHAT WE CLEAN</span>
                 <h2 className="text-3xl font-heading font-bold text-brand-navy mb-4">
-                    Commercial Window Cleaning Services
+                    Commercial Window Cleaners Perth: Tailored Glazing Solutions
                 </h2>
                 <p className="mb-10 text-brand-slate max-w-3xl">
                     Every commercial glazing job is executed with commercial-grade safety compliance, zero-residue deionised water, and hand-finished glass detailing.

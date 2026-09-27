@@ -17,10 +17,10 @@ export function SeeTheDifference() {
             <div className="max-w-8xl mx-auto px-4 sm:px-6 lg:px-8">
                 <div className="text-center mb-12">
                     <h2 className="text-3xl md:text-4xl font-heading font-bold text-brand-navy mb-4">
-                        See the Difference
+                        Perth Window Cleaning Results: Before &amp; After
                     </h2>
                     <p className="text-brand-slate text-lg max-w-2xl mx-auto">
-                        Real window cleaning results from Perth homes. Drag the slider to compare before & after.
+                        Inspect real results from our residential and commercial window cleaning service across Perth. Drag the slider to compare before &amp; after.
                     </p>
                 </div>
 
