@@ -1248,65 +1248,18 @@ export default function WindowCleaningAdsPage() {
                 </div>
             </section>
 
-            {/* COMPARISON / DON'T BE LIKE THESE PEOPLE */}
-            <section id="guarantee" className="py-20 px-5 bg-gray-50 border-b border-gray-200">
+            {/* 100% SATISFACTION GUARANTEE */}
+            <section id="guarantee" className="py-14 md:py-20 px-5 bg-gray-50 border-b border-gray-200">
                 <div className="max-w-6xl mx-auto">
-                    <div className="text-center mb-16">
-                        <h2 className="text-3xl md:text-4xl font-bold mb-4 text-brand-navy">Don't Risk It With "A Bloke and a Bucket"</h2>
-                        <p className="text-gray-600 max-w-2xl mx-auto text-lg">Choosing an inexperienced cleaner can cost you far more than the initial quote. See what happens when you don't choose a professional.</p>
-                    </div>
-
-                    <div className="grid md:grid-cols-3 gap-6 mb-16">
-                        <div className="bg-white p-6 rounded-2xl shadow-sm border border-red-100 flex flex-col h-full">
-                            <div className="flex gap-1 text-red-500 mb-4">
-                                <Star className="w-5 h-5 fill-current" />
-                                <Star className="w-5 h-5" />
-                                <Star className="w-5 h-5" />
-                                <Star className="w-5 h-5" />
-                                <Star className="w-5 h-5" />
-                            </div>
-                            <p className="text-gray-700 text-sm italic mb-4 flex-grow">"The owner sent out some COMPLETELY INEXPERIENCED guy who SMASHED A WINDOW. He refused to do any more cleaning... they DO NOT HAVE INSURANCE."</p>
-                            <div className="mt-auto pt-4 border-t border-gray-100">
-                                <p className="text-xs text-gray-400 font-bold uppercase tracking-wider">- Review for a competitor</p>
-                            </div>
-                        </div>
-                        <div className="bg-white p-6 rounded-2xl shadow-sm border border-red-100 flex flex-col h-full">
-                            <div className="flex gap-1 text-red-500 mb-4">
-                                <Star className="w-5 h-5 fill-current" />
-                                <Star className="w-5 h-5" />
-                                <Star className="w-5 h-5" />
-                                <Star className="w-5 h-5" />
-                                <Star className="w-5 h-5" />
-                            </div>
-                            <p className="text-gray-700 text-sm italic mb-4 flex-grow">"Very unhappy... Skirtings missed... Watermarks left on sliding doors... Lime scale left on shower door... Left a bottle of 'Coles brand' bleach behind."</p>
-                            <div className="mt-auto pt-4 border-t border-gray-100">
-                                <p className="text-xs text-gray-400 font-bold uppercase tracking-wider">- Review for a competitor</p>
-                            </div>
-                        </div>
-                        <div className="bg-white p-6 rounded-2xl shadow-sm border border-red-100 flex flex-col h-full">
-                            <div className="flex gap-1 text-red-500 mb-4">
-                                <Star className="w-5 h-5 fill-current" />
-                                <Star className="w-5 h-5" />
-                                <Star className="w-5 h-5" />
-                                <Star className="w-5 h-5" />
-                                <Star className="w-5 h-5" />
-                            </div>
-                            <p className="text-gray-700 text-sm italic mb-4 flex-grow">"Yeh, nah. ONE BLOKE and a bucket or two is not ideal. Didn't clean tracks, didn't remove screens... what a waste of my money, expected a lot better."</p>
-                            <div className="mt-auto pt-4 border-t border-gray-100">
-                                <p className="text-xs text-gray-400 font-bold uppercase tracking-wider">- Review for a competitor</p>
-                            </div>
-                        </div>
-                    </div>
-
                     <div className="bg-brand-navy text-white rounded-3xl p-8 md:p-12 shadow-xl border-l-8 border-action-gold relative overflow-hidden">
                         <div className="relative z-10">
-                            <h3 className="text-2xl md:text-3xl font-bold mb-4">The Aspect Window Cleaning Difference</h3>
+                            <h2 className="text-2xl md:text-3xl font-bold mb-4">The Aspect Window Cleaning Difference</h2>
                             <p className="text-brand-water mb-8 text-lg md:text-xl max-w-3xl">We back our work with a <span className="text-action-gold font-bold">100% Satisfaction Guarantee</span>. Especially for our premium Supreme cleans, the job is not done until you are completely satisfied.</p>
                             <ul className="grid md:grid-cols-2 gap-6">
                                 <li className="flex items-start gap-4 cursor-pointer hover:opacity-80 transition-opacity" onClick={() => openCertificateModal('insured')} title="View Insurance Certificate">
-<Shield className="w-8 h-8 text-action-gold shrink-0 mt-1" />
-<span className="text-lg">Fully insured and professionally trained team <span className="text-action-gold text-sm font-bold block mt-1">View Certificate &rarr;</span></span>
-</li>
+                                    <Shield className="w-8 h-8 text-action-gold shrink-0 mt-1" />
+                                    <span className="text-lg">Fully insured and professionally trained team <span className="text-action-gold text-sm font-bold block mt-1">View Certificate &rarr;</span></span>
+                                </li>
                                 <li className="flex items-start gap-4">
                                     <Droplets className="w-8 h-8 text-action-gold shrink-0 mt-1" />
                                     <span className="text-lg">We use Eco-friendly, pet & child-safe Pure Water technology</span>
