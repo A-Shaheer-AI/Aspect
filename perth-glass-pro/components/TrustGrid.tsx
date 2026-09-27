@@ -429,7 +429,7 @@ export function ReviewsSection() {
                     </div>
 
                     <h2 className="text-3xl md:text-4xl font-bold text-brand-navy mb-4 font-heading">
-                        What Our Customers Say
+                        Perth Window Cleaning Reviews &amp; 5-Star Testimonials
                     </h2>
 
                     <div className="inline-flex flex-wrap items-center justify-center gap-3 bg-slate-50 border border-slate-200/80 px-4 py-2 rounded-2xl">

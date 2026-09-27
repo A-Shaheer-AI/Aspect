@@ -386,7 +386,15 @@ const CommercialCleaning = () => {
                             "name": "Aspect Window Cleaning",
                             "telephone": "0426 996 192",
                             "priceRange": "$$",
-                            "openingHours": "Mo-Su 00:00-23:59"
+                            "url": "https://aspectwindowcleaning.com.au",
+                            "openingHours": "Mo-Su 00:00-23:59",
+                            "aggregateRating": {
+                                "@type": "AggregateRating",
+                                "ratingValue": "5.0",
+                                "reviewCount": "43",
+                                "bestRating": "5",
+                                "worstRating": "1"
+                            }
                         },
                         "areaServed": {
                             "@type": "State",

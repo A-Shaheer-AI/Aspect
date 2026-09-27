@@ -36,8 +36,8 @@ type FaqsType = {
 }
 
 export const metadata: Metadata = {
-    title: { absolute: "Commercial Window Cleaning & High-Reach Glazing Perth | Aspect" },
-    description: "Specialist commercial window cleaning in Perth. High-reach pure water fed poles up to 4 storeys, certified EWP cherry picker operators, office towers, retail shopfronts & strata glazing.",
+    title: { absolute: "Commercial Window Cleaning Perth | Multi-Storey Commercial Glazing | Aspect" },
+    description: "Specialist commercial window cleaning in Perth. Pure water fed poles and certified scissor lift / EWP operators for buildings up to 4 storeys, retail shopfronts & strata glazing.",
     alternates: { canonical: "https://aspectwindowcleaning.com.au/services/commercial-window-cleaning" }
 };
 
@@ -50,9 +50,9 @@ const accessMethods = [
     },
     {
         icon: HardHat,
-        title: "Certified EWP & Cherry Pickers",
-        badge: "High-Rise & Facades",
-        description: "Fully ticketed Elevated Work Platform (EWP) and boom lift operators. Ideal for multi-storey commercial complexes, architectural glass canopies, exterior signage, and difficult-to-access facade elevations."
+        title: "Certified Scissor Lifts & Cherry Pickers",
+        badge: "Up to 4 Storeys",
+        description: "Fully ticketed Elevated Work Platform (EWP) and scissor lift operators. Ideal for multi-storey commercial complexes, architectural glass canopies, exterior signage, and difficult-to-access facade elevations up to 4 storeys."
     },
     {
         icon: Sparkles,
@@ -67,7 +67,7 @@ const whatsInclude = [
         icon: Building2,
         title: "Multi-Storey Commercial Facades",
         description:
-            "Curtain wall glass, exterior louvres, architectural spandrels, and high-rise commercial window panes cleaned streak-free using pure water reach systems and certified cherry pickers.",
+            "Curtain wall glass, exterior louvres, architectural spandrels, and multi-storey commercial window panes up to 4 storeys cleaned streak-free using pure water reach systems and certified scissor lifts.",
     },
     {
         icon: Store,
@@ -117,7 +117,7 @@ const commercialWindowFAQs: FaqsType[] = [
     {
         question: "How high can you clean windows without scaffolding?",
         answer:
-            "Using our advanced carbon-fiber water-fed pole systems, we safely clean windows up to 4 storeys (approximately 15 metres) directly from the ground. For higher buildings, complex rooflines, or elevated signage, our certified operators deploy Elevated Work Platforms (cherry pickers and scissor lifts).",
+            "Using our advanced carbon-fiber water-fed pole systems, we safely clean windows up to 4 storeys directly from the ground. For elevated signage, multi-storey facades, or architectural glass up to 4 storeys, our certified operators deploy scissor lifts and cherry pickers (EWPs). For high-rise towers and skyscrapers requiring rope-access abseiling beyond 4 storeys, we coordinate with trusted specialist height-access partners.",
     },
     {
         question: "Are your operators certified and insured for working at heights?",
@@ -156,13 +156,21 @@ const CommercialWindowCleaning = () => {
                     __html: JSON.stringify({
                         "@context": "https://schema.org",
                         "@type": "Service",
-                        "name": "Commercial Window Cleaning & High-Reach Glazing",
+                        "name": "Commercial Window Cleaning Perth",
                         "provider": {
                             "@type": "LocalBusiness",
                             "name": "Aspect Window Cleaning",
                             "telephone": "0426 996 192",
                             "priceRange": "$$",
-                            "openingHours": "Mo-Su 00:00-23:59"
+                            "url": "https://aspectwindowcleaning.com.au",
+                            "openingHours": "Mo-Su 00:00-23:59",
+                            "aggregateRating": {
+                                "@type": "AggregateRating",
+                                "ratingValue": "5.0",
+                                "reviewCount": "43",
+                                "bestRating": "5",
+                                "worstRating": "1"
+                            }
                         },
                         "areaServed": {
                             "@type": "State",
@@ -176,7 +184,7 @@ const CommercialWindowCleaning = () => {
                                     "@type": "Offer",
                                     "itemOffered": {
                                         "@type": "Service",
-                                        "name": "High-Reach Water-Fed Pole Window Cleaning"
+                                        "name": "Pure-Water Reach Pole & Scissor Lift Window Cleaning (Up to 4 Storeys)"
                                     }
                                 },
                                 {
@@ -264,13 +272,17 @@ const CommercialWindowCleaning = () => {
             <section className="bg-brand-navy text-white pt-32 sm:pt-36 pb-16 sm:pb-20 text-center relative overflow-hidden">
                 <div className="max-w-4xl mx-auto px-4 relative z-10">
                     <span className="inline-flex items-center gap-2 bg-action-gold/20 text-action-gold border border-action-gold/30 px-4 py-1.5 rounded-full text-xs font-bold uppercase tracking-wider mb-6">
-                        <Building2 className="w-3.5 h-3.5" /> Certified EWP & High-Reach Specialist
+                        <Building2 className="w-3.5 h-3.5" /> Certified Scissor Lift &amp; Multi-Storey Specialist (Up to 4 Storeys)
                     </span>
                     <h1 className="text-3xl md:text-5xl lg:text-6xl font-heading font-bold mb-6 tracking-tight">
-                        Commercial Window Cleaning & High-Reach Glazing Perth
+                        Commercial Window Cleaning Perth
+                        <br />
+                        <span className="text-action-gold text-2xl md:text-4xl font-medium block mt-2">
+                            Office, Strata &amp; Multi-Storey Commercial Window Cleaners
+                        </span>
                     </h1>
                     <p className="text-base md:text-xl text-slate-200 max-w-3xl mx-auto mb-8 leading-relaxed">
-                        Specialist exterior and interior commercial glass cleaning for office towers, retail shopfronts, car showrooms, and strata complexes. Certified EWP operators, 0ppm pure-water reach poles up to 4 storeys, and $20M insurance.
+                        Looking for a trusted <strong>commercial window cleaning service near me</strong>? Aspect delivers specialist exterior and interior glass cleaning for commercial offices, retail showrooms, and strata complexes up to 4 storeys across Perth, WA. Certified scissor lift &amp; EWP operators, 0ppm pure-water reach poles, and $20M insurance.
                     </p>
                     <div className="flex flex-col sm:flex-row gap-4 justify-center items-center">
                         <Link href="/contact" className="w-full sm:w-auto bg-action-gold text-brand-navy hover:bg-action-gold/90 px-8 py-4 rounded-full font-bold text-base shadow-lg transition-all text-center min-h-[48px] inline-flex items-center justify-center">
@@ -331,7 +343,7 @@ const CommercialWindowCleaning = () => {
                                 <div className="font-semibold text-brand-navy text-sm md:text-base leading-tight">
                                     5.0 Google Reviews
                                 </div>
-                                <div className="text-xs text-brand-slate">43+ Verified Reviews</div>
+                                <div className="text-xs text-brand-slate">Trusted by Perth Businesses</div>
                             </div>
                         </ClickableBadge>
                     </div>
@@ -343,7 +355,7 @@ const CommercialWindowCleaning = () => {
                 <div className="text-center max-w-3xl mx-auto mb-10">
                     <span className="text-action-gold font-semibold uppercase mb-2 block tracking-wider text-xs">ADVANCED ACCESS CAPABILITIES</span>
                     <h2 className="text-3xl font-heading font-bold text-brand-navy mb-4">
-                        High-Reach Commercial Window Cleaning Solutions
+                        Office &amp; Strata Window Cleaning Perth: Multi-Storey Access (Up to 4 Storeys)
                     </h2>
                     <p className="text-brand-slate text-sm sm:text-base">
                         From ground-level retail shopfronts to 4-storey reach poles and cherry picker boom lifts, we have the specialized access equipment to clean every commercial pane safely.
@@ -399,7 +411,7 @@ const CommercialWindowCleaning = () => {
             <section className="py-16 max-w-5xl mx-auto px-4">
                 <span className="text-sm text-action-gold font-semibold uppercase mb-2 block tracking-wider text-xs">WHAT WE CLEAN</span>
                 <h2 className="text-3xl font-heading font-bold text-brand-navy mb-4">
-                    Commercial Window Cleaning Services
+                    Commercial Window Cleaners Perth: Tailored Glazing Solutions
                 </h2>
                 <p className="mb-10 text-brand-slate max-w-3xl">
                     Every commercial glazing job is executed with commercial-grade safety compliance, zero-residue deionised water, and hand-finished glass detailing.

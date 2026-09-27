@@ -252,7 +252,14 @@ export default function ResidentialWindowCleaning() {
                             "name": "Aspect Window Cleaning",
                             "telephone": BUSINESS.phone,
                             "priceRange": "$$",
-                            "url": "https://aspectwindowcleaning.com.au"
+                            "url": "https://aspectwindowcleaning.com.au",
+                            "aggregateRating": {
+                                "@type": "AggregateRating",
+                                "ratingValue": "5.0",
+                                "reviewCount": "43",
+                                "bestRating": "5",
+                                "worstRating": "1"
+                            }
                         },
                         "areaServed": {
                             "@type": "State",
@@ -318,9 +325,9 @@ export default function ResidentialWindowCleaning() {
                         <span className="text-sm font-medium">Residential Services</span>
                     </div>
                     <h1 className="text-3xl sm:text-5xl lg:text-6xl font-heading font-bold mb-4 sm:mb-6 leading-tight">
-                        Sparkling Clean Windows
+                        Residential Window Cleaning Perth
                         <br />
-                        <span className="text-action-gold">For Your Home</span>
+                        <span className="text-action-gold text-2xl sm:text-4xl lg:text-5xl">Streak-Free Home Glass &amp; Frame Detailing</span>
                     </h1>
                     <p className="text-base sm:text-xl text-brand-water/80 max-w-2xl mx-auto mb-8 sm:mb-10 leading-relaxed">
                         Professional window cleaning using 0ppm Pure Water Technology.
@@ -393,7 +400,7 @@ export default function ResidentialWindowCleaning() {
                                 <div className="font-semibold text-brand-navy text-sm md:text-base leading-tight">
                                     5.0 Google Reviews
                                 </div>
-                                <div className="text-xs text-brand-slate">43+ Happy Perth homeowners</div>
+                                <div className="text-xs text-brand-slate">200+ Happy Perth homeowners</div>
                             </div>
                         </ClickableBadge>
                     </div>
@@ -420,7 +427,7 @@ export default function ResidentialWindowCleaning() {
             <section className="py-16 bg-white border-t border-slate-100">
                 <div className="max-w-5xl mx-auto px-4">
                     <h2 className="text-3xl font-heading font-bold text-brand-navy text-center mb-12">
-                        Why Pick Aspect for Residential Window Cleaning?
+                        Why Perth Homeowners Choose Aspect for Residential Window Cleaning
                     </h2>
                     <div className="grid md:grid-cols-2 lg:grid-cols-3 gap-6">
                         {residentialFeatures.map((feature) => (

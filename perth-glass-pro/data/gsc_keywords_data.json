@@ -1,6 +1,6 @@
 {
   "metadata": {
-    "savedAt": "2026-09-23T15:18:26.478Z",
+    "savedAt": "2026-09-25T14:50:00.000Z",
     "totalTargetKeywords": 20,
     "totalGscQueries": 376,
     "breakdown": {
@@ -12,164 +12,224 @@
   },
   "targetKeywords": [
     {
-      "keyword": "window cleaning commercial",
-      "volume": 390,
-      "cpc": 12.38,
-      "competition": 0.53,
-      "difficulty": 17,
-      "intent": "Info"
-    },
-    {
-      "keyword": "commercial window cleaning",
-      "volume": 390,
-      "cpc": 12.38,
-      "competition": 0.53,
-      "difficulty": 0,
-      "intent": "Comm"
-    },
-    {
-      "keyword": "perth commercial cleaning services",
-      "volume": 90,
-      "cpc": 22.15,
-      "competition": 0.43,
-      "difficulty": 16,
-      "intent": "Comm"
-    },
-    {
-      "keyword": "commercial cleaning company rates",
-      "volume": 140,
-      "cpc": 8.03,
-      "competition": 0.47,
-      "difficulty": 0,
-      "intent": "Comm"
-    },
-    {
-      "keyword": "commercial cleaning company",
-      "volume": 390,
-      "cpc": 14.13,
-      "competition": 0.36,
-      "difficulty": 16,
-      "intent": "Comm"
-    },
-    {
-      "keyword": "commercial window cleaning perth",
-      "volume": 30,
-      "cpc": 11.43,
-      "competition": 0.48,
-      "difficulty": 26,
-      "intent": "Comm"
-    },
-    {
-      "keyword": "window cleaning services commercial",
-      "volume": 50,
-      "cpc": 3.54,
-      "competition": 0.15,
-      "difficulty": 0,
-      "intent": "Comm"
-    },
-    {
-      "keyword": "commercial cleaning services",
-      "volume": 1600,
-      "cpc": 30.29,
-      "competition": 0.2,
-      "difficulty": 24,
-      "intent": "Comm"
-    },
-    {
-      "keyword": "commercial cleaning business",
-      "volume": 210,
-      "cpc": 11.48,
-      "competition": 0.49,
-      "difficulty": 0,
-      "intent": "Comm"
-    },
-    {
-      "keyword": "commercial window cleaning service",
-      "volume": 50,
-      "cpc": 3.54,
-      "competition": 0.15,
-      "difficulty": 0,
-      "intent": "Comm"
-    },
-    {
-      "keyword": "cleaning business",
-      "volume": 880,
-      "cpc": 6.24,
-      "competition": 0.51,
-      "difficulty": 1,
-      "intent": "Comm"
-    },
-    {
-      "keyword": "commercial office cleaning",
-      "volume": 140,
-      "cpc": 27.56,
-      "competition": 0.75,
-      "difficulty": 12,
-      "intent": "Comm"
-    },
-    {
-      "keyword": "perth house cleaners",
-      "volume": 358,
-      "cpc": 11.6,
-      "competition": 0.73,
-      "difficulty": 9,
-      "intent": "Comm"
-    },
-    {
-      "keyword": "cleaners in perth",
-      "volume": 246,
-      "cpc": 18.15,
-      "competition": 0.92,
-      "difficulty": 3,
-      "intent": "Comm"
-    },
-    {
-      "keyword": "gutter cleaning perth",
-      "volume": 1220,
-      "cpc": 12.23,
-      "competition": 0.77,
-      "difficulty": 6,
-      "intent": "Comm"
-    },
-    {
-      "keyword": "office cleaning perth",
-      "volume": 3317,
-      "cpc": 45.23,
-      "competition": 0.09,
-      "difficulty": 24,
-      "intent": "Comm"
-    },
-    {
-      "keyword": "cleaning perth",
-      "volume": 246,
-      "cpc": 18.15,
-      "competition": 0.92,
-      "difficulty": 1,
-      "intent": "Comm"
-    },
-    {
-      "keyword": "commercial cleaning perth",
-      "volume": 1595,
-      "cpc": 32.87,
-      "competition": 0.26,
-      "difficulty": 6,
-      "intent": "Comm"
-    },
-    {
       "keyword": "window cleaning perth",
-      "volume": 513,
-      "cpc": 8.03,
-      "competition": 0.72,
-      "difficulty": 24,
-      "intent": "Comm"
+      "rankingUrl": "https://aspectwindowcleaning.com.au/",
+      "position": 15,
+      "estVisits": 1,
+      "volume": 880,
+      "seoDifficulty": 32,
+      "cpc": 13.03,
+      "intent": "Commercial",
+      "status": "Page 2 Striking Distance"
     },
     {
-      "keyword": "vacate clean perth",
-      "volume": 787,
-      "cpc": 13.39,
-      "competition": 0.6,
-      "difficulty": 8,
-      "intent": "Nav"
+      "keyword": "window cleaners perth",
+      "rankingUrl": "https://aspectwindowcleaning.com.au/",
+      "position": 20,
+      "estVisits": 1,
+      "volume": 880,
+      "seoDifficulty": 32,
+      "cpc": 13.03,
+      "intent": "Commercial",
+      "status": "Page 2 Striking Distance"
+    },
+    {
+      "keyword": "window washer perth",
+      "rankingUrl": "https://aspectwindowcleaning.com.au/",
+      "position": 28,
+      "estVisits": 0,
+      "volume": 880,
+      "seoDifficulty": 29,
+      "cpc": 13.03,
+      "intent": "Commercial",
+      "status": "Page 3 Striking Distance"
+    },
+    {
+      "keyword": "window cleaner perth wa",
+      "rankingUrl": "https://aspectwindowcleaning.com.au/",
+      "position": 30,
+      "estVisits": 0,
+      "volume": 880,
+      "seoDifficulty": 28,
+      "cpc": 13.03,
+      "intent": "Commercial",
+      "status": "Page 3 Striking Distance"
+    },
+    {
+      "keyword": "clean solar panels perth",
+      "rankingUrl": "https://aspectwindowcleaning.com.au/services/solar-panel-washing",
+      "position": 51,
+      "estVisits": 0,
+      "volume": 260,
+      "seoDifficulty": 8,
+      "cpc": 8.01,
+      "intent": "Commercial",
+      "status": "Organic Incubation Target (SD 8)"
+    },
+    {
+      "keyword": "window cleaner fremantle",
+      "rankingUrl": "https://aspectwindowcleaning.com.au/",
+      "position": 17,
+      "estVisits": 2,
+      "volume": 70,
+      "seoDifficulty": 10,
+      "cpc": 22.87,
+      "intent": "Commercial",
+      "status": "Page 2 Striking Distance (High CPC $22.87)"
+    },
+    {
+      "keyword": "window cleaning fremantle",
+      "rankingUrl": "https://aspectwindowcleaning.com.au/",
+      "position": 17,
+      "estVisits": 2,
+      "volume": 70,
+      "seoDifficulty": 10,
+      "cpc": 22.87,
+      "intent": "Commercial",
+      "status": "Page 2 Striking Distance (High CPC $22.87)"
+    },
+    {
+      "keyword": "window cleaners fremantle",
+      "rankingUrl": "https://aspectwindowcleaning.com.au/",
+      "position": 18,
+      "estVisits": 2,
+      "volume": 70,
+      "seoDifficulty": 10,
+      "cpc": 22.87,
+      "intent": "Commercial",
+      "status": "Page 2 Striking Distance (High CPC $22.87)"
+    },
+    {
+      "keyword": "gutter cleaning joondalup",
+      "rankingUrl": "https://aspectwindowcleaning.com.au/locations/joondalup",
+      "position": 25,
+      "estVisits": 0,
+      "volume": 70,
+      "seoDifficulty": 9,
+      "cpc": 12.55,
+      "intent": "Commercial",
+      "status": "Page 3 Striking Distance (SD 9)"
+    },
+    {
+      "keyword": "window cleaning service perth",
+      "rankingUrl": "https://aspectwindowcleaning.com.au/",
+      "position": 12,
+      "estVisits": 0,
+      "volume": 50,
+      "seoDifficulty": 29,
+      "cpc": 15.29,
+      "intent": "Commercial",
+      "status": "Page 2 Striking Distance"
+    },
+    {
+      "keyword": "galeforce window cleaning",
+      "rankingUrl": "https://aspectwindowcleaning.com.au/",
+      "position": 13,
+      "estVisits": 0,
+      "volume": 50,
+      "seoDifficulty": 11,
+      "cpc": 11.26,
+      "intent": "Navigational",
+      "status": "Page 2 Competitor Intercept"
+    },
+    {
+      "keyword": "all glass cleaning reviews",
+      "rankingUrl": "https://aspectwindowcleaning.com.au/",
+      "position": 7,
+      "estVisits": 0,
+      "volume": 50,
+      "seoDifficulty": 17,
+      "cpc": 0.0,
+      "intent": "Reputational",
+      "status": "Page 1 Top 10"
+    },
+    {
+      "keyword": "perth window cleaning services",
+      "rankingUrl": "https://aspectwindowcleaning.com.au/",
+      "position": 19,
+      "estVisits": 0,
+      "volume": 50,
+      "seoDifficulty": 33,
+      "cpc": 15.29,
+      "intent": "Commercial",
+      "status": "Page 2 Striking Distance"
+    },
+    {
+      "keyword": "window cleaning dunsborough",
+      "rankingUrl": "https://aspectwindowcleaning.com.au/",
+      "position": 30,
+      "estVisits": 0,
+      "volume": 50,
+      "seoDifficulty": 10,
+      "cpc": 5.81,
+      "intent": "Commercial",
+      "status": "Regional SW WA Monitor"
+    },
+    {
+      "keyword": "window cleaners dunsborough",
+      "rankingUrl": "https://aspectwindowcleaning.com.au/",
+      "position": 35,
+      "estVisits": 0,
+      "volume": 50,
+      "seoDifficulty": 10,
+      "cpc": 5.81,
+      "intent": "Commercial",
+      "status": "Regional SW WA Monitor"
+    },
+    {
+      "keyword": "window cleaning services perth",
+      "rankingUrl": "https://aspectwindowcleaning.com.au/",
+      "position": 24,
+      "estVisits": 0,
+      "volume": 50,
+      "seoDifficulty": 32,
+      "cpc": 15.29,
+      "intent": "Commercial",
+      "status": "Page 3 Striking Distance"
+    },
+    {
+      "keyword": "window cleaners wa",
+      "rankingUrl": "https://aspectwindowcleaning.com.au/",
+      "position": 32,
+      "estVisits": 0,
+      "volume": 50,
+      "seoDifficulty": 23,
+      "cpc": 8.54,
+      "intent": "Commercial",
+      "status": "State-wide Footprint"
+    },
+    {
+      "keyword": "window cleaner dunsborough",
+      "rankingUrl": "https://aspectwindowcleaning.com.au/",
+      "position": 37,
+      "estVisits": 0,
+      "volume": 50,
+      "seoDifficulty": 10,
+      "cpc": 16.54,
+      "intent": "Commercial",
+      "status": "Regional SW WA Monitor"
+    },
+    {
+      "keyword": "window cleaners kew",
+      "rankingUrl": "https://aspectwindowcleaning.com.au/",
+      "position": 68,
+      "estVisits": 0,
+      "volume": 40,
+      "seoDifficulty": 13,
+      "cpc": 23.74,
+      "intent": "Commercial",
+      "status": "Kew / Kewdale Regional Monitor"
+    },
+    {
+      "keyword": "window cleaning albany",
+      "rankingUrl": "https://aspectwindowcleaning.com.au/",
+      "position": 33,
+      "estVisits": 0,
+      "volume": 40,
+      "seoDifficulty": 13,
+      "cpc": 4.51,
+      "intent": "Commercial",
+      "status": "Regional WA Monitor"
     }
   ],
   "gscQueries": [

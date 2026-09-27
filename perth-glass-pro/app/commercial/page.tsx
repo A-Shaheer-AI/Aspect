@@ -8,12 +8,12 @@ import { BUSINESS } from "@/lib/config";
 
 export const metadata: Metadata = {
     title: "Commercial Cleaning, Janitorial & Window Cleaning Perth | Aspect",
-    description: "Perth commercial cleaning, office janitorial, and high-reach window cleaning. Directly employed police-cleared staff, EWP certified, $20M insured. 24/7 service.",
+    description: "Perth commercial cleaning, office janitorial, and multi-storey window cleaning up to 4 storeys. Directly employed police-cleared staff, EWP certified, $20M insured. 24/7 service.",
 };
 
 export default function CommercialPage() {
     const features = [
-        "Certified Cherry Picker (EWP) operators for high-reach glass and facade cleaning",
+        "Certified Scissor Lift (EWP) operators for multi-storey glass and facade cleaning up to 4 storeys",
         "Water-Fed Pole System for pure-water cleaning up to 4 storeys from the ground",
         "Comprehensive office janitorial care & hospital-grade surface sanitisation",
         "Commercial hard floor strip & seal and carpet hot water extraction",
@@ -51,8 +51,8 @@ export default function CommercialPage() {
                         </span>
                     </h1>
                     <p className="text-base sm:text-xl text-brand-water/80 max-w-2xl mx-auto mb-8 sm:mb-10">
-                        Perth window cleaning services for businesses and apartments. Specialized high-reach
-                        cleaning for multi-story buildings, retail establishments, and offices. Completely safety
+                        Perth window cleaning services for businesses and strata properties. Specialized multi-storey
+                        cleaning up to 4 storeys for commercial buildings, retail establishments, and offices. Completely safety
                         compliant, insured, and certified.
                     </p>
                     <div className="flex flex-col sm:flex-row items-center justify-center gap-3 sm:gap-4">
@@ -94,7 +94,7 @@ export default function CommercialPage() {
             <section className="py-16 bg-white">
                 <div className="max-w-5xl mx-auto px-4">
                     <h2 className="text-3xl font-heading font-bold text-brand-navy text-center mb-12">
-                        Why Pick Aspect for Commercial Cleaning & High-Reach Glazing?
+                        Why Pick Aspect for Commercial Cleaning &amp; Multi-Storey Glazing?
                     </h2>
                     <div className="grid md:grid-cols-2 lg:grid-cols-3 gap-6">
                         {features.map((feature) => (
@@ -107,7 +107,7 @@ export default function CommercialPage() {
                     <div className="mt-10 p-6 rounded-2xl bg-gradient-to-r from-brand-navy to-slate-900 text-white flex flex-col md:flex-row items-center justify-between gap-6 shadow-md">
                         <div>
                             <span className="text-action-gold text-xs font-bold uppercase tracking-wider block mb-1">Dual-Contract Advantage</span>
-                            <h3 className="text-lg font-bold text-white mb-1">Complete Office Janitorial + High-Reach Window Cleaning</h3>
+                            <h3 className="text-lg font-bold text-white mb-1">Complete Office Janitorial + Multi-Storey Window Cleaning (Up to 4 Storeys)</h3>
                             <p className="text-slate-300 text-sm max-w-xl">
                                 Consolidate routine workstation sanitation, restroom restocking, floor care, and external facade washing under one vetted team and one invoice. Save up to 20% on bundled contracts.
                             </p>

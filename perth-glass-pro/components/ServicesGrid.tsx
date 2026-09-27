@@ -22,7 +22,7 @@ export default function ServicesGrid() {
         {
             id: "commercial",
             title: "Commercial & Strata Glass",
-            subtext: "Offices, retail & high-reach EWP commercial window cleaning. Certified professionals.",
+            subtext: "Offices, retail & multi-storey scissor lift commercial window cleaning up to 4 storeys.",
             link: "/services/commercial-window-cleaning",
             image: "/assets/images/services/commercial-sign-cleaning.webp",
             icon: Building2,
@@ -90,10 +90,10 @@ export default function ServicesGrid() {
                     className="text-center mb-16"
                 >
                     <h2 className="text-4xl sm:text-5xl lg:text-6xl font-bold text-slate-900 mb-6 tracking-tight">
-                        Our <span className="text-[#000080]">Services</span>
+                        Perth <span className="text-[#000080]">Window Cleaning Services</span> &amp; Exterior Care
                     </h2>
                     <p className="text-slate-600 text-lg max-w-2xl mx-auto leading-relaxed">
-                        Professional <Link href="/services/commercial-cleaning" className="text-action-gold hover:underline font-semibold">commercial office</Link>, <Link href="/services/commercial-window-cleaning" className="text-action-gold hover:underline font-semibold">strata facade</Link>, and <Link href="/services/residential-window-cleaning" className="text-action-gold hover:underline font-semibold">residential cleaning solutions</Link> tailored to your needs across <Link href="/locations" className="text-action-gold hover:underline font-semibold">Perth</Link>. Read our <Link href="/blog" className="text-action-gold hover:underline font-semibold">latest guides</Link> or click on the services below for more information.
+                        Looking for trusted <strong>window cleaners in Perth</strong>? Aspect provides premier <Link href="/services/residential-window-cleaning" className="text-action-gold hover:underline font-semibold">residential window cleaning</Link>, <Link href="/services/commercial-window-cleaning" className="text-action-gold hover:underline font-semibold">commercial window cleaning</Link>, and office janitorial care tailored to homes and businesses across <Link href="/locations" className="text-action-gold hover:underline font-semibold">Perth, WA</Link>. Read our <Link href="/blog" className="text-action-gold hover:underline font-semibold">cleaning guides</Link> or explore our services below.
                     </p>
                 </motion.div>
 

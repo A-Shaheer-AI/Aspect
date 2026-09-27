@@ -10,16 +10,17 @@ type FAQItem = {
 type Faqs = {
     faqs: FAQItem[];
     title?: string;
+    heading?: string;
 };
 
-export default function FAQ({ faqs, title }: Faqs) {
+export default function FAQ({ faqs, title, heading }: Faqs) {
     const [openIndex, setOpenIndex] = useState<number | null>(0);
 
     return (
         <section id="faqs" className="py-16 bg-white">
             <div className="max-w-4xl mx-auto px-4">
                 <h2 className="text-3xl font-heading font-bold text-brand-navy text-center mb-4">
-                    Frequently Asked Questions
+                    {heading || "Frequently Asked Questions"}
                 </h2>
 
                 {title ? (

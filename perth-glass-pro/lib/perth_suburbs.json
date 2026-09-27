@@ -772,10 +772,10 @@
           "name": "Joondalup",
           "type": "Urban/Commercial",
           "description": "Perth's major northern CBD, featuring Lakeside Joondalup Shopping City, Edith Cowan University, government offices, and Lake Joondalup nature reserve.",
-          "local_note": "High traffic urban hub with frequent window pollution from commercial activity.",
-          "window_cleaning_tip": "Commercial and residential properties benefit from regular maintenance due to dust buildup.",
+          "local_note": "High traffic northern CBD hub with seasonal leaf drop and dust settling on gutters and large commercial glazing.",
+          "window_cleaning_tip": "Combine commercial window cleaning with seasonal gutter cleaning in Joondalup to prevent roof blockages and preserve glass brilliance.",
           "nearby_landmark": "Lakeside Joondalup Shopping City",
-          "service_description": "We provide commercial and residential window cleaning services in CBD areas."
+          "service_description": "We provide professional residential and commercial window cleaning, downpipe and gutter cleaning, and pure-water solar washing across Joondalup and the northern corridor."
         },
         {
           "name": "Joondanna",
@@ -2181,10 +2181,10 @@
           "name": "Fremantle",
           "type": "Heritage/Urban",
           "description": "WA's most iconic port city, famous for its convict-built heritage buildings, vibrant Fremantle Markets, E Shed Markets, world-class dining, and the Round House.",
-          "local_note": "Coastal winds and urban activity can cause salt and grime buildup on windows.",
-          "window_cleaning_tip": "Regular cleaning preserves clarity on heritage and commercial properties.",
+          "local_note": "Coastal salt-spray winds off Fremantle Harbour and urban activity create persistent ocean haze and salt crusting on windows.",
+          "window_cleaning_tip": "Dedicated window cleaning in Fremantle removes corrosive sea salt before it etches into historic glass and modern coastal facades.",
           "nearby_landmark": "Fremantle Markets",
-          "service_description": "We specialize in cleaning heritage buildings and busy commercial spaces."
+          "service_description": "We are trusted window cleaners in Fremantle, delivering streak-free residential window cleaning, heritage shopfront detailing, and commercial glass care."
         },
         {
           "name": "Furnissdale",

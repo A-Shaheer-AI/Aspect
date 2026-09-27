@@ -69,6 +69,26 @@ const nextConfig: NextConfig = {
                 source: "/sitemap-0.xml",
                 destination: "/sitemap.xml",
                 permanent: true,
+            },
+            {
+                source: "/solar-cleaning",
+                destination: "/services/solar-panel-washing",
+                permanent: true,
+            },
+            {
+                source: "/solar-panel-cleaning",
+                destination: "/services/solar-panel-washing",
+                permanent: true,
+            },
+            {
+                source: "/gutter-cleaning",
+                destination: "/services/gutter-cleaning",
+                permanent: true,
+            },
+            {
+                source: "/pressure-cleaning",
+                destination: "/services/pressure-washing",
+                permanent: true,
             }
         ]
     },

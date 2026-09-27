@@ -127,8 +127,8 @@ export default function HeroWithScroll() {
             </div>
 
             <h1 className="text-3xl sm:text-4xl md:text-5xl xl:text-6xl text-center md:text-left font-bold leading-tight mb-4">
-              Perth&apos;s Trusted Window Cleaners <br />
-              <span className="text-action-gold">Residential, Commercial &amp; High-Reach</span>
+              Window Cleaning Perth <br />
+              <span className="text-action-gold">Residential, Commercial &amp; Multi-Storey Cleaners</span>
             </h1>
 
             {/* Animation On Mobile */}
@@ -185,7 +185,7 @@ export default function HeroWithScroll() {
             </div>
 
             <p className="text-gray-200 text-center md:text-left text-base sm:text-lg mb-4 max-w-xl leading-relaxed mt-6 md:mt-0">
-              Streak-free pure water cleaning for <strong>homes, businesses &amp; strata complexes</strong>. Also specializing in solar panel washing, gutter clearing, and exterior pressure washing.
+              Perth&apos;s premier <strong>window cleaning service</strong>. 100% streak-free pure water cleaning for residential homes, commercial offices, and multi-storey properties up to 4 storeys across Perth, WA.
             </p>
 
             <div className="flex flex-wrap items-center justify-center md:justify-start gap-2.5 sm:gap-3 mb-6">
