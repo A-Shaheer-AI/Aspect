@@ -3,6 +3,8 @@
 import { useState } from "react";
 import { motion } from "framer-motion";
 
+import Image from "next/image";
+
 interface BeforeAfterSliderProps {
     beforeImage: string;
     afterImage: string;
@@ -21,12 +23,17 @@ const BeforeAfterSlider = ({
             className="relative aspect-[4/3] rounded-2xl overflow-hidden shadow-xl bg-slate-200 transition-all duration-300"
         >
             {/* Before (Background) */}
-            <div
-                className="absolute inset-0 bg-cover bg-center"
-                style={{ backgroundImage: `url('${beforeImage}')` }}
-            >
+            <div className="absolute inset-0">
+                <Image
+                    src={beforeImage}
+                    alt="Before window cleaning"
+                    fill
+                    sizes="(max-width: 768px) 100vw, 50vw"
+                    className="object-cover"
+                    loading="lazy"
+                />
                 <div
-                    className="absolute top-4 left-4 bg-black/70 text-white text-xs px-2 py-1 rounded backdrop-blur-sm font-semibold"
+                    className="absolute top-4 left-4 bg-black/70 text-white text-xs px-2 py-1 rounded backdrop-blur-sm font-semibold z-10"
                     style={{ backgroundColor: "rgba(0,0,0,0.75)", WebkitBackdropFilter: "blur(4px)" }}
                 >
                     Before
@@ -35,14 +42,21 @@ const BeforeAfterSlider = ({
 
             {/* After (Foreground, clipped) */}
             <div
-                className="absolute inset-0 bg-cover bg-center border-r-2 border-white"
+                className="absolute inset-0 border-r-2 border-white z-10"
                 style={{
-                    backgroundImage: `url('${afterImage}')`,
                     clipPath: `inset(0 0 0 ${sliderPosition}%)`,
                 }}
             >
+                <Image
+                    src={afterImage}
+                    alt="After window cleaning"
+                    fill
+                    sizes="(max-width: 768px) 100vw, 50vw"
+                    className="object-cover"
+                    loading="lazy"
+                />
                 <div
-                    className="absolute top-4 right-4 bg-black/70 text-white text-xs px-2 py-1 rounded backdrop-blur-sm font-semibold"
+                    className="absolute top-4 right-4 bg-black/70 text-white text-xs px-2 py-1 rounded backdrop-blur-sm font-semibold z-10"
                     style={{ backgroundColor: "rgba(0,0,0,0.75)", WebkitBackdropFilter: "blur(4px)" }}
                 >
                     After

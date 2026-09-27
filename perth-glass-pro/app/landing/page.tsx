@@ -467,7 +467,7 @@ function ScrollAutoplayVideo({
             muted
             playsInline
             loop
-            preload="metadata"
+            preload="none"
         >
             <source src={src} type={type} />
         </video>
@@ -697,12 +697,30 @@ export default function WindowCleaningAdsPage() {
     const YELLOW = "#FFE54D";
 
     const galleryImages = [
-        "https://res.cloudinary.com/dr8tjrszy/image/upload/f_auto,q_auto,w_800/v1789141016/aspect_landing/expert-window-cleaning-perth.jpg",
-        "https://res.cloudinary.com/dr8tjrszy/image/upload/f_auto,q_auto,w_800/v1789143222/aspect_landing/perth-window-cleaning-service-expert.jpg",
-        "https://res.cloudinary.com/dr8tjrszy/image/upload/f_auto,q_auto,w_800/v1789141708/aspect_landing/exterior-glass-cleaning-perth-specialists.jpg",
-        "https://res.cloudinary.com/dr8tjrszy/image/upload/f_auto,q_auto,w_800/v1789142616/aspect_landing/professional-window-washers-perth.jpg",
-        "https://res.cloudinary.com/dr8tjrszy/image/upload/f_auto,q_auto,w_800/v1789142856/aspect_landing/perth-window-cleaners-in-action.jpg",
-        "https://res.cloudinary.com/dr8tjrszy/image/upload/f_auto,q_auto,w_800/v1789141508/aspect_landing/residential-window-cleaning-wa.jpg"
+        {
+            thumb: "https://res.cloudinary.com/dr8tjrszy/image/upload/f_auto,q_auto,w_400/v1789141016/aspect_landing/expert-window-cleaning-perth.jpg",
+            full: "https://res.cloudinary.com/dr8tjrszy/image/upload/f_auto,q_auto,w_800/v1789141016/aspect_landing/expert-window-cleaning-perth.jpg"
+        },
+        {
+            thumb: "https://res.cloudinary.com/dr8tjrszy/image/upload/f_auto,q_auto,w_400/v1789143222/aspect_landing/perth-window-cleaning-service-expert.jpg",
+            full: "https://res.cloudinary.com/dr8tjrszy/image/upload/f_auto,q_auto,w_800/v1789143222/aspect_landing/perth-window-cleaning-service-expert.jpg"
+        },
+        {
+            thumb: "https://res.cloudinary.com/dr8tjrszy/image/upload/f_auto,q_auto,w_400/v1789141708/aspect_landing/exterior-glass-cleaning-perth-specialists.jpg",
+            full: "https://res.cloudinary.com/dr8tjrszy/image/upload/f_auto,q_auto,w_800/v1789141708/aspect_landing/exterior-glass-cleaning-perth-specialists.jpg"
+        },
+        {
+            thumb: "https://res.cloudinary.com/dr8tjrszy/image/upload/f_auto,q_auto,w_400/v1789142616/aspect_landing/professional-window-washers-perth.jpg",
+            full: "https://res.cloudinary.com/dr8tjrszy/image/upload/f_auto,q_auto,w_800/v1789142616/aspect_landing/professional-window-washers-perth.jpg"
+        },
+        {
+            thumb: "https://res.cloudinary.com/dr8tjrszy/image/upload/f_auto,q_auto,w_400/v1789142856/aspect_landing/perth-window-cleaners-in-action.jpg",
+            full: "https://res.cloudinary.com/dr8tjrszy/image/upload/f_auto,q_auto,w_800/v1789142856/aspect_landing/perth-window-cleaners-in-action.jpg"
+        },
+        {
+            thumb: "https://res.cloudinary.com/dr8tjrszy/image/upload/f_auto,q_auto,w_400/v1789141508/aspect_landing/residential-window-cleaning-wa.jpg",
+            full: "https://res.cloudinary.com/dr8tjrszy/image/upload/f_auto,q_auto,w_800/v1789141508/aspect_landing/residential-window-cleaning-wa.jpg"
+        }
     ];
 
     return (
@@ -733,8 +751,8 @@ export default function WindowCleaningAdsPage() {
             {/* 🔹🔹🔹 SECTION 1: HERO  🔹🔹🔹 */}
             <section
                 className="relative min-h-screen flex flex-col items-center justify-center md:px-5 pb-10 text-white bg-cover bg-center
-  bg-[linear-gradient(160deg,rgba(10,22,40,0.5)_0%,rgba(15,37,69,0.8)_60%,rgba(19,48,96,0.8)_100%),url('/landing-hero-bg.jpeg')]
-  md:bg-[linear-gradient(160deg,rgba(10,22,40,0.5)_0%,rgba(15,37,69,0.8)_60%,rgba(19,48,96,0.8)_100%),url('/landing-hero-bg.jpeg')]"
+  bg-[linear-gradient(160deg,rgba(10,22,40,0.5)_0%,rgba(15,37,69,0.8)_60%,rgba(19,48,96,0.8)_100%),url('/assets/landing-hero-bg-mobile.webp')]
+  md:bg-[linear-gradient(160deg,rgba(10,22,40,0.5)_0%,rgba(15,37,69,0.8)_60%,rgba(19,48,96,0.8)_100%),url('/assets/landing-hero-bg.webp')]"
                 style={{ backgroundColor: "#0A1628" }}
             >
 
@@ -768,18 +786,18 @@ export default function WindowCleaningAdsPage() {
                             <style>{`
                                 .snap-x::-webkit-scrollbar { display: none; }
                             `}</style>
-                            {galleryImages.map((src, index) => (
+                            {galleryImages.map((img, index) => (
                                 <div
                                     key={index}
                                     onClick={() => { setCurrentImageIndex(index); setGalleryOpen(true); }}
                                     className="relative w-48 h-36 lg:w-full lg:aspect-[4/3] lg:h-auto flex-shrink-0 snap-center rounded-xl overflow-hidden shadow-lg border border-white/20 hover:scale-105 cursor-pointer transition-all duration-300"
                                 >
                                     <Image
-                                        src={src}
+                                        src={img.thumb}
                                         alt={`Recent Work ${index + 1}`}
                                         fill
                                         sizes="(max-width: 1024px) 192px, 33vw"
-                                        priority={index <= 2}
+                                        priority={index === 0}
                                         className="object-cover"
                                         unoptimized
                                     />
@@ -889,13 +907,13 @@ export default function WindowCleaningAdsPage() {
                     </div>
                     <div className="grid grid-cols-1 gap-4 lg:grid-cols-2">
                         <BeforeAfterSlider
-                            afterImage="https://res.cloudinary.com/dr8tjrszy/image/upload/f_auto,q_auto,w_800/v1774345158/IMG_9593_1_2_b98bl5.png"
-                            beforeImage="https://res.cloudinary.com/dr8tjrszy/image/upload/f_auto,q_auto,w_800/v1771960144/WhatsApp_Image_2026-02-22_at_8.48.03_PM_vtb2tn.jpg"
+                            afterImage="https://res.cloudinary.com/dr8tjrszy/image/upload/f_auto,q_auto,w_600/v1774345158/IMG_9593_1_2_b98bl5.png"
+                            beforeImage="https://res.cloudinary.com/dr8tjrszy/image/upload/f_auto,q_auto,w_600/v1771960144/WhatsApp_Image_2026-02-22_at_8.48.03_PM_vtb2tn.jpg"
                             initial={50}
                         />
                         <BeforeAfterSlider
-                            afterImage="https://res.cloudinary.com/dr8tjrszy/image/upload/f_auto,q_auto,w_800/v1785879700/aspect_gallery/after.webp"
-                            beforeImage="https://res.cloudinary.com/dr8tjrszy/image/upload/f_auto,q_auto,w_800/v1785879695/aspect_gallery/1-before.webp"
+                            afterImage="https://res.cloudinary.com/dr8tjrszy/image/upload/f_auto,q_auto,w_600/v1785879700/aspect_gallery/after.webp"
+                            beforeImage="https://res.cloudinary.com/dr8tjrszy/image/upload/f_auto,q_auto,w_600/v1785879695/aspect_gallery/1-before.webp"
                             initial={50}
                         />
                     </div>
@@ -1549,7 +1567,7 @@ export default function WindowCleaningAdsPage() {
                         <X className="w-8 h-8" />
                     </button>
                     <div className="relative w-full max-w-4xl aspect-[4/3] lg:aspect-video rounded-xl overflow-hidden">
-                        <Image src={galleryImages[currentImageIndex]} alt="Gallery" fill className="object-contain" unoptimized />
+                        <Image src={galleryImages[currentImageIndex].full} alt="Gallery" fill className="object-contain" unoptimized />
                     </div>
                     <button onClick={() => setCurrentImageIndex(prev => prev > 0 ? prev - 1 : galleryImages.length - 1)} className="absolute left-4 top-1/2 -translate-y-1/2 text-white p-2 bg-black/50 rounded-full hover:bg-black transition-colors">
                         <ChevronLeft className="w-8 h-8" />

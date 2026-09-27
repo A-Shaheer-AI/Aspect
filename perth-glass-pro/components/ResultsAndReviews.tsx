@@ -38,20 +38,20 @@ export function SeeTheDifference() {
                     />
 
                     <BeforeAfterSlider
-                        afterImage="https://res.cloudinary.com/dr8tjrszy/image/upload/f_auto,q_auto,w_800/v1772792157/after-window-cleaning_fs1hhz.jpg"
-                        beforeImage="https://res.cloudinary.com/dr8tjrszy/image/upload/f_auto,q_auto,w_800/v1772792155/aspect-before-window-cleaning_zfr8ae.jpg"
+                        afterImage="https://res.cloudinary.com/dr8tjrszy/image/upload/f_auto,q_auto,w_600/v1772792157/after-window-cleaning_fs1hhz.jpg"
+                        beforeImage="https://res.cloudinary.com/dr8tjrszy/image/upload/f_auto,q_auto,w_600/v1772792155/aspect-before-window-cleaning_zfr8ae.jpg"
                         initial={50}
                     />
 
                     <BeforeAfterSlider
-                        afterImage="https://res.cloudinary.com/dr8tjrszy/image/upload/f_auto,q_auto,w_800/v1785879700/aspect_gallery/after.webp"
-                        beforeImage="https://res.cloudinary.com/dr8tjrszy/image/upload/f_auto,q_auto,w_800/v1785879695/aspect_gallery/1-before.webp"
+                        afterImage="https://res.cloudinary.com/dr8tjrszy/image/upload/f_auto,q_auto,w_600/v1785879700/aspect_gallery/after.webp"
+                        beforeImage="https://res.cloudinary.com/dr8tjrszy/image/upload/f_auto,q_auto,w_600/v1785879695/aspect_gallery/1-before.webp"
                         initial={50}
                     />
 
                     <BeforeAfterSlider
-                        afterImage="https://res.cloudinary.com/dr8tjrszy/image/upload/f_auto,q_auto,w_800/v1785880639/aspect_gallery/2-after.webp"
-                        beforeImage="https://res.cloudinary.com/dr8tjrszy/image/upload/f_auto,q_auto,w_800/v1785880638/aspect_gallery/2-before.webp"
+                        afterImage="https://res.cloudinary.com/dr8tjrszy/image/upload/f_auto,q_auto,w_600/v1785880639/aspect_gallery/2-after.webp"
+                        beforeImage="https://res.cloudinary.com/dr8tjrszy/image/upload/f_auto,q_auto,w_600/v1785880638/aspect_gallery/2-before.webp"
                         initial={50}
                     />
                 </div>
