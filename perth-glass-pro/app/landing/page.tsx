@@ -607,21 +607,9 @@ export default function WindowCleaningAdsPage() {
     };
 
 
-    /*  Scroll-triggered popup at 50% page height  */
-    useEffect(() => {
-        const handleScroll = () => {
-            if (scrollPopupShown) return;
-            const scrolled = window.scrollY + window.innerHeight;
-            const total = document.documentElement.scrollHeight;
-            if (scrolled / total >= 0.5) {
-                setShowPromo(true);
-                setModalOpen(true);
-                setScrollPopupShown(true);
-            }
-        };
-        window.addEventListener("scroll", handleScroll, { passive: true });
-        return () => window.removeEventListener("scroll", handleScroll);
-    }, [scrollPopupShown]);
+    /*  Auto-scroll popup disabled to comply with Google Ads Landing Page Experience guidelines
+        (Interstitials and unexpected modals triggered on scroll penalize Quality Score).
+        Modals remain fully accessible via user click triggers. */
 
     const openRegularModal = () => {
         setShowPromo(false);
@@ -765,11 +753,11 @@ export default function WindowCleaningAdsPage() {
 
                         {/* MOBILE HEADING (Hidden on desktop) */}
                         <div className="lg:hidden text-center text-white mb-8 w-full">
-                            <h2 className="mb-4 leading-none font-black text-white" style={{ fontSize: "clamp(32px,4vw,56px)", letterSpacing: "1px" }}>
+                            <h1 className="mb-4 leading-none font-black text-white" style={{ fontSize: "clamp(32px,4vw,56px)", letterSpacing: "1px" }}>
                                 Perth&apos;s #1
                                 <br />
                                 <span style={{ color: YELLOW }}>Window Cleaners</span>
-                            </h2>
+                            </h1>
                             <p className="w-full text-base font-light leading-relaxed mx-auto max-w-lg" style={{ color: "rgba(255,255,255,0.8)" }}>
                                 Next-Day Availability. Commercial-Grade Pure Water Cleaning for Homes & Businesses.
                             </p>
