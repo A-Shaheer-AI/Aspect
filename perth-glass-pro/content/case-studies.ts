@@ -358,7 +358,7 @@ export const caseStudies: CaseStudy[] = [
       },
       {
         heading: "Recommended Cleaning Frequency in Perth's Northern Suburbs",
-        body: "For residential solar installations across Joondalup, Wanneroo, and northern coastal suburbs, we recommend professional cleaning at least every 6 to 12 months. Regular cleaning pays for itself multiple times over in recovered energy feed-in credits and lower power bills."
+        body: "For residential solar installations across Joondalup, Wanneroo, and northern coastal suburbs, we recommend scheduling professional service to <a href='/services/solar-panel-washing' class='text-action-gold hover:underline font-semibold'>clean solar panels in Perth</a> at least every 6 to 12 months. Regular cleaning pays for itself multiple times over in recovered energy feed-in credits and lower power bills."
       }
     ],
     tags: ["solar panel cleaning", "joondalup", "pure water", "efficiency restoration", "renewable energy", "perth solar maintenance"],
@@ -400,7 +400,7 @@ export const caseStudies: CaseStudy[] = [
       },
       {
         heading: "Long-Term Surface Protection for Perth Homes",
-        body: "Periodic high-pressure washing every 12 to 18 months prevents biological growth from permanently etching into concrete, brick, and limestone. Aspect provides full exterior hardstand cleaning across Perth, including driveways, council crossovers, patios, timber decking, and commercial parking bays."
+        body: "Periodic high-pressure washing every 12 to 18 months prevents biological growth from permanently etching into concrete, brick, and limestone. Aspect provides full exterior hardstand <a href='/services/pressure-washing' class='text-action-gold hover:underline font-semibold'>pressure washing across Perth</a>, including driveways, council crossovers, patios, timber decking, and commercial parking bays."
       }
     ],
     tags: ["pressure washing", "fremantle", "limestone pavers", "pool surround", "algae removal", "driveway cleaning", "heritage property"],
@@ -455,7 +455,7 @@ export const caseStudies: CaseStudy[] = [
       },
       {
         heading: "Why West Perth Corporate Offices Rely on Aspect for Commercial Window Cleaning",
-        body: "From mining and engineering resource companies on Harvest Terrace, Kings Park Road, and Ord Street in West Perth to law firms in the Perth CBD and corporate offices in Subiaco, businesses rely on Aspect Window Cleaning for reliability, discretion, and quality. We carry comprehensive $20M public liability insurance, all technicians hold current police clearances, and we offer flexible out-of-hours scheduling (evenings, overnight, and weekends) so your office operations are never interrupted. Whether your premises feature multi-pane architectural lattices, glass partitions, shopfronts, or multi-storey external glass, Aspect delivers streak-free clarity every time. Contact our Perth commercial team today for a rapid, tailored commercial quote."
+        body: "From mining and engineering resource companies on Harvest Terrace, Kings Park Road, and Ord Street in West Perth to law firms in the Perth CBD and corporate offices in Subiaco, businesses rely on Aspect Window Cleaning for reliability, discretion, and quality. We carry comprehensive $20M public liability insurance, all technicians hold current police clearances, and we offer flexible out-of-hours scheduling (evenings, overnight, and weekends) so your office operations are never interrupted. Whether your premises feature multi-pane architectural lattices, glass partitions, shopfronts, or multi-storey external glass, Aspect delivers streak-free clarity every time. Contact our team today for trusted <a href='/services/commercial-window-cleaning' class='text-action-gold hover:underline font-semibold'>commercial window cleaning in Perth</a> and receive a rapid, tailored commercial quote."
       }
     ],
     tags: ["commercial window cleaning", "west perth", "office window cleaning", "after-hours cleaning", "grounded", "harvest terrace", "corporate cleaning", "lattice windows", "perth mining offices"],
