@@ -42,6 +42,43 @@ export async function sendLeadEmail(data: LeadEmailData) {
         const serviceLabel = data.serviceType || data.selectedTier || "General Inquiry";
         const subject = `🏠 New Lead: ${data.name} - ${serviceLabel}`;
 
+        // Ingest lead profile and trigger automatic warm-up SMS
+        try {
+            const { ingestLead } = await import("@/lib/leads/ingest");
+            let gclid = "";
+            let keyword = "";
+            let device = "";
+            if (data.sourceUrl) {
+                try {
+                    const u = new URL(data.sourceUrl.startsWith("http") ? data.sourceUrl : `https://aspectwindowcleaning.com.au${data.sourceUrl}`);
+                    gclid = u.searchParams.get("gclid") || "";
+                    keyword = u.searchParams.get("keyword") || "";
+                    device = u.searchParams.get("device") || "";
+                } catch (e) {}
+            }
+
+            await ingestLead({
+                name: data.name,
+                phone: data.phone,
+                email: data.email,
+                suburb: data.suburb,
+                serviceType: serviceLabel,
+                storeys: data.storeys,
+                scope: data.scope,
+                bedrooms: data.bedrooms,
+                condition: data.condition,
+                selectedTier: data.selectedTier,
+                priceEstimate: data.priceEstimate,
+                message: data.message || data.flexibleNotes,
+                sourceUrl: data.sourceUrl,
+                gclid,
+                keyword,
+                device,
+            });
+        } catch (leadErr) {
+            console.error("Auto-reply lead ingestion error:", leadErr);
+        }
+
         // Build email HTML
         const htmlContent = `
             <div style="font-family: Arial, sans-serif; max-width: 600px; margin: 0 auto;">

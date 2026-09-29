@@ -11,6 +11,7 @@
     "dependencies": {
         "@calcom/embed-react": "^1.5.3",
         "@getbrevo/brevo": "^5.0.4",
+        "@google/genai": "^2.24.0",
         "@next/third-parties": "^16.2.3",
         "@opinly/backend": "^1.6.0",
         "@opinly/next": "^1.6.0",
@@ -34,7 +35,8 @@
         "remark-html": "^16.0.1",
         "resend": "^6.9.1",
         "sharp": "^0.35.3",
-        "swiper": "^12.1.2"
+        "swiper": "^12.1.2",
+        "twilio": "^6.1.2"
     },
     "devDependencies": {
         "@tailwindcss/postcss": "^4.0.0",
