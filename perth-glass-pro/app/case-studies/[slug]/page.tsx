@@ -238,7 +238,7 @@ export default async function CaseStudyPage({ params }: { params: Promise<{ slug
                             {cs.sections.map((section, i) => (
                                 <section key={i} className="mb-10">
                                     <h2 className="text-2xl font-heading font-bold text-brand-navy mb-4">{section.heading}</h2>
-                                    <p className="text-gray-700 leading-relaxed">{section.body}</p>
+                                    <p className="text-gray-700 leading-relaxed" dangerouslySetInnerHTML={{ __html: section.body }} />
                                 </section>
                             ))}
                         </div>
@@ -314,6 +314,21 @@ export default async function CaseStudyPage({ params }: { params: Promise<{ slug
                                 {cs.serviceType.includes("Pre-Sale Cleaning") && (
                                     <Link href="/pricing" className="inline-flex items-center gap-1 px-4 py-2 bg-white border border-gray-200 rounded-full text-sm font-medium text-brand-navy hover:border-action-gold hover:text-action-gold transition-colors">
                                         View Our Pricing <ArrowRight className="w-3 h-3" aria-hidden="true" />
+                                    </Link>
+                                )}
+                                {cs.serviceType.some(s => s.toLowerCase().includes("solar")) && (
+                                    <Link href="/services/solar-panel-washing" className="inline-flex items-center gap-1 px-4 py-2 bg-white border border-gray-200 rounded-full text-sm font-medium text-brand-navy hover:border-action-gold hover:text-action-gold transition-colors">
+                                        Clean Solar Panels Perth <ArrowRight className="w-3 h-3" aria-hidden="true" />
+                                    </Link>
+                                )}
+                                {cs.serviceType.some(s => s.toLowerCase().includes("pressure") || s.toLowerCase().includes("paver")) && (
+                                    <Link href="/services/pressure-washing" className="inline-flex items-center gap-1 px-4 py-2 bg-white border border-gray-200 rounded-full text-sm font-medium text-brand-navy hover:border-action-gold hover:text-action-gold transition-colors">
+                                        Pressure Washing Perth <ArrowRight className="w-3 h-3" aria-hidden="true" />
+                                    </Link>
+                                )}
+                                {cs.serviceType.some(s => s.toLowerCase().includes("gutter")) && (
+                                    <Link href="/services/gutter-cleaning" className="inline-flex items-center gap-1 px-4 py-2 bg-white border border-gray-200 rounded-full text-sm font-medium text-brand-navy hover:border-action-gold hover:text-action-gold transition-colors">
+                                        Gutter Cleaning Perth <ArrowRight className="w-3 h-3" aria-hidden="true" />
                                     </Link>
                                 )}
                                 {cs.nearbySuburbs.length > 0 && (

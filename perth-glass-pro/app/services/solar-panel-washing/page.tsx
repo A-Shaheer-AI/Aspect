@@ -197,6 +197,21 @@ const solarFAQs: FaqsType[] = [
         answer:
             "Yes. We clean residential rooftop systems as well as larger commercial and strata installations across Perth.",
     },
+    {
+        question: "Does rain clean solar panels in Perth?",
+        answer:
+            "No, this is a costly misconception. In Perth's climate, light rain and coastal morning dew mix with red Darling Scarp silica dust, exhaust emissions, and eucalyptus pollen to form a muddy, baked-on crust. Rainwater lacks the mechanical agitation needed to remove baked bird droppings or calcified minerals.",
+    },
+    {
+        question: "How much power do dirty solar panels lose in Perth's climate?",
+        answer:
+            "Rooftop solar arrays across Perth typically lose between 15% and 30% of their electricity generation when left unwashed. Because Perth receives over 3,200 hours of sunshine annually, uncleaned panels directly cost homeowners hundreds of dollars each year in forfeited solar feed-in credits and higher utility bills.",
+    },
+    {
+        question: "Why shouldn't I use tap water or household detergents on solar panels?",
+        answer:
+            "Perth tap water is notoriously hard, containing 150 to 400 ppm in dissolved calcium and magnesium that dry into a chalky mineral scale. Standard detergents leave sticky chemical residues that attract dirt even faster and can void manufacturer warranties (including SunPower, LG, REC, and Jinko). Aspect uses exclusively 0ppm deionised pure water.",
+    },
 ];
 
 const SolarPanelCleaningPage = () => {
