@@ -15,12 +15,15 @@ export function normalizeAuPhone(phone: string): string {
   return cleaned.startsWith("+") ? cleaned : `+${cleaned}`;
 }
 
-export type SmsProvider = "telnyx" | "twilio" | "simulation";
+export type SmsProvider = "clicksend" | "telnyx" | "twilio" | "simulation";
 
 /**
  * Detects which SMS provider is configured
  */
 export function getActiveProvider(): SmsProvider {
+  if (process.env.CLICKSEND_API_KEY && process.env.CLICKSEND_USERNAME) {
+    return "clicksend";
+  }
   if (process.env.TELNYX_API_KEY && process.env.TELNYX_PHONE_NUMBER) {
     return "telnyx";
   }
@@ -28,6 +31,52 @@ export function getActiveProvider(): SmsProvider {
     return "twilio";
   }
   return "simulation";
+}
+
+/**
+ * Sends an SMS using ClickSend v3 REST API (Perth, WA based)
+ */
+async function sendViaClickSend(to: string, message: string): Promise<{ success: boolean; messageId?: string; error?: string }> {
+  const username = process.env.CLICKSEND_USERNAME;
+  const apiKey = process.env.CLICKSEND_API_KEY;
+  const fromNumber = process.env.CLICKSEND_PHONE_NUMBER;
+
+  const auth = Buffer.from(`${username}:${apiKey}`).toString("base64");
+
+  try {
+    const res = await fetch("https://rest.clicksend.com/v3/sms/send", {
+      method: "POST",
+      headers: {
+        "Authorization": `Basic ${auth}`,
+        "Content-Type": "application/json"
+      },
+      body: JSON.stringify({
+        messages: [
+          {
+            to,
+            body: message,
+            from: fromNumber || undefined,
+            source: "api"
+          }
+        ]
+      })
+    });
+
+    const data = await res.json();
+
+    if (!res.ok || data.response_code !== "SUCCESS") {
+      const errMsg = data.response_msg || res.statusText;
+      console.error(`❌ [ClickSend SMS Error] to ${to}:`, errMsg);
+      return { success: false, error: errMsg };
+    }
+
+    const messageId = data.data?.messages?.[0]?.message_id || `cs_${Date.now()}`;
+    console.log(`✅ [ClickSend SMS Sent] ID: ${messageId} to ${to}`);
+    return { success: true, messageId };
+  } catch (err: any) {
+    console.error(`❌ [ClickSend Network Error] to ${to}:`, err.message || err);
+    return { success: false, error: err.message };
+  }
 }
 
 /**
@@ -100,6 +149,11 @@ export async function sendSms(
 ): Promise<{ success: boolean; messageId?: string; simulated?: boolean; provider: SmsProvider; error?: string }> {
   const normTo = normalizeAuPhone(to);
   const provider = getActiveProvider();
+
+  if (provider === "clicksend") {
+    const res = await sendViaClickSend(normTo, message);
+    return { ...res, provider: "clicksend" };
+  }
 
   if (provider === "telnyx") {
     const res = await sendViaTelnyx(normTo, message);
