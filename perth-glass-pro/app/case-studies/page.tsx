@@ -62,10 +62,10 @@ export default function CaseStudiesIndexPage() {
                             <span className="text-sm font-medium">Real Jobs. Real Results.</span>
                         </div>
                         <h1 className="text-3xl sm:text-4xl md:text-5xl font-heading font-bold mb-4 sm:mb-6">
-                            Window Cleaning Case Studies
+                            Window Cleaning Case Studies Perth: Real Customer Transformations
                         </h1>
                         <p className="text-base sm:text-xl text-brand-water/80 max-w-2xl mx-auto">
-                            We document our most interesting jobs so you can see exactly what we do, how we do it, and the results we deliver across Perth homes and businesses.
+                            Explore our real-world <strong>window cleaning case studies Perth</strong>. We document our residential and commercial glazing jobs so you can see the before-and-after results, timelines, and crystal-clear outcomes we deliver across Perth homes and businesses.
                         </p>
                     </div>
                 </header>
@@ -150,7 +150,7 @@ export default function CaseStudiesIndexPage() {
                 <section className="bg-brand-navy text-white py-12 sm:py-16 px-4">
                     <div className="max-w-3xl mx-auto text-center">
                         <h2 className="text-2xl md:text-3xl font-heading font-bold mb-4">
-                            Want Us to Handle Your Next Job?
+                            Want Our Perth Window Cleaners on Your Next Job?
                         </h2>
                         <p className="text-brand-water/80 mb-8 text-sm sm:text-base">
                             From tight pre-sale deadlines to routine residential maintenance — we work across Perth metro and deliver consistent, professional results.

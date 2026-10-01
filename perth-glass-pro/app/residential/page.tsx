@@ -242,12 +242,12 @@ export default function ResidentialPage() {
                             <span className="text-sm font-medium">Residential Services</span>
                         </div>
                         <h1 className="text-3xl sm:text-5xl lg:text-6xl font-heading font-bold mb-4 sm:mb-6 leading-tight">
-                            Sparkling Clean Windows
+                            Residential Window Cleaning Perth
                             <br />
-                            <span className="text-action-gold">For Your Home</span>
+                            <span className="text-action-gold">For Single &amp; Double-Storey Homes</span>
                         </h1>
                         <p className="text-base sm:text-xl text-brand-water/80 max-w-2xl mx-auto mb-8 sm:mb-10 leading-relaxed">
-                            Professional window cleaning using 0ppm Pure Water Technology.
+                            Professional <strong>residential window cleaning Perth</strong> using 0ppm Pure Water Technology.
                             Streak-free clarity for single and double-storey Perth homes — including exterior frames, tracks, sills, and washed flyscreens.
                         </p>
                         <div className="flex flex-col sm:flex-row items-center justify-center gap-3 sm:gap-4">
@@ -344,7 +344,7 @@ export default function ResidentialPage() {
                 <section className="py-16 bg-white border-t border-slate-100">
                     <div className="max-w-5xl mx-auto px-4">
                         <h2 className="text-3xl font-heading font-bold text-brand-navy text-center mb-12">
-                            Why Pick Aspect for Residential Window Cleaning?
+                            Why Pick Aspect for Residential Window Cleaning in Perth?
                         </h2>
                         <div className="grid md:grid-cols-2 lg:grid-cols-3 gap-6">
                             {residentialFeatures.map((feature) => (

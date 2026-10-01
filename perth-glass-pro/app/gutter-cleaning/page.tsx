@@ -9,6 +9,7 @@ import { sendLeadEmail } from "../actions/send-email";
 import { trackFormCompleted } from "@/hooks/useGtm";
 import GoogleReviews from "@/components/GoogleReviews";
 import BeforeAfterSlider from "@/components/BeforeAfterSlider";
+import { getLeadAttribution } from "@/lib/attribution";
 
 
 type FormDataType = {
@@ -245,11 +246,14 @@ export default function GutterCleaningAdsPage() {
 
     const handleSubmit = async () => {
         try {
+            const attribution = getLeadAttribution("Gutter Cleaning Page - Quote Form");
             const result = await sendLeadEmail({
                 name: formData.name,
                 phone: formData.phone,
                 suburb: formData.suburb,
-                sourceUrl: window.location.href
+                serviceType: "Gutter Cleaning",
+                message: formData.promo ? `Promo code: ${formData.promo}` : undefined,
+                ...attribution,
             });
             if (result.success) {
                 trackFormCompleted();

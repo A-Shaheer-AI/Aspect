@@ -330,7 +330,7 @@ export default function ResidentialWindowCleaning() {
                         <span className="text-action-gold text-2xl sm:text-4xl lg:text-5xl">Streak-Free Home Glass &amp; Frame Detailing</span>
                     </h1>
                     <p className="text-base sm:text-xl text-brand-water/80 max-w-2xl mx-auto mb-8 sm:mb-10 leading-relaxed">
-                        Professional window cleaning using 0ppm Pure Water Technology.
+                        Professional <strong>residential window cleaning Perth</strong> using 0ppm Pure Water Technology.
                         Streak-free clarity for single and double-storey Perth homes — including exterior frames, tracks, sills, and washed flyscreens.
                     </p>
                     <div className="flex flex-col sm:flex-row items-center justify-center gap-3 sm:gap-4">

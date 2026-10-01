@@ -5,6 +5,7 @@ import { ArrowRight, Loader2, CheckCircle, Lock } from "lucide-react";
 import { sendLeadEmail } from "@/app/actions/send-email";
 import { trackFormCompleted } from "@/hooks/useGtm";
 import { getOpinlyAnonId } from "@/lib/opinly-client";
+import { getLeadAttribution } from "@/lib/attribution";
 
 export default function HomeQuoteForm() {
     const [isLoading, setIsLoading] = useState(false);
@@ -29,6 +30,7 @@ export default function HomeQuoteForm() {
         setErrorMessage(null);
 
         try {
+            const attribution = getLeadAttribution("Homepage - Quick Quote Form");
             const result = await sendLeadEmail({
                 name: formData.name,
                 phone: formData.phone,
@@ -37,6 +39,7 @@ export default function HomeQuoteForm() {
                 serviceType: "General (Quick Form)",
                 message: "Submitted from Home Page Quick Form",
                 anonId: getOpinlyAnonId(),
+                ...attribution,
             });
             
             if (result.success) {

@@ -495,7 +495,7 @@ const CommercialCleaning = () => {
                         Commercial Office Cleaning & Janitorial Services Perth
                     </h1>
                     <p className="text-base md:text-xl text-slate-200 max-w-3xl mx-auto mb-8 leading-relaxed">
-                        Comprehensive office janitorial care, medical-grade hygiene, workstation sanitation, hard floor strip & seal, and washroom supply. Tailored contracts designed around your operating hours with 100% directly employed staff.
+                        Professional <strong>commercial cleaning Perth</strong> and office janitorial care, medical-grade hygiene, workstation sanitation, hard floor strip &amp; seal, and washroom supply. Tailored contracts designed around your operating hours with 100% directly employed staff.
                     </p>
                     <div className="flex flex-col sm:flex-row gap-4 justify-center items-center">
                         <Link href="/contact" className="w-full sm:w-auto bg-action-gold text-brand-navy hover:bg-action-gold/90 px-8 py-4 rounded-full font-bold text-base shadow-lg transition-all text-center min-h-[48px] inline-flex items-center justify-center">

@@ -253,10 +253,10 @@ const GutterCleaningServices = () => {
             {/* HERO */}
             <section className="bg-brand-navy text-white pt-32 sm:pt-36 pb-16 sm:pb-24 text-center px-4">
                 <h1 className="text-3xl md:text-5xl font-bold mb-4">
-                    Gutter Cleaning Services
+                    Gutter Cleaning Perth: Professional Roof &amp; Downpipe Clearing
                 </h1>
                 <p className="text-base md:text-xl max-w-2xl mx-auto mb-6 text-slate-200">
-                    Professional. Reliable. Perth's Trusted Gutter Specialists.
+                    Expert <strong>gutter cleaning Perth</strong> to protect your rooflines, eliminate blockage, and prevent costly water damage across your property.
                 </p>
                 <Link href="/pricing" className="inline-flex items-center justify-center bg-action-gold text-brand-navy hover:bg-action-gold/90 px-8 py-4 rounded-full font-bold text-base shadow-md transition-all">
                     View Pricing Guide
@@ -316,7 +316,7 @@ const GutterCleaningServices = () => {
             <section className="mt-5 py-8 max-w-5xl mx-auto px-4">
                 <span className="text-action-gold font-semibold mb-2 block uppercase tracking-wider text-xs">About This Service</span>
                 <h2 className="text-3xl font-heading font-bold text-brand-navy text-left mb-5">
-                    Protect Your Home With Expert Gutter Cleaning
+                    Professional Gutter Cleaning Perth: Protect Your Roof &amp; Downpipes
                 </h2>
                 <p className="mb-4">
                     Blocked gutters are one of the most overlooked - and most damaging - maintenance issues for <Link href="/locations" className="text-action-gold hover:underline">Perth</Link> homeowners. When leaves, dirt, and debris build up, water has nowhere to go. It overflows, seeps under roofing, and slowly damages your walls, foundations, and fascia boards. At Aspect Window Cleaning, we provide a thorough, safe, and reliable gutter cleaning service to keep your property fully protected all year round. We recommend pairing this with our <Link href="/services/pressure-washing" className="text-action-gold hover:underline">pressure washing</Link> and <Link href="/services/residential-window-cleaning" className="text-action-gold hover:underline">residential window cleaning</Link> for a complete property clean. Read our <Link href="/blog" className="text-action-gold hover:underline">blog</Link> to learn why gutter cleaning is critical before winter.

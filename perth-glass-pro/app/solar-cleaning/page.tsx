@@ -9,6 +9,7 @@ import BeforeAfterSlider from "@/components/BeforeAfterSlider";
 import { sendLeadEmail } from "../actions/send-email";
 import { trackFormCompleted } from "@/hooks/useGtm";
 import GoogleReviews from "@/components/GoogleReviews";
+import { getLeadAttribution } from "@/lib/attribution";
 
 
 type FormDataType = {
@@ -218,7 +219,7 @@ export default function SolarPanelCleaningAdsPage() {
     const [modalOpen, setModalOpen] = useState(false);
     const [showPromo, setShowPromo] = useState(false);
     const [scrollPopupShown, setScrollPopupShown] = useState(false);
-    const [formData, setFormData] = useState({ name: "", phone: "", suburb: "" });
+    const [formData, setFormData] = useState<FormDataType>({ name: "", phone: "", suburb: "", promo: "" });
     const [submitted, setSubmitted] = useState(false);
 
     // Scroll-trigger popup at 50% screen scroll
@@ -244,11 +245,14 @@ export default function SolarPanelCleaningAdsPage() {
 
     const handleSubmit = async () => {
         try {
+            const attribution = getLeadAttribution("Solar Cleaning Page - Quote Form");
             const result = await sendLeadEmail({
                 name: formData.name,
                 phone: formData.phone,
                 suburb: formData.suburb,
-                sourceUrl: window.location.href
+                serviceType: "Solar Panel Cleaning",
+                message: formData.promo ? `Promo code: ${formData.promo}` : undefined,
+                ...attribution,
             });
             if (result.success) {
                 trackFormCompleted();

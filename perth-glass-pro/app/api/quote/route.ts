@@ -19,23 +19,43 @@ export async function POST(request: NextRequest) {
             data = await request.json();
         }
 
+        // Determine attribution data
+        const refererHeader = request.headers.get("referer") || "";
+        const submissionUrl = (data.submissionUrl as string) || (data.sourceUrl as string) || refererHeader || "https://aspectwindowcleaning.com.au/landing";
+        const landingUrl = (data.landingUrl as string) || submissionUrl;
+        const formName = (data.formName as string) || (data.quoteType as string) || (isFormSubmit ? "Native Form Fallback POST" : "Direct API Quote");
+
         // Send lead email notification via Server Action logic
         try {
             await sendLeadEmail({
                 name: (data.name as string) || "Anonymous",
                 phone: (data.phone as string) || "",
-                email: (data.email as string) || "Not provided (Landing Direct Post)",
+                email: (data.email as string) || "",
                 suburb: (data.suburb as string) || (data.address as string) || "Perth Metro",
                 serviceType:
                     (data.service as string) ||
                     (data.serviceType as string) ||
-                    "Quote Request (Landing)",
+                    "Quote Request",
+                storeys: (data.storeys as string) || undefined,
+                selectedTier: (data.selectedTier as string) || undefined,
+                quoteType: (data.quoteType as string) || formName,
                 priceEstimate: data.priceEstimate ? Number(data.priceEstimate) : undefined,
                 anonId: (data.anonId as string) || undefined,
                 message:
                     (data.message as string) ||
                     (data.promo ? `Promo code: ${data.promo}` : undefined),
-                sourceUrl: "/landing (direct fallback POST)",
+                sourceUrl: submissionUrl,
+                landingUrl: landingUrl,
+                submissionUrl: submissionUrl,
+                referrer: (data.referrer as string) || (refererHeader && refererHeader !== submissionUrl ? refererHeader : undefined),
+                fullQuery: (data.fullQuery as string) || undefined,
+                sourceSummary: (data.sourceSummary as string) || undefined,
+                formName: formName,
+                gclid: (data.gclid as string) || undefined,
+                utmCampaign: (data.utmCampaign as string) || undefined,
+                utmSource: (data.utmSource as string) || undefined,
+                utmMedium: (data.utmMedium as string) || undefined,
+                device: (data.device as string) || undefined,
             });
         } catch (mailErr) {
             console.error("Lead email notification error:", mailErr);

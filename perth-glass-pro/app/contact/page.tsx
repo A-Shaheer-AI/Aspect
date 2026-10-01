@@ -6,6 +6,7 @@ import { sendLeadEmail } from '../actions/send-email';
 import TrustGrid from '@/components/TrustGrid';
 import { BUSINESS } from '@/lib/config';
 import { getOpinlyAnonId, identifyOpinly } from '@/lib/opinly-client';
+import { getLeadAttribution } from '@/lib/attribution';
 
 type FormData = { name: string; email: string; phone: string; suburb: string }
 type FormStatus = 'idle' | 'loading' | 'success' | 'error'
@@ -26,12 +27,13 @@ const ContactPage = () => {
       if (formData.email) {
         identifyOpinly(formData.email)
       }
+      const attribution = getLeadAttribution("Contact Page - Main Form");
       const result = await sendLeadEmail({
         name: formData.name, email: formData.email,
         phone: formData.phone,
         suburb: formData.suburb,
-        sourceUrl: window.location.href,
         anonId: getOpinlyAnonId(),
+        ...attribution,
       })
       setStatus(result.success || (formData.name && formData.phone) ? 'success' : 'error')
     } catch {
@@ -49,7 +51,7 @@ const ContactPage = () => {
 
       <section className="bg-brand-navy text-white pt-32 sm:pt-36 pb-16 sm:pb-24 text-center px-4">
         <h1 className="text-3xl md:text-5xl font-bold mb-4">
-          Contact Us
+          Contact Aspect Window Cleaning Perth
         </h1>
       </section>
 
@@ -59,11 +61,11 @@ const ContactPage = () => {
         {/* INFO */}
         <div className="flex flex-col">
           <h2 className="text-[#000080] text-2xl font-black uppercase tracking-wider">
-            Why Choose Us
+            Why Choose Aspect Window Cleaning in Perth
           </h2>
           <div className="w-10 h-1 bg-[#ffea68] mt-2 mb-5" />
           <p className="text-gray-500 text-sm leading-relaxed mb-10">
-            Aspect Window Cleaning delivers spotless results every time. Our trained team uses professional-grade equipment to bring clarity and shine to every pane - residential or commercial.
+            Get in touch with <strong>Aspect Window Cleaning Perth</strong> for fast, streak-free residential and commercial window cleaning. Our trained local team uses professional-grade pure water equipment to bring clarity and shine to every pane across Greater Perth.
           </p>
 
           <div className="flex flex-col gap-4">
