@@ -1122,9 +1122,30 @@ export default function WindowCleaningAdsPage() {
                     </div>
                 </div>
             </section>
-            
-{/* 🔹🔹🔹 SECTION 4: TRUSTED BY  🔹🔹🔹 */}
-                        
+
+            {/* 🔹🔹🔹 SECTION 3.5: CUSTOMER REVIEWS & SOCIAL PROOF 🔹🔹🔹 */}
+            <section id="reviews" className="py-16 px-5 bg-slate-50 border-b border-gray-100">
+                <div className="max-w-7xl mx-auto">
+                    <div className="mx-auto mb-10 max-w-4xl text-center">
+                        <div className="mb-3 flex justify-center gap-1">
+                            {[...Array(5)].map((_, i) => <Star key={i} className="w-6 h-6 fill-yellow-400 text-yellow-400" />)}
+                        </div>
+                        <h2 className="mb-2 leading-none" style={{ fontSize: "clamp(24px,5vw,52px)", color: NAVY }}>
+                            Perth Homeowners Love Us
+                        </h2>
+                        <Link
+                            href="https://www.google.com/maps/place/Aspect+Window+Cleaning/@-31.9806823,115.7929967,17z"
+                            target="_blank"
+                            className="text-sm font-medium hover:underline"
+                            style={{ color: "#888" }}
+                        >
+                            {gmb.rating} across {gmb.reviewCount} Google Reviews
+                        </Link>
+                    </div>
+                    <GoogleReviews reviews={windowCleaningReviews} />
+                </div>
+            </section>
+
 {/* 🔹🔹🔹 SECTION 6: BEFORE / AFTER  🔹🔹🔹 */}
             <section className="px-5 py-16 bg-white">
                 <div className="mx-auto mb-8 max-w-4xl text-center">
@@ -1372,29 +1393,6 @@ export default function WindowCleaningAdsPage() {
             </section>
 
 
-
-            
-{/* 🔹🔹🔹 SECTION 3: REVIEWS  🔹🔹🔹 */}
-                        
-<section id="reviews" className="max-w-7xl mx-auto px-5 py-16 bg-white">
-                <div className="mx-auto mb-10 max-w-4xl text-center">
-                    <div className="mb-3 flex justify-center gap-1">
-                        {[...Array(5)].map((_, i) => <Star key={i} className="w-6 h-6 fill-yellow-400 text-yellow-400" />)}
-                    </div>
-                    <h2 className="mb-2 leading-none" style={{ fontSize: "clamp(24px,5vw,52px)", color: NAVY }}>
-                        Perth Homeowners Love Us
-                    </h2>
-                    <Link
-                        href="https://www.google.com/maps/place/Aspect+Window+Cleaning/@-31.9806823,115.7929967,17z"
-                        target="_blank"
-                        className="text-sm font-medium hover:underline"
-                        style={{ color: "#888" }}
-                    >
-                        {gmb.rating} across {gmb.reviewCount} Google Reviews
-                    </Link>
-                </div>
-                <GoogleReviews reviews={windowCleaningReviews} />
-            </section>
 
             
 {/* PROMOS */}
