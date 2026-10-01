@@ -38,6 +38,7 @@ export async function POST(request: NextRequest) {
                     "Quote Request",
                 storeys: (data.storeys as string) || undefined,
                 selectedTier: (data.selectedTier as string) || undefined,
+                packagePrice: (data.packagePrice as string) || undefined,
                 quoteType: (data.quoteType as string) || formName,
                 priceEstimate: data.priceEstimate ? Number(data.priceEstimate) : undefined,
                 anonId: (data.anonId as string) || undefined,

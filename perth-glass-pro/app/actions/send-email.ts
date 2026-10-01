@@ -15,6 +15,7 @@ export interface LeadEmailData {
     bedrooms?: number;
     condition?: string;
     selectedTier?: string;
+    packagePrice?: string;
     priceEstimate?: number;
     message?: string;
     isUrgent?: boolean;
@@ -113,6 +114,51 @@ export async function sendLeadEmail(data: LeadEmailData) {
         const displayLanding = data.landingUrl || rawUrl || "https://aspectwindowcleaning.com.au";
         const displaySubmission = data.submissionUrl || data.sourceUrl || rawUrl || "https://aspectwindowcleaning.com.au";
 
+        // Determine property and package display details
+        const displayStoreys = (() => {
+            if (!data.storeys) return null;
+            const clean = data.storeys.toLowerCase().trim();
+            if (clean === "single" || clean.includes("single")) return "Single Storey";
+            if (clean === "double" || clean.includes("double")) return "Double Storey";
+            return data.storeys;
+        })();
+
+        const displayTier = (() => {
+            if (!data.selectedTier) return null;
+            const clean = data.selectedTier.toLowerCase().trim();
+            if (clean === "essential" || clean.includes("essential")) return "Essential (Exterior Only)";
+            if (clean === "standard" || clean.includes("standard")) return "Standard (Inside & Out)";
+            if (clean === "supreme" || clean.includes("supreme")) return "Supreme (Restorative Detailing)";
+            if (clean === "premium" || clean.includes("revival")) return "Window Revival (Full Detail)";
+            return data.selectedTier;
+        })();
+
+        const displayScope = (() => {
+            if (!data.scope) return null;
+            const clean = data.scope.toLowerCase().trim();
+            if (clean === "int_ext" || clean.includes("inside") || clean.includes("both")) return "Inside & Out";
+            if (clean === "exterior" || clean.includes("ext")) return "Exterior Only";
+            return data.scope;
+        })();
+
+        const displayPackagePrice = (() => {
+            if (data.packagePrice) return data.packagePrice;
+            if (data.message && data.message.includes("Selected Price:")) {
+                const match = data.message.match(/Selected Price:\s*(.+)/i);
+                if (match) return match[1].trim();
+            }
+            return null;
+        })();
+
+        const displayNotes = (() => {
+            let notes = (data.message || data.flexibleNotes || "").trim();
+            if (notes.startsWith("Selected Price:")) {
+                const remainder = notes.replace(/^Selected Price:[^\n]*\n?/i, "").trim();
+                return remainder || null;
+            }
+            return notes || null;
+        })();
+
         // Ingest lead profile and trigger automatic warm-up SMS
         try {
             const { ingestLead } = await import("@/lib/leads/ingest");
@@ -176,39 +222,47 @@ export async function sendLeadEmail(data: LeadEmailData) {
                         </tr>
                     </table>
 
-                    ${data.selectedTier || data.storeys ? `
-                    <h2 style="color: #0F2B4C; margin-top: 30px;">Property Details</h2>
+                    ${displayStoreys || displayTier || displayPackagePrice || displayScope || data.bedrooms || data.condition ? `
+                    <h2 style="color: #0F2B4C; margin-top: 30px;">Property & Package Details</h2>
                     <table style="width: 100%; border-collapse: collapse;">
-                        ${data.storeys ? `
+                        ${displayStoreys ? `
                         <tr>
-                            <td style="padding: 8px 0; border-bottom: 1px solid #e2e8f0;"><strong>Storeys:</strong></td>
-                            <td style="padding: 8px 0; border-bottom: 1px solid #e2e8f0;">${data.storeys === "single" ? "Single Storey" : "Double Storey"}</td>
+                            <td style="padding: 8px 0; border-bottom: 1px solid #e2e8f0; width: 35%;"><strong>Storeys:</strong></td>
+                            <td style="padding: 8px 0; border-bottom: 1px solid #e2e8f0; font-weight: 600; color: #0F2B4C;">${displayStoreys}</td>
                         </tr>
                         ` : ""}
-                        ${data.scope ? `
+                        ${displayTier ? `
                         <tr>
-                            <td style="padding: 8px 0; border-bottom: 1px solid #e2e8f0;"><strong>Scope:</strong></td>
-                            <td style="padding: 8px 0; border-bottom: 1px solid #e2e8f0;">${data.scope === "int_ext" ? "Inside & Out" : "Exterior Only"}</td>
+                            <td style="padding: 8px 0; border-bottom: 1px solid #e2e8f0; width: 35%;"><strong>Selected Package:</strong></td>
+                            <td style="padding: 8px 0; border-bottom: 1px solid #e2e8f0; font-weight: bold; color: #D4AF37;">
+                                ${displayTier}
+                            </td>
+                        </tr>
+                        ` : ""}
+                        ${displayPackagePrice ? `
+                        <tr>
+                            <td style="padding: 8px 0; border-bottom: 1px solid #e2e8f0; width: 35%;"><strong>Package Rate:</strong></td>
+                            <td style="padding: 8px 0; border-bottom: 1px solid #e2e8f0; font-weight: bold; color: #0F2B4C; font-size: 15px;">
+                                ${displayPackagePrice}
+                            </td>
+                        </tr>
+                        ` : ""}
+                        ${displayScope ? `
+                        <tr>
+                            <td style="padding: 8px 0; border-bottom: 1px solid #e2e8f0; width: 35%;"><strong>Scope:</strong></td>
+                            <td style="padding: 8px 0; border-bottom: 1px solid #e2e8f0;">${displayScope}</td>
                         </tr>
                         ` : ""}
                         ${data.bedrooms ? `
                         <tr>
-                            <td style="padding: 8px 0; border-bottom: 1px solid #e2e8f0;"><strong>Bedrooms:</strong></td>
+                            <td style="padding: 8px 0; border-bottom: 1px solid #e2e8f0; width: 35%;"><strong>Bedrooms:</strong></td>
                             <td style="padding: 8px 0; border-bottom: 1px solid #e2e8f0;">${data.bedrooms}</td>
                         </tr>
                         ` : ""}
                         ${data.condition ? `
                         <tr>
-                            <td style="padding: 8px 0; border-bottom: 1px solid #e2e8f0;"><strong>Window Condition:</strong></td>
+                            <td style="padding: 8px 0; border-bottom: 1px solid #e2e8f0; width: 35%;"><strong>Window Condition:</strong></td>
                             <td style="padding: 8px 0; border-bottom: 1px solid #e2e8f0;">${data.condition}</td>
-                        </tr>
-                        ` : ""}
-                        ${data.selectedTier ? `
-                        <tr>
-                            <td style="padding: 8px 0; border-bottom: 1px solid #e2e8f0;"><strong>Selected Package:</strong></td>
-                            <td style="padding: 8px 0; border-bottom: 1px solid #e2e8f0; font-weight: bold; color: #D4AF37;">
-                                ${data.selectedTier === "essential" ? "Essential Refresh" : data.selectedTier === "standard" ? "Window Care" : "Window Revival"}
-                            </td>
                         </tr>
                         ` : ""}
                     </table>
@@ -303,10 +357,10 @@ export async function sendLeadEmail(data: LeadEmailData) {
                     </div>
                     ` : ""}
 
-                    ${data.message || data.flexibleNotes ? `
+                    ${displayNotes ? `
                     <h2 style="color: #0F2B4C; margin-top: 30px;">Additional Notes</h2>
                     <p style="background: white; padding: 15px; border-radius: 8px; border: 1px solid #e2e8f0;">
-                        ${data.message || data.flexibleNotes}
+                        ${displayNotes}
                     </p>
                     ` : ""}
                 </div>

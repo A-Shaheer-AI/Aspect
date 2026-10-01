@@ -595,6 +595,7 @@ export default function WindowCleaningAdsPage() {
                 serviceType: "Residential Window Cleaning",
                 storeys: isDoubleStorey ? "Double Storey" : "Single Storey",
                 selectedTier: selectedPkg?.name,
+                packagePrice: selectedPkg?.price,
                 quoteType: "Landing Page Package Selection",
                 message: `Selected Price: ${selectedPkg?.price}`,
                 ...attribution,
@@ -1639,13 +1640,53 @@ export default function WindowCleaningAdsPage() {
                             </div>
                         ) : (
                             <>
-                                <h3 className="text-xl md:text-2xl font-bold text-brand-navy mb-2">Book Your Package</h3>
-                                <p className="text-gray-600 text-sm mb-6 leading-relaxed">
-                                    You have selected the <strong className="text-brand-navy">{selectedPkg.name}</strong> package for a <strong>{isDoubleStorey ? "Double Storey" : "Single Storey"}</strong> home ({selectedPkg.price}). Please provide your details to lock this in.
+                                <h3 className="text-xl md:text-2xl font-bold text-brand-navy mb-1">Book Your Package</h3>
+                                <p className="text-gray-500 text-xs sm:text-sm mb-4 leading-relaxed">
+                                    Confirm your property storey type below for exact starting rates.
                                 </p>
+
+                                {/* Storey Toggle inside Modal */}
+                                <div className="bg-gray-100 p-1 rounded-xl flex gap-1 mb-4">
+                                    <button
+                                        type="button"
+                                        onClick={() => {
+                                            setIsDoubleStorey(false);
+                                            const newPrice = selectedPkg.name === "Essential" ? "Starting From $159" : selectedPkg.name === "Standard" ? "Starting From $279" : "Starting From $479";
+                                            setSelectedPkg(prev => prev ? { ...prev, price: newPrice } : null);
+                                        }}
+                                        className={"flex-1 py-2 text-xs sm:text-sm font-bold rounded-lg transition-all cursor-pointer " + (!isDoubleStorey ? "bg-white text-brand-navy shadow-sm" : "text-gray-500 hover:text-gray-700")}
+                                    >
+                                        Single Storey
+                                    </button>
+                                    <button
+                                        type="button"
+                                        onClick={() => {
+                                            setIsDoubleStorey(true);
+                                            const newPrice = selectedPkg.name === "Essential" ? "Starting From $279" : selectedPkg.name === "Standard" ? "Starting From $499" : "Starting From $859";
+                                            setSelectedPkg(prev => prev ? { ...prev, price: newPrice } : null);
+                                        }}
+                                        className={"flex-1 py-2 text-xs sm:text-sm font-bold rounded-lg transition-all cursor-pointer " + (isDoubleStorey ? "bg-brand-navy text-white shadow-sm" : "text-gray-500 hover:text-gray-700")}
+                                    >
+                                        Double Storey
+                                    </button>
+                                </div>
+
+                                <div className="p-3 bg-brand-navy/5 rounded-xl border border-brand-navy/10 mb-4 flex items-center justify-between">
+                                    <div>
+                                        <span className="text-[11px] font-semibold text-gray-500 block uppercase tracking-wider">Package</span>
+                                        <span className="text-base font-bold text-brand-navy">{selectedPkg.name}</span>
+                                    </div>
+                                    <div className="text-right">
+                                        <span className="text-[11px] font-semibold text-gray-500 block uppercase tracking-wider">{isDoubleStorey ? "Double Storey" : "Single Storey"}</span>
+                                        <span className="text-base font-black text-brand-navy">{selectedPkg.price}</span>
+                                    </div>
+                                </div>
                                 
                                 <form onSubmit={handlePkgSubmit} action="/api/quote" method="POST" className="space-y-4 text-left">
                                     <input type="hidden" name="service" value={`Residential Window Cleaning - ${selectedPkg.name} (${isDoubleStorey ? "Double Storey" : "Single Storey"})`} />
+                                    <input type="hidden" name="storeys" value={isDoubleStorey ? "Double Storey" : "Single Storey"} />
+                                    <input type="hidden" name="selectedTier" value={selectedPkg.name} />
+                                    <input type="hidden" name="packagePrice" value={selectedPkg.price} />
                                     <input type="hidden" name="message" value={`Selected Price: ${selectedPkg.price}`} />
                                     <div>
                                         <label htmlFor="pkg-name" className="block text-sm font-bold text-gray-700 mb-1">Your Name</label>
