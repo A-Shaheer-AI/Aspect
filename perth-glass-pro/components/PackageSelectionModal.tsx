@@ -1,6 +1,7 @@
 "use client";
 import { useState } from "react";
 import { X, CheckCircle2 } from "lucide-react";
+import { getLeadAttribution } from "@/lib/attribution";
 
 type PackageSelectionModalProps = {
     isOpen: boolean;
@@ -21,6 +22,7 @@ export default function PackageSelectionModal({ isOpen, onClose, packageName, pa
         e.preventDefault();
         setIsPkgSubmitting(true);
         try {
+            const attribution = getLeadAttribution("Pricing Page - Package Selection Modal");
             const res = await fetch("/api/quote", {
                 method: "POST",
                 headers: { "Content-Type": "application/json" },
@@ -33,6 +35,7 @@ export default function PackageSelectionModal({ isOpen, onClose, packageName, pa
                     selectedTier: packageName,
                     quoteType: "Pricing Page Package Selection",
                     message: packagePrice ? `Selected Price: ${packagePrice}` : "Package selected",
+                    ...attribution,
                 }),
             });
             const data = await res.json();

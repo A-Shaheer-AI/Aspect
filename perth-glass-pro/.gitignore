@@ -10,3 +10,5 @@ build
 out
 .gemini
 data/
+__pycache__/
+*.pyc

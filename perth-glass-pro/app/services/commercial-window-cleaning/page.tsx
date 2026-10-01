@@ -282,7 +282,7 @@ const CommercialWindowCleaning = () => {
                         </span>
                     </h1>
                     <p className="text-base md:text-xl text-slate-200 max-w-3xl mx-auto mb-8 leading-relaxed">
-                        Looking for a trusted <strong>commercial window cleaning service near me</strong>? Aspect delivers specialist exterior and interior glass cleaning for commercial offices, retail showrooms, and strata complexes up to 4 storeys across Perth, WA. Certified scissor lift &amp; EWP operators, 0ppm pure-water reach poles, and $20M insurance.
+                        Looking for trusted <strong>commercial window cleaning Perth</strong>? Aspect delivers specialist exterior and interior glass cleaning for commercial offices, retail showrooms, and strata complexes up to 4 storeys across Perth, WA. Certified scissor lift &amp; EWP operators, 0ppm pure-water reach poles, and $20M insurance.
                     </p>
                     <div className="flex flex-col sm:flex-row gap-4 justify-center items-center">
                         <Link href="/contact" className="w-full sm:w-auto bg-action-gold text-brand-navy hover:bg-action-gold/90 px-8 py-4 rounded-full font-bold text-base shadow-lg transition-all text-center min-h-[48px] inline-flex items-center justify-center">

@@ -24,10 +24,10 @@ export default function LocationsPage() {
             <section className="bg-brand-navy text-white pt-32 sm:pt-36 pb-16 sm:pb-24">
                 <div className="max-w-5xl mx-auto px-4 text-center">
                     <h1 className="text-3xl sm:text-5xl lg:text-6xl font-heading font-bold text-white mb-4 sm:mb-6">
-                        Service Areas
+                        Window Cleaning Perth Service Areas: All 370+ Suburbs
                     </h1>
                     <p className="text-base sm:text-xl text-slate-200 max-w-2xl mx-auto">
-                        We proudly serve all Perth metro suburbs. Click your suburb to view available services.
+                        Explore our comprehensive <strong>window cleaning Perth service areas</strong>. Aspect proudly services all 370+ Perth metro suburbs across the North and South of the River. Click your suburb below to check local availability and instant pricing.
                     </p>
                 </div>
             </section>
@@ -54,7 +54,7 @@ export default function LocationsPage() {
                     <div className="bg-white p-5 sm:p-8 rounded-3xl shadow-sm border border-slate-200">
                         <h2 className="text-xl sm:text-2xl font-heading font-bold text-brand-navy mb-5 flex items-center gap-3 border-b border-slate-100 pb-4">
                             <span className="w-3 h-3 rounded-full bg-action-gold" />
-                            North of River
+                            Perth Suburbs North of River
                             <span className="text-xs sm:text-sm font-normal text-brand-slate ml-auto">
                                 {filteredSuburbs.North.length} suburbs
                             </span>
@@ -77,7 +77,7 @@ export default function LocationsPage() {
                     <div className="bg-white p-5 sm:p-8 rounded-3xl shadow-sm border border-slate-200">
                         <h2 className="text-xl sm:text-2xl font-heading font-bold text-brand-navy mb-5 flex items-center gap-3 border-b border-slate-100 pb-4">
                             <span className="w-3 h-3 rounded-full bg-brand-navy" />
-                            South of River
+                            Perth Suburbs South of River
                             <span className="text-xs sm:text-sm font-normal text-brand-slate ml-auto">
                                 {filteredSuburbs.South.length} suburbs
                             </span>

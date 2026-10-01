@@ -1,2 +1,11 @@
-export const metadata = { title: { absolute: "Contact Us | Aspect Window Cleaning Perth" }, description: "Contact Aspect Window Cleaning Perth for same-week bookings or an instant quote. Call 0426 996 192 or message our police-cleared team online. We reply fast!", alternates: { canonical: 'https://aspectwindowcleaning.com.au/contact' } };
-export default function Layout({ children }: { children: React.ReactNode }) { return <>{children}</>; }
+import type { Metadata } from "next";
+
+export const metadata: Metadata = {
+    title: { absolute: "Contact Window Cleaners Perth | Aspect Window Cleaning" },
+    description: "Contact Aspect Window Cleaning Perth for streak-free residential and commercial window cleaning. Call 0426 996 192 or request an instant quote online.",
+    alternates: { canonical: "https://aspectwindowcleaning.com.au/contact" }
+};
+
+export default function ContactLayout({ children }: { children: React.ReactNode }) {
+    return <>{children}</>;
+}

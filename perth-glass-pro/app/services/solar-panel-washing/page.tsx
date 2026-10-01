@@ -300,7 +300,7 @@ const SolarPanelCleaningPage = () => {
                     Clean Solar Panels Perth: Professional Solar Panel Cleaning
                 </h1>
                 <p className="text-base md:text-xl max-w-2xl mx-auto mb-6 text-slate-200">
-                    Maximise your solar output. Protect your investment.
+                    Specialist <strong>solar panel cleaning Perth</strong> to maximise your solar energy output and protect your investment with 100% purified deionised water.
                 </p>
                 <Link href="/pricing" className="inline-flex items-center justify-center bg-action-gold text-brand-navy hover:bg-action-gold/90 px-8 py-4 rounded-full font-bold text-base shadow-md transition-all">
                     View Pricing Guide

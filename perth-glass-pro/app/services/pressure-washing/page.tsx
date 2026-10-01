@@ -258,10 +258,10 @@ const PressureWashing = () => {
             {/* HERO */}
             <section className="bg-brand-navy text-white pt-32 sm:pt-36 pb-16 sm:pb-24 text-center px-4">
                 <h1 className="text-3xl md:text-5xl font-bold mb-4">
-                    Pressure Washing Services
+                    Pressure Washing Perth: High-Pressure Driveway &amp; Exterior Cleaning
                 </h1>
                 <p className="text-base md:text-xl max-w-2xl mx-auto mb-6 text-slate-200">
-                    Revitalise Your Property. Restore Every Surface. Perth's Trusted Specialists.
+                    Professional <strong>pressure washing Perth</strong> to restore driveways, patios, pavers, and building facades to immaculate condition.
                 </p>
                 <Link href="/pricing" className="inline-flex items-center justify-center bg-action-gold text-brand-navy hover:bg-action-gold/90 px-8 py-4 rounded-full font-bold text-base shadow-md transition-all">
                     View Pricing Guide
@@ -321,7 +321,7 @@ const PressureWashing = () => {
             <section className="mt-5 py-8 max-w-5xl mx-auto px-4">
                 <span className="text-action-gold font-semibold mb-2 block uppercase tracking-wider text-xs">About This Service</span>
                 <h2 className="text-3xl font-heading font-bold text-brand-navy text-left mb-5">
-                    Restore Every Surface with Professional Pressure Washing
+                    Restore Every Surface with Professional Pressure Washing in Perth
                 </h2>
                 <p className="mb-4">
                     Over time, Perth's outdoor surfaces accumulate years of dirt, oil stains, algae, and grime that regular cleaning

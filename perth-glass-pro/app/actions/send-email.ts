@@ -4,7 +4,7 @@ import { Resend } from "resend";
 
 const resend = new Resend(process.env.RESEND_API_KEY || "dummy_key");
 
-interface LeadEmailData {
+export interface LeadEmailData {
     name: string;
     phone: string;
     email?: string;
@@ -20,9 +20,28 @@ interface LeadEmailData {
     isUrgent?: boolean;
     flexibleNotes?: string;
     quoteType?: string;
-
-    sourceUrl?: string; // 👈 ADD THIS
     anonId?: string;
+
+    // Standard Lead Source & Attribution
+    sourceUrl?: string;
+    landingUrl?: string;
+    submissionUrl?: string;
+    referrer?: string;
+    fullQuery?: string;
+    sourceSummary?: string;
+    formName?: string;
+    gclid?: string;
+    gbraid?: string;
+    wbraid?: string;
+    fbclid?: string;
+    msclkid?: string;
+    utmSource?: string;
+    utmMedium?: string;
+    utmCampaign?: string;
+    utmTerm?: string;
+    utmContent?: string;
+    device?: string;
+    landingTime?: string;
 }
 
 export async function sendLeadEmail(data: LeadEmailData) {
@@ -42,21 +61,61 @@ export async function sendLeadEmail(data: LeadEmailData) {
         const serviceLabel = data.serviceType || data.selectedTier || "General Inquiry";
         const subject = `🏠 New Lead: ${data.name} - ${serviceLabel}`;
 
+        // Normalise attribution data
+        const rawUrl = data.landingUrl || data.sourceUrl || data.submissionUrl || "";
+        let extractedGclid = data.gclid || "";
+        let extractedGbraid = data.gbraid || "";
+        let extractedWbraid = data.wbraid || "";
+        let extractedFbclid = data.fbclid || "";
+        let extractedMsclkid = data.msclkid || "";
+        let extractedKeyword = data.utmTerm || "";
+        let extractedDevice = data.device || "";
+        let extractedCampaign = data.utmCampaign || "";
+        let extractedSource = data.utmSource || "";
+        let extractedMedium = data.utmMedium || "";
+        let extractedReferrer = data.referrer || "";
+        let extractedFullQuery = data.fullQuery || "";
+
+        if (rawUrl) {
+            try {
+                const u = new URL(rawUrl.startsWith("http") ? rawUrl : `https://aspectwindowcleaning.com.au${rawUrl}`);
+                if (!extractedGclid) extractedGclid = u.searchParams.get("gclid") || "";
+                if (!extractedGbraid) extractedGbraid = u.searchParams.get("gbraid") || "";
+                if (!extractedWbraid) extractedWbraid = u.searchParams.get("wbraid") || "";
+                if (!extractedFbclid) extractedFbclid = u.searchParams.get("fbclid") || "";
+                if (!extractedMsclkid) extractedMsclkid = u.searchParams.get("msclkid") || "";
+                if (!extractedKeyword) extractedKeyword = u.searchParams.get("utm_term") || u.searchParams.get("keyword") || "";
+                if (!extractedDevice) extractedDevice = u.searchParams.get("device") || "";
+                if (!extractedCampaign) extractedCampaign = u.searchParams.get("utm_campaign") || "";
+                if (!extractedSource) extractedSource = u.searchParams.get("utm_source") || "";
+                if (!extractedMedium) extractedMedium = u.searchParams.get("utm_medium") || "";
+                if (!extractedFullQuery) extractedFullQuery = u.search || "";
+            } catch (e) {}
+        }
+
+        const displaySource =
+            data.sourceSummary ||
+            (extractedGclid || extractedGbraid || extractedWbraid
+                ? `Google Ads (Paid Search)${extractedCampaign ? ` - [${extractedCampaign}]` : ""}`
+                : extractedFbclid
+                ? `Meta / Facebook Ads${extractedCampaign ? ` - [${extractedCampaign}]` : ""}`
+                : extractedMsclkid
+                ? `Bing Ads (Paid Search)${extractedCampaign ? ` - [${extractedCampaign}]` : ""}`
+                : rawUrl.includes("/landing")
+                ? "Google Ads Landing Page (/landing)"
+                : extractedSource
+                ? `${extractedSource} / ${extractedMedium || "campaign"}`
+                : extractedReferrer && !extractedReferrer.includes("aspectwindowcleaning.com.au") && extractedReferrer !== "Direct / None"
+                ? `Referral (${extractedReferrer})`
+                : "Direct Visit / Organic");
+
+        const displayForm = data.formName || data.quoteType || "Website Quote Form";
+        const displayLanding = data.landingUrl || rawUrl || "https://aspectwindowcleaning.com.au";
+        const displaySubmission = data.submissionUrl || data.sourceUrl || rawUrl || "https://aspectwindowcleaning.com.au";
+
         // Ingest lead profile and trigger automatic warm-up SMS
         try {
             const { ingestLead } = await import("@/lib/leads/ingest");
-            let gclid = "";
-            let keyword = "";
-            let device = "";
-            if (data.sourceUrl) {
-                try {
-                    const u = new URL(data.sourceUrl.startsWith("http") ? data.sourceUrl : `https://aspectwindowcleaning.com.au${data.sourceUrl}`);
-                    gclid = u.searchParams.get("gclid") || "";
-                    keyword = u.searchParams.get("keyword") || "";
-                    device = u.searchParams.get("device") || "";
-                } catch (e) {}
-            }
-
             await ingestLead({
                 name: data.name,
                 phone: data.phone,
@@ -70,10 +129,16 @@ export async function sendLeadEmail(data: LeadEmailData) {
                 selectedTier: data.selectedTier,
                 priceEstimate: data.priceEstimate,
                 message: data.message || data.flexibleNotes,
-                sourceUrl: data.sourceUrl,
-                gclid,
-                keyword,
-                device,
+                sourceUrl: displaySubmission,
+                landingUrl: displayLanding,
+                submissionUrl: displaySubmission,
+                referrer: extractedReferrer,
+                fullQuery: extractedFullQuery,
+                sourceSummary: displaySource,
+                formName: displayForm,
+                gclid: extractedGclid,
+                keyword: extractedKeyword,
+                device: extractedDevice,
             });
         } catch (leadErr) {
             console.error("Auto-reply lead ingestion error:", leadErr);
@@ -109,18 +174,6 @@ export async function sendLeadEmail(data: LeadEmailData) {
                             <td style="padding: 8px 0; border-bottom: 1px solid #e2e8f0;"><strong>Suburb:</strong></td>
                             <td style="padding: 8px 0; border-bottom: 1px solid #e2e8f0;">${data.suburb}</td>
                         </tr>
-                        ${data.sourceUrl ? `
-                        <tr>
-                            <td style="padding: 8px 0; border-bottom: 1px solid #e2e8f0;">
-                                <strong>Source Page:</strong>
-                            </td>
-                            <td style="padding: 8px 0; border-bottom: 1px solid #e2e8f0;">
-                                <a href="${data.sourceUrl}" target="_blank" style="color: #D4AF37;">
-                                  ${data.sourceUrl}
-                                </a>
-                            </td>
-                        </tr>
-                        ` : ""}
                     </table>
 
                     ${data.selectedTier || data.storeys ? `
@@ -160,6 +213,87 @@ export async function sendLeadEmail(data: LeadEmailData) {
                         ` : ""}
                     </table>
                     ` : ""}
+
+                    <!-- TRAFFIC & LEAD SOURCE -->
+                    <div style="margin-top: 30px; background: white; border-radius: 12px; border: 1.5px solid #D4AF37; padding: 20px; box-shadow: 0 4px 6px -1px rgba(0,0,0,0.05);">
+                        <div style="margin-bottom: 15px; border-bottom: 2px solid #0F2B4C; padding-bottom: 8px;">
+                            <span style="background: #0F2B4C; color: #FFE54D; padding: 4px 10px; border-radius: 20px; font-weight: bold; font-size: 11px; float: right;">
+                                ${displaySource}
+                            </span>
+                            <h2 style="color: #0F2B4C; margin: 0; font-size: 18px; text-transform: uppercase; letter-spacing: 0.5px;">
+                                📍 Traffic & Lead Source
+                            </h2>
+                            <div style="clear: both;"></div>
+                        </div>
+                        <table style="width: 100%; border-collapse: collapse; font-size: 13px;">
+                            <tr>
+                                <td style="padding: 7px 0; border-bottom: 1px solid #f1f5f9; width: 35%; color: #64748b;"><strong>Primary Source:</strong></td>
+                                <td style="padding: 7px 0; border-bottom: 1px solid #f1f5f9; font-weight: bold; color: #0F2B4C;">
+                                    ${displaySource}
+                                </td>
+                            </tr>
+                            <tr>
+                                <td style="padding: 7px 0; border-bottom: 1px solid #f1f5f9; color: #64748b;"><strong>Form Submitted:</strong></td>
+                                <td style="padding: 7px 0; border-bottom: 1px solid #f1f5f9; font-weight: 600; color: #0F2B4C;">
+                                    ${displayForm}
+                                </td>
+                            </tr>
+                            <tr>
+                                <td style="padding: 7px 0; border-bottom: 1px solid #f1f5f9; color: #64748b;"><strong>First Landing Page:</strong></td>
+                                <td style="padding: 7px 0; border-bottom: 1px solid #f1f5f9; word-break: break-all;">
+                                    <a href="${displayLanding}" target="_blank" style="color: #000080; font-weight: 500;">
+                                        ${displayLanding}
+                                    </a>
+                                </td>
+                            </tr>
+                            ${displaySubmission && displaySubmission !== displayLanding ? `
+                            <tr>
+                                <td style="padding: 7px 0; border-bottom: 1px solid #f1f5f9; color: #64748b;"><strong>Submission Page:</strong></td>
+                                <td style="padding: 7px 0; border-bottom: 1px solid #f1f5f9; word-break: break-all;">
+                                    <a href="${displaySubmission}" target="_blank" style="color: #64748b;">
+                                        ${displaySubmission}
+                                    </a>
+                                </td>
+                            </tr>
+                            ` : ""}
+                            <tr>
+                                <td style="padding: 7px 0; border-bottom: 1px solid #f1f5f9; color: #64748b;"><strong>Initial Referrer:</strong></td>
+                                <td style="padding: 7px 0; border-bottom: 1px solid #f1f5f9; color: #334155; word-break: break-all;">
+                                    ${extractedReferrer || "Direct Visit / No Referrer"}
+                                </td>
+                            </tr>
+                            ${extractedGclid ? `
+                            <tr>
+                                <td style="padding: 7px 0; border-bottom: 1px solid #f1f5f9; color: #64748b;"><strong>Google Click ID (GCLID):</strong></td>
+                                <td style="padding: 7px 0; border-bottom: 1px solid #f1f5f9; font-family: monospace; font-size: 11px; color: #0F2B4C; word-break: break-all; background: #fffbeb; padding: 4px 6px; border-radius: 4px;">
+                                    ${extractedGclid}
+                                </td>
+                            </tr>
+                            ` : ""}
+                            ${extractedCampaign || extractedKeyword ? `
+                            <tr>
+                                <td style="padding: 7px 0; border-bottom: 1px solid #f1f5f9; color: #64748b;"><strong>Campaign / Keyword:</strong></td>
+                                <td style="padding: 7px 0; border-bottom: 1px solid #f1f5f9; color: #0F2B4C;">
+                                    ${extractedCampaign ? `Campaign: <strong>${extractedCampaign}</strong> ` : ""}${extractedKeyword ? `| Keyword: <em>${extractedKeyword}</em>` : ""}
+                                </td>
+                            </tr>
+                            ` : ""}
+                            ${extractedFullQuery ? `
+                            <tr>
+                                <td style="padding: 7px 0; border-bottom: 1px solid #f1f5f9; color: #64748b;"><strong>Full Query String:</strong></td>
+                                <td style="padding: 7px 0; border-bottom: 1px solid #f1f5f9; font-family: monospace; font-size: 11px; color: #475569; word-break: break-all; background: #f8fafc; padding: 4px 6px; border-radius: 4px;">
+                                    ${extractedFullQuery}
+                                </td>
+                            </tr>
+                            ` : ""}
+                            <tr>
+                                <td style="padding: 7px 0; color: #64748b;"><strong>Device:</strong></td>
+                                <td style="padding: 7px 0; color: #334155;">
+                                    ${extractedDevice || "Desktop / Mobile"}
+                                </td>
+                            </tr>
+                        </table>
+                    </div>
 
                     ${data.priceEstimate ? `
                     <div style="background: #D4AF37; color: #0F2B4C; padding: 20px; border-radius: 12px; margin-top: 20px; text-align: center;">

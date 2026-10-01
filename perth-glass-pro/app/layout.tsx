@@ -11,6 +11,7 @@ import CertificateModalWrapper from "@/components/CertificateModalWrapper";
 import ConditionalLayout from "@/components/ConditionalLayout";
 import { getGmbData } from "@/app/actions/gmb";
 import GmbProvider from "@/components/GmbProvider";
+import AttributionTracker from "@/components/AttributionTracker";
 
 const montserrat = Montserrat({
     subsets: ["latin"],
@@ -172,6 +173,7 @@ export default async function RootLayout({
                 </main>
                 <Footer /> */}
                 <ConditionalLayout children={children} />
+                <AttributionTracker />
 
                 {/* Tag Manager - loaded after interactive */}
 

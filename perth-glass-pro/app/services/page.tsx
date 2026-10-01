@@ -122,10 +122,10 @@ export default function ServicesPage() {
             <section className="bg-brand-navy text-white pt-32 sm:pt-36 pb-16 sm:pb-24">
                 <div className="max-w-5xl mx-auto px-4 text-center">
                     <h1 className="text-3xl sm:text-5xl lg:text-6xl font-heading font-bold text-white mb-4 sm:mb-6">
-                        Our Cleaning <span className="text-action-gold">Services</span>
+                        Cleaning Services Perth: <span className="text-action-gold">Window, Solar &amp; Exterior Care</span>
                     </h1>
                     <p className="text-base sm:text-xl text-slate-200 max-w-2xl mx-auto">
-                        Professional residential and commercial cleaning services across Perth metro.
+                        Looking for reliable <strong>cleaning services Perth</strong>? Aspect delivers streak-free residential window cleaning, commercial janitorial care, solar panel washing, gutter clearing, and pressure washing across the entire Perth metro area.
                     </p>
                 </div>
             </section>

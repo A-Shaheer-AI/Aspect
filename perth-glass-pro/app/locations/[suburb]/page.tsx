@@ -2,14 +2,34 @@ import { Metadata } from "next";
 import Link from "next/link";
 import { notFound } from "next/navigation";
 import { BUSINESS } from "@/lib/config";
-import { ArrowRight, Home, Building2, Sparkles, Droplets, Wind, Phone, MapPin } from "lucide-react";
+import { ArrowRight, Home, Building2, Sparkles, Droplets, Wind, Phone, MapPin, ShieldCheck, CheckCircle2 } from "lucide-react";
 import suburbsData from "@/lib/perth_suburbs.json";
-import ServicesAvailable from "@/components/ServicesAvailable";
 import ServicesClient from "@/components/ServicesClient";
 import CaseStudiesSection from "@/components/CaseStudiesSection";
 import FAQ from "@/components/FAQ";
 
-const ALL_SUBURBS = [
+interface SuburbRecord {
+    name: string;
+    type?: string;
+    description?: string;
+    service_description?: string;
+    nearby_landmark?: string;
+    nearby_landmarks?: string[];
+    local_note?: string;
+    window_cleaning_tip?: string;
+    distance_from_base?: {
+        km: number;
+        travel_time_mins: number;
+        main_arterial: string;
+    };
+    architecture_profile?: string;
+    local_challenges_reddit?: string;
+    cleaning_strategy?: string;
+    coverage_guarantee?: string;
+    suburb_faqs?: Array<{ question: string; answer: string }>;
+}
+
+const ALL_SUBURBS: SuburbRecord[] = [
     ...(suburbsData.regions.north_of_river.suburbs || []),
     ...(suburbsData.regions.south_of_river.suburbs || [])
 ];
@@ -27,7 +47,7 @@ export async function generateMetadata({ params }: { params: Promise<{ suburb: s
         .replace(/-/g, ' ')
         .replace(/\b\w/g, l => l.toUpperCase());
 
-        const templates = [
+    const templates = [
         `Looking for spotless windows in ${suburbName}? Enjoy streak-free pure water cleaning from police-cleared, $20M insured Perth pros. Get a free quote today!`,
         `Need reliable window cleaning in ${suburbName}? We clean glass, tracks, screens & frames with zero streaks. Same-week bookings & free quotes. Call now!`,
         `Top-rated window & exterior cleaning in ${suburbName}. Fully insured ($20M) & police-cleared Perth team. Streak-free guarantee. Get your instant quote!`,
@@ -104,7 +124,10 @@ export default async function SuburbPage({ params }: { params: Promise<{ suburb:
         );
     }
 
+    const localizedFaqs = suburb.suburb_faqs || [];
+
     const SUBURB_FAQS = [
+        ...localizedFaqs,
         ...customFaqs,
         {
             question: `How often should windows be cleaned in ${suburb.name}?`,
@@ -147,7 +170,7 @@ export default async function SuburbPage({ params }: { params: Promise<{ suburb:
         "description": `Professional window cleaning, solar panel washing, gutter cleaning, and pressure washing in ${suburb.name}, Perth. Same-week service. Fully insured.`
     };
 
-        const breadcrumbSchema = {
+    const breadcrumbSchema = {
         "@context": "https://schema.org",
         "@type": "BreadcrumbList",
         "itemListElement": [
@@ -204,9 +227,19 @@ export default async function SuburbPage({ params }: { params: Promise<{ suburb:
             <section className="bg-brand-navy text-white pt-32 sm:pt-36 pb-16 sm:pb-24">
                 <div className="max-w-5xl mx-auto px-4 text-center">
 
-                    <div className="inline-flex items-center gap-2 bg-white/10 border border-white/20 rounded-full px-4 py-2 mb-6">
+                    <div className="inline-flex flex-wrap items-center justify-center gap-2 bg-white/10 border border-white/20 rounded-full px-4 py-2 mb-6">
                         <span className="w-2 h-2 rounded-full bg-green-400 animate-pulse"></span>
-                        <span className="text-sm font-medium">Same-Week Availability</span>
+                        <span className="text-xs sm:text-sm font-medium">Same-Week Availability in {suburb.name}</span>
+                        {suburb.distance_from_base && (
+                            <>
+                                <span className="text-white/40">•</span>
+                                <span className="text-xs sm:text-sm text-brand-water/90">
+                                    {suburb.distance_from_base.km} km from Nedlands ({suburb.distance_from_base.travel_time_mins} mins via {suburb.distance_from_base.main_arterial})
+                                </span>
+                                <span className="text-white/40">•</span>
+                                <span className="text-xs sm:text-sm text-action-gold font-semibold">Zero Callout Fees</span>
+                            </>
+                        )}
                     </div>
 
                     <h1 className="text-3xl sm:text-4xl md:text-5xl font-heading font-bold mb-4">
@@ -214,7 +247,7 @@ export default async function SuburbPage({ params }: { params: Promise<{ suburb:
                     </h1>
 
                     <p className="text-base sm:text-lg md:text-xl text-brand-water/80 max-w-2xl mx-auto mb-8">
-                        {suburb.description}
+                        {suburb.service_description || `Professional streak-free window cleaning in ${suburb.name}. Specialized pure water technology, frames and tracks included, and zero callout fees.`}
                     </p>
 
                     <a
@@ -228,54 +261,168 @@ export default async function SuburbPage({ params }: { params: Promise<{ suburb:
                 </div>
             </section>
 
-            {/* Local Area Profile & Maintenance Notes */}
-            <section className="py-12 bg-white border-b border-slate-200/80">
+            {/* Local Area Profile & Maintenance Notes (400-500 Words of Unique Content) */}
+            <section className="py-16 bg-white border-b border-slate-200/80">
                 <div className="max-w-5xl mx-auto px-4 sm:px-6">
-                    <div className="bg-slate-50 border border-slate-200 rounded-3xl p-6 sm:p-10 shadow-sm">
-                        <div className="flex flex-wrap items-center gap-2 mb-4">
-                            <span className="inline-flex items-center gap-1.5 bg-brand-navy/10 text-brand-navy px-3 py-1 rounded-full text-xs font-bold uppercase tracking-wider">
-                                <MapPin className="w-3.5 h-3.5 text-action-gold" />
-                                {suburb.type || "Perth Metro"}
-                            </span>
-                            {suburb.nearby_landmark && (
-                                <span className="inline-flex items-center gap-1.5 bg-action-gold/15 text-brand-navy px-3 py-1 rounded-full text-xs font-semibold">
-                                    Near {suburb.nearby_landmark}
-                                </span>
+                    <div className="text-center max-w-3xl mx-auto mb-10">
+                        <div className="inline-flex items-center gap-1.5 bg-brand-navy/10 text-brand-navy px-3.5 py-1.5 rounded-full text-xs font-bold uppercase tracking-wider mb-3">
+                            <MapPin className="w-3.5 h-3.5 text-action-gold" />
+                            <span>Local Area Guide • {suburb.name} WA</span>
+                        </div>
+                        <h2 className="text-2xl sm:text-3xl md:text-4xl font-heading font-bold text-brand-navy mb-4">
+                            Window &amp; Exterior Cleaning Guide for {suburb.name}
+                        </h2>
+                        <p className="text-brand-slate text-base sm:text-lg leading-relaxed">
+                            {suburb.service_description || suburb.description}
+                        </p>
+                    </div>
+
+                    <div className="grid md:grid-cols-2 gap-6 mb-8">
+                        {/* Card 1: Architectural Character & Landmarks */}
+                        <div className="bg-slate-50 border border-slate-200 rounded-3xl p-6 sm:p-8 flex flex-col justify-between shadow-sm hover:shadow-md transition-shadow">
+                            <div>
+                                <div className="flex items-center justify-between mb-4">
+                                    <div className="flex items-center gap-2.5 text-brand-navy font-bold text-lg">
+                                        <div className="w-9 h-9 rounded-xl bg-brand-navy/10 flex items-center justify-center text-brand-navy">
+                                            <Home className="w-5 h-5 text-action-gold" />
+                                        </div>
+                                        <span>Architectural Styles &amp; Local Landmarks</span>
+                                    </div>
+                                    <span className="text-xs font-bold uppercase tracking-wider bg-slate-200 text-slate-700 px-2.5 py-1 rounded-full">
+                                        {suburb.type || "Local Profile"}
+                                    </span>
+                                </div>
+                                <p className="text-sm sm:text-base text-brand-slate leading-relaxed mb-4">
+                                    {suburb.architecture_profile}
+                                </p>
+                            </div>
+                            {suburb.nearby_landmarks && suburb.nearby_landmarks.length > 0 && (
+                                <div className="pt-4 border-t border-slate-200/80">
+                                    <span className="text-xs font-semibold text-slate-500 uppercase tracking-wider block mb-2">Key Local Destinations:</span>
+                                    <div className="flex flex-wrap gap-1.5">
+                                        {suburb.nearby_landmarks.map((landmark, idx) => (
+                                            <span key={idx} className="inline-flex items-center gap-1 bg-white border border-slate-200 text-slate-700 text-xs px-2.5 py-1 rounded-lg">
+                                                <MapPin className="w-3 h-3 text-action-gold" />
+                                                {landmark}
+                                            </span>
+                                        ))}
+                                    </div>
+                                </div>
                             )}
                         </div>
 
-                        <h2 className="text-2xl sm:text-3xl font-heading font-bold text-brand-navy mb-4">
-                            Local Window &amp; Exterior Cleaning Guide: {suburb.name}
-                        </h2>
-
-                        <p className="text-brand-slate text-base sm:text-lg leading-relaxed mb-6">
-                            {suburb.service_description || suburb.description}
-                        </p>
-
-                        <div className="grid sm:grid-cols-2 gap-4 mb-6">
-                            <div className="bg-white p-5 rounded-2xl border border-slate-200/80">
-                                <div className="flex items-center gap-2 text-brand-navy font-bold mb-2">
-                                    <Sparkles className="w-4 h-4 text-action-gold" />
-                                    <span>Local Window Care Tip</span>
+                        {/* Card 2: Community Challenges & Local Concerns */}
+                        <div className="bg-slate-50 border border-slate-200 rounded-3xl p-6 sm:p-8 flex flex-col justify-between shadow-sm hover:shadow-md transition-shadow">
+                            <div>
+                                <div className="flex items-center justify-between mb-4">
+                                    <div className="flex items-center gap-2.5 text-brand-navy font-bold text-lg">
+                                        <div className="w-9 h-9 rounded-xl bg-amber-500/10 flex items-center justify-center text-amber-600">
+                                            <Wind className="w-5 h-5" />
+                                        </div>
+                                        <span>Community Maintenance Challenges</span>
+                                    </div>
+                                    <span className="text-xs font-bold uppercase tracking-wider bg-amber-100 text-amber-800 px-2.5 py-1 rounded-full">
+                                        Local Insights
+                                    </span>
                                 </div>
-                                <p className="text-sm text-brand-slate leading-relaxed">
-                                    {suburb.window_cleaning_tip || "Regular pure water cleaning prevents environmental mineral bonding on glass surfaces."}
+                                <p className="text-sm sm:text-base text-brand-slate leading-relaxed mb-4">
+                                    {suburb.local_challenges_reddit}
                                 </p>
                             </div>
-                            <div className="bg-white p-5 rounded-2xl border border-slate-200/80">
-                                <div className="flex items-center gap-2 text-brand-navy font-bold mb-2">
-                                    <Droplets className="w-4 h-4 text-action-gold" />
-                                    <span>Microclimate Environmental Note</span>
+                            <div className="pt-4 border-t border-slate-200/80 bg-white/60 -mx-2 -mb-2 p-3 rounded-2xl border border-slate-100">
+                                <div className="flex items-center gap-2 text-xs font-semibold text-brand-navy">
+                                    <Droplets className="w-3.5 h-3.5 text-action-gold" />
+                                    <span>Microclimate Factor:</span>
                                 </div>
-                                <p className="text-sm text-brand-slate leading-relaxed">
-                                    {suburb.local_note || `Environmental dust and seasonal rain patterns affect glass in ${suburb.name}.`}
+                                <p className="text-xs text-brand-slate mt-1">
+                                    {suburb.local_note || `Seasonal environmental factors and wind exposure affect glass longevity across ${suburb.name}.`}
                                 </p>
                             </div>
                         </div>
 
-                        <p className="text-sm text-brand-slate/90 leading-relaxed pt-2 border-t border-slate-200/60">
-                            In addition to our <Link href="/services/residential-window-cleaning" className="text-action-gold hover:underline font-semibold">residential window cleaning in {suburb.name}</Link>, we provide professional pure-water <Link href="/services/solar-panel-washing" className="text-action-gold hover:underline font-semibold">clean solar panels in Perth</Link>, exterior <Link href="/services/pressure-washing" className="text-action-gold hover:underline font-semibold">pressure washing</Link>, and complete <Link href="/services/gutter-cleaning" className="text-action-gold hover:underline font-semibold">roof gutter cleaning in Perth</Link>. Business and strata managers can book certified <Link href="/services/commercial-window-cleaning" className="text-action-gold hover:underline font-semibold">commercial window cleaners in Perth</Link> with scissor lifts and pure-water reach poles up to 4 storeys. Looking for a trusted <Link href="/" className="text-action-gold hover:underline font-semibold">window cleaning service in Perth</Link>? Explore our real <Link href="/case-studies" className="text-action-gold hover:underline font-semibold">Perth case studies</Link>, browse our <Link href="/blog" className="text-action-gold hover:underline font-semibold">cleaning guides</Link>, compare our <Link href="/pricing" className="text-action-gold hover:underline font-semibold">transparent pricing</Link>, or <Link href="/contact" className="text-action-gold hover:underline font-semibold">contact our team</Link> for an upfront quote.
-                        </p>
+                        {/* Card 3: Aspect's Equipment & Access Strategy */}
+                        <div className="bg-slate-50 border border-slate-200 rounded-3xl p-6 sm:p-8 flex flex-col justify-between shadow-sm hover:shadow-md transition-shadow">
+                            <div>
+                                <div className="flex items-center justify-between mb-4">
+                                    <div className="flex items-center gap-2.5 text-brand-navy font-bold text-lg">
+                                        <div className="w-9 h-9 rounded-xl bg-green-500/10 flex items-center justify-center text-green-600">
+                                            <Sparkles className="w-5 h-5" />
+                                        </div>
+                                        <span>Specialized Equipment &amp; Access Strategy</span>
+                                    </div>
+                                    <span className="text-xs font-bold uppercase tracking-wider bg-green-100 text-green-800 px-2.5 py-1 rounded-full">
+                                        Aspect Solution
+                                    </span>
+                                </div>
+                                <p className="text-sm sm:text-base text-brand-slate leading-relaxed mb-4">
+                                    {suburb.cleaning_strategy}
+                                </p>
+                            </div>
+                            <div className="pt-4 border-t border-slate-200/80">
+                                <div className="grid grid-cols-2 gap-2 text-xs text-brand-slate">
+                                    <div className="flex items-center gap-1.5">
+                                        <CheckCircle2 className="w-3.5 h-3.5 text-green-600 shrink-0" />
+                                        <span>0 PPM Pure RO/DI Water</span>
+                                    </div>
+                                    <div className="flex items-center gap-1.5">
+                                        <CheckCircle2 className="w-3.5 h-3.5 text-green-600 shrink-0" />
+                                        <span>Carbon-Fibre Poles (4 Storeys)</span>
+                                    </div>
+                                    <div className="flex items-center gap-1.5">
+                                        <CheckCircle2 className="w-3.5 h-3.5 text-green-600 shrink-0" />
+                                        <span>Wall-Standoff Straight Ladders</span>
+                                    </div>
+                                    <div className="flex items-center gap-1.5">
+                                        <CheckCircle2 className="w-3.5 h-3.5 text-green-600 shrink-0" />
+                                        <span>0000 Bronze Wool Descaling</span>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+
+                        {/* Card 4: Base Distance & Zero Callout Guarantee */}
+                        <div className="bg-slate-50 border border-slate-200 rounded-3xl p-6 sm:p-8 flex flex-col justify-between shadow-sm hover:shadow-md transition-shadow">
+                            <div>
+                                <div className="flex items-center justify-between mb-4">
+                                    <div className="flex items-center gap-2.5 text-brand-navy font-bold text-lg">
+                                        <div className="w-9 h-9 rounded-xl bg-blue-500/10 flex items-center justify-center text-blue-600">
+                                            <ShieldCheck className="w-5 h-5" />
+                                        </div>
+                                        <span>Depot Distance &amp; Coverage Guarantee</span>
+                                    </div>
+                                    <span className="text-xs font-bold uppercase tracking-wider bg-blue-100 text-blue-800 px-2.5 py-1 rounded-full">
+                                        Zero Travel Fees
+                                    </span>
+                                </div>
+                                <p className="text-sm sm:text-base text-brand-slate leading-relaxed mb-4">
+                                    {suburb.coverage_guarantee}
+                                </p>
+                            </div>
+                            {suburb.distance_from_base && (
+                                <div className="pt-4 border-t border-slate-200/80 bg-white p-3.5 rounded-2xl border border-slate-200/60">
+                                    <div className="grid sm:grid-cols-3 gap-2 text-center">
+                                        <div>
+                                            <span className="text-slate-400 text-xs block">Depot Distance</span>
+                                            <span className="font-bold text-brand-navy text-sm">{suburb.distance_from_base.km} km</span>
+                                        </div>
+                                        <div>
+                                            <span className="text-slate-400 text-xs block">Drive Time</span>
+                                            <span className="font-bold text-brand-navy text-sm">~{suburb.distance_from_base.travel_time_mins} mins</span>
+                                        </div>
+                                        <div>
+                                            <span className="text-slate-400 text-xs block">Callout Fee</span>
+                                            <span className="font-bold text-green-600 text-sm">$0.00 (Free)</span>
+                                        </div>
+                                    </div>
+                                </div>
+                            )}
+                        </div>
+                    </div>
+
+                    {/* Internal SEO Hub Links */}
+                    <div className="bg-slate-50/70 border border-slate-200/80 rounded-2xl p-5 sm:p-6 text-sm text-brand-slate leading-relaxed">
+                        <span className="font-semibold text-brand-navy block mb-1">Aspect Exterior Cleaning Services in {suburb.name}:</span>
+                        In addition to our <Link href="/services/residential-window-cleaning" className="text-action-gold hover:underline font-semibold">residential window cleaning in {suburb.name}</Link>, we provide professional pure-water <Link href="/services/solar-panel-washing" className="text-action-gold hover:underline font-semibold">clean solar panels in Perth</Link>, exterior <Link href="/services/pressure-washing" className="text-action-gold hover:underline font-semibold">pressure washing</Link>, and complete <Link href="/services/gutter-cleaning" className="text-action-gold hover:underline font-semibold">roof gutter cleaning in Perth</Link>. Business and strata managers can book certified <Link href="/services/commercial-window-cleaning" className="text-action-gold hover:underline font-semibold">commercial window cleaners in Perth</Link> with scissor lifts and pure-water reach poles up to 4 storeys. Looking for a trusted <Link href="/" className="text-action-gold hover:underline font-semibold">window cleaning service in Perth</Link>? Explore our real <Link href="/case-studies" className="text-action-gold hover:underline font-semibold">Perth case studies</Link>, browse our <Link href="/blog" className="text-action-gold hover:underline font-semibold">cleaning guides</Link>, compare our <Link href="/pricing" className="text-action-gold hover:underline font-semibold">transparent pricing</Link>, or <Link href="/contact" className="text-action-gold hover:underline font-semibold">contact our team</Link> for an upfront quote.
                     </div>
                 </div>
             </section>
@@ -335,4 +482,3 @@ export default async function SuburbPage({ params }: { params: Promise<{ suburb:
         </div>
     );
 }
-

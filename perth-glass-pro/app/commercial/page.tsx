@@ -44,16 +44,14 @@ export default function CommercialPage() {
                         <span className="text-sm font-medium">Commercial Services</span>
                     </div>
                     <h1 className="text-3xl sm:text-5xl lg:text-6xl font-heading font-bold mb-4 sm:mb-6">
-                        Window Cleaning for
+                        Commercial Window Cleaning Perth
                         <br />
                         <span className="text-action-gold">
-                            Businesses and Strata
+                            Businesses, Offices &amp; Strata
                         </span>
                     </h1>
                     <p className="text-base sm:text-xl text-brand-water/80 max-w-2xl mx-auto mb-8 sm:mb-10">
-                        Perth window cleaning services for businesses and strata properties. Specialized multi-storey
-                        cleaning up to 4 storeys for commercial buildings, retail establishments, and offices. Completely safety
-                        compliant, insured, and certified.
+                        Professional <strong>commercial window cleaning Perth</strong> for businesses, corporate offices, and strata properties. Specialized multi-storey cleaning up to 4 storeys with scissor lift EWP access, pure water reach poles, WorkSafe WA compliance, and $20M insurance.
                     </p>
                     <div className="flex flex-col sm:flex-row items-center justify-center gap-3 sm:gap-4">
                         <Link

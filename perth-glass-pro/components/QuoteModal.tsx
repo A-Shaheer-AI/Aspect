@@ -5,6 +5,7 @@ import { X, ArrowRight, Loader2, CheckCircle, Home, Building2, MapPin, Sparkles 
 import { sendLeadEmail } from "@/app/actions/send-email";
 import { trackFormStart, trackFormStep2, trackFormCompleted } from "@/hooks/useGtm";
 import { getOpinlyAnonId, identifyOpinly } from "@/lib/opinly-client";
+import { getLeadAttribution } from "@/lib/attribution";
 
 interface QuoteModalProps {
     isOpen: boolean;
@@ -72,6 +73,7 @@ export default function QuoteModal({
             if (formData.email) {
                 identifyOpinly(formData.email);
             }
+            const attribution = getLeadAttribution(`Quote Modal (${quoteType || "General"})`);
             const result = await sendLeadEmail({
                 name: formData.name,
                 phone: formData.phone,
@@ -80,6 +82,7 @@ export default function QuoteModal({
                 serviceType: formData.service || quoteType,
                 message: formData.message,
                 anonId: getOpinlyAnonId(),
+                ...attribution,
             });
             if (result.success) {
                 trackFormCompleted();

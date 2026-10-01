@@ -1,11 +1,11 @@
-import { Metadata } from "next";
+import type { Metadata } from "next";
 
 export const metadata: Metadata = {
-    title: "Residential Window Cleaning Perth | Aspect Window Cleaning",
-    description: "Professional residential window cleaning in Perth. Expert inside and out cleaning, frames, and tracks. Free, fast quotes available.",
-    alternates: { canonical: "https://aspectwindowcleaning.com.au/services/residential-window-cleaning" }
+    title: { absolute: "Residential Window Cleaning Perth | Aspect Window Cleaning" },
+    description: "Professional residential window cleaning in Perth. 0ppm pure water technology for single and double-storey homes. Streak-free results, fully insured.",
+    alternates: { canonical: "https://aspectwindowcleaning.com.au/residential" },
 };
 
-export default function Layout({ children }: { children: React.ReactNode }) {
+export default function ResidentialLayout({ children }: { children: React.ReactNode }) {
     return <>{children}</>;
 }

@@ -18,6 +18,12 @@ export interface LeadProfile {
   keyword?: string;
   device?: string;
   sourceUrl?: string;
+  landingUrl?: string;
+  submissionUrl?: string;
+  referrer?: string;
+  fullQuery?: string;
+  sourceSummary?: string;
+  formName?: string;
   serviceType?: string;
   is_ai_muted: boolean;
   mute_reason?: string;
@@ -96,6 +102,14 @@ export function saveOrUpdateLead(data: Partial<LeadProfile> & { phone: string })
       email: data.email || existing.email,
       gclid: data.gclid || existing.gclid,
       keyword: data.keyword || existing.keyword,
+      device: data.device || existing.device,
+      sourceUrl: data.sourceUrl || existing.sourceUrl,
+      landingUrl: data.landingUrl || existing.landingUrl,
+      submissionUrl: data.submissionUrl || existing.submissionUrl,
+      referrer: data.referrer || existing.referrer,
+      fullQuery: data.fullQuery || existing.fullQuery,
+      sourceSummary: data.sourceSummary || existing.sourceSummary,
+      formName: data.formName || existing.formName,
       extracted_details: {
         ...existing.extracted_details,
         ...(data.extracted_details || {})
@@ -116,6 +130,12 @@ export function saveOrUpdateLead(data: Partial<LeadProfile> & { phone: string })
       keyword: data.keyword || "",
       device: data.device || "",
       sourceUrl: data.sourceUrl || "",
+      landingUrl: data.landingUrl || "",
+      submissionUrl: data.submissionUrl || "",
+      referrer: data.referrer || "",
+      fullQuery: data.fullQuery || "",
+      sourceSummary: data.sourceSummary || "",
+      formName: data.formName || "",
       serviceType: data.serviceType || "Window Cleaning",
       is_ai_muted: false,
       status: "NEW",

@@ -12,6 +12,7 @@ import BeforeAfterSlider from "@/components/BeforeAfterSlider";
 import { sendLeadEmail } from "../actions/send-email";
 import { trackFormCompleted } from "@/hooks/useGtm";
 import GoogleReviews from "@/components/GoogleReviews";
+import { getLeadAttribution } from "@/lib/attribution";
 
 type FormDataType = {
     name: string;
@@ -485,6 +486,7 @@ function FreeTrialForm() {
         e.preventDefault();
         if (!formData.name || !formData.phone || !formData.address) return;
         try {
+            const attribution = getLeadAttribution("Landing Page - Free Trial Form");
             await sendLeadEmail({
                 name: formData.name,
                 phone: formData.phone,
@@ -492,6 +494,7 @@ function FreeTrialForm() {
                 suburb: formData.address,
                 serviceType: "FREE TRIAL - 2 Windows",
                 message: "User requested the 2-window free trial.",
+                ...attribution,
             });
             setSubmitted(true);
             trackFormCompleted();
@@ -584,6 +587,7 @@ export default function WindowCleaningAdsPage() {
         setIsPkgSubmitting(true);
         setPkgError("");
         try {
+            const attribution = getLeadAttribution("Landing Page - Package Selection Modal");
             const res = await sendLeadEmail({
                 name: pkgForm.name,
                 phone: pkgForm.phone,
@@ -592,7 +596,8 @@ export default function WindowCleaningAdsPage() {
                 storeys: isDoubleStorey ? "Double Storey" : "Single Storey",
                 selectedTier: selectedPkg?.name,
                 quoteType: "Landing Page Package Selection",
-                message: `Selected Price: ${selectedPkg?.price}`
+                message: `Selected Price: ${selectedPkg?.price}`,
+                ...attribution,
             });
             if (res.error) throw new Error(res.error);
             
@@ -618,12 +623,13 @@ export default function WindowCleaningAdsPage() {
 
     const handleSubmit = async () => {
         try {
+            const attribution = getLeadAttribution("Landing Page - Hero Quote Form");
             const result = await sendLeadEmail({
                 name: formData.name,
                 phone: formData.phone,
                 suburb: formData.suburb,
                 message: formData.promo,
-                sourceUrl: window.location.href
+                ...attribution,
             });
             if (result.success) {
                 trackFormCompleted();
@@ -771,13 +777,13 @@ export default function WindowCleaningAdsPage() {
 
                         {/* MOBILE HEADING (Hidden on desktop) */}
                         <div className="lg:hidden text-center text-white mb-8 w-full">
-                            <h1 className="mb-4 leading-none font-black text-white" style={{ fontSize: "clamp(32px,4vw,56px)", letterSpacing: "1px" }}>
+                            <h2 className="mb-4 leading-none font-black text-white" style={{ fontSize: "clamp(32px,4vw,56px)", letterSpacing: "1px" }}>
                                 Perth&apos;s #1
                                 <br />
                                 <span style={{ color: YELLOW }}>Window Cleaners</span>
-                            </h1>
+                            </h2>
                             <p className="w-full text-base font-light leading-relaxed mx-auto max-w-lg" style={{ color: "rgba(255,255,255,0.8)" }}>
-                                Next-Day Availability. Commercial-Grade Pure Water Cleaning for Homes & Businesses.
+                                Next-Day Availability. Commercial-Grade Pure Water Cleaning for Homes &amp; Businesses.
                             </p>
                         </div>
 
@@ -833,13 +839,13 @@ export default function WindowCleaningAdsPage() {
 
                         <div className="hidden lg:block text-left text-white">
                             <h1 className="mb-4 leading-none font-black text-white" style={{ fontSize: "clamp(36px,4vw,56px)", letterSpacing: "1px" }}>
-                                Perth&apos;s #1
+                                Window Cleaning Perth
                                 <br />
-                                <span style={{ color: YELLOW }}>Window Cleaners</span>
+                                <span style={{ color: YELLOW }}>Residential &amp; Commercial</span>
                             </h1>
 
                             <p className="w-full text-base font-light leading-relaxed mx-auto lg:mx-0 max-w-lg" style={{ color: "rgba(255,255,255,0.8)" }}>
-                                Next-Day Availability. Commercial-Grade Pure Water Cleaning for Homes & Businesses.
+                                Professional <strong>window cleaning Perth</strong> with next-day availability. Commercial-grade pure water cleaning for homes and businesses.
                             </p>
                         </div>
 

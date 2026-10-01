@@ -220,10 +220,10 @@ export default function PricingPage() {
                         <Sparkles className="w-4 h-4" /> 100% Transparent Perth Pricing
                     </span>
                     <h1 className="text-4xl md:text-5xl font-heading font-bold mb-6">
-                        Clear, Upfront Window Cleaning Prices
+                        Window Cleaning Prices Perth: Clear, Upfront Rates &amp; Packages
                     </h1>
                     <p className="text-xl text-brand-water mb-8 max-w-2xl mx-auto leading-relaxed">
-                        No hidden callout fees, no mystery quotes. Compare our core packages below, check included services with our comparison matrix, or scroll down for our residential estimator.
+                        Looking for transparent <strong>window cleaning prices Perth</strong>? Aspect delivers upfront, fixed rates with no hidden callout fees or surprise quotes. Compare our core packages below, check included services with our comparison matrix, or use our instant residential estimator.
                     </p>
                     <div className="flex flex-wrap items-center justify-center gap-4">
                         <Link
@@ -252,7 +252,7 @@ export default function PricingPage() {
                             TRANSPARENT SERVICE TIERS
                         </span>
                         <h2 className="text-3xl sm:text-4xl font-heading font-bold text-brand-navy mb-4">
-                            Our Core Cleaning Packages
+                            Window Cleaning Prices Perth: Core Packages &amp; Transparent Rates
                         </h2>
                         <p className="text-gray-600 max-w-2xl mx-auto text-base sm:text-lg">
                             Choose the level of thoroughness that matches your property. Essential and Standard deliver our <strong>Basic Wash</strong> for routine dirt, while Supreme delivers <strong>Full Detailing</strong> for hard water, paint, and mineral restoration.

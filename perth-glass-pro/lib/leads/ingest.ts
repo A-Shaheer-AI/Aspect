@@ -18,6 +18,12 @@ export interface IngestLeadPayload {
   keyword?: string;
   device?: string;
   sourceUrl?: string;
+  landingUrl?: string;
+  submissionUrl?: string;
+  referrer?: string;
+  fullQuery?: string;
+  sourceSummary?: string;
+  formName?: string;
 }
 
 /**
@@ -43,6 +49,12 @@ export async function ingestLead(data: IngestLeadPayload) {
     keyword: data.keyword,
     device: data.device,
     sourceUrl: data.sourceUrl,
+    landingUrl: data.landingUrl,
+    submissionUrl: data.submissionUrl,
+    referrer: data.referrer,
+    fullQuery: data.fullQuery,
+    sourceSummary: data.sourceSummary,
+    formName: data.formName,
     extracted_details: {
       storeys: data.storeys,
       scope: data.scope,
@@ -51,7 +63,7 @@ export async function ingestLead(data: IngestLeadPayload) {
     }
   });
 
-  console.log(`\n📥 [Lead Ingested] ${profile.name} (${normPhone}) | Suburb: ${profile.suburb} | GCLID: ${profile.gclid ? "YES" : "NO"}`);
+  console.log(`\n📥 [Lead Ingested] ${profile.name} (${normPhone}) | Suburb: ${profile.suburb} | Source: ${profile.sourceSummary || "Unknown"} | GCLID: ${profile.gclid ? "YES" : "NO"}`);
 
   // 2. Draft customized warm-up SMS based on submitted information
   let initialMsg = "";

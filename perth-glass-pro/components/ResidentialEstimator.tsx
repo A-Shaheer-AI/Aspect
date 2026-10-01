@@ -9,6 +9,7 @@ import { ALL_SUBURBS } from "@/lib/suburbs";
 import { sendLeadEmail } from "@/app/actions/send-email";
 import { CAL_LINK } from "@/lib/config";
 import { getOpinlyAnonId, identifyOpinly } from "@/lib/opinly-client";
+import { getLeadAttribution } from "@/lib/attribution";
 
 // --- Math Engine Constants ---
 const PRICING = {
@@ -162,11 +163,13 @@ export default function ResidentialEstimator() {
 
     const handleSubmitOnSecondStep = async () => {
         try {
+            const attribution = getLeadAttribution("Residential Estimator - Step 2 (Phone Capturing)");
             const result = await sendLeadEmail({
                 name: formData.name,
                 phone: formData.phone,
                 suburb: formData.suburb,
                 anonId: getOpinlyAnonId(),
+                ...attribution,
             });
             if (result.success) {
                 console.log("successfully submited!")
@@ -178,6 +181,7 @@ export default function ResidentialEstimator() {
 
     const handleSubmitForNotFelxible = async () => {
         try {
+            const attribution = getLeadAttribution("Residential Estimator - Package Select");
             const result = await sendLeadEmail({
                 name: formData.name,
                 phone: formData.phone,
@@ -192,6 +196,7 @@ export default function ResidentialEstimator() {
                 flexibleNotes: formData.flexibleNotes,
                 serviceType: "Residential Window Cleaning",
                 anonId: getOpinlyAnonId(),
+                ...attribution,
             });
             if (result.success) {
                 console.log("successfully submited form")
@@ -216,6 +221,7 @@ export default function ResidentialEstimator() {
         setSubmissionError(null);
 
         try {
+            const attribution = getLeadAttribution("Residential Estimator - Final Request");
             const result = await sendLeadEmail({
                 name: formData.name,
                 phone: formData.phone,
@@ -230,6 +236,7 @@ export default function ResidentialEstimator() {
                 flexibleNotes: formData.flexibleNotes,
                 serviceType: "Residential Window Cleaning",
                 anonId: getOpinlyAnonId(),
+                ...attribution,
             });
 
             if (result.success) {
