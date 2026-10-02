@@ -570,6 +570,7 @@ export default function WindowCleaningAdsPage() {
     const [modalOpen, setModalOpen] = useState(false);
     const [isDoubleStorey, setIsDoubleStorey] = useState(false);
     const [activeDiffTab, setActiveDiffTab] = useState<"see" | "feel">("see");
+    const [activeSliderJob, setActiveSliderJob] = useState<"residential" | "commercial">("residential");
     const [showPromo, setShowPromo] = useState(false);
     const [galleryOpen, setGalleryOpen] = useState(false);
     const [currentImageIndex, setCurrentImageIndex] = useState(0);
@@ -1226,23 +1227,54 @@ export default function WindowCleaningAdsPage() {
                                     </div>
                                 </div>
 
-                                {/* Before / After Sliders */}
+                                {/* Before / After Slider Showcase */}
                                 <div>
-                                    <div className="flex items-center justify-between mb-2">
-                                        <span className="text-xs font-bold text-slate-700 uppercase tracking-wider">Before & After Slider</span>
-                                        <span className="text-[11px] text-slate-400 font-medium">↔ Drag handle left/right</span>
+                                    <div className="flex items-center justify-between mb-2.5 flex-wrap gap-2">
+                                        <div className="inline-flex p-1 bg-slate-200/80 rounded-xl border border-slate-300/60 shadow-inner">
+                                            <button
+                                                type="button"
+                                                onClick={() => setActiveSliderJob("residential")}
+                                                className={`px-3 py-1.5 rounded-lg text-xs font-bold transition-all cursor-pointer ${
+                                                    activeSliderJob === "residential"
+                                                        ? "bg-white text-brand-navy shadow-sm"
+                                                        : "text-slate-600 hover:text-brand-navy"
+                                                }`}
+                                            >
+                                                Residential Patio Glass
+                                            </button>
+                                            <button
+                                                type="button"
+                                                onClick={() => setActiveSliderJob("commercial")}
+                                                className={`px-3 py-1.5 rounded-lg text-xs font-bold transition-all cursor-pointer ${
+                                                    activeSliderJob === "commercial"
+                                                        ? "bg-white text-brand-navy shadow-sm"
+                                                        : "text-slate-600 hover:text-brand-navy"
+                                                }`}
+                                            >
+                                                Commercial Shopfront
+                                            </button>
+                                        </div>
+                                        <span className="text-[11px] text-slate-400 font-medium hidden sm:inline">↔ Drag handle left/right</span>
                                     </div>
-                                    <div className="grid grid-cols-1 sm:grid-cols-2 gap-3">
-                                        <BeforeAfterSlider
-                                            afterImage="https://res.cloudinary.com/dr8tjrszy/image/upload/f_auto,q_auto,w_600/v1774345158/IMG_9593_1_2_b98bl5.png"
-                                            beforeImage="https://res.cloudinary.com/dr8tjrszy/image/upload/f_auto,q_auto,w_600/v1771960144/WhatsApp_Image_2026-02-22_at_8.48.03_PM_vtb2tn.jpg"
-                                            initial={50}
-                                        />
-                                        <BeforeAfterSlider
-                                            afterImage="https://res.cloudinary.com/dr8tjrszy/image/upload/f_auto,q_auto,w_600/v1785879700/aspect_gallery/after.webp"
-                                            beforeImage="https://res.cloudinary.com/dr8tjrszy/image/upload/f_auto,q_auto,w_600/v1785879695/aspect_gallery/1-before.webp"
-                                            initial={50}
-                                        />
+
+                                    <div className="rounded-2xl overflow-hidden shadow-sm border border-slate-200/80">
+                                        {activeSliderJob === "residential" ? (
+                                            <BeforeAfterSlider
+                                                afterImage="https://res.cloudinary.com/dr8tjrszy/image/upload/f_auto,q_auto,w_800/v1774345158/IMG_9593_1_2_b98bl5.png"
+                                                beforeImage="https://res.cloudinary.com/dr8tjrszy/image/upload/f_auto,q_auto,w_800/v1771960144/WhatsApp_Image_2026-02-22_at_8.48.03_PM_vtb2tn.jpg"
+                                                beforeLabel="Before"
+                                                afterLabel="After"
+                                                initial={50}
+                                            />
+                                        ) : (
+                                            <BeforeAfterSlider
+                                                afterImage="https://res.cloudinary.com/dr8tjrszy/image/upload/f_auto,q_auto,w_800/v1785879700/aspect_gallery/after.webp"
+                                                beforeImage="https://res.cloudinary.com/dr8tjrszy/image/upload/f_auto,q_auto,w_800/v1785879695/aspect_gallery/1-before.webp"
+                                                beforeLabel="Before"
+                                                afterLabel="After"
+                                                initial={50}
+                                            />
+                                        )}
                                     </div>
                                 </div>
                             </div>
