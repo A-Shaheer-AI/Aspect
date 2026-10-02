@@ -8,7 +8,7 @@ export const metadata: Metadata = {
         follow: true,
     },
     alternates: {
-        canonical: "https://aspectwindowcleaning.com.au/landing",
+        canonical: "https://aspectwindowcleaning.com.au",
     },
 };
 

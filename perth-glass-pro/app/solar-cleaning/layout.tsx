@@ -4,8 +4,8 @@ export const metadata: Metadata = {
     title: "Solar Panel Cleaning Perth | Aspect Window Cleaning",
     description: "Professional solar panel cleaning services across Perth. Maximise solar efficiency and power generation. Free instant quotes.",
     robots: {
-        index: false,
-        follow: false,
+        index: true,
+        follow: true,
     },
     alternates: {
         canonical: "https://aspectwindowcleaning.com.au/services/solar-panel-washing",
