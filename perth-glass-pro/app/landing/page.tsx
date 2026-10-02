@@ -2,7 +2,7 @@
 
 import { useState, useEffect, useRef } from "react";
 import { openCertificateModal } from "@/components/CertificateModalWrapper";
-import { Phone, CheckCircle2, Star, Shield, Droplets, Zap, Building2, X, Tag, ChevronLeft, ChevronRight, Camera, Check, ArrowRight, Sparkles } from "lucide-react";
+import { Phone, CheckCircle2, Star, Shield, Droplets, Zap, Building2, X, Tag, ChevronLeft, ChevronRight, Camera, Check, ArrowRight, Sparkles, Eye } from "lucide-react";
 import { motion, useScroll, useTransform } from "framer-motion";
 import { BUSINESS } from "@/lib/config";
 import { useGmb } from "@/components/GmbProvider";
@@ -569,6 +569,7 @@ export default function WindowCleaningAdsPage() {
     const gmb = useGmb();
     const [modalOpen, setModalOpen] = useState(false);
     const [isDoubleStorey, setIsDoubleStorey] = useState(false);
+    const [activeDiffTab, setActiveDiffTab] = useState<"see" | "feel">("see");
     const [showPromo, setShowPromo] = useState(false);
     const [galleryOpen, setGalleryOpen] = useState(false);
     const [currentImageIndex, setCurrentImageIndex] = useState(0);
@@ -1146,34 +1147,226 @@ export default function WindowCleaningAdsPage() {
                 </div>
             </section>
 
-{/* 🔹🔹🔹 SECTION 6: BEFORE / AFTER  🔹🔹🔹 */}
-            <section className="px-5 py-16 bg-white">
-                <div className="mx-auto mb-8 max-w-4xl text-center">
-                    <div className="mb-3 inline-block rounded-full px-3 py-1 text-xs font-bold uppercase tracking-widest" style={{ background: "rgba(7,7,126,0.07)", color: NAVY }}>
-                        Our results
+{/* 🔹🔹🔹 SECTION 5: THE ASPECT DIFFERENCE (SEE & FEEL) 🔹🔹🔹 */}
+            <section id="difference" className="py-16 md:py-24 px-4 sm:px-6 lg:px-8 bg-white border-b border-gray-100">
+                <div className="max-w-7xl mx-auto">
+                    {/* Main Section Header */}
+                    <div className="mx-auto mb-10 max-w-3xl text-center">
+                        <div className="mb-3 inline-block rounded-full px-3 py-1 text-xs font-bold uppercase tracking-widest" style={{ background: "rgba(7,7,126,0.07)", color: NAVY }}>
+                            The Aspect Difference
+                        </div>
+                        <h2 className="mb-3 leading-tight font-heading font-black" style={{ fontSize: "clamp(28px,4.5vw,48px)", color: NAVY }}>
+                            See the Results. Feel the Difference.
+                        </h2>
+                        <p className="text-sm sm:text-base font-light max-w-2xl mx-auto text-gray-500">
+                            From high-reach pure water purification to police-cleared master technicians, here is how we deliver streak-free glass that stays clean twice as long.
+                        </p>
+
+                        {/* Mobile Tab Switcher (lg:hidden) */}
+                        <div className="mt-6 flex lg:hidden justify-center">
+                            <div className="bg-slate-100 p-1.5 rounded-2xl flex border border-slate-200/80 w-full max-w-sm shadow-inner">
+                                <button
+                                    type="button"
+                                    onClick={() => setActiveDiffTab("see")}
+                                    className={`flex-1 py-2.5 px-3 rounded-xl text-xs sm:text-sm font-bold transition-all flex items-center justify-center gap-2 cursor-pointer ${
+                                        activeDiffTab === "see"
+                                            ? "bg-brand-navy text-white shadow-sm"
+                                            : "text-slate-600 hover:text-brand-navy"
+                                    }`}
+                                >
+                                    <Eye className="w-4 h-4 text-action-gold" />
+                                    <span>See the Difference</span>
+                                </button>
+                                <button
+                                    type="button"
+                                    onClick={() => setActiveDiffTab("feel")}
+                                    className={`flex-1 py-2.5 px-3 rounded-xl text-xs sm:text-sm font-bold transition-all flex items-center justify-center gap-2 cursor-pointer ${
+                                        activeDiffTab === "feel"
+                                            ? "bg-brand-navy text-white shadow-sm"
+                                            : "text-slate-600 hover:text-brand-navy"
+                                    }`}
+                                >
+                                    <Sparkles className="w-4 h-4 text-action-gold" />
+                                    <span>Feel the Difference</span>
+                                </button>
+                            </div>
+                        </div>
                     </div>
-                    <h2 className="leading-none" style={{ fontSize: "clamp(36px,5vw,52px)", color: NAVY }}>
-                        See the Difference
-                    </h2>
-                </div>
-                <div className="mx-auto max-w-4xl">
-                    <div className="mb-4 overflow-hidden rounded-2xl" style={{ height: 380 }}>
-                        <ScrollAutoplayVideo
-                            src="/media/video/upload/q_auto:eco,w_800,vc_auto/v1772968701/VID-20260228-WA0016_xsz3cm_401388.mp4"
-                            type="video/mp4"
-                        />
-                    </div>
-                    <div className="grid grid-cols-1 gap-4 lg:grid-cols-2">
-                        <BeforeAfterSlider
-                            afterImage="https://res.cloudinary.com/dr8tjrszy/image/upload/f_auto,q_auto,w_600/v1774345158/IMG_9593_1_2_b98bl5.png"
-                            beforeImage="https://res.cloudinary.com/dr8tjrszy/image/upload/f_auto,q_auto,w_600/v1771960144/WhatsApp_Image_2026-02-22_at_8.48.03_PM_vtb2tn.jpg"
-                            initial={50}
-                        />
-                        <BeforeAfterSlider
-                            afterImage="https://res.cloudinary.com/dr8tjrszy/image/upload/f_auto,q_auto,w_600/v1785879700/aspect_gallery/after.webp"
-                            beforeImage="https://res.cloudinary.com/dr8tjrszy/image/upload/f_auto,q_auto,w_600/v1785879695/aspect_gallery/1-before.webp"
-                            initial={50}
-                        />
+
+                    {/* Grid Layout: Side-by-Side on PC, Tab-toggled on Mobile */}
+                    <div className="grid grid-cols-1 lg:grid-cols-2 gap-8 lg:gap-10 xl:gap-12 items-stretch">
+                        
+                        {/* LEFT COLUMN: SEE THE DIFFERENCE */}
+                        <div className={`${activeDiffTab === "see" ? "flex" : "hidden"} lg:flex flex-col justify-between bg-slate-50/80 border border-slate-200/80 rounded-3xl p-5 sm:p-7 shadow-sm transition-all duration-300`}>
+                            <div>
+                                <div className="flex items-center justify-between mb-3">
+                                    <span className="text-[11px] font-extrabold uppercase tracking-widest text-brand-navy/70 bg-brand-navy/5 px-3 py-1 rounded-full">
+                                        Visual Proof
+                                    </span>
+                                    <span className="hidden sm:inline-flex items-center gap-1.5 text-xs text-gray-400 font-medium">
+                                        <span className="w-2 h-2 rounded-full bg-emerald-500"></span> 100% Real Jobs
+                                    </span>
+                                </div>
+                                <h3 className="text-2xl sm:text-3xl font-heading font-black text-brand-navy mb-1.5">
+                                    See the Difference
+                                </h3>
+                                <p className="text-xs sm:text-sm text-gray-500 font-light mb-5">
+                                    Watch on-site footage and slide across real transformations on Perth properties.
+                                </p>
+
+                                {/* Video Container */}
+                                <div className="mb-4 overflow-hidden rounded-2xl shadow-md border border-slate-200/60 bg-black relative" style={{ height: 260 }}>
+                                    <ScrollAutoplayVideo
+                                        src="/media/video/upload/q_auto:eco,w_800,vc_auto/v1772968701/VID-20260228-WA0016_xsz3cm_401388.mp4"
+                                        type="video/mp4"
+                                    />
+                                    <div className="absolute top-3 left-3 bg-black/60 backdrop-blur-md text-white text-[11px] font-bold px-2.5 py-1 rounded-full flex items-center gap-1.5 border border-white/20 pointer-events-none">
+                                        <span className="w-2 h-2 rounded-full bg-red-500 animate-pulse"></span>
+                                        <span>Perth Site Footage</span>
+                                    </div>
+                                </div>
+
+                                {/* Before / After Sliders */}
+                                <div>
+                                    <div className="flex items-center justify-between mb-2">
+                                        <span className="text-xs font-bold text-slate-700 uppercase tracking-wider">Before & After Slider</span>
+                                        <span className="text-[11px] text-slate-400 font-medium">↔ Drag handle left/right</span>
+                                    </div>
+                                    <div className="grid grid-cols-1 sm:grid-cols-2 gap-3">
+                                        <BeforeAfterSlider
+                                            afterImage="https://res.cloudinary.com/dr8tjrszy/image/upload/f_auto,q_auto,w_600/v1774345158/IMG_9593_1_2_b98bl5.png"
+                                            beforeImage="https://res.cloudinary.com/dr8tjrszy/image/upload/f_auto,q_auto,w_600/v1771960144/WhatsApp_Image_2026-02-22_at_8.48.03_PM_vtb2tn.jpg"
+                                            initial={50}
+                                        />
+                                        <BeforeAfterSlider
+                                            afterImage="https://res.cloudinary.com/dr8tjrszy/image/upload/f_auto,q_auto,w_600/v1785879700/aspect_gallery/after.webp"
+                                            beforeImage="https://res.cloudinary.com/dr8tjrszy/image/upload/f_auto,q_auto,w_600/v1785879695/aspect_gallery/1-before.webp"
+                                            initial={50}
+                                        />
+                                    </div>
+                                </div>
+                            </div>
+
+                            {/* Mobile Quick Switcher Link */}
+                            <div className="mt-5 pt-3 border-t border-slate-200/80 lg:hidden text-center">
+                                <button
+                                    type="button"
+                                    onClick={() => setActiveDiffTab("feel")}
+                                    className="text-xs font-bold text-brand-navy hover:text-action-gold inline-flex items-center gap-1.5 cursor-pointer py-1"
+                                >
+                                    <span>Discover Why Aspect & Pure Water Tech</span>
+                                    <ArrowRight className="w-3.5 h-3.5" />
+                                </button>
+                            </div>
+                        </div>
+
+                        {/* RIGHT COLUMN: FEEL THE DIFFERENCE */}
+                        <div className={`${activeDiffTab === "feel" ? "flex" : "hidden"} lg:flex flex-col justify-between bg-brand-navy text-white rounded-3xl p-5 sm:p-7 shadow-xl relative overflow-hidden border border-white/10 transition-all duration-300`}>
+                            {/* Atmospheric Glow */}
+                            <div className="absolute top-0 right-0 w-80 h-80 bg-action-gold/10 rounded-full blur-3xl pointer-events-none -translate-y-1/2 translate-x-1/3"></div>
+                            <div className="absolute bottom-0 left-0 w-80 h-80 bg-blue-500/10 rounded-full blur-3xl pointer-events-none translate-y-1/2 -translate-x-1/3"></div>
+
+                            <div className="relative z-10">
+                                <div className="flex items-center justify-between mb-3">
+                                    <span className="text-[11px] font-extrabold uppercase tracking-widest text-action-gold bg-white/10 px-3 py-1 rounded-full border border-white/10">
+                                        The Aspect Standard
+                                    </span>
+                                    <span className="hidden sm:inline-flex items-center gap-1.5 text-xs text-blue-200 font-medium">
+                                        <Sparkles className="w-3.5 h-3.5 text-action-gold" /> Beyond Squeegees
+                                    </span>
+                                </div>
+                                <h3 className="text-2xl sm:text-3xl font-heading font-black text-white mb-1">
+                                    Feel the Difference
+                                </h3>
+                                <p className="text-xs sm:text-sm font-semibold text-action-gold mb-5">
+                                    Why Aspect? The Technology Behind the Clean
+                                </p>
+
+                                {/* Pure Water Technology Hero Box */}
+                                <div className="bg-white/10 backdrop-blur-md rounded-2xl p-4 sm:p-5 border border-white/15 mb-4 shadow-sm">
+                                    <div className="flex items-center gap-2 mb-2 text-action-gold text-xs font-bold uppercase tracking-wider">
+                                        <Droplets className="w-4 h-4 text-action-gold shrink-0" />
+                                        <span>Commercial RO/DI Pure Water & Carbon Fibre Poles</span>
+                                    </div>
+                                    <p className="text-xs sm:text-sm text-gray-200 leading-relaxed">
+                                        We don&apos;t just use a squeegee and soapy water. We use advanced <strong className="text-white font-bold">Carbon Fibre Poles</strong> and a <strong className="text-white font-bold">Commercial RO/DI Pure Water System</strong>.
+                                    </p>
+                                    <div className="mt-3 pt-3 border-t border-white/10 text-xs text-gray-300 leading-relaxed">
+                                        <strong className="text-action-gold font-bold">Why does this matter?</strong> Because filtering out all minerals and chemicals means the water evaporates perfectly clear, leaving your windows streak-free and cleaner for much longer. It&apos;s safer, faster, and delivers a superior result.
+                                    </div>
+                                </div>
+
+                                {/* 3 Pillar Cards */}
+                                <div className="space-y-3">
+                                    {/* 1. Fully Insured & Checked */}
+                                    <div className="bg-white/5 hover:bg-white/10 transition-colors rounded-2xl p-4 border border-white/10">
+                                        <div className="flex items-start gap-3">
+                                            <div className="w-9 h-9 rounded-xl bg-action-gold/20 flex items-center justify-center shrink-0 mt-0.5 border border-action-gold/30">
+                                                <Shield className="w-5 h-5 text-action-gold" />
+                                            </div>
+                                            <div className="flex-1 min-w-0">
+                                                <div className="flex items-center justify-between flex-wrap gap-1">
+                                                    <h4 className="font-bold text-sm sm:text-base text-white">Fully Insured & Checked</h4>
+                                                    <button
+                                                        type="button"
+                                                        onClick={() => openCertificateModal('insured')}
+                                                        className="text-xs font-bold text-action-gold hover:text-yellow-300 hover:underline flex items-center gap-1 cursor-pointer"
+                                                    >
+                                                        <span>View Certificates</span>
+                                                        <ArrowRight className="w-3 h-3" />
+                                                    </button>
+                                                </div>
+                                                <p className="text-xs text-gray-300 leading-relaxed mt-1">
+                                                    Our entire team is police-cleared and backed by $20,000,000 Public Liability Insurance for your complete peace of mind.
+                                                </p>
+                                            </div>
+                                        </div>
+                                    </div>
+
+                                    {/* 2. 100% Satisfaction */}
+                                    <div className="bg-action-gold text-brand-navy rounded-2xl p-4 shadow-sm border border-yellow-300">
+                                        <div className="flex items-start gap-3">
+                                            <div className="w-9 h-9 rounded-xl bg-brand-navy/15 flex items-center justify-center shrink-0 mt-0.5">
+                                                <CheckCircle2 className="w-5 h-5 text-brand-navy" />
+                                            </div>
+                                            <div className="flex-1 min-w-0">
+                                                <h4 className="font-bold text-sm sm:text-base text-brand-navy">100% Satisfaction</h4>
+                                                <p className="text-xs text-brand-navy/90 leading-relaxed mt-1">
+                                                    We guarantee our work. If anything falls short, we return and fix it at no extra cost. No questions asked.
+                                                </p>
+                                            </div>
+                                        </div>
+                                    </div>
+
+                                    {/* 3. Urgent & Flexible */}
+                                    <div className="bg-white/5 hover:bg-white/10 transition-colors rounded-2xl p-4 border border-white/10">
+                                        <div className="flex items-start gap-3">
+                                            <div className="w-9 h-9 rounded-xl bg-blue-400/20 flex items-center justify-center shrink-0 mt-0.5 border border-blue-400/30">
+                                                <Zap className="w-5 h-5 text-action-gold" />
+                                            </div>
+                                            <div className="flex-1 min-w-0">
+                                                <h4 className="font-bold text-sm sm:text-base text-white">Urgent & Flexible</h4>
+                                                <p className="text-xs text-gray-300 leading-relaxed mt-1">
+                                                    Next-day emergency cleans are available. Whether it&apos;s an end-of-lease or a rental inspection, we&apos;ve got you covered.
+                                                </p>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+
+                            {/* Mobile Quick Switcher Link */}
+                            <div className="mt-5 pt-3 border-t border-white/10 lg:hidden text-center relative z-10">
+                                <button
+                                    type="button"
+                                    onClick={() => setActiveDiffTab("see")}
+                                    className="text-xs font-bold text-action-gold hover:text-white inline-flex items-center gap-1.5 cursor-pointer py-1"
+                                >
+                                    <span>View live transformation video & sliders</span>
+                                    <ArrowRight className="w-3.5 h-3.5" />
+                                </button>
+                            </div>
+                        </div>
                     </div>
                 </div>
             </section>
@@ -1259,68 +1452,6 @@ export default function WindowCleaningAdsPage() {
                         <p className="text-gray-300 leading-relaxed text-sm">
                             Unlike standard exterior washes, our pre-sale team performs an in-depth, top-to-bottom clean. We detail the inside and outside of the glass, scrub the tracks, wash the flyscreens, and clear out all cobwebs. Let us help you get your property picture-perfect and ready for home opens.
                         </p>
-                    </div>
-                </div>
-            </section>
-
-            {/* 100% SATISFACTION GUARANTEE */}
-            <section id="guarantee" className="py-14 md:py-20 px-5 bg-gray-50 border-b border-gray-200">
-                <div className="max-w-6xl mx-auto">
-                    <div className="bg-brand-navy text-white rounded-3xl p-8 md:p-12 shadow-xl border-l-8 border-action-gold relative overflow-hidden">
-                        <div className="relative z-10">
-                            <h2 className="text-2xl md:text-3xl font-bold mb-4">The Aspect Window Cleaning Difference</h2>
-                            <p className="text-brand-water mb-8 text-lg md:text-xl max-w-3xl">We back our work with a <span className="text-action-gold font-bold">100% Satisfaction Guarantee</span>. Especially for our premium Supreme cleans, the job is not done until you are completely satisfied.</p>
-                            <ul className="grid md:grid-cols-2 gap-6">
-                                <li className="flex items-start gap-4 cursor-pointer hover:opacity-80 transition-opacity" onClick={() => openCertificateModal('insured')} title="View Insurance Certificate">
-                                    <Shield className="w-8 h-8 text-action-gold shrink-0 mt-1" />
-                                    <span className="text-lg">Fully insured and professionally trained team <span className="text-action-gold text-sm font-bold block mt-1">View Certificate &rarr;</span></span>
-                                </li>
-                                <li className="flex items-start gap-4">
-                                    <Droplets className="w-8 h-8 text-action-gold shrink-0 mt-1" />
-                                    <span className="text-lg">We use Eco-friendly, pet & child-safe Pure Water technology</span>
-                                </li>
-                                <li className="flex items-start gap-4">
-                                    <CheckCircle2 className="w-8 h-8 text-action-gold shrink-0 mt-1" />
-                                    <span className="text-lg">Advanced detailing for hard water stains and paint</span>
-                                </li>
-                                <li className="flex items-start gap-4">
-                                    <CheckCircle2 className="w-8 h-8 text-action-gold shrink-0 mt-1" />
-                                    <span className="text-lg">Tracks, screens, and sills included in standard packages</span>
-                                </li>
-                            </ul>
-                        </div>
-                    </div>
-                </div>
-            </section>
-
-            
-
-            {/* TECHNOLOGY & WHY US */}
-            <section id="technology" className="py-20 px-5 bg-brand-navy text-white text-center">
-                <div className="max-w-5xl mx-auto">
-                    <Zap className="w-12 h-12 text-action-gold mx-auto mb-6" />
-                    <h2 className="text-3xl md:text-4xl font-bold mb-6">Why Aspect? The Technology Behind the Clean</h2>
-                    <div className="text-brand-water text-lg leading-relaxed max-w-3xl mx-auto mb-12">
-                        <p>We don't just use a squeegee and soapy water. We use advanced <strong>Carbon Fibre Poles</strong> and a <strong>Commercial RO/DI Pure Water System</strong>. Why does this matter? Because filtering out all minerals and chemicals means the water evaporates perfectly clear, leaving your windows streak-free and cleaner for much longer. It's safer, faster, and delivers a superior result.</p>
-                    </div>
-                    
-                    <div className="grid md:grid-cols-3 gap-6 text-left">
-                                                  <button onClick={() => openCertificateModal('insured')} className="text-left bg-white/10 border border-white/20 p-6 rounded-2xl hover:bg-white/20 transition-all cursor-pointer">
-                            <Shield className="w-8 h-8 text-action-gold mb-4" />
-                            <h3 className="font-bold text-xl mb-2 text-white">Fully Insured & Checked</h3>
-                            <p className="text-sm text-brand-water mb-3">Our entire team is police-cleared and backed by $20,000,000 Public Liability Insurance for your complete peace of mind.</p>
-                            <span className="text-action-gold text-sm font-bold flex items-center gap-1 hover:underline">View Certificates &rarr;</span>
-                        </button>
-                        <div className="bg-action-gold border border-yellow-400 p-6 rounded-2xl text-brand-navy transform md:-translate-y-4">
-                            <CheckCircle2 className="w-8 h-8 text-brand-navy mb-4" />
-                            <h3 className="font-bold text-xl mb-2">100% Satisfaction</h3>
-                            <p className="text-sm">We guarantee our work. If anything falls short, we return and fix it at no extra cost. No questions asked.</p>
-                        </div>
-                        <div className="bg-white/10 border border-white/20 p-6 rounded-2xl">
-                            <Zap className="w-8 h-8 text-action-gold mb-4" />
-                            <h3 className="font-bold text-xl mb-2 text-white">Urgent & Flexible</h3>
-                            <p className="text-sm text-brand-water">Next-day emergency cleans are available. Whether it's an end-of-lease or a rental inspection, we've got you covered.</p>
-                        </div>
                     </div>
                 </div>
             </section>
