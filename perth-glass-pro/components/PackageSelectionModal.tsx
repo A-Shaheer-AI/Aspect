@@ -15,8 +15,22 @@ export default function PackageSelectionModal({ isOpen, onClose, packageName, pa
     const [pkgForm, setPkgForm] = useState({ name: "", phone: "", suburb: "" });
     const [isPkgSubmitting, setIsPkgSubmitting] = useState(false);
     const [pkgSubmitted, setPkgSubmitted] = useState(false);
+    const [isDoubleStorey, setIsDoubleStorey] = useState(
+        storeys ? storeys.toLowerCase().includes("double") : false
+    );
 
     if (!isOpen) return null;
+
+    const getPackageRate = (pkg: string, isDouble: boolean) => {
+        const clean = (pkg || "").toLowerCase();
+        if (clean.includes("essential")) return isDouble ? "Starting From $279" : "Starting From $159";
+        if (clean.includes("standard")) return isDouble ? "Starting From $499" : "Starting From $279";
+        if (clean.includes("supreme")) return isDouble ? "Starting From $859" : "Starting From $479";
+        return packagePrice || (isDouble ? "Starting From $279" : "Starting From $159");
+    };
+
+    const activePrice = getPackageRate(packageName, isDoubleStorey);
+    const activeStoreys = isDoubleStorey ? "Double Storey" : "Single Storey";
 
     const handlePkgSubmit = async (e: React.FormEvent) => {
         e.preventDefault();
@@ -31,10 +45,11 @@ export default function PackageSelectionModal({ isOpen, onClose, packageName, pa
                     phone: pkgForm.phone,
                     suburb: pkgForm.suburb,
                     serviceType: "Residential Window Cleaning",
-                    storeys: storeys || "Unspecified",
+                    storeys: activeStoreys,
                     selectedTier: packageName,
+                    packagePrice: activePrice,
                     quoteType: "Pricing Page Package Selection",
-                    message: packagePrice ? `Selected Price: ${packagePrice}` : "Package selected",
+                    message: `Selected Price: ${activePrice}`,
                     ...attribution,
                 }),
             });
@@ -69,10 +84,39 @@ export default function PackageSelectionModal({ isOpen, onClose, packageName, pa
                     </div>
                 ) : (
                     <>
-                        <h3 className="text-xl md:text-2xl font-bold text-[#00173C] mb-2">Book Your Package</h3>
-                        <p className="text-gray-600 text-sm mb-6 leading-relaxed">
-                            You have selected the <strong className="text-[#00173C]">{packageName}</strong> package{packagePrice ? ` (${packagePrice})` : ''}. Please provide your details to lock this in.
+                        <h3 className="text-xl md:text-2xl font-bold text-[#00173C] mb-1">Book Your Package</h3>
+                        <p className="text-gray-500 text-xs sm:text-sm mb-4 leading-relaxed">
+                            Confirm your property storey type below for exact starting rates.
                         </p>
+
+                        {/* Storey Toggle inside Modal */}
+                        <div className="bg-gray-100 p-1 rounded-xl flex gap-1 mb-4">
+                            <button
+                                type="button"
+                                onClick={() => setIsDoubleStorey(false)}
+                                className={"flex-1 py-2 text-xs sm:text-sm font-bold rounded-lg transition-all cursor-pointer " + (!isDoubleStorey ? "bg-white text-brand-navy shadow-sm" : "text-gray-500 hover:text-gray-700")}
+                            >
+                                Single Storey
+                            </button>
+                            <button
+                                type="button"
+                                onClick={() => setIsDoubleStorey(true)}
+                                className={"flex-1 py-2 text-xs sm:text-sm font-bold rounded-lg transition-all cursor-pointer " + (isDoubleStorey ? "bg-brand-navy text-white shadow-sm" : "text-gray-500 hover:text-gray-700")}
+                            >
+                                Double Storey
+                            </button>
+                        </div>
+
+                        <div className="p-3 bg-brand-navy/5 rounded-xl border border-brand-navy/10 mb-4 flex items-center justify-between">
+                            <div>
+                                <span className="text-[11px] font-semibold text-gray-500 block uppercase tracking-wider">Package</span>
+                                <span className="text-base font-bold text-brand-navy">{packageName}</span>
+                            </div>
+                            <div className="text-right">
+                                <span className="text-[11px] font-semibold text-gray-500 block uppercase tracking-wider">{activeStoreys}</span>
+                                <span className="text-base font-black text-brand-navy">{activePrice}</span>
+                            </div>
+                        </div>
                         
                         <form onSubmit={handlePkgSubmit} className="space-y-4 text-left">
                             <div>
@@ -111,9 +155,9 @@ export default function PackageSelectionModal({ isOpen, onClose, packageName, pa
                             <button
                                 type="submit"
                                 disabled={isPkgSubmitting}
-                                className="w-full py-4 bg-[#D4AF37] text-[#00173C] font-bold text-lg rounded-xl hover:bg-[#ffe54d] transition-colors disabled:opacity-70 mt-2"
+                                className="w-full py-4 bg-[#D4AF37] text-[#00173C] font-bold text-lg rounded-xl hover:bg-[#ffe54d] transition-colors disabled:opacity-70 mt-2 cursor-pointer"
                             >
-                                {isPkgSubmitting ? "Submitting..." : "Request Call Back"}
+                                {isPkgSubmitting ? "Submitting..." : "Lock In Package \u2192"}
                             </button>
                         </form>
                     </>

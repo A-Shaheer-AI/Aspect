@@ -2,7 +2,7 @@
 
 import { useState, useEffect, useRef } from "react";
 import { openCertificateModal } from "@/components/CertificateModalWrapper";
-import { Phone, CheckCircle2, Star, Shield, Droplets, Zap, Building2, X, Tag, ChevronLeft, ChevronRight, Camera, Check, ArrowRight, ArrowDown, Sparkles } from "lucide-react";
+import { Phone, CheckCircle2, Star, Shield, Droplets, Zap, Building2, X, Tag, ChevronLeft, ChevronRight, Camera, Check, ArrowRight, Sparkles } from "lucide-react";
 import { motion, useScroll, useTransform } from "framer-motion";
 import { BUSINESS } from "@/lib/config";
 import { useGmb } from "@/components/GmbProvider";
@@ -595,6 +595,7 @@ export default function WindowCleaningAdsPage() {
                 serviceType: "Residential Window Cleaning",
                 storeys: isDoubleStorey ? "Double Storey" : "Single Storey",
                 selectedTier: selectedPkg?.name,
+                packagePrice: selectedPkg?.price,
                 quoteType: "Landing Page Package Selection",
                 message: `Selected Price: ${selectedPkg?.price}`,
                 ...attribution,
@@ -891,114 +892,8 @@ export default function WindowCleaningAdsPage() {
                 </div>
             </section>
 
-            
-{/* 🔹🔹🔹 SECTION 4: TRUSTED BY  🔹🔹🔹 */}
-                        
-{/* 🔹🔹🔹 SECTION 6: BEFORE / AFTER  🔹🔹🔹 */}
-            <section className="px-5 py-16 bg-white">
-                <div className="mx-auto mb-8 max-w-4xl text-center">
-                    <div className="mb-3 inline-block rounded-full px-3 py-1 text-xs font-bold uppercase tracking-widest" style={{ background: "rgba(7,7,126,0.07)", color: NAVY }}>
-                        Our results
-                    </div>
-                    <h2 className="leading-none" style={{ fontSize: "clamp(36px,5vw,52px)", color: NAVY }}>
-                        See the Difference
-                    </h2>
-                </div>
-                <div className="mx-auto max-w-4xl">
-                    <div className="mb-4 overflow-hidden rounded-2xl" style={{ height: 380 }}>
-                        <ScrollAutoplayVideo
-                            src="/media/video/upload/q_auto:eco,w_800,vc_auto/v1772968701/VID-20260228-WA0016_xsz3cm_401388.mp4"
-                            type="video/mp4"
-                        />
-                    </div>
-                    <div className="grid grid-cols-1 gap-4 lg:grid-cols-2">
-                        <BeforeAfterSlider
-                            afterImage="https://res.cloudinary.com/dr8tjrszy/image/upload/f_auto,q_auto,w_600/v1774345158/IMG_9593_1_2_b98bl5.png"
-                            beforeImage="https://res.cloudinary.com/dr8tjrszy/image/upload/f_auto,q_auto,w_600/v1771960144/WhatsApp_Image_2026-02-22_at_8.48.03_PM_vtb2tn.jpg"
-                            initial={50}
-                        />
-                        <BeforeAfterSlider
-                            afterImage="https://res.cloudinary.com/dr8tjrszy/image/upload/f_auto,q_auto,w_600/v1785879700/aspect_gallery/after.webp"
-                            beforeImage="https://res.cloudinary.com/dr8tjrszy/image/upload/f_auto,q_auto,w_600/v1785879695/aspect_gallery/1-before.webp"
-                            initial={50}
-                        />
-                    </div>
-                </div>
-            </section>
-
-            
-            {/* 🔹🔹🔹 SECTION 6.5: WHAT'S INCLUDED  🔹🔹🔹 */}
-            <section className="py-10 md:py-16 bg-gray-50 px-4 sm:px-5">
-                <div className="max-w-5xl mx-auto">
-                    <p className="text-xs sm:text-sm font-semibold uppercase mb-1.5 text-center" style={{ color: YELLOW }}>
-                        WHAT'S INCLUDED
-                    </p>
-                    <h2 className="text-2xl sm:text-3xl md:text-4xl font-heading font-bold text-center mb-2.5 md:mb-4" style={{ color: NAVY }}>
-                        Everything Covered in Our Window Clean
-                    </h2>
-                    <p className="mb-4 md:mb-8 text-center max-w-2xl mx-auto text-xs sm:text-base font-light text-gray-500">
-                        We don't cut corners. Every booking includes a full, thorough clean of all accessible window components - not just the glass.
-                    </p>
-
-                    {/* Mobile shortcut directly to pricing to reduce scrolling */}
-                    <div className="text-center mb-5 md:hidden">
-                        <a
-                            href="#pricing"
-                            className="inline-flex items-center gap-1.5 px-3.5 py-1.5 rounded-full bg-brand-navy/5 border border-brand-navy/15 text-brand-navy font-bold text-xs hover:bg-action-gold transition-colors shadow-2xs"
-                        >
-                            <span>Skip to Pricing Packages</span>
-                            <ArrowDown className="w-3.5 h-3.5 text-action-gold" />
-                        </a>
-                    </div>
-
-                    <div className="flex flex-wrap justify-center gap-3 md:gap-6">
-                        {whatsInclude.map((item, index) => (
-                            <InclusionCard
-                                key={index}
-                                item={item}
-                                onSelect={() => setSelectedInclusion(item)}
-                            />
-                        ))}
-                    </div>
-                </div>
-            </section>
-
-            
-<section id="commercial" className="py-12 px-5 bg-white border-y border-gray-100 text-center">
-                <div className="max-w-3xl mx-auto">
-                    <Building2 className="w-8 h-8 text-brand-slate mx-auto mb-4" />
-                    <h2 className="text-xl font-bold text-brand-navy mb-2">Looking for Commercial Services?</h2>
-                    <p className="text-gray-600 mb-6">We provide specialized cleaning for storefronts, strata complexes, and multi-story office buildings across Perth.</p>
-                    <Link href="/services/commercial-window-cleaning" className="text-brand-navy font-bold underline hover:text-action-gold transition-colors">Head to our Commercial Window Cleaning page &rarr;</Link>
-                </div>
-            </section>
-
-<section className="px-6 py-10 text-center" style={{ background: "#f4f6ff" }}>
-                <p className="mb-8 text-xs font-semibold uppercase tracking-widest" style={{ color: "#666" }}>
-                    Trusted by Perth businesses
-                </p>
-                <div className="flex flex-wrap items-center justify-center gap-10">
-                    {[
-                        { src: "/assets/images/clients/toyota-logo.png", alt: "Toyota" },
-                        { src: "/assets/images/clients/richard-group-logo.png", alt: "Richard Group" },
-                        { src: "/assets/images/clients/bespoke-logo.png", alt: "Bespoke" },
-                    ].map((logo) => (
-                        <div key={logo.alt} className="relative h-13 w-28 grayscale-0 md:grayscale transition duration-300 md:hover:grayscale-0">
-                            <Image
-                                src={logo.src}
-                                alt={logo.alt}
-                                fill
-                                unoptimized={true}
-                                sizes="112px"
-                                className="object-contain"
-                            />
-                        </div>
-                    ))}
-                </div>
-            </section>
-
-{/* PRICING SNIPPET */}
-            <section id="pricing" className="py-16 bg-white px-5 border-y border-gray-100">
+            {/* 🔹🔹🔹 SECTION 3: PRICING PACKAGES (HIGH-INTENT GOOGLE ADS CRO) 🔹🔹🔹 */}
+            <section id="pricing" className="py-16 bg-white px-5 border-b border-gray-100">
                 <div className="max-w-5xl mx-auto text-center">
                     <h2 className="text-3xl md:text-4xl font-bold mb-4 text-brand-navy">Clear, Transparent Pricing</h2>
                     <p className="text-gray-600 max-w-2xl mx-auto mb-8 text-lg">We don't hide our rates. Select your home type below for our starting residential packages. Click a package to book now.</p>
@@ -1228,7 +1123,121 @@ export default function WindowCleaningAdsPage() {
                 </div>
             </section>
 
+            {/* 🔹🔹🔹 SECTION 3.5: CUSTOMER REVIEWS & SOCIAL PROOF 🔹🔹🔹 */}
+            <section id="reviews" className="py-16 px-5 bg-slate-50 border-b border-gray-100">
+                <div className="max-w-7xl mx-auto">
+                    <div className="mx-auto mb-10 max-w-4xl text-center">
+                        <div className="mb-3 flex justify-center gap-1">
+                            {[...Array(5)].map((_, i) => <Star key={i} className="w-6 h-6 fill-yellow-400 text-yellow-400" />)}
+                        </div>
+                        <h2 className="mb-2 leading-none" style={{ fontSize: "clamp(24px,5vw,52px)", color: NAVY }}>
+                            Perth Homeowners Love Us
+                        </h2>
+                        <Link
+                            href="https://www.google.com/maps/place/Aspect+Window+Cleaning/@-31.9806823,115.7929967,17z"
+                            target="_blank"
+                            className="text-sm font-medium hover:underline"
+                            style={{ color: "#888" }}
+                        >
+                            {gmb.rating} across {gmb.reviewCount} Google Reviews
+                        </Link>
+                    </div>
+                    <GoogleReviews reviews={windowCleaningReviews} />
+                </div>
+            </section>
+
+{/* 🔹🔹🔹 SECTION 6: BEFORE / AFTER  🔹🔹🔹 */}
+            <section className="px-5 py-16 bg-white">
+                <div className="mx-auto mb-8 max-w-4xl text-center">
+                    <div className="mb-3 inline-block rounded-full px-3 py-1 text-xs font-bold uppercase tracking-widest" style={{ background: "rgba(7,7,126,0.07)", color: NAVY }}>
+                        Our results
+                    </div>
+                    <h2 className="leading-none" style={{ fontSize: "clamp(36px,5vw,52px)", color: NAVY }}>
+                        See the Difference
+                    </h2>
+                </div>
+                <div className="mx-auto max-w-4xl">
+                    <div className="mb-4 overflow-hidden rounded-2xl" style={{ height: 380 }}>
+                        <ScrollAutoplayVideo
+                            src="/media/video/upload/q_auto:eco,w_800,vc_auto/v1772968701/VID-20260228-WA0016_xsz3cm_401388.mp4"
+                            type="video/mp4"
+                        />
+                    </div>
+                    <div className="grid grid-cols-1 gap-4 lg:grid-cols-2">
+                        <BeforeAfterSlider
+                            afterImage="https://res.cloudinary.com/dr8tjrszy/image/upload/f_auto,q_auto,w_600/v1774345158/IMG_9593_1_2_b98bl5.png"
+                            beforeImage="https://res.cloudinary.com/dr8tjrszy/image/upload/f_auto,q_auto,w_600/v1771960144/WhatsApp_Image_2026-02-22_at_8.48.03_PM_vtb2tn.jpg"
+                            initial={50}
+                        />
+                        <BeforeAfterSlider
+                            afterImage="https://res.cloudinary.com/dr8tjrszy/image/upload/f_auto,q_auto,w_600/v1785879700/aspect_gallery/after.webp"
+                            beforeImage="https://res.cloudinary.com/dr8tjrszy/image/upload/f_auto,q_auto,w_600/v1785879695/aspect_gallery/1-before.webp"
+                            initial={50}
+                        />
+                    </div>
+                </div>
+            </section>
+
             
+            {/* 🔹🔹🔹 SECTION 6.5: WHAT'S INCLUDED  🔹🔹🔹 */}
+            <section className="py-10 md:py-16 bg-gray-50 px-4 sm:px-5">
+                <div className="max-w-5xl mx-auto">
+                    <p className="text-xs sm:text-sm font-semibold uppercase mb-1.5 text-center" style={{ color: YELLOW }}>
+                        WHAT'S INCLUDED
+                    </p>
+                    <h2 className="text-2xl sm:text-3xl md:text-4xl font-heading font-bold text-center mb-2.5 md:mb-4" style={{ color: NAVY }}>
+                        Everything Covered in Our Window Clean
+                    </h2>
+                    <p className="mb-4 md:mb-8 text-center max-w-2xl mx-auto text-xs sm:text-base font-light text-gray-500">
+                        We don't cut corners. Every booking includes a full, thorough clean of all accessible window components - not just the glass.
+                    </p>
+
+
+                    <div className="flex flex-wrap justify-center gap-3 md:gap-6">
+                        {whatsInclude.map((item, index) => (
+                            <InclusionCard
+                                key={index}
+                                item={item}
+                                onSelect={() => setSelectedInclusion(item)}
+                            />
+                        ))}
+                    </div>
+                </div>
+            </section>
+
+            
+<section id="commercial" className="py-12 px-5 bg-white border-y border-gray-100 text-center">
+                <div className="max-w-3xl mx-auto">
+                    <Building2 className="w-8 h-8 text-brand-slate mx-auto mb-4" />
+                    <h2 className="text-xl font-bold text-brand-navy mb-2">Looking for Commercial Services?</h2>
+                    <p className="text-gray-600 mb-6">We provide specialized cleaning for storefronts, strata complexes, and multi-story office buildings across Perth.</p>
+                    <Link href="/services/commercial-window-cleaning" className="text-brand-navy font-bold underline hover:text-action-gold transition-colors">Head to our Commercial Window Cleaning page &rarr;</Link>
+                </div>
+            </section>
+
+<section className="px-6 py-10 text-center" style={{ background: "#f4f6ff" }}>
+                <p className="mb-8 text-xs font-semibold uppercase tracking-widest" style={{ color: "#666" }}>
+                    Trusted by Perth businesses
+                </p>
+                <div className="flex flex-wrap items-center justify-center gap-10">
+                    {[
+                        { src: "/assets/images/clients/toyota-logo.png", alt: "Toyota" },
+                        { src: "/assets/images/clients/richard-group-logo.png", alt: "Richard Group" },
+                        { src: "/assets/images/clients/bespoke-logo.png", alt: "Bespoke" },
+                    ].map((logo) => (
+                        <div key={logo.alt} className="relative h-13 w-28 grayscale-0 md:grayscale transition duration-300 md:hover:grayscale-0">
+                            <Image
+                                src={logo.src}
+                                alt={logo.alt}
+                                fill
+                                unoptimized={true}
+                                sizes="112px"
+                                className="object-contain"
+                            />
+                        </div>
+                    ))}
+                </div>
+            </section>
 
             {/* REAL ESTATE / PRE-SALE SNIPPET */}
             <section className="py-16 px-5 bg-brand-navy text-white relative overflow-hidden">
@@ -1384,29 +1393,6 @@ export default function WindowCleaningAdsPage() {
             </section>
 
 
-
-            
-{/* 🔹🔹🔹 SECTION 3: REVIEWS  🔹🔹🔹 */}
-                        
-<section id="reviews" className="max-w-7xl mx-auto px-5 py-16 bg-white">
-                <div className="mx-auto mb-10 max-w-4xl text-center">
-                    <div className="mb-3 flex justify-center gap-1">
-                        {[...Array(5)].map((_, i) => <Star key={i} className="w-6 h-6 fill-yellow-400 text-yellow-400" />)}
-                    </div>
-                    <h2 className="mb-2 leading-none" style={{ fontSize: "clamp(24px,5vw,52px)", color: NAVY }}>
-                        Perth Homeowners Love Us
-                    </h2>
-                    <Link
-                        href="https://www.google.com/maps/place/Aspect+Window+Cleaning/@-31.9806823,115.7929967,17z"
-                        target="_blank"
-                        className="text-sm font-medium hover:underline"
-                        style={{ color: "#888" }}
-                    >
-                        {gmb.rating} across {gmb.reviewCount} Google Reviews
-                    </Link>
-                </div>
-                <GoogleReviews reviews={windowCleaningReviews} />
-            </section>
 
             
 {/* PROMOS */}
@@ -1652,13 +1638,53 @@ export default function WindowCleaningAdsPage() {
                             </div>
                         ) : (
                             <>
-                                <h3 className="text-xl md:text-2xl font-bold text-brand-navy mb-2">Book Your Package</h3>
-                                <p className="text-gray-600 text-sm mb-6 leading-relaxed">
-                                    You have selected the <strong className="text-brand-navy">{selectedPkg.name}</strong> package for a <strong>{isDoubleStorey ? "Double Storey" : "Single Storey"}</strong> home ({selectedPkg.price}). Please provide your details to lock this in.
+                                <h3 className="text-xl md:text-2xl font-bold text-brand-navy mb-1">Book Your Package</h3>
+                                <p className="text-gray-500 text-xs sm:text-sm mb-4 leading-relaxed">
+                                    Confirm your property storey type below for exact starting rates.
                                 </p>
+
+                                {/* Storey Toggle inside Modal */}
+                                <div className="bg-gray-100 p-1 rounded-xl flex gap-1 mb-4">
+                                    <button
+                                        type="button"
+                                        onClick={() => {
+                                            setIsDoubleStorey(false);
+                                            const newPrice = selectedPkg.name === "Essential" ? "Starting From $159" : selectedPkg.name === "Standard" ? "Starting From $279" : "Starting From $479";
+                                            setSelectedPkg(prev => prev ? { ...prev, price: newPrice } : null);
+                                        }}
+                                        className={"flex-1 py-2 text-xs sm:text-sm font-bold rounded-lg transition-all cursor-pointer " + (!isDoubleStorey ? "bg-white text-brand-navy shadow-sm" : "text-gray-500 hover:text-gray-700")}
+                                    >
+                                        Single Storey
+                                    </button>
+                                    <button
+                                        type="button"
+                                        onClick={() => {
+                                            setIsDoubleStorey(true);
+                                            const newPrice = selectedPkg.name === "Essential" ? "Starting From $279" : selectedPkg.name === "Standard" ? "Starting From $499" : "Starting From $859";
+                                            setSelectedPkg(prev => prev ? { ...prev, price: newPrice } : null);
+                                        }}
+                                        className={"flex-1 py-2 text-xs sm:text-sm font-bold rounded-lg transition-all cursor-pointer " + (isDoubleStorey ? "bg-brand-navy text-white shadow-sm" : "text-gray-500 hover:text-gray-700")}
+                                    >
+                                        Double Storey
+                                    </button>
+                                </div>
+
+                                <div className="p-3 bg-brand-navy/5 rounded-xl border border-brand-navy/10 mb-4 flex items-center justify-between">
+                                    <div>
+                                        <span className="text-[11px] font-semibold text-gray-500 block uppercase tracking-wider">Package</span>
+                                        <span className="text-base font-bold text-brand-navy">{selectedPkg.name}</span>
+                                    </div>
+                                    <div className="text-right">
+                                        <span className="text-[11px] font-semibold text-gray-500 block uppercase tracking-wider">{isDoubleStorey ? "Double Storey" : "Single Storey"}</span>
+                                        <span className="text-base font-black text-brand-navy">{selectedPkg.price}</span>
+                                    </div>
+                                </div>
                                 
                                 <form onSubmit={handlePkgSubmit} action="/api/quote" method="POST" className="space-y-4 text-left">
                                     <input type="hidden" name="service" value={`Residential Window Cleaning - ${selectedPkg.name} (${isDoubleStorey ? "Double Storey" : "Single Storey"})`} />
+                                    <input type="hidden" name="storeys" value={isDoubleStorey ? "Double Storey" : "Single Storey"} />
+                                    <input type="hidden" name="selectedTier" value={selectedPkg.name} />
+                                    <input type="hidden" name="packagePrice" value={selectedPkg.price} />
                                     <input type="hidden" name="message" value={`Selected Price: ${selectedPkg.price}`} />
                                     <div>
                                         <label htmlFor="pkg-name" className="block text-sm font-bold text-gray-700 mb-1">Your Name</label>
