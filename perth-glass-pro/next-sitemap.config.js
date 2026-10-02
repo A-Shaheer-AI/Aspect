@@ -80,10 +80,6 @@ module.exports = {
         disallow: [
           '/admin',
           '/auto-blogs',
-          '/landing',
-          '/gutter-cleaning',
-          '/solar-cleaning',
-          '/pressure-cleaning',
           '/booking',
         ],
       },
