@@ -10,6 +10,7 @@ import { sendLeadEmail } from "../actions/send-email";
 import { trackFormCompleted } from "@/hooks/useGtm";
 import GoogleReviews from "@/components/GoogleReviews";
 import { getLeadAttribution } from "@/lib/attribution";
+import { sanitizePhoneInput } from "@/lib/phone";
 
 
 type FormDataType = {
@@ -38,9 +39,9 @@ function LeadForm({
     dark?: boolean;
 }) {
     const fields = [
-        { key: "name", placeholder: "Your Name", type: "text" },
-        { key: "phone", placeholder: "Phone Number", type: "tel" },
-        { key: "suburb", placeholder: "Your Suburb", type: "text" },
+        { key: "name", placeholder: "Your Name", type: "text", auto: "name" },
+        { key: "phone", placeholder: "0400 000 000", type: "tel", auto: "tel-national", mode: "tel" },
+        { key: "suburb", placeholder: "Your Suburb", type: "text", auto: "address-level2" },
         { key: "promo", placeholder: "Promo Code", type: "text" },
     ];
     if (submitted) {
@@ -62,10 +63,13 @@ function LeadForm({
                 .map((f) => (
                     <input
                         key={f.key}
+                        name={f.key}
                         type={f.type}
+                        inputMode={f.mode as any}
+                        autoComplete={f.auto}
                         placeholder={f.placeholder}
                         value={formData[f.key as keyof typeof formData]}
-                        onChange={(e) => setFormData({ ...formData, [f.key]: e.target.value })}
+                        onChange={(e) => setFormData({ ...formData, [f.key]: f.key === "phone" ? sanitizePhoneInput(e.target.value) : e.target.value })}
                         className="w-full rounded-xl px-4 py-3 text-base outline-none transition-all"
                         style={{
                             background: dark ? "rgba(255,255,255,0.92)" : "#f4f6ff",

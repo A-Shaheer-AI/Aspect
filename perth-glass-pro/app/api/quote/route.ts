@@ -2,6 +2,7 @@ import { NextRequest, NextResponse } from "next/server";
 import { BrevoClient } from "@getbrevo/brevo";
 import { sendLeadEmail } from "@/app/actions/send-email";
 import { BUSINESS } from "@/lib/config";
+import { sanitizePhoneInput } from "@/lib/phone";
 
 export async function POST(request: NextRequest) {
     try {
@@ -25,11 +26,14 @@ export async function POST(request: NextRequest) {
         const landingUrl = (data.landingUrl as string) || submissionUrl;
         const formName = (data.formName as string) || (data.quoteType as string) || (isFormSubmit ? "Native Form Fallback POST" : "Direct API Quote");
 
+        const rawPhone = (data.phone as string) || "";
+        const cleanPhone = sanitizePhoneInput(rawPhone);
+
         // Send lead email notification via Server Action logic
         try {
             await sendLeadEmail({
                 name: (data.name as string) || "Anonymous",
-                phone: (data.phone as string) || "",
+                phone: cleanPhone,
                 email: (data.email as string) || "",
                 suburb: (data.suburb as string) || (data.address as string) || "Perth Metro",
                 serviceType:
@@ -72,7 +76,7 @@ export async function POST(request: NextRequest) {
                     email: data.email,
                     attributes: {
                         FIRSTNAME: data.name,
-                        SMS: data.phone,
+                        SMS: cleanPhone,
                         SUBURB: data.suburb,
                     },
                     listIds: [2],

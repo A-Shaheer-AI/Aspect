@@ -7,6 +7,15 @@ export function normalizeAuPhone(phone: string): string {
   if (!phone) return "";
   let cleaned = phone.replace(/[^0-9+]/g, "");
 
+  // Strip accidental UK extension (+44, 0044, or 44) attached by browser autofill
+  if (cleaned.startsWith("+44") || cleaned.startsWith("0044")) {
+    cleaned = cleaned.replace(/^(\+44|0044)/, "");
+    if (cleaned.startsWith("0")) cleaned = cleaned.substring(1);
+    if (/^4\d{8}$/.test(cleaned)) {
+      return "+61" + cleaned;
+    }
+  }
+
   if (cleaned.startsWith("+61")) return cleaned;
   if (cleaned.startsWith("61") && cleaned.length === 11) return "+" + cleaned;
   if (cleaned.startsWith("04") && cleaned.length === 10) return "+61" + cleaned.substring(1);

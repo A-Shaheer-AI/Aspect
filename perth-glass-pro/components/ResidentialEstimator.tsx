@@ -10,6 +10,7 @@ import { sendLeadEmail } from "@/app/actions/send-email";
 import { CAL_LINK } from "@/lib/config";
 import { getOpinlyAnonId, identifyOpinly } from "@/lib/opinly-client";
 import { getLeadAttribution } from "@/lib/attribution";
+import { sanitizePhoneInput } from "@/lib/phone";
 
 // --- Math Engine Constants ---
 const PRICING = {
@@ -358,10 +359,13 @@ export default function ResidentialEstimator() {
                                     className="w-full h-14 px-4 rounded-xl border-2 border-slate-200 focus:border-action-gold text-lg outline-none"
                                 />
                                 <input
+                                    name="phone"
                                     type="tel"
-                                    placeholder="Phone Number"
+                                    inputMode="tel"
+                                    autoComplete="tel-national"
+                                    placeholder="0400 000 000"
                                     value={formData.phone}
-                                    onChange={(e) => updateField("phone", e.target.value)}
+                                    onChange={(e) => updateField("phone", sanitizePhoneInput(e.target.value))}
                                     className="w-full h-14 px-4 rounded-xl border-2 border-slate-200 focus:border-action-gold text-lg outline-none"
                                 />
                                 <div className="relative">
