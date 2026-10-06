@@ -255,8 +255,8 @@ const GutterCleaningServices = () => {
                 <h1 className="text-3xl md:text-5xl font-bold mb-4">
                     Gutter Cleaning Perth: Professional Roof &amp; Downpipe Clearing
                 </h1>
-                <p className="text-base md:text-xl max-w-2xl mx-auto mb-6 text-slate-200">
-                    Expert <strong>gutter cleaning Perth</strong> to protect your rooflines, eliminate blockage, and prevent costly water damage across your property.
+                <p className="text-base md:text-xl max-w-3xl mx-auto mb-6 text-slate-200 leading-relaxed">
+                    Looking for expert <strong>gutter cleaning Perth</strong>? Aspect provides comprehensive <strong>roof gutter cleaning perth</strong> and complete <strong>downpipe cleaning perth</strong> services — extracting organic sludge, leaves, and blockages to prevent costly water overflow across residential and commercial properties.
                 </p>
                 <Link href="/pricing" className="inline-flex items-center justify-center bg-action-gold text-brand-navy hover:bg-action-gold/90 px-8 py-4 rounded-full font-bold text-base shadow-md transition-all">
                     View Pricing Guide

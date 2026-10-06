@@ -1,4 +1,5 @@
 import HomeQuoteForm from "./HomeQuoteForm";
+import CommercialHomeSection from "./CommercialHomeSection";
 import ServicesGrid from "./ServicesGrid";
 import { TrustStatsBar, ReviewsSection } from "./TrustGrid";
 import { SeeTheDifference } from "./ResultsAndReviews";
@@ -32,7 +33,10 @@ export default function ClientHomeContent() {
                 </div>
             </section>
 
-            {/* 1. Services Bento Grid */}
+            {/* 1. Commercial Window Cleaning Division Showcase (High-Priority B2B Section) */}
+            <CommercialHomeSection />
+
+            {/* 2. Services Bento Grid */}
             <ServicesGrid />
 
             {/* 2. Modern 1-Line Prominent Stats & Trust Bar */}

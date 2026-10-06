@@ -7,6 +7,7 @@ import TrustGrid from '@/components/TrustGrid';
 import { BUSINESS } from '@/lib/config';
 import { getOpinlyAnonId, identifyOpinly } from '@/lib/opinly-client';
 import { getLeadAttribution } from '@/lib/attribution';
+import { sanitizePhoneInput } from '@/lib/phone';
 
 type FormData = { name: string; email: string; phone: string; suburb: string }
 type FormStatus = 'idle' | 'loading' | 'success' | 'error'
@@ -16,7 +17,8 @@ const ContactPage = () => {
   const [status, setStatus] = useState<FormStatus>('idle')
 
   const handleChange = (e: React.ChangeEvent<HTMLInputElement>) => {
-    setFormData(prev => ({ ...prev, [e.target.name]: e.target.value }))
+    const value = e.target.name === 'phone' ? sanitizePhoneInput(e.target.value) : e.target.value;
+    setFormData(prev => ({ ...prev, [e.target.name]: value }))
   }
 
   const handleSubmit = async (e: React.MouseEvent<HTMLButtonElement>) => {
@@ -148,10 +150,10 @@ const ContactPage = () => {
 
             <div className="flex flex-col gap-5">
               {[
-                { id: 'name', label: 'Full Name', type: 'text', placeholder: 'Jane Smith' },
-                { id: 'email', label: 'Email Address', type: 'email', placeholder: 'jane@example.com' },
-                { id: 'phone', label: 'Phone Number', type: 'tel', placeholder: '04XX XXX XXX' },
-                { id: 'suburb', label: 'Suburb', type: 'text', placeholder: 'e.g. Subiaco, Joondalup, Fremantle...' },
+                { id: 'name', label: 'Full Name', type: 'text', placeholder: 'Jane Smith', auto: 'name' },
+                { id: 'email', label: 'Email Address', type: 'email', placeholder: 'jane@example.com', auto: 'email' },
+                { id: 'phone', label: 'Phone Number', type: 'tel', placeholder: '0400 000 000', auto: 'tel-national' },
+                { id: 'suburb', label: 'Suburb', type: 'text', placeholder: 'e.g. Subiaco, Joondalup, Fremantle...', auto: 'address-level2' },
               ].map(field => (
                 <div key={field.id}>
                   <label
@@ -164,6 +166,8 @@ const ContactPage = () => {
                     id={field.id}
                     name={field.id}
                     type={field.type}
+                    inputMode={field.id === 'phone' ? 'tel' : undefined}
+                    autoComplete={field.auto}
                     placeholder={field.placeholder}
                     value={formData[field.id as keyof FormData]}
                     onChange={handleChange}

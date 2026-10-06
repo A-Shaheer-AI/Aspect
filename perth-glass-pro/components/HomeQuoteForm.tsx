@@ -6,6 +6,7 @@ import { sendLeadEmail } from "@/app/actions/send-email";
 import { trackFormCompleted } from "@/hooks/useGtm";
 import { getOpinlyAnonId } from "@/lib/opinly-client";
 import { getLeadAttribution } from "@/lib/attribution";
+import { sanitizePhoneInput } from "@/lib/phone";
 
 export default function HomeQuoteForm() {
     const [isLoading, setIsLoading] = useState(false);
@@ -111,10 +112,13 @@ export default function HomeQuoteForm() {
                         <label htmlFor="quick-phone" className="sr-only">Phone Number</label>
                         <input
                             id="quick-phone"
+                            name="phone"
                             type="tel"
-                            placeholder="Phone Number"
+                            inputMode="tel"
+                            autoComplete="tel-national"
+                            placeholder="0400 000 000"
                             value={formData.phone}
-                            onChange={(e) => setFormData({ ...formData, phone: e.target.value })}
+                            onChange={(e) => setFormData({ ...formData, phone: sanitizePhoneInput(e.target.value) })}
                             className="w-full px-5 py-4 rounded-xl bg-slate-50 border border-slate-200 text-[#000080] font-medium placeholder:text-slate-400 placeholder:font-normal focus:bg-white focus:border-[#000080] focus:ring-2 focus:ring-[#000080]/20 outline-none transition-all shadow-sm"
                             required
                         />

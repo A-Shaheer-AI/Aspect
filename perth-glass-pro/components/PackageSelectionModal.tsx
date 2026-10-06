@@ -2,6 +2,7 @@
 import { useState } from "react";
 import { X, CheckCircle2 } from "lucide-react";
 import { getLeadAttribution } from "@/lib/attribution";
+import { sanitizePhoneInput } from "@/lib/phone";
 
 type PackageSelectionModalProps = {
     isOpen: boolean;
@@ -133,12 +134,15 @@ export default function PackageSelectionModal({ isOpen, onClose, packageName, pa
                             <div>
                                 <label className="block text-xs font-bold text-[#00173C] uppercase tracking-wider mb-1">Phone Number</label>
                                 <input
+                                    name="phone"
                                     type="tel"
+                                    inputMode="tel"
+                                    autoComplete="tel-national"
                                     required
                                     value={pkgForm.phone}
-                                    onChange={(e) => setPkgForm({...pkgForm, phone: e.target.value})}
+                                    onChange={(e) => setPkgForm({...pkgForm, phone: sanitizePhoneInput(e.target.value)})}
                                     className="w-full px-4 py-3 rounded-xl border border-gray-200 bg-gray-50 focus:bg-white focus:outline-none focus:ring-2 focus:ring-[#D4AF37] text-base transition-all"
-                                    placeholder="Your Phone Number"
+                                    placeholder="0400 000 000"
                                 />
                             </div>
                             <div>

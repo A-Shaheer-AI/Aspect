@@ -95,7 +95,7 @@ export default async function RootLayout({
     const gmbData = await getGmbData();
 
     return (
-        <html lang="en" className={`${montserrat.variable} ${inter.variable}`} suppressHydrationWarning>
+        <html lang="en-AU" className={`${montserrat.variable} ${inter.variable}`} suppressHydrationWarning>
             <head>
                 <link rel="preconnect" href="https://fonts.gstatic.com" crossOrigin="anonymous" />
                 <link rel="preconnect" href="https://res.cloudinary.com" />

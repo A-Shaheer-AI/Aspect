@@ -6,6 +6,7 @@ import { sendLeadEmail } from "@/app/actions/send-email";
 import { trackFormStart, trackFormStep2, trackFormCompleted } from "@/hooks/useGtm";
 import { getOpinlyAnonId, identifyOpinly } from "@/lib/opinly-client";
 import { getLeadAttribution } from "@/lib/attribution";
+import { sanitizePhoneInput } from "@/lib/phone";
 
 interface QuoteModalProps {
     isOpen: boolean;
@@ -246,10 +247,13 @@ export default function QuoteModal({
                                     <label htmlFor="phone" className="sr-only">Phone number</label>
                                     <input
                                         id="phone"
+                                        name="phone"
                                         type="tel"
-                                        placeholder="Phone number"
+                                        inputMode="tel"
+                                        autoComplete="tel-national"
+                                        placeholder="0400 000 000"
                                         value={formData.phone}
-                                        onChange={(e) => setFormData({ ...formData, phone: e.target.value })}
+                                        onChange={(e) => setFormData({ ...formData, phone: sanitizePhoneInput(e.target.value) })}
                                         className="w-full px-4 py-3 rounded-lg border border-slate-200 focus:border-action-gold focus:ring-2 focus:ring-action-gold/20 outline-none text-base transition-all"
                                     />
                                 </div>

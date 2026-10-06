@@ -26,7 +26,7 @@ export default function Navbar() {
     const navLinks = [
         { name: "Services", href: "/services" },
         { name: "Office Cleaning", href: "/services/commercial-cleaning" },
-        { name: "Commercial", href: "/commercial" },
+        { name: "Commercial", href: "/services/commercial-window-cleaning" },
         { name: "Areas", href: "/#areas" },
         { name: "Reviews", href: "/#reviews" },
         { name: "Pricing", href: "/pricing" },

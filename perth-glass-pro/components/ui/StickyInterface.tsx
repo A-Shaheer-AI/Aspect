@@ -66,7 +66,7 @@ export default function StickyInterface() {
 
                         {/* Commercial - Full name */}
                         <Link
-                            href="/commercial"
+                            href="/services/commercial-window-cleaning"
                             className="flex-1 bg-brand-navy text-white font-bold py-3 rounded-lg text-sm flex items-center justify-center gap-2 active:scale-95 transition-transform"
                         >
                             <Building2 className="w-4 h-4" aria-hidden="true" />

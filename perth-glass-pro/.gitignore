@@ -12,3 +12,8 @@ out
 data/
 __pycache__/
 *.pyc
+*credentials*.json
+service-account*.json
+gsc-credentials.json
+*tokens*.json
+oauth-tokens.json

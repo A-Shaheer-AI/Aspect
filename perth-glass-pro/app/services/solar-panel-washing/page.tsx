@@ -212,6 +212,11 @@ const solarFAQs: FaqsType[] = [
         answer:
             "Perth tap water is notoriously hard, containing 150 to 400 ppm in dissolved calcium and magnesium that dry into a chalky mineral scale. Standard detergents leave sticky chemical residues that attract dirt even faster and can void manufacturer warranties (including SunPower, LG, REC, and Jinko). Aspect uses exclusively 0ppm deionised pure water.",
     },
+    {
+        question: "Do you service southern and eastern solar hubs like Canning Vale, Gosnells, and Armadale?",
+        answer:
+            "Yes, absolutely. We frequently service residential solar arrays and commercial rooftop systems across Canning Vale, Gosnells, Armadale, Thornlie, and Kelmscott where heavy inland dust from the Darling Scarp causes rapid efficiency drops.",
+    },
 ];
 
 const SolarPanelCleaningPage = () => {
@@ -299,8 +304,8 @@ const SolarPanelCleaningPage = () => {
                 <h1 className="text-3xl md:text-5xl font-bold mb-4">
                     Clean Solar Panels Perth: Professional Solar Panel Cleaning
                 </h1>
-                <p className="text-base md:text-xl max-w-2xl mx-auto mb-6 text-slate-200">
-                    Specialist <strong>solar panel cleaning Perth</strong> to maximise your solar energy output and protect your investment with 100% purified deionised water.
+                <p className="text-base md:text-xl max-w-3xl mx-auto mb-6 text-slate-200 leading-relaxed">
+                    Looking to <strong>clean solar panels Perth</strong>? Aspect provides specialist <strong>solar panel cleaning Perth</strong> to restore up to 30% lost efficiency and protect your photovoltaic investment using 100% deionised 0ppm pure water and soft-bristle reach poles across the Perth metro.
                 </p>
                 <Link href="/pricing" className="inline-flex items-center justify-center bg-action-gold text-brand-navy hover:bg-action-gold/90 px-8 py-4 rounded-full font-bold text-base shadow-md transition-all">
                     View Pricing Guide

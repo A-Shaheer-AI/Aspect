@@ -1,6 +1,7 @@
 "use server";
 
 import { Resend } from "resend";
+import { sanitizePhoneInput } from "@/lib/phone";
 
 const resend = new Resend(process.env.RESEND_API_KEY || "dummy_key");
 
@@ -159,12 +160,15 @@ export async function sendLeadEmail(data: LeadEmailData) {
             return notes || null;
         })();
 
+        // Sanitize phone: strip accidental UK (+44) extension from browser autofill; never attach extensions
+        const sanitizedPhone = sanitizePhoneInput(data.phone);
+
         // Ingest lead profile and trigger automatic warm-up SMS
         try {
             const { ingestLead } = await import("@/lib/leads/ingest");
             await ingestLead({
                 name: data.name,
-                phone: data.phone,
+                phone: sanitizedPhone,
                 email: data.email,
                 suburb: data.suburb,
                 serviceType: serviceLabel,
@@ -208,7 +212,7 @@ export async function sendLeadEmail(data: LeadEmailData) {
                         </tr>
                         <tr>
                             <td style="padding: 8px 0; border-bottom: 1px solid #e2e8f0;"><strong>Phone:</strong></td>
-                            <td style="padding: 8px 0; border-bottom: 1px solid #e2e8f0;"><a href="tel:${data.phone}" style="color: #D4AF37;">${data.phone}</a></td>
+                            <td style="padding: 8px 0; border-bottom: 1px solid #e2e8f0;"><a href="tel:${sanitizedPhone}" style="color: #D4AF37;">${sanitizedPhone}</a></td>
                         </tr>
                         ${data.email ? `
                         <tr>
