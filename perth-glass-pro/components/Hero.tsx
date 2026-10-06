@@ -185,7 +185,7 @@ export default function HeroWithScroll() {
             </div>
 
             <p className="text-gray-200 text-center md:text-left text-base sm:text-lg mb-4 max-w-xl leading-relaxed mt-6 md:mt-0">
-              Looking for professional <strong>window cleaning Perth</strong>? Aspect delivers 100% streak-free pure water cleaning for residential homes, commercial offices, and multi-storey properties up to 4 storeys across Perth, WA.
+              Looking for professional <strong>window cleaning Perth</strong>? Aspect delivers Perth&apos;s premier <strong>window cleaning service</strong> with 100% streak-free pure water cleaning for residential homes, commercial offices, and multi-storey properties up to 4 storeys across Perth, WA.
             </p>
 
             <div className="flex flex-wrap items-center justify-center md:justify-start gap-2.5 sm:gap-3 mb-6">

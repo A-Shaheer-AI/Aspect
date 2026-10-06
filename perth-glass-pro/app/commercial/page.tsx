@@ -7,8 +7,9 @@ import CaseStudiesSection from "@/components/CaseStudiesSection";
 import { BUSINESS } from "@/lib/config";
 
 export const metadata: Metadata = {
-    title: "Commercial Cleaning, Janitorial & Window Cleaning Perth | Aspect",
-    description: "Perth commercial cleaning, office janitorial, and multi-storey window cleaning up to 4 storeys. Directly employed police-cleared staff, EWP certified, $20M insured. 24/7 service.",
+    title: "Commercial Cleaning Services Perth | Facility, Office & Glazing | Aspect",
+    description: "Perth commercial cleaning services for corporate offices, retail centres, and strata facilities. Comprehensive janitorial maintenance and specialized multi-storey window washing up to 4 storeys. $20M insured.",
+    alternates: { canonical: "https://aspectwindowcleaning.com.au/commercial" }
 };
 
 export default function CommercialPage() {
@@ -44,14 +45,14 @@ export default function CommercialPage() {
                         <span className="text-sm font-medium">Commercial Services</span>
                     </div>
                     <h1 className="text-3xl sm:text-5xl lg:text-6xl font-heading font-bold mb-4 sm:mb-6">
-                        Commercial Window Cleaning Perth
+                        Commercial Cleaning Services Perth
                         <br />
                         <span className="text-action-gold">
-                            Businesses, Offices &amp; Strata
+                            Facilities, Offices &amp; Multi-Storey Glazing
                         </span>
                     </h1>
                     <p className="text-base sm:text-xl text-brand-water/80 max-w-2xl mx-auto mb-8 sm:mb-10">
-                        Professional <strong>commercial window cleaning Perth</strong> for businesses, corporate offices, and strata properties. Specialized multi-storey cleaning up to 4 storeys with scissor lift EWP access, pure water reach poles, WorkSafe WA compliance, and $20M insurance.
+                        Professional <strong>commercial cleaning services Perth</strong> for corporate offices, retail tenancies, and commercial facilities. Explore our dedicated divisions for <Link href="/services/commercial-window-cleaning" className="text-action-gold hover:underline font-semibold">commercial window cleaning</Link> and <Link href="/services/commercial-cleaning" className="text-action-gold hover:underline font-semibold">office janitorial care</Link> with WorkSafe WA compliance and $20M insurance.
                     </p>
                     <div className="flex flex-col sm:flex-row items-center justify-center gap-3 sm:gap-4">
                         <Link

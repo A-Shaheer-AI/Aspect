@@ -762,8 +762,8 @@ export default function WindowCleaningAdsPage() {
             {/* 🔹🔹🔹 SECTION 1: HERO  🔹🔹🔹 */}
             <section
                 className="relative min-h-screen flex flex-col items-center justify-center md:px-5 pb-10 text-white bg-cover bg-center
-  bg-[linear-gradient(160deg,rgba(10,22,40,0.5)_0%,rgba(15,37,69,0.8)_60%,rgba(19,48,96,0.8)_100%),url('/assets/landing-hero-bg-mobile.webp')]
-  md:bg-[linear-gradient(160deg,rgba(10,22,40,0.5)_0%,rgba(15,37,69,0.8)_60%,rgba(19,48,96,0.8)_100%),url('/assets/landing-hero-bg.webp')]"
+  bg-[linear-gradient(160deg,rgba(10,22,40,0.85)_0%,rgba(15,37,69,0.88)_60%,rgba(19,48,96,0.92)_100%),url('/assets/landing-hero-bg-mobile.webp')]
+  md:bg-[linear-gradient(160deg,rgba(10,22,40,0.82)_0%,rgba(15,37,69,0.85)_60%,rgba(19,48,96,0.90)_100%),url('/assets/landing-hero-bg.webp')]"
                 style={{ backgroundColor: "#0A1628" }}
             >
 
@@ -772,12 +772,14 @@ export default function WindowCleaningAdsPage() {
 
                     {/* LEFT SIDE: BADGE, IMAGES, CTA */}
                     <div className="flex flex-col items-start text-left text-white lg:pr-8 w-full max-w-xl mx-auto lg:max-w-none">
-                        <div
-                            className="mb-6 inline-flex items-center gap-2 rounded-full border px-4 py-2 text-xs font-semibold uppercase tracking-widest"
-                            style={{ borderColor: "rgba(255,229,77,0.35)", color: YELLOW }}
-                        >
-                            <span className="w-1.5 h-1.5 rounded-full" style={{ background: "#22c55e" }} />
-                            Same-week booking available
+                        <div className="mb-6 inline-flex items-center gap-2.5 rounded-full bg-white/10 backdrop-blur-md border border-white/20 px-4 py-1.5 text-xs font-semibold tracking-wide text-white shadow-sm mx-auto lg:mx-0 self-center lg:self-start">
+                            <span className="relative flex h-2 w-2">
+                                <span className="animate-ping absolute inline-flex h-full w-full rounded-full bg-emerald-400 opacity-75"></span>
+                                <span className="relative inline-flex rounded-full h-2 w-2 bg-emerald-500"></span>
+                            </span>
+                            <span className="uppercase tracking-wider text-[11px] sm:text-xs text-white/95 font-medium">
+                                Same-week booking available
+                            </span>
                         </div>
 
                         {/* MOBILE HEADING (Hidden on desktop) */}
@@ -787,7 +789,7 @@ export default function WindowCleaningAdsPage() {
                                 <br />
                                 <span style={{ color: YELLOW }}>Window Cleaners</span>
                             </h2>
-                            <p className="w-full text-base font-light leading-relaxed mx-auto max-w-lg" style={{ color: "rgba(255,255,255,0.8)" }}>
+                            <p className="w-full text-base sm:text-lg font-medium text-white/95 leading-relaxed mx-auto max-w-lg drop-shadow-[0_2px_4px_rgba(0,0,0,0.85)]">
                                 Next-Day Availability. Commercial-Grade Pure Water Cleaning for Homes &amp; Businesses.
                             </p>
                         </div>
@@ -816,7 +818,7 @@ export default function WindowCleaningAdsPage() {
                             ))}
                         </div>
 
-                        <div className="grid grid-cols-2 gap-2 sm:gap-3 w-full max-w-md">
+                        <div className="grid grid-cols-2 gap-2.5 sm:gap-3 w-full max-w-md mx-auto lg:mx-0">
                             {[ { icon: "\uD83D\uDEE1\uFE0F", text: "$20M Insured" }, { icon: "🏅", text: "Police Cleared" }, { icon: "💧", text: "Pure Water Tech" }, { icon: "\u2B50", text: `${gmb.rating} Google Reviews` } ].map((b) => 
                                 (() => {
                                     const isInsured = b.text.includes("Insured");
@@ -828,10 +830,9 @@ export default function WindowCleaningAdsPage() {
                                         <Component
                                             key={b.text}
                                             onClick={clickHandler}
-                                            className={"flex items-center justify-center gap-1 sm:gap-2 rounded-full px-1 sm:px-5 py-2.5 text-[11px] sm:text-sm md:text-base font-semibold text-center " + ((isInsured || isPolice) ? "hover:scale-105 active:scale-95 transition-transform cursor-pointer hover:bg-yellow-400/20" : "")}
-                                            style={{ background: "rgba(255,229,77,0.15)", border: "1px solid rgba(255,229,77,0.4)", color: YELLOW }}
+                                            className={"flex items-center justify-center gap-2 rounded-full px-3 sm:px-5 py-2.5 text-xs sm:text-sm font-semibold text-white/95 bg-white/10 hover:bg-white/15 backdrop-blur-md border border-white/20 shadow-sm transition-all duration-200 " + ((isInsured || isPolice) ? "hover:scale-105 active:scale-95 cursor-pointer hover:border-white/40" : "")}
                                         >
-                                            <span className="text-sm sm:text-lg">{b.icon}</span> <span className="whitespace-nowrap">{b.text}</span>
+                                            <span className="text-base sm:text-lg">{b.icon}</span> <span className="whitespace-nowrap">{b.text}</span>
                                         </Component>
                                     );
                                 })()
@@ -849,7 +850,7 @@ export default function WindowCleaningAdsPage() {
                                 <span style={{ color: YELLOW }}>Residential &amp; Commercial</span>
                             </h1>
 
-                            <p className="w-full text-base font-light leading-relaxed mx-auto lg:mx-0 max-w-lg" style={{ color: "rgba(255,255,255,0.8)" }}>
+                            <p className="w-full text-base sm:text-lg font-medium text-white/95 leading-relaxed mx-auto lg:mx-0 max-w-lg drop-shadow-[0_2px_4px_rgba(0,0,0,0.85)]">
                                 Professional <strong>window cleaning Perth</strong> with next-day availability. Commercial-grade pure water cleaning for homes and businesses.
                             </p>
                         </div>

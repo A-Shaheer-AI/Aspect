@@ -7,6 +7,7 @@ import suburbsData from "@/lib/perth_suburbs.json";
 import ServicesClient from "@/components/ServicesClient";
 import CaseStudiesSection from "@/components/CaseStudiesSection";
 import FAQ from "@/components/FAQ";
+import SuburbCustomDeepDive from "@/components/SuburbCustomDeepDive";
 
 interface SuburbRecord {
     name: string;
@@ -419,8 +420,11 @@ export default async function SuburbPage({ params }: { params: Promise<{ suburb:
                         </div>
                     </div>
 
+                    {/* Specialized Suburb Deep Dive for High-Value & High-CPC Corridors */}
+                    <SuburbCustomDeepDive suburbSlug={suburbSlug} suburbName={suburb.name} />
+
                     {/* Internal SEO Hub Links */}
-                    <div className="bg-slate-50/70 border border-slate-200/80 rounded-2xl p-5 sm:p-6 text-sm text-brand-slate leading-relaxed">
+                    <div className="bg-slate-50/70 border border-slate-200/80 rounded-2xl p-5 sm:p-6 text-sm text-brand-slate leading-relaxed mt-8">
                         <span className="font-semibold text-brand-navy block mb-1">Aspect Exterior Cleaning Services in {suburb.name}:</span>
                         In addition to our <Link href="/services/residential-window-cleaning" className="text-action-gold hover:underline font-semibold">residential window cleaning in {suburb.name}</Link>, we provide professional pure-water <Link href="/services/solar-panel-washing" className="text-action-gold hover:underline font-semibold">clean solar panels in Perth</Link>, exterior <Link href="/services/pressure-washing" className="text-action-gold hover:underline font-semibold">pressure washing</Link>, and complete <Link href="/services/gutter-cleaning" className="text-action-gold hover:underline font-semibold">roof gutter cleaning in Perth</Link>. Business and strata managers can book certified <Link href="/services/commercial-window-cleaning" className="text-action-gold hover:underline font-semibold">commercial window cleaners in Perth</Link> with scissor lifts and pure-water reach poles up to 4 storeys. Looking for a trusted <Link href="/" className="text-action-gold hover:underline font-semibold">window cleaning service in Perth</Link>? Explore our real <Link href="/case-studies" className="text-action-gold hover:underline font-semibold">Perth case studies</Link>, browse our <Link href="/blog" className="text-action-gold hover:underline font-semibold">cleaning guides</Link>, compare our <Link href="/pricing" className="text-action-gold hover:underline font-semibold">transparent pricing</Link>, or <Link href="/contact" className="text-action-gold hover:underline font-semibold">contact our team</Link> for an upfront quote.
                     </div>
