@@ -16,7 +16,7 @@ type FaqsType = {
 }
 
 export const metadata: Metadata = {
-    title: { absolute: "Gutter Cleaning Perth | Aspect Window Cleaning" },
+    title: { absolute: "Gutter Cleaning Perth | Roof & Downpipe Clearing | Aspect" },
     description: "Protect your Perth home from water damage. Full gutter debris clearing, downpipe flush & roof inspection. Fully insured experts. Free instant quotes!",
     alternates: { canonical: "https://aspectwindowcleaning.com.au/services/gutter-cleaning" }
 };
@@ -495,10 +495,10 @@ const GutterCleaningServices = () => {
 
             {/* REAL PROJECT CASE STUDIES */}
             <CaseStudiesSection
-                serviceType="Gutter Cleaning"
-                title="Real Gutter Cleaning Results in Perth"
-                subtitle="Recent Case Studies"
-                limit={3}
+                slugs={["kalamunda-roof-gutter-clearing-downpipe-flush"]}
+                title="Gutter Cleaning Perth & Downpipe Flushing: Proven Kalamunda Case Study"
+                subtitle="Eucalyptus Canopy Clearing & Storm Overflow Protection"
+                limit={1}
             />
 
             {/* FAQ */}

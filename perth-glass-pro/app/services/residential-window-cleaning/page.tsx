@@ -26,7 +26,7 @@ type FaqsType = {
 }
 
 export const metadata: Metadata = {
-    title: { absolute: "Residential Window Cleaning Perth | Aspect Window Cleaning" },
+    title: { absolute: "Residential Window Cleaning Perth | Pure Water Wash | Aspect" },
     description: "Perth's trusted residential window cleaners. 100% pure water streak-free finish, frames, sills, tracks & flyscreens included. Police-cleared & $20M insured. Get a free quote!",
     alternates: { canonical: "https://aspectwindowcleaning.com.au/services/residential-window-cleaning" }
 };
@@ -689,7 +689,7 @@ export default function ResidentialWindowCleaning() {
                         "coastal-pre-sale-window-cleaning-eglinton",
                         "post-renovation-to-auction-window-cleaning-subiaco"
                     ]}
-                    title="Real Perth Residential Transformations"
+                    title="Residential Window Cleaning Perth: Proven Project Case Studies"
                     subtitle="Home Window Cleaning Portfolio"
                     limit={3}
                 />

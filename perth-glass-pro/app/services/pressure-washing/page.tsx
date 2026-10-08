@@ -16,7 +16,7 @@ type FaqsType = {
 }
 
 export const metadata: Metadata = {
-    title: { absolute: "Pressure Washing Perth | Aspect Window Cleaning" },
+    title: { absolute: "Pressure Washing Perth | High-Pressure Driveway Cleaning | Aspect" },
     description: "High-pressure cleaning for Perth driveways, patios & building exteriors. Strip away tough grime, oil & algae safely. $20M insured. Get your free fast quote!",
     alternates: { canonical: "https://aspectwindowcleaning.com.au/services/pressure-washing" }
 };
@@ -497,8 +497,8 @@ const PressureWashing = () => {
             {/* REAL PRESSURE WASHING CASE STUDY */}
             <CaseStudiesSection
                 slugs={["fremantle-heritage-brick-paver-pressure-clean"]}
-                title="Real Pressure Washing Results in Perth"
-                subtitle="Surface Restoration"
+                title="Pressure Washing Perth & Driveway Cleaning: Proven Fremantle Heritage Case Study"
+                subtitle="Restoring Delicate Limestone Pavers & Non-Destructive Surface Detailing"
                 limit={1}
             />
 

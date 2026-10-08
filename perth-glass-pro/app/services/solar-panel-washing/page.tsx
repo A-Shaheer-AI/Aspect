@@ -17,7 +17,7 @@ type FaqsType = {
 }
 
 export const metadata: Metadata = {
-    title: { absolute: "Solar Panel Cleaning Perth | Aspect Window Cleaning" },
+    title: { absolute: "Clean Solar Panels Perth | Solar Panel Cleaning | Aspect" },
     description: "Restore up to 30% solar efficiency with pure water cleaning in Perth. Chemical-free, manufacturer-approved & safe roof access. Book your same-week clean now!",
     alternates: { canonical: "https://aspectwindowcleaning.com.au/services/solar-panel-washing" }
 };
@@ -644,8 +644,8 @@ const SolarPanelCleaningPage = () => {
             {/* REAL SOLAR PROJECT CASE STUDY */}
             <CaseStudiesSection
                 slugs={["joondalup-solar-panel-efficiency-restoration"]}
-                title="Real Solar Panel Washing Results in Perth"
-                subtitle="Efficiency Restored"
+                title="Clean Solar Panels Perth: Proven Efficiency Recovery Case Study"
+                subtitle="24% Output Restored (Joondalup 6.6kW Array)"
                 limit={1}
             />
 
