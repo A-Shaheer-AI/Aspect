@@ -33,7 +33,10 @@ export default function StickyInterface() {
                 const heroButton = document.getElementById("hero-call-button");
                 if (heroButton) {
                     const rect = heroButton.getBoundingClientRect();
-                    setShowMobileCTA(rect.bottom < 0);
+                    setShowMobileCTA(rect.bottom < 0 || window.scrollY > 250);
+                } else {
+                    // Fallback for pages without hero-call-button (subpages, blogs, service hubs)
+                    setShowMobileCTA(window.scrollY > 150);
                 }
             } else {
                 setShowDesktopScroll(window.scrollY > 500);

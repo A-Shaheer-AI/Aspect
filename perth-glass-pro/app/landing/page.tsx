@@ -543,7 +543,8 @@ function FreeTrialForm() {
                 type="tel"
                 placeholder="0400 000 000"
                 value={formData.phone}
-                onChange={e => setFormData({...formData, phone: sanitizePhoneInput(e.target.value)})}
+                onChange={e => setFormData({...formData, phone: e.target.value})}
+                onBlur={e => setFormData({...formData, phone: sanitizePhoneInput(e.target.value)})}
                 className="w-full rounded-xl px-4 py-3 text-base outline-none bg-white border border-gray-200 text-gray-900 focus:border-brand-navy"
             />
             <input
@@ -1858,7 +1859,7 @@ export default function WindowCleaningAdsPage() {
                                     </div>
                                     <div>
                                         <label htmlFor="pkg-phone" className="block text-sm font-bold text-gray-700 mb-1">Phone Number</label>
-                                        <input id="pkg-phone" name="phone" autoComplete="tel-national" inputMode="tel" required type="tel" value={pkgForm.phone} onChange={(e) => setPkgForm({...pkgForm, phone: sanitizePhoneInput(e.target.value)})} className="w-full px-4 py-3 rounded-lg border border-gray-300 focus:ring-2 focus:ring-action-gold focus:border-transparent text-base" placeholder="0400 000 000" />
+                                        <input id="pkg-phone" name="phone" autoComplete="tel-national" inputMode="tel" required type="tel" value={pkgForm.phone} onChange={(e) => setPkgForm({...pkgForm, phone: e.target.value})} onBlur={(e) => setPkgForm({...pkgForm, phone: sanitizePhoneInput(e.target.value)})} className="w-full px-4 py-3 rounded-lg border border-gray-300 focus:ring-2 focus:ring-action-gold focus:border-transparent text-base" placeholder="0400 000 000" />
                                     </div>
                                     <div>
                                         <label htmlFor="pkg-suburb" className="block text-sm font-bold text-gray-700 mb-1">Suburb</label>

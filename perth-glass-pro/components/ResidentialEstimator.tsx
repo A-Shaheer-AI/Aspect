@@ -365,7 +365,8 @@ export default function ResidentialEstimator() {
                                     autoComplete="tel-national"
                                     placeholder="0400 000 000"
                                     value={formData.phone}
-                                    onChange={(e) => updateField("phone", sanitizePhoneInput(e.target.value))}
+                                    onChange={(e) => updateField("phone", e.target.value)}
+                                    onBlur={(e) => updateField("phone", sanitizePhoneInput(e.target.value))}
                                     className="w-full h-14 px-4 rounded-xl border-2 border-slate-200 focus:border-action-gold text-lg outline-none"
                                 />
                                 <div className="relative">

@@ -33,28 +33,28 @@ export default function ClientHomeContent() {
                 </div>
             </section>
 
-            {/* 1. Commercial Window Cleaning Division Showcase (High-Priority B2B Section) */}
-            <CommercialHomeSection />
-
-            {/* 2. Services Bento Grid */}
+            {/* 1. Services Bento Grid (Residential Glass front-and-centre) */}
             <ServicesGrid />
 
             {/* 2. Modern 1-Line Prominent Stats & Trust Bar */}
             <TrustStatsBar />
 
-            {/* 3. See the Difference Section (Above Reviews) */}
+            {/* 3. Commercial Window Cleaning Division Showcase */}
+            <CommercialHomeSection />
+
+            {/* 4. See the Difference Section (Above Reviews) */}
             <SeeTheDifference />
 
-            {/* 4. Customer Reviews Section */}
+            {/* 5. Customer Reviews Section */}
             <ReviewsSection />
 
-            {/* 5. Natural Language Service Finder */}
+            {/* 6. Natural Language Service Finder */}
             <ServiceFinder />
 
-            {/* 6. Frequently Asked Questions */}
+            {/* 7. Frequently Asked Questions */}
             <FAQ heading="Window Cleaning Perth: Frequently Asked Questions" title="" faqs={HOME_FAQS} />
 
-            {/* 7. Contact Section */}
+            {/* 8. Contact Section */}
             <ContactSection />
         </>
     );

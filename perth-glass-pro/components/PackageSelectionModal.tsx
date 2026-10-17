@@ -140,7 +140,8 @@ export default function PackageSelectionModal({ isOpen, onClose, packageName, pa
                                     autoComplete="tel-national"
                                     required
                                     value={pkgForm.phone}
-                                    onChange={(e) => setPkgForm({...pkgForm, phone: sanitizePhoneInput(e.target.value)})}
+                                    onChange={(e) => setPkgForm({...pkgForm, phone: e.target.value})}
+                                    onBlur={(e) => setPkgForm({...pkgForm, phone: sanitizePhoneInput(e.target.value)})}
                                     className="w-full px-4 py-3 rounded-xl border border-gray-200 bg-gray-50 focus:bg-white focus:outline-none focus:ring-2 focus:ring-[#D4AF37] text-base transition-all"
                                     placeholder="0400 000 000"
                                 />
