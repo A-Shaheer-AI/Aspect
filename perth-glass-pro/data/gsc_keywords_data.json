@@ -1,15 +1,15 @@
 {
   "metadata": {
-    "savedAt": "2026-10-16T12:34:45.251Z",
+    "savedAt": "2026-10-21T16:24:15.219Z",
     "siteUrl": "sc-domain:aspectwindowcleaning.com.au",
-    "startDate": "2026-07-15",
-    "endDate": "2026-10-13",
-    "totalGscQueries": 925,
+    "startDate": "2026-07-20",
+    "endDate": "2026-10-18",
+    "totalGscQueries": 955,
     "breakdown": {
-      "page1Count": 128,
-      "strikingDistancePage2Count": 157,
-      "strikingDistancePage3Count": 174,
-      "page4PlusCount": 466
+      "page1Count": 138,
+      "strikingDistancePage2Count": 175,
+      "strikingDistancePage3Count": 183,
+      "page4PlusCount": 459
     }
   },
   "targetKeywords": [
@@ -238,142 +238,149 @@
     {
       "query": "window cleaning perth",
       "clicks": 6,
-      "impressions": 1448,
-      "ctr": 0.41,
-      "position": 13.75
+      "impressions": 1483,
+      "ctr": 0.4,
+      "position": 13.32
     },
     {
       "query": "solar panel cleaning perth",
       "clicks": 0,
-      "impressions": 452,
+      "impressions": 448,
       "ctr": 0,
-      "position": 40.98
+      "position": 40.1
     },
     {
       "query": "commercial window cleaning perth",
       "clicks": 0,
-      "impressions": 404,
+      "impressions": 417,
       "ctr": 0,
-      "position": 26.49
+      "position": 24.68
     },
     {
       "query": "window cleaners perth",
       "clicks": 0,
       "impressions": 356,
       "ctr": 0,
-      "position": 23.07
-    },
-    {
-      "query": "window cleaning services perth",
-      "clicks": 0,
-      "impressions": 270,
-      "ctr": 0,
-      "position": 21.6
+      "position": 22.04
     },
     {
       "query": "window cleaning",
       "clicks": 2,
-      "impressions": 256,
-      "ctr": 0.78,
-      "position": 13.25
+      "impressions": 278,
+      "ctr": 0.72,
+      "position": 12.35
+    },
+    {
+      "query": "window cleaning services perth",
+      "clicks": 0,
+      "impressions": 266,
+      "ctr": 0,
+      "position": 20.82
     },
     {
       "query": "window cleaning service",
       "clicks": 0,
-      "impressions": 247,
+      "impressions": 249,
       "ctr": 0,
-      "position": 8.96
-    },
-    {
-      "query": "residential window cleaning perth",
-      "clicks": 1,
-      "impressions": 243,
-      "ctr": 0.41,
-      "position": 14.46
-    },
-    {
-      "query": "window cleaning near me",
-      "clicks": 0,
-      "impressions": 243,
-      "ctr": 0,
-      "position": 14.81
+      "position": 8.82
     },
     {
       "query": "residential window cleaning",
       "clicks": 0,
-      "impressions": 236,
+      "impressions": 238,
       "ctr": 0,
-      "position": 17.26
+      "position": 17.23
     },
     {
-      "query": "perth window cleaning",
-      "clicks": 0,
-      "impressions": 227,
-      "ctr": 0,
-      "position": 20.26
+      "query": "residential window cleaning perth",
+      "clicks": 1,
+      "impressions": 237,
+      "ctr": 0.42,
+      "position": 14.13
+    },
+    {
+      "query": "aspect window cleaning",
+      "clicks": 67,
+      "impressions": 228,
+      "ctr": 29.39,
+      "position": 1.71
     },
     {
       "query": "commercial window cleaners perth",
       "clicks": 0,
-      "impressions": 224,
+      "impressions": 226,
       "ctr": 0,
-      "position": 24.33
+      "position": 23.08
     },
     {
-      "query": "aspect window cleaning",
-      "clicks": 64,
-      "impressions": 210,
-      "ctr": 30.48,
-      "position": 1.72
+      "query": "perth window cleaning",
+      "clicks": 0,
+      "impressions": 225,
+      "ctr": 0,
+      "position": 19.69
+    },
+    {
+      "query": "window cleaning near me",
+      "clicks": 0,
+      "impressions": 225,
+      "ctr": 0,
+      "position": 14.91
     },
     {
       "query": "window cleaning armadale",
       "clicks": 0,
-      "impressions": 201,
+      "impressions": 209,
       "ctr": 0,
-      "position": 34.1
+      "position": 33.72
     },
     {
-      "query": "office window cleaning perth",
+      "query": "high rise window cleaning",
       "clicks": 0,
-      "impressions": 169,
+      "impressions": 188,
       "ctr": 0,
-      "position": 20.54
+      "position": 1
     },
     {
       "query": "window cleaning doncaster",
       "clicks": 0,
-      "impressions": 167,
+      "impressions": 171,
       "ctr": 0,
-      "position": 46.44
+      "position": 46.4
+    },
+    {
+      "query": "office window cleaning perth",
+      "clicks": 0,
+      "impressions": 170,
+      "ctr": 0,
+      "position": 19.89
     },
     {
       "query": "window cleaning services",
       "clicks": 0,
-      "impressions": 157,
+      "impressions": 159,
       "ctr": 0,
-      "position": 17.69
-    },
-    {
-      "query": "pressure washing perth",
-      "clicks": 1,
-      "impressions": 146,
-      "ctr": 0.68,
-      "position": 53.79
+      "position": 17.28
     },
     {
       "query": "window cleaners",
       "clicks": 0,
-      "impressions": 137,
+      "impressions": 138,
       "ctr": 0,
-      "position": 27.02
+      "position": 26.19
+    },
+    {
+      "query": "perth solar panel cleaning",
+      "clicks": 0,
+      "impressions": 136,
+      "ctr": 0,
+      "position": 47.69
     },
     {
       "query": "strata window cleaning perth",
       "clicks": 0,
-      "impressions": 133,
+      "impressions": 135,
       "ctr": 0,
-      "position": 10.51
+      "position": 10.21
     },
     {
       "query": "curtain cleaning beechboro",
@@ -385,23 +392,9 @@
     {
       "query": "solar panel cleaning",
       "clicks": 0,
-      "impressions": 125,
-      "ctr": 0,
-      "position": 86.09
-    },
-    {
-      "query": "window cleaner near me",
-      "clicks": 0,
       "impressions": 124,
       "ctr": 0,
-      "position": 13.57
-    },
-    {
-      "query": "perth solar panel cleaning",
-      "clicks": 0,
-      "impressions": 121,
-      "ctr": 0,
-      "position": 49.26
+      "position": 84.83
     },
     {
       "query": "curtain cleaning rossmoyne",
@@ -411,32 +404,46 @@
       "position": 38.1
     },
     {
+      "query": "window cleaner near me",
+      "clicks": 0,
+      "impressions": 118,
+      "ctr": 0,
+      "position": 13.35
+    },
+    {
+      "query": "pressure washing perth",
+      "clicks": 1,
+      "impressions": 115,
+      "ctr": 0.87,
+      "position": 53.31
+    },
+    {
       "query": "window cleaner",
       "clicks": 1,
-      "impressions": 114,
-      "ctr": 0.88,
-      "position": 3.14
-    },
-    {
-      "query": "high rise window cleaning",
-      "clicks": 0,
       "impressions": 111,
-      "ctr": 0,
-      "position": 1
-    },
-    {
-      "query": "window cleaning company",
-      "clicks": 0,
-      "impressions": 104,
-      "ctr": 0,
-      "position": 23.86
+      "ctr": 0.9,
+      "position": 3.24
     },
     {
       "query": "commercial window cleaning",
       "clicks": 0,
-      "impressions": 103,
+      "impressions": 104,
       "ctr": 0,
       "position": 1.13
+    },
+    {
+      "query": "window cleaner perth",
+      "clicks": 1,
+      "impressions": 102,
+      "ctr": 0.98,
+      "position": 19.97
+    },
+    {
+      "query": "window cleaning company",
+      "clicks": 0,
+      "impressions": 102,
+      "ctr": 0,
+      "position": 23.27
     },
     {
       "query": "curtain cleaning attadale",
@@ -446,95 +453,88 @@
       "position": 37.4
     },
     {
-      "query": "window cleaner perth",
-      "clicks": 1,
-      "impressions": 100,
-      "ctr": 1,
-      "position": 19.89
+      "query": "aspectwindowcleaning.com.au",
+      "clicks": 0,
+      "impressions": 90,
+      "ctr": 0,
+      "position": 34.81
     },
     {
       "query": "window cleaning west perth",
       "clicks": 0,
       "impressions": 87,
       "ctr": 0,
-      "position": 25.37
-    },
-    {
-      "query": "aspectwindowcleaning.com.au",
-      "clicks": 0,
-      "impressions": 86,
-      "ctr": 0,
-      "position": 34.1
+      "position": 24.48
     },
     {
       "query": "window cleaners near me",
       "clicks": 1,
-      "impressions": 84,
-      "ctr": 1.19,
-      "position": 16.39
+      "impressions": 82,
+      "ctr": 1.22,
+      "position": 16.35
     },
     {
       "query": "clean solar panels perth",
       "clicks": 0,
-      "impressions": 82,
+      "impressions": 80,
       "ctr": 0,
-      "position": 52.51
+      "position": 51.75
     },
     {
       "query": "window cleaners doncaster",
       "clicks": 0,
-      "impressions": 76,
-      "ctr": 0,
-      "position": 58.21
-    },
-    {
-      "query": "downpipe cleaning perth",
-      "clicks": 0,
       "impressions": 75,
       "ctr": 0,
-      "position": 29.35
-    },
-    {
-      "query": "window cleaning fremantle",
-      "clicks": 0,
-      "impressions": 73,
-      "ctr": 0,
-      "position": 21.66
-    },
-    {
-      "query": "gutter and window cleaning perth",
-      "clicks": 0,
-      "impressions": 71,
-      "ctr": 0,
-      "position": 30.54
+      "position": 57.96
     },
     {
       "query": "window cleaning marion",
       "clicks": 0,
-      "impressions": 67,
+      "impressions": 73,
       "ctr": 0,
-      "position": 39.13
+      "position": 39.73
     },
     {
-      "query": "pressure cleaning perth",
+      "query": "gutter and window cleaning perth",
       "clicks": 0,
-      "impressions": 66,
+      "impressions": 70,
       "ctr": 0,
-      "position": 56.55
+      "position": 29.54
+    },
+    {
+      "query": "window cleaning fremantle",
+      "clicks": 0,
+      "impressions": 70,
+      "ctr": 0,
+      "position": 21.83
+    },
+    {
+      "query": "window cleaning morley",
+      "clicks": 0,
+      "impressions": 70,
+      "ctr": 0,
+      "position": 38.89
+    },
+    {
+      "query": "downpipe cleaning perth",
+      "clicks": 0,
+      "impressions": 68,
+      "ctr": 0,
+      "position": 29.03
     },
     {
       "query": "window cleaning applecross",
       "clicks": 0,
-      "impressions": 66,
+      "impressions": 68,
       "ctr": 0,
-      "position": 17.97
+      "position": 17.35
     },
     {
       "query": "window cleaning hampton",
       "clicks": 0,
       "impressions": 66,
       "ctr": 0,
-      "position": 56.67
+      "position": 56.56
     },
     {
       "query": "curtain cleaning balcatta",
@@ -544,18 +544,18 @@
       "position": 69.37
     },
     {
-      "query": "window cleaning morley",
-      "clicks": 0,
-      "impressions": 63,
-      "ctr": 0,
-      "position": 38.13
-    },
-    {
-      "query": "window cleaners nedland",
+      "query": "window cleaners armadale",
       "clicks": 0,
       "impressions": 62,
       "ctr": 0,
-      "position": 1.19
+      "position": 45.44
+    },
+    {
+      "query": "window cleaning services fremantle",
+      "clicks": 0,
+      "impressions": 62,
+      "ctr": 0,
+      "position": 3.6
     },
     {
       "query": "roof gutter cleaning perth",
@@ -572,25 +572,18 @@
       "position": 55.93
     },
     {
-      "query": "window cleaners armadale",
+      "query": "window cleaners nedland",
       "clicks": 0,
       "impressions": 59,
       "ctr": 0,
-      "position": 46.24
-    },
-    {
-      "query": "highrise window cleaning near me",
-      "clicks": 0,
-      "impressions": 58,
-      "ctr": 0,
-      "position": 4.48
+      "position": 1.2
     },
     {
       "query": "window cleaning kilsyth",
       "clicks": 0,
-      "impressions": 58,
+      "impressions": 57,
       "ctr": 0,
-      "position": 28.45
+      "position": 28.32
     },
     {
       "query": "window cleaning cottesloe",
@@ -600,88 +593,95 @@
       "position": 3.48
     },
     {
-      "query": "commercial window cleaners near me",
+      "query": "house window cleaners",
       "clicks": 0,
       "impressions": 55,
       "ctr": 0,
-      "position": 16.33
+      "position": 26.67
+    },
+    {
+      "query": "solar panel cleaning services perth",
+      "clicks": 0,
+      "impressions": 55,
+      "ctr": 0,
+      "position": 45.49
     },
     {
       "query": "perth window cleaners",
       "clicks": 1,
-      "impressions": 54,
-      "ctr": 1.85,
+      "impressions": 53,
+      "ctr": 1.89,
       "position": 28.85
     },
     {
-      "query": "house window cleaners",
+      "query": "pressure cleaning perth",
       "clicks": 0,
-      "impressions": 54,
+      "impressions": 53,
       "ctr": 0,
-      "position": 28.17
+      "position": 56.08
+    },
+    {
+      "query": "commercial window cleaners near me",
+      "clicks": 0,
+      "impressions": 52,
+      "ctr": 0,
+      "position": 16.23
     },
     {
       "query": "gosnells solar panel cleaning",
       "clicks": 0,
-      "impressions": 53,
+      "impressions": 51,
       "ctr": 0,
-      "position": 78.87
-    },
-    {
-      "query": "highrise window cleaner near me",
-      "clicks": 0,
-      "impressions": 52,
-      "ctr": 0,
-      "position": 9.54
+      "position": 79.31
     },
     {
       "query": "gutter and downpipe cleaning perth",
       "clicks": 0,
-      "impressions": 51,
+      "impressions": 49,
       "ctr": 0,
-      "position": 46.41
+      "position": 46.2
+    },
+    {
+      "query": "high rise window cleaning perth",
+      "clicks": 0,
+      "impressions": 49,
+      "ctr": 0,
+      "position": 25.49
+    },
+    {
+      "query": "highrise window cleaning near me",
+      "clicks": 0,
+      "impressions": 48,
+      "ctr": 0,
+      "position": 4.9
+    },
+    {
+      "query": "window cleaning nedlands",
+      "clicks": 1,
+      "impressions": 47,
+      "ctr": 2.13,
+      "position": 2.15
     },
     {
       "query": "commercial window cleaning service near me",
       "clicks": 0,
       "impressions": 47,
       "ctr": 0,
-      "position": 13.68
+      "position": 13.19
     },
     {
-      "query": "driveway pressure cleaning perth",
+      "query": "highrise window cleaner near me",
       "clicks": 0,
-      "impressions": 47,
+      "impressions": 46,
       "ctr": 0,
-      "position": 45.45
-    },
-    {
-      "query": "window cleaning services fremantle",
-      "clicks": 0,
-      "impressions": 47,
-      "ctr": 0,
-      "position": 4.17
+      "position": 9.26
     },
     {
       "query": "window cleaning peppermint grove",
       "clicks": 0,
       "impressions": 46,
       "ctr": 0,
-      "position": 11.74
-    },
-    {
-      "query": "domestic window cleaners",
-      "clicks": 0,
-      "impressions": 45,
-      "ctr": 0,
-      "position": 27.53
-    },
-    {
-      "query": "window cleaning nedlands",
-      "clicks": 0,
-      "impressions": 45,
-      "ctr": 0,
-      "position": 2.2
+      "position": 10.52
     },
     {
       "query": "attadale gutter repairs",
@@ -691,39 +691,18 @@
       "position": 24.28
     },
     {
-      "query": "canning vale solar panel cleaning",
-      "clicks": 0,
-      "impressions": 42,
-      "ctr": 0,
-      "position": 62.31
-    },
-    {
-      "query": "solar panel cleaning services perth",
-      "clicks": 0,
-      "impressions": 42,
-      "ctr": 0,
-      "position": 48.67
-    },
-    {
       "query": "window cleaning joondalup",
       "clicks": 0,
       "impressions": 42,
       "ctr": 0,
-      "position": 28.24
-    },
-    {
-      "query": "apex window cleaning",
-      "clicks": 0,
-      "impressions": 41,
-      "ctr": 0,
-      "position": 36.02
+      "position": 26.93
     },
     {
       "query": "commercial window cleaning services near me",
       "clicks": 0,
       "impressions": 41,
       "ctr": 0,
-      "position": 18.71
+      "position": 20.44
     },
     {
       "query": "curtain cleaning joondalup",
@@ -733,32 +712,46 @@
       "position": 46.76
     },
     {
-      "query": "window cleaners kew",
-      "clicks": 0,
-      "impressions": 41,
-      "ctr": 0,
-      "position": 81.85
-    },
-    {
-      "query": "driveway cleaning perth",
+      "query": "apex window cleaning",
       "clicks": 0,
       "impressions": 40,
       "ctr": 0,
-      "position": 51.3
+      "position": 36.05
     },
     {
-      "query": "high rise window cleaning perth",
+      "query": "domestic window cleaners",
       "clicks": 0,
-      "impressions": 38,
+      "impressions": 39,
       "ctr": 0,
-      "position": 28.61
+      "position": 27.41
     },
     {
       "query": "gutter cleaning joondalup",
       "clicks": 0,
+      "impressions": 39,
+      "ctr": 0,
+      "position": 25.92
+    },
+    {
+      "query": "canning vale solar panel cleaning",
+      "clicks": 0,
       "impressions": 37,
       "ctr": 0,
-      "position": 26.05
+      "position": 61.89
+    },
+    {
+      "query": "commerical window cleaning",
+      "clicks": 0,
+      "impressions": 37,
+      "ctr": 0,
+      "position": 1
+    },
+    {
+      "query": "window cleaners kew",
+      "clicks": 0,
+      "impressions": 37,
+      "ctr": 0,
+      "position": 83.22
     },
     {
       "query": "couch cleaning rossmoyne",
@@ -768,11 +761,11 @@
       "position": 55.31
     },
     {
-      "query": "willetton solar panel cleaning",
+      "query": "driveway pressure cleaning perth",
       "clicks": 0,
       "impressions": 36,
       "ctr": 0,
-      "position": 76.22
+      "position": 45.14
     },
     {
       "query": "couch cleaning attadale",
@@ -784,30 +777,30 @@
     {
       "query": "commercial window cleaning morley",
       "clicks": 0,
-      "impressions": 33,
+      "impressions": 34,
       "ctr": 0,
-      "position": 31.09
-    },
-    {
-      "query": "highrise window cleaning fremantle",
-      "clicks": 0,
-      "impressions": 32,
-      "ctr": 0,
-      "position": 36.63
-    },
-    {
-      "query": "window cleaning subiaco",
-      "clicks": 0,
-      "impressions": 32,
-      "ctr": 0,
-      "position": 24.63
+      "position": 29
     },
     {
       "query": "shop front window cleaning perth",
       "clicks": 0,
-      "impressions": 31,
+      "impressions": 34,
       "ctr": 0,
-      "position": 22.58
+      "position": 21.65
+    },
+    {
+      "query": "willetton solar panel cleaning",
+      "clicks": 0,
+      "impressions": 34,
+      "ctr": 0,
+      "position": 77.32
+    },
+    {
+      "query": "house washing nedlands",
+      "clicks": 0,
+      "impressions": 33,
+      "ctr": 0,
+      "position": 26.27
     },
     {
       "query": "solar panels jandabup",
@@ -817,67 +810,88 @@
       "position": 25.71
     },
     {
-      "query": "commerical window cleaning",
+      "query": "window cleaning subiaco",
       "clicks": 0,
-      "impressions": 30,
+      "impressions": 31,
       "ctr": 0,
-      "position": 1
+      "position": 24.42
     },
     {
       "query": "residential window cleaning morley",
       "clicks": 0,
       "impressions": 30,
       "ctr": 0,
-      "position": 24.2
-    },
-    {
-      "query": "window cleaning willetton",
-      "clicks": 0,
-      "impressions": 30,
-      "ctr": 0,
-      "position": 37.3
+      "position": 24.3
     },
     {
       "query": "window cleaning services east fremantle",
       "clicks": 0,
-      "impressions": 29,
+      "impressions": 30,
       "ctr": 0,
-      "position": 10.34
-    },
-    {
-      "query": "house washing nedlands",
-      "clicks": 0,
-      "impressions": 28,
-      "ctr": 0,
-      "position": 26.86
+      "position": 10.1
     },
     {
       "query": "window washing perth",
       "clicks": 0,
-      "impressions": 28,
+      "impressions": 30,
       "ctr": 0,
-      "position": 21.39
+      "position": 20.63
     },
     {
-      "query": "domestic window cleaning",
+      "query": "driveway cleaning perth",
+      "clicks": 0,
+      "impressions": 29,
+      "ctr": 0,
+      "position": 51.17
+    },
+    {
+      "query": "pressure cleaning fremantle",
+      "clicks": 0,
+      "impressions": 29,
+      "ctr": 0,
+      "position": 23.38
+    },
+    {
+      "query": "window cleaning willetton",
+      "clicks": 0,
+      "impressions": 29,
+      "ctr": 0,
+      "position": 38.07
+    },
+    {
+      "query": "highrise window cleaning fremantle",
+      "clicks": 0,
+      "impressions": 27,
+      "ctr": 0,
+      "position": 36.74
+    },
+    {
+      "query": "joondalup pressure cleaning",
       "clicks": 0,
       "impressions": 26,
       "ctr": 0,
-      "position": 30.69
+      "position": 26.58
     },
     {
-      "query": "balcatta glass balcatta wa",
+      "query": "perth window cleaning services",
       "clicks": 0,
-      "impressions": 25,
+      "impressions": 26,
       "ctr": 0,
-      "position": 72.8
+      "position": 19.46
     },
     {
-      "query": "body corporate window cleaning",
+      "query": "window cleaning claremont",
       "clicks": 0,
-      "impressions": 25,
+      "impressions": 26,
       "ctr": 0,
-      "position": 87.04
+      "position": 9.92
+    },
+    {
+      "query": "window cleaning dalkeith",
+      "clicks": 0,
+      "impressions": 26,
+      "ctr": 0,
+      "position": 28.62
     },
     {
       "query": "high rise window cleaning near me",
@@ -887,60 +901,60 @@
       "position": 6
     },
     {
-      "query": "window cleaning canning vale",
+      "query": "industrial window cleaning perth",
       "clicks": 0,
       "impressions": 25,
       "ctr": 0,
-      "position": 48.12
-    },
-    {
-      "query": "window cleaning ellenbrook",
-      "clicks": 0,
-      "impressions": 25,
-      "ctr": 0,
-      "position": 31.48
-    },
-    {
-      "query": "highrise window cleaner fremantle",
-      "clicks": 0,
-      "impressions": 24,
-      "ctr": 0,
-      "position": 38.75
-    },
-    {
-      "query": "perth window cleaning services",
-      "clicks": 0,
-      "impressions": 24,
-      "ctr": 0,
-      "position": 20.21
-    },
-    {
-      "query": "window cleaning burnley",
-      "clicks": 0,
-      "impressions": 24,
-      "ctr": 0,
-      "position": 63.46
-    },
-    {
-      "query": "window cleaning claremont",
-      "clicks": 0,
-      "impressions": 24,
-      "ctr": 0,
-      "position": 7.42
+      "position": 30.24
     },
     {
       "query": "window cleaning attadale",
       "clicks": 0,
+      "impressions": 24,
+      "ctr": 0,
+      "position": 9.83
+    },
+    {
+      "query": "window cleaning canning vale",
+      "clicks": 0,
+      "impressions": 24,
+      "ctr": 0,
+      "position": 46.88
+    },
+    {
+      "query": "window cleaning ellenbrook",
+      "clicks": 0,
+      "impressions": 24,
+      "ctr": 0,
+      "position": 31.25
+    },
+    {
+      "query": "commercial window cleaner",
+      "clicks": 0,
       "impressions": 23,
       "ctr": 0,
-      "position": 10
+      "position": 1.35
     },
     {
       "query": "commercial window cleaning ellenbrook",
       "clicks": 0,
-      "impressions": 22,
+      "impressions": 23,
       "ctr": 0,
-      "position": 57.55
+      "position": 54
+    },
+    {
+      "query": "window cleaner in perth",
+      "clicks": 0,
+      "impressions": 23,
+      "ctr": 0,
+      "position": 20.74
+    },
+    {
+      "query": "window cleaning burnley",
+      "clicks": 0,
+      "impressions": 23,
+      "ctr": 0,
+      "position": 61.96
     },
     {
       "query": "high rise window cleaner near me",
@@ -950,53 +964,11 @@
       "position": 7.41
     },
     {
-      "query": "highrise window cleaning perth",
+      "query": "window cleaning ormond",
       "clicks": 0,
       "impressions": 22,
       "ctr": 0,
-      "position": 19.09
-    },
-    {
-      "query": "pressure cleaning fremantle",
-      "clicks": 0,
-      "impressions": 22,
-      "ctr": 0,
-      "position": 24.68
-    },
-    {
-      "query": "window cleaner fremantle",
-      "clicks": 0,
-      "impressions": 22,
-      "ctr": 0,
-      "position": 28.23
-    },
-    {
-      "query": "window cleaner in perth",
-      "clicks": 0,
-      "impressions": 22,
-      "ctr": 0,
-      "position": 21.14
-    },
-    {
-      "query": "window cleaners nedlands",
-      "clicks": 0,
-      "impressions": 22,
-      "ctr": 0,
-      "position": 3.41
-    },
-    {
-      "query": "window cleaning dalkeith",
-      "clicks": 0,
-      "impressions": 22,
-      "ctr": 0,
-      "position": 19.64
-    },
-    {
-      "query": "window cleaning residential",
-      "clicks": 0,
-      "impressions": 22,
-      "ctr": 0,
-      "position": 17.86
+      "position": 79.41
     },
     {
       "query": "affordable window cleaning beechboro",
@@ -1006,11 +978,11 @@
       "position": 12.05
     },
     {
-      "query": "drone window cleaning near me",
+      "query": "body corporate window cleaning",
       "clicks": 0,
       "impressions": 21,
       "ctr": 0,
-      "position": 26.38
+      "position": 87.62
     },
     {
       "query": "jandakot gutter cleaning",
@@ -1020,11 +992,18 @@
       "position": 16.14
     },
     {
-      "query": "solar panels beechboro",
+      "query": "residential window cleaning ellenbrook",
       "clicks": 0,
       "impressions": 21,
       "ctr": 0,
-      "position": 30.86
+      "position": 21.71
+    },
+    {
+      "query": "window cleaning residential",
+      "clicks": 0,
+      "impressions": 21,
+      "ctr": 0,
+      "position": 17.43
     },
     {
       "query": "clean windows for homes beechboro",
@@ -1041,25 +1020,32 @@
       "position": 53.65
     },
     {
-      "query": "high rise window cleaning fremantle",
+      "query": "domestic window cleaning",
       "clicks": 0,
       "impressions": 20,
       "ctr": 0,
-      "position": 36.65
+      "position": 31.6
     },
     {
-      "query": "industrial window cleaning perth",
+      "query": "drone window cleaning near me",
       "clicks": 0,
       "impressions": 20,
       "ctr": 0,
-      "position": 35.05
+      "position": 27.65
     },
     {
-      "query": "residential window cleaning ellenbrook",
+      "query": "highrise window cleaner fremantle",
       "clicks": 0,
       "impressions": 20,
       "ctr": 0,
-      "position": 21.85
+      "position": 40.25
+    },
+    {
+      "query": "highrise window cleaning perth",
+      "clicks": 0,
+      "impressions": 20,
+      "ctr": 0,
+      "position": 20.9
     },
     {
       "query": "roof cleaning joondalup",
@@ -1067,6 +1053,27 @@
       "impressions": 20,
       "ctr": 0,
       "position": 36.75
+    },
+    {
+      "query": "solar panels beechboro",
+      "clicks": 0,
+      "impressions": 20,
+      "ctr": 0,
+      "position": 31.25
+    },
+    {
+      "query": "window cleaner fremantle",
+      "clicks": 0,
+      "impressions": 20,
+      "ctr": 0,
+      "position": 28.15
+    },
+    {
+      "query": "balcatta glass balcatta wa",
+      "clicks": 0,
+      "impressions": 19,
+      "ctr": 0,
+      "position": 71.32
     },
     {
       "query": "curtain cleaning alexander heights",
@@ -1090,6 +1097,13 @@
       "position": 31.84
     },
     {
+      "query": "high rise window cleaning fremantle",
+      "clicks": 0,
+      "impressions": 19,
+      "ctr": 0,
+      "position": 36.05
+    },
+    {
       "query": "strata cleaning perth",
       "clicks": 0,
       "impressions": 19,
@@ -1097,11 +1111,11 @@
       "position": 26.47
     },
     {
-      "query": "window cleaning ormond",
+      "query": "window cleaning victoria park",
       "clicks": 0,
       "impressions": 19,
       "ctr": 0,
-      "position": 74.42
+      "position": 38.58
     },
     {
       "query": "facade cleaning",
@@ -1109,6 +1123,34 @@
       "impressions": 18,
       "ctr": 0,
       "position": 18.39
+    },
+    {
+      "query": "high rise cleaners perth",
+      "clicks": 0,
+      "impressions": 18,
+      "ctr": 0,
+      "position": 40.61
+    },
+    {
+      "query": "house washing joondalup",
+      "clicks": 0,
+      "impressions": 18,
+      "ctr": 0,
+      "position": 33.89
+    },
+    {
+      "query": "residential window cleaning near me",
+      "clicks": 0,
+      "impressions": 18,
+      "ctr": 0,
+      "position": 52.72
+    },
+    {
+      "query": "window washing services bennett springs",
+      "clicks": 0,
+      "impressions": 18,
+      "ctr": 0,
+      "position": 64
     },
     {
       "query": "aspect",
@@ -1125,18 +1167,25 @@
       "position": 11.94
     },
     {
-      "query": "residential window cleaning near me",
+      "query": "rope access window cleaning perth",
       "clicks": 0,
       "impressions": 17,
       "ctr": 0,
-      "position": 52.12
+      "position": 55.76
     },
     {
-      "query": "window cleaning victoria park",
+      "query": "window and house cleaning",
       "clicks": 0,
       "impressions": 17,
       "ctr": 0,
-      "position": 39.47
+      "position": 16.24
+    },
+    {
+      "query": "window cleaners nedlands",
+      "clicks": 0,
+      "impressions": 17,
+      "ctr": 0,
+      "position": 2.94
     },
     {
       "query": "apartment window cleaning bassandean",
@@ -1151,6 +1200,13 @@
       "impressions": 16,
       "ctr": 0,
       "position": 10.06
+    },
+    {
+      "query": "commercial window cleaning near me",
+      "clicks": 0,
+      "impressions": 16,
+      "ctr": 0,
+      "position": 52.94
     },
     {
       "query": "curtain cleaning applecross",
@@ -1174,13 +1230,6 @@
       "position": 16.75
     },
     {
-      "query": "house washing joondalup",
-      "clicks": 0,
-      "impressions": 16,
-      "ctr": 0,
-      "position": 33.75
-    },
-    {
       "query": "roof cleaning nedlands",
       "clicks": 0,
       "impressions": 16,
@@ -1188,39 +1237,11 @@
       "position": 36.69
     },
     {
-      "query": "window and house cleaning",
-      "clicks": 0,
-      "impressions": 16,
-      "ctr": 0,
-      "position": 16.25
-    },
-    {
-      "query": "window washing services bennett springs",
-      "clicks": 0,
-      "impressions": 16,
-      "ctr": 0,
-      "position": 65.19
-    },
-    {
       "query": "book window cleaning beechboro",
       "clicks": 0,
       "impressions": 15,
       "ctr": 0,
       "position": 16.2
-    },
-    {
-      "query": "commercial window cleaner",
-      "clicks": 0,
-      "impressions": 15,
-      "ctr": 0,
-      "position": 1.53
-    },
-    {
-      "query": "commercial window cleaning near me",
-      "clicks": 0,
-      "impressions": 15,
-      "ctr": 0,
-      "position": 52.93
     },
     {
       "query": "curtain cleaning karrakup",
@@ -1272,13 +1293,6 @@
       "position": 23.93
     },
     {
-      "query": "window cleaners perth wa",
-      "clicks": 0,
-      "impressions": 15,
-      "ctr": 0,
-      "position": 27.13
-    },
-    {
       "query": "best window cleaners perth",
       "clicks": 0,
       "impressions": 14,
@@ -1293,11 +1307,11 @@
       "position": 8.21
     },
     {
-      "query": "high rise cleaners perth",
+      "query": "perth window cleaner",
       "clicks": 0,
       "impressions": 14,
       "ctr": 0,
-      "position": 40.5
+      "position": 26.14
     },
     {
       "query": "solar panels currambine",
@@ -1307,18 +1321,11 @@
       "position": 31.64
     },
     {
-      "query": "strata window cleaning",
+      "query": "window cleaners perth wa",
       "clicks": 0,
       "impressions": 14,
       "ctr": 0,
-      "position": 54.64
-    },
-    {
-      "query": "window cleaning como",
-      "clicks": 0,
-      "impressions": 14,
-      "ctr": 0,
-      "position": 37.86
+      "position": 25.64
     },
     {
       "query": "window cleaning north fremantle",
@@ -1332,14 +1339,7 @@
       "clicks": 0,
       "impressions": 14,
       "ctr": 0,
-      "position": 15
-    },
-    {
-      "query": "window cleaning services commercial",
-      "clicks": 0,
-      "impressions": 14,
-      "ctr": 0,
-      "position": 1.64
+      "position": 14
     },
     {
       "query": "windows cleaning in perth",
@@ -1354,6 +1354,13 @@
       "impressions": 13,
       "ctr": 0,
       "position": 18.31
+    },
+    {
+      "query": "apartment window cleaning bennett springs",
+      "clicks": 0,
+      "impressions": 13,
+      "ctr": 0,
+      "position": 18.62
     },
     {
       "query": "cheap window cleaning beechboro",
@@ -1377,11 +1384,11 @@
       "position": 12.54
     },
     {
-      "query": "perth window cleaner",
+      "query": "house washing fremantle",
       "clicks": 0,
       "impressions": 13,
       "ctr": 0,
-      "position": 27.46
+      "position": 16.08
     },
     {
       "query": "pressure washing port kennedy",
@@ -1391,11 +1398,18 @@
       "position": 18
     },
     {
-      "query": "apartment window cleaning bennett springs",
+      "query": "reliable window cleaners near me bennett springs",
       "clicks": 0,
-      "impressions": 12,
+      "impressions": 13,
       "ctr": 0,
-      "position": 18
+      "position": 51.38
+    },
+    {
+      "query": "window cleaning services commercial",
+      "clicks": 0,
+      "impressions": 13,
+      "ctr": 0,
+      "position": 1.69
     },
     {
       "query": "best window cleaners beechboro",
@@ -1405,39 +1419,67 @@
       "position": 16.5
     },
     {
-      "query": "drone window cleaner fremantle",
+      "query": "commercial window cleaning company near me",
       "clicks": 0,
       "impressions": 12,
       "ctr": 0,
-      "position": 30
+      "position": 69.08
     },
     {
-      "query": "drone window cleaning fremantle",
+      "query": "exterior window cleaning bennett springs",
       "clicks": 0,
       "impressions": 12,
       "ctr": 0,
-      "position": 15.92
+      "position": 24.42
     },
     {
-      "query": "house washing fremantle",
+      "query": "exterior window cleaning perth",
       "clicks": 0,
       "impressions": 12,
       "ctr": 0,
-      "position": 16.17
+      "position": 7.58
+    },
+    {
+      "query": "strata window cleaning",
+      "clicks": 0,
+      "impressions": 12,
+      "ctr": 0,
+      "position": 53.58
+    },
+    {
+      "query": "window cleaners near me bennett springs",
+      "clicks": 0,
+      "impressions": 12,
+      "ctr": 0,
+      "position": 54.08
     },
     {
       "query": "window cleaning howden",
       "clicks": 0,
       "impressions": 12,
       "ctr": 0,
-      "position": 77.17
+      "position": 78.83
     },
     {
-      "query": "window washers perth",
+      "query": "aspect cleaning",
       "clicks": 0,
-      "impressions": 12,
+      "impressions": 11,
       "ctr": 0,
-      "position": 23.5
+      "position": 5.73
+    },
+    {
+      "query": "best window cleaners bennett springs",
+      "clicks": 0,
+      "impressions": 11,
+      "ctr": 0,
+      "position": 17.82
+    },
+    {
+      "query": "construction window clean perth",
+      "clicks": 0,
+      "impressions": 11,
+      "ctr": 0,
+      "position": 30.82
     },
     {
       "query": "curtain cleaning ascot",
@@ -1454,6 +1496,27 @@
       "position": 43.55
     },
     {
+      "query": "drone window cleaner near me",
+      "clicks": 0,
+      "impressions": 11,
+      "ctr": 0,
+      "position": 4.91
+    },
+    {
+      "query": "drone window cleaning fremantle",
+      "clicks": 0,
+      "impressions": 11,
+      "ctr": 0,
+      "position": 17.27
+    },
+    {
+      "query": "external window cleaning services",
+      "clicks": 0,
+      "impressions": 11,
+      "ctr": 0,
+      "position": 33.64
+    },
+    {
       "query": "gutter cleaning nedlands",
       "clicks": 0,
       "impressions": 11,
@@ -1461,11 +1524,11 @@
       "position": 32.36
     },
     {
-      "query": "highrise drone window cleaning near me",
+      "query": "interior and exterior window cleaning bennett springs",
       "clicks": 0,
       "impressions": 11,
       "ctr": 0,
-      "position": 10.55
+      "position": 26
     },
     {
       "query": "perth gutter cleaning",
@@ -1473,20 +1536,6 @@
       "impressions": 11,
       "ctr": 0,
       "position": 55.91
-    },
-    {
-      "query": "reliable window cleaners near me bennett springs",
-      "clicks": 0,
-      "impressions": 11,
-      "ctr": 0,
-      "position": 54.27
-    },
-    {
-      "query": "rope access window cleaning perth",
-      "clicks": 0,
-      "impressions": 11,
-      "ctr": 0,
-      "position": 52.64
     },
     {
       "query": "solar panel cleaning safety",
@@ -1521,28 +1570,21 @@
       "clicks": 0,
       "impressions": 11,
       "ctr": 0,
-      "position": 17.91
+      "position": 16.91
     },
     {
-      "query": "window cleaning osborne park",
+      "query": "window cleaning como",
       "clicks": 0,
       "impressions": 11,
       "ctr": 0,
-      "position": 21.91
+      "position": 40.27
     },
     {
-      "query": "aspect cleaning",
+      "query": "clean windows for homes bennett springs",
       "clicks": 0,
       "impressions": 10,
       "ctr": 0,
-      "position": 6.1
-    },
-    {
-      "query": "best window cleaners bennett springs",
-      "clicks": 0,
-      "impressions": 10,
-      "ctr": 0,
-      "position": 17.6
+      "position": 28.8
     },
     {
       "query": "commercial strata cleaning services perth",
@@ -1552,13 +1594,6 @@
       "position": 20.7
     },
     {
-      "query": "commercial window cleaning company near me",
-      "clicks": 0,
-      "impressions": 10,
-      "ctr": 0,
-      "position": 72.4
-    },
-    {
       "query": "curtain cleaning padbury",
       "clicks": 0,
       "impressions": 10,
@@ -1566,32 +1601,25 @@
       "position": 50.4
     },
     {
-      "query": "drone window cleaner near me",
+      "query": "drone window cleaner fremantle",
       "clicks": 0,
       "impressions": 10,
       "ctr": 0,
-      "position": 3.5
+      "position": 31.3
     },
     {
-      "query": "expert window cleaning",
+      "query": "exterior window cleaning ballajura",
       "clicks": 0,
       "impressions": 10,
       "ctr": 0,
-      "position": 74.1
+      "position": 47.3
     },
     {
-      "query": "external window cleaning services",
+      "query": "highrise drone window cleaning near me",
       "clicks": 0,
       "impressions": 10,
       "ctr": 0,
-      "position": 34.1
-    },
-    {
-      "query": "high rise window cleaner fremantle",
-      "clicks": 0,
-      "impressions": 10,
-      "ctr": 0,
-      "position": 40.8
+      "position": 11.5
     },
     {
       "query": "house washing cottesloe",
@@ -1601,11 +1629,18 @@
       "position": 9.5
     },
     {
-      "query": "interior and exterior window cleaning bennett springs",
+      "query": "house window cleaning service belmont",
       "clicks": 0,
       "impressions": 10,
       "ctr": 0,
-      "position": 27.2
+      "position": 23.4
+    },
+    {
+      "query": "residential window cleaner near me bennett springs",
+      "clicks": 0,
+      "impressions": 10,
+      "ctr": 0,
+      "position": 29.7
     },
     {
       "query": "window cleaning blackburn",
@@ -1613,6 +1648,13 @@
       "impressions": 10,
       "ctr": 0,
       "position": 77.5
+    },
+    {
+      "query": "window cleaning near me bennett springs",
+      "clicks": 0,
+      "impressions": 10,
+      "ctr": 0,
+      "position": 71.8
     },
     {
       "query": "window cleaning perth northern suburbs",
@@ -1629,6 +1671,13 @@
       "position": 43.1
     },
     {
+      "query": "window track cleaning bennett springs",
+      "clicks": 0,
+      "impressions": 10,
+      "ctr": 0,
+      "position": 19.8
+    },
+    {
       "query": "window washer perth",
       "clicks": 0,
       "impressions": 10,
@@ -1636,11 +1685,11 @@
       "position": 30.3
     },
     {
-      "query": "clean windows for homes bennett springs",
+      "query": "window washers perth",
       "clicks": 0,
-      "impressions": 9,
+      "impressions": 10,
       "ctr": 0,
-      "position": 21.78
+      "position": 22.4
     },
     {
       "query": "curtain cleaning nedlands",
@@ -1650,11 +1699,11 @@
       "position": 29.78
     },
     {
-      "query": "exterior window cleaning bennett springs",
+      "query": "expert window cleaning",
       "clicks": 0,
       "impressions": 9,
       "ctr": 0,
-      "position": 23.33
+      "position": 73.78
     },
     {
       "query": "glass cleaner",
@@ -1678,6 +1727,20 @@
       "position": 22.56
     },
     {
+      "query": "professional window cleaning perth",
+      "clicks": 0,
+      "impressions": 9,
+      "ctr": 0,
+      "position": 17
+    },
+    {
+      "query": "residential window cleaning service ballajura",
+      "clicks": 0,
+      "impressions": 9,
+      "ctr": 0,
+      "position": 21.44
+    },
+    {
       "query": "roof cleaning fremantle",
       "clicks": 0,
       "impressions": 9,
@@ -1685,11 +1748,32 @@
       "position": 48.89
     },
     {
-      "query": "window cleaners near me bennett springs",
+      "query": "single storey window cleaning ballajura",
       "clicks": 0,
       "impressions": 9,
       "ctr": 0,
-      "position": 60.67
+      "position": 42.89
+    },
+    {
+      "query": "streak free window cleaning for perth homes belmont",
+      "clicks": 0,
+      "impressions": 9,
+      "ctr": 0,
+      "position": 55.44
+    },
+    {
+      "query": "window cleaning bicton",
+      "clicks": 0,
+      "impressions": 9,
+      "ctr": 0,
+      "position": 25
+    },
+    {
+      "query": "window cleaning east fremantle",
+      "clicks": 0,
+      "impressions": 9,
+      "ctr": 0,
+      "position": 31.44
     },
     {
       "query": "window cleaning mundaring",
@@ -1699,11 +1783,11 @@
       "position": 22.33
     },
     {
-      "query": "window track cleaning bennett springs",
+      "query": "window cleaning osborne park",
       "clicks": 0,
       "impressions": 9,
       "ctr": 0,
-      "position": 20.11
+      "position": 19.44
     },
     {
       "query": "affordable house cleaning beechboro",
@@ -1711,13 +1795,6 @@
       "impressions": 8,
       "ctr": 0,
       "position": 13.63
-    },
-    {
-      "query": "aspect cleaning services",
-      "clicks": 0,
-      "impressions": 8,
-      "ctr": 0,
-      "position": 5.88
     },
     {
       "query": "coates window cleaning",
@@ -1732,20 +1809,6 @@
       "impressions": 8,
       "ctr": 0,
       "position": 9
-    },
-    {
-      "query": "commercial window cleaning service perth",
-      "clicks": 0,
-      "impressions": 8,
-      "ctr": 0,
-      "position": 18.25
-    },
-    {
-      "query": "construction window clean perth",
-      "clicks": 0,
-      "impressions": 8,
-      "ctr": 0,
-      "position": 34.88
     },
     {
       "query": "curtain cleaning kwinana",
@@ -1769,11 +1832,11 @@
       "position": 26.63
     },
     {
-      "query": "exterior window cleaning ballajura",
+      "query": "domestic window cleaning service bennett springs",
       "clicks": 0,
       "impressions": 8,
       "ctr": 0,
-      "position": 49
+      "position": 26
     },
     {
       "query": "fascia cleaning",
@@ -1783,18 +1846,46 @@
       "position": 12
     },
     {
-      "query": "highrise drone window cleaner perth",
+      "query": "high rise window cleaner fremantle",
       "clicks": 0,
       "impressions": 8,
       "ctr": 0,
-      "position": 1
+      "position": 43.38
     },
     {
-      "query": "professional window cleaning perth",
+      "query": "home window cleaning ballajura",
+      "clicks": 0,
+      "impressions": 8,
+      "ctr": 0,
+      "position": 37.25
+    },
+    {
+      "query": "house window cleaner near me bennett springs",
       "clicks": 0,
       "impressions": 8,
       "ctr": 0,
       "position": 17.75
+    },
+    {
+      "query": "reliable window cleaners near me guildford",
+      "clicks": 0,
+      "impressions": 8,
+      "ctr": 0,
+      "position": 30.13
+    },
+    {
+      "query": "residential exterior window cleaning",
+      "clicks": 0,
+      "impressions": 8,
+      "ctr": 0,
+      "position": 69
+    },
+    {
+      "query": "same day window cleaning ballajura",
+      "clicks": 0,
+      "impressions": 8,
+      "ctr": 0,
+      "position": 27.88
     },
     {
       "query": "solar panel wash",
@@ -1804,18 +1895,18 @@
       "position": 87.25
     },
     {
-      "query": "window cleaner canning vale",
+      "query": "streak free window cleaning for perth homes bennett springs",
       "clicks": 0,
       "impressions": 8,
       "ctr": 0,
-      "position": 52.25
+      "position": 48.63
     },
     {
-      "query": "window cleaning bicton",
+      "query": "window cleaners wa",
       "clicks": 0,
       "impressions": 8,
       "ctr": 0,
-      "position": 25.5
+      "position": 7.13
     },
     {
       "query": "window cleaning black rock",
@@ -1832,25 +1923,60 @@
       "position": 44.63
     },
     {
-      "query": "window cleaning east fremantle",
+      "query": "window cleaning company near me bennett springs",
       "clicks": 0,
       "impressions": 8,
       "ctr": 0,
-      "position": 37.13
+      "position": 46.38
+    },
+    {
+      "query": "window cleaning kalamunda",
+      "clicks": 0,
+      "impressions": 8,
+      "ctr": 0,
+      "position": 28
     },
     {
       "query": "window cleaning mosman park",
       "clicks": 0,
       "impressions": 8,
       "ctr": 0,
-      "position": 22
+      "position": 21
     },
     {
-      "query": "window cleaning near me bennett springs",
+      "query": "window cleaning prices bennett springs",
       "clicks": 0,
       "impressions": 8,
       "ctr": 0,
-      "position": 69.25
+      "position": 38.5
+    },
+    {
+      "query": "window cleaning quote ballajura",
+      "clicks": 0,
+      "impressions": 8,
+      "ctr": 0,
+      "position": 43.5
+    },
+    {
+      "query": "window cleaning services ballajura",
+      "clicks": 0,
+      "impressions": 8,
+      "ctr": 0,
+      "position": 43.63
+    },
+    {
+      "query": "aspect cleaning services",
+      "clicks": 0,
+      "impressions": 7,
+      "ctr": 0,
+      "position": 5.57
+    },
+    {
+      "query": "book residential window cleaner ballajura",
+      "clicks": 0,
+      "impressions": 7,
+      "ctr": 0,
+      "position": 44
     },
     {
       "query": "commercial office cleaning perth",
@@ -1858,6 +1984,13 @@
       "impressions": 7,
       "ctr": 0,
       "position": 15.57
+    },
+    {
+      "query": "commercial window cleaning service perth",
+      "clicks": 0,
+      "impressions": 7,
+      "ctr": 0,
+      "position": 17.86
     },
     {
       "query": "curtain cleaning green fields",
@@ -1874,46 +2007,74 @@
       "position": 5.14
     },
     {
-      "query": "domestic window cleaning service bennett springs",
+      "query": "get window cleaning quote ballajura",
+      "clicks": 0,
+      "impressions": 7,
+      "ctr": 0,
+      "position": 52.71
+    },
+    {
+      "query": "get window cleaning quote belmont",
+      "clicks": 0,
+      "impressions": 7,
+      "ctr": 0,
+      "position": 27.29
+    },
+    {
+      "query": "highrise drone window cleaner perth",
+      "clicks": 0,
+      "impressions": 7,
+      "ctr": 0,
+      "position": 1
+    },
+    {
+      "query": "house window cleaning service bennett springs",
       "clicks": 0,
       "impressions": 7,
       "ctr": 0,
       "position": 28.29
     },
     {
-      "query": "exterior window cleaning perth",
+      "query": "interior and exterior window cleaning belmont",
       "clicks": 0,
       "impressions": 7,
       "ctr": 0,
-      "position": 8.14
+      "position": 19.71
     },
     {
-      "query": "house window cleaning service belmont",
+      "query": "local window cleaning service belmont",
       "clicks": 0,
       "impressions": 7,
       "ctr": 0,
-      "position": 25
+      "position": 26.57
     },
     {
-      "query": "reliable window cleaners near me guildford",
+      "query": "professional residential window cleaning",
       "clicks": 0,
       "impressions": 7,
       "ctr": 0,
-      "position": 28.71
+      "position": 58
     },
     {
-      "query": "residential exterior window cleaning",
+      "query": "professional window cleaning ballajura",
       "clicks": 0,
       "impressions": 7,
       "ctr": 0,
-      "position": 67.57
+      "position": 46.29
     },
     {
-      "query": "residential window cleaner near me bennett springs",
+      "query": "residential window cleaning service belmont",
       "clicks": 0,
       "impressions": 7,
       "ctr": 0,
-      "position": 29.43
+      "position": 19.86
+    },
+    {
+      "query": "same day window cleaning belmont",
+      "clicks": 0,
+      "impressions": 7,
+      "ctr": 0,
+      "position": 24.29
     },
     {
       "query": "solar cleaning",
@@ -1930,18 +2091,32 @@
       "position": 30.57
     },
     {
+      "query": "townhouse window cleaning ballajura",
+      "clicks": 0,
+      "impressions": 7,
+      "ctr": 0,
+      "position": 58.71
+    },
+    {
+      "query": "two storey window cleaning bennett springs",
+      "clicks": 0,
+      "impressions": 7,
+      "ctr": 0,
+      "position": 15.86
+    },
+    {
+      "query": "unit window cleaning ballajura",
+      "clicks": 0,
+      "impressions": 7,
+      "ctr": 0,
+      "position": 23.29
+    },
+    {
       "query": "window cleaning in perth",
       "clicks": 0,
       "impressions": 7,
       "ctr": 0,
       "position": 25
-    },
-    {
-      "query": "window cleaning kalamunda",
-      "clicks": 0,
-      "impressions": 7,
-      "ctr": 0,
-      "position": 29.14
     },
     {
       "query": "window cleaning midland",
@@ -1951,13 +2126,6 @@
       "position": 29.29
     },
     {
-      "query": "window cleaning prices bennett springs",
-      "clicks": 0,
-      "impressions": 7,
-      "ctr": 0,
-      "position": 40
-    },
-    {
       "query": "window cleaning residential near me",
       "clicks": 0,
       "impressions": 7,
@@ -1965,18 +2133,18 @@
       "position": 66.43
     },
     {
-      "query": "window cleaning services ballajura",
-      "clicks": 0,
-      "impressions": 7,
-      "ctr": 0,
-      "position": 48
-    },
-    {
       "query": "window cleaning services kenwick wa",
       "clicks": 0,
       "impressions": 7,
       "ctr": 0,
       "position": 38.86
+    },
+    {
+      "query": "window sill cleaning ballajura",
+      "clicks": 0,
+      "impressions": 7,
+      "ctr": 0,
+      "position": 27.57
     },
     {
       "query": "roof cleaning perth",
@@ -1993,6 +2161,34 @@
       "position": 18
     },
     {
+      "query": "affordable window cleaning ballajura",
+      "clicks": 0,
+      "impressions": 6,
+      "ctr": 0,
+      "position": 49.17
+    },
+    {
+      "query": "affordable window cleaning belmont",
+      "clicks": 0,
+      "impressions": 6,
+      "ctr": 0,
+      "position": 31.17
+    },
+    {
+      "query": "apartment window cleaning belmont",
+      "clicks": 0,
+      "impressions": 6,
+      "ctr": 0,
+      "position": 39.33
+    },
+    {
+      "query": "best window cleaner near me bennett springs",
+      "clicks": 0,
+      "impressions": 6,
+      "ctr": 0,
+      "position": 34.17
+    },
+    {
       "query": "commercial cleaning balcatta",
       "clicks": 0,
       "impressions": 6,
@@ -2007,6 +2203,13 @@
       "position": 58.67
     },
     {
+      "query": "domestic window cleaning service ballajura",
+      "clicks": 0,
+      "impressions": 6,
+      "ctr": 0,
+      "position": 17.83
+    },
+    {
       "query": "dry ice blasting and cleaning beechboro",
       "clicks": 0,
       "impressions": 6,
@@ -2014,11 +2217,11 @@
       "position": 75.33
     },
     {
-      "query": "highrise window cleaning",
+      "query": "gutter cleaning duncraig",
       "clicks": 0,
       "impressions": 6,
       "ctr": 0,
-      "position": 1
+      "position": 41.5
     },
     {
       "query": "home window cleaners",
@@ -2028,46 +2231,53 @@
       "position": 56.83
     },
     {
-      "query": "local window cleaning service belmont",
+      "query": "interior and exterior window cleaning service bennett springs",
       "clicks": 0,
       "impressions": 6,
       "ctr": 0,
-      "position": 28.17
+      "position": 44.5
     },
     {
-      "query": "pressure cleaning perth wa",
+      "query": "local window cleaners for houses and apartments bennett springs",
       "clicks": 0,
       "impressions": 6,
       "ctr": 0,
-      "position": 61.5
+      "position": 31.83
     },
     {
-      "query": "professional window cleaning ballajura",
+      "query": "professional window cleaner near me bennett springs",
       "clicks": 0,
       "impressions": 6,
       "ctr": 0,
-      "position": 51
+      "position": 47
     },
     {
-      "query": "render cleaning perth",
+      "query": "professional window cleaners bennett springs",
       "clicks": 0,
       "impressions": 6,
       "ctr": 0,
-      "position": 40.17
+      "position": 18.5
     },
     {
-      "query": "single storey window cleaning ballajura",
+      "query": "professional window cleaning",
       "clicks": 0,
       "impressions": 6,
       "ctr": 0,
-      "position": 34.67
+      "position": 1
     },
     {
-      "query": "solar panels sinagra",
+      "query": "residential window cleaning service bennett springs",
       "clicks": 0,
       "impressions": 6,
       "ctr": 0,
-      "position": 26.83
+      "position": 35.5
+    },
+    {
+      "query": "same day window cleaning bennett springs",
+      "clicks": 0,
+      "impressions": 6,
+      "ctr": 0,
+      "position": 19.17
     },
     {
       "query": "strata cleaning services perth",
@@ -2077,25 +2287,39 @@
       "position": 14.5
     },
     {
-      "query": "streak free window cleaning for perth homes belmont",
+      "query": "unit and apartment window cleaning perth",
       "clicks": 0,
       "impressions": 6,
       "ctr": 0,
-      "position": 53.33
+      "position": 4.17
     },
     {
-      "query": "streak free window cleaning for perth homes bennett springs",
+      "query": "unit window cleaning bennett springs",
       "clicks": 0,
       "impressions": 6,
       "ctr": 0,
-      "position": 49.5
+      "position": 19.83
     },
     {
-      "query": "window cleaning company near me bennett springs",
+      "query": "window cleaners near me belmont",
       "clicks": 0,
       "impressions": 6,
       "ctr": 0,
-      "position": 48.17
+      "position": 19.67
+    },
+    {
+      "query": "window cleaning company near me belmont",
+      "clicks": 0,
+      "impressions": 6,
+      "ctr": 0,
+      "position": 9.33
+    },
+    {
+      "query": "window cleaning cost perth",
+      "clicks": 0,
+      "impressions": 6,
+      "ctr": 0,
+      "position": 38.83
     },
     {
       "query": "window cleaning dunsborough",
@@ -2105,18 +2329,18 @@
       "position": 31
     },
     {
-      "query": "window cleaning fairfield",
-      "clicks": 0,
-      "impressions": 6,
-      "ctr": 0,
-      "position": 61
-    },
-    {
       "query": "window cleaning floreat",
       "clicks": 0,
       "impressions": 6,
       "ctr": 0,
       "position": 24.5
+    },
+    {
+      "query": "window cleaning quote belmont",
+      "clicks": 0,
+      "impressions": 6,
+      "ctr": 0,
+      "position": 27.33
     },
     {
       "query": "window cleaning seaford",
@@ -2133,11 +2357,32 @@
       "position": 7.83
     },
     {
-      "query": "window cleaning st george",
+      "query": "window cleaning south perth",
       "clicks": 0,
       "impressions": 6,
       "ctr": 0,
       "position": 35.33
+    },
+    {
+      "query": "window cleaning st george",
+      "clicks": 0,
+      "impressions": 6,
+      "ctr": 0,
+      "position": 32
+    },
+    {
+      "query": "window cleaning wa",
+      "clicks": 0,
+      "impressions": 6,
+      "ctr": 0,
+      "position": 18.83
+    },
+    {
+      "query": "window frame cleaning belmont",
+      "clicks": 0,
+      "impressions": 6,
+      "ctr": 0,
+      "position": 24.17
     },
     {
       "query": "window washers near me",
@@ -2147,25 +2392,39 @@
       "position": 47.33
     },
     {
-      "query": "affordable window cleaning belmont",
+      "query": "window washing warwick",
       "clicks": 0,
-      "impressions": 5,
+      "impressions": 6,
       "ctr": 0,
-      "position": 33
+      "position": 46.33
     },
     {
-      "query": "apartment window cleaning belmont",
+      "query": "cheap window cleaning ballajura",
       "clicks": 0,
       "impressions": 5,
       "ctr": 0,
-      "position": 41.4
+      "position": 29.8
     },
     {
-      "query": "best window cleaner near me bennett springs",
+      "query": "cheap window cleaning perth",
       "clicks": 0,
       "impressions": 5,
       "ctr": 0,
-      "position": 38.8
+      "position": 19.4
+    },
+    {
+      "query": "clean windows for homes ballajura",
+      "clicks": 0,
+      "impressions": 5,
+      "ctr": 0,
+      "position": 40
+    },
+    {
+      "query": "deck sealing nedlands",
+      "clicks": 0,
+      "impressions": 5,
+      "ctr": 0,
+      "position": 7.6
     },
     {
       "query": "domestic window cleaning perth",
@@ -2189,18 +2448,11 @@
       "position": 19.8
     },
     {
-      "query": "get window cleaning quote ballajura",
+      "query": "fremantle pressure cleaning",
       "clicks": 0,
       "impressions": 5,
       "ctr": 0,
-      "position": 42.6
-    },
-    {
-      "query": "get window cleaning quote belmont",
-      "clicks": 0,
-      "impressions": 5,
-      "ctr": 0,
-      "position": 30
+      "position": 19.6
     },
     {
       "query": "glass door cleaning bennett springs",
@@ -2210,18 +2462,18 @@
       "position": 17.8
     },
     {
+      "query": "gutter cleaning applecross",
+      "clicks": 0,
+      "impressions": 5,
+      "ctr": 0,
+      "position": 54.6
+    },
+    {
       "query": "gutter cleaning beaconsfield",
       "clicks": 0,
       "impressions": 5,
       "ctr": 0,
       "position": 60
-    },
-    {
-      "query": "gutter cleaning duncraig",
-      "clicks": 0,
-      "impressions": 5,
-      "ctr": 0,
-      "position": 37.6
     },
     {
       "query": "highrise drone window cleaner fremantle",
@@ -2231,6 +2483,13 @@
       "position": 49
     },
     {
+      "query": "highrise window cleaning",
+      "clicks": 0,
+      "impressions": 5,
+      "ctr": 0,
+      "position": 1
+    },
+    {
       "query": "hire window cleaners ballajura",
       "clicks": 0,
       "impressions": 5,
@@ -2238,11 +2497,25 @@
       "position": 43.6
     },
     {
-      "query": "interior and exterior window cleaning belmont",
+      "query": "home window cleaning service ballajura",
       "clicks": 0,
       "impressions": 5,
       "ctr": 0,
-      "position": 20.4
+      "position": 30.6
+    },
+    {
+      "query": "inside window cleaning ballajura",
+      "clicks": 0,
+      "impressions": 5,
+      "ctr": 0,
+      "position": 41
+    },
+    {
+      "query": "interior and exterior window cleaning ballajura",
+      "clicks": 0,
+      "impressions": 5,
+      "ctr": 0,
+      "position": 35.4
     },
     {
       "query": "interior window cleaning belmont",
@@ -2259,11 +2532,11 @@
       "position": 48.8
     },
     {
-      "query": "local window cleaners for houses and apartments bennett springs",
+      "query": "outside window cleaning ballajura",
       "clicks": 0,
       "impressions": 5,
       "ctr": 0,
-      "position": 29.8
+      "position": 38.6
     },
     {
       "query": "painting residential window cleaning",
@@ -2273,13 +2546,6 @@
       "position": 44
     },
     {
-      "query": "perth pressure washing",
-      "clicks": 0,
-      "impressions": 5,
-      "ctr": 0,
-      "position": 54.4
-    },
-    {
       "query": "perth strata cleaning services",
       "clicks": 0,
       "impressions": 5,
@@ -2287,11 +2553,39 @@
       "position": 18.2
     },
     {
-      "query": "professional window cleaning",
+      "query": "pressure cleaning perth wa",
       "clicks": 0,
       "impressions": 5,
       "ctr": 0,
-      "position": 1
+      "position": 61.4
+    },
+    {
+      "query": "professional window cleaner near me belmont",
+      "clicks": 0,
+      "impressions": 5,
+      "ctr": 0,
+      "position": 27.6
+    },
+    {
+      "query": "professional window cleaners ballajura",
+      "clicks": 0,
+      "impressions": 5,
+      "ctr": 0,
+      "position": 51.8
+    },
+    {
+      "query": "regular window cleaning belmont",
+      "clicks": 0,
+      "impressions": 5,
+      "ctr": 0,
+      "position": 23.8
+    },
+    {
+      "query": "render cleaning perth",
+      "clicks": 0,
+      "impressions": 5,
+      "ctr": 0,
+      "position": 42.4
     },
     {
       "query": "residential window cleaners",
@@ -2301,11 +2595,11 @@
       "position": 53.2
     },
     {
-      "query": "residential window cleaning service belmont",
+      "query": "roof cleaning applecross",
       "clicks": 0,
       "impressions": 5,
       "ctr": 0,
-      "position": 20.4
+      "position": 69.6
     },
     {
       "query": "rope access specialists guildford",
@@ -2322,20 +2616,6 @@
       "position": 10.2
     },
     {
-      "query": "same day window cleaning belmont",
-      "clicks": 0,
-      "impressions": 5,
-      "ctr": 0,
-      "position": 26.4
-    },
-    {
-      "query": "same day window cleaning bennett springs",
-      "clicks": 0,
-      "impressions": 5,
-      "ctr": 0,
-      "position": 18.6
-    },
-    {
       "query": "screen cleaners",
       "clicks": 0,
       "impressions": 5,
@@ -2350,11 +2630,18 @@
       "position": 18.4
     },
     {
+      "query": "solar panel cleaning cost perth",
+      "clicks": 0,
+      "impressions": 5,
+      "ctr": 0,
+      "position": 43.8
+    },
+    {
       "query": "solar panel cleaning service perth",
       "clicks": 0,
       "impressions": 5,
       "ctr": 0,
-      "position": 45.4
+      "position": 39.6
     },
     {
       "query": "strata cleaner fremantle",
@@ -2364,25 +2651,46 @@
       "position": 53.6
     },
     {
-      "query": "townhouse window cleaning ballajura",
+      "query": "streak free window cleaning ballajura",
       "clicks": 0,
       "impressions": 5,
       "ctr": 0,
-      "position": 62.2
+      "position": 27.2
     },
     {
-      "query": "two storey window cleaning bennett springs",
+      "query": "trusted window cleaners near me bennett springs",
       "clicks": 0,
       "impressions": 5,
       "ctr": 0,
-      "position": 14.2
+      "position": 42
     },
     {
-      "query": "window cleaners wa",
+      "query": "two storey window cleaning ballajura",
       "clicks": 0,
       "impressions": 5,
       "ctr": 0,
-      "position": 10.8
+      "position": 25
+    },
+    {
+      "query": "window cleaner canning vale",
+      "clicks": 0,
+      "impressions": 5,
+      "ctr": 0,
+      "position": 48.8
+    },
+    {
+      "query": "window cleaner quote bennett springs",
+      "clicks": 0,
+      "impressions": 5,
+      "ctr": 0,
+      "position": 17.8
+    },
+    {
+      "query": "window cleaning ballajura",
+      "clicks": 0,
+      "impressions": 5,
+      "ctr": 0,
+      "position": 20.4
     },
     {
       "query": "window cleaning bedford park",
@@ -2392,11 +2700,11 @@
       "position": 93.2
     },
     {
-      "query": "window cleaning cost perth",
+      "query": "window cleaning company near me ballajura",
       "clicks": 0,
       "impressions": 5,
       "ctr": 0,
-      "position": 43.4
+      "position": 26.8
     },
     {
       "query": "window cleaning local",
@@ -2406,32 +2714,25 @@
       "position": 40
     },
     {
-      "query": "window cleaning quote belmont",
+      "query": "window cleaning near me warwick",
       "clicks": 0,
       "impressions": 5,
       "ctr": 0,
-      "position": 28.8
+      "position": 13.2
     },
     {
-      "query": "window cleaning south perth",
+      "query": "window frame cleaning bennett springs",
       "clicks": 0,
       "impressions": 5,
       "ctr": 0,
-      "position": 38.4
+      "position": 18.2
     },
     {
-      "query": "window cleaning wa",
+      "query": "window sill cleaning bennett springs",
       "clicks": 0,
       "impressions": 5,
       "ctr": 0,
-      "position": 20.4
-    },
-    {
-      "query": "window washing warwick",
-      "clicks": 0,
-      "impressions": 5,
-      "ctr": 0,
-      "position": 42.8
+      "position": 18
     },
     {
       "query": "aspect windows",
@@ -2446,13 +2747,6 @@
       "impressions": 4,
       "ctr": 0,
       "position": 19
-    },
-    {
-      "query": "affordable window cleaning ballajura",
-      "clicks": 0,
-      "impressions": 4,
-      "ctr": 0,
-      "position": 47.5
     },
     {
       "query": "affordable window cleaning bassandean",
@@ -2483,18 +2777,18 @@
       "position": 64.25
     },
     {
+      "query": "best window cleaner near me guildford",
+      "clicks": 0,
+      "impressions": 4,
+      "ctr": 0,
+      "position": 31
+    },
+    {
       "query": "blinds cleaning beaconsfield",
       "clicks": 0,
       "impressions": 4,
       "ctr": 0,
       "position": 61.25
-    },
-    {
-      "query": "book residential window cleaner ballajura",
-      "clicks": 0,
-      "impressions": 4,
-      "ctr": 0,
-      "position": 66.5
     },
     {
       "query": "book residential window cleaner dianella",
@@ -2518,11 +2812,11 @@
       "position": 21
     },
     {
-      "query": "cheap window cleaning perth",
+      "query": "clean windows for homes belmont",
       "clicks": 0,
       "impressions": 4,
       "ctr": 0,
-      "position": 20.25
+      "position": 54
     },
     {
       "query": "commercial office cleaning west perth",
@@ -2560,6 +2854,13 @@
       "position": 60.75
     },
     {
+      "query": "domestic window cleaning ballajura",
+      "clicks": 0,
+      "impressions": 4,
+      "ctr": 0,
+      "position": 28.75
+    },
+    {
       "query": "domestic window cleaning belmont",
       "clicks": 0,
       "impressions": 4,
@@ -2595,6 +2896,27 @@
       "position": 48.75
     },
     {
+      "query": "hire window cleaners belmont",
+      "clicks": 0,
+      "impressions": 4,
+      "ctr": 0,
+      "position": 26.75
+    },
+    {
+      "query": "hire window cleaners bennett springs",
+      "clicks": 0,
+      "impressions": 4,
+      "ctr": 0,
+      "position": 23
+    },
+    {
+      "query": "home window cleaning service bennett springs",
+      "clicks": 0,
+      "impressions": 4,
+      "ctr": 0,
+      "position": 21.25
+    },
+    {
       "query": "house washing ascot",
       "clicks": 0,
       "impressions": 4,
@@ -2602,18 +2924,39 @@
       "position": 72.25
     },
     {
-      "query": "house window cleaner near me bennett springs",
+      "query": "house window cleaning ballajura",
       "clicks": 0,
       "impressions": 4,
       "ctr": 0,
-      "position": 17.25
+      "position": 23.75
     },
     {
-      "query": "house window cleaning service bennett springs",
+      "query": "house window cleaning service ballajura",
       "clicks": 0,
       "impressions": 4,
       "ctr": 0,
-      "position": 33.25
+      "position": 23.5
+    },
+    {
+      "query": "inside window cleaning guildford",
+      "clicks": 0,
+      "impressions": 4,
+      "ctr": 0,
+      "position": 38
+    },
+    {
+      "query": "interior and exterior window cleaning service ballajura",
+      "clicks": 0,
+      "impressions": 4,
+      "ctr": 0,
+      "position": 41.25
+    },
+    {
+      "query": "interior and exterior window cleaning service belmont",
+      "clicks": 0,
+      "impressions": 4,
+      "ctr": 0,
+      "position": 13
     },
     {
       "query": "local window cleaner near me",
@@ -2635,6 +2978,20 @@
       "impressions": 4,
       "ctr": 0,
       "position": 30
+    },
+    {
+      "query": "office window cleaning",
+      "clicks": 0,
+      "impressions": 4,
+      "ctr": 0,
+      "position": 44.5
+    },
+    {
+      "query": "outside window cleaning belmont",
+      "clicks": 0,
+      "impressions": 4,
+      "ctr": 0,
+      "position": 25
     },
     {
       "query": "pbs window cleaning perth",
@@ -2665,25 +3022,18 @@
       "position": 23.75
     },
     {
-      "query": "professional window cleaner near me belmont",
+      "query": "residential home window cleaning",
       "clicks": 0,
       "impressions": 4,
       "ctr": 0,
-      "position": 31.25
+      "position": 54.75
     },
     {
-      "query": "professional window cleaner near me bennett springs",
+      "query": "residential window cleaning ballajura",
       "clicks": 0,
       "impressions": 4,
       "ctr": 0,
-      "position": 64.75
-    },
-    {
-      "query": "professional window cleaners bennett springs",
-      "clicks": 0,
-      "impressions": 4,
-      "ctr": 0,
-      "position": 19.75
+      "position": 26.25
     },
     {
       "query": "residential window cleaning companies near me",
@@ -2700,18 +3050,11 @@
       "position": 69.25
     },
     {
-      "query": "residential window cleaning service ballajura",
+      "query": "roof cleaning claremont",
       "clicks": 0,
       "impressions": 4,
       "ctr": 0,
-      "position": 24.25
-    },
-    {
-      "query": "residential window cleaning service bennett springs",
-      "clicks": 0,
-      "impressions": 4,
-      "ctr": 0,
-      "position": 42.75
+      "position": 1
     },
     {
       "query": "roof cleaning subiaco",
@@ -2726,13 +3069,6 @@
       "impressions": 4,
       "ctr": 0,
       "position": 30.25
-    },
-    {
-      "query": "same day window cleaning ballajura",
-      "clicks": 0,
-      "impressions": 4,
-      "ctr": 0,
-      "position": 31
     },
     {
       "query": "service works",
@@ -2756,13 +3092,6 @@
       "position": 17.25
     },
     {
-      "query": "solar panel cleaning cost perth",
-      "clicks": 0,
-      "impressions": 4,
-      "ctr": 0,
-      "position": 42.25
-    },
-    {
       "query": "solar panel washing",
       "clicks": 0,
       "impressions": 4,
@@ -2770,11 +3099,11 @@
       "position": 59.75
     },
     {
-      "query": "streak free window cleaning ballajura",
+      "query": "solar panels sinagra",
       "clicks": 0,
       "impressions": 4,
       "ctr": 0,
-      "position": 27.5
+      "position": 27.25
     },
     {
       "query": "streak free window cleaning bennett springs",
@@ -2784,18 +3113,18 @@
       "position": 18.5
     },
     {
+      "query": "streak free window cleaning for perth homes guildford",
+      "clicks": 0,
+      "impressions": 4,
+      "ctr": 0,
+      "position": 22.5
+    },
+    {
       "query": "trusted window cleaners near me guildford",
       "clicks": 0,
       "impressions": 4,
       "ctr": 0,
       "position": 29
-    },
-    {
-      "query": "unit window cleaning ballajura",
-      "clicks": 0,
-      "impressions": 4,
-      "ctr": 0,
-      "position": 30.25
     },
     {
       "query": "what to clean solar panels with",
@@ -2805,6 +3134,20 @@
       "position": 8.75
     },
     {
+      "query": "window cleaner ballajura",
+      "clicks": 0,
+      "impressions": 4,
+      "ctr": 0,
+      "position": 29.75
+    },
+    {
+      "query": "window cleaners ballajura",
+      "clicks": 0,
+      "impressions": 4,
+      "ctr": 0,
+      "position": 46
+    },
+    {
       "query": "window cleaners fremantle",
       "clicks": 0,
       "impressions": 4,
@@ -2812,11 +3155,11 @@
       "position": 26.75
     },
     {
-      "query": "window cleaners near me belmont",
+      "query": "window cleaners near me ballajura",
       "clicks": 0,
       "impressions": 4,
       "ctr": 0,
-      "position": 21.25
+      "position": 44
     },
     {
       "query": "window cleaners residential",
@@ -2833,11 +3176,25 @@
       "position": 68.5
     },
     {
-      "query": "window cleaning ballajura",
+      "query": "window cleaning belmont",
       "clicks": 0,
       "impressions": 4,
       "ctr": 0,
-      "position": 21.25
+      "position": 27.5
+    },
+    {
+      "query": "window cleaning fairfield",
+      "clicks": 0,
+      "impressions": 4,
+      "ctr": 0,
+      "position": 57.5
+    },
+    {
+      "query": "window cleaning karrinyup",
+      "clicks": 0,
+      "impressions": 4,
+      "ctr": 0,
+      "position": 41.75
     },
     {
       "query": "window cleaning mentone",
@@ -2847,25 +3204,18 @@
       "position": 63.5
     },
     {
-      "query": "window cleaning montrose",
+      "query": "window cleaning mount lawley",
       "clicks": 0,
       "impressions": 4,
       "ctr": 0,
-      "position": 81.75
+      "position": 38.75
     },
     {
-      "query": "window cleaning near me warwick",
+      "query": "window cleaning near me ballajura",
       "clicks": 0,
       "impressions": 4,
       "ctr": 0,
-      "position": 13.5
-    },
-    {
-      "query": "window cleaning quote ballajura",
-      "clicks": 0,
-      "impressions": 4,
-      "ctr": 0,
-      "position": 41
+      "position": 27.25
     },
     {
       "query": "window cleaning quote perth",
@@ -2882,18 +3232,25 @@
       "position": 43
     },
     {
-      "query": "window frame cleaning bennett springs",
+      "query": "window cleaning services bennett springs",
       "clicks": 0,
       "impressions": 4,
       "ctr": 0,
-      "position": 18
+      "position": 56.75
     },
     {
-      "query": "window sill cleaning ballajura",
+      "query": "window cleaning services near me",
       "clicks": 0,
       "impressions": 4,
       "ctr": 0,
-      "position": 33
+      "position": 14
+    },
+    {
+      "query": "window tint perth",
+      "clicks": 0,
+      "impressions": 4,
+      "ctr": 0,
+      "position": 1
     },
     {
       "query": "window washing bennett springs",
@@ -2908,6 +3265,13 @@
       "impressions": 4,
       "ctr": 0,
       "position": 48.25
+    },
+    {
+      "query": "$99 residential window cleaning special",
+      "clicks": 0,
+      "impressions": 3,
+      "ctr": 0,
+      "position": 11
     },
     {
       "query": "affordable residential cleaning dianella",
@@ -2931,11 +3295,18 @@
       "position": 16.67
     },
     {
-      "query": "best window cleaner near me guildford",
+      "query": "best window cleaner near me ballajura",
       "clicks": 0,
       "impressions": 3,
       "ctr": 0,
-      "position": 34.67
+      "position": 28.67
+    },
+    {
+      "query": "best window cleaner near me belmont",
+      "clicks": 0,
+      "impressions": 3,
+      "ctr": 0,
+      "position": 18.67
     },
     {
       "query": "book residential window cleaner bennett springs",
@@ -2952,11 +3323,11 @@
       "position": 2.67
     },
     {
-      "query": "clean windows for homes belmont",
+      "query": "commercial exterior window cleaning",
       "clicks": 0,
       "impressions": 3,
       "ctr": 0,
-      "position": 61.67
+      "position": 49.33
     },
     {
       "query": "commercial window washing near me",
@@ -2973,13 +3344,6 @@
       "position": 46.33
     },
     {
-      "query": "deck sealing nedlands",
-      "clicks": 0,
-      "impressions": 3,
-      "ctr": 0,
-      "position": 12
-    },
-    {
       "query": "domestic window cleaning dianella",
       "clicks": 0,
       "impressions": 3,
@@ -2994,18 +3358,18 @@
       "position": 26.33
     },
     {
-      "query": "driveway high pressure cleaning perth",
-      "clicks": 0,
-      "impressions": 3,
-      "ctr": 0,
-      "position": 46
-    },
-    {
       "query": "drone window cleaner canning vale",
       "clicks": 0,
       "impressions": 3,
       "ctr": 0,
       "position": 75.67
+    },
+    {
+      "query": "drone window cleaning perth",
+      "clicks": 0,
+      "impressions": 3,
+      "ctr": 0,
+      "position": 28.33
     },
     {
       "query": "emergency exterior window cleaning near me",
@@ -3043,11 +3407,11 @@
       "position": 2
     },
     {
-      "query": "gutter cleaning applecross",
+      "query": "gutter cleaning morley",
       "clicks": 0,
       "impressions": 3,
       "ctr": 0,
-      "position": 55
+      "position": 65
     },
     {
       "query": "high pressure cleaning fremantle",
@@ -3071,25 +3435,11 @@
       "position": 50
     },
     {
-      "query": "hire window cleaners bennett springs",
+      "query": "hire window cleaner ballajura",
       "clicks": 0,
       "impressions": 3,
       "ctr": 0,
-      "position": 22.67
-    },
-    {
-      "query": "home window cleaning ballajura",
-      "clicks": 0,
-      "impressions": 3,
-      "ctr": 0,
-      "position": 35.33
-    },
-    {
-      "query": "home window cleaning service ballajura",
-      "clicks": 0,
-      "impressions": 3,
-      "ctr": 0,
-      "position": 27.33
+      "position": 41.67
     },
     {
       "query": "house window cleaning",
@@ -3104,27 +3454,6 @@
       "impressions": 3,
       "ctr": 0,
       "position": 26.67
-    },
-    {
-      "query": "inside window cleaning ballajura",
-      "clicks": 0,
-      "impressions": 3,
-      "ctr": 0,
-      "position": 37
-    },
-    {
-      "query": "inside window cleaning guildford",
-      "clicks": 0,
-      "impressions": 3,
-      "ctr": 0,
-      "position": 33.33
-    },
-    {
-      "query": "interior and exterior window cleaning service bennett springs",
-      "clicks": 0,
-      "impressions": 3,
-      "ctr": 0,
-      "position": 45
     },
     {
       "query": "interior and exterior window cleaning service guildford",
@@ -3146,6 +3475,13 @@
       "impressions": 3,
       "ctr": 0,
       "position": 55.33
+    },
+    {
+      "query": "local window cleaners for houses and apartments belmont",
+      "clicks": 0,
+      "impressions": 3,
+      "ctr": 0,
+      "position": 41.33
     },
     {
       "query": "local window cleaning",
@@ -3176,18 +3512,18 @@
       "position": 36
     },
     {
-      "query": "outside window cleaning belmont",
+      "query": "patio door glass cleaning bennett springs",
       "clicks": 0,
       "impressions": 3,
       "ctr": 0,
-      "position": 25.33
+      "position": 19.67
     },
     {
-      "query": "power washing perth",
+      "query": "perth pressure washing",
       "clicks": 0,
       "impressions": 3,
       "ctr": 0,
-      "position": 50.33
+      "position": 53.33
     },
     {
       "query": "pre and post renovation cleaning",
@@ -3202,13 +3538,6 @@
       "impressions": 3,
       "ctr": 0,
       "position": 55.67
-    },
-    {
-      "query": "professional residential window cleaning",
-      "clicks": 0,
-      "impressions": 3,
-      "ctr": 0,
-      "position": 58.33
     },
     {
       "query": "professional window cleaner near me guildford",
@@ -3239,11 +3568,11 @@
       "position": 50
     },
     {
-      "query": "regular window cleaning belmont",
+      "query": "regular window cleaning ballajura",
       "clicks": 0,
       "impressions": 3,
       "ctr": 0,
-      "position": 24.67
+      "position": 62.67
     },
     {
       "query": "regular window cleaning bennett springs",
@@ -3251,6 +3580,34 @@
       "impressions": 3,
       "ctr": 0,
       "position": 16.33
+    },
+    {
+      "query": "reliable window cleaners ballajura",
+      "clicks": 0,
+      "impressions": 3,
+      "ctr": 0,
+      "position": 39
+    },
+    {
+      "query": "reliable window cleaners bennett springs",
+      "clicks": 0,
+      "impressions": 3,
+      "ctr": 0,
+      "position": 28
+    },
+    {
+      "query": "reliable window cleaners near me ballajura",
+      "clicks": 0,
+      "impressions": 3,
+      "ctr": 0,
+      "position": 35.33
+    },
+    {
+      "query": "residential window cleaner near me belmont",
+      "clicks": 0,
+      "impressions": 3,
+      "ctr": 0,
+      "position": 17.33
     },
     {
       "query": "residential window cleaning contractor",
@@ -3267,11 +3624,11 @@
       "position": 68.67
     },
     {
-      "query": "roof cleaning applecross",
+      "query": "roof and gutter cleaning perth",
       "clicks": 0,
       "impressions": 3,
       "ctr": 0,
-      "position": 67
+      "position": 19.67
     },
     {
       "query": "same day pressure cleaning perth",
@@ -3316,25 +3673,18 @@
       "position": 43
     },
     {
-      "query": "trusted window cleaners near me bennett springs",
+      "query": "townhouse window cleaning bennett springs",
       "clicks": 0,
       "impressions": 3,
       "ctr": 0,
-      "position": 60
+      "position": 15.33
     },
     {
-      "query": "two storey window cleaning ballajura",
+      "query": "unit window cleaning belmont",
       "clicks": 0,
       "impressions": 3,
       "ctr": 0,
-      "position": 32.67
-    },
-    {
-      "query": "unit and apartment window cleaning perth",
-      "clicks": 0,
-      "impressions": 3,
-      "ctr": 0,
-      "position": 4.67
+      "position": 32
     },
     {
       "query": "window and solar panel cleaning near me",
@@ -3351,18 +3701,11 @@
       "position": 13.67
     },
     {
-      "query": "window cleaner website",
+      "query": "window cleaner quote belmont",
       "clicks": 0,
       "impressions": 3,
       "ctr": 0,
-      "position": 50
-    },
-    {
-      "query": "window cleaners near me ballajura",
-      "clicks": 0,
-      "impressions": 3,
-      "ctr": 0,
-      "position": 52.67
+      "position": 20.33
     },
     {
       "query": "window cleaners near me prices",
@@ -3372,6 +3715,13 @@
       "position": 2
     },
     {
+      "query": "window cleaners near me warwick",
+      "clicks": 0,
+      "impressions": 3,
+      "ctr": 0,
+      "position": 18
+    },
+    {
       "query": "window cleaning albany",
       "clicks": 0,
       "impressions": 3,
@@ -3379,32 +3729,11 @@
       "position": 40.33
     },
     {
-      "query": "window cleaning belmont",
-      "clicks": 0,
-      "impressions": 3,
-      "ctr": 0,
-      "position": 29
-    },
-    {
       "query": "window cleaning bennett springs",
       "clicks": 0,
       "impressions": 3,
       "ctr": 0,
       "position": 17
-    },
-    {
-      "query": "window cleaning cannington",
-      "clicks": 0,
-      "impressions": 3,
-      "ctr": 0,
-      "position": 33
-    },
-    {
-      "query": "window cleaning company near me ballajura",
-      "clicks": 0,
-      "impressions": 3,
-      "ctr": 0,
-      "position": 36.33
     },
     {
       "query": "window cleaning cost bennett springs",
@@ -3421,18 +3750,25 @@
       "position": 38.67
     },
     {
-      "query": "window cleaning karrinyup",
+      "query": "window cleaning maylands",
       "clicks": 0,
       "impressions": 3,
       "ctr": 0,
-      "position": 46.33
+      "position": 29
     },
     {
-      "query": "window cleaning mount lawley",
+      "query": "window cleaning montrose",
       "clicks": 0,
       "impressions": 3,
       "ctr": 0,
-      "position": 41
+      "position": 82.67
+    },
+    {
+      "query": "window cleaning near me guildford",
+      "clicks": 0,
+      "impressions": 3,
+      "ctr": 0,
+      "position": 18.33
     },
     {
       "query": "window cleaning patterson lakes",
@@ -3442,18 +3778,11 @@
       "position": 57.33
     },
     {
-      "query": "window cleaning services bennett springs",
+      "query": "window cleaning prices ballajura",
       "clicks": 0,
       "impressions": 3,
       "ctr": 0,
-      "position": 66
-    },
-    {
-      "query": "window cleaning services near me",
-      "clicks": 0,
-      "impressions": 3,
-      "ctr": 0,
-      "position": 15
+      "position": 50
     },
     {
       "query": "window cleaning sorrento",
@@ -3470,18 +3799,32 @@
       "position": 24
     },
     {
-      "query": "window frame cleaning belmont",
+      "query": "window tinting perth",
       "clicks": 0,
       "impressions": 3,
       "ctr": 0,
-      "position": 29
+      "position": 54.33
     },
     {
-      "query": "window sill cleaning bennett springs",
+      "query": "window washing services belmont",
       "clicks": 0,
       "impressions": 3,
       "ctr": 0,
-      "position": 19
+      "position": 25.33
+    },
+    {
+      "query": "window washing services guildford",
+      "clicks": 0,
+      "impressions": 3,
+      "ctr": 0,
+      "position": 36.33
+    },
+    {
+      "query": "window washing services warwick",
+      "clicks": 0,
+      "impressions": 3,
+      "ctr": 0,
+      "position": 33
     },
     {
       "query": "window.cleaners near me",
@@ -3503,13 +3846,6 @@
       "impressions": 3,
       "ctr": 0,
       "position": 5.33
-    },
-    {
-      "query": "$99 residential window cleaning special",
-      "clicks": 0,
-      "impressions": 2,
-      "ctr": 0,
-      "position": 11.5
     },
     {
       "query": "a1 window cleaning",
@@ -3540,18 +3876,18 @@
       "position": 9
     },
     {
-      "query": "all aspects cleaning",
-      "clicks": 0,
-      "impressions": 2,
-      "ctr": 0,
-      "position": 31
-    },
-    {
       "query": "all glass cleaning",
       "clicks": 0,
       "impressions": 2,
       "ctr": 0,
       "position": 36
+    },
+    {
+      "query": "apartment window cleaning guildford",
+      "clicks": 0,
+      "impressions": 2,
+      "ctr": 0,
+      "position": 87
     },
     {
       "query": "apartment window cleaning malaga",
@@ -3566,6 +3902,13 @@
       "impressions": 2,
       "ctr": 0,
       "position": 5.5
+    },
+    {
+      "query": "aspect solutions esperance",
+      "clicks": 0,
+      "impressions": 2,
+      "ctr": 0,
+      "position": 39.5
     },
     {
       "query": "aspects windows",
@@ -3587,13 +3930,6 @@
       "impressions": 2,
       "ctr": 0,
       "position": 12
-    },
-    {
-      "query": "best window cleaner near me ballajura",
-      "clicks": 0,
-      "impressions": 2,
-      "ctr": 0,
-      "position": 35.5
     },
     {
       "query": "best window cleaners belmont",
@@ -3638,25 +3974,11 @@
       "position": 65.5
     },
     {
-      "query": "cheap window cleaning ballajura",
-      "clicks": 0,
-      "impressions": 2,
-      "ctr": 0,
-      "position": 26
-    },
-    {
       "query": "cheap window cleaning malaga",
       "clicks": 0,
       "impressions": 2,
       "ctr": 0,
       "position": 41
-    },
-    {
-      "query": "clean windows for homes ballajura",
-      "clicks": 0,
-      "impressions": 2,
-      "ctr": 0,
-      "position": 45
     },
     {
       "query": "clean windows for homes dianella",
@@ -3750,13 +4072,6 @@
       "position": 53
     },
     {
-      "query": "deck high pressure washing perth",
-      "clicks": 0,
-      "impressions": 2,
-      "ctr": 0,
-      "position": 45.5
-    },
-    {
       "query": "deck sealing fremantle",
       "clicks": 0,
       "impressions": 2,
@@ -3771,25 +4086,11 @@
       "position": 12.5
     },
     {
-      "query": "domestic window cleaning service ballajura",
-      "clicks": 0,
-      "impressions": 2,
-      "ctr": 0,
-      "position": 12
-    },
-    {
       "query": "domestic window cleaning service dianella",
       "clicks": 0,
       "impressions": 2,
       "ctr": 0,
       "position": 15
-    },
-    {
-      "query": "driveway pressure washing services perth",
-      "clicks": 0,
-      "impressions": 2,
-      "ctr": 0,
-      "position": 47
     },
     {
       "query": "drone window cleaner bayswater",
@@ -3806,27 +4107,6 @@
       "position": 66
     },
     {
-      "query": "drone window cleaning perth",
-      "clicks": 0,
-      "impressions": 2,
-      "ctr": 0,
-      "position": 7.5
-    },
-    {
-      "query": "eco friendly pressure cleaning perth",
-      "clicks": 0,
-      "impressions": 2,
-      "ctr": 0,
-      "position": 21
-    },
-    {
-      "query": "exterior cleaning perth",
-      "clicks": 0,
-      "impressions": 2,
-      "ctr": 0,
-      "position": 37
-    },
-    {
       "query": "facade and window cleaning waterloo",
       "clicks": 0,
       "impressions": 2,
@@ -3839,13 +4119,6 @@
       "impressions": 2,
       "ctr": 0,
       "position": 9
-    },
-    {
-      "query": "fremantle pressure cleaning",
-      "clicks": 0,
-      "impressions": 2,
-      "ctr": 0,
-      "position": 19.5
     },
     {
       "query": "get window cleaning quote bennett springs",
@@ -3862,6 +4135,13 @@
       "position": 24
     },
     {
+      "query": "glass cleaning ballajura",
+      "clicks": 0,
+      "impressions": 2,
+      "ctr": 0,
+      "position": 10
+    },
+    {
       "query": "glass cleaning company",
       "clicks": 0,
       "impressions": 2,
@@ -3876,11 +4156,25 @@
       "position": 20.5
     },
     {
+      "query": "glass door cleaning ballajura",
+      "clicks": 0,
+      "impressions": 2,
+      "ctr": 0,
+      "position": 25
+    },
+    {
       "query": "gutter cleaning ascot",
       "clicks": 0,
       "impressions": 2,
       "ctr": 0,
       "position": 17.5
+    },
+    {
+      "query": "gutter cleaning bull creek",
+      "clicks": 0,
+      "impressions": 2,
+      "ctr": 0,
+      "position": 65
     },
     {
       "query": "gutter cleaning near me",
@@ -3939,11 +4233,11 @@
       "position": 1
     },
     {
-      "query": "hire window cleaners belmont",
+      "query": "hire window cleaner belmont",
       "clicks": 0,
       "impressions": 2,
       "ctr": 0,
-      "position": 28
+      "position": 26
     },
     {
       "query": "hire window cleaners noranda",
@@ -3960,6 +4254,20 @@
       "position": 26
     },
     {
+      "query": "home window cleaning service guildford",
+      "clicks": 0,
+      "impressions": 2,
+      "ctr": 0,
+      "position": 65
+    },
+    {
+      "query": "house washing applecross",
+      "clicks": 0,
+      "impressions": 2,
+      "ctr": 0,
+      "position": 41
+    },
+    {
       "query": "house washing dalkeith",
       "clicks": 0,
       "impressions": 2,
@@ -3967,11 +4275,18 @@
       "position": 69.5
     },
     {
-      "query": "house window cleaning ballajura",
+      "query": "house window cleaner near me ballajura",
       "clicks": 0,
       "impressions": 2,
       "ctr": 0,
-      "position": 30.5
+      "position": 13.5
+    },
+    {
+      "query": "house window cleaner near me belmont",
+      "clicks": 0,
+      "impressions": 2,
+      "ctr": 0,
+      "position": 14
     },
     {
       "query": "house window cleaning noranda",
@@ -3979,6 +4294,13 @@
       "impressions": 2,
       "ctr": 0,
       "position": 37
+    },
+    {
+      "query": "house window cleaning service guildford",
+      "clicks": 0,
+      "impressions": 2,
+      "ctr": 0,
+      "position": 30
     },
     {
       "query": "inside window cleaning noranda",
@@ -3995,25 +4317,25 @@
       "position": 19.5
     },
     {
-      "query": "interior and exterior window cleaning service ballajura",
+      "query": "interior window cleaning bennett springs",
       "clicks": 0,
       "impressions": 2,
       "ctr": 0,
-      "position": 51.5
+      "position": 13
     },
     {
-      "query": "joondalup pressure cleaning",
+      "query": "interior window cleaning guildford",
       "clicks": 0,
       "impressions": 2,
       "ctr": 0,
-      "position": 27
+      "position": 26
     },
     {
-      "query": "local window cleaners for houses and apartments belmont",
+      "query": "lighthouse window cleaning",
       "clicks": 0,
       "impressions": 2,
       "ctr": 0,
-      "position": 41.5
+      "position": 24.5
     },
     {
       "query": "local window cleaners near me",
@@ -4021,6 +4343,13 @@
       "impressions": 2,
       "ctr": 0,
       "position": 19
+    },
+    {
+      "query": "local window cleaning service ballajura",
+      "clicks": 0,
+      "impressions": 2,
+      "ctr": 0,
+      "position": 22.5
     },
     {
       "query": "no streak window cleaning",
@@ -4044,18 +4373,11 @@
       "position": 90
     },
     {
-      "query": "office window cleaning",
+      "query": "outside window cleaning guildford",
       "clicks": 0,
       "impressions": 2,
       "ctr": 0,
-      "position": 23.5
-    },
-    {
-      "query": "outside window cleaning ballajura",
-      "clicks": 0,
-      "impressions": 2,
-      "ctr": 0,
-      "position": 51.5
+      "position": 54.5
     },
     {
       "query": "outside window cleaning noranda",
@@ -4079,18 +4401,25 @@
       "position": 48.5
     },
     {
+      "query": "post construction window cleaning perth",
+      "clicks": 0,
+      "impressions": 2,
+      "ctr": 0,
+      "position": 8
+    },
+    {
+      "query": "power washing perth",
+      "clicks": 0,
+      "impressions": 2,
+      "ctr": 0,
+      "position": 50.5
+    },
+    {
       "query": "pre-sale pressure cleaning perth",
       "clicks": 0,
       "impressions": 2,
       "ctr": 0,
       "position": 41.5
-    },
-    {
-      "query": "premier window cleaning",
-      "clicks": 0,
-      "impressions": 2,
-      "ctr": 0,
-      "position": 4.5
     },
     {
       "query": "pressure cleaning joondalup",
@@ -4100,25 +4429,11 @@
       "position": 29
     },
     {
-      "query": "pressure cleaning perth southern suburbs",
-      "clicks": 0,
-      "impressions": 2,
-      "ctr": 0,
-      "position": 43
-    },
-    {
       "query": "professional window cleaner near me ballajura",
       "clicks": 0,
       "impressions": 2,
       "ctr": 0,
       "position": 37
-    },
-    {
-      "query": "professional window cleaners ballajura",
-      "clicks": 0,
-      "impressions": 2,
-      "ctr": 0,
-      "position": 78
     },
     {
       "query": "professional window cleaning noranda",
@@ -4135,46 +4450,11 @@
       "position": 10.5
     },
     {
-      "query": "regular window cleaning ballajura",
+      "query": "residential window cleaner near me ballajura",
       "clicks": 0,
       "impressions": 2,
       "ctr": 0,
-      "position": 51
-    },
-    {
-      "query": "reliable window cleaners ballajura",
-      "clicks": 0,
-      "impressions": 2,
-      "ctr": 0,
-      "position": 38
-    },
-    {
-      "query": "reliable window cleaners bennett springs",
-      "clicks": 0,
-      "impressions": 2,
-      "ctr": 0,
-      "position": 23.5
-    },
-    {
-      "query": "reliable window cleaners near me ballajura",
-      "clicks": 0,
-      "impressions": 2,
-      "ctr": 0,
-      "position": 37
-    },
-    {
-      "query": "residential solar panel cleaning",
-      "clicks": 0,
-      "impressions": 2,
-      "ctr": 0,
-      "position": 76
-    },
-    {
-      "query": "residential window cleaner near me belmont",
-      "clicks": 0,
-      "impressions": 2,
-      "ctr": 0,
-      "position": 18
+      "position": 19.5
     },
     {
       "query": "residential window cleaning belmont",
@@ -4182,6 +4462,27 @@
       "impressions": 2,
       "ctr": 0,
       "position": 27
+    },
+    {
+      "query": "residential window cleaning bennett springs",
+      "clicks": 0,
+      "impressions": 2,
+      "ctr": 0,
+      "position": 18.5
+    },
+    {
+      "query": "residential window cleaning guildford",
+      "clicks": 0,
+      "impressions": 2,
+      "ctr": 0,
+      "position": 31.5
+    },
+    {
+      "query": "residential window cleaning service guildford",
+      "clicks": 0,
+      "impressions": 2,
+      "ctr": 0,
+      "position": 30.5
     },
     {
       "query": "residential window cleaning services near me",
@@ -4196,20 +4497,6 @@
       "impressions": 2,
       "ctr": 0,
       "position": 23
-    },
-    {
-      "query": "roof and gutter cleaning perth",
-      "clicks": 0,
-      "impressions": 2,
-      "ctr": 0,
-      "position": 11
-    },
-    {
-      "query": "roof cleaning claremont",
-      "clicks": 0,
-      "impressions": 2,
-      "ctr": 0,
-      "position": 1
     },
     {
       "query": "roof cleaning dalkeith",
@@ -4247,6 +4534,13 @@
       "position": 80.5
     },
     {
+      "query": "same day window cleaning guildford",
+      "clicks": 0,
+      "impressions": 2,
+      "ctr": 0,
+      "position": 21
+    },
+    {
       "query": "shop window cleaning near me",
       "clicks": 0,
       "impressions": 2,
@@ -4259,6 +4553,13 @@
       "impressions": 2,
       "ctr": 0,
       "position": 16.5
+    },
+    {
+      "query": "shower glass cleaning perth",
+      "clicks": 0,
+      "impressions": 2,
+      "ctr": 0,
+      "position": 55.5
     },
     {
       "query": "single storey window cleaning belmont",
@@ -4296,13 +4597,6 @@
       "position": 1
     },
     {
-      "query": "streak free window cleaning for perth homes guildford",
-      "clicks": 0,
-      "impressions": 2,
-      "ctr": 0,
-      "position": 28
-    },
-    {
       "query": "thistle window cleaning",
       "clicks": 0,
       "impressions": 2,
@@ -4310,25 +4604,39 @@
       "position": 33
     },
     {
-      "query": "townhouse window cleaning bennett springs",
+      "query": "townhouse window cleaning belmont",
       "clicks": 0,
       "impressions": 2,
       "ctr": 0,
-      "position": 18
+      "position": 34.5
     },
     {
-      "query": "unit window cleaning belmont",
+      "query": "townhouse window cleaning guildford",
       "clicks": 0,
       "impressions": 2,
       "ctr": 0,
-      "position": 33
+      "position": 66.5
     },
     {
-      "query": "unit window cleaning bennett springs",
+      "query": "trusted window cleaners near me ballajura",
       "clicks": 0,
       "impressions": 2,
       "ctr": 0,
-      "position": 20.5
+      "position": 37.5
+    },
+    {
+      "query": "trusted window cleaners near me belmont",
+      "clicks": 0,
+      "impressions": 2,
+      "ctr": 0,
+      "position": 15
+    },
+    {
+      "query": "two storey window cleaning belmont",
+      "clicks": 0,
+      "impressions": 2,
+      "ctr": 0,
+      "position": 16
     },
     {
       "query": "window cleaner and gutter cleaning near me",
@@ -4350,13 +4658,6 @@
       "impressions": 2,
       "ctr": 0,
       "position": 32.5
-    },
-    {
-      "query": "window cleaner quote bennett springs",
-      "clicks": 0,
-      "impressions": 2,
-      "ctr": 0,
-      "position": 16
     },
     {
       "query": "window cleaner service near me",
@@ -4394,11 +4695,18 @@
       "position": 58
     },
     {
-      "query": "window cleaners near me warwick",
+      "query": "window cleaning cannington",
       "clicks": 0,
       "impressions": 2,
       "ctr": 0,
-      "position": 20.5
+      "position": 25
+    },
+    {
+      "query": "window cleaning cost ballajura",
+      "clicks": 0,
+      "impressions": 2,
+      "ctr": 0,
+      "position": 58.5
     },
     {
       "query": "window cleaning daglish",
@@ -4429,25 +4737,11 @@
       "position": 29.5
     },
     {
-      "query": "window cleaning near me guildford",
-      "clicks": 0,
-      "impressions": 2,
-      "ctr": 0,
-      "position": 9.5
-    },
-    {
       "query": "window cleaning perth and kinross",
       "clicks": 0,
       "impressions": 2,
       "ctr": 0,
       "position": 37.5
-    },
-    {
-      "query": "window cleaning prices ballajura",
-      "clicks": 0,
-      "impressions": 2,
-      "ctr": 0,
-      "position": 52.5
     },
     {
       "query": "window cleaning seo services",
@@ -4478,6 +4772,13 @@
       "position": 1.5
     },
     {
+      "query": "window frame cleaning ballajura",
+      "clicks": 0,
+      "impressions": 2,
+      "ctr": 0,
+      "position": 45.5
+    },
+    {
       "query": "window track cleaning",
       "clicks": 0,
       "impressions": 2,
@@ -4485,11 +4786,32 @@
       "position": 7
     },
     {
+      "query": "window washer",
+      "clicks": 0,
+      "impressions": 2,
+      "ctr": 0,
+      "position": 2.5
+    },
+    {
       "query": "window washing",
       "clicks": 0,
       "impressions": 2,
       "ctr": 0,
-      "position": 6
+      "position": 11.5
+    },
+    {
+      "query": "window washing ballajura",
+      "clicks": 0,
+      "impressions": 2,
+      "ctr": 0,
+      "position": 42.5
+    },
+    {
+      "query": "window washing belmont",
+      "clicks": 0,
+      "impressions": 2,
+      "ctr": 0,
+      "position": 27.5
     },
     {
       "query": "window washing companies",
@@ -4506,32 +4828,11 @@
       "position": 40.5
     },
     {
-      "query": "window washing services belmont",
-      "clicks": 0,
-      "impressions": 2,
-      "ctr": 0,
-      "position": 26.5
-    },
-    {
-      "query": "window washing services guildford",
-      "clicks": 0,
-      "impressions": 2,
-      "ctr": 0,
-      "position": 37
-    },
-    {
       "query": "window washing services near me",
       "clicks": 0,
       "impressions": 2,
       "ctr": 0,
       "position": 31
-    },
-    {
-      "query": "window washing services warwick",
-      "clicks": 0,
-      "impressions": 2,
-      "ctr": 0,
-      "position": 30
     },
     {
       "query": "windows cleaners near me",
@@ -4546,6 +4847,20 @@
       "impressions": 2,
       "ctr": 0,
       "position": 24.5
+    },
+    {
+      "query": "precision window cleaning",
+      "clicks": 1,
+      "impressions": 1,
+      "ctr": 100,
+      "position": 3
+    },
+    {
+      "query": "window cleaning near me residential",
+      "clicks": 1,
+      "impressions": 1,
+      "ctr": 100,
+      "position": 7
     },
     {
       "query": "a plus window cleaning",
@@ -4597,25 +4912,18 @@
       "position": 9
     },
     {
+      "query": "aluminium window frame cleaning",
+      "clicks": 0,
+      "impressions": 1,
+      "ctr": 0,
+      "position": 3
+    },
+    {
       "query": "apartment window cleaning ballajura",
       "clicks": 0,
       "impressions": 1,
       "ctr": 0,
       "position": 86
-    },
-    {
-      "query": "apartment window cleaning guildford",
-      "clicks": 0,
-      "impressions": 1,
-      "ctr": 0,
-      "position": 88
-    },
-    {
-      "query": "as window cleaning",
-      "clicks": 0,
-      "impressions": 1,
-      "ctr": 0,
-      "position": 57
     },
     {
       "query": "ascot window cleaners",
@@ -4625,25 +4933,11 @@
       "position": 43
     },
     {
-      "query": "aspect solutions esperance",
-      "clicks": 0,
-      "impressions": 1,
-      "ctr": 0,
-      "position": 72
-    },
-    {
       "query": "aspect windows reviews",
       "clicks": 0,
       "impressions": 1,
       "ctr": 0,
       "position": 3
-    },
-    {
-      "query": "atlantic window cleaning",
-      "clicks": 0,
-      "impressions": 1,
-      "ctr": 0,
-      "position": 83
     },
     {
       "query": "automatic window cleaner",
@@ -4681,18 +4975,18 @@
       "position": 3
     },
     {
-      "query": "best window cleaner near me belmont",
-      "clicks": 0,
-      "impressions": 1,
-      "ctr": 0,
-      "position": 31
-    },
-    {
       "query": "best window cleaner near me dianella",
       "clicks": 0,
       "impressions": 1,
       "ctr": 0,
       "position": 36
+    },
+    {
+      "query": "best window cleaners ballajura",
+      "clicks": 0,
+      "impressions": 1,
+      "ctr": 0,
+      "position": 43
     },
     {
       "query": "best window cleaners floreat",
@@ -4751,6 +5045,13 @@
       "position": 19
     },
     {
+      "query": "book window cleaning guildford",
+      "clicks": 0,
+      "impressions": 1,
+      "ctr": 0,
+      "position": 58
+    },
+    {
       "query": "book window cleaning noranda",
       "clicks": 0,
       "impressions": 1,
@@ -4786,6 +5087,13 @@
       "position": 52
     },
     {
+      "query": "car windscreen cleaner",
+      "clicks": 0,
+      "impressions": 1,
+      "ctr": 0,
+      "position": 10
+    },
+    {
       "query": "cheap window cleaner",
       "clicks": 0,
       "impressions": 1,
@@ -4805,6 +5113,13 @@
       "impressions": 1,
       "ctr": 0,
       "position": 2
+    },
+    {
+      "query": "clean windows for homes guildford",
+      "clicks": 0,
+      "impressions": 1,
+      "ctr": 0,
+      "position": 36
     },
     {
       "query": "cleaners perth",
@@ -4989,6 +5304,13 @@
       "position": 58
     },
     {
+      "query": "curtain cleaning darlington",
+      "clicks": 0,
+      "impressions": 1,
+      "ctr": 0,
+      "position": 70
+    },
+    {
       "query": "curtain cleaning dayton",
       "clicks": 0,
       "impressions": 1,
@@ -5038,6 +5360,13 @@
       "position": 39
     },
     {
+      "query": "deck high pressure washing perth",
+      "clicks": 0,
+      "impressions": 1,
+      "ctr": 0,
+      "position": 47
+    },
+    {
       "query": "deck sealing cottesloe",
       "clicks": 0,
       "impressions": 1,
@@ -5066,13 +5395,6 @@
       "position": 1
     },
     {
-      "query": "domestic window cleaning ballajura",
-      "clicks": 0,
-      "impressions": 1,
-      "ctr": 0,
-      "position": 81
-    },
-    {
       "query": "domestic window cleaning malaga",
       "clicks": 0,
       "impressions": 1,
@@ -5085,6 +5407,13 @@
       "impressions": 1,
       "ctr": 0,
       "position": 68
+    },
+    {
+      "query": "driveway high pressure cleaning perth",
+      "clicks": 0,
+      "impressions": 1,
+      "ctr": 0,
+      "position": 44
     },
     {
       "query": "dry ice blasting and cleaning attadale",
@@ -5108,11 +5437,11 @@
       "position": 13
     },
     {
-      "query": "elite window cleaning perth",
+      "query": "eco friendly pressure cleaning perth",
       "clicks": 0,
       "impressions": 1,
       "ctr": 0,
-      "position": 35
+      "position": 22
     },
     {
       "query": "exposed aggregate cleaning perth",
@@ -5150,13 +5479,6 @@
       "position": 86
     },
     {
-      "query": "facade cleaning perth",
-      "clicks": 0,
-      "impressions": 1,
-      "ctr": 0,
-      "position": 36
-    },
-    {
       "query": "galeforce window cleaning",
       "clicks": 0,
       "impressions": 1,
@@ -5185,6 +5507,13 @@
       "position": 30
     },
     {
+      "query": "glass cleaning guildford",
+      "clicks": 0,
+      "impressions": 1,
+      "ctr": 0,
+      "position": 34
+    },
+    {
       "query": "glass cleaning machine",
       "clicks": 0,
       "impressions": 1,
@@ -5197,13 +5526,6 @@
       "impressions": 1,
       "ctr": 0,
       "position": 44
-    },
-    {
-      "query": "glass door cleaning ballajura",
-      "clicks": 0,
-      "impressions": 1,
-      "ctr": 0,
-      "position": 26
     },
     {
       "query": "glass scheduling",
@@ -5241,13 +5563,6 @@
       "position": 33
     },
     {
-      "query": "gutter cleaning bull creek",
-      "clicks": 0,
-      "impressions": 1,
-      "ctr": 0,
-      "position": 81
-    },
-    {
       "query": "gutter cleaning butler",
       "clicks": 0,
       "impressions": 1,
@@ -5262,7 +5577,14 @@
       "position": 80
     },
     {
-      "query": "gutter cleaning morley",
+      "query": "high access cleaning perth",
+      "clicks": 0,
+      "impressions": 1,
+      "ctr": 0,
+      "position": 12
+    },
+    {
+      "query": "high pressure cleaning perth",
       "clicks": 0,
       "impressions": 1,
       "ctr": 0,
@@ -5290,20 +5612,6 @@
       "position": 53
     },
     {
-      "query": "hire window cleaner ballajura",
-      "clicks": 0,
-      "impressions": 1,
-      "ctr": 0,
-      "position": 35
-    },
-    {
-      "query": "hire window cleaner belmont",
-      "clicks": 0,
-      "impressions": 1,
-      "ctr": 0,
-      "position": 28
-    },
-    {
       "query": "hire window cleaner noranda",
       "clicks": 0,
       "impressions": 1,
@@ -5325,25 +5633,18 @@
       "position": 28
     },
     {
+      "query": "home window cleaning guildford",
+      "clicks": 0,
+      "impressions": 1,
+      "ctr": 0,
+      "position": 45
+    },
+    {
       "query": "home window cleaning noranda",
       "clicks": 0,
       "impressions": 1,
       "ctr": 0,
       "position": 50
-    },
-    {
-      "query": "home window cleaning service bennett springs",
-      "clicks": 0,
-      "impressions": 1,
-      "ctr": 0,
-      "position": 21
-    },
-    {
-      "query": "home window cleaning service guildford",
-      "clicks": 0,
-      "impressions": 1,
-      "ctr": 0,
-      "position": 86
     },
     {
       "query": "home window cleaning service near me",
@@ -5360,11 +5661,11 @@
       "position": 65
     },
     {
-      "query": "house washing applecross",
+      "query": "house and window cleaning near me",
       "clicks": 0,
       "impressions": 1,
       "ctr": 0,
-      "position": 38
+      "position": 11
     },
     {
       "query": "house window cleaner near me guildford",
@@ -5379,13 +5680,6 @@
       "impressions": 1,
       "ctr": 0,
       "position": 43
-    },
-    {
-      "query": "house window cleaning service ballajura",
-      "clicks": 0,
-      "impressions": 1,
-      "ctr": 0,
-      "position": 12
     },
     {
       "query": "how often to clean solar panels",
@@ -5409,6 +5703,13 @@
       "position": 1
     },
     {
+      "query": "inside window cleaning belmont",
+      "clicks": 0,
+      "impressions": 1,
+      "ctr": 0,
+      "position": 20
+    },
+    {
       "query": "inside window cleaning bennett springs",
       "clicks": 0,
       "impressions": 1,
@@ -5416,39 +5717,11 @@
       "position": 61
     },
     {
-      "query": "interior and exterior window cleaning ballajura",
-      "clicks": 0,
-      "impressions": 1,
-      "ctr": 0,
-      "position": 20
-    },
-    {
       "query": "interior and exterior window cleaning guildford",
       "clicks": 0,
       "impressions": 1,
       "ctr": 0,
       "position": 40
-    },
-    {
-      "query": "interior and exterior window cleaning service belmont",
-      "clicks": 0,
-      "impressions": 1,
-      "ctr": 0,
-      "position": 18
-    },
-    {
-      "query": "interior window cleaning bennett springs",
-      "clicks": 0,
-      "impressions": 1,
-      "ctr": 0,
-      "position": 16
-    },
-    {
-      "query": "interior window cleaning guildford",
-      "clicks": 0,
-      "impressions": 1,
-      "ctr": 0,
-      "position": 14
     },
     {
       "query": "interior window cleaning noranda",
@@ -5465,32 +5738,11 @@
       "position": 21
     },
     {
-      "query": "inurl:blog hidden fees in gutter cleaning cost -filetype:pdf",
-      "clicks": 0,
-      "impressions": 1,
-      "ctr": 0,
-      "position": 38
-    },
-    {
-      "query": "inurl:blog how to clean gutters yourself safely -filetype:pdf",
-      "clicks": 0,
-      "impressions": 1,
-      "ctr": 0,
-      "position": 18
-    },
-    {
       "query": "inurl:blog how to clean gutters yourself with minimal mess -filetype:pdf",
       "clicks": 0,
       "impressions": 1,
       "ctr": 0,
       "position": 38
-    },
-    {
-      "query": "lighthouse window cleaning",
-      "clicks": 0,
-      "impressions": 1,
-      "ctr": 0,
-      "position": 36
     },
     {
       "query": "local abseiling window cleaning near me",
@@ -5512,13 +5764,6 @@
       "impressions": 1,
       "ctr": 0,
       "position": 42
-    },
-    {
-      "query": "local window cleaning service ballajura",
-      "clicks": 0,
-      "impressions": 1,
-      "ctr": 0,
-      "position": 22
     },
     {
       "query": "louvre windows joondalup",
@@ -5549,6 +5794,20 @@
       "position": 12
     },
     {
+      "query": "office window washing",
+      "clicks": 0,
+      "impressions": 1,
+      "ctr": 0,
+      "position": 52
+    },
+    {
+      "query": "one-off window cleaning ballajura",
+      "clicks": 0,
+      "impressions": 1,
+      "ctr": 0,
+      "position": 37
+    },
+    {
       "query": "onsite pressure washer servicing perth",
       "clicks": 0,
       "impressions": 1,
@@ -5563,39 +5822,11 @@
       "position": 24
     },
     {
-      "query": "outside window cleaning guildford",
-      "clicks": 0,
-      "impressions": 1,
-      "ctr": 0,
-      "position": 55
-    },
-    {
       "query": "panel cleaning",
       "clicks": 0,
       "impressions": 1,
       "ctr": 0,
       "position": 80
-    },
-    {
-      "query": "patio cleaning perth",
-      "clicks": 0,
-      "impressions": 1,
-      "ctr": 0,
-      "position": 58
-    },
-    {
-      "query": "patio door glass cleaning bennett springs",
-      "clicks": 0,
-      "impressions": 1,
-      "ctr": 0,
-      "position": 19
-    },
-    {
-      "query": "patio pressure cleaning perth",
-      "clicks": 0,
-      "impressions": 1,
-      "ctr": 0,
-      "position": 49
     },
     {
       "query": "person cleaning windows",
@@ -5605,18 +5836,11 @@
       "position": 12
     },
     {
-      "query": "perth patio pressure cleaning",
+      "query": "premier window cleaning",
       "clicks": 0,
       "impressions": 1,
       "ctr": 0,
-      "position": 54
-    },
-    {
-      "query": "post construction window cleaning perth",
-      "clicks": 0,
-      "impressions": 1,
-      "ctr": 0,
-      "position": 4
+      "position": 7
     },
     {
       "query": "pressure cleaning near me",
@@ -5661,6 +5885,13 @@
       "position": 21
     },
     {
+      "query": "professional window cleaners belmont",
+      "clicks": 0,
+      "impressions": 1,
+      "ctr": 0,
+      "position": 23
+    },
+    {
       "query": "professional window cleaners near me",
       "clicks": 0,
       "impressions": 1,
@@ -5696,18 +5927,18 @@
       "position": 17
     },
     {
-      "query": "radiant window cleaning",
-      "clicks": 0,
-      "impressions": 1,
-      "ctr": 0,
-      "position": 42
-    },
-    {
       "query": "regular window cleaning guildford",
       "clicks": 0,
       "impressions": 1,
       "ctr": 0,
       "position": 43
+    },
+    {
+      "query": "reliable window cleaners near me belmont",
+      "clicks": 0,
+      "impressions": 1,
+      "ctr": 0,
+      "position": 14
     },
     {
       "query": "reliable window cleaners noranda",
@@ -5745,11 +5976,11 @@
       "position": 27
     },
     {
-      "query": "residential pressure cleaning perth",
+      "query": "residential solar panel cleaning",
       "clicks": 0,
       "impressions": 1,
       "ctr": 0,
-      "position": 48
+      "position": 70
     },
     {
       "query": "residential window cleaner near me",
@@ -5766,18 +5997,18 @@
       "position": 19
     },
     {
+      "query": "residential window cleaners in my area",
+      "clicks": 0,
+      "impressions": 1,
+      "ctr": 0,
+      "position": 8
+    },
+    {
       "query": "residential window cleaners near me",
       "clicks": 0,
       "impressions": 1,
       "ctr": 0,
       "position": 1
-    },
-    {
-      "query": "residential window cleaning ballajura",
-      "clicks": 0,
-      "impressions": 1,
-      "ctr": 0,
-      "position": 11
     },
     {
       "query": "residential window cleaning companies",
@@ -5787,25 +6018,11 @@
       "position": 76
     },
     {
-      "query": "residential window cleaning guildford",
-      "clicks": 0,
-      "impressions": 1,
-      "ctr": 0,
-      "position": 29
-    },
-    {
       "query": "residential window cleaning kingsley",
       "clicks": 0,
       "impressions": 1,
       "ctr": 0,
       "position": 1
-    },
-    {
-      "query": "residential window cleaning service guildford",
-      "clicks": 0,
-      "impressions": 1,
-      "ctr": 0,
-      "position": 27
     },
     {
       "query": "residential window cleaning services",
@@ -5913,11 +6130,11 @@
       "position": 1
     },
     {
-      "query": "shower glass cleaning perth",
+      "query": "single storey window cleaning bennett springs",
       "clicks": 0,
       "impressions": 1,
       "ctr": 0,
-      "position": 65
+      "position": 17
     },
     {
       "query": "soft washing dawesville",
@@ -5925,6 +6142,13 @@
       "impressions": 1,
       "ctr": 0,
       "position": 16
+    },
+    {
+      "query": "solar panel cleaners",
+      "clicks": 0,
+      "impressions": 1,
+      "ctr": 0,
+      "position": 10
     },
     {
       "query": "solar panel cleaners perth",
@@ -5946,13 +6170,6 @@
       "impressions": 1,
       "ctr": 0,
       "position": 28
-    },
-    {
-      "query": "solar panel cleaning western suburbs",
-      "clicks": 0,
-      "impressions": 1,
-      "ctr": 0,
-      "position": 74
     },
     {
       "query": "solar panel wash service",
@@ -6067,6 +6284,20 @@
       "position": 77
     },
     {
+      "query": "streak free window cleaning belmont",
+      "clicks": 0,
+      "impressions": 1,
+      "ctr": 0,
+      "position": 27
+    },
+    {
+      "query": "streak free window cleaning for perth homes ballajura",
+      "clicks": 0,
+      "impressions": 1,
+      "ctr": 0,
+      "position": 20
+    },
+    {
       "query": "the best window cleaning",
       "clicks": 0,
       "impressions": 1,
@@ -6074,32 +6305,11 @@
       "position": 1
     },
     {
-      "query": "townhouse window cleaning belmont",
+      "query": "two storey window cleaning guildford",
       "clicks": 0,
       "impressions": 1,
       "ctr": 0,
-      "position": 37
-    },
-    {
-      "query": "townhouse window cleaning guildford",
-      "clicks": 0,
-      "impressions": 1,
-      "ctr": 0,
-      "position": 68
-    },
-    {
-      "query": "trusted window cleaners near me ballajura",
-      "clicks": 0,
-      "impressions": 1,
-      "ctr": 0,
-      "position": 40
-    },
-    {
-      "query": "trusted window cleaners near me belmont",
-      "clicks": 0,
-      "impressions": 1,
-      "ctr": 0,
-      "position": 18
+      "position": 9
     },
     {
       "query": "two storey window cleaning perth",
@@ -6137,13 +6347,6 @@
       "position": 65
     },
     {
-      "query": "water pressure cleaning perth",
-      "clicks": 0,
-      "impressions": 1,
-      "ctr": 0,
-      "position": 68
-    },
-    {
       "query": "water well screen cleaning",
       "clicks": 0,
       "impressions": 1,
@@ -6179,6 +6382,13 @@
       "position": 1
     },
     {
+      "query": "window and gutter cleaning",
+      "clicks": 0,
+      "impressions": 1,
+      "ctr": 0,
+      "position": 43
+    },
+    {
       "query": "window and gutter cleaning near me",
       "clicks": 0,
       "impressions": 1,
@@ -6205,13 +6415,6 @@
       "impressions": 1,
       "ctr": 0,
       "position": 35
-    },
-    {
-      "query": "window cleaner ballajura",
-      "clicks": 0,
-      "impressions": 1,
-      "ctr": 0,
-      "position": 14
     },
     {
       "query": "window cleaner bayswater",
@@ -6256,6 +6459,13 @@
       "position": 13
     },
     {
+      "query": "window cleaner near me prices",
+      "clicks": 0,
+      "impressions": 1,
+      "ctr": 0,
+      "position": 11
+    },
+    {
       "query": "window cleaner nearby",
       "clicks": 0,
       "impressions": 1,
@@ -6277,11 +6487,11 @@
       "position": 39
     },
     {
-      "query": "window cleaner quote belmont",
+      "query": "window cleaner quote ballajura",
       "clicks": 0,
       "impressions": 1,
       "ctr": 0,
-      "position": 23
+      "position": 11
     },
     {
       "query": "window cleaner surrey",
@@ -6291,11 +6501,11 @@
       "position": 1
     },
     {
-      "query": "window cleaners ballajura",
+      "query": "window cleaner website",
       "clicks": 0,
       "impressions": 1,
       "ctr": 0,
-      "position": 80
+      "position": 55
     },
     {
       "query": "window cleaners belmont",
@@ -6303,6 +6513,13 @@
       "impressions": 1,
       "ctr": 0,
       "position": 93
+    },
+    {
+      "query": "window cleaners bentleigh",
+      "clicks": 0,
+      "impressions": 1,
+      "ctr": 0,
+      "position": 99
     },
     {
       "query": "window cleaners brentwood",
@@ -6361,13 +6578,6 @@
       "position": 15
     },
     {
-      "query": "window cleaning company near me belmont",
-      "clicks": 0,
-      "impressions": 1,
-      "ctr": 0,
-      "position": 12
-    },
-    {
       "query": "window cleaning company near me guildford",
       "clicks": 0,
       "impressions": 1,
@@ -6375,18 +6585,18 @@
       "position": 27
     },
     {
-      "query": "window cleaning cost ballajura",
-      "clicks": 0,
-      "impressions": 1,
-      "ctr": 0,
-      "position": 71
-    },
-    {
       "query": "window cleaning devices",
       "clicks": 0,
       "impressions": 1,
       "ctr": 0,
       "position": 11
+    },
+    {
+      "query": "window cleaning duncraig",
+      "clicks": 0,
+      "impressions": 1,
+      "ctr": 0,
+      "position": 25
     },
     {
       "query": "window cleaning edgewater",
@@ -6410,11 +6620,25 @@
       "position": 97
     },
     {
-      "query": "window cleaning maylands",
+      "query": "window cleaning kingsley",
       "clicks": 0,
       "impressions": 1,
       "ctr": 0,
-      "position": 33
+      "position": 37
+    },
+    {
+      "query": "window cleaning mandurah",
+      "clicks": 0,
+      "impressions": 1,
+      "ctr": 0,
+      "position": 66
+    },
+    {
+      "query": "window cleaning near me belmont",
+      "clicks": 0,
+      "impressions": 1,
+      "ctr": 0,
+      "position": 12
     },
     {
       "query": "window cleaning near me noranda",
@@ -6543,13 +6767,6 @@
       "position": 29
     },
     {
-      "query": "window cleaning source",
-      "clicks": 0,
-      "impressions": 1,
-      "ctr": 0,
-      "position": 77
-    },
-    {
       "query": "window cleaning sydenham",
       "clicks": 0,
       "impressions": 1,
@@ -6564,11 +6781,11 @@
       "position": 7
     },
     {
-      "query": "window frame cleaning ballajura",
+      "query": "window house cleaning",
       "clicks": 0,
       "impressions": 1,
       "ctr": 0,
-      "position": 75
+      "position": 43
     },
     {
       "query": "window repair welshpool",
@@ -6592,13 +6809,6 @@
       "position": 12
     },
     {
-      "query": "window tinting perth",
-      "clicks": 0,
-      "impressions": 1,
-      "ctr": 0,
-      "position": 161
-    },
-    {
       "query": "window track",
       "clicks": 0,
       "impressions": 1,
@@ -6620,13 +6830,6 @@
       "position": 83
     },
     {
-      "query": "window washer",
-      "clicks": 0,
-      "impressions": 1,
-      "ctr": 0,
-      "position": 1
-    },
-    {
       "query": "window washers in my area",
       "clicks": 0,
       "impressions": 1,
@@ -6634,18 +6837,11 @@
       "position": 7
     },
     {
-      "query": "window washing ballajura",
+      "query": "window washing business",
       "clicks": 0,
       "impressions": 1,
       "ctr": 0,
-      "position": 72
-    },
-    {
-      "query": "window washing belmont",
-      "clicks": 0,
-      "impressions": 1,
-      "ctr": 0,
-      "position": 28
+      "position": 41
     },
     {
       "query": "window washing cleaner",
@@ -6683,11 +6879,25 @@
       "position": 18
     },
     {
+      "query": "windowcleaners",
+      "clicks": 0,
+      "impressions": 1,
+      "ctr": 0,
+      "position": 14
+    },
+    {
       "query": "windows cleaner near me",
       "clicks": 0,
       "impressions": 1,
       "ctr": 0,
       "position": 68
+    },
+    {
+      "query": "windows cleaning",
+      "clicks": 0,
+      "impressions": 1,
+      "ctr": 0,
+      "position": 7
     },
     {
       "query": "windows cleaning near me",
