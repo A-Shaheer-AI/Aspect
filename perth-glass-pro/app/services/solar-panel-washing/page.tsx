@@ -17,8 +17,8 @@ type FaqsType = {
 }
 
 export const metadata: Metadata = {
-    title: { absolute: "Clean Solar Panels Perth | Solar Panel Cleaning | Aspect" },
-    description: "Restore up to 30% solar efficiency with pure water cleaning in Perth. Chemical-free, manufacturer-approved & safe roof access. Book your same-week clean now!",
+    title: { absolute: "Solar Panel Cleaning Perth | Professional Solar Cleaners | Aspect" },
+    description: "Restore up to 30% solar efficiency with specialist solar panel cleaning in Perth. 100% pure water, chemical-free, manufacturer-approved & safe roof access. Book today!",
     alternates: { canonical: "https://aspectwindowcleaning.com.au/services/solar-panel-washing" }
 };
 
@@ -302,10 +302,10 @@ const SolarPanelCleaningPage = () => {
             {/* HERO */}
             <section className="bg-brand-navy text-white pt-32 sm:pt-36 pb-16 sm:pb-24 text-center px-4">
                 <h1 className="text-3xl md:text-5xl font-bold mb-4">
-                    Clean Solar Panels Perth: Professional Solar Panel Cleaning
+                    Solar Panel Cleaning Perth: Maximize System Output
                 </h1>
                 <p className="text-base md:text-xl max-w-3xl mx-auto mb-6 text-slate-200 leading-relaxed">
-                    Looking to <strong>clean solar panels Perth</strong>? Aspect provides specialist <strong>solar panel cleaning Perth</strong> to restore up to 30% lost efficiency and protect your photovoltaic investment using 100% deionised 0ppm pure water and soft-bristle reach poles across the Perth metro.
+                    Aspect provides professional <strong>solar panel cleaning Perth</strong> to restore up to 30% lost efficiency and protect your photovoltaic investment. Using 100% deionised 0ppm pure water and scratch-free soft-bristle reach poles across all Perth suburbs, we safely <Link href="/pricing" className="text-action-gold hover:underline font-semibold">clean solar panels in Perth</Link> with zero chemical residue.
                 </p>
                 <Link href="/pricing" className="inline-flex items-center justify-center bg-action-gold text-brand-navy hover:bg-action-gold/90 px-8 py-4 rounded-full font-bold text-base shadow-md transition-all">
                     View Pricing Guide

@@ -56,11 +56,11 @@ export default function CommercialHomeSection() {
                     </div>
 
                     <h2 className="text-3xl sm:text-4xl lg:text-5xl font-heading font-black text-brand-navy tracking-tight leading-tight mb-4">
-                        Commercial Window Cleaning Perth: Built for Facilities, Offices &amp; Strata
+                        Commercial Glazing &amp; Multi-Storey Facade Solutions Across Perth
                     </h2>
 
                     <p className="text-base sm:text-lg text-slate-600 leading-relaxed max-w-3xl mx-auto">
-                        Specialist exterior facade washing and interior glass detailing for Perth businesses, corporate headquarters, automotive showrooms, and multi-storey strata communities up to 4 storeys.
+                        Specialist exterior facade washing and interior glass detailing for Perth businesses, corporate headquarters, automotive showrooms, and multi-storey strata communities up to 4 storeys. Explore our dedicated <Link href="/services/commercial-window-cleaning" className="text-action-gold hover:underline font-semibold">commercial window cleaning Perth</Link> division for site audits, SWMS compliance, and recurring maintenance contracts.
                     </p>
                 </div>
 
