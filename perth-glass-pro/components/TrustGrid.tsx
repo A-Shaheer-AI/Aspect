@@ -334,7 +334,7 @@ export function TrustStatsBar() {
     ];
 
     return (
-        <section className="py-6 sm:py-8 bg-slate-50/70 relative">
+        <section id="stats" className="py-6 sm:py-8 bg-slate-50/70 relative scroll-mt-20">
             <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
                 <div className="relative rounded-2xl md:rounded-3xl bg-gradient-to-r from-[#000066] via-brand-navy to-[#0a196e] text-white shadow-2xl shadow-brand-navy/15 overflow-hidden border border-white/10">
                     {/* Subtle ambient light accents */}
@@ -418,7 +418,8 @@ export function ReviewsSection() {
     const visibleReviews = reviews.slice(startIndex, startIndex + reviewsPerPage);
 
     return (
-        <section id="reviews" className="py-16 md:py-20 bg-white">
+        <section id="reviews" className="py-16 md:py-20 bg-white scroll-mt-20 relative">
+            <span id="testimonials" className="absolute -top-20 invisible pointer-events-none" />
             <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
                 {/* Section Header */}
                 <div className="text-center mb-10">

@@ -172,8 +172,9 @@ async function main() {
     console.log(`✅ Accessible properties (${sites.length}):`);
     sites.forEach((s) => console.log(`   - ${s.siteUrl} (${s.permissionLevel})`));
 
-    // Prefer aspectwindowcleaning
-    const matched = sites.find((s) => s.siteUrl.toLowerCase().includes('aspectwindowcleaning'));
+    // Prefer domain property sc-domain:aspectwindowcleaning.com.au for complete coverage across all protocols
+    const matched = sites.find((s) => s.siteUrl.toLowerCase() === 'sc-domain:aspectwindowcleaning.com.au') ||
+                    sites.find((s) => s.siteUrl.toLowerCase().includes('aspectwindowcleaning'));
     siteUrl = matched ? matched.siteUrl : sites[0].siteUrl;
     console.log(`\n🎯 Target property selected: ${siteUrl}`);
   } catch (err) {

@@ -17,3 +17,4 @@ service-account*.json
 gsc-credentials.json
 *tokens*.json
 oauth-tokens.json
+scratch/

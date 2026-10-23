@@ -477,12 +477,15 @@ const CommercialWindowCleaning = () => {
                 </div>
             </section>
 
-            {/* REAL PROJECT CASE STUDY */}
+            {/* REAL COMMERCIAL CASE STUDIES */}
             <CaseStudiesSection
-                slugs={["grounded-office-window-cleaning-west-perth"]}
-                title="Featured Commercial Project: Grounded (West Perth)"
-                subtitle="Commercial Office Showcase"
-                limit={1}
+                slugs={[
+                    "grounded-office-window-cleaning-west-perth",
+                    "rockingham-toyota-dealership-high-reach-commercial-clean"
+                ]}
+                title="Commercial Window Cleaning Perth: Proven Office & Dealership Case Studies"
+                subtitle="Commercial Glass & High-Reach Portfolio"
+                limit={2}
             />
 
             {/* FAQ */}

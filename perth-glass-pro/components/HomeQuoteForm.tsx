@@ -32,11 +32,12 @@ export default function HomeQuoteForm() {
 
         try {
             const attribution = getLeadAttribution("Homepage - Quick Quote Form");
+            const cleanPhone = sanitizePhoneInput(formData.phone);
             const result = await sendLeadEmail({
-                name: formData.name,
-                phone: formData.phone,
+                name: formData.name.trim(),
+                phone: cleanPhone,
                 email: "No email provided (Quick Form)",
-                suburb: formData.suburb,
+                suburb: formData.suburb.trim(),
                 serviceType: "General (Quick Form)",
                 message: "Submitted from Home Page Quick Form",
                 anonId: getOpinlyAnonId(),
@@ -48,24 +49,11 @@ export default function HomeQuoteForm() {
                 setIsSuccess(true);
                 setFormData({ name: "", phone: "", suburb: "" });
             } else {
-                // Fallback success for local testing/logic matching landing
-                if (formData.name && formData.phone) {
-                    trackFormCompleted();
-                    setIsSuccess(true);
-                    setFormData({ name: "", phone: "", suburb: "" });
-                } else {
-                    setErrorMessage(result.error || "Failed to send. Please try again.");
-                }
+                setErrorMessage(result.error || "Failed to send quote request. Please call us directly or try again.");
             }
         } catch (error) {
             console.error("Quote submission error:", error);
-            if (formData.name && formData.phone) {
-                trackFormCompleted();
-                setIsSuccess(true);
-                setFormData({ name: "", phone: "", suburb: "" });
-            } else {
-                setErrorMessage("An unexpected error occurred. Please try again.");
-            }
+            setErrorMessage("An unexpected network error occurred. Please call us directly or try again.");
         } finally {
             setIsLoading(false);
         }
@@ -118,7 +106,8 @@ export default function HomeQuoteForm() {
                             autoComplete="tel-national"
                             placeholder="0400 000 000"
                             value={formData.phone}
-                            onChange={(e) => setFormData({ ...formData, phone: sanitizePhoneInput(e.target.value) })}
+                            onChange={(e) => setFormData({ ...formData, phone: e.target.value })}
+                            onBlur={(e) => setFormData({ ...formData, phone: sanitizePhoneInput(e.target.value) })}
                             className="w-full px-5 py-4 rounded-xl bg-slate-50 border border-slate-200 text-[#000080] font-medium placeholder:text-slate-400 placeholder:font-normal focus:bg-white focus:border-[#000080] focus:ring-2 focus:ring-[#000080]/20 outline-none transition-all shadow-sm"
                             required
                         />
@@ -159,9 +148,12 @@ export default function HomeQuoteForm() {
             )}
 
             {errorMessage && !isSuccess && (
-                <p className="text-red-500 text-sm text-center bg-red-50 p-2 rounded-lg mt-4 border border-red-100">
-                    {errorMessage}
-                </p>
+                <div className="text-red-600 text-sm text-center bg-red-50 p-3 rounded-xl mt-4 border border-red-200 flex flex-col sm:flex-row items-center justify-center gap-1 sm:gap-2">
+                    <span>{errorMessage}</span>
+                    <a href="tel:0426996192" className="font-bold underline text-[#000080] hover:text-action-gold">
+                        Call 0426 996 192 directly
+                    </a>
+                </div>
             )}
         </div>
     );

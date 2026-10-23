@@ -6,29 +6,41 @@
 
 export function sanitizePhoneInput(val: string): string {
     if (!val) return "";
-    let trimmed = val.trim();
+    let clean = val;
+    const hasTrailingSpace = /\s+$/.test(val);
 
     // If browser autofill or paste mistakenly injected a UK extension (+44, 0044, or 44)
-    if (trimmed.startsWith("+44") || trimmed.startsWith("0044")) {
-        trimmed = trimmed.replace(/^(\+44|0044)\s*/, "");
-        const digits = trimmed.replace(/\D/g, "");
+    if (clean.startsWith("+44") || clean.startsWith("0044")) {
+        clean = clean.replace(/^(\+44|0044)\s*/, "");
+        const digits = clean.replace(/\D/g, "");
         if (/^4\d{8}$/.test(digits)) {
-            trimmed = "0" + trimmed;
+            clean = "0" + clean;
         }
-    } else if (trimmed.startsWith("44") && trimmed.replace(/\D/g, "").length === 11) {
-        trimmed = trimmed.replace(/^44\s*/, "");
-        const digits = trimmed.replace(/\D/g, "");
+    } else if (clean.startsWith("44") && clean.replace(/\D/g, "").length === 11) {
+        clean = clean.replace(/^44\s*/, "");
+        const digits = clean.replace(/\D/g, "");
         if (/^4\d{8}$/.test(digits)) {
-            trimmed = "0" + trimmed;
+            clean = "0" + clean;
         }
     }
 
-    // If an international +61 was passed, clean to standard national 04XX format
-    if (trimmed.startsWith("+61")) {
-        trimmed = "0" + trimmed.slice(3).trim();
-    } else if (trimmed.startsWith("614") && trimmed.replace(/\D/g, "").length === 11) {
-        trimmed = "0" + trimmed.slice(2);
+    // If an international +61 was passed with actual digits following, clean to 04XX
+    if (clean.startsWith("+61") && clean.replace(/\D/g, "").length >= 3) {
+        clean = "0" + clean.replace(/^\+61\s*/, "");
+    } else if (clean.startsWith("614") && clean.replace(/\D/g, "").length === 11) {
+        clean = "0" + clean.slice(2);
     }
 
-    return trimmed;
+    // Preserve trailing space if user is typing between digit blocks
+    if (hasTrailingSpace && !clean.endsWith(" ")) {
+        clean = clean + " ";
+    }
+
+    return clean;
 }
+
+export function normalizePhoneNumber(val: string): string {
+    if (!val) return "";
+    return sanitizePhoneInput(val).trim();
+}
+

@@ -17,8 +17,13 @@ const ContactPage = () => {
   const [status, setStatus] = useState<FormStatus>('idle')
 
   const handleChange = (e: React.ChangeEvent<HTMLInputElement>) => {
-    const value = e.target.name === 'phone' ? sanitizePhoneInput(e.target.value) : e.target.value;
-    setFormData(prev => ({ ...prev, [e.target.name]: value }))
+    setFormData(prev => ({ ...prev, [e.target.name]: e.target.value }))
+  }
+
+  const handleBlur = (e: React.FocusEvent<HTMLInputElement>) => {
+    if (e.target.name === 'phone') {
+      setFormData(prev => ({ ...prev, phone: sanitizePhoneInput(e.target.value) }))
+    }
   }
 
   const handleSubmit = async (e: React.MouseEvent<HTMLButtonElement>) => {
@@ -30,17 +35,18 @@ const ContactPage = () => {
         identifyOpinly(formData.email)
       }
       const attribution = getLeadAttribution("Contact Page - Main Form");
+      const cleanPhone = sanitizePhoneInput(formData.phone);
       const result = await sendLeadEmail({
-        name: formData.name, email: formData.email,
-        phone: formData.phone,
-        suburb: formData.suburb,
+        name: formData.name.trim(),
+        email: formData.email.trim(),
+        phone: cleanPhone,
+        suburb: formData.suburb.trim(),
         anonId: getOpinlyAnonId(),
         ...attribution,
       })
-      setStatus(result.success || (formData.name && formData.phone) ? 'success' : 'error')
+      setStatus(result.success ? 'success' : 'error')
     } catch {
-      setStatus((formData.name && formData.phone) ? 'success' : 'error')
-
+      setStatus('error')
     }
   }
 
@@ -171,6 +177,7 @@ const ContactPage = () => {
                     placeholder={field.placeholder}
                     value={formData[field.id as keyof FormData]}
                     onChange={handleChange}
+                    onBlur={handleBlur}
                     disabled={isDisabled}
                     className="w-full px-4 py-3 rounded-lg border border-gray-200 bg-gray-50 text-[#000080] text-base placeholder-gray-400 outline-none focus:border-[#000080] focus:ring-2 focus:ring-[#000080]/10 focus:bg-white transition disabled:opacity-50"
                   />

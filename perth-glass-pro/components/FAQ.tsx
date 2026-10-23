@@ -17,7 +17,8 @@ export default function FAQ({ faqs, title, heading }: Faqs) {
     const [openIndex, setOpenIndex] = useState<number | null>(0);
 
     return (
-        <section id="faqs" className="py-16 bg-white">
+        <section id="faqs" className="py-16 bg-white scroll-mt-20 relative">
+            <span id="faq" className="absolute -top-20 invisible pointer-events-none" />
             <div className="max-w-4xl mx-auto px-4">
                 <h2 className="text-3xl font-heading font-bold text-brand-navy text-center mb-4">
                     {heading || "Frequently Asked Questions"}

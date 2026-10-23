@@ -75,13 +75,14 @@ export default function QuoteModal({
                 identifyOpinly(formData.email);
             }
             const attribution = getLeadAttribution(`Quote Modal (${quoteType || "General"})`);
+            const cleanPhone = sanitizePhoneInput(formData.phone);
             const result = await sendLeadEmail({
-                name: formData.name,
-                phone: formData.phone,
-                email: formData.email,
-                suburb: formData.suburb,
-                serviceType: formData.service || quoteType,
-                message: formData.message,
+                name: formData.name.trim(),
+                phone: cleanPhone,
+                email: formData.email.trim(),
+                suburb: formData.suburb.trim(),
+                serviceType: formData.service || quoteType || "General Inquiry",
+                message: formData.message.trim(),
                 anonId: getOpinlyAnonId(),
                 ...attribution,
             });
@@ -89,14 +90,11 @@ export default function QuoteModal({
                 trackFormCompleted();
                 setIsSuccess(true);
             } else {
-                // Fallback success for local testing/logic matching landing
-                if (formData.name && formData.phone) setIsSuccess(true);
-                else setErrorMessage(result.error || "Failed to send. Please try again.");
+                setErrorMessage(result.error || "Failed to send quote request. Please call us directly or try again.");
             }
         } catch (error) {
             console.error("Quote submission error:", error);
-            if (formData.name && formData.phone) setIsSuccess(true);
-            else setErrorMessage("An unexpected error occurred. Please try again.");
+            setErrorMessage("An unexpected network error occurred. Please call us directly or try again.");
         } finally {
             setIsLoading(false);
         }
@@ -253,7 +251,8 @@ export default function QuoteModal({
                                         autoComplete="tel-national"
                                         placeholder="0400 000 000"
                                         value={formData.phone}
-                                        onChange={(e) => setFormData({ ...formData, phone: sanitizePhoneInput(e.target.value) })}
+                                        onChange={(e) => setFormData({ ...formData, phone: e.target.value })}
+                                        onBlur={(e) => setFormData({ ...formData, phone: sanitizePhoneInput(e.target.value) })}
                                         className="w-full px-4 py-3 rounded-lg border border-slate-200 focus:border-action-gold focus:ring-2 focus:ring-action-gold/20 outline-none text-base transition-all"
                                     />
                                 </div>
@@ -268,6 +267,14 @@ export default function QuoteModal({
                                         className="w-full px-4 py-3 rounded-lg border border-slate-200 focus:border-action-gold focus:ring-2 focus:ring-action-gold/20 outline-none text-base transition-all resize-none"
                                     />
                                 </div>
+                                {errorMessage && (
+                                    <div className="text-red-600 text-xs text-center bg-red-50 p-2.5 rounded-lg border border-red-200">
+                                        <p>{errorMessage}</p>
+                                        <a href="tel:0426996192" className="font-bold underline text-[#000080] hover:text-action-gold mt-1 inline-block">
+                                            Call 0426 996 192 directly
+                                        </a>
+                                    </div>
+                                )}
                                 <div className="flex gap-3">
                                     <button
                                         onClick={() => setStep(1)}

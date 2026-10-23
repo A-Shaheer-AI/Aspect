@@ -69,7 +69,8 @@ function LeadForm({
                         autoComplete={f.auto}
                         placeholder={f.placeholder}
                         value={formData[f.key as keyof typeof formData]}
-                        onChange={(e) => setFormData({ ...formData, [f.key]: f.key === "phone" ? sanitizePhoneInput(e.target.value) : e.target.value })}
+                        onChange={(e) => setFormData({ ...formData, [f.key]: e.target.value })}
+                        onBlur={(e) => f.key === "phone" && setFormData({ ...formData, phone: sanitizePhoneInput(e.target.value) })}
                         className="w-full rounded-xl px-4 py-3 text-base outline-none transition-all"
                         style={{
                             background: dark ? "rgba(255,255,255,0.92)" : "#f4f6ff",
@@ -251,10 +252,11 @@ export default function PressureWashingAdsPage() {
     const handleSubmit = async () => {
         try {
             const attribution = getLeadAttribution("Pressure Cleaning Page - Quote Form");
+            const cleanPhone = sanitizePhoneInput(formData.phone);
             const result = await sendLeadEmail({
-                name: formData.name,
-                phone: formData.phone,
-                suburb: formData.suburb,
+                name: formData.name.trim(),
+                phone: cleanPhone,
+                suburb: formData.suburb.trim(),
                 serviceType: "Pressure Cleaning",
                 message: formData.promo ? `Promo code: ${formData.promo}` : undefined,
                 ...attribution,
@@ -262,11 +264,13 @@ export default function PressureWashingAdsPage() {
             if (result.success) {
                 setSubmitted(true);
                 trackFormCompleted();
-            };
+            } else {
+                alert(result.error || "Failed to send request. Please call us directly at 0426 996 192.");
+            }
         } catch (e) {
             console.error(e);
+            alert("An unexpected error occurred. Please call us directly at 0426 996 192.");
         }
-        if (formData.name && formData.phone && formData.suburb) setSubmitted(true);
     };
 
     const surfaces = [

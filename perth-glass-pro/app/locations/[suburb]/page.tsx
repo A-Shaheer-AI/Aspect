@@ -161,12 +161,10 @@ export default async function SuburbPage({ params }: { params: Promise<{ suburb:
             "@type": "City",
             "name": suburb.name
         },
-        "aggregateRating": {
-            "@type": "AggregateRating",
-            "ratingValue": "5.0",
-            "reviewCount": "43",
-            "bestRating": "5",
-            "worstRating": "1"
+        "parentOrganization": {
+            "@type": "LocalBusiness",
+            "name": "Aspect Window Cleaning",
+            "url": "https://aspectwindowcleaning.com.au"
         },
         "description": `Professional window cleaning, solar panel washing, gutter cleaning, and pressure washing in ${suburb.name}, Perth. Same-week service. Fully insured.`
     };
@@ -423,10 +421,84 @@ export default async function SuburbPage({ params }: { params: Promise<{ suburb:
                     {/* Specialized Suburb Deep Dive for High-Value & High-CPC Corridors */}
                     <SuburbCustomDeepDive suburbSlug={suburbSlug} suburbName={suburb.name} />
 
-                    {/* Internal SEO Hub Links */}
-                    <div className="bg-slate-50/70 border border-slate-200/80 rounded-2xl p-5 sm:p-6 text-sm text-brand-slate leading-relaxed mt-8">
-                        <span className="font-semibold text-brand-navy block mb-1">Aspect Exterior Cleaning Services in {suburb.name}:</span>
-                        In addition to our <Link href="/services/residential-window-cleaning" className="text-action-gold hover:underline font-semibold">residential window cleaning in {suburb.name}</Link>, we provide professional pure-water <Link href="/services/solar-panel-washing" className="text-action-gold hover:underline font-semibold">clean solar panels in Perth</Link>, exterior <Link href="/services/pressure-washing" className="text-action-gold hover:underline font-semibold">pressure washing</Link>, and complete <Link href="/services/gutter-cleaning" className="text-action-gold hover:underline font-semibold">roof gutter cleaning in Perth</Link>. Business and strata managers can book certified <Link href="/services/commercial-window-cleaning" className="text-action-gold hover:underline font-semibold">commercial window cleaners in Perth</Link> with scissor lifts and pure-water reach poles up to 4 storeys. Looking for a trusted <Link href="/" className="text-action-gold hover:underline font-semibold">window cleaning service in Perth</Link>? Explore our real <Link href="/case-studies" className="text-action-gold hover:underline font-semibold">Perth case studies</Link>, browse our <Link href="/blog" className="text-action-gold hover:underline font-semibold">cleaning guides</Link>, compare our <Link href="/pricing" className="text-action-gold hover:underline font-semibold">transparent pricing</Link>, or <Link href="/contact" className="text-action-gold hover:underline font-semibold">contact our team</Link> for an upfront quote.
+                    {/* High-Authority Perth Metro Service Gateway (Passing Exact PageRank to Core Hubs) */}
+                    <div className="bg-slate-50/90 border border-slate-200 rounded-3xl p-6 sm:p-8 mt-10 shadow-sm">
+                        <div className="flex flex-col sm:flex-row sm:items-center justify-between gap-2 pb-4 mb-4 border-b border-slate-200">
+                            <div>
+                                <span className="text-xs font-bold uppercase tracking-wider text-action-gold block">Perth Metropolitan Network</span>
+                                <h3 className="text-lg sm:text-xl font-heading font-bold text-brand-navy">
+                                    Aspect Exterior Cleaning Services in {suburb.name}
+                                </h3>
+                            </div>
+                            <Link href="/locations" className="text-xs sm:text-sm font-semibold text-brand-navy hover:text-action-gold transition-colors inline-flex items-center gap-1">
+                                Service Area Directory &rarr;
+                            </Link>
+                        </div>
+                        <p className="text-sm sm:text-base text-brand-slate leading-relaxed mb-6">
+                            Aspect Window Cleaning delivers specialist residential, strata, and commercial facade detailing for properties throughout {suburb.name} and surrounding communities. As Western Australia&apos;s trusted team for pure-water detailing and high-reach access, we connect local clients to our dedicated service divisions:
+                        </p>
+                        <div className="grid sm:grid-cols-2 lg:grid-cols-3 gap-3 text-sm">
+                            <div className="bg-white p-3.5 rounded-xl border border-slate-200/80 hover:border-action-gold/50 transition-colors">
+                                <span className="text-xs font-bold text-slate-400 block mb-1">Perth Head Authority</span>
+                                <Link href="/" className="font-bold text-brand-navy hover:text-action-gold hover:underline">
+                                    Window Cleaning Perth
+                                </Link>
+                                <p className="text-xs text-slate-500 mt-1">Metropolitan residential &amp; commercial glass care</p>
+                            </div>
+                            <div className="bg-white p-3.5 rounded-xl border border-slate-200/80 hover:border-action-gold/50 transition-colors">
+                                <span className="text-xs font-bold text-slate-400 block mb-1">Commercial Division</span>
+                                <Link href="/services/commercial-window-cleaning" className="font-bold text-brand-navy hover:text-action-gold hover:underline">
+                                    Commercial Window Cleaning Perth
+                                </Link>
+                                <p className="text-xs text-slate-500 mt-1">Multi-storey scissor lifts, EWPs &amp; pure water reach poles</p>
+                            </div>
+                            <div className="bg-white p-3.5 rounded-xl border border-slate-200/80 hover:border-action-gold/50 transition-colors">
+                                <span className="text-xs font-bold text-slate-400 block mb-1">Residential Specialists</span>
+                                <Link href="/services/residential-window-cleaning" className="font-bold text-brand-navy hover:text-action-gold hover:underline">
+                                    Residential Window Cleaning Perth
+                                </Link>
+                                <p className="text-xs text-slate-500 mt-1">Inside &amp; outside glass, flyscreens, frames &amp; tracks</p>
+                            </div>
+                            <div className="bg-white p-3.5 rounded-xl border border-slate-200/80 hover:border-action-gold/50 transition-colors">
+                                <span className="text-xs font-bold text-slate-400 block mb-1">Solar PV Maintenance</span>
+                                <Link href="/services/solar-panel-washing" className="font-bold text-brand-navy hover:text-action-gold hover:underline">
+                                    Solar Panel Cleaning Perth
+                                </Link>
+                                <p className="text-xs text-slate-500 mt-1">0ppm deionised wash to recover up to 30% solar yield</p>
+                            </div>
+                            <div className="bg-white p-3.5 rounded-xl border border-slate-200/80 hover:border-action-gold/50 transition-colors">
+                                <span className="text-xs font-bold text-slate-400 block mb-1">Roof &amp; Stormwater Care</span>
+                                <Link href="/services/gutter-cleaning" className="font-bold text-brand-navy hover:text-action-gold hover:underline">
+                                    Roof Gutter Cleaning Perth
+                                </Link>
+                                <p className="text-xs text-slate-500 mt-1">Complete debris vacuuming, downpipe flush &amp; roof checks</p>
+                            </div>
+                            <div className="bg-white p-3.5 rounded-xl border border-slate-200/80 hover:border-action-gold/50 transition-colors">
+                                <span className="text-xs font-bold text-slate-400 block mb-1">Exterior Hard Surfaces</span>
+                                <Link href="/services/pressure-washing" className="font-bold text-brand-navy hover:text-action-gold hover:underline">
+                                    Pressure Washing Perth
+                                </Link>
+                                <p className="text-xs text-slate-500 mt-1">High-pressure rotary wash for driveways, pavers &amp; patios</p>
+                            </div>
+                        </div>
+                        <div className="flex flex-wrap items-center gap-3 pt-5 mt-5 border-t border-slate-200 text-xs sm:text-sm font-semibold">
+                            <span className="text-slate-400">Quick Links:</span>
+                            <Link href="/pricing" className="text-brand-navy hover:text-action-gold transition-colors underline underline-offset-4 decoration-action-gold">
+                                Pricing &amp; Packages &rarr;
+                            </Link>
+                            <span className="text-slate-300">|</span>
+                            <Link href="/case-studies" className="text-brand-navy hover:text-action-gold transition-colors underline underline-offset-4 decoration-action-gold">
+                                Perth Case Studies &rarr;
+                            </Link>
+                            <span className="text-slate-300">|</span>
+                            <Link href="/blog" className="text-brand-navy hover:text-action-gold transition-colors underline underline-offset-4 decoration-action-gold">
+                                Window Cleaning Guides &rarr;
+                            </Link>
+                            <span className="text-slate-300">|</span>
+                            <Link href="/contact" className="text-brand-navy hover:text-action-gold transition-colors underline underline-offset-4 decoration-action-gold">
+                                Contact Team &rarr;
+                            </Link>
+                        </div>
                     </div>
                 </div>
             </section>

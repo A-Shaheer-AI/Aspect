@@ -543,7 +543,8 @@ function FreeTrialForm() {
                 type="tel"
                 placeholder="0400 000 000"
                 value={formData.phone}
-                onChange={e => setFormData({...formData, phone: sanitizePhoneInput(e.target.value)})}
+                onChange={e => setFormData({...formData, phone: e.target.value})}
+                onBlur={e => setFormData({...formData, phone: sanitizePhoneInput(e.target.value)})}
                 className="w-full rounded-xl px-4 py-3 text-base outline-none bg-white border border-gray-200 text-gray-900 focus:border-brand-navy"
             />
             <input
@@ -761,7 +762,8 @@ export default function WindowCleaningAdsPage() {
 
             {/* 🔹🔹🔹 SECTION 1: HERO  🔹🔹🔹 */}
             <section
-                className="relative min-h-screen flex flex-col items-center justify-center md:px-5 pb-10 text-white bg-cover bg-center
+                id="hero"
+                className="relative min-h-screen flex flex-col items-center justify-center md:px-5 pb-10 text-white bg-cover bg-center scroll-mt-20
   bg-[linear-gradient(160deg,rgba(10,22,40,0.85)_0%,rgba(15,37,69,0.88)_60%,rgba(19,48,96,0.92)_100%),url('/assets/landing-hero-bg-mobile.webp')]
   md:bg-[linear-gradient(160deg,rgba(10,22,40,0.82)_0%,rgba(15,37,69,0.85)_60%,rgba(19,48,96,0.90)_100%),url('/assets/landing-hero-bg.webp')]"
                 style={{ backgroundColor: "#0A1628" }}
@@ -856,7 +858,7 @@ export default function WindowCleaningAdsPage() {
                         </div>
 
                         {/* LEAD FORM */}
-                        <div className="rounded-3xl p-5 shadow-2xl w-full bg-white border border-gray-100 mx-auto">
+                        <div id="quote" className="rounded-3xl p-5 shadow-2xl w-full bg-white border border-gray-100 mx-auto scroll-mt-24">
                             <h2 className="mb-2 font-black text-xl leading-tight text-center" style={{ color: NAVY }}>
                                 Ready for Spotless Windows?
                             </h2>
@@ -878,7 +880,7 @@ export default function WindowCleaningAdsPage() {
 
             
 {/* 🔹🔹🔹 SECTION 2: STATS STRIP  🔹🔹🔹 */}
-            <section style={{ background: YELLOW }}>
+            <section id="stats" className="scroll-mt-20" style={{ background: YELLOW }}>
                 <div className="mx-auto grid max-w-4xl grid-cols-4">
                     {[ { num: "100+", label: "Happy Clients" }, { num: `${gmb.rating}\u2B50`, label: "Google Rating" }, { num: "$20M", label: "Insured" }, { num: "24hr", label: "Response Time" } ].map((s, i) => (
                         <div
@@ -898,7 +900,8 @@ export default function WindowCleaningAdsPage() {
             </section>
 
             {/* 🔹🔹🔹 SECTION 3: PRICING PACKAGES (HIGH-INTENT GOOGLE ADS CRO) 🔹🔹🔹 */}
-            <section id="pricing" className="py-16 bg-white px-5 border-b border-gray-100">
+            <section id="pricing" className="py-16 bg-white px-5 border-b border-gray-100 scroll-mt-20 relative">
+                <span id="packages" className="absolute -top-20 invisible pointer-events-none" />
                 <div className="max-w-5xl mx-auto text-center">
                     <h2 className="text-3xl md:text-4xl font-bold mb-4 text-brand-navy">Clear, Transparent Pricing</h2>
                     <p className="text-gray-600 max-w-2xl mx-auto mb-8 text-lg">We don't hide our rates. Select your home type below for our starting residential packages. Click a package to book now.</p>
@@ -1129,7 +1132,8 @@ export default function WindowCleaningAdsPage() {
             </section>
 
             {/* 🔹🔹🔹 SECTION 3.5: CUSTOMER REVIEWS & SOCIAL PROOF 🔹🔹🔹 */}
-            <section id="reviews" className="py-16 px-5 bg-slate-50 border-b border-gray-100">
+            <section id="reviews" className="py-16 px-5 bg-slate-50 border-b border-gray-100 scroll-mt-20 relative">
+                <span id="testimonials" className="absolute -top-20 invisible pointer-events-none" />
                 <div className="max-w-7xl mx-auto">
                     <div className="mx-auto mb-10 max-w-4xl text-center">
                         <div className="mb-3 flex justify-center gap-1">
@@ -1152,7 +1156,9 @@ export default function WindowCleaningAdsPage() {
             </section>
 
 {/* 🔹🔹🔹 SECTION 5: THE ASPECT DIFFERENCE (SEE & FEEL) 🔹🔹🔹 */}
-            <section id="difference" className="py-16 md:py-24 px-4 sm:px-6 lg:px-8 bg-white border-b border-gray-100">
+            <section id="difference" className="py-16 md:py-24 px-4 sm:px-6 lg:px-8 bg-white border-b border-gray-100 scroll-mt-20 relative">
+                <span id="results" className="absolute -top-20 invisible pointer-events-none" />
+                <span id="before-after" className="absolute -top-20 invisible pointer-events-none" />
                 <div className="max-w-7xl mx-auto">
                     {/* Main Section Header */}
                     <div className="mx-auto mb-10 max-w-3xl text-center">
@@ -1408,7 +1414,8 @@ export default function WindowCleaningAdsPage() {
 
             
             {/* 🔹🔹🔹 SECTION 6.5: WHAT'S INCLUDED  🔹🔹🔹 */}
-            <section className="py-10 md:py-16 bg-gray-50 px-4 sm:px-5">
+            <section id="included" className="py-10 md:py-16 bg-gray-50 px-4 sm:px-5 scroll-mt-20 relative">
+                <span id="services" className="absolute -top-20 invisible pointer-events-none" />
                 <div className="max-w-5xl mx-auto">
                     <p className="text-xs sm:text-sm font-semibold uppercase mb-1.5 text-center" style={{ color: YELLOW }}>
                         WHAT'S INCLUDED
@@ -1434,7 +1441,7 @@ export default function WindowCleaningAdsPage() {
             </section>
 
             
-<section id="commercial" className="py-12 px-5 bg-white border-y border-gray-100 text-center">
+<section id="commercial" className="py-12 px-5 bg-white border-y border-gray-100 text-center scroll-mt-20">
                 <div className="max-w-3xl mx-auto">
                     <Building2 className="w-8 h-8 text-brand-slate mx-auto mb-4" />
                     <h2 className="text-xl font-bold text-brand-navy mb-2">Looking for Commercial Services?</h2>
@@ -1443,7 +1450,7 @@ export default function WindowCleaningAdsPage() {
                 </div>
             </section>
 
-<section className="px-6 py-10 text-center" style={{ background: "#f4f6ff" }}>
+<section id="clients" className="px-6 py-10 text-center scroll-mt-20" style={{ background: "#f4f6ff" }}>
                 <p className="mb-8 text-xs font-semibold uppercase tracking-widest" style={{ color: "#666" }}>
                     Trusted by Perth businesses
                 </p>
@@ -1468,7 +1475,7 @@ export default function WindowCleaningAdsPage() {
             </section>
 
             {/* REAL ESTATE / PRE-SALE SNIPPET */}
-            <section className="py-16 px-5 bg-brand-navy text-white relative overflow-hidden">
+            <section id="pre-sale" className="py-16 px-5 bg-brand-navy text-white relative overflow-hidden scroll-mt-20">
                 <div className="absolute top-0 right-0 w-64 h-64 bg-action-gold opacity-10 rounded-full blur-3xl -translate-y-1/2 translate-x-1/3"></div>
                 <div className="max-w-4xl mx-auto flex flex-col md:flex-row items-center gap-8 relative z-10">
                     <div className="shrink-0 bg-white/10 p-5 rounded-2xl border border-white/20 shadow-lg hidden md:block">
@@ -1492,7 +1499,8 @@ export default function WindowCleaningAdsPage() {
             </section>
 
 {/* 🔹🔹🔹 SECTION 7: HOW IT WORKS  🔹🔹🔹 */}
-            <section className="px-5 py-16" style={{ background: "#f4f6ff" }}>
+            <section id="how-it-works" className="px-5 py-16 scroll-mt-20 relative" style={{ background: "#f4f6ff" }}>
+                <span id="process" className="absolute -top-20 invisible pointer-events-none" />
                 <div className="mx-auto mb-10 max-w-4xl text-center">
                     <div className="mb-3 inline-block rounded-full px-3 py-1 text-xs font-bold uppercase tracking-widest" style={{ background: "rgba(7,7,126,0.07)", color: NAVY }}>
                         How it works
@@ -1562,7 +1570,8 @@ export default function WindowCleaningAdsPage() {
 
             
 {/* PROMOS */}
-            <section id="promotions" className="py-16 px-5 bg-white border-b border-gray-100">
+            <section id="promotions" className="py-16 px-5 bg-white border-b border-gray-100 scroll-mt-20 relative">
+                <span id="offers" className="absolute -top-20 invisible pointer-events-none" />
                 <div className="max-w-6xl mx-auto">
                     <div className="text-center mb-12">
                         <h2 className="text-3xl md:text-4xl font-bold mb-4 text-brand-navy">Current Promotions & Bundles</h2>
@@ -1593,7 +1602,7 @@ export default function WindowCleaningAdsPage() {
 
             
 {/* FREE TRIAL */}
-            <section id="free-trial" className="py-20 px-5 bg-gray-50">
+            <section id="free-trial" className="py-20 px-5 bg-gray-50 scroll-mt-20">
                 <div className="max-w-4xl mx-auto bg-white rounded-3xl p-8 md:p-12 shadow-xl border border-gray-100 flex flex-col md:flex-row gap-10 items-center">
                     <div className="flex-1">
                         <h2 className="text-3xl font-bold text-brand-navy mb-4">Still Not Convinced?</h2>
@@ -1617,7 +1626,7 @@ export default function WindowCleaningAdsPage() {
 
             
 {/* 🔹🔹🔹 SECTION 9: FOOTER CTA  🔹🔹🔹 */}
-            <section className="relative overflow-hidden px-5 py-16 text-center" style={{ background: NAVY }}>
+            <section id="contact" className="relative overflow-hidden px-5 py-16 text-center scroll-mt-20" style={{ background: NAVY }}>
                 <div className="pointer-events-none absolute" style={{ top: "-150px", left: "50%", transform: "translateX(-50%)", width: 600, height: 600, border: "1px solid rgba(255,229,77,0.05)", borderRadius: "50%" }} />
                 <div className="relative z-10">
                     <div className="mb-4 inline-block rounded-full px-3 py-1 text-xs font-bold uppercase tracking-widest" style={{ background: "rgba(255,229,77,0.1)", color: YELLOW }}>
@@ -1858,7 +1867,7 @@ export default function WindowCleaningAdsPage() {
                                     </div>
                                     <div>
                                         <label htmlFor="pkg-phone" className="block text-sm font-bold text-gray-700 mb-1">Phone Number</label>
-                                        <input id="pkg-phone" name="phone" autoComplete="tel-national" inputMode="tel" required type="tel" value={pkgForm.phone} onChange={(e) => setPkgForm({...pkgForm, phone: sanitizePhoneInput(e.target.value)})} className="w-full px-4 py-3 rounded-lg border border-gray-300 focus:ring-2 focus:ring-action-gold focus:border-transparent text-base" placeholder="0400 000 000" />
+                                        <input id="pkg-phone" name="phone" autoComplete="tel-national" inputMode="tel" required type="tel" value={pkgForm.phone} onChange={(e) => setPkgForm({...pkgForm, phone: e.target.value})} onBlur={(e) => setPkgForm({...pkgForm, phone: sanitizePhoneInput(e.target.value)})} className="w-full px-4 py-3 rounded-lg border border-gray-300 focus:ring-2 focus:ring-action-gold focus:border-transparent text-base" placeholder="0400 000 000" />
                                     </div>
                                     <div>
                                         <label htmlFor="pkg-suburb" className="block text-sm font-bold text-gray-700 mb-1">Suburb</label>

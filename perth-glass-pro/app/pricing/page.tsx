@@ -245,7 +245,8 @@ export default function PricingPage() {
             </section>
 
             {/* Core Packages Section - FIRST THING VISIBLE BELOW HERO */}
-            <section id="packages" className="bg-white py-16 border-b border-gray-200 scroll-mt-20">
+            <section id="packages" className="bg-white py-16 border-b border-gray-200 scroll-mt-20 relative">
+                <span id="pricing" className="absolute -top-20 invisible pointer-events-none" />
                 <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
                     <div className="text-center mb-14">
                         <span className="text-action-gold text-xs font-bold uppercase tracking-wider block mb-2">

@@ -115,7 +115,7 @@ export default function HeroWithScroll() {
 
   return (
     <>
-      <section className="bg-[#000080] min-h-[100vh] h-full text-white flex pt-[120px] md:pt-[160px] pb-12 md:pb-16 overflow-hidden">
+      <section id="hero" className="bg-[#000080] min-h-[100vh] h-full text-white flex pt-[120px] md:pt-[160px] pb-12 md:pb-16 overflow-hidden scroll-mt-20">
 
         <div className="max-w-7xl mx-auto grid md:grid-cols-2 gap-12 items-center px-5">
 
@@ -218,6 +218,7 @@ export default function HeroWithScroll() {
 
             <div className="flex flex-col lg:flex-row items-start lg:items-center justify-start gap-4 mb-8 w-full">
               <button
+                id="hero-call-button"
                 onClick={() => setIsModalOpen(true)}
                 className="group flex items-center justify-center gap-3 bg-action-gold text-brand-navy font-bold text-lg px-6 lg:px-8 py-4 rounded-full shadow-lg hover:shadow-xl hover:bg-action-gold/90 transition-all focus:outline-none focus:ring-4 focus:ring-action-gold/50 cursor-pointer w-full md:w-auto"
                 aria-label="Get a residential quote"
@@ -237,7 +238,7 @@ export default function HeroWithScroll() {
 
             <a
               href={`tel:${BUSINESS.phoneRaw}`}
-              className="hidden sm:inline-flex items-center gap-2 text-white/80 hover:text-white transition-colors text-base mb-4"
+              className="inline-flex items-center gap-2 text-white/90 hover:text-white transition-colors text-sm sm:text-base mb-4 font-medium"
             >
               <Phone className="w-4 h-4 text-green-400" aria-hidden="true" />
               <span>

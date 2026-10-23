@@ -13,7 +13,9 @@ export interface ResultsAndReviewsProps {
  */
 export function SeeTheDifference() {
     return (
-        <section id="results" className="py-16 md:py-20 bg-slate-50 border-y border-slate-100">
+        <section id="results" className="py-16 md:py-20 bg-slate-50 border-y border-slate-100 scroll-mt-20 relative">
+            <span id="difference" className="absolute -top-20 invisible pointer-events-none" />
+            <span id="before-after" className="absolute -top-20 invisible pointer-events-none" />
             <div className="max-w-8xl mx-auto px-4 sm:px-6 lg:px-8">
                 <div className="text-center mb-12">
                     <h2 className="text-3xl md:text-4xl font-heading font-bold text-brand-navy mb-4">
