@@ -14,6 +14,7 @@ type PackageSelectionModalProps = {
 
 export default function PackageSelectionModal({ isOpen, onClose, packageName, packagePrice, storeys }: PackageSelectionModalProps) {
     const [pkgForm, setPkgForm] = useState({ name: "", phone: "", suburb: "" });
+    const [includeTracks, setIncludeTracks] = useState(false);
     const [isPkgSubmitting, setIsPkgSubmitting] = useState(false);
     const [pkgSubmitted, setPkgSubmitted] = useState(false);
     const [isDoubleStorey, setIsDoubleStorey] = useState(
@@ -50,7 +51,7 @@ export default function PackageSelectionModal({ isOpen, onClose, packageName, pa
                     selectedTier: packageName,
                     packagePrice: activePrice,
                     quoteType: "Pricing Page Package Selection",
-                    message: `Selected Price: ${activePrice}`,
+                    message: `Selected Price: ${activePrice}${includeTracks ? " | Deep Track Restoration Add-On Requested" : ""}`,
                     ...attribution,
                 }),
             });
@@ -157,6 +158,22 @@ export default function PackageSelectionModal({ isOpen, onClose, packageName, pa
                                     placeholder="Your Suburb"
                                 />
                             </div>
+                            {packageName.toLowerCase().includes("standard") && (
+                                <label className="flex items-start gap-2.5 p-3 rounded-xl border border-amber-200 bg-amber-50/80 cursor-pointer select-none">
+                                    <input
+                                        type="checkbox"
+                                        checked={includeTracks}
+                                        onChange={(e) => setIncludeTracks(e.target.checked)}
+                                        className="mt-0.5 rounded text-[#00173C] focus:ring-[#D4AF37] w-4 h-4 cursor-pointer"
+                                    />
+                                    <div className="text-xs leading-tight text-[#00173C]">
+                                        <span className="font-bold">Add Deep Track & Sliding Channel Scrubbing</span>
+                                        <span className="block text-[11px] text-gray-600 mt-0.5">
+                                            (Optional Add-On: basic wipe included for maintained tracks. Check this if tracks have heavy insects, dirt or sand).
+                                        </span>
+                                    </div>
+                                </label>
+                            )}
                             <button
                                 type="submit"
                                 disabled={isPkgSubmitting}

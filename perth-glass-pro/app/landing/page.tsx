@@ -31,7 +31,9 @@ function LeadForm({
     setFormData,
     onSubmit,
     dark = false,
-    showPromo = true
+    showPromo = true,
+    includeTracks = false,
+    setIncludeTracks,
 }: {
     submitted: boolean;
     showPromo?: boolean;
@@ -39,6 +41,8 @@ function LeadForm({
     setFormData: (d: { name: string; phone: string; suburb: string; promo?: string }) => void;
     onSubmit: () => void;
     dark?: boolean;
+    includeTracks?: boolean;
+    setIncludeTracks?: (v: boolean) => void;
 }) {
     const fields = [
         { key: "name", placeholder: "Your Name", type: "text", autoComplete: "name" },
@@ -67,10 +71,11 @@ function LeadForm({
             }}
             action="/api/quote"
             method="POST"
-            className="flex flex-col gap-2.5"
+            className="flex flex-col gap-2.5 text-left"
         >
             <input type="hidden" name="source" value="landing-lead-form" />
             <input type="hidden" name="service" value="Residential Window Cleaning" />
+            <input type="hidden" name="tracksAddon" value={includeTracks ? "Yes - Deep Track Detailing" : "No"} />
             {fields.filter((f) => !(f.key === "promo" && !showPromo))
                 .map((f) => (
                     <input
@@ -93,6 +98,29 @@ function LeadForm({
                         }}
                     />
                 ))}
+            {setIncludeTracks && (
+                <label
+                    className="flex items-start gap-2.5 p-2.5 rounded-xl border cursor-pointer select-none transition-all"
+                    style={{
+                        background: dark ? "rgba(255,255,255,0.08)" : "#f8faff",
+                        borderColor: dark ? "rgba(255,229,77,0.3)" : "#e0e6f5",
+                        color: dark ? "#fff" : "#07077E",
+                    }}
+                >
+                    <input
+                        type="checkbox"
+                        checked={includeTracks}
+                        onChange={(e) => setIncludeTracks(e.target.checked)}
+                        className="mt-0.5 rounded cursor-pointer w-4 h-4 text-action-gold focus:ring-action-gold shrink-0"
+                    />
+                    <div className="text-xs leading-snug">
+                        <span className="font-bold">Add Deep Track &amp; Sliding Door Scrubbing</span>
+                        <span className="block text-[11px] opacity-75 mt-0.5">
+                            (Optional Add-On: dislodges stubborn sand, grease &amp; heavy insect buildup)
+                        </span>
+                    </div>
+                </label>
+            )}
             <button
                 type="submit"
                 className="w-full rounded-xl py-3.5 text-sm font-bold mt-1 transition-all hover:-translate-y-0.5 cursor-pointer"
@@ -122,6 +150,8 @@ function QuoteModal({
     setFormData,
     onSubmit,
     showPromo = false,
+    includeTracks = false,
+    setIncludeTracks,
 }: {
     open: boolean;
     onClose: () => void;
@@ -130,6 +160,8 @@ function QuoteModal({
     setFormData: (d: { name: string; phone: string; suburb: string; promo?: string; }) => void;
     onSubmit: () => void;
     showPromo?: boolean;
+    includeTracks?: boolean;
+    setIncludeTracks?: (v: boolean) => void;
 }) {
     if (!open) return null;
 
@@ -218,6 +250,8 @@ function QuoteModal({
                         onSubmit={onSubmit}
                         dark
                         showPromo={showPromo}
+                        includeTracks={includeTracks}
+                        setIncludeTracks={setIncludeTracks}
                     />
 
                 </div>
@@ -258,15 +292,15 @@ const whatsInclude: InclusionItem[] = [
     {
         title: "Frames, Sills & Tracks",
         description:
-            "We clean all frames, sills, and sliding tracks to remove grime, mould, and built-up debris that harbour bacteria and damage seals.",
+            "Frames and sills wiped clean with every service. Basic track wipes included in Standard for maintained tracks, with deep restoration available for heavy sand and insect buildup.",
         detail:
-            "Perth's coastal winds and dry summer dust accumulate heavily in sliding tracks and sills, causing sliding rollers to jam and window seals to degrade prematurely. We vacuum deep track channels, wipe clean all internal sills, and wash exterior frame surrounds.",
+            "Perth's coastal winds and dry summer dust accumulate heavily in sliding tracks and sills, causing sliding rollers to jam and window seals to degrade prematurely. Routine maintained tracks receive a thorough wipe in our Standard package. For tracks caked in years of sand, insects, or hardened grime, our Deep Track Detailing Add-On and Supreme package deploy specialized vacuum attachments, degreasers, and detail brushes.",
         benefits: [
-            "Prevents expensive roller wear and track corrosion",
-            "Removes trapped moisture, mould spores, and allergens",
-            "Included as standard on all residential service bookings",
+            "Basic track wipe included in Standard for maintained tracks",
+            "Deep track scrub add-on removes heavy insect debris & sand",
+            "Prevents expensive sliding door roller jamming and track corrosion",
         ],
-        img: "/gallery/gallery-2.jpeg",
+        img: "https://res.cloudinary.com/dr8tjrszy/image/upload/f_auto,q_auto,w_800/v1792771489/aspect_landing/track-cleaning-before-after.jpg",
     },
     {
         title: "Screen & Fly Screen Cleaning",
@@ -573,7 +607,9 @@ export default function WindowCleaningAdsPage() {
     const [modalOpen, setModalOpen] = useState(false);
     const [isDoubleStorey, setIsDoubleStorey] = useState(false);
     const [activeDiffTab, setActiveDiffTab] = useState<"see" | "feel">("see");
-    const [activeSliderJob, setActiveSliderJob] = useState<"residential" | "commercial">("residential");
+    const [activeSliderJob, setActiveSliderJob] = useState<"residential" | "commercial" | "tracks">("residential");
+    const [trackViewMode, setTrackViewMode] = useState<"split" | "slider">("split");
+    const [includeTracks, setIncludeTracks] = useState(false);
     const [showPromo, setShowPromo] = useState(false);
     const [galleryOpen, setGalleryOpen] = useState(false);
     const [currentImageIndex, setCurrentImageIndex] = useState(0);
@@ -602,7 +638,7 @@ export default function WindowCleaningAdsPage() {
                 selectedTier: selectedPkg?.name,
                 packagePrice: selectedPkg?.price,
                 quoteType: "Landing Page Package Selection",
-                message: `Selected Price: ${selectedPkg?.price}`,
+                message: `Selected Price: ${selectedPkg?.price}${includeTracks ? " | Deep Track Restoration Add-On Requested" : ""}`,
                 ...attribution,
             });
             if (res.error) throw new Error(res.error);
@@ -630,11 +666,12 @@ export default function WindowCleaningAdsPage() {
     const handleSubmit = async () => {
         try {
             const attribution = getLeadAttribution("Landing Page - Hero Quote Form");
+            const combinedMessage = `${formData.promo || ""}${includeTracks ? " | Deep Track Restoration Add-On Requested" : ""}`.trim();
             const result = await sendLeadEmail({
                 name: formData.name,
                 phone: formData.phone,
                 suburb: formData.suburb,
-                message: formData.promo,
+                message: combinedMessage || undefined,
                 ...attribution,
             });
             if (result.success) {
@@ -714,8 +751,8 @@ export default function WindowCleaningAdsPage() {
             full: "https://res.cloudinary.com/dr8tjrszy/image/upload/f_auto,q_auto,w_800/v1789141016/aspect_landing/expert-window-cleaning-perth.jpg"
         },
         {
-            thumb: "https://res.cloudinary.com/dr8tjrszy/image/upload/f_auto,q_auto,w_400/v1789143222/aspect_landing/perth-window-cleaning-service-expert.jpg",
-            full: "https://res.cloudinary.com/dr8tjrszy/image/upload/f_auto,q_auto,w_800/v1789143222/aspect_landing/perth-window-cleaning-service-expert.jpg"
+            thumb: "https://res.cloudinary.com/dr8tjrszy/image/upload/f_auto,q_auto,w_400/v1792766954/aspect_landing/window-track-cleaning-perth.jpg",
+            full: "https://res.cloudinary.com/dr8tjrszy/image/upload/f_auto,q_auto,w_800/v1792766954/aspect_landing/window-track-cleaning-perth.jpg"
         },
         {
             thumb: "https://res.cloudinary.com/dr8tjrszy/image/upload/f_auto,q_auto,w_400/v1789141708/aspect_landing/exterior-glass-cleaning-perth-specialists.jpg",
@@ -746,6 +783,8 @@ export default function WindowCleaningAdsPage() {
                 setFormData={setFormData}
                 onSubmit={handleSubmit}
                 showPromo={showPromo}
+                includeTracks={includeTracks}
+                setIncludeTracks={setIncludeTracks}
             />
 
             
@@ -871,6 +910,8 @@ export default function WindowCleaningAdsPage() {
                                 setFormData={setFormData}
                                 onSubmit={handleSubmit}
                                 showPromo={false}
+                                includeTracks={includeTracks}
+                                setIncludeTracks={setIncludeTracks}
                             />
                         </div>
 
@@ -1027,7 +1068,7 @@ export default function WindowCleaningAdsPage() {
                                     </p>
                                 </div>
 
-                                <div className="space-y-2.5 mb-6 text-xs sm:text-sm text-slate-200">
+                                <div className="space-y-2.5 mb-5 text-xs sm:text-sm text-slate-200">
                                     <div className="flex items-start gap-2.5">
                                         <Check className="w-4 h-4 text-action-gold shrink-0 mt-0.5" />
                                         <span>Both interior & exterior glass washed</span>
@@ -1042,12 +1083,20 @@ export default function WindowCleaningAdsPage() {
                                     </div>
                                     <div className="flex items-start gap-2.5">
                                         <Check className="w-4 h-4 text-action-gold shrink-0 mt-0.5" />
+                                        <span>Basic track wipe included (for maintained tracks)</span>
+                                    </div>
+                                    <div className="flex items-start gap-2.5">
+                                        <Check className="w-4 h-4 text-action-gold shrink-0 mt-0.5" />
                                         <span>Flyscreens removed, dusted & refitted</span>
                                     </div>
                                     <div className="flex items-start gap-2.5">
                                         <Check className="w-4 h-4 text-action-gold shrink-0 mt-0.5" />
                                         <span>Full spider & cobweb surround removal</span>
                                     </div>
+                                </div>
+
+                                <div className="p-2.5 rounded-xl bg-white/10 border border-white/15 text-[11px] text-slate-200 leading-snug mb-5">
+                                    💡 <strong className="text-action-gold">Track Notice:</strong> Basic wipe included for maintained tracks. Heavy insect debris, compacted sand, or neglected tracks require our Deep Track Add-On or Supreme package.
                                 </div>
                             </div>
 
@@ -1249,7 +1298,18 @@ export default function WindowCleaningAdsPage() {
                                                         : "text-slate-600 hover:text-brand-navy"
                                                 }`}
                                             >
-                                                Residential Patio Glass
+                                                Patio Glass
+                                            </button>
+                                            <button
+                                                type="button"
+                                                onClick={() => setActiveSliderJob("tracks")}
+                                                className={`px-3 py-1.5 rounded-lg text-xs font-bold transition-all cursor-pointer ${
+                                                    activeSliderJob === "tracks"
+                                                        ? "bg-white text-brand-navy shadow-sm"
+                                                        : "text-slate-600 hover:text-brand-navy"
+                                                }`}
+                                            >
+                                                Door Tracks 🧽
                                             </button>
                                             <button
                                                 type="button"
@@ -1260,7 +1320,7 @@ export default function WindowCleaningAdsPage() {
                                                         : "text-slate-600 hover:text-brand-navy"
                                                 }`}
                                             >
-                                                Commercial Shopfront
+                                                Commercial
                                             </button>
                                         </div>
                                         <span className="text-[11px] text-slate-400 font-medium hidden sm:inline">↔ Drag handle left/right</span>
@@ -1273,6 +1333,14 @@ export default function WindowCleaningAdsPage() {
                                                 beforeImage="https://res.cloudinary.com/dr8tjrszy/image/upload/f_auto,q_auto,w_800/v1771960144/WhatsApp_Image_2026-02-22_at_8.48.03_PM_vtb2tn.jpg"
                                                 beforeLabel="Before"
                                                 afterLabel="After"
+                                                initial={50}
+                                            />
+                                        ) : activeSliderJob === "tracks" ? (
+                                            <BeforeAfterSlider
+                                                afterImage="https://res.cloudinary.com/dr8tjrszy/image/upload/c_crop,w_512,h_1024,x_512,y_0,f_auto,q_auto/v1792771489/aspect_landing/track-cleaning-before-after.jpg"
+                                                beforeImage="https://res.cloudinary.com/dr8tjrszy/image/upload/c_crop,w_512,h_1024,x_0,y_0,f_auto,q_auto/v1792771489/aspect_landing/track-cleaning-before-after.jpg"
+                                                beforeLabel="Real Dirty Track"
+                                                afterLabel="Restored Track"
                                                 initial={50}
                                             />
                                         ) : (
@@ -1412,7 +1480,132 @@ export default function WindowCleaningAdsPage() {
                 </div>
             </section>
 
-            
+            {/* 🔹🔹🔹 SECTION 5.5: DEDICATED TRACK & SILL SHOWCASE (HIGH-CTR GOOGLE ADS CONVERSION) 🔹🔹🔹 */}
+            <section id="tracks" className="py-14 md:py-20 bg-slate-900 text-white px-4 sm:px-6 lg:px-8 scroll-mt-20 relative overflow-hidden">
+                {/* Atmospheric Glow */}
+                <div className="absolute top-0 right-1/4 w-96 h-96 bg-action-gold/10 rounded-full blur-3xl pointer-events-none -translate-y-1/2" />
+                <div className="absolute bottom-0 left-1/4 w-96 h-96 bg-blue-500/10 rounded-full blur-3xl pointer-events-none translate-y-1/2" />
+
+                <div className="max-w-6xl mx-auto relative z-10">
+                    {/* Header */}
+                    <div className="max-w-3xl mx-auto text-center mb-10">
+                        <div className="inline-flex items-center gap-2 rounded-full px-4 py-1 text-xs font-extrabold uppercase tracking-widest bg-action-gold text-brand-navy mb-3 shadow-md">
+                            <Sparkles className="w-3.5 h-3.5" />
+                            <span>Deep Track &amp; Sliding Channel Restoration</span>
+                        </div>
+                        <h2 className="text-3xl sm:text-4xl md:text-5xl font-heading font-black text-white mb-3 leading-tight">
+                            Tired of Sticky, Insect-Caked <span className="text-action-gold">Sliding Door Tracks?</span>
+                        </h2>
+                        <p className="text-sm sm:text-base text-slate-300 leading-relaxed font-light">
+                            Perth&apos;s coastal sand and dry summer dust collect in sliding door tracks, causing rollers to grind and channels to turn black with dead insects and grime. See the real transformation below.
+                        </p>
+                    </div>
+
+                    {/* Large, Spacious Spotlight Container */}
+                    <div className="bg-slate-800/90 border border-slate-700/80 rounded-3xl p-4 sm:p-7 shadow-2xl">
+                        {/* Top Toolbar / Mode Switcher */}
+                        <div className="flex flex-col sm:flex-row items-center justify-between gap-3 mb-5 pb-4 border-b border-slate-700/80">
+                            <div className="flex items-center gap-2">
+                                <span className="w-2.5 h-2.5 rounded-full bg-emerald-400 animate-pulse" />
+                                <span className="text-xs sm:text-sm font-bold text-slate-200">
+                                    High-Definition Track Restoration Comparison
+                                </span>
+                            </div>
+                            <div className="inline-flex p-1 bg-slate-900 rounded-xl border border-slate-700 text-xs font-bold">
+                                <button
+                                    type="button"
+                                    onClick={() => setTrackViewMode("split")}
+                                    className={`px-3 py-1.5 rounded-lg transition-all cursor-pointer ${
+                                        trackViewMode === "split"
+                                            ? "bg-action-gold text-brand-navy shadow-sm"
+                                            : "text-slate-400 hover:text-white"
+                                    }`}
+                                >
+                                    Side-by-Side Comparison
+                                </button>
+                                <button
+                                    type="button"
+                                    onClick={() => setTrackViewMode("slider")}
+                                    className={`px-3 py-1.5 rounded-lg transition-all cursor-pointer ${
+                                        trackViewMode === "slider"
+                                            ? "bg-action-gold text-brand-navy shadow-sm"
+                                            : "text-slate-400 hover:text-white"
+                                    }`}
+                                >
+                                    Interactive Slider
+                                </button>
+                            </div>
+                        </div>
+
+                        {/* Visual View Area */}
+                        {trackViewMode === "split" ? (
+                            /* Side-by-Side View: Spacious full width container with high clarity */
+                            <div className="space-y-4">
+                                <div className="relative w-full aspect-[4/3] sm:aspect-[16/10] md:aspect-[16/9] lg:aspect-[2/1] rounded-2xl overflow-hidden bg-slate-950 border border-slate-700 shadow-inner flex items-center justify-center">
+                                    <Image
+                                        src="https://res.cloudinary.com/dr8tjrszy/image/upload/f_auto,q_auto,w_1400/v1792771489/aspect_landing/track-cleaning-before-after.jpg"
+                                        alt="Window track cleaning before and after Perth"
+                                        fill
+                                        sizes="(max-width: 1024px) 100vw, 1200px"
+                                        className="object-contain"
+                                        priority={false}
+                                    />
+
+                                    {/* Floating Labels */}
+                                    <div className="absolute top-3 left-3 bg-black/80 backdrop-blur-md text-white text-[11px] sm:text-xs px-3 py-1.5 rounded-full font-bold uppercase tracking-wider border border-white/20 shadow-lg">
+                                        ⬅ Real Dirty Track (Compacted Sand &amp; Insects)
+                                    </div>
+                                    <div className="absolute top-3 right-3 bg-action-gold text-brand-navy text-[11px] sm:text-xs px-3 py-1.5 rounded-full font-black uppercase tracking-wider shadow-lg">
+                                        Restored Clean Channel ➡
+                                    </div>
+                                </div>
+
+                                <div className="grid grid-cols-1 md:grid-cols-2 gap-3 text-xs sm:text-sm text-slate-300">
+                                    <div className="bg-slate-900/80 p-3.5 rounded-xl border border-slate-800">
+                                        <span className="font-bold text-rose-400 block mb-1">❌ Left: The Problem</span>
+                                        Accumulated sand from Fremantle Doctor winds, dead spiders, cockroach debris, and dried mud jam sliding door wheels, causing expensive track damage.
+                                    </div>
+                                    <div className="bg-slate-900/80 p-3.5 rounded-xl border border-slate-800">
+                                        <span className="font-bold text-action-gold block mb-1">✨ Right: The Aspect Standard</span>
+                                        HEPA vacuuming, specialist nylon channel detailing brushes, and aluminum-safe degreasers leave the metal channel gliding effortlessly like brand new.
+                                    </div>
+                                </div>
+                            </div>
+                        ) : (
+                            /* Interactive Slider Mode in Large Space */
+                            <div className="space-y-4">
+                                <div className="w-full max-w-4xl mx-auto rounded-2xl overflow-hidden shadow-2xl border border-slate-700">
+                                    <BeforeAfterSlider
+                                        beforeImage="https://res.cloudinary.com/dr8tjrszy/image/upload/c_crop,w_512,h_1024,x_0,y_0,f_auto,q_auto/v1792771489/aspect_landing/track-cleaning-before-after.jpg"
+                                        afterImage="https://res.cloudinary.com/dr8tjrszy/image/upload/c_crop,w_512,h_1024,x_512,y_0,f_auto,q_auto/v1792771489/aspect_landing/track-cleaning-before-after.jpg"
+                                        beforeLabel="Real Dirty Track"
+                                        afterLabel="Restored Clean"
+                                        initial={50}
+                                    />
+                                </div>
+                                <p className="text-center text-xs text-slate-400">
+                                    ↔ Drag slider handle left or right to inspect the before and after track channel detailing.
+                                </p>
+                            </div>
+                        )}
+
+                        {/* Scope & Transparency Box at Bottom of Showcase */}
+                        <div className="mt-6 pt-5 border-t border-slate-700/80 flex flex-col md:flex-row items-center justify-between gap-4">
+                            <div className="text-left text-xs sm:text-sm text-slate-300 max-w-2xl">
+                                <strong className="text-white">Fair Scope Notice:</strong> Our Standard package includes a complimentary basic wipe for maintained tracks. For heavily soiled tracks with years of insect debris, choose our <strong className="text-action-gold">Deep Track Add-On</strong> or our <strong className="text-action-gold">Supreme Package</strong>.
+                            </div>
+                            <button
+                                type="button"
+                                onClick={openRegularModal}
+                                className="w-full md:w-auto px-6 py-3.5 rounded-xl font-extrabold text-sm bg-action-gold text-brand-navy hover:bg-white transition-all shadow-lg hover:shadow-xl cursor-pointer shrink-0"
+                            >
+                                Get a Quote for Your Tracks &amp; Windows ➔
+                            </button>
+                        </div>
+                    </div>
+                </div>
+            </section>
+
             {/* 🔹🔹🔹 SECTION 6.5: WHAT'S INCLUDED  🔹🔹🔹 */}
             <section id="included" className="py-10 md:py-16 bg-gray-50 px-4 sm:px-5 scroll-mt-20 relative">
                 <span id="services" className="absolute -top-20 invisible pointer-events-none" />
@@ -1873,6 +2066,22 @@ export default function WindowCleaningAdsPage() {
                                         <label htmlFor="pkg-suburb" className="block text-sm font-bold text-gray-700 mb-1">Suburb</label>
                                         <input id="pkg-suburb" name="suburb" autoComplete="address-level2" required type="text" value={pkgForm.suburb} onChange={(e) => setPkgForm({...pkgForm, suburb: e.target.value})} className="w-full px-4 py-3 rounded-lg border border-gray-300 focus:ring-2 focus:ring-action-gold focus:border-transparent text-base" placeholder="e.g. Subiaco" />
                                     </div>
+                                    {selectedPkg.name === "Standard" && (
+                                        <label className="flex items-start gap-2.5 p-3 rounded-xl border border-amber-200 bg-amber-50/80 cursor-pointer select-none">
+                                            <input
+                                                type="checkbox"
+                                                checked={includeTracks}
+                                                onChange={(e) => setIncludeTracks(e.target.checked)}
+                                                className="mt-0.5 rounded text-brand-navy focus:ring-action-gold w-4 h-4 cursor-pointer"
+                                            />
+                                            <div className="text-xs leading-tight text-brand-navy">
+                                                <span className="font-bold">Add Deep Track &amp; Sliding Channel Scrubbing</span>
+                                                <span className="block text-[11px] text-gray-600 mt-0.5">
+                                                    (Optional Add-On: basic wipe included for maintained tracks. Check this if tracks have heavy insects, dirt or sand).
+                                                </span>
+                                            </div>
+                                        </label>
+                                    )}
                                     {pkgError && <p className="text-red-500 text-sm font-semibold">{pkgError}</p>}
                                     <button disabled={isPkgSubmitting} type="submit" className="w-full bg-action-gold text-brand-navy font-bold py-4 rounded-xl hover:shadow-lg transition-all cursor-pointer">
                                         {isPkgSubmitting ? "Booking..." : "Book Now \u2192"}
