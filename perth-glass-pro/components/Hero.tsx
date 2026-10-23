@@ -115,7 +115,7 @@ export default function HeroWithScroll() {
 
   return (
     <>
-      <section className="bg-[#000080] min-h-[100vh] h-full text-white flex pt-[120px] md:pt-[160px] pb-12 md:pb-16 overflow-hidden">
+      <section id="hero" className="bg-[#000080] min-h-[100vh] h-full text-white flex pt-[120px] md:pt-[160px] pb-12 md:pb-16 overflow-hidden scroll-mt-20">
 
         <div className="max-w-7xl mx-auto grid md:grid-cols-2 gap-12 items-center px-5">
 

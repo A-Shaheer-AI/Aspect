@@ -69,7 +69,9 @@ export default function ServiceFinder() {
     };
 
     return (
-        <section id="areas" className="bg-brand-water/20 py-20 border-t border-slate-200 bg-pattern-bubbles">
+        <section id="areas" className="bg-brand-water/20 py-20 border-t border-slate-200 bg-pattern-bubbles scroll-mt-20 relative">
+            <span id="locations" className="absolute -top-20 invisible pointer-events-none" />
+            <span id="suburbs" className="absolute -top-20 invisible pointer-events-none" />
             <QuoteModal
                 isOpen={isModalOpen}
                 onClose={() => setIsModalOpen(false)}

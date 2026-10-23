@@ -43,7 +43,7 @@ export default function CommercialHomeSection() {
     ];
 
     return (
-        <section className="py-16 md:py-24 bg-gradient-to-b from-white via-slate-50/70 to-slate-100/60 border-b border-slate-200/80 relative overflow-hidden">
+        <section id="commercial" className="py-16 md:py-24 bg-gradient-to-b from-white via-slate-50/70 to-slate-100/60 border-b border-slate-200/80 relative overflow-hidden scroll-mt-20">
             {/* Subtle architectural background grid */}
             <div className="absolute inset-0 bg-[linear-gradient(to_right,#00008008_1px,transparent_1px),linear-gradient(to_bottom,#00008008_1px,transparent_1px)] bg-[size:3rem_3rem] pointer-events-none" />
 
