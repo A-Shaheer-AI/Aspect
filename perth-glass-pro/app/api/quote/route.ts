@@ -47,8 +47,10 @@ export async function POST(request: NextRequest) {
                 priceEstimate: data.priceEstimate ? Number(data.priceEstimate) : undefined,
                 anonId: (data.anonId as string) || undefined,
                 message:
-                    (data.message as string) ||
-                    (data.promo ? `Promo code: ${data.promo}` : undefined),
+                    [
+                        (data.message as string) || (data.promo ? `Promo code: ${data.promo}` : ""),
+                        data.tracksAddon && data.tracksAddon !== "No" ? `Track Add-On: ${data.tracksAddon}` : "",
+                    ].filter(Boolean).join(" | ") || undefined,
                 sourceUrl: submissionUrl,
                 landingUrl: landingUrl,
                 submissionUrl: submissionUrl,

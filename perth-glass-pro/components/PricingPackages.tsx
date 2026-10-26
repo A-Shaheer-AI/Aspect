@@ -54,6 +54,7 @@ const packages: PackageItem[] = [
             "Both interior & exterior glass washed streak-free",
             "100% pure water exterior & hand squeegee interior",
             "External & internal frames and sills wiped clean",
+            "Basic track wipe included (for maintained tracks)",
             "Flyscreens dusted and wiped down",
             "Cobweb removal around all window surrounds",
             "Basic Wash removes fingerprints, grime & grease",
@@ -62,7 +63,7 @@ const packages: PackageItem[] = [
         excludes: [
             "No hard water or Perth bore water mineral etching removal",
             "No paint overspray, plaster, render or tape scraping",
-            "No deep track grime extraction (surface wipe only)",
+            "No heavy insect or compacted sand track extraction (available as add-on or in Supreme)",
         ],
     },
     {
@@ -175,7 +176,7 @@ const comparisonRows: ComparisonRow[] = [
         description: "Industrial HEPA vacuuming + detailing of accumulated grit, dead bugs & grime",
         category: "Restoration & Detailing",
         essential: false,
-        standard: false,
+        standard: "Basic Wipe (Add-on for Deep)",
         supreme: true,
     },
     {
