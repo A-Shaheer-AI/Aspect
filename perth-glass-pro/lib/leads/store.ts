@@ -8,12 +8,31 @@ export interface ChatMessage {
   timestamp: string;
 }
 
+export interface LeadExtractedDetails {
+  property_type?: "residential" | "commercial" | string;
+  storeys?: "single" | "double" | "multi" | string;
+  scope?: string;
+  bedrooms?: number;
+  has_screens?: boolean;
+  urgent?: boolean;
+  address?: string;
+  suburb?: string;
+  window_count?: string | number;
+  condition?: string;
+  chosen_plan?: "basic" | "detailed" | "other" | string;
+  contact_preference?: "phone" | "text" | "pending";
+  preferred_call_time?: string;
+  stage?: "initial_greeting" | "awaiting_preference" | "collecting_details" | "plan_selection" | "completed" | "call_scheduled";
+  notes?: string;
+}
+
 export interface LeadProfile {
   id: string;
   phone: string;
   name: string;
   email?: string;
   suburb: string;
+  lead_source?: "sms" | "website" | "manual";
   gclid?: string;
   keyword?: string;
   device?: string;
@@ -29,15 +48,7 @@ export interface LeadProfile {
   mute_reason?: string;
   status: "NEW" | "CONTACTED" | "QUOTED" | "WON" | "LOST";
   quoted_value?: number;
-  extracted_details: {
-    storeys?: string;
-    scope?: string;
-    bedrooms?: number;
-    has_screens?: boolean;
-    urgent?: boolean;
-    address?: string;
-    notes?: string;
-  };
+  extracted_details: LeadExtractedDetails;
   messages: ChatMessage[];
   created_at: string;
   updated_at: string;
@@ -218,4 +229,13 @@ export function unmuteAiForLead(phone: string) {
     persistStorage(leads);
     console.log(`🔊 [AI Unmuted] Lead ${lead.name} (${norm}) unmuted.`);
   }
+}
+
+/**
+ * Returns the most recently updated lead (useful for remote owner commands like #stop)
+ */
+export function getLatestActiveLead(): LeadProfile | undefined {
+  const leads = ensureStorage();
+  if (leads.length === 0) return undefined;
+  return [...leads].sort((a, b) => new Date(b.updated_at).getTime() - new Date(a.updated_at).getTime())[0];
 }

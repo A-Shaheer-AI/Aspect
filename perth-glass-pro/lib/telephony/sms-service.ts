@@ -185,7 +185,72 @@ export async function sendSms(
 }
 
 /**
- * Sends an urgent alert directly to Ahmed's mobile
+ * Gets the designated alert mobile number for Ahmed / owner
+ */
+export function getOwnerAlertPhone(): string {
+  return process.env.AHMED_ALERT_PHONE || process.env.NEXT_PUBLIC_CONTACT_PHONE || "+61426996192";
+}
+
+/**
+ * Dispatches an instant alert when a customer requests a phone call
+ */
+export async function alertCallRequested(
+  lead: { name: string; phone: string; suburb?: string },
+  preferredTime: string = "ASAP"
+) {
+  const alertPhone = getOwnerAlertPhone();
+  const alertBody = `🚨 [ASPECT CALL REQUEST]\nCustomer: ${lead.name || "Prospect"} (${lead.phone})\nSuburb: ${lead.suburb || "Perth"}\nRequested Time: ${preferredTime}\n\n⚠️ AI is muted. Please call the customer directly now!`;
+
+  console.log(`🚨 [Alert Dispatch] Call requested by ${lead.phone} -> Alerting ${alertPhone}`);
+  await sendSms(alertPhone, alertBody);
+}
+
+/**
+ * Dispatches an instant alert when customer says something off-track/unusual and AI pauses
+ */
+export async function alertLeadOffTrack(
+  lead: { name: string; phone: string; suburb?: string },
+  customerMsg: string,
+  reason: string
+) {
+  const alertPhone = getOwnerAlertPhone();
+  const alertBody = `⚠️ [AI PAUSED - OFF-TRACK]\nFrom: ${lead.phone}\nMessage: "${customerMsg}"\nTrigger: ${reason}\n\nAI paused so you can take over. Reply #unmute to resume AI.`;
+
+  console.log(`⚠️ [Alert Dispatch] Off-track message from ${lead.phone} -> Alerting ${alertPhone}`);
+  await sendSms(alertPhone, alertBody);
+}
+
+/**
+ * Dispatches full lead dossier when quote qualification is completed
+ */
+export async function alertQuoteCompleted(lead: any) {
+  const alertPhone = getOwnerAlertPhone();
+  const d = lead.extracted_details || {};
+  const alertBody = `🎯 [ASPECT QUOTE READY]\nCustomer: ${lead.name || "Prospect"} (${lead.phone})\nAddress: ${d.address || lead.suburb || "Perth"}\nType: ${d.property_type || "Residential"}\nStoreys: ${d.storeys || "N/A"}\nWindows: ${d.window_count || "N/A"}\nCondition: ${d.condition || "N/A"}\nPlan: ${d.chosen_plan || "Pending"}\n\nAll details collected! Review & send quote.`;
+
+  console.log(`🎯 [Alert Dispatch] Completed quote dossier for ${lead.phone} -> Alerting ${alertPhone}`);
+  await sendSms(alertPhone, alertBody);
+}
+
+/**
+ * Mirrors customer & AI exchange to Ahmed's phone in real-time
+ */
+export async function mirrorConversationToOwner(
+  customerPhone: string,
+  customerMsg: string,
+  aiReply: string
+) {
+  // Can be controlled by MIRROR_SMS_TO_OWNER env var, default true if configured
+  if (process.env.MIRROR_SMS_TO_OWNER === "false") return;
+  const alertPhone = getOwnerAlertPhone();
+  if (normalizeAuPhone(customerPhone) === normalizeAuPhone(alertPhone)) return;
+
+  const mirrorBody = `💬 [ASPECT CHAT] ${customerPhone}:\nUser: "${customerMsg}"\nFazal: "${aiReply}"\n(Reply #stop to pause AI)`;
+  await sendSms(alertPhone, mirrorBody);
+}
+
+/**
+ * Sends an urgent alert directly to Ahmed's mobile (legacy wrapper)
  */
 export async function sendUrgentAlertToAhmed(
   customerName: string,
@@ -193,14 +258,5 @@ export async function sendUrgentAlertToAhmed(
   customerQuery: string,
   reason: string
 ) {
-  const alertPhone = process.env.AHMED_ALERT_PHONE || process.env.NEXT_PUBLIC_CONTACT_PHONE || "";
-
-  const alertBody = `🚨 URGENT LEAD ACTION REQUIRED\nFrom: ${customerName || "Prospect"} (${customerPhone})\nQuery: "${customerQuery}"\nReason: ${reason}\n\n⚠️ AI stayed silent and paused. Please text customer directly!`;
-
-  if (!alertPhone) {
-    console.warn("⚠️ AHMED_ALERT_PHONE not configured. Urgent alert logged to console:\n", alertBody);
-    return;
-  }
-
-  await sendSms(alertPhone, alertBody);
+  await alertLeadOffTrack({ name: customerName, phone: customerPhone }, customerQuery, reason);
 }

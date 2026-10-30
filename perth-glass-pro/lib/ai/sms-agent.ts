@@ -1,111 +1,278 @@
 import { GoogleGenAI, Type } from "@google/genai";
-import { ASPECT_KNOWLEDGE, FEW_SHOT_EXAMPLES } from "./knowledge";
-import { LeadProfile, muteAiForLead, saveOrUpdateLead } from "@/lib/leads/store";
-import { sendUrgentAlertToAhmed } from "@/lib/telephony/twilio-client";
+import { ASPECT_KNOWLEDGE } from "./knowledge";
+import { LeadProfile, LeadExtractedDetails, muteAiForLead, saveOrUpdateLead } from "@/lib/leads/store";
+import { alertCallRequested, alertLeadOffTrack, alertQuoteCompleted } from "@/lib/telephony/sms-service";
 
 export interface AgentDecision {
   can_answer: boolean;
   reason: string;
   reply_text: string;
-  extracted_details?: {
-    storeys?: string;
-    scope?: string;
-    has_screens?: boolean;
-    address?: string;
-    notes?: string;
-  };
+  is_call_request?: boolean;
+  is_completed?: boolean;
+  extracted_details?: Partial<LeadExtractedDetails>;
 }
 
 /**
- * Builds the strict system prompt for the Gemini AI Agent
+ * Builds the strict, context-aware system prompt for Fazal
  */
 function buildSystemInstruction(profile: LeadProfile): string {
+  const d = profile.extracted_details || {};
+  const assistantMsgCount = profile.messages.filter(m => m.role === "assistant").length;
+  const isFirstMessage = assistantMsgCount === 0;
+  const isWebsiteLead = profile.lead_source === "website";
+
   return `
-You are the SMS customer coordinator for ${ASPECT_KNOWLEDGE.businessName}, owned by ${ASPECT_KNOWLEDGE.ownerName}.
-You are communicating via SMS with ${profile.name || "a customer"} located in ${profile.suburb || "Perth"}.
+You are Fazal, the customer service coordinator for ${ASPECT_KNOWLEDGE.businessName} in Perth, Western Australia.
+You are communicating via SMS with ${profile.name || "a customer"} (${profile.phone}).
 
-BUSINESS FACTS:
-- Minimum Callout: ${ASPECT_KNOWLEDGE.pricing.minimumCallout}
-- Single Storey Window Cleaning: ${ASPECT_KNOWLEDGE.pricing.singleStoreyBallpark}
-- Double Storey Window Cleaning: ${ASPECT_KNOWLEDGE.pricing.doubleStoreyBallpark}
-- Inside & Out: ${ASPECT_KNOWLEDGE.pricing.insideAndOutNote}
-- Tracks & Sills: ${ASPECT_KNOWLEDGE.pricing.tracksAndFrames}
-- Flyscreens: ${ASPECT_KNOWLEDGE.pricing.flyscreens}
-- Solar Panel Cleaning: ${ASPECT_KNOWLEDGE.pricing.solarPanels}
-- Gutter Cleaning: ${ASPECT_KNOWLEDGE.pricing.gutters}
-- Service Area: ${ASPECT_KNOWLEDGE.serviceLocation}
+CURRENT KNOWN PROPERTY DETAILS (DO NOT ASK FOR DETAILS ALREADY KNOWN):
+- Lead Source: ${profile.lead_source || "SMS"}
+- Suburb: ${d.suburb || profile.suburb || "Perth"}
+- Property Type: ${d.property_type || "UNKNOWN"}
+- Storeys: ${d.storeys || "UNKNOWN"}
+- Address: ${d.address || "UNKNOWN"}
+- Approx Window Count: ${d.window_count || "UNKNOWN"}
+- Window Condition / Last Cleaned: ${d.condition || "UNKNOWN"}
+- Chosen Package: ${d.chosen_plan || "UNKNOWN"}
+- Contact Preference: ${d.contact_preference || "UNKNOWN"}
 
-STRICT OUT-OF-SCOPE LIST (If ANY of these apply, you MUST set can_answer = false):
-${ASPECT_KNOWLEDGE.strictOutOfScope.map(item => `- ${item}`).join("\n")}
+PACKAGES:
+1. Detailed Clean: For people who want a 100% perfect finish. Intensive manual clean where we manually scrape every accessible bit of paint, construction residue, stickers, or mineral spots, along with a deep scrub of tracks, frames, and flyscreens.
+2. Basic Wash: Focuses on washing away surface dirt, dust, and cobwebs to achieve an approx 85–90% clean finish. Includes external frames and a basic wipe of inside frames and tracks, but does not include manual razor scraping of paint or bonded residue.
 
-YOUR BEHAVIOR RULES:
-${ASPECT_KNOWLEDGE.toneGuidelines}
+STRICT CONVERSATIONAL PROTOCOL:
+1. FIRST MESSAGE PROTOCOL (isFirstMessage = ${isFirstMessage}):
+   - If this is the FIRST message you are sending:
+     - If lead came from SMS: Greet with "Hi, thanks for your message! When would be a good time to have a chat? Would you prefer a quick phone call so we can grab all the necessary details and get back to you with a quote as soon as possible, or would you prefer to chat over text?"
+     - If lead came from Website: Greet with "Hi, thanks for your query on our website! Could I grab a few more details so we can decide whether a site visit would be needed or if we can get you an instant quote? When would be a good time to have a chat — would you prefer a quick phone call so we can grab all the necessary details, or would you prefer to chat over text?"
+     - Sign-off on FIRST message ONLY: You MUST end the first message with:
+       "Regards, Aspect Window Cleaning, Fazal."
+   - IF THIS IS NOT THE FIRST MESSAGE: You are STRICTLY FORBIDDEN from including any sign-off or signature. Do NOT say "Regards" or "Fazal".
 
-FEW-SHOT EXAMPLES OF PROPER SMS FORMATTING:
-${FEW_SHOT_EXAMPLES.map(ex => `Customer: "${ex.customer}"\nAgent: "${ex.aiReply}"`).join("\n\n")}
+2. BRANCH A - CUSTOMER WANTS A PHONE CALL:
+   - If customer says "call me", "call now", "give me a ring", "call in 10 mins", "after 4pm", etc.:
+     - Confirm warmly: "Sounds great! We'll give you a call shortly. Talk soon!"
+     - Set is_call_request = true.
+     - Extract any preferred call time.
 
-CRITICAL INSTRUCTIONS:
-1. If the customer asks something outside standard window cleaning, solar, or gutters, set can_answer = false and reply_text = "". DO NOT GUESS.
-2. If customer is negotiating, demanding discounts, or reporting a past issue, set can_answer = false and reply_text = "".
-3. If can_answer = true, write a short, friendly, natural SMS (1-3 sentences). Never sound like an AI bot.
-4. Extract any property details mentioned (e.g. single/double storey, inside/out, address).
+3. BRANCH B - CHAT OVER TEXT:
+   - Gather missing details ONE at a time in natural conversation.
+   - NEVER ask for something listed above as KNOWN.
+   - If Property Type is UNKNOWN: Ask if residential or commercial.
+   - If Storeys is UNKNOWN: Ask if single or double storey.
+   - If Address is UNKNOWN: Ask for street address in their suburb.
+   - If Approx Window Count is UNKNOWN: Ask for a rough ballpark window count.
+   - If Condition is UNKNOWN: Ask roughly when the windows were last cleaned.
+   - Once all above are known, present the two packages (Detailed Clean vs Basic Wash) clearly explaining the difference (manual scraping for 100% perfect finish vs 85-90% wash) and ask which they prefer.
+   - Once package is chosen: Say "Thank you so much for this information! We will review this and get back to you with a quote shortly." and set is_completed = true.
+
+4. ULTRA-SENSITIVE GUARDRAIL (Zero tolerance for off-track):
+   - If the customer says ANYTHING slightly off from standard window/solar/gutter qualification (complaints, negotiation, discounts, structural damage, broken glass, roofing, high-rise, rude remarks):
+   - You MUST set can_answer = false, reply_text = "". DO NOT GUESS.
 `;
 }
 
 /**
- * Fallback heuristic evaluator for local dev/testing before GEMINI_API_KEY is configured
+ * Comprehensive heuristic state machine evaluator
  */
-function evaluateWithLocalHeuristics(message: string, profile: LeadProfile): AgentDecision {
-  const lower = message.toLowerCase();
+export function evaluateWithLocalHeuristics(message: string, profile: LeadProfile): AgentDecision {
+  const lower = message.toLowerCase().trim();
+  const d: LeadExtractedDetails = { ...(profile.extracted_details || {}) };
+  const assistantMsgCount = profile.messages.filter(m => m.role === "assistant").length;
+  const isFirstMessage = assistantMsgCount === 0;
+  const isWebsiteLead = profile.lead_source === "website";
 
-  // Out of scope checks
+  // 1. Ultra-sensitive off-topic & anomaly check
   const outOfScopePatterns = [
     /roof.*paint/i, /tile.*repair/i, /pressure.*driveway/i, /limestone.*seal/i,
-    /discount/i, /cheaper/i, /too expensive/i, /complaint/i, /damaged/i, /broken.*glass/i,
-    /commercial.*tower/i, /4.*storey/i, /high.*rise/i
+    /discount/i, /cheaper/i, /too expensive/i, /price.*beat/i, /bargain/i,
+    /complaint/i, /damaged/i, /broken.*glass/i, /cracked/i, /scratch/i,
+    /commercial.*tower/i, /high.*rise/i, /abseil/i, /rope\s*access/i,
+    /lawsuit/i, /legal/i, /fair\s*trading/i, /scam/i, /refund/i
   ];
 
   for (const pattern of outOfScopePatterns) {
     if (pattern.test(lower)) {
       return {
         can_answer: false,
-        reason: `Triggered out-of-scope filter matching: ${pattern}`,
+        reason: `Triggered out-of-scope guardrail matching: ${pattern}`,
         reply_text: ""
       };
     }
   }
 
-  // Extract details
-  const extracted: AgentDecision["extracted_details"] = {};
-  if (/double|2\s*storey|two\s*storey/i.test(lower)) extracted.storeys = "Double Storey";
-  if (/single|1\s*storey|one\s*storey/i.test(lower)) extracted.storeys = "Single Storey";
-  if (/inside.*out|both|int.*ext/i.test(lower)) extracted.scope = "Inside & Out";
-  if (/exterior.*only|outside.*only|just.*outside/i.test(lower)) extracted.scope = "Exterior Only";
-  if (/screens?|flyscreens?/i.test(lower)) extracted.has_screens = true;
+  // 2. Detect Call Request
+  const isCall = /\b(call|phone|ring|talk\s*(on|over)\s*phone|speak|give\s*me\s*a\s*call|ring\s*me)\b/i.test(lower);
+  if (isCall) {
+    let callTime = "ASAP";
+    const timeMatch = message.match(/\b(in\s*\d+\s*(?:mins?|minutes?|hours?)|after\s*\d+(?:\s*(?:am|pm))?|\d+:\d+|\bnow\b|\btomorrow\b)/i);
+    if (timeMatch) callTime = timeMatch[0];
 
-  // Address match (e.g. 14 Fraser St)
-  const addrMatch = message.match(/\b\d+\s+[A-Za-z]+(?:\s+(?:st|street|rd|road|ave|avenue|dr|drive|cres|crescent|way|pde|parade))\b/i);
-  if (addrMatch) extracted.address = addrMatch[0];
+    d.contact_preference = "phone";
+    d.preferred_call_time = callTime;
+    d.stage = "call_scheduled";
 
-  // Natural replies
-  let reply = "";
-  if (extracted.storeys && !extracted.scope) {
-    reply = `Got it! For ${extracted.storeys.toLowerCase()}, are you looking for exterior only, or inside and out as well?`;
-  } else if (extracted.scope && !extracted.storeys) {
-    reply = `No worries! Is the home single or double storey? That will give me the exact ballpark for you.`;
-  } else if (extracted.storeys && extracted.scope) {
-    reply = `Awesome, ${extracted.storeys.toLowerCase()} ${extracted.scope.toLowerCase()} is our most popular package. What's the street address in ${profile.suburb || "Perth"}? I'll check our schedule for this week.`;
-  } else if (/photo|picture/i.test(lower)) {
-    reply = `Feel free to text a couple of photos of the front and back here! I can check them and get back to you with a firm price right away.`;
-  } else {
-    reply = `Hey! Thanks for the message. To give you an accurate price, is your property single or double storey?`;
+    return {
+      can_answer: true,
+      reason: "Customer requested a phone call",
+      reply_text: `Sounds great! We'll give you a call ${callTime === "ASAP" || callTime.toLowerCase() === "now" ? "shortly" : callTime}. Talk soon!`,
+      is_call_request: true,
+      extracted_details: d
+    };
   }
 
+  // 3. Extract any property details mentioned in this message
+  // Suburb check
+  if (!d.suburb && profile.suburb) {
+    d.suburb = profile.suburb;
+  }
+  const perthSuburbs = ["scarborough", "dalkeith", "nedlands", "cottesloe", "subiaco", "claremont", "city beach", "sorrento", "joondalup", "fremantle", "karrinyup"];
+  for (const sub of perthSuburbs) {
+    if (lower.includes(sub)) {
+      d.suburb = sub.charAt(0).toUpperCase() + sub.slice(1);
+    }
+  }
+
+  // Property Type
+  if (/\b(office|shop|store|commercial|business|warehouse|showroom|factory)\b/i.test(lower)) {
+    d.property_type = "Commercial";
+  } else if (/\b(house|home|residential|villa|townhouse|duplex|apartment|unit)\b/i.test(lower)) {
+    d.property_type = "Residential";
+  }
+
+  // Storeys
+  if (/\b(double|two|2)\s*(storey|story|stories|floor|floors|lvl|level)\b/i.test(lower) || /\bdouble\s*story\b/i.test(lower)) {
+    d.storeys = "Double Storey";
+  } else if (/\b(single|one|1)\s*(storey|story|floor|lvl|level)\b/i.test(lower) || /\bsingle\s*story\b/i.test(lower)) {
+    d.storeys = "Single Storey";
+  } else if (/\b(three|3|multi)\s*(storey|story|stories)\b/i.test(lower)) {
+    d.storeys = "Multi Storey";
+  }
+
+  // Window Count (e.g., "50 windows", "about 50", "approx 30 windows")
+  const windowCountMatch = message.match(/\b(?:about|around|approx|approximately)?\s*(\d+)\s*(?:windows?|panes?|glass)\b/i) || message.match(/\b(\d+)\s*windows?\b/i);
+  if (windowCountMatch) {
+    d.window_count = windowCountMatch[1] + " windows";
+  }
+
+  // Address
+  const addrMatch = message.match(/\b\d+\s+[A-Za-z]+(?:\s+(?:st|street|rd|road|ave|avenue|dr|drive|cres|crescent|way|pde|parade|pl|place|lane|hwy|highway))\b/i);
+  if (addrMatch) {
+    d.address = addrMatch[0];
+  }
+
+  // Condition / Last Cleaned
+  const condMatch = message.match(/\b(\d+\s*(?:weeks?|months?|years?)|never|post[\s-]reno|renovation|ages|recently|long\s*time)\b/i);
+  if (condMatch && !windowCountMatch) {
+    d.condition = condMatch[0];
+  } else if (/\b(?:cleaned|done|washed|last)\s*(?:about|around)?\s*(\d+\s*(?:weeks?|months?|years?)|never|recently)\b/i.test(lower)) {
+    const m = lower.match(/\b(?:cleaned|done|washed|last)\s*(?:about|around)?\s*([a-z0-9\s]+)/i);
+    if (m) d.condition = m[1].trim();
+  }
+
+  // Chosen Plan
+  if (/\b(detailed|detail|perfect|100%|deep|scrape|scraping|full)\b/i.test(lower)) {
+    d.chosen_plan = "Detailed Clean";
+  } else if (/\b(basic|standard|wash|just\s*wash|85%|90%|external\s*only)\b/i.test(lower)) {
+    d.chosen_plan = "Basic Wash";
+  }
+
+  // 4. Formulate the response based on stage and missing details
+  // FIRST MESSAGE
+  if (isFirstMessage) {
+    d.stage = "awaiting_preference";
+    let firstMsg = "";
+    if (isWebsiteLead) {
+      firstMsg = `Hi, thanks for your query on our website! Could I grab a few more details so we can decide whether a site visit would be needed or if we can get you an instant quote? When would be a good time to have a chat — would you prefer a quick phone call so we can grab all the necessary details, or would you prefer to chat over text?\n\nRegards, Aspect Window Cleaning, Fazal.`;
+    } else {
+      firstMsg = `Hi, thanks for your message! When would be a good time to have a chat? Would you prefer a quick phone call so we can grab all the necessary details and get back to you with a quote as soon as possible, or would you prefer to chat over text?\n\nRegards, Aspect Window Cleaning, Fazal.`;
+    }
+    return {
+      can_answer: true,
+      reason: "Initial greeting and preference request",
+      reply_text: firstMsg,
+      extracted_details: d
+    };
+  }
+
+  // SUBSEQUENT MESSAGES: NO SIGN-OFF!
+  d.contact_preference = "text";
+
+  // Check what is missing in sequential order:
+  // 1) Property Type (Skip if already known)
+  if (!d.property_type) {
+    d.stage = "collecting_details";
+    return {
+      can_answer: true,
+      reason: "Asking property type",
+      reply_text: `Is the property residential or commercial?`,
+      extracted_details: d
+    };
+  }
+
+  // 2) Storeys (Skip if already known)
+  if (!d.storeys) {
+    d.stage = "collecting_details";
+    return {
+      can_answer: true,
+      reason: "Asking storeys",
+      reply_text: `Is the property single or double storey?`,
+      extracted_details: d
+    };
+  }
+
+  // 3) Address (Skip if already known)
+  if (!d.address) {
+    d.stage = "collecting_details";
+    return {
+      can_answer: true,
+      reason: "Asking address",
+      reply_text: `What's the street address in ${d.suburb || profile.suburb || "Perth"}? (Just so we can check accessibility and scheduling)`,
+      extracted_details: d
+    };
+  }
+
+  // 4) Ballpark Window Count (Skip if already known)
+  if (!d.window_count) {
+    d.stage = "collecting_details";
+    return {
+      can_answer: true,
+      reason: "Asking ballpark window count",
+      reply_text: `Roughly how many windows would you say there are? Just a quick ballpark figure is plenty!`,
+      extracted_details: d
+    };
+  }
+
+  // 5) Condition / Last Cleaned (Skip if already known)
+  if (!d.condition) {
+    d.stage = "collecting_details";
+    return {
+      can_answer: true,
+      reason: "Asking window condition",
+      reply_text: `And roughly when were the windows last cleaned?`,
+      extracted_details: d
+    };
+  }
+
+  // 6) Present Packages (Detailed Clean vs Basic Wash)
+  if (!d.chosen_plan) {
+    d.stage = "plan_selection";
+    return {
+      can_answer: true,
+      reason: "Presenting packages",
+      reply_text: `We have two main options:\n\nOur Detailed Clean is for people who want a perfect finish — it's an intensive manual clean where we manually scrape every accessible bit of paint, construction residue, or stubborn spots, along with a deep scrub of the tracks, frames, and flyscreens.\n\nOur Basic Wash focuses on removing everyday dirt, dust, and cobwebs to achieve an approx 85–90% clean finish. That includes external frames and a basic wipe of inside frames and tracks, but does not include manual scraping of paint or bonded residue.\n\nWhich of those sounds closer to what you'd like?`,
+      extracted_details: d
+    };
+  }
+
+  // 7) Completion Wrap-up
+  d.stage = "completed";
   return {
     can_answer: true,
-    reason: "Standard lead qualification within scope",
-    reply_text: reply,
-    extracted_details: extracted
+    reason: "Lead qualification completed",
+    reply_text: `Thank you so much for all this information! We'll review everything and get back to you with your quote shortly.`,
+    is_completed: true,
+    extracted_details: d
   };
 }
 
@@ -121,7 +288,7 @@ export async function evaluateCustomerMessage(
   let decision: AgentDecision;
 
   if (!apiKey) {
-    console.log("ℹ️ GEMINI_API_KEY not found in environment. Using local heuristic evaluation engine.");
+    console.log("ℹ️ GEMINI_API_KEY not found in environment. Using Fazal heuristic state engine.");
     decision = evaluateWithLocalHeuristics(incomingMessage, profile);
   } else {
     try {
@@ -133,7 +300,7 @@ ${profile.messages.map(m => `${m.role.toUpperCase()}: "${m.body}"`).join("\n")}
 LATEST INCOMING CUSTOMER MESSAGE:
 "${incomingMessage}"
 
-Evaluate this incoming message and return your response JSON.
+Evaluate this incoming message and return your response JSON according to Fazal's protocol.
 `;
 
       const candidateModels = [
@@ -158,23 +325,36 @@ Evaluate this incoming message and return your response JSON.
                 properties: {
                   can_answer: {
                     type: Type.BOOLEAN,
-                    description: "True if completely within scope and confidence is 100%. False if any doubt, out-of-scope, complaint, negotiation, or edge case."
+                    description: "True if within standard window qualification. False if off-topic, complaints, negotiations, or complex issues."
                   },
                   reason: {
                     type: Type.STRING,
-                    description: "Short internal reason for why this can or cannot be answered."
+                    description: "Internal reason for the evaluation."
                   },
                   reply_text: {
                     type: Type.STRING,
-                    description: "The casual, natural SMS reply to send to the customer. MUST be empty string if can_answer is false."
+                    description: "The SMS reply to send to the customer. MUST be empty string if can_answer is false."
+                  },
+                  is_call_request: {
+                    type: Type.BOOLEAN,
+                    description: "True if customer asked for a phone call."
+                  },
+                  is_completed: {
+                    type: Type.BOOLEAN,
+                    description: "True if all details and package choice have been provided."
                   },
                   extracted_details: {
                     type: Type.OBJECT,
                     properties: {
+                      property_type: { type: Type.STRING, nullable: true },
                       storeys: { type: Type.STRING, nullable: true },
-                      scope: { type: Type.STRING, nullable: true },
-                      has_screens: { type: Type.BOOLEAN, nullable: true },
                       address: { type: Type.STRING, nullable: true },
+                      suburb: { type: Type.STRING, nullable: true },
+                      window_count: { type: Type.STRING, nullable: true },
+                      condition: { type: Type.STRING, nullable: true },
+                      chosen_plan: { type: Type.STRING, nullable: true },
+                      contact_preference: { type: Type.STRING, nullable: true },
+                      preferred_call_time: { type: Type.STRING, nullable: true },
                       notes: { type: Type.STRING, nullable: true }
                     }
                   }
@@ -196,16 +376,16 @@ Evaluate this incoming message and return your response JSON.
       const parsedText = response.text || "{}";
       decision = JSON.parse(parsedText) as AgentDecision;
     } catch (err: any) {
-      console.error("Gemini API Error, falling back to local evaluation:", err.message || err);
+      console.error("Gemini API Error, falling back to Fazal heuristic state engine:", err.message || err);
       decision = evaluateWithLocalHeuristics(incomingMessage, profile);
     }
   }
 
-  // Handle Out-of-Scope Execution
+  // Handle Out-of-Scope Execution (Ultra-Sensitive Guardrail)
   if (!decision.can_answer) {
     console.log(`\n🚨 [OUT OF SCOPE] Message from ${profile.phone}: "${incomingMessage}"`);
     console.log(`Reason: ${decision.reason}`);
-    console.log(`Action: AI stays SILENT. Muting thread and alerting Ahmed.`);
+    console.log(`Action: AI stays SILENT. Muting thread and alerting owner.`);
 
     // 1. Force reply to be empty string (Zero messages to customer)
     decision.reply_text = "";
@@ -213,8 +393,8 @@ Evaluate this incoming message and return your response JSON.
     // 2. Mute AI for this lead thread
     muteAiForLead(profile.phone, decision.reason);
 
-    // 3. Send urgent alert to Ahmed's phone
-    await sendUrgentAlertToAhmed(profile.name, profile.phone, incomingMessage, decision.reason);
+    // 3. Send urgent alert to owner's phone via SMS
+    await alertLeadOffTrack(profile, incomingMessage, decision.reason);
 
     return decision;
   }
@@ -225,6 +405,17 @@ Evaluate this incoming message and return your response JSON.
       phone: profile.phone,
       extracted_details: decision.extracted_details
     });
+  }
+
+  // Handle Call Request
+  if (decision.is_call_request) {
+    muteAiForLead(profile.phone, "Customer requested phone call");
+    await alertCallRequested(profile, decision.extracted_details?.preferred_call_time || "ASAP");
+  }
+
+  // Handle Qualification Completion
+  if (decision.is_completed) {
+    await alertQuoteCompleted(profile);
   }
 
   return decision;

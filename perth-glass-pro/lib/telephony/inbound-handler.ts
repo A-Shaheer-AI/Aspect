@@ -1,6 +1,6 @@
-import { getLeadByPhone, saveOrUpdateLead, appendMessage, muteAiForLead, unmuteAiForLead } from "@/lib/leads/store";
+import { getLeadByPhone, saveOrUpdateLead, appendMessage, muteAiForLead, unmuteAiForLead, getLatestActiveLead } from "@/lib/leads/store";
 import { evaluateCustomerMessage } from "@/lib/ai/sms-agent";
-import { sendSms, normalizeAuPhone } from "./sms-service";
+import { sendSms, normalizeAuPhone, getOwnerAlertPhone, mirrorConversationToOwner } from "./sms-service";
 
 const sleep = (ms: number) => new Promise(resolve => setTimeout(resolve, ms));
 
@@ -20,70 +20,143 @@ export async function processInboundSms({ from, body, provider }: InboundMessage
 
   const normPhone = normalizeAuPhone(from);
   const trimmedBody = body.trim();
+  const ownerPhone = normalizeAuPhone(getOwnerAlertPhone());
+  const isFromOwner = normPhone === ownerPhone;
 
-  console.log(`\n📨 [Inbound SMS via ${provider.toUpperCase()}] From: ${normPhone} | Message: "${trimmedBody}"`);
+  console.log(`\n📨 [Inbound SMS via ${provider.toUpperCase()}] From: ${normPhone}${isFromOwner ? " (OWNER)" : ""} | Message: "${trimmedBody}"`);
 
-  // 1. Manual Kill-Switch / Override Commands
-  if (/^#(pause|mute|stop-ai)$/i.test(trimmedBody)) {
-    muteAiForLead(normPhone, "Manual kill-switch command received via SMS");
+  // =========================================================================
+  // 1. Remote Phone Control Commands From Ahmed / Business Owner
+  // =========================================================================
+  if (isFromOwner) {
+    // Check for #stop or #mute
+    const stopMatch = trimmedBody.match(/^#(stop|pause|mute)(?:\s+([+0-9\s]+))?$/i);
+    if (stopMatch) {
+      const explicitPhone = stopMatch[2] ? normalizeAuPhone(stopMatch[2].trim()) : null;
+      const targetLead = explicitPhone ? getLeadByPhone(explicitPhone) : getLatestActiveLead();
+
+      if (targetLead) {
+        muteAiForLead(targetLead.phone, "Remotely paused by owner via SMS command");
+        await sendSms(ownerPhone, `🛑 [AI PAUSED] Fazal is now MUTED for ${targetLead.name} (${targetLead.phone}). You can text them directly.`);
+        return { status: "owner_muted_lead", target: targetLead.phone };
+      } else {
+        await sendSms(ownerPhone, `⚠️ No active lead found to mute. Usage: #stop <phone_number>`);
+        return { status: "owner_command_no_target" };
+      }
+    }
+
+    // Check for #resume or #unmute
+    const resumeMatch = trimmedBody.match(/^#(resume|unmute|start)(?:\s+([+0-9\s]+))?$/i);
+    if (resumeMatch) {
+      const explicitPhone = resumeMatch[2] ? normalizeAuPhone(resumeMatch[2].trim()) : null;
+      const targetLead = explicitPhone ? getLeadByPhone(explicitPhone) : getLatestActiveLead();
+
+      if (targetLead) {
+        unmuteAiForLead(targetLead.phone);
+        await sendSms(ownerPhone, `✅ [AI RESUMED] Fazal is now ACTIVE again for ${targetLead.name} (${targetLead.phone}).`);
+        return { status: "owner_resumed_lead", target: targetLead.phone };
+      } else {
+        await sendSms(ownerPhone, `⚠️ No active lead found to resume. Usage: #resume <phone_number>`);
+        return { status: "owner_command_no_target" };
+      }
+    }
+  }
+
+  // =========================================================================
+  // 2. Customer Direct Opt-Out / Kill-Switch
+  // =========================================================================
+  if (/^#(pause|mute|stop|stop-ai)$/i.test(trimmedBody)) {
+    muteAiForLead(normPhone, "Manual kill-switch command received from customer");
     await sendSms(normPhone, "⚠️ Aspect AI paused for this conversation. You can reply directly now.");
     return { status: "paused_by_user" };
   }
 
-  if (/^#(resume|unmute|start-ai)$/i.test(trimmedBody)) {
+  if (/^#(resume|unmute|start|start-ai)$/i.test(trimmedBody)) {
     unmuteAiForLead(normPhone);
     await sendSms(normPhone, "✅ Aspect AI resumed for this conversation.");
     return { status: "resumed_by_user" };
   }
 
-  // 2. Fetch or initialize lead profile
+  // =========================================================================
+  // 3. Fetch or Initialize Lead Profile
+  // =========================================================================
   let lead = getLeadByPhone(normPhone);
   if (!lead) {
     lead = saveOrUpdateLead({
       phone: normPhone,
       name: "Prospect",
       suburb: "Perth",
+      lead_source: "sms",
       status: "CONTACTED"
     });
   }
 
-  // 3. Log user message to conversation history
+  // Log user message to conversation history
   appendMessage(normPhone, "user", trimmedBody);
 
-  // 4. Check if AI is currently muted for this lead
+  // Check if AI is currently muted for this lead
   if (lead.is_ai_muted) {
     console.log(`🔇 [AI Muted] Thread ${normPhone} is muted. AI is staying silent.`);
     return { status: "muted_silent" };
   }
 
-  // 5. Evaluate message through the AI Brain
+  // =========================================================================
+  // 4. Evaluate Message Through the Fazal AI Brain
+  // =========================================================================
   const decision = await evaluateCustomerMessage(lead, trimmedBody);
 
-  // 6. If out of scope: silent escalation (AI evaluator already alerted Ahmed)
+  // If out of scope or off-track: AI stays silent (evaluateCustomerMessage already alerted Ahmed)
   if (!decision.can_answer || !decision.reply_text) {
     console.log(`🤫 [Silent Escalation] No SMS sent to customer. Thread muted. Waiting for Ahmed.`);
     return { status: "out_of_scope_escalated" };
   }
 
-  // 7. In Scope: Apply natural human delay (4–8s, or configurable via SMS_DELAY_SECONDS)
-  const configuredSec = process.env.SMS_DELAY_SECONDS ? parseFloat(process.env.SMS_DELAY_SECONDS) : null;
+  // =========================================================================
+  // 5. Natural Human Delay Protocol
+  // First Message: ~15 seconds
+  // Subsequent Messages: ~45 seconds
+  // =========================================================================
+  const assistantCount = lead.messages.filter(m => m.role === "assistant").length;
+  const isFirstAssistantTurn = assistantCount === 0;
+
   const isDev = process.env.NODE_ENV !== "production";
-  const delayMs = configuredSec !== null 
-    ? Math.max(1000, Math.round(configuredSec * 1000)) 
-    : (isDev ? 2000 : Math.floor(Math.random() * (7000 - 4000) + 4000));
-  console.log(`⏳ Applying natural human delay: ${(delayMs / 1000).toFixed(1)} seconds before responding...`);
+  const configuredSec = process.env.SMS_DELAY_SECONDS ? parseFloat(process.env.SMS_DELAY_SECONDS) : null;
+
+  let delayMs: number;
+  if (configuredSec !== null) {
+    delayMs = Math.max(1000, Math.round(configuredSec * 1000));
+  } else if (isDev) {
+    delayMs = 2000; // 2s in dev for instant feedback
+  } else if (isFirstAssistantTurn) {
+    // 15 seconds for initial greeting
+    delayMs = Math.floor(Math.random() * (16000 - 14000) + 14000);
+  } else {
+    // 45 seconds cadence for subsequent questions
+    delayMs = Math.floor(Math.random() * (48000 - 42000) + 42000);
+  }
+
+  console.log(`⏳ Applying natural human delay: ${(delayMs / 1000).toFixed(1)} seconds before Fazal replies...`);
   await sleep(delayMs);
 
-  // 8. Re-check if thread was muted by Ahmed during the delay
+  // Re-check if thread was muted by Ahmed during the delay
   const currentLead = getLeadByPhone(normPhone);
   if (currentLead?.is_ai_muted) {
     console.log(`🚫 Thread was muted during human delay. Canceling outgoing reply.`);
     return { status: "cancelled_during_delay" };
   }
 
-  // 9. Send the natural SMS reply to customer
+  // =========================================================================
+  // 6. Send Reply to Customer & Mirror to Owner's Phone
+  // =========================================================================
   await sendSms(normPhone, decision.reply_text);
   appendMessage(normPhone, "assistant", decision.reply_text);
+
+  // Mirror exchange to Ahmed's phone in real-time
+  try {
+    await mirrorConversationToOwner(normPhone, trimmedBody, decision.reply_text);
+  } catch (mirrorErr) {
+    console.warn("Notice: mirror SMS failed:", mirrorErr);
+  }
 
   return { status: "replied", replySent: decision.reply_text };
 }

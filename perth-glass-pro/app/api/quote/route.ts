@@ -1,8 +1,9 @@
-import { NextRequest, NextResponse } from "next/server";
+import { NextRequest, NextResponse, after } from "next/server";
 import { BrevoClient } from "@getbrevo/brevo";
 import { sendLeadEmail } from "@/app/actions/send-email";
 import { BUSINESS } from "@/lib/config";
 import { sanitizePhoneInput } from "@/lib/phone";
+import { ingestLead } from "@/lib/leads/ingest";
 
 export async function POST(request: NextRequest) {
     try {
@@ -86,6 +87,34 @@ export async function POST(request: NextRequest) {
                 });
             } catch (bErr) {
                 console.error("Brevo contact error:", bErr);
+            }
+        }
+
+        // Connect lead to Fazal AI coordination pipeline
+        if (cleanPhone) {
+            try {
+                after(async () => {
+                    await ingestLead({
+                        name: (data.name as string) || "Prospect",
+                        phone: cleanPhone,
+                        email: (data.email as string) || undefined,
+                        suburb: (data.suburb as string) || (data.address as string) || "Perth Metro",
+                        serviceType: (data.service as string) || (data.serviceType as string) || "Window Cleaning",
+                        storeys: (data.storeys as string) || undefined,
+                        scope: (data.selectedTier as string) || undefined,
+                        message: [
+                            (data.message as string) || (data.promo ? `Promo code: ${data.promo}` : ""),
+                            data.tracksAddon && data.tracksAddon !== "No" ? `Track Add-On: ${data.tracksAddon}` : "",
+                        ].filter(Boolean).join(" | ") || undefined,
+                        sourceUrl: submissionUrl,
+                        landingUrl: landingUrl,
+                        submissionUrl: submissionUrl,
+                        formName: formName,
+                        gclid: (data.gclid as string) || undefined,
+                    });
+                });
+            } catch (ingestErr) {
+                console.error("Lead ingest error:", ingestErr);
             }
         }
 

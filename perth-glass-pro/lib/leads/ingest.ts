@@ -1,5 +1,7 @@
 import { saveOrUpdateLead, appendMessage } from "./store";
-import { sendSms, normalizeAuPhone } from "@/lib/telephony/twilio-client";
+import { sendSms, normalizeAuPhone, mirrorConversationToOwner } from "@/lib/telephony/sms-service";
+
+const sleep = (ms: number) => new Promise(resolve => setTimeout(resolve, ms));
 
 export interface IngestLeadPayload {
   name: string;
@@ -27,8 +29,8 @@ export interface IngestLeadPayload {
 }
 
 /**
- * Ingests a new lead from landing page, website forms, or hipages
- * Immediately profiles the lead and fires the initial warm-up SMS
+ * Ingests a new lead from landing page or website forms
+ * Profiles the lead and fires the initial 15-second outreach from Fazal
  */
 export async function ingestLead(data: IngestLeadPayload) {
   if (!data.phone) {
@@ -45,6 +47,7 @@ export async function ingestLead(data: IngestLeadPayload) {
     email: data.email,
     suburb: data.suburb || "Perth Metro",
     serviceType: data.serviceType || "Window Cleaning",
+    lead_source: "website",
     gclid: data.gclid,
     keyword: data.keyword,
     device: data.device,
@@ -57,35 +60,48 @@ export async function ingestLead(data: IngestLeadPayload) {
     formName: data.formName,
     extracted_details: {
       storeys: data.storeys,
-      scope: data.scope,
+      scope: data.scope || data.selectedTier,
       bedrooms: data.bedrooms,
+      suburb: data.suburb,
+      stage: "awaiting_preference",
       notes: data.message
     }
   });
 
-  console.log(`\n📥 [Lead Ingested] ${profile.name} (${normPhone}) | Suburb: ${profile.suburb} | Source: ${profile.sourceSummary || "Unknown"} | GCLID: ${profile.gclid ? "YES" : "NO"}`);
+  console.log(`\n📥 [Website Lead Ingested] ${profile.name} (${normPhone}) | Suburb: ${profile.suburb}`);
 
-  // 2. Draft customized warm-up SMS based on submitted information
-  let initialMsg = "";
+  // 2. Natural 15-second delay before first outreach
+  const isDev = process.env.NODE_ENV !== "production";
+  const configuredSec = process.env.SMS_DELAY_SECONDS ? parseFloat(process.env.SMS_DELAY_SECONDS) : null;
+  const delayMs = configuredSec !== null 
+    ? Math.max(1000, Math.round(configuredSec * 1000)) 
+    : (isDev ? 2000 : 15000);
 
-  const firstName = (data.name || "").trim().split(" ")[0] || "";
-  const greeting = firstName ? `Hi ${firstName}` : `Hi there`;
-  const suburb = data.suburb ? ` in ${data.suburb}` : "";
+  console.log(`⏳ Applying 15-second delay before Fazal greets website lead...`);
+  await sleep(delayMs);
 
-  if (data.storeys && !data.scope) {
-    initialMsg = `${greeting}, Ahmed from Aspect Window Cleaning here! Received your quote request${suburb}. Are you looking for exterior only, or inside & out as well?`;
-  } else if (data.scope && !data.storeys) {
-    initialMsg = `${greeting}, Ahmed from Aspect Window Cleaning here! Received your request for ${data.scope.toLowerCase()} window cleaning${suburb}. Is your property single or double storey?`;
-  } else if (data.storeys && data.scope) {
-    initialMsg = `${greeting}, Ahmed from Aspect Window Cleaning here! Received your quote request for ${data.storeys.toLowerCase()} ${data.scope.toLowerCase()} windows${suburb}. Feel free to text any photos of the property here, or let me know what street you're on so I can check our schedule for this week!`;
-  } else {
-    initialMsg = `${greeting}, Ahmed from Aspect Window Cleaning here! Received your quote request${suburb}. Are you looking for exterior glass only, or inside and out as well?`;
+  // Re-check if thread was muted before sending
+  const current = saveOrUpdateLead({ phone: normPhone });
+  if (current.is_ai_muted) {
+    console.log(`🚫 Thread was muted before Fazal outreach. Canceling.`);
+    return profile;
   }
 
-  // 3. Dispatch initial SMS to customer (fast warm-up)
-  console.log(`🚀 Sending immediate warm-up SMS to customer: "${initialMsg}"`);
+  // 3. Draft Fazal's initial website touchpoint
+  const firstName = (data.name || "").trim().split(" ")[0] || "";
+  const nameGreeting = firstName && !/^(prospect|anonymous|user)$/i.test(firstName) ? `Hi ${firstName}` : `Hi`;
+
+  const initialMsg = `${nameGreeting}, thanks for your query on our website! Could I grab a few more details so we can decide whether a site visit would be needed or if we can get you an instant quote? When would be a good time to have a chat — would you prefer a quick phone call so we can grab all the necessary details, or would you prefer to chat over text?\n\nRegards, Aspect Window Cleaning, Fazal.`;
+
+  // 4. Dispatch SMS
+  console.log(`🚀 Fazal sending initial website lead greeting to ${normPhone}`);
   await sendSms(normPhone, initialMsg);
   appendMessage(normPhone, "assistant", initialMsg);
+
+  // 5. Mirror to Ahmed's phone
+  try {
+    await mirrorConversationToOwner(normPhone, `[Website Form: ${data.serviceType || "Quote"}]`, initialMsg);
+  } catch (_) {}
 
   return profile;
 }
