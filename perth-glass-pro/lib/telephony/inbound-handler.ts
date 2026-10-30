@@ -65,9 +65,12 @@ export async function processInboundSms({ from, body, provider }: InboundMessage
     return { status: "out_of_scope_escalated" };
   }
 
-  // 7. In Scope: Apply natural human delay (35–60s, or 3s in local dev/testing)
+  // 7. In Scope: Apply natural human delay (4–8s, or configurable via SMS_DELAY_SECONDS)
+  const configuredSec = process.env.SMS_DELAY_SECONDS ? parseFloat(process.env.SMS_DELAY_SECONDS) : null;
   const isDev = process.env.NODE_ENV !== "production";
-  const delayMs = isDev ? 3000 : Math.floor(Math.random() * (55000 - 35000) + 35000);
+  const delayMs = configuredSec !== null 
+    ? Math.max(1000, Math.round(configuredSec * 1000)) 
+    : (isDev ? 2000 : Math.floor(Math.random() * (7000 - 4000) + 4000));
   console.log(`⏳ Applying natural human delay: ${(delayMs / 1000).toFixed(1)} seconds before responding...`);
   await sleep(delayMs);
 

@@ -136,42 +136,62 @@ LATEST INCOMING CUSTOMER MESSAGE:
 Evaluate this incoming message and return your response JSON.
 `;
 
-      const response = await ai.models.generateContent({
-        model: "gemini-2.5-flash",
-        contents: prompt,
-        config: {
-          systemInstruction: buildSystemInstruction(profile),
-          responseMimeType: "application/json",
-          responseSchema: {
-            type: Type.OBJECT,
-            properties: {
-              can_answer: {
-                type: Type.BOOLEAN,
-                description: "True if completely within scope and confidence is 100%. False if any doubt, out-of-scope, complaint, negotiation, or edge case."
-              },
-              reason: {
-                type: Type.STRING,
-                description: "Short internal reason for why this can or cannot be answered."
-              },
-              reply_text: {
-                type: Type.STRING,
-                description: "The casual, natural SMS reply to send to the customer. MUST be empty string if can_answer is false."
-              },
-              extracted_details: {
+      const candidateModels = [
+        process.env.GEMINI_MODEL,
+        "gemini-2.0-flash",
+        "gemini-1.5-flash"
+      ].filter(Boolean) as string[];
+
+      let response: any = null;
+      let lastErr: any = null;
+
+      for (const modelCandidate of candidateModels) {
+        try {
+          response = await ai.models.generateContent({
+            model: modelCandidate,
+            contents: prompt,
+            config: {
+              systemInstruction: buildSystemInstruction(profile),
+              responseMimeType: "application/json",
+              responseSchema: {
                 type: Type.OBJECT,
                 properties: {
-                  storeys: { type: Type.STRING, nullable: true },
-                  scope: { type: Type.STRING, nullable: true },
-                  has_screens: { type: Type.BOOLEAN, nullable: true },
-                  address: { type: Type.STRING, nullable: true },
-                  notes: { type: Type.STRING, nullable: true }
-                }
+                  can_answer: {
+                    type: Type.BOOLEAN,
+                    description: "True if completely within scope and confidence is 100%. False if any doubt, out-of-scope, complaint, negotiation, or edge case."
+                  },
+                  reason: {
+                    type: Type.STRING,
+                    description: "Short internal reason for why this can or cannot be answered."
+                  },
+                  reply_text: {
+                    type: Type.STRING,
+                    description: "The casual, natural SMS reply to send to the customer. MUST be empty string if can_answer is false."
+                  },
+                  extracted_details: {
+                    type: Type.OBJECT,
+                    properties: {
+                      storeys: { type: Type.STRING, nullable: true },
+                      scope: { type: Type.STRING, nullable: true },
+                      has_screens: { type: Type.BOOLEAN, nullable: true },
+                      address: { type: Type.STRING, nullable: true },
+                      notes: { type: Type.STRING, nullable: true }
+                    }
+                  }
+                },
+                required: ["can_answer", "reason", "reply_text"]
               }
-            },
-            required: ["can_answer", "reason", "reply_text"]
-          }
+            }
+          });
+          if (response) break;
+        } catch (mErr: any) {
+          lastErr = mErr;
         }
-      });
+      }
+
+      if (!response) {
+        throw lastErr || new Error("All candidate Gemini models failed");
+      }
 
       const parsedText = response.text || "{}";
       decision = JSON.parse(parsedText) as AgentDecision;
