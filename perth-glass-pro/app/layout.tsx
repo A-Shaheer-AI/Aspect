@@ -12,6 +12,7 @@ import ConditionalLayout from "@/components/ConditionalLayout";
 import { getGmbData } from "@/app/actions/gmb";
 import GmbProvider from "@/components/GmbProvider";
 import AttributionTracker from "@/components/AttributionTracker";
+import LiveChatWidget from "@/components/ui/LiveChatWidget";
 
 const montserrat = Montserrat({
     subsets: ["latin"],
@@ -174,6 +175,7 @@ export default async function RootLayout({
                 <Footer /> */}
                 <ConditionalLayout children={children} />
                 <AttributionTracker />
+                <LiveChatWidget />
 
                 {/* Tag Manager - loaded after interactive */}
 

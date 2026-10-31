@@ -1,4 +1,5 @@
 import { getLeadByPhone, saveOrUpdateLead, appendMessage, muteAiForLead, unmuteAiForLead, getLatestActiveLead } from "@/lib/leads/store";
+import { getLatestActiveChatSession, appendChatMessage, setChatHumanTakeover } from "@/lib/chat/store";
 import { evaluateCustomerMessage } from "@/lib/ai/sms-agent";
 import { sendSms, normalizeAuPhone, getOwnerAlertPhone, mirrorConversationToOwner } from "./sms-service";
 
@@ -29,7 +30,23 @@ export async function processInboundSms({ from, body, provider }: InboundMessage
   // 1. Remote Phone Control: ANY message from Owner automatically disables AI
   // =========================================================================
   if (isFromOwner) {
-    // Check for explicit resume/unmute command
+    // 1A. Check for live chat injection: #chat [message]
+    const chatMatch = trimmedBody.match(/^#(?:chat|web|live)(?:\s+(.+))?$/i);
+    if (chatMatch) {
+      const chatText = chatMatch[1] ? chatMatch[1].trim() : "";
+      const latestChat = getLatestActiveChatSession();
+      if (latestChat && chatText) {
+        appendChatMessage(latestChat.id, "owner", chatText);
+        setChatHumanTakeover(latestChat.id, true);
+        await sendSms(ownerPhone, `✅ [LIVE CHAT DELIVERED] Your message was posted to website visitor on chat ${latestChat.id}.`);
+        return { status: "owner_replied_live_chat", target: latestChat.id };
+      } else if (!latestChat) {
+        await sendSms(ownerPhone, `⚠️ No active live chat found to reply to.`);
+        return { status: "owner_chat_no_target" };
+      }
+    }
+
+    // 1B. Check for explicit resume/unmute command
     const resumeMatch = trimmedBody.match(/^#(resume|unmute|start)(?:\s+([+0-9\s]+))?$/i);
     if (resumeMatch) {
       const explicitPhone = resumeMatch[2] ? normalizeAuPhone(resumeMatch[2].trim()) : null;
