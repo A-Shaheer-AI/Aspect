@@ -26,26 +26,10 @@ export async function processInboundSms({ from, body, provider }: InboundMessage
   console.log(`\n📨 [Inbound SMS via ${provider.toUpperCase()}] From: ${normPhone}${isFromOwner ? " (OWNER)" : ""} | Message: "${trimmedBody}"`);
 
   // =========================================================================
-  // 1. Remote Phone Control Commands From Ahmed / Business Owner
+  // 1. Remote Phone Control: ANY message from Owner automatically disables AI
   // =========================================================================
   if (isFromOwner) {
-    // Check for #stop or #mute
-    const stopMatch = trimmedBody.match(/^#(stop|pause|mute)(?:\s+([+0-9\s]+))?$/i);
-    if (stopMatch) {
-      const explicitPhone = stopMatch[2] ? normalizeAuPhone(stopMatch[2].trim()) : null;
-      const targetLead = explicitPhone ? getLeadByPhone(explicitPhone) : getLatestActiveLead();
-
-      if (targetLead) {
-        muteAiForLead(targetLead.phone, "Remotely paused by owner via SMS command");
-        await sendSms(ownerPhone, `🛑 [AI PAUSED] Fazal is now MUTED for ${targetLead.name} (${targetLead.phone}). You can text them directly.`);
-        return { status: "owner_muted_lead", target: targetLead.phone };
-      } else {
-        await sendSms(ownerPhone, `⚠️ No active lead found to mute. Usage: #stop <phone_number>`);
-        return { status: "owner_command_no_target" };
-      }
-    }
-
-    // Check for #resume or #unmute
+    // Check for explicit resume/unmute command
     const resumeMatch = trimmedBody.match(/^#(resume|unmute|start)(?:\s+([+0-9\s]+))?$/i);
     if (resumeMatch) {
       const explicitPhone = resumeMatch[2] ? normalizeAuPhone(resumeMatch[2].trim()) : null;
@@ -59,6 +43,21 @@ export async function processInboundSms({ from, body, provider }: InboundMessage
         await sendSms(ownerPhone, `⚠️ No active lead found to resume. Usage: #resume <phone_number>`);
         return { status: "owner_command_no_target" };
       }
+    }
+
+    // For ANY OTHER message from owner (e.g. #stop, "stop", "taking over", "calling now", or any text):
+    // AUTOMATICALLY DISABLE THE AI for the active lead!
+    const phoneMatch = trimmedBody.match(/(?:\+61|0)4\d{8}/);
+    const explicitPhone = phoneMatch ? normalizeAuPhone(phoneMatch[0]) : null;
+    const targetLead = explicitPhone ? getLeadByPhone(explicitPhone) : getLatestActiveLead();
+
+    if (targetLead) {
+      muteAiForLead(targetLead.phone, `Auto-disabled: Owner sent message from phone ("${trimmedBody}")`);
+      await sendSms(ownerPhone, `🛑 [AI DISABLED] Human takeover detected. Fazal is MUTED for ${targetLead.name} (${targetLead.phone}). You have full manual control. (Reply #resume to re-enable)`);
+      return { status: "owner_muted_lead", target: targetLead.phone };
+    } else {
+      await sendSms(ownerPhone, `⚠️ No active lead found to mute. Include the customer phone number in your text to mute them.`);
+      return { status: "owner_command_no_target" };
     }
   }
 

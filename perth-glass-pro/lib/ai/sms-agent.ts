@@ -67,6 +67,7 @@ STRICT CONVERSATIONAL PROTOCOL:
    - Once package is chosen: Say "Thank you so much for this information! We will review this and get back to you with a quote shortly." and set is_completed = true.
 
 4. ULTRA-SENSITIVE GUARDRAIL (Zero tolerance for off-track):
+   - If the customer asks to speak with a human, asks if you are an AI/bot, or asks for a real person: You MUST set can_answer = false, reply_text = "". The AI immediately stops.
    - If the customer says ANYTHING slightly off from standard window/solar/gutter qualification (complaints, negotiation, discounts, structural damage, broken glass, roofing, high-rise, rude remarks):
    - You MUST set can_answer = false, reply_text = "". DO NOT GUESS.
 `;
@@ -84,6 +85,7 @@ export function evaluateWithLocalHeuristics(message: string, profile: LeadProfil
 
   // 1. Ultra-sensitive off-topic & anomaly check
   const outOfScopePatterns = [
+    /\b(human|real\s*person|talk\s*to\s*(someone|person|human|agent)|speak\s*to\s*(someone|person|human|agent)|are\s*you\s*(a\s*)?(bot|ai|robot|computer)|not\s*(a\s*)?bot|stop\s*bot)\b/i,
     /roof.*paint/i, /tile.*repair/i, /pressure.*driveway/i, /limestone.*seal/i,
     /discount/i, /cheaper/i, /too expensive/i, /price.*beat/i, /bargain/i,
     /complaint/i, /damaged/i, /broken.*glass/i, /cracked/i, /scratch/i,

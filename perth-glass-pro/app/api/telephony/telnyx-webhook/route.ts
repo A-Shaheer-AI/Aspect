@@ -1,5 +1,7 @@
 import { NextRequest, NextResponse, after } from "next/server";
 import { processInboundSms } from "@/lib/telephony/inbound-handler";
+import { isAiSentMessage, normalizeAuPhone, getOwnerAlertPhone } from "@/lib/telephony/sms-service";
+import { muteAiForLead, appendMessage } from "@/lib/leads/store";
 
 export const maxDuration = 60;
 
@@ -15,8 +17,31 @@ export async function POST(req: NextRequest) {
     const payload = await req.json().catch(() => ({}));
     const eventType = payload.data?.event_type;
 
-    // Telnyx sends different event types (e.g. message.sent, message.finalized, message.received)
-    // We only process incoming customer messages: "message.received"
+    // 1. Telnyx Outbound Event: Detect Human Operator Takeover
+    // If a human sends a message from the Telnyx Portal or Telnyx mobile app, auto-disable the AI
+    if (eventType === "message.sent" || eventType === "message.finalized") {
+      const msgData = payload.data?.payload;
+      const messageId = msgData?.id;
+      const recipient = msgData?.to?.[0]?.phone_number;
+      const text = msgData?.text || "";
+
+      if (messageId && !isAiSentMessage(messageId)) {
+        if (recipient) {
+          const normRecipient = normalizeAuPhone(recipient);
+          const ownerPhone = normalizeAuPhone(getOwnerAlertPhone());
+
+          // Only mute if the message was sent to a customer (not an internal alert to owner)
+          if (normRecipient && normRecipient !== ownerPhone) {
+            console.log(`🛑 [Human Takeover Detected] Human operator sent manual SMS to ${normRecipient}: "${text}". Auto-disabling AI.`);
+            muteAiForLead(normRecipient, `Auto-disabled: Human operator sent manual SMS ("${text.slice(0, 40)}...")`);
+            appendMessage(normRecipient, "assistant", text);
+          }
+        }
+      }
+      return NextResponse.json({ received: true, human_takeover_checked: true }, { status: 200 });
+    }
+
+    // 2. Telnyx Inbound Event: Incoming customer or owner SMS
     if (eventType === "message.received") {
       const msgData = payload.data?.payload;
       const messageId = msgData?.id || payload.data?.id;

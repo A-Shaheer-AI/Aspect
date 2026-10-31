@@ -186,10 +186,10 @@ async function main() {
     process.exit(1);
   }
 
-  // Calculate dates (last 90 days, with 3-day buffer for GSC data latency)
+  // Calculate dates (last 90 days up to the latest available day in GSC)
   const today = new Date();
-  const endDateObj = new Date(today.getTime() - 3 * 24 * 60 * 60 * 1000);
-  const startDateObj = new Date(today.getTime() - 93 * 24 * 60 * 60 * 1000);
+  const endDateObj = today;
+  const startDateObj = new Date(today.getTime() - 90 * 24 * 60 * 60 * 1000);
 
   const startDate = formatDate(startDateObj);
   const endDate = formatDate(endDateObj);
