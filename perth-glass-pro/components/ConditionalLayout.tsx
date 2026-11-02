@@ -8,9 +8,12 @@ import StickyInterface from "@/components/ui/StickyInterface";
 export default function ConditionalLayout({ children }: { children: React.ReactNode }) {
     const pathname = usePathname();
     const addsPages = ["/landing", "/solar-cleaning", "/gutter-cleaning", "/pressure-cleaning"];
-    const isAdsPage = addsPages.some((route) =>
-        pathname.startsWith(route)
-    );
+    const isCrm = pathname?.startsWith("/crm");
+    const isAdsPage = addsPages.some((route) => pathname.startsWith(route));
+
+    if (isCrm) {
+        return <main id="main-content" className="min-h-screen bg-slate-50">{children}</main>;
+    }
 
     return (
         <>

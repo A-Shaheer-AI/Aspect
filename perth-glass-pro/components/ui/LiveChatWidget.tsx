@@ -1,6 +1,7 @@
 "use client";
 
 import React, { useState, useEffect, useRef } from "react";
+import { usePathname } from "next/navigation";
 import { MessageSquare, X, Send, User, Sparkles, CheckCheck } from "lucide-react";
 
 interface ChatMessage {
@@ -10,6 +11,7 @@ interface ChatMessage {
 }
 
 export default function LiveChatWidget() {
+  const pathname = usePathname();
   const [isOpen, setIsOpen] = useState(false);
   const [sessionId, setSessionId] = useState<string>("");
   const [messages, setMessages] = useState<ChatMessage[]>([]);
@@ -145,6 +147,10 @@ export default function LiveChatWidget() {
       handleSendMessage();
     }
   };
+
+  if (pathname?.startsWith("/crm")) {
+    return null;
+  }
 
   return (
     <>
