@@ -133,7 +133,8 @@ export function parseInvoicePrompt(prompt: string): ParsedInvoiceResult {
  */
 export function buildInvoiceFromParsed(
   parsed: ParsedInvoiceResult,
-  existingCount: number = 243
+  existingCount: number = 243,
+  includeGst: boolean = true
 ): CrmInvoice {
   const now = new Date();
   const issueDate = now.toISOString().split("T")[0];
@@ -145,13 +146,18 @@ export function buildInvoiceFromParsed(
   const prefix = parsed.type === "quote" ? "QUO" : "INV";
   const formattedId = `${prefix}-${String(existingCount).padStart(6, "0")}`;
 
-  // In WA trade, gross quoted price includes 10% GST
-  const subtotal = Math.round((parsed.total / 1.1) * 100) / 100;
-  const gst = Math.round((parsed.total - subtotal) * 100) / 100;
+  // If GST is enabled, prices include 10% GST. If disabled, subtotal = total and GST = 0.
+  const subtotal = includeGst
+    ? Math.round((parsed.total / 1.1) * 100) / 100
+    : parsed.total;
+  const gst = includeGst
+    ? Math.round((parsed.total - subtotal) * 100) / 100
+    : 0;
 
   const items: InvoiceItem[] = parsed.items.map((item, index) => {
-    // Break item price into ex-GST rate for itemized table
-    const itemSubtotal = Math.round((item.amount / 1.1) * 100) / 100;
+    const itemSubtotal = includeGst
+      ? Math.round((item.amount / 1.1) * 100) / 100
+      : item.amount;
     return {
       id: `item_${Date.now()}_${index}`,
       description: item.description,
@@ -173,6 +179,7 @@ export function buildInvoiceFromParsed(
     subtotal,
     gst,
     total: parsed.total,
+    includeGst,
     status: "draft",
     paymentDetails: DEFAULT_BANKING_DETAILS,
     notes: "Payment is strictly 14 days from invoice date. Direct EFT or PayID.",

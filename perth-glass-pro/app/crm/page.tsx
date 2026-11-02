@@ -28,6 +28,7 @@ import InvoicePreviewModal from "@/components/crm/InvoicePreviewModal";
 import CustomersView from "@/components/crm/CustomersView";
 import JobModal from "@/components/crm/JobModal";
 import ManageStagesModal from "@/components/crm/ManageStagesModal";
+import QuotePromptModal from "@/components/crm/QuotePromptModal";
 
 const STORAGE_KEYS = {
   JOBS: "aspect_crm_jobs",
@@ -55,6 +56,8 @@ export default function CrmPage() {
   const [isManageStagesOpen, setIsManageStagesOpen] = useState(false);
   const [selectedInvoice, setSelectedInvoice] = useState<CrmInvoice | null>(null);
   const [isInvoiceModalOpen, setIsInvoiceModalOpen] = useState(false);
+  const [quotingJob, setQuotingJob] = useState<CrmJob | null>(null);
+  const [isQuotePromptOpen, setIsQuotePromptOpen] = useState(false);
 
   // 1. Initial Load from LocalStorage
   useEffect(() => {
@@ -116,11 +119,117 @@ export default function CrmPage() {
     }
   }, [technicians, isHydrated]);
 
-  // Handler: Move Job between stages
+  // Handler: Move Job between stages (Drag & Drop or Manual)
   const handleJobMove = (jobId: string, targetStageId: string) => {
+    const job = jobs.find(j => j.id === jobId);
+    const targetStage = stages.find(s => s.id === targetStageId);
+    const isQuotedStage = targetStage?.id === "stage_quoted" || targetStage?.name.toLowerCase().includes("quote");
+    const currentStage = stages.find(s => s.id === job?.stageId);
+    const isPriorToQuoted = currentStage && currentStage.order < (targetStage?.order || 3);
+
+    // If moving from a prior stage into Quote Sent, prompt the quotation modal!
+    if (job && isQuotedStage && isPriorToQuoted) {
+      setQuotingJob(job);
+      setIsQuotePromptOpen(true);
+      return;
+    }
+
     setJobs(prev =>
       prev.map(j => (j.id === jobId ? { ...j, stageId: targetStageId, updatedAt: new Date().toISOString() } : j))
     );
+  };
+
+  // Handler: Advance Job to Next Phase (from JobCard or JobModal)
+  const handleAdvanceStage = (job: CrmJob) => {
+    const sorted = [...stages].sort((a, b) => a.order - b.order);
+    const currentIdx = sorted.findIndex(s => s.id === job.stageId);
+    if (currentIdx < 0 || currentIdx >= sorted.length - 1) return;
+    const nextStage = sorted[currentIdx + 1];
+
+    const isNextQuoted = nextStage.id === "stage_quoted" || nextStage.name.toLowerCase().includes("quote");
+
+    // If next phase is Quote Sent, trigger the quotation modal!
+    if (isNextQuoted) {
+      setQuotingJob(job);
+      setIsQuotePromptOpen(true);
+      return;
+    }
+
+    // If next phase is Booked, open JobModal on dispatch tab
+    if (nextStage.id === "stage_booked" || nextStage.name.toLowerCase().includes("booked")) {
+      const updated = { ...job, stageId: nextStage.id, updatedAt: new Date().toISOString() };
+      handleSaveJob(updated);
+      setSelectedJob(updated);
+      setIsJobModalOpen(true);
+      return;
+    }
+
+    // If next phase is Completed, automatically record lastCleanedDate and calculate next recall date
+    if (nextStage.id === "stage_completed" || nextStage.name.toLowerCase().includes("completed")) {
+      const todayStr = new Date().toISOString().split("T")[0];
+      const nextDue = job.subscriptionFrequency !== "one_off" ? calculateNextDueDate(todayStr, job.subscriptionFrequency) : job.nextDueDate;
+      const updated = {
+        ...job,
+        stageId: nextStage.id,
+        lastCleanedDate: todayStr,
+        nextDueDate: nextDue,
+        updatedAt: new Date().toISOString()
+      };
+      handleSaveJob(updated);
+      return;
+    }
+
+    // Standard progression
+    const updated = { ...job, stageId: nextStage.id, updatedAt: new Date().toISOString() };
+    handleSaveJob(updated);
+  };
+
+  // Handler: Save Manual On-Site Verbal Price
+  const handleSaveManualPrice = (jobId: string, price: number, note?: string) => {
+    const quotedStage = stages.find(s => s.id === "stage_quoted" || s.name.toLowerCase().includes("quote")) || stages[2];
+    setJobs(prev =>
+      prev.map(j => {
+        if (j.id !== jobId) return j;
+        const updatedNotes = note ? [{ id: `note_${Date.now()}`, text: note, createdAt: new Date().toISOString() }, ...j.notes] : j.notes;
+        return {
+          ...j,
+          stageId: quotedStage.id,
+          priceQuoted: price,
+          notes: updatedNotes,
+          updatedAt: new Date().toISOString()
+        };
+      })
+    );
+  };
+
+  // Handler: Save Formal Quotation & Move to Quote Sent
+  const handleSaveFormalQuote = (jobId: string, quote: CrmInvoice, triggerPrint: boolean) => {
+    const quotedStage = stages.find(s => s.id === "stage_quoted" || s.name.toLowerCase().includes("quote")) || stages[2];
+
+    // 1. Save quote into invoices store
+    handleSaveInvoice(quote);
+
+    // 2. Advance job to Quote Sent and update priceQuoted
+    setJobs(prev =>
+      prev.map(j => {
+        if (j.id !== jobId) return j;
+        return {
+          ...j,
+          stageId: quotedStage.id,
+          priceQuoted: quote.total,
+          updatedAt: new Date().toISOString()
+        };
+      })
+    );
+
+    // 3. Open quote preview and print if requested
+    if (triggerPrint) {
+      setSelectedInvoice(quote);
+      setIsInvoiceModalOpen(true);
+      setTimeout(() => {
+        window.print();
+      }, 350);
+    }
   };
 
   // Handler: Save or Update Job
@@ -355,6 +464,7 @@ export default function CrmPage() {
               setIsJobModalOpen(true);
             }}
             onJobMove={handleJobMove}
+            onAdvanceStage={handleAdvanceStage}
             onNewJobInStage={handleNewJobInStage}
             onManageStagesClick={() => setIsManageStagesOpen(true)}
           />
@@ -441,7 +551,17 @@ export default function CrmPage() {
         onConvertToInvoice={handleConvertQuoteToInvoice}
       />
 
-      {/* 6. Native Mobile Bottom Navigation Bar */}
+      {/* 6. Quotation Workflow Modal (Manual On-Site Verbal Price vs Prepopulated Formal PDF) */}
+      <QuotePromptModal
+        job={quotingJob}
+        isOpen={isQuotePromptOpen}
+        existingInvoiceCount={invoices.length + 242}
+        onClose={() => setIsQuotePromptOpen(false)}
+        onSaveManualPrice={handleSaveManualPrice}
+        onSaveFormalQuote={handleSaveFormalQuote}
+      />
+
+      {/* 7. Native Mobile Bottom Navigation Bar */}
       <CrmNavigation
         activeTab={activeTab}
         onTabChange={setActiveTab}

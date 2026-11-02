@@ -80,10 +80,11 @@ export default function InvoicePreviewModal({
     recalculateTotals(newItems);
   };
 
-  const recalculateTotals = (items: InvoiceItem[]) => {
+  const recalculateTotals = (items: InvoiceItem[], withGst?: boolean) => {
+    const isGst = withGst !== undefined ? withGst : (localInvoice.includeGst ?? true);
     const subtotal = items.reduce((acc, i) => acc + (i.amount || 0), 0);
-    const gst = Math.round(subtotal * 0.1 * 100) / 100;
-    const total = Math.round((subtotal + gst) * 100) / 100;
+    const gst = isGst ? Math.round(subtotal * 0.1 * 100) / 100 : 0;
+    const total = isGst ? Math.round((subtotal + gst) * 100) / 100 : subtotal;
 
     const updated: CrmInvoice = {
       ...localInvoice,
@@ -91,9 +92,14 @@ export default function InvoicePreviewModal({
       subtotal,
       gst,
       total,
+      includeGst: isGst,
       updatedAt: new Date().toISOString()
     };
     setLocalInvoice(updated);
+  };
+
+  const handleToggleGst = (checked: boolean) => {
+    recalculateTotals(localInvoice.items, checked);
   };
 
   const handleSaveInvoice = () => {
@@ -156,6 +162,17 @@ export default function InvoicePreviewModal({
               <option value="sent">Status: Sent</option>
               <option value="paid">Status: Paid</option>
             </select>
+
+            {/* GST Optional Toggle */}
+            <label className="flex items-center gap-1.5 px-2.5 py-1.5 rounded-lg bg-slate-800 text-slate-200 text-xs font-semibold cursor-pointer border border-slate-700 hover:bg-slate-700 transition-colors">
+              <input
+                type="checkbox"
+                checked={localInvoice.includeGst ?? true}
+                onChange={e => handleToggleGst(e.target.checked)}
+                className="w-3.5 h-3.5 text-amber-500 rounded border-slate-600 focus:ring-0"
+              />
+              <span>10% GST</span>
+            </label>
 
             {/* Edit / Save Toggle */}
             <button
@@ -270,7 +287,9 @@ export default function InvoicePreviewModal({
                     <th className="py-2.5 w-10 text-center">#</th>
                     <th className="py-2.5">Item & Description</th>
                     <th className="py-2.5 text-center w-16">Qty</th>
-                    <th className="py-2.5 text-right w-24">Rate (ex GST)</th>
+                    <th className="py-2.5 text-right w-24">
+                      {localInvoice.includeGst ?? true ? "Rate (ex GST)" : "Rate (AUD)"}
+                    </th>
                     <th className="py-2.5 text-right w-24">Amount (AUD)</th>
                     {isEditing && <th className="py-2.5 w-10 text-center print:hidden"></th>}
                   </tr>
@@ -376,10 +395,17 @@ export default function InvoicePreviewModal({
                   <span>Subtotal:</span>
                   <span className="font-semibold text-slate-800">${localInvoice.subtotal.toFixed(2)}</span>
                 </div>
-                <div className="flex justify-between text-xs text-slate-600 pb-1.5 border-b border-slate-100">
-                  <span>GST (10%):</span>
-                  <span className="font-semibold text-slate-800">${localInvoice.gst.toFixed(2)}</span>
-                </div>
+                {(localInvoice.includeGst ?? true) ? (
+                  <div className="flex justify-between text-xs text-slate-600 pb-1.5 border-b border-slate-100">
+                    <span>GST (10%):</span>
+                    <span className="font-semibold text-slate-800">${localInvoice.gst.toFixed(2)}</span>
+                  </div>
+                ) : (
+                  <div className="flex justify-between text-xs text-slate-500 pb-1.5 border-b border-slate-100">
+                    <span>GST:</span>
+                    <span className="font-semibold text-slate-500 italic">GST Free / $0.00</span>
+                  </div>
+                )}
                 <div className="flex justify-between text-base font-black text-slate-900 pt-1 border-t-2 border-slate-800">
                   <span>Total (AUD):</span>
                   <span className="text-emerald-700 font-black">${localInvoice.total.toFixed(2)}</span>

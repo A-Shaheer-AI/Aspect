@@ -1,17 +1,34 @@
 "use client";
 
 import React from "react";
-import { CrmJob, Technician } from "@/lib/crm/types";
-import { MapPin, Calendar, Clock, Image as ImageIcon, MessageSquare, ShieldAlert, Sparkles, DollarSign } from "lucide-react";
+import { CrmJob, CrmStage, Technician } from "@/lib/crm/types";
+import {
+  MapPin,
+  Calendar,
+  Clock,
+  Image as ImageIcon,
+  MessageSquare,
+  ShieldAlert,
+  ArrowRight
+} from "lucide-react";
 
 interface JobCardProps {
   job: CrmJob;
   technicians: Technician[];
+  nextStage?: CrmStage | null;
   onClick: () => void;
   onDragStart: (e: React.DragEvent, jobId: string) => void;
+  onAdvanceStage?: (job: CrmJob) => void;
 }
 
-export default function JobCard({ job, technicians, onClick, onDragStart }: JobCardProps) {
+export default function JobCard({
+  job,
+  technicians,
+  nextStage,
+  onClick,
+  onDragStart,
+  onAdvanceStage
+}: JobCardProps) {
   const tech = technicians.find(t => t.id === job.assignedTechnicianId);
 
   return (
@@ -19,7 +36,7 @@ export default function JobCard({ job, technicians, onClick, onDragStart }: JobC
       draggable
       onDragStart={e => onDragStart(e, job.id)}
       onClick={onClick}
-      className={`group bg-white rounded-xl p-3.5 shadow-sm border border-slate-200/90 hover:shadow-md hover:border-slate-300 transition-all cursor-pointer active:scale-[0.98] select-none ${
+      className={`group bg-white rounded-xl p-3.5 shadow-xs border border-slate-200/90 hover:shadow-md hover:border-slate-300 transition-all cursor-pointer active:scale-[0.98] select-none ${
         job.doNotContact ? "border-l-4 border-l-rose-500" : ""
       }`}
     >
@@ -75,7 +92,7 @@ export default function JobCard({ job, technicians, onClick, onDragStart }: JobC
         </div>
       )}
 
-      {/* Bottom Footer: Technician & Photos/Notes count */}
+      {/* Footer: Technician & Photos/Notes count */}
       <div className="flex items-center justify-between mt-2.5 pt-2 border-t border-slate-100 text-[10px] text-slate-400">
         <div className="flex items-center gap-2">
           {job.photos && job.photos.length > 0 && (
@@ -103,6 +120,23 @@ export default function JobCard({ job, technicians, onClick, onDragStart }: JobC
           <span className="text-[10px] text-slate-400 italic">Unassigned</span>
         )}
       </div>
+
+      {/* Phase Transition Action Prompt */}
+      {nextStage && onAdvanceStage && (
+        <div className="mt-2.5 pt-2 border-t border-slate-100">
+          <button
+            type="button"
+            onClick={e => {
+              e.stopPropagation();
+              onAdvanceStage(job);
+            }}
+            className="w-full py-1.5 px-2.5 rounded-lg bg-amber-500/10 hover:bg-amber-500/20 text-brand-navy border border-amber-300/60 text-[11px] font-bold flex items-center justify-between transition-all group-hover:border-amber-400"
+          >
+            <span>Move to {nextStage.name}</span>
+            <ArrowRight className="w-3.5 h-3.5 text-amber-600 transition-transform group-hover:translate-x-0.5" />
+          </button>
+        </div>
+      )}
     </div>
   );
 }

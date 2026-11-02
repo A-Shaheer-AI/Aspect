@@ -12,6 +12,7 @@ interface KanbanBoardProps {
   searchQuery: string;
   onJobClick: (job: CrmJob) => void;
   onJobMove: (jobId: string, targetStageId: string) => void;
+  onAdvanceStage?: (job: CrmJob) => void;
   onNewJobInStage: (stageId: string) => void;
   onManageStagesClick: () => void;
 }
@@ -35,6 +36,7 @@ export default function KanbanBoard({
   searchQuery,
   onJobClick,
   onJobMove,
+  onAdvanceStage,
   onNewJobInStage,
   onManageStagesClick
 }: KanbanBoardProps) {
@@ -87,11 +89,12 @@ export default function KanbanBoard({
   return (
     <div className="flex-1 overflow-x-auto p-4 sm:p-6 pb-24 scrollbar-thin">
       <div className="flex items-start gap-4 min-w-max">
-        {sortedStages.map(stage => {
+        {sortedStages.map((stage, sIdx) => {
           const stageJobs = filteredJobs.filter(j => j.stageId === stage.id);
           const totalValue = stageJobs.reduce((acc, j) => acc + (j.priceQuoted || 0), 0);
           const colors = STAGE_COLOR_MAP[stage.color] || STAGE_COLOR_MAP.blue;
           const isOver = activeDropStageId === stage.id;
+          const nextStage = sIdx < sortedStages.length - 1 ? sortedStages[sIdx + 1] : null;
 
           return (
             <div
@@ -132,8 +135,10 @@ export default function KanbanBoard({
                     key={job.id}
                     job={job}
                     technicians={technicians}
+                    nextStage={nextStage}
                     onClick={() => onJobClick(job)}
                     onDragStart={handleDragStart}
+                    onAdvanceStage={onAdvanceStage}
                   />
                 ))}
 

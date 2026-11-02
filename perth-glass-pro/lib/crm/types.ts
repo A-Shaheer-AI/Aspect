@@ -87,6 +87,7 @@ export interface CrmInvoice {
   subtotal: number;
   gst: number;
   total: number;
+  includeGst?: boolean;
   status: "draft" | "sent" | "paid";
   paymentDetails: {
     bankName: string;
