@@ -13,13 +13,18 @@ import {
   Phone,
   ShieldAlert,
   CheckCircle2,
-  Sparkles
+  Sparkles,
+  Printer,
+  Bell,
+  Send
 } from "lucide-react";
 
 interface RecallsViewProps {
   jobs: CrmJob[];
   onJobClick: (job: CrmJob) => void;
   onJobUpdate: (job: CrmJob) => void;
+  onOpenFridgeSchedule?: (job: CrmJob) => void;
+  onSendAdvanceNotice?: (job: CrmJob) => void;
 }
 
 const FREQUENCY_LABELS: Record<SubscriptionFrequency, string> = {
@@ -31,13 +36,26 @@ const FREQUENCY_LABELS: Record<SubscriptionFrequency, string> = {
   annual: "Annual (12 mos)"
 };
 
-export default function RecallsView({ jobs, onJobClick, onJobUpdate }: RecallsViewProps) {
+export default function RecallsView({
+  jobs,
+  onJobClick,
+  onJobUpdate,
+  onOpenFridgeSchedule,
+  onSendAdvanceNotice
+}: RecallsViewProps) {
   const [activeSubTab, setActiveSubTab] = useState<"overdue" | "due_soon" | "upcoming" | "dnc">("overdue");
   const [copiedId, setCopiedId] = useState<string | null>(null);
 
   const today = new Date();
   const todayIso = today.toISOString().split("T")[0];
   const currentMonthPrefix = todayIso.substring(0, 7); // e.g. "2026-11"
+
+  // Subscribers who need 1-week advance notice (due within 7 days)
+  const advanceNoticeJobs = jobs.filter(j => {
+    if (j.doNotContact || j.subscriptionFrequency === "one_off" || !j.nextDueDate) return false;
+    const diffDays = Math.round((new Date(j.nextDueDate).getTime() - Date.now()) / (1000 * 60 * 60 * 24));
+    return diffDays >= 0 && diffDays <= 7 && !j.advanceNoticeSent;
+  });
 
   // Separate DNC customers
   const dncJobs = jobs.filter(j => j.doNotContact);
@@ -111,6 +129,30 @@ export default function RecallsView({ jobs, onJobClick, onJobUpdate }: RecallsVi
           </div>
         </div>
       </div>
+
+      {/* 1-Week Advance Notice Alert Banner */}
+      {advanceNoticeJobs.length > 0 && (
+        <div className="bg-gradient-to-r from-sky-50 to-indigo-50 border-2 border-sky-300 rounded-2xl p-4 sm:p-5 mb-5 shadow-xs flex items-start justify-between gap-3">
+          <div className="flex items-start gap-3">
+            <div className="w-9 h-9 rounded-xl bg-sky-500 text-white flex items-center justify-center shrink-0 shadow-xs">
+              <Bell className="w-5 h-5 animate-bounce" />
+            </div>
+            <div>
+              <div className="flex items-center gap-2">
+                <h3 className="font-extrabold text-sm sm:text-base text-sky-950">
+                  1-Week Advance Notice Ready
+                </h3>
+                <span className="text-[10px] font-black px-2 py-0.5 rounded-full bg-sky-200 text-sky-900">
+                  {advanceNoticeJobs.length} Subscribers Due Next Week
+                </span>
+              </div>
+              <p className="text-xs text-sky-800 mt-1 max-w-2xl leading-relaxed">
+                These customers have their recurring cleaning week coming up in the next 7 days. Send them their 1-week advance notice so they know we can arrive anytime within their target week (with 24hr prior confirmation).
+              </p>
+            </div>
+          </div>
+        </div>
+      )}
 
       {/* Tabs */}
       <div className="flex items-center gap-2 overflow-x-auto pb-2 mb-4 scrollbar-none text-xs">
@@ -244,7 +286,32 @@ export default function RecallsView({ jobs, onJobClick, onJobUpdate }: RecallsVi
                   onClick={e => e.stopPropagation()}
                 >
                   {!job.doNotContact && job.phone && (
-                    <div className="flex items-center gap-1.5">
+                    <div className="flex items-center gap-1.5 flex-wrap justify-end">
+                      {onOpenFridgeSchedule && job.subscriptionFrequency !== "one_off" && (
+                        <button
+                          onClick={() => onOpenFridgeSchedule(job)}
+                          className="px-2.5 py-1.5 rounded-xl bg-amber-50 hover:bg-amber-100 text-brand-navy border border-amber-300 font-bold text-xs flex items-center gap-1 transition-colors"
+                          title="View & Print Fridge Schedule"
+                        >
+                          <Printer className="w-3.5 h-3.5 text-amber-600" />
+                          <span>Fridge Plan</span>
+                        </button>
+                      )}
+
+                      {onSendAdvanceNotice &&
+                        !job.advanceNoticeSent &&
+                        job.nextDueDate &&
+                        Math.round((new Date(job.nextDueDate).getTime() - Date.now()) / (1000 * 60 * 60 * 24)) <= 7 && (
+                          <button
+                            onClick={() => onSendAdvanceNotice(job)}
+                            className="px-2.5 py-1.5 rounded-xl bg-sky-500 hover:bg-sky-400 text-white font-black text-xs flex items-center gap-1 shadow-xs transition-colors"
+                            title="Send 1-Week Advance Notice SMS"
+                          >
+                            <Bell className="w-3.5 h-3.5" />
+                            <span>1-Wk Notice</span>
+                          </button>
+                        )}
+
                       <a
                         href={`sms:${job.phone}?body=${encodeURIComponent(smsText)}`}
                         className="px-3 py-1.5 rounded-xl bg-amber-500 hover:bg-amber-400 text-brand-navy font-bold text-xs flex items-center gap-1.5 shadow-xs transition-colors"

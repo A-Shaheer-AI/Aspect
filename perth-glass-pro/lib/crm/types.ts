@@ -30,6 +30,15 @@ export interface Technician {
   color: string;
 }
 
+export interface SubscriptionVisit {
+  visitNumber: number;
+  weekOfDate: string; // ISO date for the Monday of that target week (e.g. "2026-05-18")
+  weekLabel: string; // e.g. "Week of Monday 18th May 2026"
+  targetMonth: string; // e.g. "May 2026"
+  seasonalTheme: string; // e.g. "Pre-Winter Glass Clarity & Track Scrub"
+  completed: boolean;
+}
+
 export interface ConversationMessage {
   id: string;
   sender: "customer" | "ai" | "human";
@@ -53,6 +62,7 @@ export interface CrmJob {
   hasScreens: boolean;
   packageType?: "Detailed Clean" | "Basic Wash" | "Custom";
   priceQuoted?: number;
+  leadSource?: "website_form" | "sms" | "chat" | "manual";
   
   // Contact & Communication
   contactMethod?: "ai_sms" | "ai_livechat" | "manual_phone" | "manual_sms" | "email";
@@ -60,8 +70,12 @@ export interface CrmJob {
   contactTimestamp?: string;
   conversationTrail?: ConversationMessage[];
 
-  // Quoting & Scope for Field Technicians (No prices shown to techs)
+  // Quoting & Automatic Follow-Up System
   quoteId?: string;
+  quoteSentDate?: string;
+  autoFollowUpEnabled?: boolean; // Owner can disable anytime
+  followUpSent?: boolean;
+  followUpDueDate?: string; // Automatically 2 days after quote is sent
   workItems?: Array<{ heading?: string; description: string; qty?: number }>;
   estimatedHours?: number; // e.g. 2.0 or 2.5 hrs
 
@@ -70,10 +84,12 @@ export interface CrmJob {
   clockOutTime?: string; // ISO string when tech tapped "Job Completed"
   actualDurationMinutes?: number;
 
-  // Recurring subscription & recall data
+  // Recurring subscription, Fridge Schedule & 1-Week Advance Notice
   lastCleanedDate?: string; // YYYY-MM-DD
   subscriptionFrequency: SubscriptionFrequency;
   nextDueDate?: string; // YYYY-MM-DD
+  subscriptionYearlyPlan?: SubscriptionVisit[];
+  advanceNoticeSent?: boolean;
   interestedServices: string[]; // e.g., ["Solar Panels", "Gutters", "Pressure Washing"]
   
   // Compliance & dispatch

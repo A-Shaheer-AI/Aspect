@@ -7,7 +7,8 @@ import {
   Technician,
   CrmInvoice,
   CrmActiveTab,
-  ConversationMessage
+  ConversationMessage,
+  SubscriptionVisit
 } from "@/lib/crm/types";
 import {
   DEFAULT_STAGES,
@@ -34,6 +35,7 @@ import ContactPromptModal from "@/components/crm/ContactPromptModal";
 import BookingPromptModal from "@/components/crm/BookingPromptModal";
 import TechnicianJobSheetModal from "@/components/crm/TechnicianJobSheetModal";
 import ReviewRequestModal from "@/components/crm/ReviewRequestModal";
+import SubscriptionScheduleModal from "@/components/crm/SubscriptionScheduleModal";
 
 const STORAGE_KEYS = {
   JOBS: "aspect_crm_jobs",
@@ -78,6 +80,14 @@ export default function CrmPage() {
   const [reviewJob, setReviewJob] = useState<CrmJob | null>(null);
   const [isReviewModalOpen, setIsReviewModalOpen] = useState(false);
 
+  // VIP Subscription Fridge Card Modal
+  const [fridgeJob, setFridgeJob] = useState<CrmJob | null>(null);
+  const [isFridgeModalOpen, setIsFridgeModalOpen] = useState(false);
+
+  // Web Leads Sync State
+  const [isSyncingLeads, setIsSyncingLeads] = useState(false);
+  const [syncedLeadsCount, setSyncedLeadsCount] = useState(0);
+
   // 1. Initial Load from LocalStorage
   useEffect(() => {
     try {
@@ -100,6 +110,12 @@ export default function CrmPage() {
       setIsHydrated(true);
     }
   }, []);
+
+  // Auto-sync website leads on initial mount
+  useEffect(() => {
+    if (!isHydrated) return;
+    syncWebsiteLeads(false);
+  }, [isHydrated]);
 
   // 2. Persist to LocalStorage on State Change
   useEffect(() => {
@@ -287,28 +303,68 @@ export default function CrmPage() {
     );
   };
 
-  // 2. Quote Saved Handlers
-  const handleSaveManualPrice = (jobId: string, price: number, note?: string) => {
+  // 2. Quote Saved Handlers (Instant SMS & 2-Day Follow-Up System)
+  const handleSaveManualPrice = (
+    jobId: string,
+    price: number,
+    note?: string,
+    autoFollowUp: boolean = true,
+    sendImmediateSms: boolean = true
+  ) => {
+    const nowIso = new Date().toISOString();
+    const twoDaysLaterIso = new Date(Date.now() + 48 * 60 * 60 * 1000).toISOString();
+
     setJobs(prev =>
       prev.map(j => {
         if (j.id !== jobId) return j;
         const updatedNotes = note
-          ? [{ id: `note_${Date.now()}`, text: note, createdAt: new Date().toISOString() }, ...j.notes]
+          ? [{ id: `note_${Date.now()}`, text: note, createdAt: nowIso }, ...j.notes]
           : j.notes;
+
+        let trail = j.conversationTrail || [];
+        if (sendImmediateSms && j.phone) {
+          const firstName = j.customerName.split(" ")[0];
+          trail = [
+            ...trail,
+            {
+              id: `msg_quote_${Date.now()}`,
+              sender: "human",
+              senderName: "Ahmed (Aspect Window Cleaning)",
+              text: `Hi ${firstName}, your window cleaning quote from Aspect Window Cleaning for $${price} has been prepared. Feel free to reply or call us on 0426 996 192 with any questions!`,
+              timestamp: nowIso,
+              channel: "sms"
+            }
+          ];
+        }
+
         return {
           ...j,
           stageId: "stage_quoted",
           priceQuoted: price,
+          quoteSentDate: nowIso,
+          autoFollowUpEnabled: autoFollowUp,
+          followUpDueDate: autoFollowUp ? twoDaysLaterIso : undefined,
+          followUpSent: false,
+          conversationTrail: trail,
           notes: updatedNotes,
-          updatedAt: new Date().toISOString()
+          updatedAt: nowIso
         };
       })
     );
   };
 
-  const handleSaveFormalQuote = (jobId: string, quote: CrmInvoice, triggerPrint: boolean) => {
+  const handleSaveFormalQuote = (
+    jobId: string,
+    quote: CrmInvoice,
+    triggerPrint: boolean,
+    autoFollowUp: boolean = true,
+    sendImmediateSms: boolean = true
+  ) => {
     // 1. Save quote into invoices store
     handleSaveInvoice(quote);
+
+    const nowIso = new Date().toISOString();
+    const twoDaysLaterIso = new Date(Date.now() + 48 * 60 * 60 * 1000).toISOString();
 
     // 2. Save quoteId, workItems scope, and priceQuoted onto the job, move to Quote Sent
     const workItems = quote.items.map(item => ({
@@ -320,13 +376,35 @@ export default function CrmPage() {
     setJobs(prev =>
       prev.map(j => {
         if (j.id !== jobId) return j;
+
+        let trail = j.conversationTrail || [];
+        if (sendImmediateSms && j.phone) {
+          const firstName = j.customerName.split(" ")[0];
+          trail = [
+            ...trail,
+            {
+              id: `msg_quote_${Date.now()}`,
+              sender: "human",
+              senderName: "Ahmed (Aspect Window Cleaning)",
+              text: `Hi ${firstName}, your formal quotation #${quote.id} for $${quote.total} from Aspect Window Cleaning has been sent. Please feel free to reply or call 0426 996 192 with any questions!`,
+              timestamp: nowIso,
+              channel: "sms"
+            }
+          ];
+        }
+
         return {
           ...j,
           stageId: "stage_quoted",
           priceQuoted: quote.total,
           quoteId: quote.id,
+          quoteSentDate: nowIso,
+          autoFollowUpEnabled: autoFollowUp,
+          followUpDueDate: autoFollowUp ? twoDaysLaterIso : undefined,
+          followUpSent: false,
+          conversationTrail: trail,
           workItems,
-          updatedAt: new Date().toISOString()
+          updatedAt: nowIso
         };
       })
     );
@@ -338,6 +416,225 @@ export default function CrmPage() {
       setTimeout(() => {
         window.print();
       }, 350);
+    }
+  };
+
+  // Follow-Up Management Handlers
+  const handleToggleAutoFollowUp = (jobId: string, enabled: boolean) => {
+    setJobs(prev =>
+      prev.map(j => {
+        if (j.id !== jobId) return j;
+        return {
+          ...j,
+          autoFollowUpEnabled: enabled,
+          followUpDueDate: enabled ? new Date(Date.now() + 48 * 60 * 60 * 1000).toISOString() : undefined,
+          updatedAt: new Date().toISOString()
+        };
+      })
+    );
+  };
+
+  const handleTriggerFollowUpSms = (job: CrmJob) => {
+    const nowIso = new Date().toISOString();
+    const firstName = job.customerName.split(" ")[0] || "there";
+    const followUpMsgText = `Hi ${firstName}, Ahmed here from Aspect Window Cleaning! Just checking in to see if you had any questions regarding the window cleaning quote we sent for your property at ${job.address}? We'd love to lock in a time that works for you. Let me know!`;
+
+    const newMsg: ConversationMessage = {
+      id: `msg_followup_${Date.now()}`,
+      sender: "human",
+      senderName: "Ahmed (Follow-Up)",
+      text: followUpMsgText,
+      timestamp: nowIso,
+      channel: "sms"
+    };
+
+    setJobs(prev =>
+      prev.map(j => {
+        if (j.id !== job.id) return j;
+        return {
+          ...j,
+          followUpSent: true,
+          conversationTrail: [...(j.conversationTrail || []), newMsg],
+          updatedAt: nowIso
+        };
+      })
+    );
+
+    if (job.phone) {
+      window.open(`sms:${job.phone}?body=${encodeURIComponent(followUpMsgText)}`, "_blank");
+    }
+  };
+
+  // Fridge Schedule & 1-Week Advance Notice Handlers
+  const handleOpenFridgeSchedule = (job: CrmJob) => {
+    setFridgeJob(job);
+    setIsFridgeModalOpen(true);
+  };
+
+  const handleSaveSubscriptionSchedule = (jobId: string, schedule: SubscriptionVisit[]) => {
+    setJobs(prev =>
+      prev.map(j => {
+        if (j.id !== jobId) return j;
+        return {
+          ...j,
+          subscriptionYearlyPlan: schedule,
+          updatedAt: new Date().toISOString()
+        };
+      })
+    );
+  };
+
+  const handleSendAdvanceNotice = (jobOrId: CrmJob | string, message?: string) => {
+    const targetJob = typeof jobOrId === "string" ? jobs.find(j => j.id === jobOrId) : jobOrId;
+    if (!targetJob) return;
+    const jobId = targetJob.id;
+
+    const nowIso = new Date().toISOString();
+    const firstName = targetJob.customerName.split(" ")[0] || "there";
+    const noticeText =
+      message ||
+      `Hi ${firstName}, this is Ahmed from Aspect Window Cleaning! Just a friendly advance notice that your VIP Care Plan visit is scheduled for next week. As part of our service, we can attend anytime within that week and will confirm with you 24 hours prior to our arrival. Please reply if this week still suits or if you need any adjustments!`;
+
+    const newMsg: ConversationMessage = {
+      id: `msg_advance_${Date.now()}`,
+      sender: "human",
+      senderName: "Ahmed (VIP Advance Notice)",
+      text: noticeText,
+      timestamp: nowIso,
+      channel: "sms"
+    };
+
+    setJobs(prev =>
+      prev.map(j => {
+        if (j.id !== jobId) return j;
+        return {
+          ...j,
+          advanceNoticeSent: true,
+          conversationTrail: [...(j.conversationTrail || []), newMsg],
+          updatedAt: nowIso
+        };
+      })
+    );
+
+    if (targetJob.phone) {
+      window.open(`sms:${targetJob.phone}?body=${encodeURIComponent(noticeText)}`, "_blank");
+    }
+  };
+
+  // Website Lead Synchronization Handler
+  const syncWebsiteLeads = async (showToast = true) => {
+    setIsSyncingLeads(true);
+    try {
+      const res = await fetch("/api/crm/sync-leads");
+      if (!res.ok) throw new Error("Network error syncing website leads");
+      const data = await res.json();
+      if (data.success && Array.isArray(data.leads)) {
+        let newCount = 0;
+        setJobs(prev => {
+          const existingPhones = new Set(prev.map(j => (j.phone || "").replace(/\D/g, "")).filter(Boolean));
+          const existingEmails = new Set(prev.map(j => (j.email || "").toLowerCase().trim()).filter(Boolean));
+          const existingIds = new Set(prev.map(j => j.id));
+
+          const newlyImported: CrmJob[] = [];
+
+          for (const lead of data.leads) {
+            const cleanLeadPhone = (lead.phone || "").replace(/\D/g, "");
+            const cleanLeadEmail = (lead.email || "").toLowerCase().trim();
+            const customJobId = `job_${lead.id}`;
+
+            if (
+              existingIds.has(customJobId) ||
+              (cleanLeadPhone && existingPhones.has(cleanLeadPhone)) ||
+              (cleanLeadEmail && existingEmails.has(cleanLeadEmail))
+            ) {
+              continue;
+            }
+
+            const conversationTrail: ConversationMessage[] = (lead.messages || []).map((m: any, idx: number) => ({
+              id: `msg_sync_${lead.id}_${idx}`,
+              sender: m.role === "assistant" ? "ai" : m.role === "user" ? "customer" : "human",
+              senderName: m.role === "assistant" ? "Aspect AI" : m.role === "user" ? lead.name || "Customer" : "Ahmed",
+              text: m.body || "",
+              timestamp: m.timestamp || new Date().toISOString(),
+              channel: "sms"
+            }));
+
+            const storeysMap: Record<string, "Single Storey" | "Double Storey" | "Multi Storey"> = {
+              single: "Single Storey",
+              double: "Double Storey",
+              multi: "Multi Storey"
+            };
+
+            const newJob: CrmJob = {
+              id: customJobId,
+              customerName: lead.name || "Website Prospect",
+              phone: lead.phone || "",
+              email: lead.email || undefined,
+              address: lead.extracted_details?.address || (lead.suburb ? `${lead.suburb}` : "Perth Metro"),
+              suburb: lead.suburb || "Perth",
+              stageId:
+                lead.status === "CONTACTED"
+                  ? "stage_contacted"
+                  : lead.status === "QUOTED"
+                  ? "stage_quoted"
+                  : lead.status === "WON"
+                  ? "stage_won"
+                  : "stage_new",
+              propertyType: lead.extracted_details?.property_type === "commercial" ? "Commercial" : "Residential",
+              storeys: storeysMap[lead.extracted_details?.storeys || ""] || "Single Storey",
+              windowCount: lead.extracted_details?.window_count ? String(lead.extracted_details.window_count) : undefined,
+              hasScreens: Boolean(lead.extracted_details?.has_screens),
+              packageType: lead.extracted_details?.chosen_plan === "basic" ? "Basic Wash" : "Detailed Clean",
+              priceQuoted: lead.quoted_value || undefined,
+              leadSource: "website_form",
+              contactMethod: conversationTrail.length > 0 ? "ai_sms" : "email",
+              contactedBy: conversationTrail.length > 0 ? "AI SMS Assistant" : "Website Form Submission",
+              contactTimestamp: lead.created_at,
+              conversationTrail,
+              notes:
+                lead.extracted_details?.notes || lead.extracted_details?.scope
+                  ? [
+                      {
+                        id: `note_${Date.now()}_${newCount}`,
+                        text: lead.extracted_details.notes || lead.extracted_details.scope || "",
+                        createdAt: lead.created_at || new Date().toISOString()
+                      }
+                    ]
+                  : [],
+              subscriptionFrequency: "one_off",
+              interestedServices: [lead.serviceType || "Window Cleaning"],
+              doNotContact: false,
+              photos: [],
+              createdAt: lead.created_at || new Date().toISOString(),
+              updatedAt: lead.updated_at || new Date().toISOString()
+            };
+
+            newlyImported.push(newJob);
+            if (cleanLeadPhone) existingPhones.add(cleanLeadPhone);
+            if (cleanLeadEmail) existingEmails.add(cleanLeadEmail);
+            existingIds.add(customJobId);
+            newCount++;
+          }
+
+          if (newCount > 0) {
+            setSyncedLeadsCount(c => c + newCount);
+            return [...newlyImported, ...prev];
+          }
+          return prev;
+        });
+
+        if (showToast) {
+          if (newCount > 0) {
+            alert(`✅ Pulled ${newCount} new website inquiry lead${newCount > 1 ? "s" : ""} into New Leads pipeline!`);
+          } else {
+            alert("✨ All website leads are already synchronized up to date!");
+          }
+        }
+      }
+    } catch (err) {
+      console.warn("Notice syncing web leads:", err);
+    } finally {
+      setIsSyncingLeads(false);
     }
   };
 
@@ -717,6 +1014,9 @@ export default function CrmPage() {
         onManageStagesClick={() => setIsManageStagesOpen(true)}
         onExportBackup={handleExportBackup}
         onImportBackup={handleImportBackup}
+        onSyncWebsiteLeads={() => syncWebsiteLeads(true)}
+        isSyncingLeads={isSyncingLeads}
+        syncedLeadsCount={syncedLeadsCount}
       />
 
       {/* 2. Main Tab View Router */}
@@ -739,6 +1039,10 @@ export default function CrmPage() {
               setTechSheetJob(job);
               setIsTechSheetOpen(true);
             }}
+            onToggleAutoFollowUp={handleToggleAutoFollowUp}
+            onTriggerFollowUpSms={handleTriggerFollowUpSms}
+            onOpenFridgeSchedule={handleOpenFridgeSchedule}
+            onSendAdvanceNotice={handleSendAdvanceNotice}
           />
         )}
 
@@ -764,6 +1068,8 @@ export default function CrmPage() {
               setIsJobModalOpen(true);
             }}
             onJobUpdate={handleSaveJob}
+            onOpenFridgeSchedule={handleOpenFridgeSchedule}
+            onSendAdvanceNotice={handleSendAdvanceNotice}
           />
         )}
 
@@ -869,7 +1175,16 @@ export default function CrmPage() {
         onSendReview={handleSendReview}
       />
 
-      {/* 11. Native Mobile Bottom Navigation Bar */}
+      {/* 11. VIP Care Plan & Printable Fridge Schedule Modal */}
+      <SubscriptionScheduleModal
+        job={fridgeJob}
+        isOpen={isFridgeModalOpen}
+        onClose={() => setIsFridgeModalOpen(false)}
+        onSaveSchedule={handleSaveSubscriptionSchedule}
+        onSendAdvanceNotice={(jobId, msg) => handleSendAdvanceNotice(jobId, msg)}
+      />
+
+      {/* 12. Native Mobile Bottom Navigation Bar */}
       <CrmNavigation
         activeTab={activeTab}
         onTabChange={setActiveTab}

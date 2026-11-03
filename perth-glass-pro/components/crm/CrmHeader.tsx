@@ -1,7 +1,7 @@
 "use client";
 
 import React, { useState } from "react";
-import { Plus, Search, Download, Upload, SlidersHorizontal, Sparkles, Check, Database } from "lucide-react";
+import { Plus, Search, Download, Upload, SlidersHorizontal, Sparkles, Check, Database, RefreshCw, Globe } from "lucide-react";
 
 interface CrmHeaderProps {
   searchQuery: string;
@@ -10,6 +10,9 @@ interface CrmHeaderProps {
   onManageStagesClick: () => void;
   onExportBackup: () => void;
   onImportBackup: (file: File) => void;
+  onSyncWebsiteLeads?: () => void;
+  isSyncingLeads?: boolean;
+  syncedLeadsCount?: number;
 }
 
 export default function CrmHeader({
@@ -18,7 +21,10 @@ export default function CrmHeader({
   onNewJobClick,
   onManageStagesClick,
   onExportBackup,
-  onImportBackup
+  onImportBackup,
+  onSyncWebsiteLeads,
+  isSyncingLeads,
+  syncedLeadsCount
 }: CrmHeaderProps) {
   const [showBackupMenu, setShowBackupMenu] = useState(false);
   const fileInputRef = React.useRef<HTMLInputElement>(null);
@@ -54,6 +60,24 @@ export default function CrmHeader({
 
           {/* Action Buttons */}
           <div className="flex items-center gap-2">
+            {/* Sync Website Leads */}
+            {onSyncWebsiteLeads && (
+              <button
+                onClick={onSyncWebsiteLeads}
+                disabled={isSyncingLeads}
+                className="p-2 sm:px-3 sm:py-1.5 rounded-lg bg-emerald-950/70 hover:bg-emerald-900/80 text-emerald-300 text-xs font-semibold flex items-center gap-1.5 border border-emerald-500/40 transition-colors disabled:opacity-50"
+                title="Pull latest inquiries from website forms & live chat"
+              >
+                <RefreshCw className={`w-3.5 h-3.5 text-emerald-400 ${isSyncingLeads ? "animate-spin" : ""}`} />
+                <span className="hidden sm:inline">Sync Web Leads</span>
+                {syncedLeadsCount !== undefined && syncedLeadsCount > 0 && (
+                  <span className="px-1.5 py-0.2 rounded-full bg-emerald-500/30 text-emerald-200 text-[10px] font-black">
+                    {syncedLeadsCount}
+                  </span>
+                )}
+              </button>
+            )}
+
             {/* Manage Stages */}
             <button
               onClick={onManageStagesClick}

@@ -1,4 +1,4 @@
-import { CrmJob, CrmStage, Technician, CrmInvoice, SubscriptionFrequency } from "./types";
+import { CrmJob, CrmStage, Technician, CrmInvoice, SubscriptionFrequency, SubscriptionVisit } from "./types";
 
 export const DEFAULT_STAGES: CrmStage[] = [
   { id: "stage_new", name: "New Leads", color: "blue", order: 1 },
@@ -72,6 +72,83 @@ export function calculateNextDueDate(lastDateStr: string, frequency: Subscriptio
   return d.toISOString().split("T")[0];
 }
 
+function getOrdinal(n: number) {
+  const s = ["th", "st", "nd", "rd"];
+  const v = n % 100;
+  return s[(v - 20) % 10] || s[v] || s[0];
+}
+
+/**
+ * Generates approximate target service weeks for a yearly subscription care plan
+ */
+export function generateYearlySubscriptionSchedule(
+  startDateStr: string,
+  frequency: SubscriptionFrequency
+): SubscriptionVisit[] {
+  if (frequency === "one_off") return [];
+  const base = startDateStr ? new Date(startDateStr) : new Date();
+  if (isNaN(base.getTime())) return [];
+
+  let count = 2;
+  let monthStep = 6;
+  if (frequency === "monthly") {
+    count = 12;
+    monthStep = 1;
+  } else if (frequency === "bi_monthly") {
+    count = 6;
+    monthStep = 2;
+  } else if (frequency === "quarterly") {
+    count = 4;
+    monthStep = 3;
+  } else if (frequency === "half_yearly") {
+    count = 2;
+    monthStep = 6;
+  } else if (frequency === "annual") {
+    count = 1;
+    monthStep = 12;
+  }
+
+  const visits: SubscriptionVisit[] = [];
+
+  for (let i = 0; i < count; i++) {
+    const target = new Date(base);
+    target.setMonth(target.getMonth() + i * monthStep);
+
+    // Snap to the Monday of that target week
+    const day = target.getDay(); // 0 is Sun, 1 is Mon...
+    const diffToMonday = day === 0 ? -6 : 1 - day;
+    target.setDate(target.getDate() + diffToMonday);
+
+    const monthNum = target.getMonth(); // 0-11
+    let seasonalTheme = "Perth Seasonal Glazing Protection";
+    if (monthNum === 11 || monthNum === 0 || monthNum === 1) {
+      seasonalTheme = "Summer Sunshine & Coastal Salt Spray Polish";
+    } else if (monthNum >= 2 && monthNum <= 4) {
+      seasonalTheme = "Autumn Clarity & Pre-Winter Glazing Shield";
+    } else if (monthNum >= 5 && monthNum <= 7) {
+      seasonalTheme = "Winter Rain-Repellent & Sill Detailing";
+    } else {
+      seasonalTheme = "Spring Rejuvenation & Sliding Track Deep Flush";
+    }
+
+    const monthName = target.toLocaleString("en-AU", { month: "short" });
+    const fullMonthName = target.toLocaleString("en-AU", { month: "long" });
+    const dayNum = target.getDate();
+    const year = target.getFullYear();
+
+    visits.push({
+      visitNumber: i + 1,
+      weekOfDate: target.toISOString().split("T")[0],
+      weekLabel: `Week of Monday ${dayNum}${getOrdinal(dayNum)} ${monthName} ${year}`,
+      targetMonth: `${fullMonthName} ${year}`,
+      seasonalTheme,
+      completed: i === 0 && Boolean(startDateStr && new Date(startDateStr) <= new Date())
+    });
+  }
+
+  return visits;
+}
+
 export const INITIAL_SEED_JOBS: CrmJob[] = [
   {
     id: "job_seed_1",
@@ -105,6 +182,13 @@ export const INITIAL_SEED_JOBS: CrmJob[] = [
     lastCleanedDate: "2026-08-01",
     subscriptionFrequency: "quarterly",
     nextDueDate: "2026-11-01",
+    subscriptionYearlyPlan: [
+      { visitNumber: 1, weekOfDate: "2026-08-03", weekLabel: "Week of Monday 3rd Aug 2026", targetMonth: "August 2026", seasonalTheme: "Winter Rain-Repellent & Sill Detailing", completed: true },
+      { visitNumber: 2, weekOfDate: "2026-11-02", weekLabel: "Week of Monday 2nd Nov 2026", targetMonth: "November 2026", seasonalTheme: "Spring Rejuvenation & Sliding Track Deep Flush", completed: false },
+      { visitNumber: 3, weekOfDate: "2027-02-01", weekLabel: "Week of Monday 1st Feb 2027", targetMonth: "February 2027", seasonalTheme: "Summer Sunshine & Coastal Salt Spray Polish", completed: false },
+      { visitNumber: 4, weekOfDate: "2027-05-03", weekLabel: "Week of Monday 3rd May 2027", targetMonth: "May 2027", seasonalTheme: "Autumn Clarity & Pre-Winter Glazing Shield", completed: false }
+    ],
+    advanceNoticeSent: false,
     interestedServices: ["Window Cleaning", "Solar Panels"],
     doNotContact: false,
     assignedTechnicianId: "tech_ahmed",
@@ -183,6 +267,10 @@ export const INITIAL_SEED_JOBS: CrmJob[] = [
     packageType: "Custom",
     priceQuoted: 1450,
     quoteId: "QUO-000003",
+    quoteSentDate: new Date(Date.now() - 48 * 60 * 60 * 1000).toISOString(), // Sent 2 days ago!
+    autoFollowUpEnabled: true,
+    followUpDueDate: new Date(Date.now() - 2 * 60 * 60 * 1000).toISOString(), // Follow-up is now due!
+    followUpSent: false,
     workItems: [
       { heading: "Multi-Storey Commercial Glazing", description: "Pure-water reach pole wash on 4 levels of external facade and atrium entrance", qty: 1 }
     ],
@@ -215,6 +303,7 @@ export const INITIAL_SEED_JOBS: CrmJob[] = [
     packageType: "Basic Wash",
     priceQuoted: 190,
     estimatedHours: 1.5,
+    leadSource: "website_form",
     contactMethod: "ai_livechat",
     contactedBy: "Website Live Chat",
     contactTimestamp: "2026-10-31T11:00:00Z",

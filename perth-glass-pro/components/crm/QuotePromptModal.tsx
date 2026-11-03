@@ -30,7 +30,9 @@ import {
   Building2,
   Layers,
   ChevronDown,
-  ChevronUp
+  ChevronUp,
+  Clock,
+  Send
 } from "lucide-react";
 
 interface QuotePromptModalProps {
@@ -38,8 +40,20 @@ interface QuotePromptModalProps {
   isOpen: boolean;
   existingInvoiceCount: number;
   onClose: () => void;
-  onSaveManualPrice: (jobId: string, price: number, note?: string) => void;
-  onSaveFormalQuote: (jobId: string, quote: CrmInvoice, triggerPrint: boolean) => void;
+  onSaveManualPrice: (
+    jobId: string,
+    price: number,
+    note?: string,
+    autoFollowUp?: boolean,
+    sendImmediateSms?: boolean
+  ) => void;
+  onSaveFormalQuote: (
+    jobId: string,
+    quote: CrmInvoice,
+    triggerPrint: boolean,
+    autoFollowUp?: boolean,
+    sendImmediateSms?: boolean
+  ) => void;
 }
 
 export default function QuotePromptModal({
@@ -51,6 +65,8 @@ export default function QuotePromptModal({
   onSaveFormalQuote
 }: QuotePromptModalProps) {
   const [quoteMode, setQuoteMode] = useState<"manual" | "formal">("manual");
+  const [autoFollowUp, setAutoFollowUp] = useState<boolean>(true);
+  const [sendImmediateSms, setSendImmediateSms] = useState<boolean>(true);
 
   // Mode 1: Manual / On-Site Verbal Price State
   const [manualPrice, setManualPrice] = useState<string>("");
@@ -176,6 +192,8 @@ export default function QuotePromptModal({
     setHasDiscount(false);
     setIncludeGst(true);
     setQuoteMode("manual");
+    setAutoFollowUp(job.autoFollowUpEnabled !== false);
+    setSendImmediateSms(true);
   }, [job, isOpen]);
 
   if (!isOpen || !job) return null;
@@ -265,7 +283,7 @@ export default function QuotePromptModal({
       alert("Please enter a valid quoted price.");
       return;
     }
-    onSaveManualPrice(job.id, priceNum, manualNote.trim() || undefined);
+    onSaveManualPrice(job.id, priceNum, manualNote.trim() || undefined, autoFollowUp, sendImmediateSms);
     onClose();
   };
 
@@ -310,7 +328,7 @@ export default function QuotePromptModal({
       updatedAt: now.toISOString()
     };
 
-    onSaveFormalQuote(job.id, quote, triggerPrint);
+    onSaveFormalQuote(job.id, quote, triggerPrint, autoFollowUp, sendImmediateSms);
     onClose();
   };
 
@@ -916,6 +934,50 @@ export default function QuotePromptModal({
               </div>
             </div>
           )}
+
+          {/* Automatic Follow-up & Instant Quote Notification Options */}
+          <div className="bg-amber-500/10 border border-amber-300 rounded-xl p-3.5 space-y-2.5 mt-4">
+            <div className="flex items-center justify-between">
+              <div className="flex items-center gap-2">
+                <Clock className="w-4 h-4 text-amber-700" />
+                <span className="text-xs font-bold text-slate-800">
+                  Automatic 2-Day Quote Follow-Up
+                </span>
+              </div>
+              <label className="relative inline-flex items-center cursor-pointer">
+                <input
+                  type="checkbox"
+                  checked={autoFollowUp}
+                  onChange={e => setAutoFollowUp(e.target.checked)}
+                  className="sr-only peer"
+                />
+                <div className="w-8 h-4 bg-slate-300 peer-focus:outline-none rounded-full peer peer-checked:after:translate-x-full peer-checked:after:border-white after:content-[''] after:absolute after:top-[2px] after:left-[2px] after:bg-white after:border-slate-300 after:border after:rounded-full after:h-3 after:w-3 after:transition-all peer-checked:bg-brand-navy"></div>
+                <span className="ml-2 text-xs font-bold text-brand-navy">
+                  {autoFollowUp ? "ON (2 Days)" : "OFF"}
+                </span>
+              </label>
+            </div>
+            <p className="text-[11px] text-slate-600 leading-normal">
+              {autoFollowUp
+                ? "An automated follow-up reminder will trigger after 2 days if the customer hasn't booked. You can toggle this anytime on the job card."
+                : "Automated 2-day follow-up reminder is disabled for this quote."}
+            </p>
+
+            <div className="pt-2 border-t border-amber-200/80 flex items-center justify-between">
+              <div className="flex items-center gap-2">
+                <Send className="w-3.5 h-3.5 text-brand-navy" />
+                <span className="text-xs font-semibold text-slate-700">
+                  Send Immediate Quote SMS to Customer
+                </span>
+              </div>
+              <input
+                type="checkbox"
+                checked={sendImmediateSms}
+                onChange={e => setSendImmediateSms(e.target.checked)}
+                className="w-4 h-4 text-brand-navy rounded border-slate-300 focus:ring-amber-400 cursor-pointer"
+              />
+            </div>
+          </div>
         </div>
 
         {/* Footer Actions */}

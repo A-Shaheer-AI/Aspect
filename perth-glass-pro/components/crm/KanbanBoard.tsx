@@ -27,6 +27,10 @@ interface KanbanBoardProps {
   onNewJobInStage: (stageId: string) => void;
   onManageStagesClick: () => void;
   onOpenTechSheet?: (job: CrmJob) => void;
+  onToggleAutoFollowUp?: (jobId: string, enabled: boolean) => void;
+  onTriggerFollowUpSms?: (job: CrmJob) => void;
+  onOpenFridgeSchedule?: (job: CrmJob) => void;
+  onSendAdvanceNotice?: (job: CrmJob) => void;
 }
 
 const STAGE_COLOR_MAP: Record<string, { bg: string; text: string; border: string; dot: string; pill: string }> = {
@@ -51,7 +55,11 @@ export default function KanbanBoard({
   onAdvanceStage,
   onNewJobInStage,
   onManageStagesClick,
-  onOpenTechSheet
+  onOpenTechSheet,
+  onToggleAutoFollowUp,
+  onTriggerFollowUpSms,
+  onOpenFridgeSchedule,
+  onSendAdvanceNotice
 }: KanbanBoardProps) {
   const [activeDropStageId, setActiveDropStageId] = useState<string | null>(null);
   const [technicianViewMode, setTechnicianViewMode] = useState(false);
@@ -293,6 +301,10 @@ export default function KanbanBoard({
                         onDragStart={handleDragStart}
                         onAdvanceStage={onAdvanceStage}
                         onOpenTechSheet={onOpenTechSheet}
+                        onToggleAutoFollowUp={onToggleAutoFollowUp}
+                        onTriggerFollowUpSms={onTriggerFollowUpSms}
+                        onOpenFridgeSchedule={onOpenFridgeSchedule}
+                        onSendAdvanceNotice={onSendAdvanceNotice}
                       />
                     );
                   })}
@@ -364,6 +376,10 @@ export default function KanbanBoard({
                       onDragStart={handleDragStart}
                       onAdvanceStage={onAdvanceStage}
                       onOpenTechSheet={onOpenTechSheet}
+                      onToggleAutoFollowUp={onToggleAutoFollowUp}
+                      onTriggerFollowUpSms={onTriggerFollowUpSms}
+                      onOpenFridgeSchedule={onOpenFridgeSchedule}
+                      onSendAdvanceNotice={onSendAdvanceNotice}
                     />
                   ))}
 

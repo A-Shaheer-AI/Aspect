@@ -345,6 +345,13 @@ export default function JobModal({
       conversationTrail,
 
       quoteId: job?.quoteId,
+      quoteSentDate: job?.quoteSentDate,
+      autoFollowUpEnabled: job?.autoFollowUpEnabled,
+      followUpSent: job?.followUpSent,
+      followUpDueDate: job?.followUpDueDate,
+      subscriptionYearlyPlan: job?.subscriptionYearlyPlan,
+      advanceNoticeSent: job?.advanceNoticeSent,
+      leadSource: job?.leadSource,
       workItems: workItems.length > 0 ? workItems : job?.workItems,
       estimatedHours,
 
