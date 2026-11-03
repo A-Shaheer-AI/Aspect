@@ -66,10 +66,28 @@ export interface CrmJob {
 
 export interface InvoiceItem {
   id: string;
-  description: string;
+  heading?: string; // Item Title / Heading (e.g., "Double Storey Glazing")
+  description: string; // Detailed description / scope (e.g., "Inside & out, frames, tracks")
   qty: number;
   rate: number;
   amount: number;
+}
+
+export interface CustomDocumentSection {
+  id: string;
+  title: string;
+  content: string;
+}
+
+export interface BusinessDetails {
+  name: string;
+  tradingName?: string;
+  address: string;
+  abn: string;
+  email: string;
+  phone: string;
+  website?: string;
+  insuranceInfo?: string;
 }
 
 export interface CrmInvoice {
@@ -84,18 +102,37 @@ export interface CrmInvoice {
   issueDate: string;
   dueDate: string;
   items: InvoiceItem[];
+  
+  // Financials & Discounts
   subtotal: number;
+  discountType?: "fixed" | "percentage";
+  discountValue?: number;
+  discountLabel?: string;
+  discountAmount?: number;
   gst: number;
   total: number;
   includeGst?: boolean;
   status: "draft" | "sent" | "paid";
+
+  // Business Details & Custom Header
+  businessDetails?: BusinessDetails;
+
+  // Payment Details (Togglable)
+  showPaymentDetails?: boolean;
   paymentDetails: {
     bankName: string;
     accountName: string;
     bsb: string;
     accountNumber: string;
     payId: string;
+    customInstructions?: string;
   };
+
+  // Modular customizable sections
+  customerNote?: string;
+  termsAndConditions?: string;
+  customSections?: CustomDocumentSection[];
+
   notes?: string;
   createdAt: string;
   updatedAt: string;

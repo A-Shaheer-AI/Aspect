@@ -21,8 +21,26 @@ export const DEFAULT_BANKING_DETAILS = {
   accountName: "Ahmed Shaheer",
   bsb: "066134",
   accountNumber: "11259529",
-  payId: "0426996192"
+  payId: "0426996192",
+  customInstructions: "Please use invoice/quote number as payment reference."
 };
+
+export const DEFAULT_BUSINESS_DETAILS = {
+  name: "Aspect Window Cleaning",
+  tradingName: "Aspect Window Cleaning Pty Ltd",
+  address: "183 Stirling Hwy, Nedlands WA 6009",
+  abn: "44 847 810 035",
+  email: "info@aspectwindowcleaning.com.au",
+  phone: "0426 996 192",
+  website: "aspectwindowcleaning.com.au",
+  insuranceInfo: "Fully Insured • $20,000,000 Public Liability Coverage"
+};
+
+export const DEFAULT_TERMS_AND_CONDITIONS =
+`1. Payment Terms: Strictly 14 days from invoice date via Direct EFT or PayID.
+2. Property Access: Unobstructed access to all glass panels, sliding channels, and external water points must be available.
+3. Weather Policy: External cleans may be rescheduled in extreme gale winds (>45km/h) or torrential rain for operator safety.
+4. Satisfaction Guarantee: 100% streak-free guarantee. Please notify us within 48 hours for immediate touch-ups.`;
 
 /**
  * Calculates next due date given last cleaned date and frequency

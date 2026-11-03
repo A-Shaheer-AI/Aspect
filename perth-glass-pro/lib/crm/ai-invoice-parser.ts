@@ -1,5 +1,5 @@
 import { CrmInvoice, InvoiceItem } from "./types";
-import { DEFAULT_BANKING_DETAILS } from "./store";
+import { DEFAULT_BANKING_DETAILS, DEFAULT_BUSINESS_DETAILS, DEFAULT_TERMS_AND_CONDITIONS } from "./store";
 
 export interface ParsedInvoiceResult {
   type: "invoice" | "quote";
@@ -160,7 +160,8 @@ export function buildInvoiceFromParsed(
       : item.amount;
     return {
       id: `item_${Date.now()}_${index}`,
-      description: item.description,
+      heading: item.description,
+      description: "0 PPM pure water wash, frames and sliding channels detailed.",
       qty: item.qty || 1,
       rate: itemSubtotal,
       amount: itemSubtotal
@@ -181,7 +182,12 @@ export function buildInvoiceFromParsed(
     total: parsed.total,
     includeGst,
     status: "draft",
+    businessDetails: DEFAULT_BUSINESS_DETAILS,
+    showPaymentDetails: true,
     paymentDetails: DEFAULT_BANKING_DETAILS,
+    termsAndConditions: DEFAULT_TERMS_AND_CONDITIONS,
+    customerNote: "",
+    customSections: [],
     notes: "Payment is strictly 14 days from invoice date. Direct EFT or PayID.",
     createdAt: now.toISOString(),
     updatedAt: now.toISOString()
