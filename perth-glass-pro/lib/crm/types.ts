@@ -30,6 +30,15 @@ export interface Technician {
   color: string;
 }
 
+export interface ConversationMessage {
+  id: string;
+  sender: "customer" | "ai" | "human";
+  senderName?: string;
+  text: string;
+  timestamp: string;
+  channel: "sms" | "live_chat" | "phone";
+}
+
 export interface CrmJob {
   id: string;
   customerName: string;
@@ -45,6 +54,22 @@ export interface CrmJob {
   packageType?: "Detailed Clean" | "Basic Wash" | "Custom";
   priceQuoted?: number;
   
+  // Contact & Communication
+  contactMethod?: "ai_sms" | "ai_livechat" | "manual_phone" | "manual_sms" | "email";
+  contactedBy?: string; // e.g. "Fazal AI (SMS)", "Ahmed (Phone)", "Website Live Chat"
+  contactTimestamp?: string;
+  conversationTrail?: ConversationMessage[];
+
+  // Quoting & Scope for Field Technicians (No prices shown to techs)
+  quoteId?: string;
+  workItems?: Array<{ heading?: string; description: string; qty?: number }>;
+  estimatedHours?: number; // e.g. 2.0 or 2.5 hrs
+
+  // Technician Arrival, Clock-in & Live Timer
+  clockInTime?: string; // ISO string when tech tapped "We Have Arrived"
+  clockOutTime?: string; // ISO string when tech tapped "Job Completed"
+  actualDurationMinutes?: number;
+
   // Recurring subscription & recall data
   lastCleanedDate?: string; // YYYY-MM-DD
   subscriptionFrequency: SubscriptionFrequency;
@@ -56,6 +81,10 @@ export interface CrmJob {
   assignedTechnicianId?: string;
   scheduledDate?: string; // YYYY-MM-DD
   scheduledTimeSlot?: string; // e.g. "08:30 - 11:00 AM"
+
+  // Google Review Outreach via Telnyx
+  reviewRequested?: boolean;
+  reviewSentAt?: string;
 
   notes: JobNote[];
   photos: JobPhoto[];

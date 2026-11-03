@@ -87,6 +87,21 @@ export const INITIAL_SEED_JOBS: CrmJob[] = [
     hasScreens: true,
     packageType: "Detailed Clean",
     priceQuoted: 360,
+    quoteId: "QUO-000001",
+    workItems: [
+      { heading: "Double Storey Glazing Inside & Out", description: "0 PPM pure water reach-and-wash, external frames scrubbed, sills and sliding tracks detailed", qty: 1 },
+      { heading: "Solar Panel Efficiency Clean", description: "16 solar panels de-ionized pure water wash to maximize generation efficiency", qty: 1 }
+    ],
+    estimatedHours: 2.5,
+    contactMethod: "ai_sms",
+    contactedBy: "Fazal AI (SMS)",
+    contactTimestamp: "2026-10-25T08:32:00Z",
+    conversationTrail: [
+      { id: "msg_1", sender: "customer", text: "Hi, looking for a quote for double storey home in Sorrento with 45 windows and solar panels.", timestamp: "2026-10-25T08:30:00Z", channel: "sms" },
+      { id: "msg_2", sender: "ai", senderName: "Fazal AI", text: "Hi Caroline, thanks for your message! We'd love to help. Would you prefer a quick phone call so we can grab all the details, or would you prefer to chat over text? Regards, Aspect Window Cleaning, Fazal.", timestamp: "2026-10-25T08:32:00Z", channel: "sms" },
+      { id: "msg_3", sender: "customer", text: "Text is easiest! Access is clear, dog will be inside.", timestamp: "2026-10-25T08:35:00Z", channel: "sms" },
+      { id: "msg_4", sender: "human", senderName: "Ahmed (Owner)", text: "Hi Caroline, Ahmed here! We've prepared a quote for $360 including all 45 windows inside & out plus the 16 solar panels. Sent through to your email as well!", timestamp: "2026-10-25T09:00:00Z", channel: "sms" }
+    ],
     lastCleanedDate: "2026-08-01",
     subscriptionFrequency: "quarterly",
     nextDueDate: "2026-11-01",
@@ -125,6 +140,19 @@ export const INITIAL_SEED_JOBS: CrmJob[] = [
     hasScreens: true,
     packageType: "Detailed Clean",
     priceQuoted: 420,
+    quoteId: "QUO-000002",
+    workItems: [
+      { heading: "Double Storey Glazing Inside & Out", description: "Detailed clean: razor scraper on mineral spots, frames scrubbed, flyscreens washed", qty: 1 },
+      { heading: "Perimeter Sliding Door Tracks Detail", description: "Deep extraction of coastal sand and insect buildup from all 4 patio sliders", qty: 1 }
+    ],
+    estimatedHours: 3.0,
+    clockInTime: new Date(Date.now() - 45 * 60 * 1000).toISOString(), // Clocked in 45 mins ago!
+    contactMethod: "manual_phone",
+    contactedBy: "Ahmed (Phone)",
+    contactTimestamp: "2026-10-28T11:15:00Z",
+    conversationTrail: [
+      { id: "msg_5", sender: "human", senderName: "Ahmed", text: "Spoke with David over phone. Confirmed arrival Tuesday afternoon.", timestamp: "2026-10-28T11:15:00Z", channel: "phone" }
+    ],
     lastCleanedDate: "2026-05-15",
     subscriptionFrequency: "half_yearly",
     nextDueDate: "2026-11-15",
@@ -154,6 +182,13 @@ export const INITIAL_SEED_JOBS: CrmJob[] = [
     hasScreens: false,
     packageType: "Custom",
     priceQuoted: 1450,
+    quoteId: "QUO-000003",
+    workItems: [
+      { heading: "Multi-Storey Commercial Glazing", description: "Pure-water reach pole wash on 4 levels of external facade and atrium entrance", qty: 1 }
+    ],
+    estimatedHours: 6.0,
+    contactMethod: "email",
+    contactedBy: "Ahmed (Email)",
     subscriptionFrequency: "monthly",
     interestedServices: ["Window Cleaning", "Pressure Washing"],
     doNotContact: false,
@@ -179,6 +214,15 @@ export const INITIAL_SEED_JOBS: CrmJob[] = [
     hasScreens: true,
     packageType: "Basic Wash",
     priceQuoted: 190,
+    estimatedHours: 1.5,
+    contactMethod: "ai_livechat",
+    contactedBy: "Website Live Chat",
+    contactTimestamp: "2026-10-31T11:00:00Z",
+    conversationTrail: [
+      { id: "msg_6", sender: "customer", text: "Hi there! Just wondering how much it would be to wash single storey cottage windows in Cottesloe?", timestamp: "2026-10-31T10:58:00Z", channel: "live_chat" },
+      { id: "msg_7", sender: "ai", senderName: "Aspect Live Chat", text: "Hi, thanks for reaching out! We would be happy to provide more info. What did you need help with?", timestamp: "2026-10-31T10:58:15Z", channel: "live_chat" },
+      { id: "msg_8", sender: "customer", text: "Around 25 windows, single storey. Quite close to the beach so there's salt spray.", timestamp: "2026-10-31T10:59:30Z", channel: "live_chat" }
+    ],
     lastCleanedDate: "2026-04-10",
     subscriptionFrequency: "quarterly",
     nextDueDate: "2026-07-10", // Overdue for recall!
@@ -205,6 +249,16 @@ export const INITIAL_SEED_JOBS: CrmJob[] = [
     hasScreens: false,
     packageType: "Detailed Clean",
     priceQuoted: 680,
+    quoteId: "QUO-000004",
+    workItems: [
+      { heading: "Commercial Showroom Perimeter Glazing", description: "Ultra-pure 0 PPM water wash on all perimeter display glass, streak-free guarantee", qty: 1 }
+    ],
+    estimatedHours: 3.5,
+    clockInTime: "2026-10-28T14:30:00Z",
+    clockOutTime: "2026-10-28T17:45:00Z",
+    actualDurationMinutes: 195,
+    contactMethod: "manual_phone",
+    contactedBy: "Ahmed (Phone)",
     lastCleanedDate: "2026-10-28",
     subscriptionFrequency: "bi_monthly",
     nextDueDate: "2026-12-28",
@@ -212,7 +266,7 @@ export const INITIAL_SEED_JOBS: CrmJob[] = [
     doNotContact: false,
     assignedTechnicianId: "tech_ahmed",
     notes: [
-      { id: "note_6", text: "After-hours cleaning only. Wash external glass without spraying detailed cars.", createdAt: "2026-10-15T08:00:00Z" }
+      { id: "note_6", text: "After-hours cleaning completed. Showroom glass spotless.", createdAt: "2026-10-15T08:00:00Z" }
     ],
     photos: [],
     createdAt: "2026-10-15T08:00:00Z",

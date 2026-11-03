@@ -6,7 +6,8 @@ import {
   CrmStage,
   Technician,
   CrmInvoice,
-  CrmActiveTab
+  CrmActiveTab,
+  ConversationMessage
 } from "@/lib/crm/types";
 import {
   DEFAULT_STAGES,
@@ -29,6 +30,10 @@ import CustomersView from "@/components/crm/CustomersView";
 import JobModal from "@/components/crm/JobModal";
 import ManageStagesModal from "@/components/crm/ManageStagesModal";
 import QuotePromptModal from "@/components/crm/QuotePromptModal";
+import ContactPromptModal from "@/components/crm/ContactPromptModal";
+import BookingPromptModal from "@/components/crm/BookingPromptModal";
+import TechnicianJobSheetModal from "@/components/crm/TechnicianJobSheetModal";
+import ReviewRequestModal from "@/components/crm/ReviewRequestModal";
 
 const STORAGE_KEYS = {
   JOBS: "aspect_crm_jobs",
@@ -56,8 +61,22 @@ export default function CrmPage() {
   const [isManageStagesOpen, setIsManageStagesOpen] = useState(false);
   const [selectedInvoice, setSelectedInvoice] = useState<CrmInvoice | null>(null);
   const [isInvoiceModalOpen, setIsInvoiceModalOpen] = useState(false);
+
+  // Pipeline Specific Modals
+  const [contactingJob, setContactingJob] = useState<CrmJob | null>(null);
+  const [isContactPromptOpen, setIsContactPromptOpen] = useState(false);
+
   const [quotingJob, setQuotingJob] = useState<CrmJob | null>(null);
   const [isQuotePromptOpen, setIsQuotePromptOpen] = useState(false);
+
+  const [bookingJob, setBookingJob] = useState<CrmJob | null>(null);
+  const [isBookingPromptOpen, setIsBookingPromptOpen] = useState(false);
+
+  const [techSheetJob, setTechSheetJob] = useState<CrmJob | null>(null);
+  const [isTechSheetOpen, setIsTechSheetOpen] = useState(false);
+
+  const [reviewJob, setReviewJob] = useState<CrmJob | null>(null);
+  const [isReviewModalOpen, setIsReviewModalOpen] = useState(false);
 
   // 1. Initial Load from LocalStorage
   useEffect(() => {
@@ -119,81 +138,166 @@ export default function CrmPage() {
     }
   }, [technicians, isHydrated]);
 
-  // Handler: Move Job between stages (Drag & Drop or Manual)
+  // Handler: Move Job between stages (Drag & Drop or Manual Drop)
   const handleJobMove = (jobId: string, targetStageId: string) => {
     const job = jobs.find(j => j.id === jobId);
-    const targetStage = stages.find(s => s.id === targetStageId);
-    const isQuotedStage = targetStage?.id === "stage_quoted" || targetStage?.name.toLowerCase().includes("quote");
-    const currentStage = stages.find(s => s.id === job?.stageId);
-    const isPriorToQuoted = currentStage && currentStage.order < (targetStage?.order || 3);
+    if (!job) return;
 
-    // If moving from a prior stage into Quote Sent, prompt the quotation modal!
-    if (job && isQuotedStage && isPriorToQuoted) {
+    const targetStage = stages.find(s => s.id === targetStageId);
+    const targetName = targetStage?.name.toLowerCase() || "";
+
+    // 1. Moving to Contacted
+    if (targetStageId === "stage_contacted" || targetName.includes("contact")) {
+      setContactingJob(job);
+      setIsContactPromptOpen(true);
+      return;
+    }
+
+    // 2. Moving to Quote Sent
+    if (targetStageId === "stage_quoted" || targetName.includes("quote")) {
       setQuotingJob(job);
       setIsQuotePromptOpen(true);
       return;
     }
 
+    // 3. Moving to Booked
+    if (targetStageId === "stage_booked" || targetName.includes("booked")) {
+      setBookingJob(job);
+      setIsBookingPromptOpen(true);
+      return;
+    }
+
+    // 4. Moving to In Progress
+    if (targetStageId === "stage_in_progress" || targetName.includes("progress")) {
+      handleClockIn(jobId);
+      return;
+    }
+
+    // 5. Moving to Completed
+    if (targetStageId === "stage_completed" || targetName.includes("completed")) {
+      handleClockOut(jobId);
+      return;
+    }
+
+    // 6. Moving to Invoiced
+    if (targetStageId === "stage_invoiced" || targetName.includes("invoiced") || targetName.includes("paid")) {
+      handleGenerateInvoiceFromCompletedJob(job);
+      return;
+    }
+
+    // Default fallback
     setJobs(prev =>
       prev.map(j => (j.id === jobId ? { ...j, stageId: targetStageId, updatedAt: new Date().toISOString() } : j))
     );
   };
 
-  // Handler: Advance Job to Next Phase (from JobCard or JobModal)
+  // Handler: Advance Job to Next Phase (from JobCard button)
   const handleAdvanceStage = (job: CrmJob) => {
-    const sorted = [...stages].sort((a, b) => a.order - b.order);
-    const currentIdx = sorted.findIndex(s => s.id === job.stageId);
-    if (currentIdx < 0 || currentIdx >= sorted.length - 1) return;
-    const nextStage = sorted[currentIdx + 1];
+    // 1. New Leads -> Contacted
+    if (job.stageId === "stage_new") {
+      setContactingJob(job);
+      setIsContactPromptOpen(true);
+      return;
+    }
 
-    const isNextQuoted = nextStage.id === "stage_quoted" || nextStage.name.toLowerCase().includes("quote");
-
-    // If next phase is Quote Sent, trigger the quotation modal!
-    if (isNextQuoted) {
+    // 2. Contacted -> Quote Sent
+    if (job.stageId === "stage_contacted") {
       setQuotingJob(job);
       setIsQuotePromptOpen(true);
       return;
     }
 
-    // If next phase is Booked, open JobModal on dispatch tab
-    if (nextStage.id === "stage_booked" || nextStage.name.toLowerCase().includes("booked")) {
-      const updated = { ...job, stageId: nextStage.id, updatedAt: new Date().toISOString() };
-      handleSaveJob(updated);
-      setSelectedJob(updated);
-      setIsJobModalOpen(true);
+    // 3. Quote Sent -> Booked
+    if (job.stageId === "stage_quoted") {
+      setBookingJob(job);
+      setIsBookingPromptOpen(true);
       return;
     }
 
-    // If next phase is Completed, automatically record lastCleanedDate and calculate next recall date
-    if (nextStage.id === "stage_completed" || nextStage.name.toLowerCase().includes("completed")) {
-      const todayStr = new Date().toISOString().split("T")[0];
-      const nextDue = job.subscriptionFrequency !== "one_off" ? calculateNextDueDate(todayStr, job.subscriptionFrequency) : job.nextDueDate;
-      const updated = {
-        ...job,
-        stageId: nextStage.id,
-        lastCleanedDate: todayStr,
-        nextDueDate: nextDue,
-        updatedAt: new Date().toISOString()
-      };
-      handleSaveJob(updated);
+    // 4. Booked -> In Progress (Technician Clock-In)
+    if (job.stageId === "stage_booked") {
+      setTechSheetJob(job);
+      setIsTechSheetOpen(true);
       return;
     }
 
-    // Standard progression
-    const updated = { ...job, stageId: nextStage.id, updatedAt: new Date().toISOString() };
-    handleSaveJob(updated);
+    // 5. In Progress -> Completed (Technician Clock-Out)
+    if (job.stageId === "stage_in_progress") {
+      setTechSheetJob(job);
+      setIsTechSheetOpen(true);
+      return;
+    }
+
+    // 6. Completed -> Invoiced (Generate Tax Invoice from Quote)
+    if (job.stageId === "stage_completed") {
+      handleGenerateInvoiceFromCompletedJob(job);
+      return;
+    }
+
+    // 7. Invoiced -> Send Review SMS
+    if (job.stageId === "stage_invoiced") {
+      setReviewJob(job);
+      setIsReviewModalOpen(true);
+      return;
+    }
+
+    // General fallback
+    const sorted = [...stages].sort((a, b) => a.order - b.order);
+    const currentIdx = sorted.findIndex(s => s.id === job.stageId);
+    if (currentIdx >= 0 && currentIdx < sorted.length - 1) {
+      const nextStage = sorted[currentIdx + 1];
+      handleJobMove(job.id, nextStage.id);
+    }
   };
 
-  // Handler: Save Manual On-Site Verbal Price
-  const handleSaveManualPrice = (jobId: string, price: number, note?: string) => {
-    const quotedStage = stages.find(s => s.id === "stage_quoted" || s.name.toLowerCase().includes("quote")) || stages[2];
+  // 1. Contacted Confirmation Handler
+  const handleConfirmContact = (
+    jobId: string,
+    method: "ai_sms" | "ai_livechat" | "manual_phone" | "manual_sms" | "email",
+    contactedBy: string,
+    initialMessage?: string
+  ) => {
     setJobs(prev =>
       prev.map(j => {
         if (j.id !== jobId) return j;
-        const updatedNotes = note ? [{ id: `note_${Date.now()}`, text: note, createdAt: new Date().toISOString() }, ...j.notes] : j.notes;
+        const nowIso = new Date().toISOString();
+        const newMsg: ConversationMessage | null = initialMessage
+          ? {
+              id: `msg_${Date.now()}`,
+              sender: method === "ai_sms" || method === "ai_livechat" ? "ai" : "human",
+              senderName: contactedBy,
+              text: initialMessage,
+              timestamp: nowIso,
+              channel: method === "ai_livechat" ? "live_chat" : "sms"
+            }
+          : null;
+
+        const updatedTrail = newMsg ? [...(j.conversationTrail || []), newMsg] : j.conversationTrail;
+
         return {
           ...j,
-          stageId: quotedStage.id,
+          stageId: "stage_contacted",
+          contactMethod: method,
+          contactedBy,
+          contactTimestamp: nowIso,
+          conversationTrail: updatedTrail,
+          updatedAt: nowIso
+        };
+      })
+    );
+  };
+
+  // 2. Quote Saved Handlers
+  const handleSaveManualPrice = (jobId: string, price: number, note?: string) => {
+    setJobs(prev =>
+      prev.map(j => {
+        if (j.id !== jobId) return j;
+        const updatedNotes = note
+          ? [{ id: `note_${Date.now()}`, text: note, createdAt: new Date().toISOString() }, ...j.notes]
+          : j.notes;
+        return {
+          ...j,
+          stageId: "stage_quoted",
           priceQuoted: price,
           notes: updatedNotes,
           updatedAt: new Date().toISOString()
@@ -202,27 +306,32 @@ export default function CrmPage() {
     );
   };
 
-  // Handler: Save Formal Quotation & Move to Quote Sent
   const handleSaveFormalQuote = (jobId: string, quote: CrmInvoice, triggerPrint: boolean) => {
-    const quotedStage = stages.find(s => s.id === "stage_quoted" || s.name.toLowerCase().includes("quote")) || stages[2];
-
     // 1. Save quote into invoices store
     handleSaveInvoice(quote);
 
-    // 2. Advance job to Quote Sent and update priceQuoted
+    // 2. Save quoteId, workItems scope, and priceQuoted onto the job, move to Quote Sent
+    const workItems = quote.items.map(item => ({
+      heading: item.heading,
+      description: item.description,
+      qty: item.qty
+    }));
+
     setJobs(prev =>
       prev.map(j => {
         if (j.id !== jobId) return j;
         return {
           ...j,
-          stageId: quotedStage.id,
+          stageId: "stage_quoted",
           priceQuoted: quote.total,
+          quoteId: quote.id,
+          workItems,
           updatedAt: new Date().toISOString()
         };
       })
     );
 
-    // 3. Open quote preview and print if requested
+    // 3. Open preview and trigger download/print if requested
     if (triggerPrint) {
       setSelectedInvoice(quote);
       setIsInvoiceModalOpen(true);
@@ -230,6 +339,193 @@ export default function CrmPage() {
         window.print();
       }, 350);
     }
+  };
+
+  // 3. Booking Confirmation Handler
+  const handleConfirmBooking = (
+    jobId: string,
+    scheduledDate: string,
+    scheduledTimeSlot: string,
+    assignedTechnicianId: string,
+    estimatedHours: number
+  ) => {
+    setJobs(prev =>
+      prev.map(j => {
+        if (j.id !== jobId) return j;
+        return {
+          ...j,
+          stageId: "stage_booked",
+          scheduledDate,
+          scheduledTimeSlot,
+          assignedTechnicianId,
+          estimatedHours,
+          updatedAt: new Date().toISOString()
+        };
+      })
+    );
+  };
+
+  // 4. Technician Clock-In (Arrival)
+  const handleClockIn = (jobId: string) => {
+    const nowIso = new Date().toISOString();
+    setJobs(prev =>
+      prev.map(j => {
+        if (j.id !== jobId) return j;
+        return {
+          ...j,
+          stageId: "stage_in_progress",
+          clockInTime: nowIso,
+          clockOutTime: undefined,
+          updatedAt: nowIso
+        };
+      })
+    );
+    // Also update active tech sheet if open
+    if (techSheetJob && techSheetJob.id === jobId) {
+      setTechSheetJob(prev => prev ? { ...prev, stageId: "stage_in_progress", clockInTime: nowIso } : null);
+    }
+  };
+
+  // 5. Technician Clock-Out (Completed)
+  const handleClockOut = (jobId: string) => {
+    const nowIso = new Date().toISOString();
+    const todayStr = nowIso.split("T")[0];
+
+    setJobs(prev =>
+      prev.map(j => {
+        if (j.id !== jobId) return j;
+        const startTime = j.clockInTime ? new Date(j.clockInTime).getTime() : Date.now() - 60 * 60 * 1000;
+        const diffMin = Math.max(1, Math.round((new Date(nowIso).getTime() - startTime) / 60000));
+        const nextDue = j.subscriptionFrequency !== "one_off" ? calculateNextDueDate(todayStr, j.subscriptionFrequency) : j.nextDueDate;
+
+        return {
+          ...j,
+          stageId: "stage_completed",
+          clockOutTime: nowIso,
+          actualDurationMinutes: diffMin,
+          lastCleanedDate: todayStr,
+          nextDueDate: nextDue,
+          updatedAt: nowIso
+        };
+      })
+    );
+
+    if (techSheetJob && techSheetJob.id === jobId) {
+      setIsTechSheetOpen(false);
+    }
+  };
+
+  // 6. Generate Invoice from Completed Job (Pre-populated from Quote)
+  const handleGenerateInvoiceFromCompletedJob = (job: CrmJob) => {
+    const existingCount = invoices.length + 242;
+    const invoiceId = `INV-${String(existingCount).padStart(6, "0")}`;
+    const todayStr = new Date().toISOString().split("T")[0];
+
+    const due = new Date();
+    due.setDate(due.getDate() + 14);
+    const dueDateStr = due.toISOString().split("T")[0];
+
+    // Find the accepted quote if exists
+    const matchingQuote = job.quoteId ? invoices.find(i => i.id === job.quoteId) : null;
+
+    let invoiceItems = matchingQuote?.items || [];
+    if (invoiceItems.length === 0) {
+      if (job.workItems && job.workItems.length > 0) {
+        invoiceItems = job.workItems.map((wi, idx) => ({
+          id: `item_${Date.now()}_${idx}`,
+          heading: wi.heading || "Window Cleaning Service",
+          description: wi.description,
+          qty: wi.qty || 1,
+          rate: job.priceQuoted ? Math.round(job.priceQuoted / job.workItems!.length) : 280,
+          amount: job.priceQuoted ? Math.round(job.priceQuoted / job.workItems!.length) : 280
+        }));
+      } else {
+        const p = job.priceQuoted || 280;
+        invoiceItems = [
+          {
+            id: `item_${Date.now()}`,
+            heading: `${job.storeys} Full Glazing Wash`,
+            description: `Inside and outside pure water wash - ${job.packageType || "Detailed Clean"}. Frames and tracks detailed.`,
+            qty: 1,
+            rate: p,
+            amount: p
+          }
+        ];
+      }
+    }
+
+    const itemsTotal = invoiceItems.reduce((acc, i) => acc + (i.amount || 0), 0);
+    const subtotal = Math.round((itemsTotal / 1.1) * 100) / 100;
+    const gst = Math.round((itemsTotal - subtotal) * 100) / 100;
+
+    const newInvoice: CrmInvoice = {
+      id: invoiceId,
+      type: "invoice",
+      jobId: job.id,
+      clientName: job.customerName,
+      clientAddress: `${job.address}, ${job.suburb} WA`,
+      clientPhone: job.phone,
+      clientEmail: job.email,
+      subject: `Tax Invoice for Window Cleaning at ${job.address}`,
+      issueDate: todayStr,
+      dueDate: dueDateStr,
+      items: invoiceItems,
+      subtotal,
+      gst,
+      total: itemsTotal,
+      includeGst: true,
+      status: "sent",
+      paymentDetails: matchingQuote?.paymentDetails || {
+        bankName: "Commonwealth Bank",
+        accountName: "Ahmed Shaheer",
+        bsb: "066134",
+        accountNumber: "11259529",
+        payId: "0426996192",
+        customInstructions: "Payment strictly 14 days. Please quote invoice number as reference."
+      },
+      notes: "Payment is strictly 14 days from invoice date. Direct EFT or PayID.",
+      createdAt: new Date().toISOString(),
+      updatedAt: new Date().toISOString()
+    };
+
+    handleSaveInvoice(newInvoice);
+
+    // Update job stage to Invoiced
+    setJobs(prev =>
+      prev.map(j => (j.id === job.id ? { ...j, stageId: "stage_invoiced", updatedAt: new Date().toISOString() } : j))
+    );
+
+    // Open invoice preview modal
+    setSelectedInvoice(newInvoice);
+    setIsInvoiceModalOpen(true);
+
+    // Automatically queue Review Request prompt for this customer
+    setReviewJob(job);
+  };
+
+  // 7. Review Request Sent Handler
+  const handleSendReview = (jobId: string, channel: "sms" | "email", message: string) => {
+    const nowIso = new Date().toISOString();
+    setJobs(prev =>
+      prev.map(j => {
+        if (j.id !== jobId) return j;
+        const reviewMsg: ConversationMessage = {
+          id: `msg_review_${Date.now()}`,
+          sender: "human",
+          senderName: "Ahmed (Review Bot)",
+          text: message,
+          timestamp: nowIso,
+          channel: channel === "sms" ? "sms" : "sms"
+        };
+        return {
+          ...j,
+          reviewRequested: true,
+          reviewSentAt: nowIso,
+          conversationTrail: [...(j.conversationTrail || []), reviewMsg],
+          updatedAt: nowIso
+        };
+      })
+    );
   };
 
   // Handler: Save or Update Job
@@ -257,6 +553,15 @@ export default function CrmPage() {
       }
       return [invoice, ...prev];
     });
+
+    // If an invoice is saved for a completed job, trigger review request modal if not sent yet
+    if (invoice.type === "invoice" && invoice.jobId) {
+      const matchingJob = jobs.find(j => j.id === invoice.jobId);
+      if (matchingJob && !matchingJob.reviewRequested) {
+        setReviewJob(matchingJob);
+        setIsReviewModalOpen(true);
+      }
+    }
   };
 
   // Handler: Delete Invoice
@@ -287,38 +592,6 @@ export default function CrmPage() {
 
     handleSaveInvoice(converted);
     setSelectedInvoice(converted);
-    setIsInvoiceModalOpen(true);
-  };
-
-  // Handler: Generate Invoice directly from Job profile
-  const handleGenerateInvoiceFromJob = (job: CrmJob) => {
-    setIsJobModalOpen(false);
-
-    const price = job.priceQuoted || 280;
-    const parsed = {
-      type: "invoice" as const,
-      clientName: job.customerName,
-      clientAddress: `${job.address}, ${job.suburb} WA`,
-      subject: `${job.storeys} Window Cleaning & Detailing (${job.packageType || "Detailed Clean"})`,
-      items: [
-        {
-          description: `${job.storeys} Window Cleaning (Inside & Out) - ${job.packageType || "Detailed Clean"}`,
-          qty: 1,
-          rate: price,
-          amount: price
-        }
-      ],
-      total: price
-    };
-
-    const existingCount = invoices.length + 242;
-    const newInvoice = buildInvoiceFromParsed(parsed, existingCount);
-    newInvoice.jobId = job.id;
-    if (job.phone) newInvoice.clientPhone = job.phone;
-    if (job.email) newInvoice.clientEmail = job.email;
-
-    handleSaveInvoice(newInvoice);
-    setSelectedInvoice(newInvoice);
     setIsInvoiceModalOpen(true);
   };
 
@@ -359,7 +632,9 @@ export default function CrmPage() {
       phone: "",
       address: "",
       suburb: "",
-      stageId: stages[0]?.id || "stage_new",
+      stageId: "stage_booked",
+      scheduledDate: dateStr,
+      scheduledTimeSlot: "08:30 - 11:30 AM",
       propertyType: "Residential",
       storeys: "Single Storey",
       hasScreens: true,
@@ -367,8 +642,6 @@ export default function CrmPage() {
       subscriptionFrequency: "one_off",
       interestedServices: ["Window Cleaning"],
       doNotContact: false,
-      scheduledDate: dateStr,
-      scheduledTimeSlot: "08:30 - 11:30 AM",
       notes: [],
       photos: [],
       createdAt: new Date().toISOString(),
@@ -378,54 +651,49 @@ export default function CrmPage() {
     setIsJobModalOpen(true);
   };
 
-  // Backup: Export JSON
+  // JSON Backup Handlers
   const handleExportBackup = () => {
     const backupData = {
-      version: "1.0",
-      exportedAt: new Date().toISOString(),
+      version: "1.2.0",
+      timestamp: new Date().toISOString(),
       jobs,
       stages,
       invoices,
       technicians
     };
-
-    const dataStr = "data:text/json;charset=utf-8," + encodeURIComponent(JSON.stringify(backupData, null, 2));
-    const downloadAnchor = document.createElement("a");
-    downloadAnchor.setAttribute("href", dataStr);
-    downloadAnchor.setAttribute("download", `aspect_crm_backup_${new Date().toISOString().split("T")[0]}.json`);
-    document.body.appendChild(downloadAnchor);
-    downloadAnchor.click();
-    downloadAnchor.remove();
+    const jsonStr = JSON.stringify(backupData, null, 2);
+    const blob = new Blob([jsonStr], { type: "application/json" });
+    const url = URL.createObjectURL(blob);
+    const a = document.createElement("a");
+    a.href = url;
+    a.download = `aspect_crm_backup_${new Date().toISOString().split("T")[0]}.json`;
+    a.click();
+    URL.revokeObjectURL(url);
   };
 
-  // Backup: Import JSON
   const handleImportBackup = (file: File) => {
     const reader = new FileReader();
     reader.onload = e => {
       try {
-        const content = e.target?.result as string;
-        const parsed = JSON.parse(content);
-        if (parsed.jobs && Array.isArray(parsed.jobs)) setJobs(parsed.jobs);
-        if (parsed.stages && Array.isArray(parsed.stages)) setStages(parsed.stages);
-        if (parsed.invoices && Array.isArray(parsed.invoices)) setInvoices(parsed.invoices);
-        if (parsed.technicians && Array.isArray(parsed.technicians)) setTechnicians(parsed.technicians);
-        alert("Aspect CRM data restored successfully from backup!");
+        const data = JSON.parse(e.target?.result as string);
+        if (data.jobs && Array.isArray(data.jobs)) setJobs(data.jobs);
+        if (data.stages && Array.isArray(data.stages)) setStages(data.stages);
+        if (data.invoices && Array.isArray(data.invoices)) setInvoices(data.invoices);
+        if (data.technicians && Array.isArray(data.technicians)) setTechnicians(data.technicians);
+        alert("Aspect CRM data restored successfully!");
       } catch (err) {
-        alert("Failed to parse backup file. Please ensure it is a valid JSON file.");
+        console.error("Backup file parse error:", err);
+        alert("Failed to restore backup file. Invalid format.");
       }
     };
     reader.readAsText(file);
   };
 
-  // Stats for badge counters
-  const todayIso = new Date().toISOString().split("T")[0];
-  const overdueRecallsCount = jobs.filter(
-    j => !j.doNotContact && j.subscriptionFrequency !== "one_off" && j.nextDueDate && j.nextDueDate < todayIso
-  ).length;
-
-  const activeJobsCount = jobs.filter(j => {
-    const stage = stages.find(s => s.id === j.stageId);
-    return stage && !stage.name.toLowerCase().includes("completed") && !stage.name.toLowerCase().includes("invoiced");
+  // Compute stats
+  const activeJobsCount = jobs.filter(j => j.stageId !== "stage_invoiced").length;
+  const overdueRecallsCount = jobs.filter(j => {
+    if (j.doNotContact || !j.nextDueDate) return false;
+    return new Date(j.nextDueDate) <= new Date();
   }).length;
 
   if (!isHydrated) {
@@ -433,14 +701,14 @@ export default function CrmPage() {
       <div className="min-h-screen flex items-center justify-center bg-slate-900 text-white">
         <div className="flex flex-col items-center gap-3">
           <div className="w-10 h-10 border-4 border-amber-400 border-t-transparent rounded-full animate-spin" />
-          <p className="text-xs font-bold text-slate-300">Loading Aspect CRM Offline Storage...</p>
+          <p className="text-xs font-bold text-slate-300">Loading Aspect CRM Operations...</p>
         </div>
       </div>
     );
   }
 
   return (
-    <div className="min-h-screen flex flex-col bg-slate-50 text-slate-900">
+    <div className="min-h-screen flex flex-col bg-slate-100/70 text-slate-900">
       {/* 1. Header (Sticky Top Bar) */}
       <CrmHeader
         searchQuery={searchQuery}
@@ -452,7 +720,7 @@ export default function CrmPage() {
       />
 
       {/* 2. Main Tab View Router */}
-      <main className="flex-1 flex flex-col">
+      <main className="flex-1 flex flex-col min-h-0">
         {activeTab === "pipeline" && (
           <KanbanBoard
             stages={stages}
@@ -467,6 +735,10 @@ export default function CrmPage() {
             onAdvanceStage={handleAdvanceStage}
             onNewJobInStage={handleNewJobInStage}
             onManageStagesClick={() => setIsManageStagesOpen(true)}
+            onOpenTechSheet={job => {
+              setTechSheetJob(job);
+              setIsTechSheetOpen(true);
+            }}
           />
         )}
 
@@ -530,7 +802,8 @@ export default function CrmPage() {
         onClose={() => setIsJobModalOpen(false)}
         onSave={handleSaveJob}
         onDelete={handleDeleteJob}
-        onGenerateInvoice={handleGenerateInvoiceFromJob}
+        onGenerateInvoice={handleGenerateInvoiceFromCompletedJob}
+        onAdvanceStage={handleAdvanceStage}
       />
 
       {/* 4. Manage Stages Modal */}
@@ -551,7 +824,7 @@ export default function CrmPage() {
         onConvertToInvoice={handleConvertQuoteToInvoice}
       />
 
-      {/* 6. Quotation Workflow Modal (Manual On-Site Verbal Price vs Prepopulated Formal PDF) */}
+      {/* 6. Quotation Workflow Modal (Manual Verbal vs Prepopulated Formal PDF) */}
       <QuotePromptModal
         job={quotingJob}
         isOpen={isQuotePromptOpen}
@@ -561,7 +834,42 @@ export default function CrmPage() {
         onSaveFormalQuote={handleSaveFormalQuote}
       />
 
-      {/* 7. Native Mobile Bottom Navigation Bar */}
+      {/* 7. Contact Prompt Modal (New Leads -> Contacted) */}
+      <ContactPromptModal
+        job={contactingJob}
+        isOpen={isContactPromptOpen}
+        onClose={() => setIsContactPromptOpen(false)}
+        onConfirmContact={handleConfirmContact}
+      />
+
+      {/* 8. Booking & Schedule Prompt Modal (Quote Sent -> Booked) */}
+      <BookingPromptModal
+        job={bookingJob}
+        technicians={technicians}
+        isOpen={isBookingPromptOpen}
+        onClose={() => setIsBookingPromptOpen(false)}
+        onConfirmBooking={handleConfirmBooking}
+      />
+
+      {/* 9. Technician Job Sheet Modal (Arrival Clock-In & Scope without Prices) */}
+      <TechnicianJobSheetModal
+        job={techSheetJob}
+        technicians={technicians}
+        isOpen={isTechSheetOpen}
+        onClose={() => setIsTechSheetOpen(false)}
+        onClockIn={handleClockIn}
+        onClockOut={handleClockOut}
+      />
+
+      {/* 10. Review Request Modal (Post-Completion Telnyx Review Text) */}
+      <ReviewRequestModal
+        job={reviewJob}
+        isOpen={isReviewModalOpen}
+        onClose={() => setIsReviewModalOpen(false)}
+        onSendReview={handleSendReview}
+      />
+
+      {/* 11. Native Mobile Bottom Navigation Bar */}
       <CrmNavigation
         activeTab={activeTab}
         onTabChange={setActiveTab}

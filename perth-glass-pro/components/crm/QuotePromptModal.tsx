@@ -944,15 +944,15 @@ export default function QuotePromptModal({
                 onClick={() => handleSaveFormal(false)}
                 className="px-4 py-2.5 rounded-xl text-xs font-bold bg-slate-200 hover:bg-slate-300 text-slate-800 transition-colors"
               >
-                Save Quote Only
+                Save & Mark Quote Sent
               </button>
               <button
                 type="button"
                 onClick={() => handleSaveFormal(true)}
-                className="px-5 py-2.5 rounded-xl text-xs font-bold bg-action-gold hover:bg-amber-400 text-brand-navy shadow-sm flex items-center gap-1.5 transition-all"
+                className="px-5 py-2.5 rounded-xl text-xs font-bold bg-action-gold hover:bg-amber-400 text-brand-navy shadow-sm flex items-center gap-1.5 transition-all font-black"
               >
                 <Printer className="w-4 h-4" />
-                <span>Save & Print / PDF</span>
+                <span>Download / Print Quote (PDF) →</span>
               </button>
             </div>
           )}

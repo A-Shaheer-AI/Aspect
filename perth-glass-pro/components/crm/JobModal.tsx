@@ -9,7 +9,8 @@ import {
   StoreysType,
   SubscriptionFrequency,
   JobPhoto,
-  JobNote
+  JobNote,
+  ConversationMessage
 } from "@/lib/crm/types";
 import { calculateNextDueDate } from "@/lib/crm/store";
 import {
@@ -27,7 +28,15 @@ import {
   Check,
   Plus,
   ExternalLink,
-  DollarSign
+  DollarSign,
+  Bot,
+  Send,
+  Play,
+  Square,
+  CheckCircle,
+  FileCheck,
+  AlertTriangle,
+  Sparkles
 } from "lucide-react";
 
 interface JobModalProps {
@@ -39,6 +48,7 @@ interface JobModalProps {
   onSave: (job: CrmJob) => void;
   onDelete?: (jobId: string) => void;
   onGenerateInvoice?: (job: CrmJob) => void;
+  onAdvanceStage?: (job: CrmJob) => void;
 }
 
 const AVAILABLE_SERVICES = [
@@ -58,9 +68,12 @@ export default function JobModal({
   onClose,
   onSave,
   onDelete,
-  onGenerateInvoice
+  onGenerateInvoice,
+  onAdvanceStage
 }: JobModalProps) {
-  const [activeTab, setActiveTab] = useState<"overview" | "subscription" | "photos" | "notes" | "schedule">("overview");
+  const [activeTab, setActiveTab] = useState<
+    "overview" | "conversation" | "tech_sheet" | "subscription" | "photos" | "notes" | "schedule"
+  >("overview");
 
   // Form State
   const [customerName, setCustomerName] = useState("");
@@ -75,6 +88,19 @@ export default function JobModal({
   const [hasScreens, setHasScreens] = useState(true);
   const [packageType, setPackageType] = useState<"Detailed Clean" | "Basic Wash" | "Custom">("Detailed Clean");
   const [priceQuoted, setPriceQuoted] = useState<string>("");
+
+  // Communication & Work Scope
+  const [contactMethod, setContactMethod] = useState<"ai_sms" | "ai_livechat" | "manual_phone" | "manual_sms" | "email">("ai_sms");
+  const [contactedBy, setContactedBy] = useState("");
+  const [conversationTrail, setConversationTrail] = useState<ConversationMessage[]>([]);
+  const [newReplyText, setNewReplyText] = useState("");
+
+  // Scope & Field Timing
+  const [estimatedHours, setEstimatedHours] = useState<number>(2.0);
+  const [clockInTime, setClockInTime] = useState<string>("");
+  const [clockOutTime, setClockOutTime] = useState<string>("");
+  const [actualDurationMinutes, setActualDurationMinutes] = useState<number | undefined>(undefined);
+  const [workItems, setWorkItems] = useState<Array<{ heading?: string; description: string; qty?: number }>>([]);
 
   // Recurring & DNC
   const [lastCleanedDate, setLastCleanedDate] = useState("");
@@ -97,6 +123,22 @@ export default function JobModal({
 
   const fileInputRef = React.useRef<HTMLInputElement>(null);
 
+  // Live Timer
+  const [elapsedSec, setElapsedSec] = useState<number>(0);
+  useEffect(() => {
+    if (!clockInTime || clockOutTime) {
+      setElapsedSec(0);
+      return;
+    }
+    const start = new Date(clockInTime).getTime();
+    const update = () => {
+      setElapsedSec(Math.max(0, Math.floor((Date.now() - start) / 1000)));
+    };
+    update();
+    const t = setInterval(update, 1000);
+    return () => clearInterval(t);
+  }, [clockInTime, clockOutTime]);
+
   useEffect(() => {
     if (job) {
       setCustomerName(job.customerName || "");
@@ -112,6 +154,16 @@ export default function JobModal({
       setPackageType(job.packageType || "Detailed Clean");
       setPriceQuoted(job.priceQuoted ? String(job.priceQuoted) : "");
 
+      setContactMethod(job.contactMethod || "ai_sms");
+      setContactedBy(job.contactedBy || "");
+      setConversationTrail(job.conversationTrail || []);
+
+      setEstimatedHours(job.estimatedHours || (job.storeys === "Double Storey" ? 3.0 : 2.0));
+      setClockInTime(job.clockInTime || "");
+      setClockOutTime(job.clockOutTime || "");
+      setActualDurationMinutes(job.actualDurationMinutes);
+      setWorkItems(job.workItems || []);
+
       setLastCleanedDate(job.lastCleanedDate || "");
       setSubscriptionFrequency(job.subscriptionFrequency || "one_off");
       setNextDueDate(job.nextDueDate || "");
@@ -125,7 +177,6 @@ export default function JobModal({
       setNotes(job.notes || []);
       setPhotos(job.photos || []);
     } else {
-      // Defaults for brand new job
       setCustomerName("");
       setPhone("");
       setEmail("");
@@ -138,6 +189,16 @@ export default function JobModal({
       setHasScreens(true);
       setPackageType("Detailed Clean");
       setPriceQuoted("");
+
+      setContactMethod("ai_sms");
+      setContactedBy("");
+      setConversationTrail([]);
+
+      setEstimatedHours(2.0);
+      setClockInTime("");
+      setClockOutTime("");
+      setActualDurationMinutes(undefined);
+      setWorkItems([]);
 
       setLastCleanedDate("");
       setSubscriptionFrequency("one_off");
@@ -155,7 +216,8 @@ export default function JobModal({
     setActiveTab("overview");
   }, [job, stages, technicians, isOpen]);
 
-  // Recalculate next due date when last clean or frequency changes
+  if (!isOpen) return null;
+
   const handleLastCleanChange = (val: string) => {
     setLastCleanedDate(val);
     if (val && subscriptionFrequency !== "one_off") {
@@ -172,9 +234,9 @@ export default function JobModal({
     }
   };
 
-  const toggleService = (srv: string) => {
+  const handleToggleService = (service: string) => {
     setInterestedServices(prev =>
-      prev.includes(srv) ? prev.filter(s => s !== srv) : [...prev, srv]
+      prev.includes(service) ? prev.filter(s => s !== service) : [...prev, service]
     );
   };
 
@@ -185,36 +247,74 @@ export default function JobModal({
       text: newNoteText.trim(),
       createdAt: new Date().toISOString()
     };
-    setNotes(prev => [newNote, ...prev]);
+    setNotes([newNote, ...notes]);
     setNewNoteText("");
   };
 
   const handleDeleteNote = (id: string) => {
-    setNotes(prev => prev.filter(n => n.id !== id));
+    setNotes(notes.filter(n => n.id !== id));
   };
 
-  const handlePhotoUpload = (e: React.ChangeEvent<HTMLInputElement>) => {
+  const handleAddPhoto = (e: React.ChangeEvent<HTMLInputElement>) => {
     const file = e.target.files?.[0];
     if (!file) return;
 
     const reader = new FileReader();
     reader.onload = () => {
-      const result = reader.result as string;
       const newPhoto: JobPhoto = {
         id: `photo_${Date.now()}`,
-        dataUrl: result,
+        dataUrl: reader.result as string,
         caption: photoCaption.trim() || `${photoTag.toUpperCase()} photo`,
         tag: photoTag,
         createdAt: new Date().toISOString()
       };
-      setPhotos(prev => [newPhoto, ...prev]);
+      setPhotos([newPhoto, ...photos]);
       setPhotoCaption("");
+      if (fileInputRef.current) fileInputRef.current.value = "";
     };
     reader.readAsDataURL(file);
   };
 
   const handleDeletePhoto = (id: string) => {
-    setPhotos(prev => prev.filter(p => p.id !== id));
+    setPhotos(photos.filter(p => p.id !== id));
+  };
+
+  // Reply Composer Handler
+  const handleSendReply = () => {
+    if (!newReplyText.trim()) return;
+    const newMsg: ConversationMessage = {
+      id: `msg_${Date.now()}`,
+      sender: "human",
+      senderName: "Ahmed (Owner)",
+      text: newReplyText.trim(),
+      timestamp: new Date().toISOString(),
+      channel: "sms"
+    };
+    setConversationTrail([...conversationTrail, newMsg]);
+    setNewReplyText("");
+  };
+
+  // Clock In / Clock Out Handlers
+  const handleClockInAction = () => {
+    const nowIso = new Date().toISOString();
+    setClockInTime(nowIso);
+    setClockOutTime("");
+    setStageId("stage_in_progress");
+  };
+
+  const handleClockOutAction = () => {
+    const nowIso = new Date().toISOString();
+    setClockOutTime(nowIso);
+    if (clockInTime) {
+      const diffMin = Math.max(1, Math.round((new Date(nowIso).getTime() - new Date(clockInTime).getTime()) / 60000));
+      setActualDurationMinutes(diffMin);
+    }
+    const today = nowIso.split("T")[0];
+    setLastCleanedDate(today);
+    if (subscriptionFrequency !== "one_off") {
+      setNextDueDate(calculateNextDueDate(today, subscriptionFrequency));
+    }
+    setStageId("stage_completed");
   };
 
   const handleSubmit = (e: React.FormEvent) => {
@@ -238,6 +338,20 @@ export default function JobModal({
       hasScreens,
       packageType,
       priceQuoted: priceQuoted ? parseFloat(priceQuoted) : undefined,
+      
+      contactMethod,
+      contactedBy: contactedBy || undefined,
+      contactTimestamp: job?.contactTimestamp || (conversationTrail.length > 0 ? conversationTrail[0].timestamp : undefined),
+      conversationTrail,
+
+      quoteId: job?.quoteId,
+      workItems: workItems.length > 0 ? workItems : job?.workItems,
+      estimatedHours,
+
+      clockInTime: clockInTime || undefined,
+      clockOutTime: clockOutTime || undefined,
+      actualDurationMinutes,
+
       lastCleanedDate: lastCleanedDate || undefined,
       subscriptionFrequency,
       nextDueDate: nextDueDate || undefined,
@@ -246,6 +360,8 @@ export default function JobModal({
       assignedTechnicianId: assignedTechnicianId || undefined,
       scheduledDate: scheduledDate || undefined,
       scheduledTimeSlot: scheduledTimeSlot || undefined,
+      reviewRequested: job?.reviewRequested,
+      reviewSentAt: job?.reviewSentAt,
       notes,
       photos,
       createdAt: job?.createdAt || new Date().toISOString(),
@@ -256,11 +372,11 @@ export default function JobModal({
     onClose();
   };
 
-  if (!isOpen) return null;
+  const isClockedIn = Boolean(clockInTime && !clockOutTime);
 
   return (
     <div className="fixed inset-0 z-50 flex items-center justify-center p-2 sm:p-4 bg-slate-950/60 backdrop-blur-xs animate-in fade-in">
-      <div className="bg-white rounded-2xl shadow-2xl w-full max-w-2xl max-h-[92vh] flex flex-col overflow-hidden border border-slate-200">
+      <div className="bg-white rounded-2xl shadow-2xl w-full max-w-3xl max-h-[94vh] flex flex-col overflow-hidden border border-slate-200">
         {/* Header */}
         <div className="bg-brand-navy text-white px-5 py-4 flex items-center justify-between border-b border-slate-800">
           <div className="flex items-center gap-2">
@@ -281,23 +397,23 @@ export default function JobModal({
           </button>
         </div>
 
-        {/* Quick Customer Action Strip (Phone, SMS, Maps, Invoice) */}
+        {/* Quick Customer Action Strip */}
         {job && (
-          <div className="bg-slate-50 px-5 py-2.5 border-b border-slate-200 flex flex-wrap items-center justify-between gap-2 text-xs">
+          <div className="bg-slate-50 px-4 sm:px-5 py-2.5 border-b border-slate-200 flex flex-wrap items-center justify-between gap-2 text-xs">
             <div className="flex items-center gap-2">
               {phone && (
                 <>
                   <a
                     href={`tel:${phone}`}
-                    className="inline-flex items-center gap-1 px-2.5 py-1 rounded-lg bg-emerald-50 text-emerald-700 border border-emerald-200 font-semibold hover:bg-emerald-100 transition-colors"
+                    className="inline-flex items-center gap-1 px-2.5 py-1 rounded-lg bg-white border border-slate-200 hover:bg-slate-100 text-slate-700 font-bold transition-colors"
                   >
-                    <Phone className="w-3.5 h-3.5" /> Call
+                    <Phone className="w-3.5 h-3.5 text-emerald-600" /> Call
                   </a>
                   <a
                     href={`sms:${phone}`}
-                    className="inline-flex items-center gap-1 px-2.5 py-1 rounded-lg bg-sky-50 text-sky-700 border border-sky-200 font-semibold hover:bg-sky-100 transition-colors"
+                    className="inline-flex items-center gap-1 px-2.5 py-1 rounded-lg bg-white border border-slate-200 hover:bg-slate-100 text-slate-700 font-bold transition-colors"
                   >
-                    <MessageSquare className="w-3.5 h-3.5" /> SMS
+                    <MessageSquare className="w-3.5 h-3.5 text-sky-600" /> SMS
                   </a>
                 </>
               )}
@@ -306,9 +422,9 @@ export default function JobModal({
                   href={`https://maps.google.com/?q=${encodeURIComponent(`${address}, ${suburb} WA`)}`}
                   target="_blank"
                   rel="noreferrer"
-                  className="inline-flex items-center gap-1 px-2.5 py-1 rounded-lg bg-indigo-50 text-indigo-700 border border-indigo-200 font-semibold hover:bg-indigo-100 transition-colors"
+                  className="inline-flex items-center gap-1 px-2.5 py-1 rounded-lg bg-white border border-slate-200 hover:bg-slate-100 text-slate-700 font-bold transition-colors"
                 >
-                  <MapPin className="w-3.5 h-3.5" /> Maps
+                  <MapPin className="w-3.5 h-3.5 text-rose-500" /> Maps
                 </a>
               )}
             </div>
@@ -317,7 +433,7 @@ export default function JobModal({
               <button
                 type="button"
                 onClick={() => onGenerateInvoice(job)}
-                className="inline-flex items-center gap-1 px-3 py-1 rounded-lg bg-amber-500 hover:bg-amber-400 text-brand-navy font-bold shadow-xs transition-colors"
+                className="inline-flex items-center gap-1 px-3 py-1 rounded-lg bg-action-gold hover:bg-amber-400 text-brand-navy font-bold shadow-xs transition-colors"
               >
                 <Receipt className="w-3.5 h-3.5" /> Generate Invoice / Quote
               </button>
@@ -326,120 +442,122 @@ export default function JobModal({
         )}
 
         {/* Navigation Tabs */}
-        <div className="flex items-center border-b border-slate-200 bg-white px-3 overflow-x-auto scrollbar-none text-xs">
+        <div className="flex items-center border-b border-slate-200 bg-white px-3 overflow-x-auto no-scrollbar text-xs">
           <button
             type="button"
             onClick={() => setActiveTab("overview")}
             className={`px-3 py-2.5 font-bold border-b-2 whitespace-nowrap transition-colors ${
-              activeTab === "overview"
-                ? "border-brand-navy text-brand-navy"
-                : "border-transparent text-slate-500 hover:text-slate-800"
+              activeTab === "overview" ? "border-brand-navy text-brand-navy" : "border-transparent text-slate-500 hover:text-slate-800"
             }`}
           >
             Scope & Overview
           </button>
           <button
             type="button"
-            onClick={() => setActiveTab("subscription")}
-            className={`px-3 py-2.5 font-bold border-b-2 whitespace-nowrap transition-colors ${
-              activeTab === "subscription"
-                ? "border-brand-navy text-brand-navy"
-                : "border-transparent text-slate-500 hover:text-slate-800"
+            onClick={() => setActiveTab("conversation")}
+            className={`px-3 py-2.5 font-bold border-b-2 whitespace-nowrap transition-colors flex items-center gap-1 ${
+              activeTab === "conversation" ? "border-brand-navy text-brand-navy" : "border-transparent text-slate-500 hover:text-slate-800"
             }`}
           >
-            Subscription & Recalls
+            <span>💬 SMS & Chat Trail</span>
+            {conversationTrail.length > 0 && (
+              <span className="text-[10px] px-1.5 py-0.2 rounded-full bg-purple-100 text-purple-900 font-extrabold">
+                {conversationTrail.length}
+              </span>
+            )}
           </button>
           <button
             type="button"
-            onClick={() => setActiveTab("photos")}
+            onClick={() => setActiveTab("tech_sheet")}
             className={`px-3 py-2.5 font-bold border-b-2 whitespace-nowrap transition-colors flex items-center gap-1 ${
-              activeTab === "photos"
-                ? "border-brand-navy text-brand-navy"
-                : "border-transparent text-slate-500 hover:text-slate-800"
+              activeTab === "tech_sheet" ? "border-brand-navy text-brand-navy" : "border-transparent text-slate-500 hover:text-slate-800"
             }`}
           >
-            Photos ({photos.length})
-          </button>
-          <button
-            type="button"
-            onClick={() => setActiveTab("notes")}
-            className={`px-3 py-2.5 font-bold border-b-2 whitespace-nowrap transition-colors flex items-center gap-1 ${
-              activeTab === "notes"
-                ? "border-brand-navy text-brand-navy"
-                : "border-transparent text-slate-500 hover:text-slate-800"
-            }`}
-          >
-            Notes ({notes.length})
+            <span>🔧 Field Tech Sheet</span>
+            {isClockedIn && (
+              <span className="w-2 h-2 rounded-full bg-emerald-500 animate-pulse" />
+            )}
           </button>
           <button
             type="button"
             onClick={() => setActiveTab("schedule")}
             className={`px-3 py-2.5 font-bold border-b-2 whitespace-nowrap transition-colors ${
-              activeTab === "schedule"
-                ? "border-brand-navy text-brand-navy"
-                : "border-transparent text-slate-500 hover:text-slate-800"
+              activeTab === "schedule" ? "border-brand-navy text-brand-navy" : "border-transparent text-slate-500 hover:text-slate-800"
             }`}
           >
-            Dispatch & Tech
+            Schedule
+          </button>
+          <button
+            type="button"
+            onClick={() => setActiveTab("photos")}
+            className={`px-3 py-2.5 font-bold border-b-2 whitespace-nowrap transition-colors flex items-center gap-1 ${
+              activeTab === "photos" ? "border-brand-navy text-brand-navy" : "border-transparent text-slate-500 hover:text-slate-800"
+            }`}
+          >
+            <span>Photos</span>
+            {photos.length > 0 && (
+              <span className="text-[10px] px-1.5 py-0.2 rounded-full bg-slate-200 text-slate-700 font-bold">
+                {photos.length}
+              </span>
+            )}
+          </button>
+          <button
+            type="button"
+            onClick={() => setActiveTab("notes")}
+            className={`px-3 py-2.5 font-bold border-b-2 whitespace-nowrap transition-colors flex items-center gap-1 ${
+              activeTab === "notes" ? "border-brand-navy text-brand-navy" : "border-transparent text-slate-500 hover:text-slate-800"
+            }`}
+          >
+            <span>Notes</span>
+            {notes.length > 0 && (
+              <span className="text-[10px] px-1.5 py-0.2 rounded-full bg-amber-100 text-amber-900 font-bold">
+                {notes.length}
+              </span>
+            )}
+          </button>
+          <button
+            type="button"
+            onClick={() => setActiveTab("subscription")}
+            className={`px-3 py-2.5 font-bold border-b-2 whitespace-nowrap transition-colors ${
+              activeTab === "subscription" ? "border-brand-navy text-brand-navy" : "border-transparent text-slate-500 hover:text-slate-800"
+            }`}
+          >
+            Recalls
           </button>
         </div>
 
-        {/* Form Body */}
-        <form onSubmit={handleSubmit} className="flex-1 overflow-y-auto p-5 space-y-4">
-          {/* TAB 1: OVERVIEW & SCOPE */}
+        {/* Modal Form Body */}
+        <form onSubmit={handleSubmit} className="flex-1 overflow-y-auto p-4 sm:p-5 space-y-4">
+          {/* TAB 1: OVERVIEW */}
           {activeTab === "overview" && (
             <div className="space-y-4">
+              {/* Customer Contact */}
               <div className="grid grid-cols-1 sm:grid-cols-2 gap-3">
                 <div>
-                  <label className="block text-xs font-bold text-slate-700 mb-1">Customer / Strata Name *</label>
+                  <label className="block text-xs font-bold text-slate-700 mb-1">Customer Name *</label>
                   <input
                     type="text"
                     required
                     value={customerName}
                     onChange={e => setCustomerName(e.target.value)}
-                    placeholder="e.g. Caroline Miller or ESM Strata"
-                    className="w-full text-xs font-medium px-3 py-2 rounded-xl border border-slate-200 text-slate-900 focus:outline-none focus:border-brand-navy"
+                    placeholder="e.g. Caroline Miller"
+                    className="w-full text-xs px-3 py-2 rounded-xl border border-slate-200 focus:outline-none focus:border-brand-navy font-semibold"
                   />
                 </div>
                 <div>
-                  <label className="block text-xs font-bold text-slate-700 mb-1">Pipeline Stage</label>
-                  <select
-                    value={stageId}
-                    onChange={e => setStageId(e.target.value)}
-                    className="w-full text-xs font-semibold px-3 py-2 rounded-xl border border-slate-200 text-slate-900 focus:outline-none focus:border-brand-navy bg-white"
-                  >
-                    {stages.map(s => (
-                      <option key={s.id} value={s.id}>
-                        {s.name}
-                      </option>
-                    ))}
-                  </select>
-                </div>
-              </div>
-
-              <div className="grid grid-cols-1 sm:grid-cols-2 gap-3">
-                <div>
-                  <label className="block text-xs font-bold text-slate-700 mb-1">Phone Number</label>
+                  <label className="block text-xs font-bold text-slate-700 mb-1">Phone Number *</label>
                   <input
-                    type="tel"
+                    type="text"
+                    required
                     value={phone}
                     onChange={e => setPhone(e.target.value)}
-                    placeholder="0412 889 901"
-                    className="w-full text-xs font-medium px-3 py-2 rounded-xl border border-slate-200 text-slate-900 focus:outline-none focus:border-brand-navy"
-                  />
-                </div>
-                <div>
-                  <label className="block text-xs font-bold text-slate-700 mb-1">Email Address</label>
-                  <input
-                    type="email"
-                    value={email}
-                    onChange={e => setEmail(e.target.value)}
-                    placeholder="client@example.com"
-                    className="w-full text-xs font-medium px-3 py-2 rounded-xl border border-slate-200 text-slate-900 focus:outline-none focus:border-brand-navy"
+                    placeholder="e.g. 0412 889 901"
+                    className="w-full text-xs px-3 py-2 rounded-xl border border-slate-200 focus:outline-none focus:border-brand-navy font-semibold"
                   />
                 </div>
               </div>
 
+              {/* Address & Suburb */}
               <div className="grid grid-cols-1 sm:grid-cols-3 gap-3">
                 <div className="sm:col-span-2">
                   <label className="block text-xs font-bold text-slate-700 mb-1">Street Address</label>
@@ -447,8 +565,8 @@ export default function JobModal({
                     type="text"
                     value={address}
                     onChange={e => setAddress(e.target.value)}
-                    placeholder="17 Brown Crescent"
-                    className="w-full text-xs font-medium px-3 py-2 rounded-xl border border-slate-200 text-slate-900 focus:outline-none focus:border-brand-navy"
+                    placeholder="e.g. 17 Brown Crescent"
+                    className="w-full text-xs px-3 py-2 rounded-xl border border-slate-200 focus:outline-none focus:border-brand-navy"
                   />
                 </div>
                 <div>
@@ -457,346 +575,252 @@ export default function JobModal({
                     type="text"
                     value={suburb}
                     onChange={e => setSuburb(e.target.value)}
-                    placeholder="Sorrento"
-                    className="w-full text-xs font-medium px-3 py-2 rounded-xl border border-slate-200 text-slate-900 focus:outline-none focus:border-brand-navy"
+                    placeholder="e.g. Sorrento"
+                    className="w-full text-xs px-3 py-2 rounded-xl border border-slate-200 focus:outline-none focus:border-brand-navy"
                   />
                 </div>
               </div>
 
-              {/* Property Specs */}
-              <div className="bg-slate-50 p-4 rounded-xl border border-slate-200 space-y-3">
-                <h4 className="text-xs font-bold text-slate-800 uppercase tracking-wider">Property Scope & Specifications</h4>
-                <div className="grid grid-cols-2 sm:grid-cols-4 gap-2.5">
-                  <div>
-                    <label className="block text-[11px] font-semibold text-slate-600 mb-1">Property Type</label>
-                    <select
-                      value={propertyType}
-                      onChange={e => setPropertyType(e.target.value as PropertyType)}
-                      className="w-full text-xs font-medium px-2.5 py-1.5 rounded-lg border border-slate-200 bg-white"
-                    >
-                      <option value="Residential">Residential</option>
-                      <option value="Commercial">Commercial</option>
-                    </select>
-                  </div>
-                  <div>
-                    <label className="block text-[11px] font-semibold text-slate-600 mb-1">Storeys</label>
-                    <select
-                      value={storeys}
-                      onChange={e => setStoreys(e.target.value as StoreysType)}
-                      className="w-full text-xs font-medium px-2.5 py-1.5 rounded-lg border border-slate-200 bg-white"
-                    >
-                      <option value="Single Storey">Single Storey</option>
-                      <option value="Double Storey">Double Storey</option>
-                      <option value="Multi Storey">Multi Storey</option>
-                    </select>
-                  </div>
-                  <div>
-                    <label className="block text-[11px] font-semibold text-slate-600 mb-1">Package Type</label>
-                    <select
-                      value={packageType}
-                      onChange={e => setPackageType(e.target.value as any)}
-                      className="w-full text-xs font-medium px-2.5 py-1.5 rounded-lg border border-slate-200 bg-white"
-                    >
-                      <option value="Detailed Clean">Detailed Clean</option>
-                      <option value="Basic Wash">Basic Wash</option>
-                      <option value="Custom">Custom / Strata</option>
-                    </select>
-                  </div>
-                  <div>
-                    <label className="block text-[11px] font-semibold text-slate-600 mb-1">Price Quoted ($)</label>
+              {/* Pipeline Stage & Price Quoted */}
+              <div className="grid grid-cols-1 sm:grid-cols-2 gap-3">
+                <div>
+                  <label className="block text-xs font-bold text-slate-700 mb-1">Current Pipeline Stage</label>
+                  <select
+                    value={stageId}
+                    onChange={e => setStageId(e.target.value)}
+                    className="w-full text-xs font-bold px-3 py-2 rounded-xl border border-slate-200 bg-white"
+                  >
+                    {stages.map(s => (
+                      <option key={s.id} value={s.id}>
+                        {s.name}
+                      </option>
+                    ))}
+                  </select>
+                </div>
+                <div>
+                  <label className="block text-xs font-bold text-slate-700 mb-1">Quoted Price ($ AUD)</label>
+                  <div className="relative">
+                    <DollarSign className="w-4 h-4 text-emerald-600 absolute left-3 top-2.5" />
                     <input
                       type="number"
                       step="any"
                       value={priceQuoted}
                       onChange={e => setPriceQuoted(e.target.value)}
                       placeholder="e.g. 360"
-                      className="w-full text-xs font-extrabold text-emerald-800 px-2.5 py-1.5 rounded-lg border border-slate-200 bg-white"
-                    />
-                  </div>
-                </div>
-
-                <div className="grid grid-cols-1 sm:grid-cols-2 gap-3 pt-2 border-t border-slate-200">
-                  <div>
-                    <label className="block text-[11px] font-semibold text-slate-600 mb-1">Window / Panel Count</label>
-                    <input
-                      type="text"
-                      value={windowCount}
-                      onChange={e => setWindowCount(e.target.value)}
-                      placeholder="e.g. 45 windows, 2 patio sliders"
-                      className="w-full text-xs px-2.5 py-1.5 rounded-lg border border-slate-200 bg-white"
-                    />
-                  </div>
-                  <div className="flex items-center gap-2 pt-5">
-                    <input
-                      type="checkbox"
-                      id="hasScreens"
-                      checked={hasScreens}
-                      onChange={e => setHasScreens(e.target.checked)}
-                      className="w-4 h-4 text-brand-navy rounded border-slate-300"
-                    />
-                    <label htmlFor="hasScreens" className="text-xs font-semibold text-slate-700 cursor-pointer">
-                      Includes Flyscreens Clean
-                    </label>
-                  </div>
-                </div>
-              </div>
-            </div>
-          )}
-
-          {/* TAB 2: SUBSCRIPTION, RECALLS & DNC */}
-          {activeTab === "subscription" && (
-            <div className="space-y-4">
-              {/* Do Not Contact Toggle Box */}
-              <div className={`p-4 rounded-xl border transition-colors ${
-                doNotContact ? "bg-rose-50 border-rose-300" : "bg-slate-50 border-slate-200"
-              }`}>
-                <div className="flex items-start justify-between">
-                  <div className="flex items-center gap-2">
-                    <ShieldAlert className={`w-5 h-5 ${doNotContact ? "text-rose-600" : "text-slate-400"}`} />
-                    <div>
-                      <h4 className="text-xs font-bold text-slate-900">Do Not Contact (DNC) Registry</h4>
-                      <p className="text-[11px] text-slate-500">
-                        When enabled, this customer is strictly excluded from all recall SMS and follow-ups.
-                      </p>
-                    </div>
-                  </div>
-                  <label className="relative inline-flex items-center cursor-pointer">
-                    <input
-                      type="checkbox"
-                      checked={doNotContact}
-                      onChange={e => setDoNotContact(e.target.checked)}
-                      className="sr-only peer"
-                    />
-                    <div className="w-11 h-6 bg-slate-200 peer-focus:outline-none rounded-full peer peer-checked:after:translate-x-full peer-checked:after:border-white after:content-[''] after:absolute after:top-[2px] after:left-[2px] after:bg-white after:border-slate-300 after:border after:rounded-full after:h-5 after:w-5 after:transition-all peer-checked:bg-rose-600"></div>
-                  </label>
-                </div>
-              </div>
-
-              {/* Recurring Subscription Setting */}
-              <div className="bg-slate-50 p-4 rounded-xl border border-slate-200 space-y-3">
-                <h4 className="text-xs font-bold text-slate-800 uppercase tracking-wider">Subscription & Recall Schedule</h4>
-                
-                <div className="grid grid-cols-1 sm:grid-cols-3 gap-3">
-                  <div>
-                    <label className="block text-[11px] font-semibold text-slate-600 mb-1">Last Cleaned Date</label>
-                    <input
-                      type="date"
-                      value={lastCleanedDate}
-                      onChange={e => handleLastCleanChange(e.target.value)}
-                      className="w-full text-xs px-2.5 py-1.5 rounded-lg border border-slate-200 bg-white"
-                    />
-                  </div>
-                  <div>
-                    <label className="block text-[11px] font-semibold text-slate-600 mb-1">Subscription Frequency</label>
-                    <select
-                      value={subscriptionFrequency}
-                      onChange={e => handleFrequencyChange(e.target.value as SubscriptionFrequency)}
-                      className="w-full text-xs font-medium px-2.5 py-1.5 rounded-lg border border-slate-200 bg-white"
-                    >
-                      <option value="one_off">One-Off (No Recall)</option>
-                      <option value="monthly">Every Month (4 Weeks)</option>
-                      <option value="bi_monthly">Every 2 Months (8 Weeks)</option>
-                      <option value="quarterly">Quarterly (3 Months)</option>
-                      <option value="half_yearly">Biannual (6 Months)</option>
-                      <option value="annual">Annual (12 Months)</option>
-                    </select>
-                  </div>
-                  <div>
-                    <label className="block text-[11px] font-semibold text-slate-600 mb-1">Calculated Next Due Date</label>
-                    <input
-                      type="date"
-                      value={nextDueDate}
-                      onChange={e => setNextDueDate(e.target.value)}
-                      className="w-full text-xs font-bold text-amber-900 px-2.5 py-1.5 rounded-lg border border-amber-300 bg-amber-50"
+                      className="w-full pl-9 pr-3 py-2 text-xs font-black text-emerald-800 rounded-xl border border-slate-200 focus:outline-none"
                     />
                   </div>
                 </div>
               </div>
 
-              {/* Cross-Sell & Interested Services */}
-              <div className="bg-slate-50 p-4 rounded-xl border border-slate-200 space-y-2">
-                <h4 className="text-xs font-bold text-slate-800 uppercase tracking-wider">Interested / Cross-Sell Services</h4>
-                <p className="text-[11px] text-slate-500">Select any ancillary services this property needs:</p>
-                <div className="grid grid-cols-2 sm:grid-cols-3 gap-2 pt-1">
-                  {AVAILABLE_SERVICES.map(srv => {
-                    const isChecked = interestedServices.includes(srv);
-                    return (
-                      <button
-                        type="button"
-                        key={srv}
-                        onClick={() => toggleService(srv)}
-                        className={`px-3 py-2 rounded-xl text-xs font-semibold text-left border flex items-center justify-between transition-all ${
-                          isChecked
-                            ? "bg-amber-100 text-amber-900 border-amber-300"
-                            : "bg-white text-slate-700 border-slate-200 hover:bg-slate-100"
-                        }`}
-                      >
-                        <span>{srv}</span>
-                        {isChecked && <Check className="w-3.5 h-3.5 text-amber-700" />}
-                      </button>
-                    );
-                  })}
+              {/* Property Specs */}
+              <div className="grid grid-cols-2 sm:grid-cols-3 gap-3">
+                <div>
+                  <label className="block text-xs font-bold text-slate-700 mb-1">Storeys</label>
+                  <select
+                    value={storeys}
+                    onChange={e => setStoreys(e.target.value as StoreysType)}
+                    className="w-full text-xs px-3 py-2 rounded-xl border border-slate-200 bg-white"
+                  >
+                    <option value="Single Storey">Single Storey</option>
+                    <option value="Double Storey">Double Storey</option>
+                    <option value="Multi Storey">Multi Storey</option>
+                  </select>
                 </div>
-              </div>
-            </div>
-          )}
-
-          {/* TAB 3: PHOTOS */}
-          {activeTab === "photos" && (
-            <div className="space-y-4">
-              {/* Photo Upload Box */}
-              <div className="bg-slate-50 p-4 rounded-xl border border-dashed border-slate-300 text-center space-y-3">
-                <div className="flex flex-wrap items-center justify-center gap-2 text-xs">
-                  <span className="font-bold text-slate-700">Photo Category:</span>
-                  {(["before", "after", "hazard", "property"] as const).map(tag => (
-                    <button
-                      type="button"
-                      key={tag}
-                      onClick={() => setPhotoTag(tag)}
-                      className={`px-2.5 py-1 rounded-lg font-bold capitalize transition-all ${
-                        photoTag === tag
-                          ? "bg-brand-navy text-white shadow-xs"
-                          : "bg-white text-slate-600 border border-slate-200"
-                      }`}
-                    >
-                      {tag}
-                    </button>
-                  ))}
+                <div>
+                  <label className="block text-xs font-bold text-slate-700 mb-1">Package Type</label>
+                  <select
+                    value={packageType}
+                    onChange={e => setPackageType(e.target.value as any)}
+                    className="w-full text-xs px-3 py-2 rounded-xl border border-slate-200 bg-white font-medium"
+                  >
+                    <option value="Detailed Clean">Detailed Clean</option>
+                    <option value="Basic Wash">Basic Wash</option>
+                    <option value="Custom">Custom Scope</option>
+                  </select>
                 </div>
-
-                <div className="flex gap-2 max-w-md mx-auto">
+                <div className="col-span-2 sm:col-span-1">
+                  <label className="block text-xs font-bold text-slate-700 mb-1">Window Count</label>
                   <input
                     type="text"
-                    value={photoCaption}
-                    onChange={e => setPhotoCaption(e.target.value)}
-                    placeholder="Caption (e.g. Master bedroom track, gate access...)"
-                    className="flex-1 text-xs px-3 py-1.5 rounded-lg border border-slate-200 bg-white focus:outline-none"
-                  />
-                  <button
-                    type="button"
-                    onClick={() => fileInputRef.current?.click()}
-                    className="px-3.5 py-1.5 bg-brand-navy text-white text-xs font-bold rounded-lg hover:bg-slate-800 flex items-center gap-1.5 transition-colors"
-                  >
-                    <Camera className="w-4 h-4" /> Take / Upload Photo
-                  </button>
-                  <input
-                    ref={fileInputRef}
-                    type="file"
-                    accept="image/*"
-                    capture="environment"
-                    onChange={handlePhotoUpload}
-                    className="hidden"
+                    value={windowCount}
+                    onChange={e => setWindowCount(e.target.value)}
+                    placeholder="e.g. 45 windows"
+                    className="w-full text-xs px-3 py-2 rounded-xl border border-slate-200"
                   />
                 </div>
               </div>
 
-              {/* Photos Grid */}
-              {photos.length === 0 ? (
-                <div className="text-center py-8 text-slate-400 text-xs">
-                  No property photos uploaded yet. Tap above to snap before/after shots.
+              {/* DNC Safety Switch */}
+              <div className="p-3 bg-slate-50 rounded-xl border border-slate-200 flex items-center justify-between">
+                <div>
+                  <span className="text-xs font-bold text-slate-800 block">Do Not Contact (DNC)</span>
+                  <span className="text-[11px] text-slate-500">Excludes customer from recurring recalls & SMS outreach</span>
                 </div>
-              ) : (
-                <div className="grid grid-cols-2 sm:grid-cols-3 gap-3">
-                  {photos.map(p => (
-                    <div
-                      key={p.id}
-                      className="group relative rounded-xl overflow-hidden border border-slate-200 bg-slate-900 aspect-4/3"
-                    >
-                      <img
-                        src={p.dataUrl}
-                        alt={p.caption}
-                        className="w-full h-full object-cover group-hover:scale-105 transition-transform"
-                      />
-                      <div className="absolute inset-0 bg-gradient-to-t from-black/80 via-transparent to-transparent flex flex-col justify-end p-2 text-white">
-                        <span className="text-[10px] uppercase font-extrabold tracking-wider bg-white/20 px-1.5 py-0.5 rounded backdrop-blur-xs w-max mb-1">
-                          {p.tag}
-                        </span>
-                        <p className="text-xs font-medium truncate">{p.caption}</p>
-                      </div>
-                      <button
-                        type="button"
-                        onClick={() => handleDeletePhoto(p.id)}
-                        className="absolute top-2 right-2 p-1.5 rounded-lg bg-black/60 text-white hover:bg-rose-600 transition-colors"
-                        title="Delete photo"
-                      >
-                        <Trash2 className="w-3.5 h-3.5" />
-                      </button>
-                    </div>
-                  ))}
-                </div>
-              )}
+                <input
+                  type="checkbox"
+                  checked={doNotContact}
+                  onChange={e => setDoNotContact(e.target.checked)}
+                  className="w-5 h-5 text-rose-600 rounded border-slate-300"
+                />
+              </div>
             </div>
           )}
 
-          {/* TAB 4: NOTES & GATE CODES */}
-          {activeTab === "notes" && (
+          {/* TAB 2: CONVERSATION TRAIL & SMS COMPOSER */}
+          {activeTab === "conversation" && (
             <div className="space-y-4">
-              {/* Add Note Input */}
-              <div className="flex gap-2">
-                <input
-                  type="text"
-                  value={newNoteText}
-                  onChange={e => setNewNoteText(e.target.value)}
-                  placeholder="Add note (e.g. Gate code #1234, friendly dog, tap behind shed)..."
-                  className="flex-1 text-xs px-3 py-2 rounded-xl border border-slate-200 focus:outline-none focus:border-brand-navy"
-                  onKeyDown={e => {
-                    if (e.key === "Enter") {
-                      e.preventDefault();
-                      handleAddNote();
-                    }
-                  }}
-                />
+              <div className="bg-purple-50/70 p-3 rounded-xl border border-purple-200 text-xs text-purple-950 flex items-center justify-between">
+                <div>
+                  <span className="font-bold block">Customer Communication History:</span>
+                  <span>Contacted via: <strong>{contactedBy || "Not logged yet"}</strong></span>
+                </div>
                 <button
                   type="button"
-                  onClick={handleAddNote}
-                  disabled={!newNoteText.trim()}
-                  className="px-4 py-2 bg-brand-navy text-white text-xs font-bold rounded-xl hover:bg-slate-800 disabled:opacity-40 transition-colors flex items-center gap-1"
+                  onClick={() => {
+                    const cleanPhone = phone.replace(/\s+/g, "");
+                    window.open(`sms:${cleanPhone}`, "_self");
+                  }}
+                  className="px-2.5 py-1 rounded-lg bg-white border border-purple-300 text-purple-900 font-bold text-[11px] flex items-center gap-1 shadow-xs"
                 >
-                  <Plus className="w-4 h-4" /> Add Note
+                  <MessageSquare className="w-3.5 h-3.5 text-purple-700" />
+                  <span>Open SMS App</span>
                 </button>
               </div>
 
-              {/* Notes List */}
-              {notes.length === 0 ? (
-                <div className="text-center py-8 text-slate-400 text-xs">
-                  No notes recorded yet. Add gate access codes or hazards above.
-                </div>
-              ) : (
-                <div className="space-y-2">
-                  {notes.map(note => (
+              {/* Conversation Feed */}
+              <div className="space-y-2 max-h-[380px] overflow-y-auto p-3 bg-slate-50 rounded-2xl border border-slate-200 text-xs">
+                {conversationTrail.length === 0 ? (
+                  <div className="text-center py-10 text-slate-400">
+                    No communication messages recorded yet. Send a message below to start the trail.
+                  </div>
+                ) : (
+                  conversationTrail.map((msg, idx) => (
                     <div
-                      key={note.id}
-                      className="p-3 bg-amber-50/60 rounded-xl border border-amber-200/80 flex items-start justify-between gap-2"
+                      key={msg.id || idx}
+                      className={`flex flex-col max-w-[85%] rounded-2xl p-3 shadow-xs ${
+                        msg.sender === "customer"
+                          ? "bg-white border border-slate-200 text-slate-800 self-start"
+                          : msg.sender === "ai"
+                          ? "bg-purple-100/90 border border-purple-200 text-purple-950 self-end"
+                          : "bg-brand-navy text-white self-end"
+                      }`}
                     >
-                      <div>
-                        <p className="text-xs text-slate-800 font-medium whitespace-pre-wrap">{note.text}</p>
-                        <span className="text-[10px] text-slate-400 mt-1 block">
-                          {new Date(note.createdAt).toLocaleString("en-AU", {
-                            dateStyle: "short",
-                            timeStyle: "short"
-                          })}
+                      <div className="flex items-center justify-between gap-3 text-[10px] opacity-75 mb-1">
+                        <span className="font-bold flex items-center gap-1">
+                          {msg.sender === "ai" ? <Bot className="w-3 h-3" /> : <User className="w-3 h-3" />}
+                          {msg.senderName || (msg.sender === "customer" ? customerName : "Ahmed")}
                         </span>
+                        <span>{new Date(msg.timestamp).toLocaleTimeString([], { hour: "2-digit", minute: "2-digit" })}</span>
                       </div>
-                      <button
-                        type="button"
-                        onClick={() => handleDeleteNote(note.id)}
-                        className="text-slate-400 hover:text-rose-600 p-1 rounded transition-colors"
-                      >
-                        <Trash2 className="w-3.5 h-3.5" />
-                      </button>
+                      <p className="whitespace-pre-wrap">{msg.text}</p>
                     </div>
-                  ))}
-                </div>
-              )}
+                  ))
+                )}
+              </div>
+
+              {/* Reply Composer */}
+              <div className="flex gap-2 items-end">
+                <textarea
+                  rows={2}
+                  value={newReplyText}
+                  onChange={e => setNewReplyText(e.target.value)}
+                  placeholder="Type an SMS response to customer..."
+                  className="flex-1 text-xs px-3 py-2 rounded-xl border border-slate-200 bg-white focus:outline-none focus:border-brand-navy"
+                />
+                <button
+                  type="button"
+                  onClick={handleSendReply}
+                  disabled={!newReplyText.trim()}
+                  className="px-4 py-2.5 bg-brand-navy hover:bg-slate-800 text-white font-bold text-xs rounded-xl disabled:opacity-40 flex items-center gap-1.5 transition-colors"
+                >
+                  <Send className="w-4 h-4" />
+                  <span>Log / Send</span>
+                </button>
+              </div>
             </div>
           )}
 
-          {/* TAB 5: DISPATCH & SCHEDULE */}
+          {/* TAB 3: FIELD TECH SHEET & CLOCK-IN */}
+          {activeTab === "tech_sheet" && (
+            <div className="space-y-4">
+              {/* Arrival & Timer Hero */}
+              <div className="bg-gradient-to-br from-slate-900 to-brand-navy text-white p-4 rounded-2xl space-y-3">
+                <div className="flex items-center justify-between">
+                  <div>
+                    <span className="text-xs uppercase font-extrabold text-amber-400 block">On-Site Execution</span>
+                    <h4 className="text-base font-bold">
+                      {isClockedIn ? "Job In Progress" : clockOutTime ? "Job Completed" : "Ready for Arrival"}
+                    </h4>
+                  </div>
+                  {isClockedIn && (
+                    <span className="text-xl font-mono font-black text-emerald-400 animate-pulse">
+                      ⏱️ {Math.floor(elapsedSec / 60)}m {elapsedSec % 60}s
+                    </span>
+                  )}
+                </div>
+
+                <div className="flex items-center gap-3 text-xs text-slate-300">
+                  <span>Est. Time: <strong>{estimatedHours} hrs</strong></span>
+                  {actualDurationMinutes && (
+                    <span className="text-emerald-300 font-bold">Actual: {Math.floor(actualDurationMinutes / 60)}h {actualDurationMinutes % 60}m</span>
+                  )}
+                </div>
+
+                {/* Clock Actions */}
+                {!isClockedIn && !clockOutTime && (
+                  <button
+                    type="button"
+                    onClick={handleClockInAction}
+                    className="w-full py-2.5 rounded-xl bg-emerald-500 hover:bg-emerald-400 text-brand-navy font-black text-xs flex items-center justify-center gap-1.5 shadow-sm transition-all"
+                  >
+                    <Play className="w-4 h-4 fill-current" />
+                    <span>🚗 We Have Arrived / Clock In</span>
+                  </button>
+                )}
+
+                {isClockedIn && (
+                  <button
+                    type="button"
+                    onClick={handleClockOutAction}
+                    className="w-full py-2.5 rounded-xl bg-amber-400 hover:bg-amber-300 text-brand-navy font-black text-xs flex items-center justify-center gap-1.5 shadow-sm transition-all"
+                  >
+                    <Square className="w-4 h-4 fill-current" />
+                    <span>✅ Job Completed / Clock Out</span>
+                  </button>
+                )}
+              </div>
+
+              {/* Work Scope Checklist (NO PRICES) */}
+              <div className="space-y-2">
+                <h4 className="text-xs font-black text-slate-900 uppercase tracking-wider flex items-center gap-1">
+                  <FileCheck className="w-4 h-4 text-emerald-600" />
+                  <span>Work Items to Perform (Prices Hidden for Techs)</span>
+                </h4>
+                {workItems && workItems.length > 0 ? (
+                  <div className="space-y-2">
+                    {workItems.map((item, idx) => (
+                      <div key={idx} className="p-3 rounded-xl bg-slate-50 border border-slate-200 text-xs space-y-1">
+                        <span className="font-bold text-slate-900 block">{item.heading || "Window Cleaning"}</span>
+                        <p className="text-slate-600 whitespace-pre-wrap">{item.description}</p>
+                      </div>
+                    ))}
+                  </div>
+                ) : (
+                  <div className="p-3 rounded-xl bg-slate-50 border border-slate-200 text-xs text-slate-600">
+                    <p className="font-bold text-slate-900">{storeys} Glazing Detailing ({packageType})</p>
+                    <p>Wipe frames, detail sills, wash accessible glazing streak-free.</p>
+                  </div>
+                )}
+              </div>
+            </div>
+          )}
+
+          {/* TAB 4: SCHEDULE */}
           {activeTab === "schedule" && (
             <div className="space-y-4">
               <div className="bg-slate-50 p-4 rounded-xl border border-slate-200 space-y-3">
                 <h4 className="text-xs font-bold text-slate-800 uppercase tracking-wider">Technician & Appointment Slot</h4>
-                
                 <div className="space-y-3">
                   <div>
                     <label className="block text-xs font-bold text-slate-700 mb-1">Assigned Guy / Technician</label>
@@ -840,13 +864,177 @@ export default function JobModal({
             </div>
           )}
 
-          {/* Form Actions Footer */}
+          {/* TAB 5: PHOTOS */}
+          {activeTab === "photos" && (
+            <div className="space-y-4">
+              <div className="p-3 bg-slate-50 rounded-xl border border-slate-200 space-y-2">
+                <div className="flex flex-wrap items-center gap-2">
+                  <select
+                    value={photoTag}
+                    onChange={e => setPhotoTag(e.target.value as any)}
+                    className="text-xs px-2.5 py-1.5 rounded-lg border border-slate-200 bg-white font-semibold"
+                  >
+                    <option value="property">Property</option>
+                    <option value="before">Before Clean</option>
+                    <option value="after">After Clean</option>
+                    <option value="hazard">Hazard / Access</option>
+                  </select>
+                  <input
+                    type="text"
+                    value={photoCaption}
+                    onChange={e => setPhotoCaption(e.target.value)}
+                    placeholder="Caption (e.g. Gate code lock, dirty tracks)..."
+                    className="flex-1 text-xs px-2.5 py-1.5 rounded-lg border border-slate-200 bg-white"
+                  />
+                  <button
+                    type="button"
+                    onClick={() => fileInputRef.current?.click()}
+                    className="px-3 py-1.5 bg-brand-navy text-white text-xs font-bold rounded-lg hover:bg-slate-800 transition-colors flex items-center gap-1"
+                  >
+                    <Camera className="w-3.5 h-3.5" /> Upload Photo
+                  </button>
+                  <input
+                    ref={fileInputRef}
+                    type="file"
+                    accept="image/*"
+                    capture="environment"
+                    onChange={handleAddPhoto}
+                    className="hidden"
+                  />
+                </div>
+              </div>
+
+              {photos.length === 0 ? (
+                <div className="text-center py-10 text-slate-400 text-xs">No photos stored for this property yet.</div>
+              ) : (
+                <div className="grid grid-cols-2 sm:grid-cols-3 gap-3">
+                  {photos.map(p => (
+                    <div key={p.id} className="group relative rounded-xl overflow-hidden border border-slate-200 aspect-4/3">
+                      <img src={p.dataUrl} alt={p.caption} className="w-full h-full object-cover" />
+                      <div className="absolute inset-0 bg-gradient-to-t from-black/80 via-transparent flex flex-col justify-end p-2 text-white">
+                        <span className="text-[9px] uppercase font-bold bg-white/20 px-1 py-0.5 rounded w-max mb-0.5">
+                          {p.tag}
+                        </span>
+                        <p className="text-[11px] truncate">{p.caption}</p>
+                      </div>
+                      <button
+                        type="button"
+                        onClick={() => handleDeletePhoto(p.id)}
+                        className="absolute top-1.5 right-1.5 p-1 rounded bg-black/60 text-white hover:bg-rose-600"
+                      >
+                        <Trash2 className="w-3 h-3" />
+                      </button>
+                    </div>
+                  ))}
+                </div>
+              )}
+            </div>
+          )}
+
+          {/* TAB 6: NOTES */}
+          {activeTab === "notes" && (
+            <div className="space-y-4">
+              <div className="flex gap-2">
+                <input
+                  type="text"
+                  value={newNoteText}
+                  onChange={e => setNewNoteText(e.target.value)}
+                  placeholder="Add note (e.g. Gate code #1822, friendly Golden Retriever, tap behind shed)..."
+                  className="flex-1 text-xs px-3 py-2 rounded-xl border border-slate-200 focus:outline-none focus:border-brand-navy"
+                  onKeyDown={e => {
+                    if (e.key === "Enter") {
+                      e.preventDefault();
+                      handleAddNote();
+                    }
+                  }}
+                />
+                <button
+                  type="button"
+                  onClick={handleAddNote}
+                  disabled={!newNoteText.trim()}
+                  className="px-4 py-2 bg-brand-navy text-white text-xs font-bold rounded-xl hover:bg-slate-800 disabled:opacity-40 transition-colors flex items-center gap-1"
+                >
+                  <Plus className="w-4 h-4" /> Add Note
+                </button>
+              </div>
+
+              {notes.length === 0 ? (
+                <div className="text-center py-8 text-slate-400 text-xs">No notes recorded yet. Add gate codes above.</div>
+              ) : (
+                <div className="space-y-2">
+                  {notes.map(note => (
+                    <div key={note.id} className="p-3 bg-amber-50/60 rounded-xl border border-amber-200/80 flex items-start justify-between gap-2">
+                      <div>
+                        <p className="text-xs text-slate-800 font-medium whitespace-pre-wrap">{note.text}</p>
+                        <span className="text-[10px] text-slate-400 mt-1 block">
+                          {new Date(note.createdAt).toLocaleString("en-AU", { dateStyle: "short", timeStyle: "short" })}
+                        </span>
+                      </div>
+                      <button
+                        type="button"
+                        onClick={() => handleDeleteNote(note.id)}
+                        className="text-slate-400 hover:text-rose-600 p-1 rounded"
+                      >
+                        <Trash2 className="w-3.5 h-3.5" />
+                      </button>
+                    </div>
+                  ))}
+                </div>
+              )}
+            </div>
+          )}
+
+          {/* TAB 7: SUBSCRIPTION & RECALLS */}
+          {activeTab === "subscription" && (
+            <div className="space-y-4">
+              <div className="grid grid-cols-1 sm:grid-cols-2 gap-3">
+                <div>
+                  <label className="block text-xs font-bold text-slate-700 mb-1">Last Cleaned Date</label>
+                  <input
+                    type="date"
+                    value={lastCleanedDate}
+                    onChange={e => handleLastCleanChange(e.target.value)}
+                    className="w-full text-xs px-3 py-2 rounded-xl border border-slate-200"
+                  />
+                </div>
+                <div>
+                  <label className="block text-xs font-bold text-slate-700 mb-1">Subscription Frequency</label>
+                  <select
+                    value={subscriptionFrequency}
+                    onChange={e => handleFrequencyChange(e.target.value as SubscriptionFrequency)}
+                    className="w-full text-xs px-3 py-2 rounded-xl border border-slate-200 bg-white font-medium"
+                  >
+                    <option value="one_off">One-Off Wash</option>
+                    <option value="monthly">Every 4 Weeks (Monthly)</option>
+                    <option value="bi_monthly">Every 8 Weeks (Bi-Monthly)</option>
+                    <option value="quarterly">Every 12 Weeks (Quarterly)</option>
+                    <option value="half_yearly">Every 6 Months (Biannual)</option>
+                    <option value="annual">Every 12 Months (Annual)</option>
+                  </select>
+                </div>
+              </div>
+
+              {subscriptionFrequency !== "one_off" && (
+                <div>
+                  <label className="block text-xs font-bold text-slate-700 mb-1">Calculated Next Due Date</label>
+                  <input
+                    type="date"
+                    value={nextDueDate}
+                    onChange={e => setNextDueDate(e.target.value)}
+                    className="w-full text-xs px-3 py-2 rounded-xl border border-slate-200 bg-emerald-50 text-emerald-950 font-bold"
+                  />
+                </div>
+              )}
+            </div>
+          )}
+
+          {/* Footer Actions */}
           <div className="pt-4 border-t border-slate-200 flex items-center justify-between">
             {job && onDelete ? (
               <button
                 type="button"
                 onClick={() => {
-                  if (confirm("Are you sure you want to delete this job?")) {
+                  if (confirm("Delete this job?")) {
                     onDelete(job.id);
                     onClose();
                   }
@@ -867,7 +1055,7 @@ export default function JobModal({
               </button>
               <button
                 type="submit"
-                className="px-5 py-2 rounded-xl text-xs font-bold bg-action-gold hover:bg-amber-400 text-brand-navy shadow-sm transition-all"
+                className="px-5 py-2.5 rounded-xl text-xs font-bold bg-action-gold hover:bg-amber-400 text-brand-navy shadow-sm transition-all"
               >
                 Save Job Profile
               </button>
