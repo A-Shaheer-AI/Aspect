@@ -111,6 +111,9 @@ export async function POST(request: NextRequest) {
                         submissionUrl: submissionUrl,
                         formName: formName,
                         gclid: (data.gclid as string) || undefined,
+                        referrer: (data.referrer as string) || (refererHeader && refererHeader !== submissionUrl ? refererHeader : undefined),
+                        fullQuery: (data.fullQuery as string) || undefined,
+                        sourceSummary: (data.sourceSummary as string) || undefined,
                     });
                 });
             } catch (ingestErr) {

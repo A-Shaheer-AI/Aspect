@@ -1,4 +1,68 @@
-import { CrmJob, CrmStage, Technician, CrmInvoice, SubscriptionFrequency, SubscriptionVisit } from "./types";
+import { CrmJob, CrmStage, Technician, CrmInvoice, SubscriptionFrequency, SubscriptionVisit, LeadSource } from "./types";
+
+/**
+ * Detects marketing attribution source channel for incoming leads
+ */
+export function detectLeadAttribution(lead: {
+  gclid?: string;
+  referrer?: string;
+  sourceSummary?: string;
+  sourceUrl?: string;
+  utmSource?: string;
+  utmCampaign?: string;
+  formName?: string;
+  lead_source?: string;
+}): LeadSource {
+  if (lead.lead_source === "manual" || lead.formName?.toLowerCase().includes("manual")) {
+    return "manual";
+  }
+  if (
+    lead.gclid ||
+    lead.sourceSummary?.toLowerCase().includes("google ad") ||
+    lead.utmSource?.toLowerCase().includes("google") ||
+    lead.utmSource?.toLowerCase().includes("adwords")
+  ) {
+    return "google_ads";
+  }
+  const ref = (lead.referrer || "").toLowerCase();
+  const sum = (lead.sourceSummary || "").toLowerCase();
+  const utm = (lead.utmSource || "").toLowerCase();
+
+  if (
+    ref.includes("facebook") ||
+    ref.includes("fb.me") ||
+    ref.includes("instagram") ||
+    sum.includes("facebook") ||
+    sum.includes("instagram") ||
+    utm.includes("facebook") ||
+    utm.includes("meta")
+  ) {
+    return "facebook";
+  }
+
+  if (
+    ref.includes("chatgpt") ||
+    ref.includes("chat.openai.com") ||
+    ref.includes("claude.ai") ||
+    ref.includes("perplexity") ||
+    sum.includes("chatgpt") ||
+    sum.includes("ai")
+  ) {
+    return "chatgpt";
+  }
+
+  if (
+    ref.includes("google.com") ||
+    ref.includes("bing.com") ||
+    ref.includes("duckduckgo.com") ||
+    sum.includes("organic") ||
+    utm.includes("organic")
+  ) {
+    return "organic";
+  }
+
+  return "website";
+}
 
 export const DEFAULT_STAGES: CrmStage[] = [
   { id: "stage_new", name: "New Leads", color: "blue", order: 1 },
@@ -300,29 +364,99 @@ export const INITIAL_SEED_JOBS: CrmJob[] = [
     storeys: "Single Storey",
     windowCount: "25 windows",
     hasScreens: true,
-    packageType: "Basic Wash",
-    priceQuoted: 190,
+    packageType: "Detailed Clean",
+    priceQuoted: 240,
     estimatedHours: 1.5,
-    leadSource: "website_form",
-    contactMethod: "ai_livechat",
-    contactedBy: "Website Live Chat",
-    contactTimestamp: "2026-10-31T11:00:00Z",
-    conversationTrail: [
-      { id: "msg_6", sender: "customer", text: "Hi there! Just wondering how much it would be to wash single storey cottage windows in Cottesloe?", timestamp: "2026-10-31T10:58:00Z", channel: "live_chat" },
-      { id: "msg_7", sender: "ai", senderName: "Aspect Live Chat", text: "Hi, thanks for reaching out! We would be happy to provide more info. What did you need help with?", timestamp: "2026-10-31T10:58:15Z", channel: "live_chat" },
-      { id: "msg_8", sender: "customer", text: "Around 25 windows, single storey. Quite close to the beach so there's salt spray.", timestamp: "2026-10-31T10:59:30Z", channel: "live_chat" }
-    ],
+    leadSource: "google_ads",
+    leadReceivedAt: new Date(Date.now() - 45 * 1000).toISOString(),
+    aiContactWindowExpiresAt: new Date(Date.now() + 195 * 1000).toISOString(), // ~3m 15s remaining
+    conversationTrail: [],
     lastCleanedDate: "2026-04-10",
     subscriptionFrequency: "quarterly",
-    nextDueDate: "2026-07-10", // Overdue for recall!
+    nextDueDate: "2026-07-10",
     interestedServices: ["Window Cleaning"],
     doNotContact: false,
     notes: [
-      { id: "note_5", text: "Customer asked for quotes over web chat. Looking for recurring service.", createdAt: "2026-10-31T11:00:00Z" }
+      { id: "note_5", text: "Inbound quote inquiry via Google Search Ads ('window cleaner cottesloe'). Coastal salt spray on front glass.", createdAt: new Date().toISOString() }
     ],
     photos: [],
-    createdAt: "2026-10-31T11:00:00Z",
-    updatedAt: "2026-10-31T11:00:00Z"
+    createdAt: new Date(Date.now() - 45 * 1000).toISOString(),
+    updatedAt: new Date(Date.now() - 45 * 1000).toISOString()
+  },
+  {
+    id: "job_seed_6",
+    customerName: "Mark Robinson",
+    phone: "0433 112 233",
+    email: "mark.r@gmail.com",
+    address: "8 The Esplanade",
+    suburb: "Peppermint Grove",
+    stageId: "stage_new",
+    propertyType: "Residential",
+    storeys: "Double Storey",
+    windowCount: "38 windows",
+    hasScreens: true,
+    packageType: "Detailed Clean",
+    priceQuoted: 380,
+    estimatedHours: 2.5,
+    leadSource: "chatgpt",
+    leadReceivedAt: new Date(Date.now() - 130 * 1000).toISOString(),
+    aiContactWindowExpiresAt: new Date(Date.now() + 110 * 1000).toISOString(), // ~1m 50s remaining
+    conversationTrail: [],
+    subscriptionFrequency: "bi_monthly",
+    interestedServices: ["Window Cleaning", "Solar Panels"],
+    doNotContact: false,
+    notes: [
+      { id: "note_seed_6", text: "Referred via ChatGPT recommendation for premium Perth window cleaning specialist.", createdAt: new Date().toISOString() }
+    ],
+    photos: [],
+    createdAt: new Date(Date.now() - 130 * 1000).toISOString(),
+    updatedAt: new Date(Date.now() - 130 * 1000).toISOString()
+  },
+  {
+    id: "job_seed_7",
+    customerName: "Liam Henderson",
+    phone: "0411 223 344",
+    email: "liam.h@iinet.net.au",
+    address: "29 Marine Parade",
+    suburb: "Cottesloe",
+    stageId: "stage_contacted",
+    propertyType: "Residential",
+    storeys: "Double Storey",
+    windowCount: "32 windows",
+    hasScreens: true,
+    packageType: "Detailed Clean",
+    priceQuoted: 340,
+    estimatedHours: 2.5,
+    leadSource: "facebook",
+    contactMethod: "ai_sms",
+    contactedBy: "Fazal AI (SMS)",
+    contactTimestamp: new Date(Date.now() - 15 * 60 * 1000).toISOString(),
+    conversationTrail: [
+      {
+        id: "msg_liam_1",
+        sender: "ai",
+        senderName: "Fazal AI",
+        text: "Hi Liam, thanks for your query on our website! Could I grab a few more details so we can get you an instant quote? When would be a good time to chat — quick phone call or prefer text? Regards, Aspect Window Cleaning, Fazal.",
+        timestamp: new Date(Date.now() - 15 * 60 * 1000).toISOString(),
+        channel: "sms"
+      },
+      {
+        id: "msg_liam_2",
+        sender: "customer",
+        text: "Hi Fazal, text is great. It's a double storey in Cottesloe, lots of glass facing ocean. Need external and flyscreens done before next weekend if possible!",
+        timestamp: new Date(Date.now() - 10 * 60 * 1000).toISOString(),
+        channel: "sms"
+      }
+    ],
+    subscriptionFrequency: "half_yearly",
+    interestedServices: ["Window Cleaning"],
+    doNotContact: false,
+    notes: [
+      { id: "note_liam_1", text: "Customer replied to Fazal AI text. Ready for owner takeover / formal quote.", createdAt: new Date(Date.now() - 10 * 60 * 1000).toISOString() }
+    ],
+    photos: [],
+    createdAt: new Date(Date.now() - 25 * 60 * 1000).toISOString(),
+    updatedAt: new Date(Date.now() - 10 * 60 * 1000).toISOString()
   },
   {
     id: "job_seed_5",

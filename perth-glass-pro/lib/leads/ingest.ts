@@ -70,20 +70,20 @@ export async function ingestLead(data: IngestLeadPayload) {
 
   console.log(`\n📥 [Website Lead Ingested] ${profile.name} (${normPhone}) | Suburb: ${profile.suburb}`);
 
-  // 2. Natural 15-second delay before first outreach
+  // 2. 4-Minute Safety Window (240 seconds) to allow human contact first
   const isDev = process.env.NODE_ENV !== "production";
   const configuredSec = process.env.SMS_DELAY_SECONDS ? parseFloat(process.env.SMS_DELAY_SECONDS) : null;
   const delayMs = configuredSec !== null 
     ? Math.max(1000, Math.round(configuredSec * 1000)) 
-    : (isDev ? 2000 : 15000);
+    : (isDev ? 5000 : 240000); // 4 minutes safety window in production (5s in dev)
 
-  console.log(`⏳ Applying 15-second delay before Fazal greets website lead...`);
+  console.log(`⏳ [Safety Window] Waiting ${Math.round(delayMs / 1000)}s for human owner contact before AI outreach...`);
   await sleep(delayMs);
 
-  // Re-check if thread was muted before sending
+  // Re-check if thread was muted or already contacted by human before sending
   const current = saveOrUpdateLead({ phone: normPhone });
-  if (current.is_ai_muted) {
-    console.log(`🚫 Thread was muted before Fazal outreach. Canceling.`);
+  if (current.is_ai_muted || current.status === "CONTACTED") {
+    console.log(`🚫 Lead was already contacted by human team or muted within safety window. Skipping automated AI outreach.`);
     return profile;
   }
 
@@ -93,10 +93,11 @@ export async function ingestLead(data: IngestLeadPayload) {
 
   const initialMsg = `${nameGreeting}, thanks for your query on our website! Could I grab a few more details so we can decide whether a site visit would be needed or if we can get you an instant quote? When would be a good time to have a chat — would you prefer a quick phone call so we can grab all the necessary details, or would you prefer to chat over text?\n\nRegards, Aspect Window Cleaning, Fazal.`;
 
-  // 4. Dispatch SMS
-  console.log(`🚀 Fazal sending initial website lead greeting to ${normPhone}`);
+  // 4. Dispatch SMS and update lead status to CONTACTED
+  console.log(`🚀 Fazal sending initial website lead greeting to ${normPhone} (4-min safety window elapsed)`);
   await sendSms(normPhone, initialMsg);
   appendMessage(normPhone, "assistant", initialMsg);
+  saveOrUpdateLead({ phone: normPhone, status: "CONTACTED" });
 
   // 5. Mirror to Ahmed's phone
   try {

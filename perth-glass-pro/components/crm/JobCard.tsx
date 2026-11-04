@@ -22,7 +22,8 @@ import {
   AlertCircle,
   Globe,
   Send,
-  Printer
+  Printer,
+  Sparkles
 } from "lucide-react";
 
 interface JobCardProps {
@@ -55,6 +56,88 @@ export default function JobCard({
   onSendAdvanceNotice
 }: JobCardProps) {
   const [elapsedSec, setElapsedSec] = useState<number>(0);
+  const [safetyRemainingSec, setSafetyRemainingSec] = useState<number>(0);
+
+  // 4-Minute safety countdown timer for New Leads
+  useEffect(() => {
+    if (job.stageId !== "stage_new") {
+      setSafetyRemainingSec(0);
+      return;
+    }
+
+    let expireTimestamp: number;
+    if (job.aiContactWindowExpiresAt) {
+      expireTimestamp = new Date(job.aiContactWindowExpiresAt).getTime();
+    } else {
+      const baseTime = job.leadReceivedAt ? new Date(job.leadReceivedAt).getTime() : new Date(job.createdAt).getTime();
+      expireTimestamp = baseTime + 4 * 60 * 1000;
+    }
+
+    const updateCountdown = () => {
+      const diff = Math.max(0, Math.floor((expireTimestamp - Date.now()) / 1000));
+      setSafetyRemainingSec(diff);
+    };
+
+    updateCountdown();
+    const interval = setInterval(updateCountdown, 1000);
+    return () => clearInterval(interval);
+  }, [job.stageId, job.aiContactWindowExpiresAt, job.leadReceivedAt, job.createdAt]);
+
+  const formatCountdown = (sec: number) => {
+    const m = Math.floor(sec / 60);
+    const s = sec % 60;
+    return `${m}m ${s < 10 ? "0" : ""}${s}s`;
+  };
+
+  const renderLeadSourceBadge = () => {
+    const src = job.leadSource || "website";
+    switch (src) {
+      case "google_ads":
+        return (
+          <span className="inline-flex items-center gap-1 text-[10px] font-extrabold px-2 py-0.5 rounded-full bg-amber-50 text-amber-950 border border-amber-300 shadow-2xs">
+            <span className="w-1.5 h-1.5 rounded-full bg-amber-500" />
+            Google Ads
+          </span>
+        );
+      case "facebook":
+        return (
+          <span className="inline-flex items-center gap-1 text-[10px] font-extrabold px-2 py-0.5 rounded-full bg-blue-50 text-blue-950 border border-blue-300 shadow-2xs">
+            <span className="w-1.5 h-1.5 rounded-full bg-blue-600" />
+            Facebook Ads
+          </span>
+        );
+      case "chatgpt":
+        return (
+          <span className="inline-flex items-center gap-1 text-[10px] font-extrabold px-2 py-0.5 rounded-full bg-emerald-50 text-emerald-950 border border-emerald-300 shadow-2xs">
+            <Sparkles className="w-2.5 h-2.5 text-emerald-600" />
+            ChatGPT / AI
+          </span>
+        );
+      case "organic":
+        return (
+          <span className="inline-flex items-center gap-1 text-[10px] font-extrabold px-2 py-0.5 rounded-full bg-teal-50 text-teal-950 border border-teal-300 shadow-2xs">
+            <Globe className="w-2.5 h-2.5 text-teal-600" />
+            Organic Search
+          </span>
+        );
+      case "manual":
+        return (
+          <span className="inline-flex items-center gap-1 text-[10px] font-extrabold px-2 py-0.5 rounded-full bg-slate-100 text-slate-800 border border-slate-300 shadow-2xs">
+            <User className="w-2.5 h-2.5 text-slate-500" />
+            Manual Entry
+          </span>
+        );
+      case "website_form":
+      case "website":
+      default:
+        return (
+          <span className="inline-flex items-center gap-1 text-[10px] font-extrabold px-2 py-0.5 rounded-full bg-sky-50 text-sky-950 border border-sky-300 shadow-2xs">
+            <Globe className="w-2.5 h-2.5 text-sky-600" />
+            Website Form
+          </span>
+        );
+    }
+  };
 
   // Live timer tick when clocked in
   useEffect(() => {
@@ -189,25 +272,52 @@ export default function JobCard({
         <span className="truncate">{job.address}, {job.suburb}</span>
       </div>
 
-      {/* Contact Method Badge / Live Timer Badge */}
+      {/* Badges row: Lead Source / Safety Countdown / Contact Status / Live Timers */}
       <div className="flex flex-wrap items-center gap-1.5 mt-2.5">
-        {/* Contact Method Tag */}
-        {job.contactedBy && (
-          <span className="inline-flex items-center gap-1 text-[10px] font-bold px-2 py-0.5 rounded-full bg-purple-50 text-purple-900 border border-purple-200">
+        {/* In New Leads: STRICTLY display marketing acquisition source and live 4-min safety countdown, NEVER AI SMS */}
+        {job.stageId === "stage_new" && (
+          <>
+            {renderLeadSourceBadge()}
+            {safetyRemainingSec > 0 ? (
+              <span className="inline-flex items-center gap-1 text-[10px] font-black px-2 py-0.5 rounded-full bg-amber-100 text-amber-950 border border-amber-300 animate-pulse">
+                <Clock className="w-3 h-3 text-amber-700" />
+                <span>AI Auto-Contact: {formatCountdown(safetyRemainingSec)}</span>
+              </span>
+            ) : (
+              <span className="inline-flex items-center gap-1 text-[10px] font-bold px-2 py-0.5 rounded-full bg-slate-100 text-slate-600 border border-slate-200">
+                <Clock className="w-3 h-3 text-slate-400" />
+                <span>Safety Window Elapsed</span>
+              </span>
+            )}
+          </>
+        )}
+
+        {/* In Contacted: AI SMS Takeover Priority Banner vs Manual Contact */}
+        {job.stageId === "stage_contacted" && (
+          <>
+            {job.contactMethod === "ai_sms" ? (
+              <span className="inline-flex items-center gap-1.5 text-[10px] font-black px-2.5 py-1 rounded-lg bg-purple-100 text-purple-950 border-2 border-purple-400 shadow-xs animate-pulse">
+                <Sparkles className="w-3.5 h-3.5 text-purple-700" />
+                <span>🤖 AI Contacted - Ready to Take Over</span>
+              </span>
+            ) : (
+              <span className="inline-flex items-center gap-1 text-[10px] font-bold px-2 py-0.5 rounded-full bg-purple-50 text-purple-900 border border-purple-200">
+                <Phone className="w-3 h-3 text-purple-600" />
+                <span>{job.contactedBy || "Contacted Manually"}</span>
+              </span>
+            )}
+          </>
+        )}
+
+        {/* Other stages: show contactMethod or source badge if relevant */}
+        {job.stageId !== "stage_new" && job.stageId !== "stage_contacted" && job.contactedBy && (
+          <span className="inline-flex items-center gap-1 text-[10px] font-bold px-2 py-0.5 rounded-full bg-slate-100 text-slate-700 border border-slate-200">
             {job.contactMethod === "ai_sms" ? (
               <Bot className="w-3 h-3 text-purple-600" />
             ) : (
-              <Phone className="w-3 h-3 text-purple-600" />
+              <Phone className="w-3 h-3 text-slate-500" />
             )}
             <span>{job.contactedBy}</span>
-          </span>
-        )}
-
-        {/* Web Lead Tag */}
-        {job.leadSource === "website_form" && (
-          <span className="inline-flex items-center gap-1 text-[10px] font-bold px-2 py-0.5 rounded-full bg-emerald-50 text-emerald-800 border border-emerald-200">
-            <Globe className="w-3 h-3 text-emerald-600" />
-            <span>Web Lead</span>
           </span>
         )}
 
@@ -216,6 +326,14 @@ export default function JobCard({
           <span className="inline-flex items-center gap-1 text-[10px] font-black px-2 py-0.5 rounded-full bg-emerald-100 text-emerald-900 border border-emerald-300 animate-pulse">
             <Clock className="w-3 h-3 text-emerald-700" />
             <span>⏱️ In Progress: {formatTimer(elapsedSec)}</span>
+          </span>
+        )}
+
+        {/* In Progress Photo Count Indicator */}
+        {job.stageId === "stage_in_progress" && job.photos && job.photos.length > 0 && (
+          <span className="inline-flex items-center gap-1 text-[10px] font-bold px-2 py-0.5 rounded-full bg-indigo-50 text-indigo-800 border border-indigo-200">
+            <ImageIcon className="w-3 h-3 text-indigo-600" />
+            <span>{job.photos.length} Photo{job.photos.length > 1 ? "s" : ""}</span>
           </span>
         )}
 

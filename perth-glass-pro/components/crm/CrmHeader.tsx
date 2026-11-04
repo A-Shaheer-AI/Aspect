@@ -1,7 +1,7 @@
 "use client";
 
 import React, { useState } from "react";
-import { Plus, Search, Download, Upload, SlidersHorizontal, Sparkles, Check, Database, RefreshCw, Globe } from "lucide-react";
+import { Plus, Search, Download, Upload, SlidersHorizontal, Sparkles, Check, Database, RefreshCw, Globe, Smartphone } from "lucide-react";
 
 interface CrmHeaderProps {
   searchQuery: string;
@@ -60,6 +60,18 @@ export default function CrmHeader({
 
           {/* Action Buttons */}
           <div className="flex items-center gap-2">
+            {/* Dedicated Field Tech Portal */}
+            <a
+              href="/tech"
+              target="_blank"
+              rel="noopener noreferrer"
+              className="p-2 sm:px-3 sm:py-1.5 rounded-lg bg-indigo-950/70 hover:bg-indigo-900/80 text-indigo-300 text-xs font-semibold flex items-center gap-1.5 border border-indigo-500/40 transition-colors shadow-2xs"
+              title="Open field technician portal (prices excluded)"
+            >
+              <Smartphone className="w-3.5 h-3.5 text-indigo-400" />
+              <span className="hidden sm:inline">Tech Portal</span>
+            </a>
+
             {/* Sync Website Leads */}
             {onSyncWebsiteLeads && (
               <button

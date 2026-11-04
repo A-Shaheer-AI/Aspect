@@ -658,6 +658,80 @@ export default function JobModal({
                 </div>
               </div>
 
+              {/* Quick Field Photos (Before & After) */}
+              <div className="p-3.5 bg-slate-50 rounded-xl border border-slate-200 space-y-2.5">
+                <div className="flex items-center justify-between">
+                  <div className="flex items-center gap-1.5">
+                    <Camera className="w-4 h-4 text-sky-600" />
+                    <span className="text-xs font-bold text-slate-800">Job Photos ({photos.length})</span>
+                  </div>
+                  <button
+                    type="button"
+                    onClick={() => setActiveTab("photos")}
+                    className="text-[11px] font-bold text-brand-navy hover:underline"
+                  >
+                    View All Photos →
+                  </button>
+                </div>
+
+                {/* Quick Camera Capture Row */}
+                <div className="flex flex-wrap items-center gap-2">
+                  <div className="flex items-center gap-1 bg-white p-1 rounded-lg border border-slate-200">
+                    {(["before", "after", "hazard"] as const).map(tag => (
+                      <button
+                        key={tag}
+                        type="button"
+                        onClick={() => setPhotoTag(tag)}
+                        className={`px-2 py-0.5 rounded text-[10px] font-bold uppercase transition-all ${
+                          photoTag === tag
+                            ? tag === "before"
+                              ? "bg-amber-400 text-slate-900"
+                              : tag === "after"
+                              ? "bg-emerald-500 text-white"
+                              : "bg-rose-500 text-white"
+                            : "text-slate-500 hover:bg-slate-100"
+                        }`}
+                      >
+                        {tag}
+                      </button>
+                    ))}
+                  </div>
+
+                  <input
+                    type="text"
+                    value={photoCaption}
+                    onChange={e => setPhotoCaption(e.target.value)}
+                    placeholder="Caption (e.g. Scratched panel / After clean)..."
+                    className="flex-1 min-w-[140px] text-xs px-2.5 py-1.5 rounded-lg border border-slate-200 bg-white"
+                  />
+
+                  <button
+                    type="button"
+                    onClick={() => fileInputRef.current?.click()}
+                    className="px-3 py-1.5 rounded-lg bg-sky-500 hover:bg-sky-400 text-slate-950 font-bold text-xs flex items-center gap-1 shadow-xs"
+                  >
+                    <Camera className="w-3.5 h-3.5" />
+                    <span>Upload Photo</span>
+                  </button>
+                </div>
+
+                {/* Quick Thumbnails */}
+                {photos.length > 0 && (
+                  <div className="flex items-center gap-2 overflow-x-auto py-1 no-scrollbar">
+                    {photos.slice(0, 6).map(p => (
+                      <div key={p.id} className="relative w-16 h-12 rounded-lg overflow-hidden border border-slate-200 shrink-0">
+                        <img src={p.dataUrl} alt={p.caption} className="w-full h-full object-cover" />
+                        <span className={`absolute bottom-0 inset-x-0 text-[8px] font-black uppercase text-center text-white py-0.2 ${
+                          p.tag === "before" ? "bg-amber-600" : p.tag === "after" ? "bg-emerald-600" : "bg-rose-600"
+                        }`}>
+                          {p.tag}
+                        </span>
+                      </div>
+                    ))}
+                  </div>
+                )}
+              </div>
+
               {/* DNC Safety Switch */}
               <div className="p-3 bg-slate-50 rounded-xl border border-slate-200 flex items-center justify-between">
                 <div>

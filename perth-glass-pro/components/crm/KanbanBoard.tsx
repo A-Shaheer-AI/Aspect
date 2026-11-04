@@ -1,19 +1,18 @@
 "use client";
 
 import React, { useState, useRef } from "react";
-import { CrmJob, CrmStage, Technician } from "@/lib/crm/types";
+import { CrmJob, CrmStage, Technician, CrmActiveTab } from "@/lib/crm/types";
 import JobCard from "./JobCard";
 import {
   Plus,
   SlidersHorizontal,
   ChevronLeft,
   ChevronRight,
-  Eye,
-  EyeOff,
   LayoutList,
   Columns,
   Layers,
-  Sparkles
+  Sparkles,
+  Smartphone
 } from "lucide-react";
 
 interface KanbanBoardProps {
@@ -31,6 +30,7 @@ interface KanbanBoardProps {
   onTriggerFollowUpSms?: (job: CrmJob) => void;
   onOpenFridgeSchedule?: (job: CrmJob) => void;
   onSendAdvanceNotice?: (job: CrmJob) => void;
+  onNavigateTab?: (tab: CrmActiveTab) => void;
 }
 
 const STAGE_COLOR_MAP: Record<string, { bg: string; text: string; border: string; dot: string; pill: string }> = {
@@ -59,14 +59,17 @@ export default function KanbanBoard({
   onToggleAutoFollowUp,
   onTriggerFollowUpSms,
   onOpenFridgeSchedule,
-  onSendAdvanceNotice
+  onSendAdvanceNotice,
+  onNavigateTab
 }: KanbanBoardProps) {
   const [activeDropStageId, setActiveDropStageId] = useState<string | null>(null);
-  const [technicianViewMode, setTechnicianViewMode] = useState(false);
   const [selectedMobileStageId, setSelectedMobileStageId] = useState<string>(stages[0]?.id || "stage_new");
   const [mobileViewMode, setMobileViewMode] = useState<"single" | "columns">("single");
+  const [scrollProgress, setScrollProgress] = useState(0);
 
   const boardContainerRef = useRef<HTMLDivElement>(null);
+  const touchStartXRef = useRef<number | null>(null);
+  const touchStartYRef = useRef<number | null>(null);
 
   // Filter jobs by search query
   const filteredJobs = jobs.filter(job => {
@@ -112,6 +115,73 @@ export default function KanbanBoard({
     }
   };
 
+  // Priority sorting: In Contacted stage, AI-contacted leads pinned to the very top!
+  const getSortedStageJobs = (stageId: string, rawJobs: CrmJob[]) => {
+    const list = rawJobs.filter(j => j.stageId === stageId);
+    if (stageId === "stage_contacted") {
+      return [...list].sort((a, b) => {
+        const aIsAi = a.contactMethod === "ai_sms" ? 1 : 0;
+        const bIsAi = b.contactMethod === "ai_sms" ? 1 : 0;
+        return bIsAi - aIsAi; // AI SMS contacted at top!
+      });
+    }
+    return list;
+  };
+
+  // Mobile Horizontal Swipe Gestures
+  const handleTouchStart = (e: React.TouchEvent) => {
+    touchStartXRef.current = e.touches[0].clientX;
+    touchStartYRef.current = e.touches[0].clientY;
+  };
+
+  const handleTouchEnd = (e: React.TouchEvent) => {
+    if (touchStartXRef.current === null || touchStartYRef.current === null) return;
+    const deltaX = e.changedTouches[0].clientX - touchStartXRef.current;
+    const deltaY = e.changedTouches[0].clientY - touchStartYRef.current;
+
+    // Detect horizontal swipe gesture (min 45px, predominantly horizontal)
+    if (Math.abs(deltaX) > 45 && Math.abs(deltaX) > Math.abs(deltaY) * 1.3) {
+      const currentIdx = sortedStages.findIndex(s => s.id === selectedMobileStageId);
+
+      if (deltaX < 0) {
+        // Swiped LEFT -> advance to next stage or next main tab (Schedule)
+        if (currentIdx < sortedStages.length - 1) {
+          setSelectedMobileStageId(sortedStages[currentIdx + 1].id);
+        } else if (onNavigateTab) {
+          onNavigateTab("schedule");
+        }
+      } else if (deltaX > 0) {
+        // Swiped RIGHT -> go back to previous stage
+        if (currentIdx > 0) {
+          setSelectedMobileStageId(sortedStages[currentIdx - 1].id);
+        }
+      }
+    }
+
+    touchStartXRef.current = null;
+    touchStartYRef.current = null;
+  };
+
+  // Desktop horizontal board scroll tracking for bottom slider
+  const handleBoardScroll = () => {
+    if (!boardContainerRef.current) return;
+    const { scrollLeft, scrollWidth, clientWidth } = boardContainerRef.current;
+    const maxScroll = scrollWidth - clientWidth;
+    if (maxScroll > 0) {
+      setScrollProgress((scrollLeft / maxScroll) * 100);
+    }
+  };
+
+  const handleSliderChange = (e: React.ChangeEvent<HTMLInputElement>) => {
+    const val = Number(e.target.value);
+    setScrollProgress(val);
+    if (boardContainerRef.current) {
+      const { scrollWidth, clientWidth } = boardContainerRef.current;
+      const maxScroll = scrollWidth - clientWidth;
+      boardContainerRef.current.scrollLeft = (val / 100) * maxScroll;
+    }
+  };
+
   // Scroll controls for desktop
   const handleScrollLeft = () => {
     if (boardContainerRef.current) {
@@ -148,7 +218,7 @@ export default function KanbanBoard({
           </button>
 
           {sortedStages.map(stage => {
-            const stageJobs = filteredJobs.filter(j => j.stageId === stage.id);
+            const stageJobs = getSortedStageJobs(stage.id, filteredJobs);
             const colors = STAGE_COLOR_MAP[stage.color] || STAGE_COLOR_MAP.blue;
             return (
               <button
@@ -180,7 +250,7 @@ export default function KanbanBoard({
         <div className="flex sm:hidden items-center gap-1.5 overflow-x-auto py-1 flex-1 no-scrollbar">
           {sortedStages.map(stage => {
             const isSelected = selectedMobileStageId === stage.id;
-            const stageJobs = filteredJobs.filter(j => j.stageId === stage.id);
+            const stageJobs = getSortedStageJobs(stage.id, filteredJobs);
             const colors = STAGE_COLOR_MAP[stage.color] || STAGE_COLOR_MAP.blue;
             return (
               <button
@@ -207,7 +277,7 @@ export default function KanbanBoard({
           })}
         </div>
 
-        {/* Right Utility Controls: Tech Mode Toggle & Mobile View Toggle */}
+        {/* Right Utility Controls: Tech Portal Link & Mobile View Toggle */}
         <div className="flex items-center gap-2 shrink-0">
           {/* Mobile view layout toggle */}
           <div className="flex sm:hidden bg-slate-100 p-0.5 rounded-lg border border-slate-200">
@@ -229,44 +299,53 @@ export default function KanbanBoard({
             </button>
           </div>
 
-          {/* Technician Mode (Hide Prices) Toggle */}
-          <button
-            type="button"
-            onClick={() => setTechnicianViewMode(!technicianViewMode)}
-            className={`px-2.5 py-1 sm:px-3 sm:py-1 rounded-xl text-xs font-bold border flex items-center gap-1.5 transition-colors ${
-              technicianViewMode
-                ? "bg-amber-100 text-amber-950 border-amber-300"
-                : "bg-white text-slate-600 border-slate-200 hover:bg-slate-50"
-            }`}
-            title="Hide prices for technician view on site"
+          {/* Standalone Technician Portal Link (Strict Zero-Financials) */}
+          <a
+            href="/tech"
+            target="_blank"
+            rel="noopener noreferrer"
+            className="px-2.5 py-1 sm:px-3 sm:py-1 rounded-xl text-xs font-bold bg-indigo-50 hover:bg-indigo-100 text-indigo-900 border border-indigo-200 flex items-center gap-1.5 transition-colors shadow-2xs"
+            title="Open dedicated standalone mobile portal for technicians (financials hidden)"
           >
-            {technicianViewMode ? <EyeOff className="w-3.5 h-3.5 text-amber-700" /> : <Eye className="w-3.5 h-3.5 text-slate-400" />}
-            <span className="hidden sm:inline">{technicianViewMode ? "Tech View (Prices Hidden)" : "Owner View"}</span>
-          </button>
+            <Smartphone className="w-3.5 h-3.5 text-indigo-600" />
+            <span className="hidden sm:inline">Tech Portal (/tech)</span>
+          </a>
         </div>
       </div>
 
-      {/* 2. MOBILE SINGLE-STAGE FEED (Optimized for Mobile) */}
-      <div className={`sm:hidden flex-1 p-3 pb-24 overflow-y-auto space-y-3 ${mobileViewMode === "single" ? "block" : "hidden"}`}>
+      {/* 2. MOBILE SINGLE-STAGE FEED (Swipeable left/right across stages & into Schedule) */}
+      <div
+        onTouchStart={handleTouchStart}
+        onTouchEnd={handleTouchEnd}
+        className={`sm:hidden flex-1 p-3 pb-24 overflow-y-auto space-y-3 ${mobileViewMode === "single" ? "block" : "hidden"}`}
+      >
         {(() => {
           const activeStage = stages.find(s => s.id === selectedMobileStageId) || stages[0];
-          const activeJobs = filteredJobs.filter(j => j.stageId === activeStage?.id);
+          const activeJobs = getSortedStageJobs(activeStage?.id, filteredJobs);
           const totalVal = activeJobs.reduce((acc, j) => acc + (j.priceQuoted || 0), 0);
           const colors = STAGE_COLOR_MAP[activeStage?.color || "blue"] || STAGE_COLOR_MAP.blue;
+          const currentStageIdx = sortedStages.findIndex(s => s.id === activeStage?.id);
 
           return (
             <div className="space-y-3">
-              {/* Active Stage Header Card */}
+              {/* Active Stage Header Card with Swipe Hint */}
               <div className="bg-white p-3.5 rounded-2xl border border-slate-200 shadow-xs flex items-center justify-between">
                 <div className="flex items-center gap-2">
                   <span className={`w-3 h-3 rounded-full ${colors.dot}`} />
                   <div>
-                    <h3 className="font-extrabold text-sm text-slate-900">{activeStage?.name}</h3>
-                    <p className="text-[11px] text-slate-400">{activeJobs.length} active jobs in this phase</p>
+                    <div className="flex items-center gap-1.5">
+                      <h3 className="font-extrabold text-sm text-slate-900">{activeStage?.name}</h3>
+                      <span className="text-[10px] text-slate-400 font-semibold">({currentStageIdx + 1}/{sortedStages.length})</span>
+                    </div>
+                    <p className="text-[10px] text-slate-400 flex items-center gap-1">
+                      <span>{activeJobs.length} active jobs</span>
+                      <span>•</span>
+                      <span className="text-amber-600 font-semibold">👈 Swipe to navigate 👉</span>
+                    </p>
                   </div>
                 </div>
 
-                {!technicianViewMode && totalVal > 0 && (
+                {totalVal > 0 && (
                   <span className="text-xs font-black text-emerald-800 bg-emerald-50 px-2.5 py-1 rounded-lg border border-emerald-200">
                     ${totalVal.toLocaleString()}
                   </span>
@@ -296,7 +375,6 @@ export default function KanbanBoard({
                         job={job}
                         technicians={technicians}
                         nextStage={nextStage}
-                        technicianViewMode={technicianViewMode}
                         onClick={() => onJobClick(job)}
                         onDragStart={handleDragStart}
                         onAdvanceStage={onAdvanceStage}
@@ -315,16 +393,17 @@ export default function KanbanBoard({
         })()}
       </div>
 
-      {/* 3. DESKTOP / HORIZONTAL KANBAN COLUMNS (Visible desktop scrollbar + Snap on mobile) */}
+      {/* 3. DESKTOP / HORIZONTAL KANBAN COLUMNS (Visible draggable slider bar at bottom) */}
       <div
         ref={boardContainerRef}
-        className={`flex-1 overflow-x-auto p-3 sm:p-5 pb-24 h-[calc(100vh-140px)] ${
+        onScroll={handleBoardScroll}
+        className={`flex-1 overflow-x-auto p-3 sm:p-5 pb-3 h-[calc(100vh-190px)] ${
           mobileViewMode === "columns" ? "flex" : "hidden sm:flex"
-        } [&::-webkit-scrollbar]:h-3 [&::-webkit-scrollbar-track]:bg-slate-200/90 [&::-webkit-scrollbar-track]:rounded-full [&::-webkit-scrollbar-thumb]:bg-slate-400 hover:[&::-webkit-scrollbar-thumb]:bg-slate-600 [&::-webkit-scrollbar-thumb]:rounded-full`}
+        } [&::-webkit-scrollbar]:h-2.5 [&::-webkit-scrollbar-track]:bg-slate-200/90 [&::-webkit-scrollbar-track]:rounded-full [&::-webkit-scrollbar-thumb]:bg-slate-400 hover:[&::-webkit-scrollbar-thumb]:bg-slate-600 [&::-webkit-scrollbar-thumb]:rounded-full`}
       >
         <div className="flex items-start gap-3.5 min-w-max pb-3">
           {sortedStages.map((stage, sIdx) => {
-            const stageJobs = filteredJobs.filter(j => j.stageId === stage.id);
+            const stageJobs = getSortedStageJobs(stage.id, filteredJobs);
             const totalValue = stageJobs.reduce((acc, j) => acc + (j.priceQuoted || 0), 0);
             const colors = STAGE_COLOR_MAP[stage.color] || STAGE_COLOR_MAP.blue;
             const isOver = activeDropStageId === stage.id;
@@ -355,8 +434,8 @@ export default function KanbanBoard({
                     </span>
                   </div>
 
-                  {/* Stage Monetary Total (Hidden in tech mode) */}
-                  {!technicianViewMode && totalValue > 0 && (
+                  {/* Stage Monetary Total */}
+                  {totalValue > 0 && (
                     <span className="text-[11px] font-extrabold text-emerald-800 bg-emerald-50 px-2 py-0.5 rounded-md border border-emerald-200/80">
                       ${totalValue.toLocaleString()}
                     </span>
@@ -364,14 +443,13 @@ export default function KanbanBoard({
                 </div>
 
                 {/* Cards Container with vertical scrollbar */}
-                <div className="p-2.5 flex-1 min-h-[460px] max-h-[calc(100vh-230px)] overflow-y-auto space-y-2.5 scrollbar-thin">
+                <div className="p-2.5 flex-1 min-h-[460px] max-h-[calc(100vh-270px)] overflow-y-auto space-y-2.5 scrollbar-thin">
                   {stageJobs.map(job => (
                     <JobCard
                       key={job.id}
                       job={job}
                       technicians={technicians}
                       nextStage={nextStage}
-                      technicianViewMode={technicianViewMode}
                       onClick={() => onJobClick(job)}
                       onDragStart={handleDragStart}
                       onAdvanceStage={onAdvanceStage}
@@ -411,6 +489,52 @@ export default function KanbanBoard({
               </div>
             );
           })}
+        </div>
+      </div>
+
+      {/* 4. DESKTOP BOTTOM HORIZONTAL SLIDER BAR */}
+      <div className="hidden sm:flex items-center justify-between gap-4 px-6 py-2.5 bg-white border-t border-slate-200/90 shadow-2xs shrink-0 z-20">
+        <div className="flex items-center gap-2 text-xs font-bold text-slate-600">
+          <button
+            type="button"
+            onClick={handleScrollLeft}
+            className="p-1 rounded-md bg-slate-100 hover:bg-slate-200 text-slate-700 transition-colors"
+            title="Scroll stages left"
+          >
+            <ChevronLeft className="w-4 h-4" />
+          </button>
+          <span className="text-[11px] font-extrabold text-slate-500 uppercase tracking-wider">
+            Pipeline Stages
+          </span>
+        </div>
+
+        {/* Draggable Slider Control */}
+        <div className="flex-1 max-w-2xl mx-4 flex items-center gap-3">
+          <span className="text-[10px] font-bold text-slate-400 shrink-0">New Leads</span>
+          <input
+            type="range"
+            min="0"
+            max="100"
+            value={scrollProgress}
+            onChange={handleSliderChange}
+            className="w-full h-2 bg-slate-200 rounded-lg appearance-none cursor-pointer accent-brand-navy focus:outline-none"
+            title="Drag to smoothly scroll across all stages"
+          />
+          <span className="text-[10px] font-bold text-slate-400 shrink-0">Invoiced</span>
+        </div>
+
+        <div className="flex items-center gap-2 text-xs font-bold text-slate-600">
+          <span className="text-[11px] text-slate-500 font-medium">
+            {sortedStages.length} Phases Active
+          </span>
+          <button
+            type="button"
+            onClick={handleScrollRight}
+            className="p-1 rounded-md bg-slate-100 hover:bg-slate-200 text-slate-700 transition-colors"
+            title="Scroll stages right"
+          >
+            <ChevronRight className="w-4 h-4" />
+          </button>
         </div>
       </div>
     </div>

@@ -48,6 +48,17 @@ export interface ConversationMessage {
   channel: "sms" | "live_chat" | "phone";
 }
 
+export type LeadSource =
+  | "google_ads"
+  | "facebook"
+  | "chatgpt"
+  | "organic"
+  | "website"
+  | "manual"
+  | "website_form"
+  | "sms"
+  | "chat";
+
 export interface CrmJob {
   id: string;
   customerName: string;
@@ -62,8 +73,11 @@ export interface CrmJob {
   hasScreens: boolean;
   packageType?: "Detailed Clean" | "Basic Wash" | "Custom";
   priceQuoted?: number;
-  leadSource?: "website_form" | "sms" | "chat" | "manual";
-  
+  leadSource?: LeadSource;
+  leadReceivedAt?: string; // ISO string when inquiry was initially submitted
+  aiContactWindowExpiresAt?: string; // 4 minutes after inquiry: fallback AI contact trigger
+  aiAutoContactTriggered?: boolean;
+
   // Contact & Communication
   contactMethod?: "ai_sms" | "ai_livechat" | "manual_phone" | "manual_sms" | "email";
   contactedBy?: string; // e.g. "Fazal AI (SMS)", "Ahmed (Phone)", "Website Live Chat"

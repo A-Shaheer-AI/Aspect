@@ -15,7 +15,8 @@ import {
   DEFAULT_TECHNICIANS,
   INITIAL_SEED_JOBS,
   INITIAL_SEED_INVOICE,
-  calculateNextDueDate
+  calculateNextDueDate,
+  detectLeadAttribution
 } from "@/lib/crm/store";
 import { buildInvoiceFromParsed } from "@/lib/crm/ai-invoice-parser";
 
@@ -115,6 +116,64 @@ export default function CrmPage() {
   useEffect(() => {
     if (!isHydrated) return;
     syncWebsiteLeads(false);
+  }, [isHydrated]);
+
+  // 4-Minute Safety Window Monitor for New Leads: Auto-triggers AI contact if no human contacts within 4 mins
+  useEffect(() => {
+    if (!isHydrated) return;
+
+    const checkSafetyWindows = () => {
+      const now = Date.now();
+      let hasUpdates = false;
+
+      setJobs(prevJobs => {
+        const nextJobs = prevJobs.map(j => {
+          if (j.stageId !== "stage_new" || j.doNotContact || j.aiAutoContactTriggered) {
+            return j;
+          }
+
+          let expireTimestamp: number;
+          if (j.aiContactWindowExpiresAt) {
+            expireTimestamp = new Date(j.aiContactWindowExpiresAt).getTime();
+          } else {
+            const baseTime = j.leadReceivedAt ? new Date(j.leadReceivedAt).getTime() : new Date(j.createdAt).getTime();
+            expireTimestamp = baseTime + 4 * 60 * 1000;
+          }
+
+          // If 4-minute safety window has elapsed without human contact:
+          if (now >= expireTimestamp) {
+            hasUpdates = true;
+            const firstName = j.customerName.split(" ")[0] || "there";
+            const greetingMsg: ConversationMessage = {
+              id: `msg_auto_${Date.now()}_${j.id}`,
+              sender: "ai",
+              senderName: "Fazal AI (SMS)",
+              text: `Hi ${firstName}, thanks for your query with Aspect Window Cleaning! Could I grab a few more details so we can get you an instant quote? When would be a good time to chat — quick phone call or prefer text? Regards, Aspect Window Cleaning, Fazal.`,
+              timestamp: new Date().toISOString(),
+              channel: "sms"
+            };
+
+            return {
+              ...j,
+              stageId: "stage_contacted", // Moves directly to Contacted!
+              contactMethod: "ai_sms" as const,
+              contactedBy: "Fazal AI (SMS)",
+              contactTimestamp: new Date().toISOString(),
+              aiAutoContactTriggered: true,
+              conversationTrail: [...(j.conversationTrail || []), greetingMsg],
+              updatedAt: new Date().toISOString()
+            };
+          }
+
+          return j;
+        });
+
+        return hasUpdates ? nextJobs : prevJobs;
+      });
+    };
+
+    const interval = setInterval(checkSafetyWindows, 5000);
+    return () => clearInterval(interval);
   }, [isHydrated]);
 
   // 2. Persist to LocalStorage on State Change
@@ -565,6 +624,11 @@ export default function CrmPage() {
               multi: "Multi Storey"
             };
 
+            const leadSource = detectLeadAttribution(lead);
+            const isAlreadyContacted = lead.status === "CONTACTED" || conversationTrail.length > 0;
+            const receivedAt = lead.created_at || new Date().toISOString();
+            const expiresAt = new Date(new Date(receivedAt).getTime() + 4 * 60 * 1000).toISOString();
+
             const newJob: CrmJob = {
               id: customJobId,
               customerName: lead.name || "Website Prospect",
@@ -573,7 +637,7 @@ export default function CrmPage() {
               address: lead.extracted_details?.address || (lead.suburb ? `${lead.suburb}` : "Perth Metro"),
               suburb: lead.suburb || "Perth",
               stageId:
-                lead.status === "CONTACTED"
+                isAlreadyContacted
                   ? "stage_contacted"
                   : lead.status === "QUOTED"
                   ? "stage_quoted"
@@ -586,10 +650,13 @@ export default function CrmPage() {
               hasScreens: Boolean(lead.extracted_details?.has_screens),
               packageType: lead.extracted_details?.chosen_plan === "basic" ? "Basic Wash" : "Detailed Clean",
               priceQuoted: lead.quoted_value || undefined,
-              leadSource: "website_form",
-              contactMethod: conversationTrail.length > 0 ? "ai_sms" : "email",
-              contactedBy: conversationTrail.length > 0 ? "AI SMS Assistant" : "Website Form Submission",
-              contactTimestamp: lead.created_at,
+              leadSource,
+              leadReceivedAt: receivedAt,
+              aiContactWindowExpiresAt: expiresAt,
+              aiAutoContactTriggered: isAlreadyContacted,
+              contactMethod: isAlreadyContacted ? "ai_sms" : undefined,
+              contactedBy: isAlreadyContacted ? "Fazal AI (SMS)" : undefined,
+              contactTimestamp: isAlreadyContacted ? lead.created_at : undefined,
               conversationTrail,
               notes:
                 lead.extracted_details?.notes || lead.extracted_details?.scope
@@ -1043,6 +1110,7 @@ export default function CrmPage() {
             onTriggerFollowUpSms={handleTriggerFollowUpSms}
             onOpenFridgeSchedule={handleOpenFridgeSchedule}
             onSendAdvanceNotice={handleSendAdvanceNotice}
+            onNavigateTab={setActiveTab}
           />
         )}
 
