@@ -41,16 +41,17 @@ const summerOffers: OfferCard[] = [
     id: "biannual-special",
     badge: "MOST POPULAR RECURRING",
     title: "The Summer Biannual Agreement",
-    tag: "15% OFF + 50% OFF TRACKS",
+    tag: "15% OFF + FREE TRACKS ON RETURN",
     tagColor: "bg-amber-500/10 text-amber-600 border-amber-300",
-    discountText: "15% Off Total Clean + Half-Price Tracks",
+    discountText: "Flat 15% Off Total Clean + Free Deep Tracks on Follow-Up Clean",
     requirement: "Book a flexible recurring clean every 6 months ($500+ min spend)",
-    description: "Lock in streak-free clarity year-round. Get 15% off your initial summer clean and your follow-up 6-month clean, plus half-price deep sliding track and frame detailing on your first visit.",
+    description: "Lock in streak-free clarity year-round. Get 15% off your initial complete clean—covering all glass, frames, tracks, sills, and flyscreens. Maintain your 6-month follow-up visit to keep the 15% discount PLUS receive 100% free deep track and frame detailing.",
     perks: [
-      "15% discount applied immediately and locked in for your 6-month clean",
-      "50% off deep HEPA track vacuuming & frame wipe-down on your first clean",
-      "Zero lock-in contracts: keep your 15% discount with no cancellation penalty if you choose not to continue",
-      "Backed by our rapid complimentary re-clean guarantee within 48 hours"
+      "Flat 15% discount applied immediately across your complete clean (glass, tracks, frames, flyscreens, & sills)",
+      "FREE deep track and frame cleaning bonus on your 6-month follow-up visit",
+      "15% recurring discount locked in for future 6-month visits",
+      "Zero lock-in contracts: keep your 15% initial discount with no cancellation penalty if you choose not to continue",
+      "Backed by our complimentary re-clean guarantee (touch-ups scheduled as soon as possible on our next run in your area)"
     ],
     ctaText: "Claim Biannual 15% Off",
     popular: true
@@ -153,7 +154,7 @@ const summerOffers: OfferCard[] = [
       "Aerospace carbon-fibre water-fed poles clean up to 4 storeys safely from the ground",
       "Detailing of difficult stairwell void glass and high architectural highlight windows",
       "All upper and lower sliding tracks, sills, and flyscreens included",
-      "Backed by our rapid complimentary re-clean guarantee within 48 hours"
+      "Backed by our complimentary re-clean guarantee (touch-ups scheduled as soon as possible on our next run in your area)"
     ],
     ctaText: "Claim Double-Storey Package"
   }
@@ -178,7 +179,7 @@ export default function SummerPromotions() {
           </h2>
           
           <p className="text-slate-600 text-base sm:text-lg max-w-3xl mx-auto leading-relaxed mb-6">
-            Lock in guaranteed streak-free clarity across your home, pool fencing, and rooftop solar before the December rush. Backed by our rapid complimentary re-clean guarantee and zero callout fees across all 370+ Perth suburbs.
+            Lock in guaranteed streak-free clarity across your home, pool fencing, and rooftop solar before the December rush. Backed by our complimentary re-clean guarantee (touch-ups scheduled on our next run in your area) and zero callout fees across all 370+ Perth suburbs.
           </p>
 
           {/* Key Guardrails Callout */}
@@ -197,7 +198,7 @@ export default function SummerPromotions() {
           </div>
         </div>
 
-        {/* Rapid Re-Clean Guarantee Banner */}
+        {/* Complimentary Re-Clean Guarantee Banner */}
         <div className="bg-amber-50/80 border border-amber-200 rounded-2xl p-6 sm:p-8 mb-12 shadow-sm flex flex-col md:flex-row items-center justify-between gap-6">
           <div className="flex items-start gap-4">
             <div className="w-12 h-12 rounded-xl bg-action-gold text-brand-navy flex items-center justify-center shrink-0 font-bold shadow-md">
@@ -205,10 +206,10 @@ export default function SummerPromotions() {
             </div>
             <div>
               <h3 className="text-lg sm:text-xl font-bold text-brand-navy mb-1">
-                Our Rapid Complimentary Re-Clean Guarantee
+                Our Complimentary Re-Clean Guarantee
               </h3>
               <p className="text-slate-700 text-sm leading-relaxed max-w-3xl">
-                We take immense pride in our work. If any cleaned glass pane, frame, or sliding track does not meet our spotless standard, notify us within 48 hours of completion. Our crew will return to provide a <strong>complimentary re-clean as soon as possible</strong>. No hassle, no stress, and zero financial risk for your home.
+                We take immense pride in our work. If any cleaned glass pane does not meet our spotless standard, simply notify our team. Our crew will return to provide a <strong>complimentary touch-up on unsatisfactory panes as soon as possible, whenever our team is next scheduled in your area</strong>. No hassle, no stress, and zero financial risk for your home.
               </p>
             </div>
           </div>
@@ -304,9 +305,9 @@ export default function SummerPromotions() {
           {showTerms && (
             <div className="mt-4 pt-4 border-t border-slate-200 text-xs sm:text-sm text-slate-600 space-y-2 leading-relaxed">
               <p><strong>1. Minimum Spend:</strong> All promotional offers require a minimum job value of $500 (before discounts).</p>
-              <p><strong>2. Complimentary Re-Clean Guarantee:</strong> If any pane, track, or frame cleaned under our service does not meet our spotless standard, notify us within 48 hours and our crew will return to provide a complimentary re-clean as soon as possible.</p>
-              <p><strong>3. Biannual Agreement &amp; 15% Discount:</strong> The 15% discount applies to your initial summer clean and will be locked in for your 6-month maintenance visit. If you choose not to proceed with your recurring schedule after the initial visit, you retain the 15% discount for that completed job with zero ongoing lock-in or cancellation penalties.</p>
-              <p><strong>4. Half-Price Tracks:</strong> 50% discount applies to standard window track vacuuming and exterior frame detailing when booked alongside an interior &amp; exterior package.</p>
+              <p><strong>2. Complimentary Re-Clean Guarantee:</strong> If any pane cleaned under our service does not meet our spotless standard, simply notify our team. Our crew will return to provide a complimentary touch-up on unsatisfactory panes as soon as possible, whenever our team is next scheduled in your area.</p>
+              <p><strong>3. Biannual Agreement &amp; 15% Discount:</strong> The 15% discount applies to your initial complete window clean (covering glass, tracks, frames, flyscreens, and sills at base price). Maintain your 6-month maintenance schedule to lock in the 15% discount PLUS receive 100% free deep track and frame detailing on your 6-month follow-up clean. If you choose not to proceed with recurring visits after the initial clean, you retain your initial 15% discount with zero cancellation fees.</p>
+              <p><strong>4. Deep Track &amp; Frame Detailing Bonus:</strong> Complimentary deep track and frame cleaning applies to your 6-month recurring follow-up clean when completed within 6 months of the initial service.</p>
               <p><strong>5. Gutter Cleaning Limitation:</strong> The 50% gutter cleaning discount applies strictly to single-storey rooflines and single-storey gutters (for technician safety, second-storey gutters requiring non-standard access or elevated scaffolding are excluded).</p>
               <p><strong>6. Shower Screen Inclusions:</strong> Complimentary shower screen detailing is limited to a maximum of two (2) standard shower screens on Supreme Detailed Cleans. Heavy silicate "glass cancer" requiring multi-stage cerium buffing will be assessed on site.</p>
               <p><strong>7. Solar Panel Testimonial Offer:</strong> Free solar panel cleaning covers up to 10 panels and is contingent on the client providing a brief written/video testimonial or verified Trustpilot review upon completion.</p>
@@ -340,9 +341,9 @@ export default function SummerPromotions() {
               <tbody className="divide-y divide-slate-100 text-slate-700">
                 <tr>
                   <td className="p-3 border border-slate-200 font-semibold">Biannual Window Maintenance</td>
-                  <td className="p-3 border border-slate-200">15% Off Total Clean + 50% Off Tracks &amp; Frames</td>
+                  <td className="p-3 border border-slate-200">15% Off Total Clean + Free Deep Track Detailing on Follow-Up</td>
                   <td className="p-3 border border-slate-200">$500 minimum booking value</td>
-                  <td className="p-3 border border-slate-200">Complimentary 48h rapid re-clean; zero lock-in contracts</td>
+                  <td className="p-3 border border-slate-200">Complimentary touch-up on next run in area; zero lock-in contracts</td>
                 </tr>
                 <tr>
                   <td className="p-3 border border-slate-200 font-semibold">Roof-to-Glass Gutter Combo</td>
