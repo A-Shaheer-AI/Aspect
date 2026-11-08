@@ -36,99 +36,23 @@ export default async function Footer() {
     return (
         <footer className="bg-pattern-cleaning text-white py-10 sm:py-16 pb-24 sm:pb-16">
             <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-                {/* MOBILE: Compact 2-column layout */}
-                <div className="grid grid-cols-2 gap-6 sm:hidden">
-                    {/* Brand + Contact */}
-                    <div className="col-span-2">
-                        <h3 className="font-heading font-bold text-xl mb-2 text-action-gold">
-                            {BUSINESS.name}
-                        </h3>
-                        <p className="text-gray-400 text-xs mb-3">
-                            Perth&apos;s professional precision window cleaning specialists. Safe, reliable residential &amp;
-                            commercial window cleaning services across all 373 Perth suburbs.
-                        </p>
-                        <div className="flex flex-col gap-2 text-sm">
-                            <a href={`tel:${BUSINESS.phoneRaw}`} className="flex items-center gap-2 text-gray-300 hover:text-action-gold">
-                                <Phone className="w-4 h-4 text-action-gold" aria-hidden="true" />
-                                {BUSINESS.phone}
-                            </a>
-                            <a href={`mailto:${BUSINESS.email}`} className="flex items-center gap-2 text-gray-300 hover:text-action-gold">
-                                <Mail className="w-4 h-4 text-action-gold" aria-hidden="true" />
-                                {BUSINESS.email}
-                            </a>
-                            <a
-                                href={BUSINESS.trustpilot}
-                                target="_blank"
-                                rel="noopener noreferrer"
-                                className="flex items-center gap-2 text-xs text-slate-300 hover:text-white transition-colors pt-1"
-                            >
-                                <span className="inline-flex items-center justify-center w-4 h-4 bg-[#00b67a] text-white text-[10px] font-bold rounded-sm">★</span>
-                                <span>Rated <strong>5.0 Stars</strong> on Trustpilot</span>
-                            </a>
-                        </div>
-                    </div>
-
-                    {/* Services */}
-                    <div>
-                        <h4 className="font-bold text-sm mb-3 text-white">Services</h4>
-                        <ul className="space-y-1.5">
-                            {services.map((service) => (
-                                <li key={service.name}>
-                                    <Link href={service.href} className="text-gray-400 hover:text-action-gold text-xs">
-                                        {service.name}
-                                    </Link>
-                                </li>
-                            ))}
-                            <li>
-                                <Link href="/services" className="text-action-gold text-xs font-medium">
-                                    All services →
-                                </Link>
-                            </li>
-                        </ul>
-                    </div>
-
-                    {/* Quick Links */}
-                    <div>
-                        <h4 className="font-bold text-sm mb-3 text-white">Quick Links</h4>
-                        <ul className="space-y-1.5">
-                            {quickLinks.map((link) => (
-                                <li key={link.name}>
-                                    <Link href={link.href} className="text-gray-400 hover:text-action-gold text-xs">
-                                        {link.name}
-                                    </Link>
-                                </li>
-                            ))}
-                        </ul>
-                    </div>
-
-                    {/* Areas */}
-                    <div className="col-span-2 pt-2 border-t border-white/10">
-                        <h4 className="font-bold text-sm mb-2 text-white">Service Areas</h4>
-                        <div className="flex flex-wrap gap-x-4 gap-y-1 text-xs">
-                            {areas.map((area) => (
-                                <Link key={area.name} href={area.href} className="text-gray-400 hover:text-action-gold">
-                                    {area.name}
-                                </Link>
-                            ))}
-                            <Link href="/locations" className="text-action-gold font-medium">
-                                All 373 suburbs →
-                            </Link>
-                        </div>
-                    </div>
-                </div>
-
-                {/* DESKTOP: 5-column layout */}
-                <div className="hidden sm:grid grid-cols-1 md:grid-cols-2 lg:grid-cols-5 gap-8 lg:gap-8">
+                {/* Unified responsive footer grid */}
+                <div className="grid grid-cols-2 md:grid-cols-3 lg:grid-cols-5 gap-8">
                     {/* Brand */}
-                    <div className="flex flex-col gap-4 lg:col-span-1">
-                        <Image
-                            src="/assets/images/logo-white.png"
-                            width={90}
-                            height={90}
-                            sizes="180px"
-                            alt="aspect-window-cleaning-logo"
-                            className="object-contain"
-                        />
+                    <div className="col-span-2 md:col-span-1 lg:col-span-1 flex flex-col gap-3 sm:gap-4">
+                        <div className="flex items-center gap-3">
+                            <Image
+                                src="/assets/images/logo-white.png"
+                                width={80}
+                                height={80}
+                                sizes="160px"
+                                alt="aspect-window-cleaning-logo"
+                                className="object-contain"
+                            />
+                            <h3 className="font-heading font-bold text-lg text-action-gold sm:hidden">
+                                {BUSINESS.name}
+                            </h3>
+                        </div>
                         <p className="text-gray-300 text-xs leading-relaxed">
                             Perth&apos;s professional precision window cleaning specialists. Safe, streak-free residential &amp;
                             commercial cleaning across the entire metropolitan area.
@@ -141,8 +65,8 @@ export default async function Footer() {
 
                     {/* Services */}
                     <div>
-                        <h4 className="font-bold text-base mb-4 text-white">Our Services</h4>
-                        <ul className="space-y-2">
+                        <h4 className="font-bold text-sm sm:text-base mb-3 sm:mb-4 text-white">Our Services</h4>
+                        <ul className="space-y-1.5 sm:space-y-2">
                             {services.map((service) => (
                                 <li key={service.name}>
                                     <Link
@@ -167,8 +91,8 @@ export default async function Footer() {
 
                     {/* Quick Links / Explore */}
                     <div>
-                        <h4 className="font-bold text-base mb-4 text-white">Explore</h4>
-                        <ul className="space-y-2">
+                        <h4 className="font-bold text-sm sm:text-base mb-3 sm:mb-4 text-white">Explore</h4>
+                        <ul className="space-y-1.5 sm:space-y-2">
                             {quickLinks.map((link) => (
                                 <li key={link.name}>
                                     <Link
@@ -183,9 +107,9 @@ export default async function Footer() {
                     </div>
 
                     {/* Areas */}
-                    <div>
-                        <h4 className="font-bold text-base mb-4 text-white">Service Areas</h4>
-                        <ul className="space-y-2">
+                    <div className="col-span-2 md:col-span-1 lg:col-span-1">
+                        <h4 className="font-bold text-sm sm:text-base mb-3 sm:mb-4 text-white">Service Areas</h4>
+                        <ul className="space-y-1.5 sm:space-y-2">
                             {areas.map((area) => (
                                 <li key={area.name}>
                                     <Link
@@ -208,10 +132,10 @@ export default async function Footer() {
                         </ul>
                     </div>
 
-                    {/* Contact */}
-                    <div className="lg:col-span-1">
-                        <h4 className="font-bold text-base mb-4 text-white">Contact Us</h4>
-                        <ul className="space-y-3">
+                    {/* Contact Us */}
+                    <div className="col-span-2 md:col-span-2 lg:col-span-1">
+                        <h4 className="font-bold text-sm sm:text-base mb-3 sm:mb-4 text-white">Contact Us</h4>
+                        <ul className="space-y-2.5 sm:space-y-3">
                             <li>
                                 <a href={`tel:${BUSINESS.phoneRaw}`} className="flex items-center gap-2.5 text-gray-300 hover:text-action-gold transition-colors text-xs sm:text-sm">
                                     <Phone className="w-4 h-4 text-action-gold shrink-0" aria-hidden="true" />
@@ -240,8 +164,8 @@ export default async function Footer() {
                         </div>
                         <div className="mt-3 p-2.5 bg-white/5 rounded-lg border border-white/10">
                             <p className="text-[11px] text-gray-400 leading-normal">
-                                <button onClick={() => openCertificateModal('insured')} className="hover:text-white transition-colors underline decoration-dashed underline-offset-2">Fully insured</button> &bull; 
-                                <button onClick={() => openCertificateModal('police')} className="hover:text-white transition-colors underline decoration-dashed underline-offset-2">Police cleared</button> &bull; 
+                                <button onClick={() => openCertificateModal('insured')} className="hover:text-white transition-colors underline decoration-dashed underline-offset-2">Fully insured</button> &bull;{" "}
+                                <button onClick={() => openCertificateModal('police')} className="hover:text-white transition-colors underline decoration-dashed underline-offset-2">Police cleared</button> &bull;{" "}
                                 ABN Registered
                             </p>
                         </div>
