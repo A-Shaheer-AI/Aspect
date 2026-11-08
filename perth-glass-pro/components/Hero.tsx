@@ -121,10 +121,13 @@ export default function HeroWithScroll() {
 
           {/* LEFT CONTENT */}
           <div>
-            <div className="inline-flex items-center gap-2 rounded-full border border-white/20 bg-white/10 px-4 py-1.5 text-xs sm:text-sm font-semibold text-action-gold mb-4 mx-auto md:mx-0">
-              <span className="w-2 h-2 rounded-full bg-green-400 animate-pulse" />
-              Same-Week Service Across All Perth Suburbs
-            </div>
+            <Link
+              href="/pricing#summer-specials"
+              className="inline-flex items-center gap-2 rounded-full border border-amber-300/40 bg-amber-500/15 hover:bg-amber-500/25 px-4 py-1.5 text-xs sm:text-sm font-semibold text-action-gold mb-4 mx-auto md:mx-0 transition-all shadow-sm"
+            >
+              <span className="w-2 h-2 rounded-full bg-amber-400 animate-pulse" />
+              <span>☀️ Perth Summer Specials: 15% Off Biannual + Half-Price Tracks* ($500+ Min) &rarr;</span>
+            </Link>
 
             <h1 className="text-3xl sm:text-4xl md:text-5xl xl:text-6xl text-center md:text-left font-bold leading-tight mb-4">
               Window Cleaning Perth <br />

@@ -6,6 +6,7 @@ import ResidentialEstimator from "@/components/ResidentialEstimator";
 import TrustGrid from "@/components/TrustGrid";
 import ResultsAndReviews from "@/components/ResultsAndReviews";
 import PricingPackages from "@/components/PricingPackages";
+import SummerPromotions from "@/components/SummerPromotions";
 import FAQ from "@/components/FAQ";
 import { Metadata } from "next";
 
@@ -205,12 +206,29 @@ export default function PricingPage() {
         })),
     };
 
+    const promotionsSchema = {
+        "@context": "https://schema.org",
+        "@type": "SpecialAnnouncement",
+        "name": "Aspect Window Cleaning Perth Summer Promotional Offers",
+        "text": "Perth summer promotional specials for bookings of $500 or greater: 15% off biannual window cleaning with half-price tracks and frames, 50% off single-storey gutters, free shower screen detailing for up to 2 screens on Supreme cleans, free 10-panel solar cleaning with customer review, 50% off glass pool fencing, and 20% off solar panel washing.",
+        "category": "https://schema.org/SpecialAnnouncement",
+        "url": "https://aspectwindowcleaning.com.au/pricing#summer-specials",
+        "spatialCoverage": {
+            "@type": "Place",
+            "name": "Greater Perth, Western Australia"
+        }
+    };
+
     return (
         <main className="min-h-screen bg-gray-50 pb-16">
-            {/* Structured Data: FAQPage */}
+            {/* Structured Data: FAQPage & SpecialAnnouncement */}
             <script
                 type="application/ld+json"
                 dangerouslySetInnerHTML={{ __html: JSON.stringify(faqSchema) }}
+            />
+            <script
+                type="application/ld+json"
+                dangerouslySetInnerHTML={{ __html: JSON.stringify(promotionsSchema) }}
             />
 
             {/* Header Section */}
@@ -223,26 +241,28 @@ export default function PricingPage() {
                         Window Cleaning Prices Perth: Clear, Upfront Rates &amp; Packages
                     </h1>
                     <p className="text-xl text-brand-water mb-8 max-w-2xl mx-auto leading-relaxed">
-                        Looking for transparent <strong>window cleaning prices Perth</strong>? Aspect delivers upfront, fixed rates with no hidden callout fees or surprise quotes. Compare our core packages below, check included services with our comparison matrix, or use our instant residential estimator.
+                        Looking for transparent <strong>window cleaning prices Perth</strong>? Aspect delivers upfront, fixed rates with no hidden callout fees or surprise quotes. Compare our summer specials and core packages below, or use our instant residential estimator.
                     </p>
                     <div className="flex flex-wrap items-center justify-center gap-4">
                         <Link
-                            href="#packages"
+                            href="#summer-specials"
                             className="shimmer-btn bg-action-gold text-brand-navy font-bold px-8 py-4 rounded-full text-base sm:text-lg hover:shadow-xl transition-all inline-flex items-center gap-2"
                         >
-                            <span>Explore Core Packages</span>
+                            <span>☀️ Summer Specials ($500+ Min)</span>
                             <ArrowDown className="w-4 h-4" />
                         </Link>
                         <Link
-                            href="/contact"
+                            href="#packages"
                             className="bg-white/10 hover:bg-white/20 text-white font-semibold px-8 py-4 rounded-full text-base sm:text-lg transition-colors border border-white/20 inline-flex items-center gap-2"
                         >
-                            <Sparkles className="w-4 h-4 text-action-gold" />
-                            <span>Request Custom Quote</span>
+                            <span>Standard Packages</span>
                         </Link>
                     </div>
                 </div>
             </section>
+
+            {/* Summer Promotional Specials - FIRST HIGHLIGHT */}
+            <SummerPromotions />
 
             {/* Core Packages Section - FIRST THING VISIBLE BELOW HERO */}
             <section id="packages" className="bg-white py-16 border-b border-gray-200 scroll-mt-20 relative">
