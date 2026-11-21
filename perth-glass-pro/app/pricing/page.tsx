@@ -273,10 +273,10 @@ export default function PricingPage() {
                             TRANSPARENT SERVICE TIERS
                         </span>
                         <h2 className="text-3xl sm:text-4xl font-heading font-bold text-brand-navy mb-4">
-                            Window Cleaning Prices Perth: Core Packages &amp; Transparent Rates
+                            Perth Window Cleaning Prices &amp; Service Cost Breakdown (2026 Guide)
                         </h2>
                         <p className="text-gray-600 max-w-2xl mx-auto text-base sm:text-lg">
-                            Choose the level of thoroughness that matches your property. Essential and Standard deliver our <strong>Basic Wash</strong> for routine dirt, while Supreme delivers <strong>Full Detailing</strong> for hard water, paint, and mineral restoration.
+                            Looking for a clear <strong>window cleaner price</strong> or calculating your residential or commercial <strong>window washing cost</strong>? Review our transparent, fixed-package <strong>window cleaning rates</strong> below. Essential and Standard deliver our streak-free <strong>Basic Wash</strong> for routine maintenance, while Supreme delivers <strong>Full Detailing</strong> for hard water, paint overspray, and mineral scale restoration.
                         </p>
                     </div>
 
@@ -294,7 +294,7 @@ export default function PricingPage() {
                             <span className="text-action-gold text-xs font-bold uppercase tracking-wider block mb-1">
                                 RESIDENTIAL RATES
                             </span>
-                            <h2 className="text-2xl sm:text-3xl font-bold text-brand-navy">Residential Pricing</h2>
+                            <h2 className="text-2xl sm:text-3xl font-bold text-brand-navy">Residential Window Cleaner Prices &amp; House Washing Costs</h2>
                         </div>
                         <Link href="/services/residential-window-cleaning" className="text-blue-600 hover:underline font-semibold hidden md:block">
                             Learn more about Residential Cleaning &rarr;
@@ -348,7 +348,7 @@ export default function PricingPage() {
                             <span className="text-action-gold text-xs font-bold uppercase tracking-wider block mb-1">
                                 COMMERCIAL & CORPORATE
                             </span>
-                            <h2 className="text-2xl sm:text-3xl font-bold text-brand-navy">Commercial Pricing</h2>
+                            <h2 className="text-2xl sm:text-3xl font-bold text-brand-navy">Commercial Window Washing Rates &amp; Shopfront Prices</h2>
                         </div>
                         <Link href="/commercial" className="text-blue-600 hover:underline font-semibold hidden md:block">
                             Learn more about Commercial Services &rarr;

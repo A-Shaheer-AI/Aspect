@@ -116,6 +116,12 @@ export async function processInboundSms({ from, body, provider }: InboundMessage
     return { status: "muted_silent" };
   }
 
+  // Check if AI auto-responder is enabled globally
+  if (process.env.ENABLE_AI_SMS !== "true") {
+    console.log(`ℹ️ [AI System Offline] Inbound SMS from ${normPhone} logged, but AI auto-responder is disabled.`);
+    return { status: "ai_system_offline" };
+  }
+
   // =========================================================================
   // 4. Evaluate Message Through the Fazal AI Brain
   // =========================================================================

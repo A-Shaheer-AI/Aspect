@@ -175,7 +175,8 @@ export default async function RootLayout({
                 <Footer /> */}
                 <ConditionalLayout children={children} />
                 <AttributionTracker />
-                <LiveChatWidget />
+                {/* AI Live Chat Widget — kept dormant until user is ready to go live */}
+                {process.env.NEXT_PUBLIC_ENABLE_AI_CHAT === "true" && <LiveChatWidget />}
 
                 {/* Tag Manager - loaded after interactive */}
 

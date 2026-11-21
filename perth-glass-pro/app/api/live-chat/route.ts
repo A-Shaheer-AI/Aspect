@@ -30,6 +30,10 @@ function formatFullTranscript(session: any): string {
  */
 export async function POST(req: NextRequest) {
   try {
+    if (process.env.NEXT_PUBLIC_ENABLE_AI_CHAT !== "true") {
+      return NextResponse.json({ error: "Live chat is currently offline" }, { status: 503 });
+    }
+
     const body = await req.json().catch(() => ({}));
     const { message, forceAi } = body;
     let sessionId = body.sessionId;
