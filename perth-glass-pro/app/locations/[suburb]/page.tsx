@@ -28,6 +28,8 @@ interface SuburbRecord {
     cleaning_strategy?: string;
     coverage_guarantee?: string;
     suburb_faqs?: Array<{ question: string; answer: string }>;
+    lga?: string;
+    local_history_wiki?: string;
 }
 
 const ALL_SUBURBS: SuburbRecord[] = [
@@ -229,6 +231,12 @@ export default async function SuburbPage({ params }: { params: Promise<{ suburb:
                     <div className="inline-flex flex-wrap items-center justify-center gap-2 bg-white/10 border border-white/20 rounded-full px-4 py-2 mb-6">
                         <span className="w-2 h-2 rounded-full bg-green-400 animate-pulse"></span>
                         <span className="text-xs sm:text-sm font-medium">Same-Week Availability in {suburb.name}</span>
+                        {suburb.lga && (
+                            <>
+                                <span className="text-white/40">•</span>
+                                <span className="text-xs sm:text-sm text-action-gold font-semibold">{suburb.lga}</span>
+                            </>
+                        )}
                         {suburb.distance_from_base && (
                             <>
                                 <span className="text-white/40">•</span>
@@ -266,7 +274,7 @@ export default async function SuburbPage({ params }: { params: Promise<{ suburb:
                     <div className="text-center max-w-3xl mx-auto mb-10">
                         <div className="inline-flex items-center gap-1.5 bg-brand-navy/10 text-brand-navy px-3.5 py-1.5 rounded-full text-xs font-bold uppercase tracking-wider mb-3">
                             <MapPin className="w-3.5 h-3.5 text-action-gold" />
-                            <span>Local Area Guide • {suburb.name} WA</span>
+                            <span>Local Area Guide • {suburb.name} WA {suburb.lga ? `• ${suburb.lga}` : ''}</span>
                         </div>
                         <h2 className="text-2xl sm:text-3xl md:text-4xl font-heading font-bold text-brand-navy mb-4">
                             Window &amp; Exterior Cleaning Guide for {suburb.name}
@@ -275,6 +283,26 @@ export default async function SuburbPage({ params }: { params: Promise<{ suburb:
                             {suburb.service_description || suburb.description}
                         </p>
                     </div>
+
+                    {/* Local Suburban Profile & Historical Heritage */}
+                    {suburb.local_history_wiki && (
+                        <div className="bg-slate-50 border border-slate-200/90 rounded-3xl p-6 sm:p-7 mb-8 shadow-sm">
+                            <div className="flex items-center justify-between gap-2 mb-2.5">
+                                <div className="flex items-center gap-2 font-bold text-brand-navy text-base sm:text-lg">
+                                    <Sparkles className="w-4 h-4 text-action-gold shrink-0" />
+                                    <span>Suburban Profile &amp; Local Heritage</span>
+                                </div>
+                                {suburb.lga && (
+                                    <span className="text-xs font-bold px-2.5 py-1 rounded-full bg-brand-navy/10 text-brand-navy">
+                                        {suburb.lga}
+                                    </span>
+                                )}
+                            </div>
+                            <p className="text-sm sm:text-base text-brand-slate leading-relaxed">
+                                {suburb.local_history_wiki}
+                            </p>
+                        </div>
+                    )}
 
                     <div className="grid md:grid-cols-2 gap-6 mb-8">
                         {/* Card 1: Architectural Character & Landmarks */}

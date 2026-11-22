@@ -217,6 +217,19 @@ const solarFAQs: FaqsType[] = [
         answer:
             "Yes, absolutely. We frequently service residential solar arrays and commercial rooftop systems across Canning Vale, Gosnells, Armadale, Thornlie, and Kelmscott where heavy inland dust from the Darling Scarp causes rapid efficiency drops.",
     },
+    {
+        question: "How much does solar panel cleaning cost in Perth?",
+        answer: (
+            <div className="space-y-2">
+                <p>
+                    Solar panel cleaning costs in Perth typically range from <strong>$150 to $250</strong> for a standard residential rooftop system (16 to 24 panels), which averages roughly <strong>$6.00 to $10.00 per panel</strong> depending on roof pitch, height (single vs. double storey), and accessibility.
+                </p>
+                <p>
+                    For commercial rooftop arrays or large installations (50 to 500+ panels), commercial volume rates start from <strong>$1.80 to $3.50 per panel</strong>. Furthermore, you can unlock <strong>15% to 20% multi-service bundle savings</strong> when adding solar panel washing to a residential window cleaning or gutter clearing booking. Check our full rates on our <Link href="/pricing" className="text-action-gold font-semibold hover:underline">window cleaning prices Perth</Link> page.
+                </p>
+            </div>
+        )
+    },
 ];
 
 const SolarPanelCleaningPage = () => {
@@ -638,6 +651,58 @@ const SolarPanelCleaningPage = () => {
                         ))}
                     </div>
 
+                </div>
+            </section>
+
+            {/* Solar Panel Cleaning Near Me Section */}
+            <section className="py-16 bg-white border-t border-slate-100">
+                <div className="max-w-6xl mx-auto px-4">
+                    <span className="text-action-gold font-bold text-center mb-2 block uppercase tracking-wider text-xs">GREATER PERTH SERVICE REACH</span>
+                    <h2 className="text-3xl md:text-4xl font-heading font-bold text-brand-navy text-center mb-6">
+                        Solar Panel Cleaning Near Me: Serving All Perth Suburbs
+                    </h2>
+                    <p className="text-center text-brand-slate max-w-3xl mx-auto mb-12 text-base sm:text-lg">
+                        Looking for trusted <strong>solar panel cleaning companies near you</strong>? Aspect Window Cleaning provides dedicated, fully equipped mobile solar cleaning units across all 370+ suburbs in Western Australia — with <strong>zero travel surcharges</strong>. Whether your panels are coated in coastal salt crust or red Darling Scarp clay dust, our certified technicians restore peak generating efficiency.
+                    </p>
+
+                    <div className="grid md:grid-cols-3 gap-6 mb-12">
+                        <div className="bg-slate-50 p-6 rounded-2xl border border-slate-100">
+                            <h3 className="font-bold text-xl text-brand-navy mb-2">Northern Suburbs &amp; Coastal</h3>
+                            <p className="text-sm text-brand-slate leading-relaxed mb-4">
+                                Fast mobile dispatch to Joondalup, Wanneroo, Alkimos, Clarkson, Hillarys, Scarborough, and Cottesloe. Defeating airborne ocean salt residue that bakes onto coastal solar arrays.
+                            </p>
+                            <span className="text-xs font-semibold text-action-gold uppercase tracking-wider block">Same-Week Mobile Booking</span>
+                        </div>
+                        <div className="bg-slate-50 p-6 rounded-2xl border border-slate-100">
+                            <h3 className="font-bold text-xl text-brand-navy mb-2">Southern Suburbs &amp; River</h3>
+                            <p className="text-sm text-brand-slate leading-relaxed mb-4">
+                                Daily routes servicing Canning Vale, Fremantle, Cockburn, Rockingham, Mandurah, Melville, and Applecross. Removing persistent vehicle exhaust and tree pollen film.
+                            </p>
+                            <span className="text-xs font-semibold text-action-gold uppercase tracking-wider block">Zero Travel Surcharges</span>
+                        </div>
+                        <div className="bg-slate-50 p-6 rounded-2xl border border-slate-100">
+                            <h3 className="font-bold text-xl text-brand-navy mb-2">Eastern Suburbs &amp; Hills</h3>
+                            <p className="text-sm text-brand-slate leading-relaxed mb-4">
+                                Specialized care for Midland, Swan Valley, Kalamunda, Gosnells, and Armadale properties where inland red silica dust rapidly cuts rooftop photovoltaic output.
+                            </p>
+                            <span className="text-xs font-semibold text-action-gold uppercase tracking-wider block">100% Deionised Pure Water</span>
+                        </div>
+                    </div>
+
+                    <div className="bg-brand-navy text-white p-8 rounded-2xl text-center md:flex items-center justify-between gap-6">
+                        <div className="text-left mb-6 md:mb-0">
+                            <h3 className="text-2xl font-bold mb-2">Combine &amp; Save: Bundle Solar + Windows</h3>
+                            <p className="text-slate-300 text-sm max-w-xl">
+                                Save 15% to 20% on your solar panel wash when combined with our residential window cleaning or gutter vacuuming services on the same day.
+                            </p>
+                        </div>
+                        <Link
+                            href="/pricing"
+                            className="inline-block bg-action-gold hover:bg-yellow-500 text-brand-navy font-bold px-8 py-3.5 rounded-full transition-colors whitespace-nowrap"
+                        >
+                            View Solar Pricing &rarr;
+                        </Link>
+                    </div>
                 </div>
             </section>
 

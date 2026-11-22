@@ -26,6 +26,14 @@ const nextConfig: NextConfig = {
     eslint: {
         ignoreDuringBuilds: true,
     },
+    experimental: {
+        optimizePackageImports: [
+            "lucide-react",
+            "date-fns",
+            "framer-motion",
+            "swiper",
+        ],
+    },
 
     async redirects() {
         return [

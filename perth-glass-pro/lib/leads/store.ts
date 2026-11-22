@@ -8,12 +8,31 @@ export interface ChatMessage {
   timestamp: string;
 }
 
+export interface LeadExtractedDetails {
+  property_type?: "residential" | "commercial" | string;
+  storeys?: "single" | "double" | "multi" | string;
+  scope?: string;
+  bedrooms?: number;
+  has_screens?: boolean;
+  urgent?: boolean;
+  address?: string;
+  suburb?: string;
+  window_count?: string | number;
+  condition?: string;
+  chosen_plan?: "basic" | "detailed" | "other" | string;
+  contact_preference?: "phone" | "text" | "pending";
+  preferred_call_time?: string;
+  stage?: "initial_greeting" | "awaiting_preference" | "collecting_details" | "plan_selection" | "completed" | "call_scheduled";
+  notes?: string;
+}
+
 export interface LeadProfile {
   id: string;
   phone: string;
   name: string;
   email?: string;
   suburb: string;
+  lead_source?: "sms" | "website" | "manual";
   gclid?: string;
   keyword?: string;
   device?: string;
@@ -29,48 +48,66 @@ export interface LeadProfile {
   mute_reason?: string;
   status: "NEW" | "CONTACTED" | "QUOTED" | "WON" | "LOST";
   quoted_value?: number;
-  extracted_details: {
-    storeys?: string;
-    scope?: string;
-    bedrooms?: number;
-    has_screens?: boolean;
-    urgent?: boolean;
-    address?: string;
-    notes?: string;
-  };
+  extracted_details: LeadExtractedDetails;
   messages: ChatMessage[];
   created_at: string;
   updated_at: string;
 }
 
-const DATA_DIR = path.join(process.cwd(), "data");
+import os from "os";
+
+// On Vercel / serverless runtime, process.cwd() is read-only (/var/task). /tmp is writable.
+const DATA_DIR = process.env.VERCEL ? os.tmpdir() : path.join(process.cwd(), "data");
 const LEADS_FILE = path.join(DATA_DIR, "leads.json");
 
+// In-memory cache ensures zero latency and safety across warm lambda invocations
+let memoryLeads: LeadProfile[] = [];
+let isInitialized = false;
+
 function ensureStorage(): LeadProfile[] {
+  if (isInitialized && memoryLeads.length > 0) {
+    return memoryLeads;
+  }
   try {
     if (!fs.existsSync(DATA_DIR)) {
       fs.mkdirSync(DATA_DIR, { recursive: true });
     }
     if (!fs.existsSync(LEADS_FILE)) {
+      const bundledPath = path.join(process.cwd(), "data", "leads.json");
+      if (fs.existsSync(bundledPath)) {
+        try {
+          const rawBundled = fs.readFileSync(bundledPath, "utf-8");
+          fs.writeFileSync(LEADS_FILE, rawBundled, "utf-8");
+          memoryLeads = JSON.parse(rawBundled) as LeadProfile[];
+          isInitialized = true;
+          return memoryLeads;
+        } catch (_) {}
+      }
       fs.writeFileSync(LEADS_FILE, JSON.stringify([], null, 2), "utf-8");
+      memoryLeads = [];
+      isInitialized = true;
       return [];
     }
     const raw = fs.readFileSync(LEADS_FILE, "utf-8");
-    return JSON.parse(raw) as LeadProfile[];
+    memoryLeads = JSON.parse(raw) as LeadProfile[];
+    isInitialized = true;
+    return memoryLeads;
   } catch (err) {
-    console.error("Error accessing leads file store:", err);
-    return [];
+    console.warn("Notice reading leads store (using memory cache):", err);
+    return memoryLeads;
   }
 }
 
 function persistStorage(leads: LeadProfile[]) {
+  memoryLeads = leads;
+  isInitialized = true;
   try {
     if (!fs.existsSync(DATA_DIR)) {
       fs.mkdirSync(DATA_DIR, { recursive: true });
     }
     fs.writeFileSync(LEADS_FILE, JSON.stringify(leads, null, 2), "utf-8");
   } catch (err) {
-    console.error("Error persisting leads file store:", err);
+    console.warn("Notice persisting leads store to disk:", err);
   }
 }
 
@@ -192,4 +229,13 @@ export function unmuteAiForLead(phone: string) {
     persistStorage(leads);
     console.log(`🔊 [AI Unmuted] Lead ${lead.name} (${norm}) unmuted.`);
   }
+}
+
+/**
+ * Returns the most recently updated lead (useful for remote owner commands like #stop)
+ */
+export function getLatestActiveLead(): LeadProfile | undefined {
+  const leads = ensureStorage();
+  if (leads.length === 0) return undefined;
+  return [...leads].sort((a, b) => new Date(b.updated_at).getTime() - new Date(a.updated_at).getTime())[0];
 }
